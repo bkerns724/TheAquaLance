@@ -1,0 +1,156 @@
+All 75 total
+
+Ironclad
+    3 basic
+    20 common
+	14 attack
+	6 skill
+	4 block
+	2 aoe
+	3 draw
+    36 uncommon
+	11 attack
+	17 skill
+	8 power
+	10 block
+	2 aoe
+	3 draw
+    16 rare
+	5 attack
+	5 skill
+	6 power
+	2 block
+	1 aoe
+	3 draw
+
+    10 non-power scaling
+
+    Synergies
+	Self Harm	Cube / Clay
+	    Rupture X Brutality / Offering / BloodShooty / Bloodletting / combust
+	Strength	Skull / Brimstone / Girya
+	    Demon Form / Inflame / Limit Break / Spot Weakness / Rupture X twin strike / boomerang / heavy / whirlwind / pummel
+	Exhaust		Ashes
+	    Feel / Corruption / Dark Embrace X grit / pact / fiend fire / wind / sever / havoc
+	Barricade
+	    Barricade X Entrench X Impervious X Body slam
+	Status		Mark
+	    Wild strike / reckless X evolve
+	Strikes
+	    Perfected strike X Perfected Strike / Pommel / Wild / Basic / Twin
+
+    Exceptional Scaling
+	Continuous: Demon / Limit / Spot
+	Exhaust scaling
+	Ramping attacks
+
+Silent
+    4 basic
+    19 common
+	9 attack
+	10 skill
+	5 block
+	1 aoe
+	5 draw
+    33 uncommon
+	13 attack
+	14 skill
+	6 power
+	4 block
+	3 aoe
+	5 draw
+    19 rare
+	4 attack
+	10 skill
+	5 power
+	3 block
+	4 aoe
+	2 draw
+
+    10 non-power scaling
+
+    Synergies
+	Poison		Skull / Specimen / Funnel
+	    Fumes / Deadly / Flask / Envenom / stab / cloud X catalyst / bane
+	Shivs		Wrist Blade / Scroll / Kunai / Shuriken / Fan
+	    Infinite / Cloak / Blade dance / storm X finisher / choke / cuts / image / accuracy
+	Discard		Tingsha / Bandages / Kite
+	    Tactician / Reflex / eviscerate / sneaky X Survivor / acrobatics / tools / dagger / gamble / storm / prepared
+
+    Exceptional Scaling
+	Continuous: Fumes
+	Catalysts
+	Shiv count X accuracy
+
+Defect
+    4 basic
+    18 common
+	10 attack
+	8 skill
+	7 block
+	1 aoe
+	3 draw
+    36 uncommon
+	8 attack
+	20 skill
+	8 power
+	8 block
+	4 draw
+	2 aoe
+    17 rare
+	5 attack
+	6 skill
+	6 power
+	1 block
+	1 aoe
+	5 draw
+
+    8 non-power scaling, after orb slots full
+
+    Synergies
+	Orb Power	Runic Capacitor / Inserter / Disc / Cables / Chip
+	    Capacitor X Defrag / Consume / biased cog / barrage
+	zero face
+	    claw / ftl / steam / beam / eyes / overclock / turbo X all for one / scrape
+	    claw X hologram
+	Powers		Hand / Urn
+	    Storm / Heat sink X Creative AI / other powers
+	Dark		Cables
+	    Darkness / Gloom X loop / recursion / dual / multi cast
+	Electric
+	    Thunder / Electrodynamics X storm / zap / ball / tempest / static
+	Frost		Frozen Core
+	    Blizzard X Glacier / cold snap / cool headed
+
+    Exceptional Scaling
+	Claw
+	Creative
+	Focus X slots / extra triggers
+
+Everyone
+
+    Blocks are about 2/7 commons
+                     1/5 uncommons
+                     1/8 rare
+
+    commons are      33/57 attack ~ 60%
+		     24/57 skill  ~ 40%
+
+    uncommons are    32/105 attack ~ 30%
+		     53/105 skill  ~ 50%
+		     22/105 power  ~ 20%
+
+    rares are	     14/52 attack  ~ 25%
+		     21/52 skill   ~ 40%
+		     17/52 power   ~ 35%
+
+    0 cost are	     35/225	~ 15%
+    1 cost are	     125/225	~ 55%
+    2 cost are       41/225	~ 18%
+    3 cost are       11/225     ~ 5%
+    4+ cost are      4/225      ~ 2%
+    x cost are       7/225      ~ 3%
+
+set game to windowed mode
+open info.displayconfig (in the sts folder)
+edit the width and height to a 21:9 aspect ratio

@@ -1,0 +1,65 @@
+Character Mechanics
+    Embed.  Card is removed from play, and associated with a debuff added to the enemy.  Returned to hand on death of enemy (and maybe other means).
+    Most scaling through debuffs.  Low power count.
+    Lots of draw.  Lots of discard.
+    Sigils.  Unplayable.  Has on discard effects.
+
+    No Ethereal, Exhaust, or card generation
+    No retain, innate, or deck manip
+    No Healing
+    No Damage AoE
+    No major poison/burning adjacent mechanics
+    No temp str, dex.  Use vigor, vitality.
+
+New Debuffs
+    Hobble
+	Applies 33% less weak, vuln, frail, strength, block, and healing
+    Drowned
+	Enemy loses x extra hp per loss (everything, not just attacks).  Lose 33% stacks per turn
+
+New Buffs
+    Streamlined
+	When you draw a card or gain energy, draw/gain 1 more and reduce this by 1.
+
+Starting Relic
+    Rune of ice
+	Click to draw a card and discard a card.  One charge.  Gain a charge when you shuffle.
+    Rune of living water
+	Click to draw a card and discard a card.  Start with 2 extra charges.
+
+Remove Relics
+    Strange Spoon, Dead Branch, anything else exhaust based
+
+Potions
+    Hobble Potion, Common
+	Apply 3 hobble
+    Water Bucket, Uncommon
+	Apply 2 drowned
+    Shark Fin Potion, Rare
+	Gain 6 streamlined
+
+Other Relics
+    Unmelting ice, Common
+	Enemies take 3 damage upon embed.
+    Bag of ice cubes, Common
+	Apply 1 hobble at beginning of combat
+    Waterskin, Common
+	Apply 2 drowned at beginning of combat
+    Paper Crab, Uncommon
+	Hobble is 50% instead of 33%
+    Javelin, Uncommon
+	3 attacks in a single turn -> 2 streamline
+    Sailor's Charm, Uncommon
+	If you have a sigil in your hand when you end your turn, draw +1 next turn
+    Vial of Mineral Water, Rare
+	Deal 3 damage to a random enemy when you draw a card(not initial draw)
+    Vial of Swamp Water, Rare
+	Gain 2 block when you apply a debuff
+    Chains, Rare
+	Drowned decays 20% instead of 33%
+    Bottled Capsized Ship, Boss
+	Drowning is 50% more effective.
+    Steam Orb, Boss
+	Energy relic.  Your discards target randomly.  
+    Ceremonial Robe, Shop
+	+1 draw each turn.  -1 str.
