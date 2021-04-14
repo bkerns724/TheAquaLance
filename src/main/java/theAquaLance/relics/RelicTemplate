@@ -1,0 +1,17 @@
+package theAquaLance.relics;
+
+import theAquaLance.TheAquaLance;
+import static theAquaLance.AquaLanceMod.makeID;
+
+import static theAquaLance.util.Wiz.*;
+
+public class ${NAME} extends AbstractEasyRelic {
+    public static final String ID = makeID("${NAME}");
+    // intellij stuff ${NAME}, ${TIER}, ${SOUND}
+
+    public ${NAME}() {
+        super(ID, RelicTier.#if (${TIER.equals("starter")})STARTER#elseif (${TIER.equals("common")})COMMON#elseif (${TIER.equals("uncommon")})UNCOMMON#elseif (${TIER.equals("rare")})RARE#elseif (${TIER.equals("shop")})SHOP#elseif (${TIER.equals("boss")})BOSS#else SPECIAL#end,
+              LandingSound.#if (${SOUND.equals("clink")})CLINK#elseif (${SOUND.equals("heavy")})HEAVY#elseif (${SOUND.equals("flat")})FLAT#elseif (${SOUND.equals("magical")})MAGICAL#elseif (${SOUND.equals("solid")})SOLID#end,
+              TheAquaLance.Enums.TURQUOISE_COLOR);
+    }
+}

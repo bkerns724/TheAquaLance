@@ -1,9 +1,117 @@
 {
-  "${ModID}:TodoItem": {
-    "NAME": "Todo Item",
-    "FLAVOR": "TODO: make this a sweet relic.",
+  "${ModID}:BagOfIceCubes": {
+    "NAME": "Bag of Ice Cubes",
+    "FLAVOR": "You can make enemies lose their footing with these.",
     "DESCRIPTIONS": [
-      "Has no effect."
+      "At the start of each combat, apply #b",
+      " #yHobble to ALL enemies."
+    ]
+  },
+  "${ModID}:CeremonialRobe": {
+    "NAME": "Ceremonial Robe",
+    "FLAVOR": "Elegant, but difficult to fight in.",
+    "DESCRIPTIONS": [
+      "Draw #b",
+      " additional card each turn.  At the start of each combat, lose #b",
+      " #yStrength."
+    ]
+  },
+  "${ModID}:Chains": {
+    "NAME": "Chains",
+    "FLAVOR": "Heavy chains used for restraining prisoners.",
+    "DESCRIPTIONS": [
+      "Drowning decays at a rate of #b",
+      "% per turn instead of #b",
+      "% per turn."
+    ]
+  },
+  "${ModID}:Javelin": {
+    "NAME": "Javelin",
+    "FLAVOR": "Throw it for ranged face stabbing.",
+    "DESCRIPTIONS": [
+      "Every time you play #b",
+      " #yAttacks in a single turn, gain #b",
+      " #yStreamlined."
+    ]
+  },
+  "${ModID}:DrippingSpearhead": {
+    "NAME": "Dripping Spearhead",
+    "FLAVOR": "When you stab with it, a surge of water bursts forth.",
+    "DESCRIPTIONS": [
+      "Whenever you apply #yHobble, apply #b",
+      " #yDrowned."
+    ]
+  },
+  "${ModID}:PoisonSpearhead": {
+    "NAME": "Poisoned Spear Head",
+    "FLAVOR": "I shouldn't have licked it.",
+    "DESCRIPTIONS": [
+      "Every time you apply a debuff, apply #b",
+      " more stack."
+    ]
+  },
+  "${ModID}:RuneOfIce": {
+    "NAME": "Rune of Ice",
+    "FLAVOR": "A magical symbol made of ice that never thaws.",
+    "DESCRIPTIONS": [
+      "Right click to discard a card.  Gain #b",
+      " charge at the start of combat and #b",
+      " charge whenever you shuffle your deck."
+    ]
+  },
+  "${ModID}:RuneOfLivingWater": {
+    "NAME": "Rune of Living Water",
+    "FLAVOR": "It is made of water, yet somehow keeps its shape.",
+    "DESCRIPTIONS": [
+      "Right click to draw a card and discard a card.  Gain #b",
+      " charge at the start of combat and #b",
+      " charge whenever you shuffle your deck."
+    ]
+  },
+  "${ModID}:SteamOrb": {
+    "NAME": "Steam Orb",
+    "FLAVOR": "You can feel the heat when it is close.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn.  Your discards target randomly."
+    ]
+  },
+  "${ModID}:SailorCharm": {
+    "NAME": "Sailor Charm",
+    "FLAVOR": "An old charm to protect men at sea.",
+    "DESCRIPTIONS": [
+      "If you end the turn with a #ySigil in hand, draw an extra card next turn."
+    ]
+  },
+  "${ModID}:UnmeltingIce": {
+    "NAME": "Unmelting Ice",
+    "FLAVOR": "It never melts.",
+    "DESCRIPTIONS": [
+      "Whenever you #yEmbed a #yShard, deal #b",
+      " damage to your target."
+    ]
+  },
+  "${ModID}:VialOfMineralWater": {
+    "NAME": "Vial of Mineral Water",
+    "FLAVOR": "Very healthy.",
+    "DESCRIPTIONS": [
+      "Every #b",
+      " turns, draw an additional card."
+    ]
+  },
+  "${ModID}:VialOfSwampWater": {
+    "NAME": "Vial of Swamp Water",
+    "FLAVOR": "Very unhealthy.",
+    "DESCRIPTIONS": [
+      "Whenever you apply a debuff to an enemy, gain #b",
+      " #yBlock."
+    ]
+  },
+  "${ModID}:Waterskin": {
+    "NAME": "Waterskin",
+    "FLAVOR": "You can carry more water to work your magic.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, apply #b",
+      " #yDrowned to ALL enemies."
     ]
   }
 }

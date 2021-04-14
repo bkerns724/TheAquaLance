@@ -1,0 +1,34 @@
+package theAquaLance.powers;
+
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+
+import static theAquaLance.util.Wiz.*;
+
+public class ${NAME} extends AbstractEasyPower {
+    // intellij stuff ${POWER_ID}, ${TYPE}, ${TURN_BASED}
+    public static String POWER_ID = ${POWER_ID};
+
+    public ${NAME}(AbstractCreature owner, int amount) {
+        super("", PowerType.#if ( ${TYPE.equals( "buff" )} )BUFF#else DEBUFF#end, #if (${TURN_BASED.equals("true")})true#else false#end, owner, amount);
+    }
+
+    #if (${TURN_BASED.equals("true")})
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (amount == 1)
+            atb(new RemoveSpecificPowerAction(owner, owner, this));
+        else
+            atb(new ReducePowerAction(owner, owner, POWER_ID, 1));
+    }#end
+
+    @Override
+    public void updateDescription() {
+        // May need to adjust this
+        if (amount == 1)
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        else
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+    }
+}

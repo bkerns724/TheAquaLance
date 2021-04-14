@@ -6,15 +6,13 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import theAquaLance.cards.AbstractEasyCard;
 import theAquaLance.cards.cardvars.SecondDamage;
 import theAquaLance.cards.cardvars.SecondMagicNumber;
@@ -32,12 +30,15 @@ public class AquaLanceMod implements
         EditCharactersSubscriber {
 
     public static final String modID = "aqualancemod";
+    public static final String JSON_PRE = "AquaLanceMod:";
+
+    public static Logger logger = LogManager.getLogger(AquaLanceMod.class.getName());
 
     public static String makeID(String idText) {
         return modID + ":" + idText;
     }
 
-    public static Color characterColor = new Color(64,224,208, 1); // This should be changed eventually
+    public static final Color AQUALANCE_EYE_COLOR = new Color(64,224,208, 1);
 
     public static final String SHOULDER1 = modID + "Resources/images/char/mainChar/shoulder.png";
     public static final String SHOULDER2 = modID + "Resources/images/char/mainChar/shoulder2.png";
@@ -57,8 +58,8 @@ public class AquaLanceMod implements
     public AquaLanceMod() {
         BaseMod.subscribe(this);
 
-        BaseMod.addColor(TheAquaLance.Enums.TURQUOISE_COLOR, characterColor, characterColor, characterColor,
-                characterColor, characterColor, characterColor, characterColor,
+        BaseMod.addColor(TheAquaLance.Enums.TURQUOISE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
+                AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
                 CARD_ENERGY_L, TEXT_ENERGY);
@@ -130,6 +131,8 @@ public class AquaLanceMod implements
         BaseMod.loadCustomStringsFile(CharacterStrings.class, modID + "Resources/localization/eng/Charstrings.json");
 
         BaseMod.loadCustomStringsFile(PowerStrings.class, modID + "Resources/localization/eng/Powerstrings.json");
+
+        BaseMod.loadCustomStringsFile(PotionStrings.class, modID + "Resources/localization/eng/Powerstrings.json");
     }
 
     @Override

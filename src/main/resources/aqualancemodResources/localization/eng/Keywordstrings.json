@@ -1,10 +1,90 @@
 [
   {
-    "PROPER_NAME": "TODO",
+    "PROPER_NAME": "Hobble",
     "NAMES": [
-      "todo",
-      "todos"
+      "Hobble",
+      "hobble",
+      "Hobbled",
+      "hobbled"
     ],
-    "DESCRIPTION": "TODO: Make your own epic keywords"
+    "DESCRIPTION": "Hobbled creatures can't apply #yVulnerable, #yFrail, #yWeak, #yStrength, #yDexterity, and #yFocus."
+  },
+  {
+    "PROPER_NAME": "Drowned",
+    "NAMES": [
+      "Drowned",
+      "drowned"
+    ],
+    "DESCRIPTION": "Drowned creatures lose X more HP when they lose HP."
+  },
+  {
+    "PROPER_NAME": "Streamlined",
+    "NAMES": [
+      "Streamlined",
+      "streamlined"
+    ],
+    "DESCRIPTION": "When you draw a card or gain [E], you spend Streamlined to draw or gain one more."
+  },
+  {
+    "PROPER_NAME": "Sigil",
+    "NAMES": [
+      "Sigil",
+      "sigil",
+      "Sigils",
+      "sigils"
+    ],
+    "DESCRIPTION": "Sigils are unplayable cards whose effects trigger on discarding them."
+  },
+  {
+    "PROPER_NAME": "Embed",
+    "NAMES": [
+      "Embed",
+      "embed",
+      "Embedded",
+      "embedded"
+    ],
+    "DESCRIPTION": "A card that embeds applies its effect to an enemy.  The card is returned when the enemy dies or it removes the debuff."
+  },
+  {
+    "PROPER_NAME": "Shard",
+    "NAMES": [
+      "Shard",
+      "shard",
+      "Shards",
+      "shards"
+    ],
+    "DESCRIPTION": "A card that is embedded in an enemy."
+  },
+  {
+    "PROPER_NAME": "Finisher",
+    "NAMES": [
+      "Finisher",
+      "finisher"
+    ],
+    "DESCRIPTION": "A card that removes all shards from an enemy it targets."
+  },
+  {
+    "PROPER_NAME": "Vitality",
+    "NAMES": [
+      "Vitality",
+      "vitality"
+    ],
+    "DESCRIPTION": "Vitality adds #yBlock to your next blocking card."
+  },
+  {
+    "PROPER_NAME": "Replenish",
+    "NAMES": [
+      "Replenish",
+      "replenish"
+    ],
+    "DESCRIPTION": "Whenever you draw this card, draw another card."
+  },
+  {
+    "PROPER_NAME": "Blur",
+    "NAMES": [
+      "Blur",
+      "blur"
+    ],
+    "DESCRIPTION": "Retain your block at the beginning of your next turn."
   }
 ]

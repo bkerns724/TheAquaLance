@@ -7,21 +7,21 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.util.TexLoader;
 
-import static theAquaLance.AquaLanceMod.makeID;
 
 public abstract class AbstractEasyPower extends AbstractPower {
-    public AbstractEasyPower(String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
-        this.ID = makeID(NAME.replaceAll("([ ])", ""));
+
+    public AbstractEasyPower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
+        this.ID = id;
         this.isTurnBased = isTurnBased;
-
-        this.name = NAME;
-
         this.owner = owner;
         this.amount = amount;
         this.type = powerType;
 
-        Texture normalTexture = TexLoader.getTexture(AquaLanceMod.modID + "Resources/images/powers/" + NAME.replaceAll("([ ])", "") + "32.png");
-        Texture hiDefImage = TexLoader.getTexture(AquaLanceMod.modID + "Resources/images/powers/" + NAME.replaceAll("([ ])", "") + "84.png");
+        String textureString = AquaLanceMod.modID + "Resources/images/powers/" + ID.replaceAll(AquaLanceMod.modID +":",  "") + "32.png";
+        AquaLanceMod.logger.info("textureString: " + textureString);
+
+        Texture normalTexture = TexLoader.getTexture(textureString);
+        Texture hiDefImage = TexLoader.getTexture(AquaLanceMod.modID + "Resources/images/powers/" + ID.replaceAll("([ ])", "") + "84.png");
         if (hiDefImage != null) {
             region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
             if (normalTexture != null)
@@ -33,4 +33,6 @@ public abstract class AbstractEasyPower extends AbstractPower {
 
         this.updateDescription();
     }
+
+    public void onManualDiscard() {}
 }

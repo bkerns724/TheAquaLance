@@ -7,11 +7,12 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class Defend extends AbstractEasyCard {
     public final static String ID = makeID("Defend");
-    // intellij stuff skill, self, basic, , ,  5, 3, , 
+    public final static int BLOCK = 5;
+    public final static int UPGRADE_BLOCK = 3;
 
     public Defend() {
         super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
-        baseBlock = 5;
+        baseBlock = BLOCK;
         tags.add(CardTags.STARTER_DEFEND);
     }
 
@@ -20,6 +21,6 @@ public class Defend extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeBlock(3);
+        upgradeBlock(UPGRADE_BLOCK);
     }
 }

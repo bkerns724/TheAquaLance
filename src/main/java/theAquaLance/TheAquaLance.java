@@ -3,6 +3,7 @@ package theAquaLance;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
+import basemod.interfaces.PostDungeonInitializeSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -13,21 +14,23 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.relics.ChemicalX;
+import com.megacrit.cardcrawl.relics.DeadBranch;
+import com.megacrit.cardcrawl.relics.StrangeSpoon;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import theAquaLance.cards.Defend;
-import theAquaLance.cards.Strike;
-import theAquaLance.relics.TodoItem;
+import theAquaLance.cards.*;
+import theAquaLance.relics.RuneOfIce;
 
 import java.util.ArrayList;
 
 import static theAquaLance.TheAquaLance.Enums.TURQUOISE_COLOR;
 import static theAquaLance.AquaLanceMod.*;
 
-public class TheAquaLance extends CustomPlayer {
+public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeSubscriber {
     private static final String[] orbTextures = {
             modID + "Resources/images/char/mainChar/orb/layer1.png",
             modID + "Resources/images/char/mainChar/orb/layer2.png",
@@ -44,7 +47,12 @@ public class TheAquaLance extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
-
+    private static final int NUM_STRIKES = 4;
+    private static final int NUM_DEFENDS = 4;
+    private static final String STARTER_CARD1 = Jab.ID;
+    private static final String STARTER_CARD2 = Waterfall.ID;
+    private static final String STARTER_RELIC = RuneOfIce.ID;
+    private static final int STARTING_HP = 80;
 
     public TheAquaLance(String name, PlayerClass setClass) {
         super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/mainChar/orb/vfx.png", null), new SpriterAnimation(
@@ -63,33 +71,32 @@ public class TheAquaLance extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                80, 80, 0, 99, 5, this, getStartingRelics(),
+                STARTING_HP, STARTING_HP, 0, 99, 5, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < NUM_STRIKES; i++)
             retVal.add(Strike.ID);
-        }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
-        }
+        retVal.add(STARTER_CARD1);
+        retVal.add(STARTER_CARD2);
         return retVal;
     }
 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(TodoItem.ID);
+        retVal.add(STARTER_RELIC);
         return retVal;
     }
 
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
-        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
-                false);
+        // CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
     }
 
     @Override
@@ -99,7 +106,7 @@ public class TheAquaLance extends CustomPlayer {
 
     @Override
     public int getAscensionMaxHPLoss() {
-        return 8;
+        return Math.floorDiv(STARTING_HP, 10);
     }
 
     @Override
@@ -109,7 +116,7 @@ public class TheAquaLance extends CustomPlayer {
 
     @Override
     public Color getCardTrailColor() {
-        return characterColor.cpy();
+        return AQUALANCE_EYE_COLOR.cpy();
     }
 
     @Override
@@ -124,8 +131,7 @@ public class TheAquaLance extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        System.out.println("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
-        return null;
+        return new Waterfall();
     }
 
     @Override
@@ -140,12 +146,12 @@ public class TheAquaLance extends CustomPlayer {
 
     @Override
     public Color getCardRenderColor() {
-        return characterColor.cpy();
+        return AQUALANCE_EYE_COLOR.cpy();
     }
 
     @Override
     public Color getSlashAttackColor() {
-        return characterColor.cpy();
+        return AQUALANCE_EYE_COLOR.cpy();
     }
 
     @Override
@@ -174,5 +180,12 @@ public class TheAquaLance extends CustomPlayer {
         @SpireEnum(name = "TURQUOISE_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_AQUALANCE_COLOR;
+    }
+
+    public void receivePostDungeonInitialize()
+    {
+        AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(ChemicalX.ID));
+        AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(StrangeSpoon.ID));
+        AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(DeadBranch.ID));
     }
 }

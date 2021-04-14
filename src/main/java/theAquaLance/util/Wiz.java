@@ -17,9 +17,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.TimedVFXAction;
-import theAquaLance.powers.LosePowerPower;
-import theAquaLance.powers.NextTurnPowerPower;
+import theAquaLance.cards.PureShard;
+import theAquaLance.powers.EmbedPower;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
@@ -28,11 +29,13 @@ import java.util.function.Predicate;
 public class Wiz {
     //The wonderful Wizard of Oz allows access to most easy compilations of data, or functions.
 
+    public static final String POW = "Power";
+
     public static AbstractPlayer adp() {
         return AbstractDungeon.player;
     }
 
-    public static void forAllCardsInList(Consumer<AbstractCard> consumer, ArrayList<AbstractCard> cardsList) {
+    public static void forAllCardsInList(ArrayList<AbstractCard> cardsList, Consumer<AbstractCard> consumer) {
         for (AbstractCard c : cardsList) {
             consumer.accept(c);
         }
@@ -92,7 +95,6 @@ public class Wiz {
     public static AbstractCard returnTrulyRandomPrediCardInCombat(Predicate<AbstractCard> pred, boolean allCards) {
         return getRandomItem(getCardsMatchingPredicate(pred, allCards));
     }
-
 
     public static AbstractCard returnTrulyRandomPrediCardInCombat(Predicate<AbstractCard> pred) {
         return returnTrulyRandomPrediCardInCombat(pred, false);
@@ -159,7 +161,7 @@ public class Wiz {
     }
 
     public static void applyToEnemy(AbstractMonster m, AbstractPower po) {
-        atb(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
+        atb(new ApplyPowerAction(m, adp(), po, po.amount));
     }
 
     public static void applyToEnemyTop(AbstractMonster m, AbstractPower po) {
@@ -174,12 +176,31 @@ public class Wiz {
         att(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount));
     }
 
-    public static void applyToSelfTemp(AbstractPower po) {
-        atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount));
-        atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, po, po.amount)));
+    public static int getShardCount(AbstractMonster m) {
+        int shardCount = 0;
+        for (AbstractPower po : m.powers) {
+            if (po instanceof EmbedPower)
+                shardCount += ((EmbedPower)po).getShardCount();
+        }
+        return shardCount;
     }
 
-    public static void applyToSelfNextTurn(AbstractPower po) {
-        atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NextTurnPowerPower(AbstractDungeon.player, po)));
+    public static int getPureShardMult(AbstractMonster m) {
+        int shardCount = 1;
+        for (AbstractPower po : m.powers) {
+            if (po instanceof EmbedPower)
+                if (((EmbedPower)po).c instanceof PureShard)
+                    shardCount++;
+        }
+        return shardCount;
+    }
+
+    public static int getDebuffCount(AbstractMonster m) {
+        int debuffCount = 0;
+        for (AbstractPower p : m.powers) {
+            if (p.type == AbstractPower.PowerType.DEBUFF)
+                debuffCount++;
+        }
+        return debuffCount;
     }
 }

@@ -8,20 +8,21 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class Strike extends AbstractEasyCard {
     public final static String ID = makeID("Strike");
-    // intellij stuff attack, enemy, basic, 6, 3,  , , , 
+    public final static int DAMAGE = 6;
+    public final static int UPGRADE_DAMAGE = 3;
 
     public Strike() {
         super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
-        baseDamage = 6;
+        baseDamage = DAMAGE;
         tags.add(CardTags.STRIKE);
         tags.add(CardTags.STARTER_STRIKE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.NONE);
+        dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
     }
 
     public void upp() {
-        upgradeDamage(3);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

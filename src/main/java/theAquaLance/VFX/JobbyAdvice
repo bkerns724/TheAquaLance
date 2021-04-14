@@ -1,0 +1,15 @@
+TextureRegion renderMe = new TextureRegion(myTexture); //simple constructor makes the region as big as the texture
+x = //calculate where I want the center of the texture to be because that's easier to visualize
+y = //same
+rotation += Gdx.Graphics.getDeltaTime * 90.0f; //make it turn 90 degrees per second
+sb.draw(renderMe,
+x - renderMe.getRegionWidth() / 2.0f, //subtract x/y by half the texture's size to get the bottom left render position
+y - renderMe.getRegionHeight() / 2.0f,
+renderMe.getRegionWidth() / 2.0f, //add the same amounts again to get the origin coordinate to the center of the texture
+renderMe.getRegionHeight() / 2.0f,
+renderMe.getRegionWidth(), //tell it to just render at the built-in width and height
+renderMe.getRegionHeight(),
+settings.scale, //respect the game's scale
+settings.scale,
+rotation, //yeah
+true);

@@ -15,7 +15,7 @@ New Debuffs
     Hobble
 	Applies 33% less weak, vuln, frail, strength, block, and healing
     Drowned
-	Enemy loses x extra hp per loss (everything, not just attacks).  Lose 33% stacks per turn
+	Enemy loses x extra hp per loss (everything, not just attacks).  Lose 25% stacks per turn
 
 New Buffs
     Streamlined
@@ -29,12 +29,13 @@ Starting Relic
 
 Remove Relics
     Strange Spoon, Dead Branch, anything else exhaust based
+    ChemicalX
 
 Potions
     Hobble Potion, Common
 	Apply 3 hobble
     Water Bucket, Uncommon
-	Apply 2 drowned
+	Apply 4 drowned
     Shark Fin Potion, Rare
 	Gain 6 streamlined
 
@@ -52,13 +53,13 @@ Other Relics
     Sailor's Charm, Uncommon
 	If you have a sigil in your hand when you end your turn, draw +1 next turn
     Vial of Mineral Water, Rare
-	Deal 3 damage to a random enemy when you draw a card(not initial draw)
+	Draw an extra card every other turn
     Vial of Swamp Water, Rare
 	Gain 2 block when you apply a debuff
     Chains, Rare
-	Drowned decays 20% instead of 33%
-    Bottled Capsized Ship, Boss
-	Drowning is 50% more effective.
+	Drowned decays 15% instead of 25%
+    Poisoned Spearhead, Boss
+	When you apply a debuff, apply an extra stack
     Steam Orb, Boss
 	Energy relic.  Your discards target randomly.  
     Ceremonial Robe, Shop

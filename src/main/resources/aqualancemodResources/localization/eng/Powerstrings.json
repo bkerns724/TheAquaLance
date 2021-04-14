@@ -1,1 +1,131 @@
-{}
+{
+  "${ModID}:AquaDrawNextTurn": {
+    "NAME": "Draw Next Turn",
+    "DESCRIPTIONS": [
+      "Draw #b",
+      " additional cards next turn.",
+      " additional card next turn."
+    ]
+  },
+  "${ModID}:BoostDebuff": {
+    "NAME": "Stronger Debuff",
+    "DESCRIPTIONS": [
+      "The next time you apply a debuff, apply #b",
+      " additional stacks.",
+      " additional stack."
+    ]
+  },
+  "${ModID}:DownpourPower": {
+    "NAME": "Downpour",
+    "DESCRIPTIONS": [
+      "The first time each turn you apply #b",
+      " debuffs, gain [E]",
+      " debuff, gain [E]"
+    ]
+  },
+  "${ModID}:Drowned": {
+    "NAME": "Drowned",
+    "DESCRIPTIONS": [
+      "Whenever this enemy loses HP, it loses #b",
+      " more.  Reduce this power by #b",
+      "% at end of turn."
+    ]
+  },
+  "${ModID}:ElementalForm": {
+    "NAME": "Water Elemental Form",
+    "DESCRIPTIONS": [
+      "Whenever you draw a #ySigil, trigger its effect #b",
+      " times.",
+      " time."
+    ]
+  },
+  "${ModID}:Embed": {
+    "NAME": "Shard",
+    "DESCRIPTIONS": [
+      "This string should never be seen."
+    ]
+  },
+  "${ModID}:EnergizedTurquoise": {
+    "NAME": "Energized",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " additional [E] next turn.",
+      " additional [E] next turn.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
+  },
+  "${ModID}:ExploitWeakness": {
+    "NAME": "Exploit Weakness",
+    "DESCRIPTIONS": [
+      "Whenever you apply #yDrowned, gain #b",
+      " #yVigor.",
+      " #yVigor.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
+  },
+  "${ModID}:Flak": {
+    "NAME": "Flak",
+    "DESCRIPTIONS": [
+      "Whenever you discard a card, gain #b",
+      " #yBlock.",
+      " #yBlock.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
+  },
+  "${ModID}:Flood": {
+    "NAME": "Flood",
+    "DESCRIPTIONS": [
+      "Whenever you apply discard a card, draw #b",
+      " cards.",
+      " card."
+    ]
+  },
+  "${ModID}:HeavyShards": {
+    "NAME": "Heavy Shards",
+    "DESCRIPTIONS": [
+      "Whenever you #yEmbed a #yShard, gain #b",
+      " #yBlock.",
+      " #yBlock.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
+  },
+  "${ModID}:Hobbled": {
+    "NAME": "Hobbled",
+    "DESCRIPTIONS": [
+      "Prevents the enemy from applying #yVulnerable, #yFrail, #yWeak, #yStrength, #yDexterity, and #yFocus, #b",
+      " times.",
+      " time."
+    ]
+  },
+  "${ModID}:Mist": {
+    "NAME": "Misty",
+    "DESCRIPTIONS": [
+      "The next #b",
+      " #ySigils you discard trigger twice.",
+      " #ySigil you discard triggers twice."
+    ]
+  },
+  "${ModID}:Sidesteps": {
+    "NAME": "Side Steps",
+    "DESCRIPTIONS": [
+      "The first time each turn you apply a debuff, draw #b",
+      " cards.",
+      " card."
+    ]
+  },
+  "${ModID}:Streamlined": {
+    "NAME": "Streamlined",
+    "DESCRIPTIONS": [
+      "The next #b",
+      " times you gain [E] or draw a card, gain or draw one more.",
+      " time you gain [E] or draw a card, gain or draw one more."
+    ]
+  },
+  "${ModID}:Vitality": {
+    "NAME": "Vitality",
+    "DESCRIPTIONS": [
+      "Your next blocking card gives #b",
+      " additional #yBlock."
+    ]
+  }
+}
