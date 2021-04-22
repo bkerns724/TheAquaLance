@@ -1,11 +1,8 @@
 package theAquaLance.cards;
 
-import basemod.BaseMod;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -25,7 +22,7 @@ public class WildShard extends AbstractEmbedCard {
     private int magicLeft;
 
     public WildShard() {
-        super(ID, 1, CardRarity.COMMON);
+        super(ID, 1, CardRarity.UNCOMMON);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }
@@ -39,9 +36,9 @@ public class WildShard extends AbstractEmbedCard {
     }
 
     @Override
-    public void atStartOfTurn(AbstractCreature host) {
+    public void atStartOfPlayerTurn(AbstractCreature host) {
         AbstractMonster m = (AbstractMonster) host;
-        int randomDebuff = MathUtils.random(0, 2);
+        int randomDebuff = MathUtils.random(0, 3);
         switch (randomDebuff) {
             case 0:
                 applyToEnemy(m, new WeakPower(m, magicNumber, false));

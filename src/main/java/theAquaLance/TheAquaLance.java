@@ -49,8 +49,8 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
     static final String[] TEXT = characterStrings.TEXT;
     private static final int NUM_STRIKES = 4;
     private static final int NUM_DEFENDS = 4;
-    private static final String STARTER_CARD1 = Jab.ID;
-    private static final String STARTER_CARD2 = Waterfall.ID;
+    private static final String STARTER_CARD1 = WaterSigil.ID;
+    private static final String STARTER_CARD2 = DamBreak.ID;
     private static final String STARTER_RELIC = RuneOfIce.ID;
     private static final int STARTING_HP = 80;
 
@@ -82,6 +82,7 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
             retVal.add(Strike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
+        retVal.add(STARTER_CARD1);
         retVal.add(STARTER_CARD1);
         retVal.add(STARTER_CARD2);
         return retVal;
@@ -131,7 +132,7 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Waterfall();
+        return new DamBreak();
     }
 
     @Override

@@ -2,20 +2,19 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theAquaLance.patches.AbstractCardPatch;
-import theAquaLance.powers.VitalityPower;
+import theAquaLance.powers.DrowningPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class MistSigil extends AbstractEasyCard {
-    public final static String ID = makeID("MistSigil");
-    private final static int MAGIC = 4;
+public class WaterSigil extends AbstractEasyCard {
+    public final static String ID = makeID("WaterSigil");
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 
-    public MistSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+    public WaterSigil() {
+        super(ID, -2, CardType.ATTACK, CardRarity.BASIC, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
@@ -28,10 +27,8 @@ public class MistSigil extends AbstractEasyCard {
         return false;
     }
 
-    @Override
     public void onManualDiscard() {
-        applyToSelfTop(new VigorPower(adp(), magicNumber));
-        applyToSelfTop(new VitalityPower(adp(), magicNumber));
+        forAllMonstersLiving((m) -> applyToEnemy(m, new DrowningPower(m, magicNumber)));
     }
 
     public void upp() {

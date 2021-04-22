@@ -3,7 +3,7 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.actions.WeakIfDiscardAction;
+import theAquaLance.actions.WeakIfEmbedAction;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -23,7 +23,7 @@ public class BroadsideSlap extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        atb(new WeakIfDiscardAction(m, magicNumber));
+        atb(new WeakIfEmbedAction(m, magicNumber));
     }
 
     public void upp() {

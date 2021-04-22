@@ -39,13 +39,13 @@
       " time."
     ]
   },
-  "${ModID}:Embed": {
+  "${ModID}:Embedded": {
     "NAME": "Shard",
     "DESCRIPTIONS": [
       "This string should never be seen."
     ]
   },
-  "${ModID}:EnergizedTurquoise": {
+  "${ModID}:Energized": {
     "NAME": "Energized",
     "DESCRIPTIONS": [
       "Gain #b",

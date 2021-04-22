@@ -12,7 +12,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Navigate extends AbstractEasyCard {
     public final static String ID = makeID("Navigate");
-    private final static int MAGIC = 0;
+    private final static int MAGIC = 1;
     private final static int DISCARD_AMOUNT = 1;
 
     public Navigate() {

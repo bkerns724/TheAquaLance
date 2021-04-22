@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class HobblePotion extends AbstractEasyPotion {
     public static final String POTION_ID = AquaLanceMod.makeID("HobblePotion");
-    private static final int HOBBLE_AMOUNT = 3;
+    private static final int HOBBLE_AMOUNT = 2;
 
     public HobblePotion() {
         super(POTION_ID, PotionRarity.COMMON, PotionSize.SPHERE, PotionColor.GREEN, false, false);

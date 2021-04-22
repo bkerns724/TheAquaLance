@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theAquaLance.AquaLanceMod.makeID;
+import static theAquaLance.util.Wiz.atb;
 
 public class Defend extends AbstractEasyCard {
     public final static String ID = makeID("Defend");

@@ -14,7 +14,7 @@ public class PondSigil extends AbstractEasyCard {
     private final static int UPGRADE_MAGIC = 1;
 
     public PondSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }

@@ -30,7 +30,7 @@ public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowe
     };
 
     public HobbledPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, PowerType.DEBUFF, true, owner, amount);
+        super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
     }
 
@@ -40,11 +40,6 @@ public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowe
             description = DESC[0] + amount + DESC[2];
         else
             description = DESC[0] + amount + DESC[1];
-    }
-
-    @Override
-    public void atEndOfRound() {
-        atb(new ReducePowerAction(owner, owner, POWER_ID, 1));
     }
 
     @Override

@@ -1,9 +1,8 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.cards.AbstractEasyCard;
+import theAquaLance.powers.EnergizedTurquoisePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -11,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 public class Fog extends AbstractEasyCard {
     public final static String ID = makeID("Fog");
     private final static int BLOCK = 3;
-    private final static int UPGRADE_BLOCK = 2;
+    private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 1;
 
     public Fog() {
@@ -22,7 +21,7 @@ public class Fog extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        atb(new DiscardAction(p, p, magicNumber, false));
+        applyToSelf(new EnergizedTurquoisePower(p, magicNumber));
     }
 
     public void upp() {

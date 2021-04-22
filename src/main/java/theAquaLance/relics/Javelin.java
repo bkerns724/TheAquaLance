@@ -13,7 +13,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Javelin extends AbstractEasyRelic {
     public static final String ID = makeID("Javelin");
-    private static final int STREAM_AMT = 2;
+    private static final int STREAM_AMT = 1;
     private static final int NUM_CARDS = 3;
 
     public Javelin() {

@@ -13,8 +13,8 @@ import static theAquaLance.util.Wiz.*;
 
 public class SteamBlast extends AbstractEasyCard {
     public final static String ID = makeID("SteamBlast");
-    private final static int DAMAGE = 10;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 7;
+    private final static int UPGRADE_DAMAGE = 2;
 
     public SteamBlast() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);

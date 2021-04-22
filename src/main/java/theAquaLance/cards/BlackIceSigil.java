@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class BlackIceSigil extends AbstractEasyCard {
     public final static String ID = makeID("BlackIceSigil");
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 
     public BlackIceSigil() {

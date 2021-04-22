@@ -1,50 +1,45 @@
 package theAquaLance.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theAquaLance.TheAquaLance;
+import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcCommonCardPool;
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class RuneOfIce extends AbstractEasyRelic implements ClickableRelic {
+public class RuneOfIce extends AbstractEasyRelic {
     public static final String ID = makeID("RuneOfIce");
-    private static final int CHARGE_COUNT = 1;
-    private static final int DISCARD_AMOUNT = 1;
-    private static final int SHUFFLE_CHARGE = 1;
 
     public RuneOfIce() {
         super(ID, RelicTier.STARTER, LandingSound.CLINK, TheAquaLance.Enums.TURQUOISE_COLOR);
     }
 
-    public void onRightClick() {
-        if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
-                !AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead() &&
-                !AbstractDungeon.actionManager.turnHasEnded)
-            if (counter > 0) {
-                atb(new DiscardAction(adp(), adp(), DISCARD_AMOUNT, false));
-                counter--;
-            }
-    }
 
-    @Override
-    public void atBattleStart() {
-        counter = CHARGE_COUNT;
-    }
+    public void atBattleStartPreDraw() {
+        atb(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        
+        ArrayList<AbstractCard> list = new ArrayList();
+        Iterator var2 = srcCommonCardPool.group.iterator();
+        AbstractCard c;
+        while(var2.hasNext()) {
+            c = (AbstractCard)var2.next();
+            if (AbstractCardField.sigil.get(c))
+                list.add(c);
+        }
+        AbstractCard newCard = list.get(cardRandomRng.random(list.size() - 1));
 
-    public void onShuffle() {
-        counter+= SHUFFLE_CHARGE;
+        atb(new MakeTempCardInHandAction(newCard));
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + CHARGE_COUNT + DESCRIPTIONS[1] + SHUFFLE_CHARGE + DESCRIPTIONS[2];
-    }
-
-    @Override
-    public void onVictory() {
-        counter = -1;
+        return DESCRIPTIONS[0];
     }
 }

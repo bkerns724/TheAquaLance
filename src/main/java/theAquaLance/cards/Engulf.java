@@ -12,7 +12,7 @@ public class Engulf extends AbstractEasyCard {
     public final static String ID = makeID("Engulf");
     private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 6;
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
 
     public Engulf() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);

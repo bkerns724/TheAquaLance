@@ -5,7 +5,6 @@ Character Mechanics
     Sigils.  Unplayable.  Has on discard effects.
 
     No Ethereal, Exhaust, or card generation
-    No retain, innate, or deck manip
     No Healing
     No Damage AoE
     No major poison/burning adjacent mechanics
@@ -13,19 +12,19 @@ Character Mechanics
 
 New Debuffs
     Hobble
-	Applies 33% less weak, vuln, frail, strength, block, and healing
+	Stops next application of vuln/weak/frail/str/dex/foc or negative str/dex/foc
     Drowned
-	Enemy loses x extra hp per loss (everything, not just attacks).  Lose 25% stacks per turn
+	Enemy takes 1 extra damage from everything for each stack of Drowning
 
 New Buffs
     Streamlined
-	When you draw a card or gain energy, draw/gain 1 more and reduce this by 1.
+	When you draw a card or gain energy from an Aqualance card, draw/gain 1 more and reduce this by 1.
 
 Starting Relic
     Rune of ice
-	Click to draw a card and discard a card.  One charge.  Gain a charge when you shuffle.
+	At the start of combat, add a random common sigil into your hand.
     Rune of living water
-	Click to draw a card and discard a card.  Start with 2 extra charges.
+	At the start of combat, shuffle 3 aqua sigils into your deck.
 
 Remove Relics
     Strange Spoon, Dead Branch, anything else exhaust based
@@ -33,7 +32,7 @@ Remove Relics
 
 Potions
     Hobble Potion, Common
-	Apply 3 hobble
+	Apply 2 hobble
     Water Bucket, Uncommon
 	Apply 4 drowned
     Shark Fin Potion, Rare

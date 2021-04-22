@@ -2,20 +2,22 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import theAquaLance.patches.AbstractCardPatch;
-import theAquaLance.powers.BoostDebuffPower;
-import theAquaLance.powers.StreamlinedPower;
+import theAquaLance.powers.AquaDrawNextTurnPower;
+import theAquaLance.powers.DrowningPower;
+import theAquaLance.powers.EnergizedTurquoisePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class RiverSigil extends AbstractEasyCard {
-    public final static String ID = makeID("RiverSigil");
-    private final static int MAGIC = 2;
+public class WhirlpoolSigil extends AbstractEasyCard {
+    public final static String ID = makeID("WhirlpoolSigil");
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 
-    public RiverSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+    public WhirlpoolSigil() {
+        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
@@ -29,7 +31,8 @@ public class RiverSigil extends AbstractEasyCard {
     }
 
     public void onManualDiscard() {
-        applyToSelf(new BoostDebuffPower(adp(), magicNumber));
+        applyToSelf(new AquaDrawNextTurnPower(adp(), magicNumber));
+        applyToSelf(new EnergizedTurquoisePower(adp(), magicNumber));
     }
 
     public void upp() {

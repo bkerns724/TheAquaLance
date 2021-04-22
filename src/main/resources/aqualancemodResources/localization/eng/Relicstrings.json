@@ -54,18 +54,15 @@
     "NAME": "Rune of Ice",
     "FLAVOR": "A magical symbol made of ice that never thaws.",
     "DESCRIPTIONS": [
-      "Right click to discard a card.  Gain #b",
-      " charge at the start of combat and #b",
-      " charge whenever you shuffle your deck."
+      "At the start of combat, add a random common #ySigil into your hand."
     ]
   },
   "${ModID}:RuneOfLivingWater": {
     "NAME": "Rune of Living Water",
     "FLAVOR": "It is made of water, yet somehow keeps its shape.",
     "DESCRIPTIONS": [
-      "Right click to draw a card and discard a card.  Gain #b",
-      " charge at the start of combat and #b",
-      " charge whenever you shuffle your deck."
+      "At the start of each combat, shuffle #b",
+      " Aqua Sigils into your draw pile."
     ]
   },
   "${ModID}:SteamOrb": {

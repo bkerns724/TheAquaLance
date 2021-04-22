@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.relics.Chains;
 
@@ -45,5 +46,12 @@ public class DrowningPower extends AbstractEasyPower {
     @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         return damage + amount;
+    }
+
+    @Override
+    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
+        if (info.type != DamageInfo.DamageType.NORMAL)
+            return damageAmount + amount;
+        return damageAmount;
     }
 }

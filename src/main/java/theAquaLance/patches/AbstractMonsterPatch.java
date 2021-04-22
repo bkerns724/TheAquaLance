@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.stats.StatsScreen;
 import javassist.CtBehavior;
+import theAquaLance.AquaLanceMod;
 import theAquaLance.powers.EmbedPower;
 
 public class AbstractMonsterPatch {
@@ -21,7 +22,7 @@ public class AbstractMonsterPatch {
         public static SpireReturn Insert(AbstractMonster __instance, boolean triggerRelics) {
             // Need to call something when monster dies.
             Integer deathCount = GameActionManagerPatch.GameActionManagerField.deathsThisCombat.get(AbstractDungeon.actionManager);
-            GameActionManagerPatch.GameActionManagerField.deathsThisCombat.set(AbstractDungeon.actionManager, deathCount++);
+            GameActionManagerPatch.GameActionManagerField.deathsThisCombat.set(AbstractDungeon.actionManager, ++deathCount);
             for (AbstractPower p : __instance.powers) {
                 if (p instanceof EmbedPower)
                     ((EmbedPower) p).unEmbed();

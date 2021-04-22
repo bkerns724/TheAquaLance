@@ -11,7 +11,7 @@ import theAquaLance.actions.AquaDrawCardAction;
 import static theAquaLance.util.Wiz.*;
 
 public class AquaDrawNextTurnPower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("DrawNextTurn");
+    public static String POWER_ID = AquaLanceMod.makeID("AquaDrawNextTurn");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

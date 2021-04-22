@@ -31,6 +31,8 @@ public abstract class AbstractEmbedCard extends AbstractEasyCard {
 
     public void atStartOfTurn(AbstractCreature host) {}
 
+    public void atStartOfPlayerTurn(AbstractCreature host) {}
+
     public int getPotency(AbstractCreature host) {return 1;}
 
     public void onDiscardWhileEmbed(AbstractCreature m) {}

@@ -41,7 +41,9 @@ public class EmbedPower extends AbstractPower implements OnReceivePowerPower {
         this.owner = owner;
         this.amount = -1;
 
-        String textureString = AquaLanceMod.modID + "Resources/images/powers/shards/" + c.name + "32.png";
+        AquaLanceMod.logger.info(c.getClass().getSimpleName());
+
+        String textureString = AquaLanceMod.modID + "Resources/images/powers/shards/" + c.getClass().getSimpleName() + "32.png";
         Texture normalTexture = TexLoader.getTexture(textureString);
         Texture hiDefImage = TexLoader.getTexture(AquaLanceMod.modID + "Resources/images/powers/shards/" + c.name + "84.png");
         if (hiDefImage != null) {
@@ -115,6 +117,11 @@ public class EmbedPower extends AbstractPower implements OnReceivePowerPower {
     @Override
     public void atStartOfTurn() {
         c.atStartOfTurn(owner);
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        c.atStartOfPlayerTurn(owner);
     }
 
     @Override

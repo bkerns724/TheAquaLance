@@ -14,7 +14,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class SnowSigil extends AbstractEasyCard {
     public final static String ID = makeID("SnowSigil");
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
     public SnowSigil() {
