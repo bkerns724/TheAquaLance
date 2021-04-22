@@ -71,8 +71,8 @@ public class EmbedAction extends AbstractGameAction {
             att(new DamageAction(m, new DamageInfo(adp(), c.damage, c.damageTypeForTurn)));
             if (m.hasPower(ArtifactPower.POWER_ID)) {
                 c.hitArtifact = true;
-                c.current_y = m.hb_y;
-                c.current_x = m.hb_x;
+                c.current_y = m.hb.cY;
+                c.current_x = m.hb.cX;
             }
             applyToEnemyTop(m, new EmbedPower(m, c));
         }

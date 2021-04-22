@@ -7,15 +7,15 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "${ModID}:WaterSigil": {
-    "NAME": "Water Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! aqualancemod:Drowned to ALL enemies.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
   "${ModID}:DamBreak": {
     "NAME": "Dam Break",
     "DESCRIPTION": "Innate. NL Retain. NL Discard !M! card.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL Replenish. NL Discard !M! card."
+    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL aqualancemod:Replenish. NL Discard !M! card."
+  },
+  "${ModID}:AquaSigil": {
+    "NAME": "Aqua Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Gain [E]. NL Draw !M! cards.",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:Slash": {
     "NAME": "Slash",
@@ -45,6 +45,14 @@
     "NAME": "Jagged Shard",
     "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: No effect.",
     "EXTENDED_DESCRIPTION": ["Shard: No effect"]
+  },
+  "${ModID}:VampireShard": {
+    "NAME": "Vampire Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Heal !M! HP when the target dies.",
+    "EXTENDED_DESCRIPTION": [
+      "Shard: When this enemy dies, heal ",
+      " HP."
+    ]
   },
   "${ModID}:Rapids": {
     "NAME": "Rapids",
@@ -128,7 +136,7 @@
   },
   "${ModID}:JumpKick": {
     "NAME": "Jump Kick",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy has aqualancemod:Hobble, NL gain [E] and draw a card."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy has aqualancemod:Hobble, NL gain [E], draw !M! card and discard !M! card."
   },
   "${ModID}:SpinKick": {
     "NAME": "Spin Kick",
@@ -137,6 +145,10 @@
   "${ModID}:RecklessThrust": {
     "NAME": "RecklessThrust",
     "DESCRIPTION": "Autoplay. NL Deal !D! damage to a random enemy. NL Discard !M! card."
+  },
+  "${ModID}:ExtendedThrust": {
+    "NAME": "Extended Thrust",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL Discard a card next turn."
   },
   "${ModID}:LeechShard": {
     "NAME": "Leech Shard",
@@ -175,7 +187,7 @@
   "${ModID}:Spray": {
     "NAME": "Spray",
     "DESCRIPTION": "Discard your entire hand.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Discard your entire hand."
+    "UPGRADE_DESCRIPTION": "Retain. NL Discard your entire hand."
   },
   "${ModID}:Deluge": {
     "NAME": "Deluge",
@@ -234,6 +246,7 @@
   "${ModID}:WhirlpoolSigil": {
     "NAME": "Whirlpool Sigil",
     "DESCRIPTION": "aqualancemod:Sigil. NL Next turn, gain [E] and draw !M! card.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL Next turn, gain [E] and draw !M! cards.",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:SnowSigil": {
@@ -273,7 +286,7 @@
   },
   "${ModID}:BloodBender": {
     "NAME": "Blood Bender",
-    "DESCRIPTION": "aqualancemod:Finisher. NL Base damage is !M! for each aqualancemod:Shard. NL Deal !D! damage for each debuff on the enemy. NL Remove all debuffs."
+    "DESCRIPTION": "aqualancemod:Finisher. NL Deal !D! damage per shard. NL Gain 2 bonus damage per debuff on the enemy."
   },
   "${ModID}:PowerShard": {
     "NAME": "PowerShard",
@@ -294,7 +307,7 @@
   "${ModID}:PureShard": {
     "NAME": "Pure Shard",
     "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: aqualancemod:Shard effects are doubled.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Deal !D! damage. NL aqualancemod:Embed: aqualancemod:Shard effects are doubled.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Deal !D! damage. NL aqualancemod:Embed: Other aqualancemod:Embed effects are doubled.",
     "EXTENDED_DESCRIPTION": ["Shard: Other shards have double the effect"]
   },
   "${ModID}:Reservoir": {
@@ -305,7 +318,7 @@
   "${ModID}:Navigate": {
     "NAME": "Navigate",
     "DESCRIPTION": "Enemy loses !M! Strength this turn for each aqualancemod:Shard.",
-    "UPGRADE_DESCRIPTION": "Enemy loses !M! Strength this turn for each aqualancemod:Shard. NL Discard a card."
+    "UPGRADE_DESCRIPTION": "Enemy loses !M! + 2 Strength this turn for each aqualancemod:Shard."
   },
   "${ModID}:StillWater": {
     "NAME": "Still Water",
@@ -317,8 +330,7 @@
   },
   "${ModID}:MarshSigil": {
     "NAME": "Marsh Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Vulnerable, Weak, aqualancemod:Hobble, and aqualancemod:Drowned on ALL enemies are increased by !M!.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL aqualancemod:Sigil. NL Vulnerable, Weak, aqualancemod:Hobble, and aqualancemod:Drowned on ALL enemies are increased by !M!.",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! poison to all enemies.",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:TsunamiSigil": {
@@ -328,7 +340,7 @@
   },
   "${ModID}:StormSigil": {
     "NAME": "Storm Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil aqualancemod:Finisher. NL Base damage is sigils in your deck multiplied by shards in enemies. NL Deal !D! damage to ALL enemies.",
+    "DESCRIPTION": "aqualancemod:Sigil. NL When you discard !M! more sigils, aqualancemod:Finisher: ALL enemies lose !aqualancemod:M2! HP per shard.",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:Flood": {
@@ -336,9 +348,9 @@
     "DESCRIPTION": "The first time each turn you discard a card, draw a card.",
     "UPGRADE_DESCRIPTION": "Innate. NL The first time each turn you discard a card, draw a card."
   },
-  "${ModID}:Downpour": {
-    "NAME": "Downpour",
-    "DESCRIPTION": "The first time each turn you apply !aqualancemod:M2! debuffs, gain [E]."
+  "${ModID}:IceStorm": {
+    "NAME": "Ice Storm",
+    "DESCRIPTION": "The first time each turn you aqualancemod:Embed an enemy, gain [E]."
   },
   "${ModID}:ElementalForm": {
     "NAME": "Elemental Form",

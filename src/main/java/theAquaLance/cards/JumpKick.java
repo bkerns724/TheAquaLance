@@ -1,6 +1,7 @@
 package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,6 +28,7 @@ public class JumpKick extends AbstractEasyCard {
         if (m.hasPower(HobbledPower.POWER_ID)) {
             atb(new GainEnergyAction(magicNumber));
             atb(new AquaDrawCardAction(magicNumber));
+            atb(new DiscardAction(p, p, magicNumber, false));
         }
     }
 

@@ -20,7 +20,7 @@ public class UnmeltingIce extends AbstractEasyRelic implements OnApplyPowerRelic
     }
 
     public boolean onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (!target.hasPower(ArtifactPower.POWER_ID) && power.ID == EmbedPower.POWER_ID)
+        if (!target.hasPower(ArtifactPower.POWER_ID) && power instanceof EmbedPower)
             atb(new LoseHPAction(target, source, EMBED_DAMAGE));
         return true;
     }

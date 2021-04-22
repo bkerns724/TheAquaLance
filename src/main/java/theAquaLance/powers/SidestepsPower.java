@@ -15,7 +15,7 @@ public class SidestepsPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private boolean fresh = true;
+    private int timesUsed = 0;
 
     public SidestepsPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
@@ -24,15 +24,15 @@ public class SidestepsPower extends AbstractEasyPower {
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (source == owner && power.type == PowerType.DEBUFF && fresh) {
-            atb(new AquaDrawCardAction(amount));
-            fresh = false;
+        if (source == owner && power.type == PowerType.DEBUFF && timesUsed < amount) {
+            atb(new AquaDrawCardAction(1));
+            timesUsed++;
         }
     }
 
     @Override
     public void atStartOfTurn() {
-        fresh = true;
+        timesUsed = 0;
     }
 
     @Override

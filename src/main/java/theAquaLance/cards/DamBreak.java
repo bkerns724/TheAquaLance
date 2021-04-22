@@ -13,7 +13,7 @@ public class DamBreak extends AbstractEasyCard {
     private final static int MAGIC = 1;
 
     public DamBreak() {
-        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        super(ID, 0, CardType.SKILL, CardRarity.BASIC, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
         isInnate = true;
         selfRetain = true;
@@ -25,5 +25,7 @@ public class DamBreak extends AbstractEasyCard {
 
     public void upp() {
         AbstractCardField.replenish.set(this, true);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+        initializeDescription();
     }
 }

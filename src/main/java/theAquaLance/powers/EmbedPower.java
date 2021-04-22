@@ -91,6 +91,7 @@ public class EmbedPower extends AbstractPower implements OnReceivePowerPower {
 
     @Override
     public void onDeath() {
+        c.onDeath();
         unEmbed();
     }
 

@@ -12,10 +12,10 @@ import static theAquaLance.util.Wiz.*;
 
 public class Current extends AbstractEasyCard {
     public final static String ID = makeID("Current");
-    private final static int DAMAGE = 10;
+    private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 10;
-    private final static int UPGRADE_MAGIC = 3;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = 2;
 
     public Current() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);

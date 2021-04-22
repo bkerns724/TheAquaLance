@@ -1,5 +1,6 @@
 package theAquaLance.relics;
 
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -26,7 +27,7 @@ public class RuneOfIce extends AbstractEasyRelic {
     public void atBattleStartPreDraw() {
         atb(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         
-        ArrayList<AbstractCard> list = new ArrayList();
+        ArrayList<AbstractCard> list = new ArrayList<>();
         Iterator var2 = srcCommonCardPool.group.iterator();
         AbstractCard c;
         while(var2.hasNext()) {
@@ -36,7 +37,7 @@ public class RuneOfIce extends AbstractEasyRelic {
         }
         AbstractCard newCard = list.get(cardRandomRng.random(list.size() - 1));
 
-        atb(new MakeTempCardInHandAction(newCard));
+        atb(new MakeTempCardInDrawPileAction(newCard, 1, true, true));
     }
 
     public String getUpdatedDescription() {

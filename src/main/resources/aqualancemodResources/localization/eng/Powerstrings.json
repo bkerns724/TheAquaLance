@@ -7,20 +7,20 @@
       " additional card next turn."
     ]
   },
-  "${ModID}:BoostDebuff": {
-    "NAME": "Stronger Debuff",
+  "${ModID}:DiscardNextTurn": {
+    "NAME": "Discard Next Turn",
     "DESCRIPTIONS": [
-      "The next time you apply a debuff, apply #b",
-      " additional stacks.",
-      " additional stack."
+      "Discard #b",
+      " cards next turn.",
+      " card next turn."
     ]
   },
-  "${ModID}:DownpourPower": {
-    "NAME": "Downpour",
+  "${ModID}:IceStormPower": {
+    "NAME": "Ice Storm",
     "DESCRIPTIONS": [
-      "The first time each turn you apply #b",
-      " debuffs, gain [E]",
-      " debuff, gain [E]"
+      "The first #b",
+      " times you embed an enemy each turn, gain [E]",
+      " time you embed an enemy each turn, gain [E]"
     ]
   },
   "${ModID}:Drowned": {
@@ -75,9 +75,9 @@
   "${ModID}:Flood": {
     "NAME": "Flood",
     "DESCRIPTIONS": [
-      "Whenever you apply discard a card, draw #b",
-      " cards.",
-      " card."
+      "The first #b",
+      " times discard a card each turn, draw a card.",
+      " time discard a card each turn, draw a card."
     ]
   },
   "${ModID}:HeavyShards": {
@@ -108,9 +108,9 @@
   "${ModID}:Sidesteps": {
     "NAME": "Side Steps",
     "DESCRIPTIONS": [
-      "The first time each turn you apply a debuff, draw #b",
-      " cards.",
-      " card."
+      "The first #b",
+      " times you debuff an enemy each turn, draw a card.",
+      " time you debuff an enemy each turn, draw a card."
     ]
   },
   "${ModID}:Streamlined": {
@@ -126,6 +126,15 @@
     "DESCRIPTIONS": [
       "Your next blocking card gives #b",
       " additional #yBlock."
+    ]
+  },
+  "${ModID}:StormSigil": {
+    "NAME": "Storm Sigil",
+    "DESCRIPTIONS": [
+      "Discard #b",
+      " more cards in order to #b",
+      " more card in order to deal #b",
+      " damage per shard to ALL enemies."
     ]
   }
 }

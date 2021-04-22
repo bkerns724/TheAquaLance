@@ -1,8 +1,10 @@
 package theAquaLance.relics;
 
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theAquaLance.TheAquaLance;
+import theAquaLance.cards.AquaSigil;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -29,8 +31,9 @@ public class RuneOfLivingWater extends AbstractEasyRelic {
 
     @Override
     public void atBattleStart() {
-        this.flash();
-        this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        flash();
+        atb(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        atb(new MakeTempCardInDrawPileAction(new AquaSigil(), SIGIL_COUNT, true, true));
     }
 
     public String getUpdatedDescription() {

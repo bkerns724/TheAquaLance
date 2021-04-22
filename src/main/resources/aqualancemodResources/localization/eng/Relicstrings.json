@@ -54,7 +54,7 @@
     "NAME": "Rune of Ice",
     "FLAVOR": "A magical symbol made of ice that never thaws.",
     "DESCRIPTIONS": [
-      "At the start of combat, add a random common #ySigil into your hand."
+      "At the start of combat, shuffle a random common #ySigil into your draw pile."
     ]
   },
   "${ModID}:RuneOfLivingWater": {

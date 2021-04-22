@@ -17,5 +17,4 @@ public class Chains extends AbstractEasyRelic {
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0] + DrowningPower.RELIC_DECAY + DESCRIPTIONS[1] + DrowningPower.DECAY + DESCRIPTIONS[2];
     }
-    // Hardcoded into DrowningPower
 }

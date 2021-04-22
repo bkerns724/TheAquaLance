@@ -14,7 +14,7 @@ public class FloodPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private boolean fresh = true;
+    private int timesUsed = 0;
 
     public FloodPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
@@ -22,15 +22,15 @@ public class FloodPower extends AbstractEasyPower {
     }
 
     public void onManualDiscard() {
-        if (fresh) {
-            atb(new AquaDrawCardAction(amount));
-            fresh = false;
+        if (timesUsed < amount) {
+            atb(new AquaDrawCardAction(1));
+            timesUsed += 1;
         }
     }
 
     @Override
     public void atStartOfTurn() {
-        fresh = true;
+        timesUsed = 0;
     }
 
     @Override

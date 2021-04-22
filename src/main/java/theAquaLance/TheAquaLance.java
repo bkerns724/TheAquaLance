@@ -7,6 +7,7 @@ import basemod.interfaces.PostDungeonInitializeSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -43,26 +44,36 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
             modID + "Resources/images/char/mainChar/orb/layer3d.png",
             modID + "Resources/images/char/mainChar/orb/layer4d.png",
             modID + "Resources/images/char/mainChar/orb/layer5d.png",};
+
+    private static final String SKELETON_ATLAS = modID + "Resources/images/char/mainChar/idle/skeleton.atlas";
+    private static final String SKELETON_JSON = modID + "Resources/images/char/mainChar/idle/skeleton.json";
+
     static final String ID = makeID("TheAquaLance");
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
     private static final int NUM_STRIKES = 4;
     private static final int NUM_DEFENDS = 4;
-    private static final String STARTER_CARD1 = WaterSigil.ID;
-    private static final String STARTER_CARD2 = DamBreak.ID;
+    private static final String STARTER_CARD1 = DamBreak.ID;
+    private static final String STARTER_CARD2 = VampireShard.ID;
     private static final String STARTER_RELIC = RuneOfIce.ID;
     private static final int STARTING_HP = 80;
 
     public TheAquaLance(String name, PlayerClass setClass) {
-        super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/mainChar/orb/vfx.png", null), new SpriterAnimation(
-                modID + "Resources/images/char/mainChar/static.scml"));
+        super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/mainChar/orb/vfx.png", null),
+                null, null);
+
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER2,
                 CORPSE,
                 getLoadout(), 20.0F, -10.0F, 166.0F, 327.0F, new EnergyManager(3));
 
+        logger.info("Start AquaLance animation");
+        loadAnimation(SKELETON_ATLAS, SKELETON_JSON, 1.0F);
+        AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
+        stateData.setMix("Hit", "Idle", 0.1F);
+        e.setTimeScale(0.6F);
 
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
@@ -82,7 +93,6 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
             retVal.add(Strike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
-        retVal.add(STARTER_CARD1);
         retVal.add(STARTER_CARD1);
         retVal.add(STARTER_CARD2);
         return retVal;
@@ -132,7 +142,7 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new DamBreak();
+        return new VampireShard();
     }
 
     @Override

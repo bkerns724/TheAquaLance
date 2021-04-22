@@ -30,10 +30,6 @@ public class QuickShard extends AbstractEmbedCard {
 
     @Override
     public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature host) {
-        AquaLanceMod.logger.info("Quick Shard Test");
-        AquaLanceMod.logger.info(power.ID);
-        AquaLanceMod.logger.info(target.name);
-        AquaLanceMod.logger.info(host.name);
         if (power instanceof EmbedPower && target == host)
             att(new AquaDrawCardAction(magicNumber));
     }

@@ -21,7 +21,7 @@ public class Spray extends AbstractEasyCard {
     }
 
     public void upp() {
-        AbstractCardPatch.AbstractCardField.replenish.set(this, true);
+        selfRetain = true;
         rawDescription = cardStrings.UPGRADE_DESCRIPTION;
         initializeDescription();
     }

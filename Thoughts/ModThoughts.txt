@@ -5,7 +5,7 @@ Character Mechanics
     Sigils.  Unplayable.  Has on discard effects.
 
     No Ethereal, Exhaust, or card generation
-    No Healing
+    No major healing
     No Damage AoE
     No major poison/burning adjacent mechanics
     No temp str, dex.  Use vigor, vitality.
@@ -22,7 +22,7 @@ New Buffs
 
 Starting Relic
     Rune of ice
-	At the start of combat, add a random common sigil into your hand.
+	At the start of combat, shuffle a random common sigil into your deck.
     Rune of living water
 	At the start of combat, shuffle 3 aqua sigils into your deck.
 
@@ -59,6 +59,8 @@ Other Relics
 	Drowned decays 15% instead of 25%
     Poisoned Spearhead, Boss
 	When you apply a debuff, apply an extra stack
+    ???, Boss
+	??? Something shards
     Steam Orb, Boss
 	Energy relic.  Your discards target randomly.  
     Ceremonial Robe, Shop

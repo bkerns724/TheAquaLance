@@ -15,10 +15,12 @@ public class WhirlpoolSigil extends AbstractEasyCard {
     public final static String ID = makeID("WhirlpoolSigil");
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_MAGIC = 1;
 
     public WhirlpoolSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
 
@@ -32,10 +34,12 @@ public class WhirlpoolSigil extends AbstractEasyCard {
 
     public void onManualDiscard() {
         applyToSelf(new AquaDrawNextTurnPower(adp(), magicNumber));
-        applyToSelf(new EnergizedTurquoisePower(adp(), magicNumber));
+        applyToSelf(new EnergizedTurquoisePower(adp(), secondMagic));
     }
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+        initializeDescription();
     }
 }

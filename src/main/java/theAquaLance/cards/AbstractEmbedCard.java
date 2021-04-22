@@ -38,4 +38,6 @@ public abstract class AbstractEmbedCard extends AbstractEasyCard {
     public void onDiscardWhileEmbed(AbstractCreature m) {}
 
     public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature host) {}
+
+    public void onDeath() {}
 }

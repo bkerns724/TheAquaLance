@@ -2,6 +2,7 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
@@ -15,8 +16,8 @@ import static theAquaLance.util.Wiz.*;
 
 public class MarshSigil extends AbstractEasyCard {
     public final static String ID = makeID("MarshSigil");
-    private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int MAGIC = 10;
+    private final static int UPGRADE_MAGIC = 3;
 
     public MarshSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
@@ -34,16 +35,7 @@ public class MarshSigil extends AbstractEasyCard {
 
     @Override
     public void onManualDiscard() {
-        forAllMonstersLiving((m) -> {
-            if (m.hasPower(WeakPower.POWER_ID))
-                m.getPower(WeakPower.POWER_ID).amount += magicNumber;
-            if (m.hasPower(VulnerablePower.POWER_ID))
-                m.getPower(VulnerablePower.POWER_ID).amount += magicNumber;
-            if (m.hasPower(HobbledPower.POWER_ID))
-                m.getPower(HobbledPower.POWER_ID).amount += magicNumber;
-            if (m.hasPower(DrowningPower.POWER_ID))
-                m.getPower(DrowningPower.POWER_ID).amount += magicNumber;
-        });
+        forAllMonstersLiving((m) -> applyToEnemy(m, new PoisonPower(m, adp(), magicNumber)));
     }
 
     public void upp() {
