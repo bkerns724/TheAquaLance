@@ -14,6 +14,7 @@ public class Spray extends AbstractEasyCard {
 
     public Spray() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        selfRetain = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -21,7 +22,7 @@ public class Spray extends AbstractEasyCard {
     }
 
     public void upp() {
-        selfRetain = true;
+        AbstractCardPatch.AbstractCardField.replenish.set(this, true);
         rawDescription = cardStrings.UPGRADE_DESCRIPTION;
         initializeDescription();
     }

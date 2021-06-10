@@ -1,6 +1,5 @@
 package theAquaLance.powers;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,7 +9,7 @@ import theAquaLance.AquaLanceMod;
 import static theAquaLance.util.Wiz.*;
 
 public class EnergizedTurquoisePower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("EnergizedTurquoise");
+    public static final String POWER_ID = AquaLanceMod.makeID("EnergizedTurquoise");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -23,10 +22,6 @@ public class EnergizedTurquoisePower extends AbstractEasyPower {
     @Override
     public void onEnergyRecharge() {
         flash();
-        if (owner.hasPower(StreamlinedPower.POWER_ID)) {
-            amount++;
-            atb(new ReducePowerAction(adp(), adp(), StreamlinedPower.POWER_ID, 1));
-        }
         adp().gainEnergy(amount);
         atb(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
     }

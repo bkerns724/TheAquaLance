@@ -11,7 +11,6 @@ public abstract class AbstractEasyPotion extends CustomPotion {
     public AbstractEasyPotion(String potionID, PotionRarity rarity, PotionSize size, PotionColor color,
                               boolean isThrown, boolean targetRequired) {
         super(CardCrawlGame.languagePack.getPotionString(potionID).NAME, potionID, rarity, size, color);
-        PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(potionID);
         potency = getPotency();
         this.isThrown = isThrown;
         this.targetRequired = targetRequired;
@@ -20,7 +19,7 @@ public abstract class AbstractEasyPotion extends CustomPotion {
 
     public CustomPotion makeCopy() {
         try {
-            return (CustomPotion) getClass().newInstance();
+            return getClass().newInstance();
         } catch (IllegalAccessException | InstantiationException var2) {
             throw new RuntimeException("BaseMod failed to auto-generate makeCopy for potion: " + ID);
         }

@@ -18,10 +18,9 @@ public abstract class AbstractEasyPower extends AbstractPower {
         this.type = powerType;
 
         String textureString = AquaLanceMod.modID + "Resources/images/powers/" + ID.replaceAll(AquaLanceMod.modID +":",  "") + "32.png";
-        AquaLanceMod.logger.info("textureString: " + textureString);
 
         Texture normalTexture = TexLoader.getTexture(textureString);
-        Texture hiDefImage = TexLoader.getTexture(AquaLanceMod.modID + "Resources/images/powers/" + ID.replaceAll("([ ])", "") + "84.png");
+        Texture hiDefImage = TexLoader.getTexture(AquaLanceMod.modID + "Resources/images/powers/" + ID.replaceAll(AquaLanceMod.modID +":", "") + "84.png");
         if (hiDefImage != null) {
             region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
             if (normalTexture != null)

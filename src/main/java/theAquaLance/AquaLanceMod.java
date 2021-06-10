@@ -6,19 +6,36 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.ChemicalX;
+import com.megacrit.cardcrawl.relics.DeadBranch;
+import com.megacrit.cardcrawl.relics.StrangeSpoon;
+import com.megacrit.cardcrawl.relics.UnceasingTop;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAquaLance.cards.AbstractEasyCard;
 import theAquaLance.cards.cardvars.SecondDamage;
 import theAquaLance.cards.cardvars.SecondMagicNumber;
+import theAquaLance.potions.HobblePotion;
+import theAquaLance.potions.SharkFinPotion;
+import theAquaLance.potions.WaterBucket;
 import theAquaLance.relics.AbstractEasyRelic;
+import theAquaLance.relics.RuneOfIce;
+import theAquaLance.relics.RuneOfLivingWater;
+import theAquaLance.ui.AquaLanceSettings;
 
 import java.nio.charset.StandardCharsets;
+
+import static theAquaLance.TheAquaLance.Enums.THE_AQUALANCE;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -27,7 +44,9 @@ public class AquaLanceMod implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        EditCharactersSubscriber {
+        EditCharactersSubscriber,
+        PostInitializeSubscriber,
+        PostDungeonInitializeSubscriber {
 
     public static final String modID = "aqualancemod";
     public static final String JSON_PRE = "AquaLanceMod:";
@@ -38,7 +57,7 @@ public class AquaLanceMod implements
         return modID + ":" + idText;
     }
 
-    public static final Color AQUALANCE_EYE_COLOR = new Color(64,224,208, 1);
+    public static final Color AQUALANCE_EYE_COLOR = CardHelper.getColor(64, 224, 208);
 
     public static final String SHOULDER1 = modID + "Resources/images/char/mainChar/shoulder.png";
     public static final String SHOULDER2 = modID + "Resources/images/char/mainChar/shoulder2.png";
@@ -54,6 +73,13 @@ public class AquaLanceMod implements
     private static final String CARD_ENERGY_L = modID + "Resources/images/1024/energy.png";
     private static final String CHARSELECT_BUTTON = modID + "Resources/images/charSelect/charButton.png";
     private static final String CHARSELECT_PORTRAIT = modID + "Resources/images/charSelect/charBG.png";
+    public static final String WATER_EFFECT_FILE = modID + "Resources/images/vfx/Water.png";
+    public static final String BLOOD_EFFECT_FILE = modID + "Resources/images/vfx/Blood.png";
+
+    private static final String BADGE_IMG = modID + "Resources/images/Badge.png";
+    private static final String[] REGISTRATION_STRINGS = {
+            "The AquaLance", "Bryan", "This mod adds a new character, the AquaLance."
+    };
 
     public AquaLanceMod() {
         BaseMod.subscribe(this);
@@ -81,6 +107,13 @@ public class AquaLanceMod implements
         return modID + "Resources/images/powers/" + resourcePath;
     }
 
+    public static class Enums {
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect WATER;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect BLOOD;
+    }
+
     public static String makeCardPath(String resourcePath) {
         return modID + "Resources/images/cards/" + resourcePath;
     }
@@ -91,8 +124,8 @@ public class AquaLanceMod implements
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new TheAquaLance(TheAquaLance.characterStrings.NAMES[1], TheAquaLance.Enums.THE_AQUALANCE),
-                CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, TheAquaLance.Enums.THE_AQUALANCE);
+        BaseMod.addCharacter(new TheAquaLance(TheAquaLance.characterStrings.NAMES[1], THE_AQUALANCE),
+                CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, THE_AQUALANCE);
     }
 
     @Override
@@ -109,6 +142,9 @@ public class AquaLanceMod implements
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                     }
                 });
+
+        BaseMod.addRelicToCustomPool(new RuneOfIce(), TheAquaLance.Enums.TURQUOISE_COLOR);
+        BaseMod.addRelicToCustomPool(new RuneOfLivingWater(), TheAquaLance.Enums.TURQUOISE_COLOR);
     }
 
     @Override
@@ -125,14 +161,12 @@ public class AquaLanceMod implements
     @Override
     public void receiveEditStrings() {
         BaseMod.loadCustomStringsFile(CardStrings.class, modID + "Resources/localization/eng/Cardstrings.json");
-
         BaseMod.loadCustomStringsFile(RelicStrings.class, modID + "Resources/localization/eng/Relicstrings.json");
-
         BaseMod.loadCustomStringsFile(CharacterStrings.class, modID + "Resources/localization/eng/Charstrings.json");
-
         BaseMod.loadCustomStringsFile(PowerStrings.class, modID + "Resources/localization/eng/Powerstrings.json");
-
         BaseMod.loadCustomStringsFile(PotionStrings.class, modID + "Resources/localization/eng/Powerstrings.json");
+        BaseMod.loadCustomStringsFile(UIStrings.class, modID + "Resources/localization/eng/UIstrings.json");
+        BaseMod.loadCustomStringsFile(PotionStrings.class, modID + "Resources/localization/eng/Potionstrings.json");
     }
 
     @Override
@@ -145,6 +179,29 @@ public class AquaLanceMod implements
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(modID, keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
             }
+        }
+    }
+
+    @Override
+    public void receivePostInitialize() {
+        BaseMod.addPotion(HobblePotion.class, Color.GREEN.cpy(), null, Color.YELLOW.cpy(), HobblePotion.POTION_ID, THE_AQUALANCE);
+        BaseMod.addPotion(WaterBucket.class, new Color(0,206/256F,209/256F, 1), null, null, WaterBucket.POTION_ID, THE_AQUALANCE);
+        BaseMod.addPotion(SharkFinPotion.class, Color.LIGHT_GRAY.cpy(), null, null, SharkFinPotion.POTION_ID, THE_AQUALANCE);
+
+        logger.info("Load Badge Image and make settings panel");
+        Texture badgeTexture = new Texture(BADGE_IMG);
+        BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
+                AquaLanceSettings.createSettingsPanel());
+        logger.info("Done loading badge Image");
+    }
+
+    public void receivePostDungeonInitialize()
+    {
+        if (AbstractDungeon.player.chosenClass == THE_AQUALANCE) {
+            AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(ChemicalX.ID));
+            AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(StrangeSpoon.ID));
+            AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(DeadBranch.ID));
+            AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(UnceasingTop.ID));
         }
     }
 }

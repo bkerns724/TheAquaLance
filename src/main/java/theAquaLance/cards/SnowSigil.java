@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theAquaLance.patches.AbstractCardPatch;
-import theAquaLance.powers.StreamlinedPower;
 
 import java.util.Iterator;
 
@@ -27,15 +26,13 @@ public class SnowSigil extends AbstractEasyCard {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return false;
     }
 
     public void onManualDiscard() {
         AbstractMonster strongestMonster = null;
-        Iterator iter = AbstractDungeon.getMonsters().monsters.iterator();
-        while(iter.hasNext()) {
-            AbstractMonster mo = (AbstractMonster)iter.next();
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             if (!mo.isDeadOrEscaped()) {
                 if (strongestMonster == null) {
                     strongestMonster = mo;

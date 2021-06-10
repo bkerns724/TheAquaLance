@@ -10,21 +10,31 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import static theAquaLance.util.Wiz.*;
 
 public class MistPower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("Mist");
+    public static final String POWER_ID = AquaLanceMod.makeID("Mist");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private int actualValue;
 
     public MistPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
+        actualValue = amount;
     }
 
     // code is in AbstractEasyCard.triggerOnManualDiscard
+    public void reduceActualValue() {
+        actualValue--;
+    }
+
+    public int getActualValue() {
+        return actualValue;
+    }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        atb(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        actualValue += stackAmount;
     }
 
     @Override

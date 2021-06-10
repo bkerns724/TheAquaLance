@@ -1,7 +1,7 @@
 package theAquaLance.relics;
 
 import theAquaLance.TheAquaLance;
-import theAquaLance.powers.DrowningPower;
+import theAquaLance.powers.SoakedPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 
@@ -17,7 +17,7 @@ public class Waterskin extends AbstractEasyRelic {
 
     @Override
     public void atBattleStart() {
-        forAllMonstersLiving((m) -> applyToEnemy(m, new DrowningPower(m, DROWN_AMOUNT)));
+        forAllMonstersLiving((m) -> applyToEnemy(m, new SoakedPower(m, DROWN_AMOUNT)));
     }
 
     public String getUpdatedDescription() {

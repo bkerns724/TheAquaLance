@@ -1,5 +1,6 @@
 package theAquaLance.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -8,6 +9,7 @@ import theAquaLance.util.TexLoader;
 import static theAquaLance.AquaLanceMod.makeRelicPath;
 import static theAquaLance.AquaLanceMod.modID;
 
+@AutoAdd.Ignore
 public abstract class AbstractEasyRelic extends CustomRelic {
     public AbstractCard.CardColor color;
 
@@ -17,7 +19,7 @@ public abstract class AbstractEasyRelic extends CustomRelic {
 
     public AbstractEasyRelic(String setId, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx, AbstractCard.CardColor color) {
         super(setId, TexLoader.getTexture(makeRelicPath(setId.replace(modID + ":", "") + ".png")), tier, sfx);
-        outlineImg = TexLoader.getTexture(makeRelicPath(setId.replace(modID + ":", "") + "Outline.png"));
+        outlineImg = TexLoader.getTexture(makeRelicPath(setId.replace(modID + ":", "") + "_outline.png"));
         this.color = color;
     }
 

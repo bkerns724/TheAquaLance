@@ -36,6 +36,7 @@ public class EmbedAction extends AbstractGameAction {
         if (m == null) {
             c.missedMonsters = true;
             isDone = true;
+            return;
         }
 
         if (duration < 0.95f && !partOneStart) {
@@ -68,13 +69,13 @@ public class EmbedAction extends AbstractGameAction {
             adp().cardInUse = null;
             AbstractDungeon.effectList.add(icicleEffect);
             partTwoStart = true;
-            att(new DamageAction(m, new DamageInfo(adp(), c.damage, c.damageTypeForTurn)));
             if (m.hasPower(ArtifactPower.POWER_ID)) {
                 c.hitArtifact = true;
                 c.current_y = m.hb.cY;
                 c.current_x = m.hb.cX;
             }
             applyToEnemyTop(m, new EmbedPower(m, c));
+            att(new DamageAction(m, new DamageInfo(adp(), c.damage, c.damageTypeForTurn)));
         }
 
         tickDuration();

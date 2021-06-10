@@ -7,23 +7,33 @@
       "Hobbled",
       "hobbled"
     ],
-    "DESCRIPTION": "Hobbled creatures can't apply #yVulnerable, #yFrail, #yWeak, #yStrength, #yDexterity, and #yFocus."
+    "DESCRIPTION": "Hobbled prevents debuffs and status cards."
   },
   {
-    "PROPER_NAME": "Drowned",
+    "PROPER_NAME": "Soaked",
     "NAMES": [
-      "Drowned",
-      "drowned"
+      "Soaked",
+      "soaked"
     ],
-    "DESCRIPTION": "Drowned creatures lose X more HP when they lose HP."
+    "DESCRIPTION": "Soaked creatures take more damage from attacks and HP loss."
   },
   {
-    "PROPER_NAME": "Streamlined",
+    "PROPER_NAME": "Bonus",
     "NAMES": [
-      "Streamlined",
-      "streamlined"
+      "Bonus",
+      "bonus"
     ],
-    "DESCRIPTION": "When you draw a card or gain [E], you spend Streamlined to draw or gain one more."
+    "DESCRIPTION": "If this card is absorbed by another card, provides the bonus effect."
+  },
+  {
+    "PROPER_NAME": "Pop",
+    "NAMES": [
+      "Pop",
+      "pop",
+      "Popping",
+      "popping"
+    ],
+    "DESCRIPTION": "Remove shards from target to activate the effect."
   },
   {
     "PROPER_NAME": "Sigil",
@@ -56,12 +66,20 @@
     "DESCRIPTION": "A card that is embedded in an enemy."
   },
   {
-    "PROPER_NAME": "Finisher",
+    "PROPER_NAME": "Metallicize",
     "NAMES": [
-      "Finisher",
-      "finisher"
+      "Metallicize",
+      "metallicize"
     ],
-    "DESCRIPTION": "A card that removes all shards from an enemy it targets."
+    "DESCRIPTION": "Applies #yBlock at the end of your turn."
+  },
+  {
+    "PROPER_NAME": "Plated\u00a0Armor",
+    "NAMES": [
+      "Plated\u00a0Armor",
+      "plated\u00a0armor"
+    ],
+    "DESCRIPTION": "Applies #yBlock at the end of your turn.  Receiving unblocked damage reduces Plated Armor."
   },
   {
     "PROPER_NAME": "Vitality",
@@ -72,12 +90,28 @@
     "DESCRIPTION": "Vitality adds #yBlock to your next blocking card."
   },
   {
+    "PROPER_NAME": "Haste",
+    "NAMES": [
+      "Haste",
+      "haste"
+    ],
+    "DESCRIPTION": "If you have haste, gain 1 energy and draw 1 card at the start of your turn."
+  },
+  {
     "PROPER_NAME": "Replenish",
     "NAMES": [
       "Replenish",
       "replenish"
     ],
     "DESCRIPTION": "Whenever you draw this card, draw another card."
+  },
+  {
+    "PROPER_NAME": "Wave",
+    "NAMES": [
+      "Wave",
+      "wave"
+    ],
+    "DESCRIPTION": "When played, other wave cards in your hand of equal or lower rarity are merged into this one, adding their #yBonus.  Unmerges when it enters your discard pile.  Placed on top of your draw pile after it is played."
   },
   {
     "PROPER_NAME": "Blur",

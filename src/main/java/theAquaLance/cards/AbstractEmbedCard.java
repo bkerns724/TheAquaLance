@@ -1,13 +1,10 @@
 package theAquaLance.cards;
 
 import basemod.AutoAdd;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
 @AutoAdd.Ignore
@@ -23,21 +20,23 @@ public abstract class AbstractEmbedCard extends AbstractEasyCard {
 
     public abstract void upp();
 
-    public abstract String getEmbedDescription();
+    public int getJaggedAmount() {return 0;}
 
-    public int onAttacked(DamageInfo info, int damage, AbstractCreature host) {return damage;}
+    public int getMarkAmount() {return 0;}
 
-    public int onAttackToChangeDamage(DamageInfo info, int damage) {return damage;}
+    public int getTriggerAmount() {return 0;}
 
-    public void atStartOfTurn(AbstractCreature host) {}
+    public int getLeechAmount() {return 0;}
 
-    public void atStartOfPlayerTurn(AbstractCreature host) {}
+    public int getDamageAmount() {return 0;}
 
-    public int getPotency(AbstractCreature host) {return 1;}
+    public int getSapAmount() {return 0; }
 
-    public void onDiscardWhileEmbed(AbstractCreature m) {}
+    public int getDiscardDamAmount() {return 0;}
 
-    public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature host) {}
+    public int getCatalystAmount() {return 0;}
 
-    public void onDeath() {}
+    public int getFountainAmount() {return 0;}
+
+    public void onFinisher(AbstractCreature host) {}
 }

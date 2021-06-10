@@ -1,8 +1,8 @@
 package theAquaLance.cards;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.actions.AquaDrawCardAction;
 import theAquaLance.patches.AbstractCardPatch;
 
 import static theAquaLance.AquaLanceMod.makeID;
@@ -14,7 +14,7 @@ public class PondSigil extends AbstractEasyCard {
     private final static int UPGRADE_MAGIC = 1;
 
     public PondSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
@@ -22,13 +22,13 @@ public class PondSigil extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {}
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return false;
     }
 
     @Override
     public void onManualDiscard() {
-        atb(new AquaDrawCardAction(magicNumber));
+        atb(new DrawCardAction(magicNumber));
     }
 
     public void upp() {

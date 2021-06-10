@@ -14,12 +14,11 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.TimedVFXAction;
-import theAquaLance.cards.PureShard;
 import theAquaLance.powers.EmbedPower;
 
 import java.util.ArrayList;
@@ -164,6 +163,10 @@ public class Wiz {
         atb(new ApplyPowerAction(m, adp(), po, po.amount));
     }
 
+    public static void applyToEnemy(AbstractMonster m, AbstractPower po, AbstractGameAction.AttackEffect effect) {
+        atb(new ApplyPowerAction(m, adp(), po, po.amount, effect));
+    }
+
     public static void applyToEnemyTop(AbstractMonster m, AbstractPower po) {
         att(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
     }
@@ -180,25 +183,17 @@ public class Wiz {
         int shardCount = 0;
         for (AbstractPower po : m.powers) {
             if (po instanceof EmbedPower)
-                shardCount += ((EmbedPower)po).getShardCount();
-        }
-        return shardCount;
-    }
-
-    public static int getPureShardMult(AbstractMonster m) {
-        int shardCount = 1;
-        for (AbstractPower po : m.powers) {
-            if (po instanceof EmbedPower)
-                if (((EmbedPower)po).c instanceof PureShard)
-                    shardCount++;
+                shardCount += ((EmbedPower)po).cards.size();
         }
         return shardCount;
     }
 
     public static int getDebuffCount(AbstractMonster m) {
+        if (m == null || m.powers == null)
+            return 0;
         int debuffCount = 0;
         for (AbstractPower p : m.powers) {
-            if (p.type == AbstractPower.PowerType.DEBUFF)
+            if (p != null && p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof GainStrengthPower))
                 debuffCount++;
         }
         return debuffCount;

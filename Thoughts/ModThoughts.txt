@@ -1,67 +1,25 @@
-Character Mechanics
-    Embed.  Card is removed from play, and associated with a debuff added to the enemy.  Returned to hand on death of enemy (and maybe other means).
-    Most scaling through debuffs.  Low power count.
-    Lots of draw.  Lots of discard.
-    Sigils.  Unplayable.  Has on discard effects.
-
-    No Ethereal, Exhaust, or card generation
-    No major healing
-    No Damage AoE
-    No major poison/burning adjacent mechanics
-    No temp str, dex.  Use vigor, vitality.
+New Mechanics
+    Wave
+	Rebound.  Waves of equal or lesser cost merge into it when played, giving half their damage and effects to that wave.  Unmerge when discarded.
+    Replenish
+	Draw another card when drawn.
 
 New Debuffs
     Hobble
-	Stops next application of vuln/weak/frail/str/dex/foc or negative str/dex/foc
-    Drowned
-	Enemy takes 1 extra damage from everything for each stack of Drowning
+	Stops status cards and 
+    Soaked
+	Enemy takes 1 extra damage from attacks and hp loss for each stack of Soaked
 
 New Buffs
-    Streamlined
-	When you draw a card or gain energy from an Aqualance card, draw/gain 1 more and reduce this by 1.
+    Ice Armor
+	Reduces attack damage by X, then shatters
+    Haste
+	1 draw, 1 energy at start of turn.  Turn based.
 
-Starting Relic
-    Rune of ice
-	At the start of combat, shuffle a random common sigil into your deck.
-    Rune of living water
-	At the start of combat, shuffle 3 aqua sigils into your deck.
+Todo
+    Ending sequence
+    Fix char select picture
+    Get non Silent character skelly
+    Card art?
 
-Remove Relics
-    Strange Spoon, Dead Branch, anything else exhaust based
-    ChemicalX
-
-Potions
-    Hobble Potion, Common
-	Apply 2 hobble
-    Water Bucket, Uncommon
-	Apply 4 drowned
-    Shark Fin Potion, Rare
-	Gain 6 streamlined
-
-Other Relics
-    Unmelting ice, Common
-	Enemies take 3 damage upon embed.
-    Bag of ice cubes, Common
-	Apply 1 hobble at beginning of combat
-    Waterskin, Common
-	Apply 2 drowned at beginning of combat
-    Paper Crab, Uncommon
-	Hobble is 50% instead of 33%
-    Javelin, Uncommon
-	3 attacks in a single turn -> 2 streamline
-    Sailor's Charm, Uncommon
-	If you have a sigil in your hand when you end your turn, draw +1 next turn
-    Vial of Mineral Water, Rare
-	Draw an extra card every other turn
-    Vial of Swamp Water, Rare
-	Gain 2 block when you apply a debuff
-    Chains, Rare
-	Drowned decays 15% instead of 25%
-    Poisoned Spearhead, Boss
-	When you apply a debuff, apply an extra stack
-    ???, Boss
-	??? Something shards
-    Steam Orb, Boss
-	Energy relic.  Your discards target randomly.  
-    Ceremonial Robe, Shop
-	+1 draw each turn.  -1 str.
+Debug

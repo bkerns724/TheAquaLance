@@ -10,8 +10,9 @@ import static theAquaLance.util.Wiz.*;
 public class BackBodyDrop extends AbstractEasyCard {
     public final static String ID = makeID("BackBodyDrop");
     private final static int BLOCK = 12;
-    private final static int UPGRADE_BLOCK = 6;
-    private final static int MAGIC = 1;
+    private final static int UPGRADE_BLOCK = 4;
+    private final static int MAGIC = 2;
+    private final static int UPG_MAGIC = 1;
 
     public BackBodyDrop() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -26,5 +27,6 @@ public class BackBodyDrop extends AbstractEasyCard {
 
     public void upp() {
         upgradeBlock(UPGRADE_BLOCK);
+        upgradeMagicNumber(UPG_MAGIC);
     }
 }

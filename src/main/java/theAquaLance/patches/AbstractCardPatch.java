@@ -15,5 +15,6 @@ public class AbstractCardPatch {
     public static class AbstractCardField {
         public static SpireField<Boolean> replenish = new SpireField<>(() -> false);
         public static SpireField<Boolean> sigil = new SpireField<>(() -> false);
+        public static SpireField<Boolean> boomerang = new SpireField<>(() -> false);
     }
 }

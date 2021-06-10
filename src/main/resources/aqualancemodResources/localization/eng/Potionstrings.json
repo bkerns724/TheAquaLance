@@ -1,0 +1,24 @@
+{
+  "${ModID}:HobblePotion": {
+    "NAME": "Hobble Potion",
+    "DESCRIPTIONS": [
+      "Apply #b",
+      " #yHobbled."
+    ]
+  },
+  "${ModID}:WaterBucket": {
+    "NAME": "Water Bucket",
+    "DESCRIPTIONS": [
+      "Apply #b",
+      " #ySoaked."
+    ]
+  },
+  "${ModID}:SharkFinPotion": {
+    "NAME": "Shark Fin Potion",
+    "DESCRIPTIONS": [
+      "Draw #b",
+      " cards, and discard #b",
+      " cards."
+    ]
+  }
+}

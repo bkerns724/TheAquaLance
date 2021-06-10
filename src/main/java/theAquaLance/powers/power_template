@@ -1,17 +1,23 @@
 package theAquaLance.powers;
 
+#if (${TURN_BASED.equals("true")})
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+#end
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import static theAquaLance.util.Wiz.*;
 
 public class ${NAME} extends AbstractEasyPower {
     // intellij stuff ${POWER_ID}, ${TYPE}, ${TURN_BASED}
-    public static String POWER_ID = ${POWER_ID};
+    public static String POWER_ID = AquaLanceMod.makeID("${POWER_ID}");
+    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String NAME = powerStrings.NAME;
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public ${NAME}(AbstractCreature owner, int amount) {
-        super("", PowerType.#if ( ${TYPE.equals( "buff" )} )BUFF#else DEBUFF#end, #if (${TURN_BASED.equals("true")})true#else false#end, owner, amount);
+        super(${POWER_ID}, PowerType.#if ( ${TYPE.equals( "buff" )} )BUFF#else DEBUFF#end, #if (${TURN_BASED.equals("true")})true#else false#end, owner, amount);
+        this.name = NAME;
     }
 
     #if (${TURN_BASED.equals("true")})

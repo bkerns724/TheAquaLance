@@ -2,8 +2,6 @@ package theAquaLance;
 
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -15,13 +13,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.relics.ChemicalX;
-import com.megacrit.cardcrawl.relics.DeadBranch;
-import com.megacrit.cardcrawl.relics.StrangeSpoon;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import theAquaLance.cards.*;
 import theAquaLance.relics.RuneOfIce;
@@ -31,7 +25,7 @@ import java.util.ArrayList;
 import static theAquaLance.TheAquaLance.Enums.TURQUOISE_COLOR;
 import static theAquaLance.AquaLanceMod.*;
 
-public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeSubscriber {
+public class TheAquaLance extends CustomPlayer {
     private static final String[] orbTextures = {
             modID + "Resources/images/char/mainChar/orb/layer1.png",
             modID + "Resources/images/char/mainChar/orb/layer2.png",
@@ -54,8 +48,8 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
     static final String[] TEXT = characterStrings.TEXT;
     private static final int NUM_STRIKES = 4;
     private static final int NUM_DEFENDS = 4;
-    private static final String STARTER_CARD1 = DamBreak.ID;
-    private static final String STARTER_CARD2 = VampireShard.ID;
+    private static final String STARTER_CARD1 = Neutralize.ID;
+    private static final String STARTER_CARD2 = ExtendedThrust.ID;
     private static final String STARTER_RELIC = RuneOfIce.ID;
     private static final int STARTING_HP = 80;
 
@@ -142,7 +136,7 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new VampireShard();
+        return new ExtendedThrust();
     }
 
     @Override
@@ -168,9 +162,11 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{
-                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,
-                AbstractGameAction.AttackEffect.POISON,
-                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL};
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                AquaLanceMod.Enums.WATER,
+                AbstractGameAction.AttackEffect.SLASH_HEAVY,
+                AquaLanceMod.Enums.WATER
+        };
     }
 
     @Override
@@ -191,12 +187,5 @@ public class TheAquaLance extends CustomPlayer implements PostDungeonInitializeS
         @SpireEnum(name = "TURQUOISE_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_AQUALANCE_COLOR;
-    }
-
-    public void receivePostDungeonInitialize()
-    {
-        AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(ChemicalX.ID));
-        AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(StrangeSpoon.ID));
-        AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(DeadBranch.ID));
     }
 }

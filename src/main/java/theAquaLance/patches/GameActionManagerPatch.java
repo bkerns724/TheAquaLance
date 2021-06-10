@@ -19,7 +19,6 @@ public class GameActionManagerPatch {
         method = SpirePatch.CLASS
     )
     public static class GameActionManagerField {
-        public static SpireField<Integer> deathsThisCombat = new SpireField<>(() -> 0);
         public static SpireField<Integer> sigilsThisCombat = new SpireField<>(() -> 0);
     }
 
@@ -52,8 +51,6 @@ public class GameActionManagerPatch {
     )
     public static class GameActionManagerClearPatch {
         public static void Prefix(GameActionManager __instance) {
-            // Need to reset monster death count at end of battle
-            GameActionManagerField.deathsThisCombat.set(__instance, 0);
             GameActionManagerField.sigilsThisCombat.set(__instance, 0);
         }
     }

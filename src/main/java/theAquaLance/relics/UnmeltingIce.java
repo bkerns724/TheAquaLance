@@ -1,7 +1,10 @@
 package theAquaLance.relics;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
@@ -21,7 +24,8 @@ public class UnmeltingIce extends AbstractEasyRelic implements OnApplyPowerRelic
 
     public boolean onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (!target.hasPower(ArtifactPower.POWER_ID) && power instanceof EmbedPower)
-            atb(new LoseHPAction(target, source, EMBED_DAMAGE));
+            atb(new DamageAction(target, new DamageInfo(source, EMBED_DAMAGE, DamageInfo.DamageType.THORNS),
+                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         return true;
     }
 

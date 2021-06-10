@@ -2,13 +2,15 @@ package theAquaLance.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
-
-import java.util.ArrayList;
+import theAquaLance.relics.RuneOfIce;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -18,36 +20,38 @@ public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowe
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESC = powerStrings.DESCRIPTIONS;
 
-    private final static ArrayList<String> POWER_LIST = new ArrayList<String>() {
-        {
-            add(WeakPower.POWER_ID);
-            add(VulnerablePower.POWER_ID);
-            add(FrailPower.POWER_ID);
-            add(StrengthPower.POWER_ID);
-            add(DexterityPower.POWER_ID);
-            add(FocusPower.POWER_ID);
-        }
-    };
-
     public HobbledPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
     }
 
     @Override
-    public void updateDescription() {
-        if (amount == 1)
-            description = DESC[0] + amount + DESC[2];
-        else
-            description = DESC[0] + amount + DESC[1];
-    }
-
-    @Override
     public boolean betterOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (source == owner && POWER_LIST.contains(power.ID) ) {
-            att(new ReducePowerAction(owner, owner, POWER_ID, 1));
+        if (power.type == PowerType.DEBUFF && target != source
+                && !(power instanceof GainStrengthPower)) {
+            flash();
+            if (amount <= 0)  // This shouldn't happen? But ArtifactPower code had it.  No harm done including it
+                addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+            else
+                addToTop(new ReducePowerAction(owner, owner, this, 1));
             return false;
         }
         return true;
+    }
+
+    @Override
+    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+        if (adp().hasRelic(RuneOfIce.ID) && type == DamageInfo.DamageType.NORMAL)
+            damage += RuneOfIce.BONUS_DAMAGE;
+        return damage;
+    }
+
+    @Override
+    public void updateDescription() {
+        if (amount != 1)
+            description = DESC[0] + amount + DESC[1];
+        else
+            description = DESC[0] + amount + DESC[2];
+
     }
 }

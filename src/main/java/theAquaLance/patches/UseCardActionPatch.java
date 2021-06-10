@@ -2,6 +2,7 @@ package theAquaLance.patches;
 
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.actions.utility.HandCheckAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,6 +11,7 @@ import javassist.CtBehavior;
 import theAquaLance.cards.AbstractEmbedCard;
 
 import static theAquaLance.util.Wiz.adp;
+import static theAquaLance.util.Wiz.atb;
 
 public class UseCardActionPatch {
     @SpirePatch(
@@ -25,8 +27,6 @@ public class UseCardActionPatch {
             AbstractCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
             if (targetCard instanceof AbstractEmbedCard) {
                 if (!((AbstractEmbedCard)targetCard).hitArtifact && !((AbstractEmbedCard)targetCard).missedMonsters) {
-                    targetCard.freeToPlayOnce = false;
-                    targetCard.isInAutoplay = false;
                     targetCard.exhaustOnUseOnce = false;
                     targetCard.dontTriggerOnUseCard = false;
                     targetCard.stopGlowing();
@@ -34,19 +34,28 @@ public class UseCardActionPatch {
                     targetCard.untip();
                     if (adp().limbo.contains(targetCard))
                         adp().limbo.removeCard(targetCard);
-                    adp().cardInUse = null;
                     __instance.isDone = true;
+                    atb(new HandCheckAction());
                     return SpireReturn.Return(null);
                 }
                 else if (((AbstractEmbedCard)targetCard).hitArtifact) {
                     ((AbstractEmbedCard) targetCard).hitArtifact = false;
-                    // perhaps an animation in here, move to discard, then a null spire return
                     return SpireReturn.Continue();
                 }
                 else {
                     ((AbstractEmbedCard)targetCard).missedMonsters = false;
                     return SpireReturn.Continue();
                 }
+            }
+            else if (AbstractCardPatch.AbstractCardField.boomerang.get(targetCard)) {
+
+                targetCard.exhaustOnUseOnce = false;
+                targetCard.dontTriggerOnUseCard = false;
+                adp().hand.moveToDeck(targetCard, false);
+                atb(new HandCheckAction());
+                __instance.isDone = true;
+
+                return SpireReturn.Return(null);
             }
             else
                 return SpireReturn.Continue();
@@ -55,7 +64,7 @@ public class UseCardActionPatch {
         private static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-                Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractCard.class, "isInAutoplay");
+                Matcher finalMatcher = new Matcher.FieldAccessMatcher(UseCardAction.class, "reboundCard");
                 return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
             }
         }

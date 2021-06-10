@@ -1,12 +1,4 @@
 {
-  "${ModID}:AquaDrawNextTurn": {
-    "NAME": "Draw Next Turn",
-    "DESCRIPTIONS": [
-      "Draw #b",
-      " additional cards next turn.",
-      " additional card next turn."
-    ]
-  },
   "${ModID}:DiscardNextTurn": {
     "NAME": "Discard Next Turn",
     "DESCRIPTIONS": [
@@ -15,51 +7,87 @@
       " card next turn."
     ]
   },
-  "${ModID}:IceStormPower": {
-    "NAME": "Ice Storm",
+  "${ModID}:DrawNextTurn": {
+    "NAME": "Draw Next Turn",
     "DESCRIPTIONS": [
-      "The first #b",
-      " times you embed an enemy each turn, gain [E]",
-      " time you embed an enemy each turn, gain [E]"
+      "Draw #b",
+      " extra cards next turn.",
+      " extra card next turn."
     ]
   },
-  "${ModID}:Drowned": {
-    "NAME": "Drowned",
+  "${ModID}:Hedge": {
+    "NAME": "Hedge",
     "DESCRIPTIONS": [
-      "Whenever this enemy loses HP, it loses #b",
-      " more.  Reduce this power by #b",
-      "% at end of turn."
+      "If you end your turn with a #ySigil in your hand, Draw #b",
+      " extra cards next turn.",
+      " extra card next turn."
+    ]
+  },
+  "${ModID}:Soaked": {
+    "NAME": "Soaked",
+    "DESCRIPTIONS": [
+      "Whenever this enemy is attacked or suffers HP loss, it takes #b",
+      " more damage.  Reduce this amount by #b",
+      " at end of turn.",
+      " more damage."
     ]
   },
   "${ModID}:ElementalForm": {
     "NAME": "Water Elemental Form",
     "DESCRIPTIONS": [
-      "Whenever you draw a #ySigil, trigger its effect #b",
-      " times.",
-      " time."
+      "At the start of your turn, apply ",
+      " #ySoaked."
+    ]
+  },
+  "${ModID}:Haste": {
+    "NAME": "Haste",
+    "DESCRIPTIONS": [
+      "At the start of your next ",
+      " turns, draw 1 card and gain [E] .",
+      " turn, draw 1 card and gain [E] ."
+    ]
+  },
+  "${ModID}:ColdHearted": {
+    "NAME": "Cold Hearted",
+    "DESCRIPTIONS": [
+      "Whenever you apply ",
+      " debuffs in one turn, gain #b",
+      " #yHaste."
     ]
   },
   "${ModID}:Embedded": {
-    "NAME": "Shard",
+    "NAME": "Shards",
     "DESCRIPTIONS": [
-      "This string should never be seen."
+      "This string should never be seen.",
+      " NL Takes #b",
+      " damage whenever it attacks.",
+      " NL Loses #b",
+      " HP at the start of its turn.",
+      " NL Whenever you attack this enemy, you gain #b",
+      " Block.",
+      " NL Whenever you discard a card, loses #b",
+      " HP.",
+      " Whenever you apply a debuff to this enemy, loses #b",
+      " HP.",
+      " NL Gains #b",
+      " Mark at the start of each turn.",
+      " NL #yFinishers trigger Mark #b",
+      " times",
+      " time",
+      " NL Deals #b",
+      " damage to ALL other enemies at the start of each turn.",
+      " NL Deals #b",
+      " less damage.",
+      " NL When you play a #yFinisher on this enemy,  deal equivalent damage #b",
+      " times to ALL other enemies."
     ]
   },
-  "${ModID}:Energized": {
+  "${ModID}:EnergizedTurquoise": {
     "NAME": "Energized",
     "DESCRIPTIONS": [
       "Gain #b",
       " additional [E] next turn.",
       " additional [E] next turn.",
-      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
-    ]
-  },
-  "${ModID}:ExploitWeakness": {
-    "NAME": "Exploit Weakness",
-    "DESCRIPTIONS": [
-      "Whenever you apply #yDrowned, gain #b",
-      " #yVigor.",
-      " #yVigor.",
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
   },
@@ -72,29 +100,26 @@
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
   },
-  "${ModID}:Flood": {
-    "NAME": "Flood",
+  "${ModID}:Exploit": {
+    "NAME": "Exploit",
     "DESCRIPTIONS": [
-      "The first #b",
-      " times discard a card each turn, draw a card.",
-      " time discard a card each turn, draw a card."
-    ]
-  },
-  "${ModID}:HeavyShards": {
-    "NAME": "Heavy Shards",
-    "DESCRIPTIONS": [
-      "Whenever you #yEmbed a #yShard, gain #b",
-      " #yBlock.",
-      " #yBlock.",
-      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+      "Whenever you apply a debuff, gain #b",
+      " #yBlock."
     ]
   },
   "${ModID}:Hobbled": {
     "NAME": "Hobbled",
     "DESCRIPTIONS": [
-      "Prevents the enemy from applying #yVulnerable, #yFrail, #yWeak, #yStrength, #yDexterity, and #yFocus, #b",
-      " times.",
-      " time."
+      "Negates the next #b",
+      " debuffs or status cards.",
+      " debuff or status card."
+    ]
+  },
+  "${ModID}:TempNegStrength": {
+    "NAME": "Damage Down",
+    "DESCRIPTIONS": [
+      "Does #b",
+      " less damage with attacks this turn."
     ]
   },
   "${ModID}:Mist": {
@@ -105,22 +130,6 @@
       " #ySigil you discard triggers twice."
     ]
   },
-  "${ModID}:Sidesteps": {
-    "NAME": "Side Steps",
-    "DESCRIPTIONS": [
-      "The first #b",
-      " times you debuff an enemy each turn, draw a card.",
-      " time you debuff an enemy each turn, draw a card."
-    ]
-  },
-  "${ModID}:Streamlined": {
-    "NAME": "Streamlined",
-    "DESCRIPTIONS": [
-      "The next #b",
-      " times you gain [E] or draw a card, gain or draw one more.",
-      " time you gain [E] or draw a card, gain or draw one more."
-    ]
-  },
   "${ModID}:Vitality": {
     "NAME": "Vitality",
     "DESCRIPTIONS": [
@@ -128,13 +137,37 @@
       " additional #yBlock."
     ]
   },
+  "${ModID}:DrawTwoTurns": {
+    "NAME": "Draw in Two Turns",
+    "DESCRIPTIONS": [
+      "Two turns from now, draw #b",
+      " additional cards.",
+      " additional card."
+    ]
+  },
+  "${ModID}:DiscardTwoTurns": {
+    "NAME": "Discard in Two Turns",
+    "DESCRIPTIONS": [
+      "Two turns from now, discard #b",
+      " cards.",
+      " card."
+    ]
+  },
   "${ModID}:StormSigil": {
     "NAME": "Storm Sigil",
     "DESCRIPTIONS": [
-      "Discard #b",
-      " more cards in order to #b",
-      " more card in order to deal #b",
-      " damage per shard to ALL enemies."
+      "Whenever you discard a card, deal #b",
+      " damage per #yShard to ALL enemies."
+    ]
+  },
+  "${ModID}:Speed": {
+    "NAME": "Speed",
+    "DESCRIPTIONS": [
+      "At the start of your turn, draw #b",
+      " card and discard #b",
+      " card.",
+      " cards and discard #b",
+      " cards."
     ]
   }
 }

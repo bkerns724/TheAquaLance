@@ -1,26 +1,21 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.actions.EmbedAction;
-import theAquaLance.cards.AbstractEasyCard;
-import theAquaLance.powers.EmbedPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
 public class CatalystShard extends AbstractEmbedCard {
     public final static String ID = makeID("CatalystShard");
-    private final static int DAMAGE = 6;
+    private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 2;
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int MAGIC = 3;
+    private final static int UPGRADE_MAGIC = 1;
 
     public CatalystShard() {
-        super(ID, 1, CardRarity.UNCOMMON);
+        super(ID, 2, CardRarity.UNCOMMON);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }
@@ -34,13 +29,7 @@ public class CatalystShard extends AbstractEmbedCard {
         upgradeMagicNumber(UPGRADE_MAGIC);
     }
 
-    public String getEmbedDescription() {
-        return cardStrings.EXTENDED_DESCRIPTION[0] + magicNumber + cardStrings.EXTENDED_DESCRIPTION[1];
-    }
-
-    @Override
-    public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature host) {
-        if (power.type == AbstractPower.PowerType.DEBUFF && !(power instanceof EmbedPower) && host == target)
-            att(new LoseHPAction(target, adp(), magicNumber*getPureShardMult((AbstractMonster)target)));
+    public int getCatalystAmount() {
+        return magicNumber;
     }
 }

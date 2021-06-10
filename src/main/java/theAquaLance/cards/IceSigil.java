@@ -1,6 +1,5 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
@@ -10,12 +9,12 @@ import static theAquaLance.util.Wiz.*;
 
 public class IceSigil extends AbstractEasyCard {
     public final static String ID = makeID("IceSigil");
-    private final static int MAGIC = 7;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int BLOCK = 8;
+    private final static int UPGRADE_BLOCK = 3;
 
     public IceSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
-        baseMagicNumber = magicNumber = MAGIC;
+        baseBlock = BLOCK;
         AbstractCardField.sigil.set(this, true);
     }
 
@@ -28,11 +27,11 @@ public class IceSigil extends AbstractEasyCard {
     }
 
     @Override
-    public void triggerOnManualDiscard() {
-        atb(new GainBlockAction(adp(), magicNumber));
+    public void onManualDiscard() {
+        blck();
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeBlock(UPGRADE_BLOCK);
     }
 }

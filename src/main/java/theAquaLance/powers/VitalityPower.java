@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import theAquaLance.AquaLanceMod;
 
 public class VitalityPower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("Vitality");
+    public static final String POWER_ID = AquaLanceMod.makeID("Vitality");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public VitalityPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, PowerType.BUFF, true, owner, amount);
+        super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
     }
 

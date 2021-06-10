@@ -9,7 +9,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Flak extends AbstractEasyCard {
     public final static String ID = makeID("Flak");
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 
     public Flak() {

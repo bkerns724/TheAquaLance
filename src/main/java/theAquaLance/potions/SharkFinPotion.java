@@ -1,29 +1,34 @@
 package theAquaLance.potions;
 
-import basemod.BaseMod;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.localization.PotionStrings;
 import theAquaLance.AquaLanceMod;
-import theAquaLance.powers.StreamlinedPower;
 
+import static theAquaLance.AquaLanceMod.AQUALANCE_EYE_COLOR;
 import static theAquaLance.util.Wiz.*;
 
 public class SharkFinPotion extends AbstractEasyPotion {
     public static final String POTION_ID = AquaLanceMod.makeID("SharkFinPotion");
-    private static final int STREAMLINE_AMT = 6;
+    private static final int FLOW_AMT = 3;
 
     public SharkFinPotion() {
-        super(POTION_ID, PotionRarity.UNCOMMON, PotionSize.JAR, PotionColor.BLUE, false, false);
+        super(POTION_ID, PotionRarity.RARE, PotionSize.M, PotionColor.SMOKE, false, false);
+        PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
         String[] potionDesc = potionStrings.DESCRIPTIONS;
-        description = potionDesc[0] + potency + potionDesc[1];
+        description = potionDesc[0] + potency + potionDesc[1] + potency + potionDesc[2];
         tips.clear();
         tips.add(new PowerTip(name, description));
-        tips.add(new PowerTip(BaseMod.getKeywordTitle(StreamlinedPower.POWER_ID), BaseMod.getKeywordDescription(StreamlinedPower.POWER_ID)));
+        labOutlineColor = AQUALANCE_EYE_COLOR;
     }
 
     public void use(AbstractCreature target) {
-        applyToSelf(new StreamlinedPower(adp(), STREAMLINE_AMT));
+        atb(new DrawCardAction(potency));
+        atb(new DiscardAction(adp(), adp(), potency, false));
     }
 
-    public int getPotency(int ascensionLevel) { return STREAMLINE_AMT; }
+    public int getPotency(int ascensionLevel) { return FLOW_AMT; }
 }

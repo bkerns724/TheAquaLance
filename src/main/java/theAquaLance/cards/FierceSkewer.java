@@ -9,12 +9,12 @@ import static theAquaLance.util.Wiz.*;
 
 public class FierceSkewer extends AbstractEasyCard {
     public final static String ID = makeID("FierceSkewer");
-    private final static int DAMAGE = 30;
-    private final static int UPGRADE_DAMAGE = 10;
-    private final static int MAGIC = 3;
+    private final static int DAMAGE = 25;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = -1;
 
     public FierceSkewer() {
-        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }
@@ -25,10 +25,11 @@ public class FierceSkewer extends AbstractEasyCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return (getDebuffCount(m) >= magicNumber);
     }
 
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

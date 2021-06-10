@@ -1,6 +1,8 @@
 package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -21,28 +23,25 @@ public class PickOff extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        isMultiDamage = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractMonster weakestMonster = null;
-        Iterator iter = AbstractDungeon.getMonsters().monsters.iterator();
-        while(iter.hasNext()) {
-            AbstractMonster mo = (AbstractMonster)iter.next();
-            if (!mo.isDeadOrEscaped()) {
-                if (weakestMonster == null) {
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+            if (!mo.isDeadOrEscaped() && !mo.halfDead) {
+                if (weakestMonster == null)
                     weakestMonster = mo;
-                } else if (mo.currentHealth < weakestMonster.currentHealth) {
+                else if (mo.currentHealth < weakestMonster.currentHealth)
                     weakestMonster = mo;
-                }
             }
         }
 
         int enemyCount = getEnemies().size();
+        calculateCardDamage(weakestMonster);
         if (enemyCount < 3)
-            dmg(weakestMonster, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
+            atb(new DamageAction(weakestMonster, new DamageInfo(adp(), damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         else
-            dmg(weakestMonster, AbstractGameAction.AttackEffect.SLASH_HEAVY);
+            atb(new DamageAction(weakestMonster, new DamageInfo(adp(), damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     public void applyPowers() {

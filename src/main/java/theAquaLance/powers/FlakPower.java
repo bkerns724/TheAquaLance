@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import static theAquaLance.util.Wiz.*;
 
 public class FlakPower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("Flak");
+    public static final String POWER_ID = AquaLanceMod.makeID("Flak");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

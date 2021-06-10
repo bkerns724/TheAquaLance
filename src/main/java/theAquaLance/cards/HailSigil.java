@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import theAquaLance.patches.AbstractCardPatch;
 
 import java.util.Iterator;
 
@@ -18,21 +19,20 @@ public class HailSigil extends AbstractEasyCard {
     public HailSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
+        AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return false;
     }
 
     public void onManualDiscard() {
         AbstractMonster weakestMonster = null;
-        Iterator iter = AbstractDungeon.getMonsters().monsters.iterator();
-        while(iter.hasNext()) {
-            AbstractMonster mo = (AbstractMonster)iter.next();
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             if (!mo.isDeadOrEscaped()) {
                 if (weakestMonster == null) {
                     weakestMonster = mo;

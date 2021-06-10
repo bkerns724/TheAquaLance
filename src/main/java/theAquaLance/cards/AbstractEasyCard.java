@@ -17,11 +17,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.AquaLanceMod;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.TheAquaLance;
 import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
 import theAquaLance.patches.GameActionManagerPatch.GameActionManagerField;
-import theAquaLance.powers.ElementalFormPower;
 import theAquaLance.powers.MistPower;
 import theAquaLance.util.CardArtRoller;
 
@@ -79,23 +78,14 @@ public abstract class AbstractEasyCard extends CustomCard {
         if (AbstractCardField.sigil.get(this)) {
             Integer x = GameActionManagerField.sigilsThisCombat.get(AbstractDungeon.actionManager);
             GameActionManagerField.sigilsThisCombat.set(AbstractDungeon.actionManager, x+1);
-            if (adp().hasPower(MistPower.POWER_ID)) {
+            AbstractPower mPow = adp().getPower(MistPower.POWER_ID);
+            if (mPow != null && ((MistPower)mPow).getActualValue() > 0) {
                 onManualDiscard();
-                atb(new ReducePowerAction(adp(), adp(), MistPower.POWER_ID, 1));
+                ((MistPower) mPow).reduceActualValue();
+                att(new ReducePowerAction(adp(), adp(), MistPower.POWER_ID, 1));
             }
         }
         onManualDiscard();
-    }
-
-    @Override
-    public void triggerWhenDrawn() {
-        if (AbstractCardField.sigil.get(this)) {
-            int count = 0;
-            if (adp().hasPower(ElementalFormPower.POWER_ID))
-                count = adp().getPower(ElementalFormPower.POWER_ID).amount;
-            for (int i = 0; i < count; i++)
-                onManualDiscard();
-        }
     }
 
     @Override
@@ -126,6 +116,7 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     @Override
     public void applyPowers() {
+        /*
         if (baseSecondDamage > -1) {
             secondDamage = baseSecondDamage;
 
@@ -140,11 +131,13 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.applyPowers();
 
             isSecondDamageModified = (secondDamage != baseSecondDamage);
-        } else super.applyPowers();
+        } else */
+        super.applyPowers();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        /*
         if (baseSecondDamage > -1) {
             secondDamage = baseSecondDamage;
 
@@ -159,7 +152,8 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.calculateCardDamage(mo);
 
             isSecondDamageModified = (secondDamage != baseSecondDamage);
-        } else super.calculateCardDamage(mo);
+        } else */
+        super.calculateCardDamage(mo);
     }
 
     public void resetAttributes() {

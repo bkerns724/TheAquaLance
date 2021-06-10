@@ -1,9 +1,9 @@
 package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.actions.AquaDrawCardAction;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -21,7 +21,7 @@ public class Rush extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        atb(new AquaDrawCardAction(magicNumber));
+        atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(adp(), adp(), magicNumber, false));
     }
 

@@ -11,8 +11,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class FlingDebris extends AbstractEasyCard {
     public final static String ID = makeID("FlingDebris");
-    // intellij stuff attack, enemy, common, 4, 2, , , 1, , 0, 
-    private final static int DAMAGE = 4;
+    private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int MAGIC = 1;
 

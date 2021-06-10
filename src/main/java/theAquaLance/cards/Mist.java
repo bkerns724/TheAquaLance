@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 public class Mist extends AbstractEasyCard {
     public final static String ID = makeID("Mist");
     private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int UPGRADE_COST = 0;
 
     public Mist() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -22,8 +22,6 @@ public class Mist extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
-        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-        initializeDescription();
+        upgradeBaseCost(UPGRADE_COST);
     }
 }

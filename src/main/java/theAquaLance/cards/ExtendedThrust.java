@@ -16,7 +16,7 @@ public class ExtendedThrust extends AbstractEasyCard {
     private final static int MAGIC = 1;
 
     public ExtendedThrust() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }

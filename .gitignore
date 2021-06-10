@@ -1,5 +1,8 @@
 *.class
 
+# Weird ods thing
+*.ods[#]
+
 # IntelliJ
 .idea/
 out/
@@ -81,3 +84,4 @@ $RECYCLE.BIN/
 
 # Spriter files
 *.autosave.scml
+/src/main/resources/aqualancemodResources/images/relics/Waterskin.png

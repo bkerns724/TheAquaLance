@@ -1,9 +1,8 @@
 package theAquaLance.cards;
 
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.AquaLanceMod;
-import theAquaLance.actions.AquaGainEnergyAction;
 import theAquaLance.patches.AbstractCardPatch;
 
 import static theAquaLance.AquaLanceMod.makeID;
@@ -24,12 +23,12 @@ public class ThunderheadSigil extends AbstractEasyCard {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return false;
     }
 
     public void onManualDiscard() {
-        atb(new AquaGainEnergyAction(magicNumber));
+        atb(new GainEnergyAction(magicNumber));
     }
 
     public void upp() {

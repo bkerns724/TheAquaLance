@@ -1,8 +1,6 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.actions.EmbedAction;
 
@@ -26,17 +24,10 @@ public class PoisonShard extends AbstractEmbedCard {
         atb(new EmbedAction(this, m));
     }
 
-    @Override
-    public void atStartOfTurn(AbstractCreature host) {
-        att(new LoseHPAction(host, adp(), magicNumber));
-    }
+    public int getDamageAmount() {return magicNumber;}
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
         upgradeMagicNumber(UPGRADE_MAGIC);
-    }
-
-    public String getEmbedDescription() {
-        return cardStrings.EXTENDED_DESCRIPTION[0];
     }
 }
