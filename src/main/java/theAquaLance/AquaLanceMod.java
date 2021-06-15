@@ -25,9 +25,7 @@ import org.apache.logging.log4j.Logger;
 import theAquaLance.cards.AbstractEasyCard;
 import theAquaLance.cards.cardvars.SecondDamage;
 import theAquaLance.cards.cardvars.SecondMagicNumber;
-import theAquaLance.potions.HobblePotion;
-import theAquaLance.potions.SharkFinPotion;
-import theAquaLance.potions.WaterBucket;
+import theAquaLance.potions.*;
 import theAquaLance.relics.AbstractEasyRelic;
 import theAquaLance.relics.RuneOfIce;
 import theAquaLance.relics.RuneOfLivingWater;
@@ -75,6 +73,8 @@ public class AquaLanceMod implements
     private static final String CHARSELECT_PORTRAIT = modID + "Resources/images/charSelect/charBG.png";
     public static final String WATER_EFFECT_FILE = modID + "Resources/images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = modID + "Resources/images/vfx/Blood.png";
+    public static final String THEME_KEY = makeID("Theme Song");
+    public static final String THEME_OGG = modID + "Resources/audio/Theme.ogg";
 
     private static final String BADGE_IMG = modID + "Resources/images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -84,7 +84,7 @@ public class AquaLanceMod implements
     public AquaLanceMod() {
         BaseMod.subscribe(this);
 
-        BaseMod.addColor(TheAquaLance.Enums.TURQUOISE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
+        BaseMod.addColor(TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
                 AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
@@ -143,8 +143,8 @@ public class AquaLanceMod implements
                     }
                 });
 
-        BaseMod.addRelicToCustomPool(new RuneOfIce(), TheAquaLance.Enums.TURQUOISE_COLOR);
-        BaseMod.addRelicToCustomPool(new RuneOfLivingWater(), TheAquaLance.Enums.TURQUOISE_COLOR);
+        BaseMod.addRelicToCustomPool(new RuneOfIce(), TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
+        BaseMod.addRelicToCustomPool(new RuneOfLivingWater(), TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
     }
 
     @Override
@@ -156,7 +156,6 @@ public class AquaLanceMod implements
                 .setDefaultSeen(true)
                 .cards();
     }
-
 
     @Override
     public void receiveEditStrings() {
@@ -185,6 +184,8 @@ public class AquaLanceMod implements
     @Override
     public void receivePostInitialize() {
         BaseMod.addPotion(HobblePotion.class, Color.GREEN.cpy(), null, Color.YELLOW.cpy(), HobblePotion.POTION_ID, THE_AQUALANCE);
+        BaseMod.addPotion(IntPotion.class, Color.YELLOW.cpy(), null, null, IntPotion.POTION_ID, THE_AQUALANCE);
+        BaseMod.addPotion(InsightPotion.class, Color.WHITE.cpy(), null, null, InsightPotion.POTION_ID, THE_AQUALANCE);
         BaseMod.addPotion(WaterBucket.class, new Color(0,206/256F,209/256F, 1), null, null, WaterBucket.POTION_ID, THE_AQUALANCE);
         BaseMod.addPotion(SharkFinPotion.class, Color.LIGHT_GRAY.cpy(), null, null, SharkFinPotion.POTION_ID, THE_AQUALANCE);
 

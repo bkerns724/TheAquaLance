@@ -16,7 +16,7 @@ public class HobblePotion extends AbstractEasyPotion {
     private static final int HOBBLE_AMOUNT = 3;
 
     public HobblePotion() {
-        super(POTION_ID, PotionRarity.COMMON, PotionSize.SPHERE, PotionColor.GREEN, true, true);
+        super(POTION_ID, PotionRarity.UNCOMMON, PotionSize.SPHERE, PotionColor.GREEN, true, true);
         PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
         String[] potionDesc = potionStrings.DESCRIPTIONS;
         description = potionDesc[0] + potency + potionDesc[1];

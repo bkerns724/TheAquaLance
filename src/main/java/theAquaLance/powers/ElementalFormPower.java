@@ -2,6 +2,8 @@ package theAquaLance.powers;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -20,8 +22,9 @@ public class ElementalFormPower extends AbstractEasyPower {
     }
 
     @Override
-    public void atStartOfTurn() {
-        forAllMonstersLiving((m) -> applyToEnemy(m, new SoakedPower(m, amount)));
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (target != source && !(power instanceof GainStrengthPower))
+            applyToSelf(new IntelligencePower(adp(), amount));
     }
 
     @Override

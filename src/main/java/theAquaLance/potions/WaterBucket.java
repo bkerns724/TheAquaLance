@@ -17,7 +17,7 @@ public class WaterBucket extends AbstractEasyPotion {
     private static final int DROWN_AMOUNT = 4;
 
     public WaterBucket() {
-        super(POTION_ID, PotionRarity.UNCOMMON, PotionSize.JAR, PotionColor.BLUE, true, true);
+        super(POTION_ID, PotionRarity.COMMON, PotionSize.JAR, PotionColor.BLUE, true, true);
         PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
         String[] potionDesc = potionStrings.DESCRIPTIONS;
         description = potionDesc[0] + potency + potionDesc[1];

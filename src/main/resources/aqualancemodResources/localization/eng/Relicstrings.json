@@ -8,11 +8,21 @@
       " #yDexterity."
     ]
   },
-  "${ModID}:Chains": {
-    "NAME": "Chains",
-    "FLAVOR": "Heavy chains used for restraining prisoners.",
+  "${ModID}:PaperFish": {
+    "NAME": "Paper Fish",
+    "FLAVOR": "It flops around a lot.  Somehow.",
     "DESCRIPTIONS": [
-      "Drowning no longer decays."
+      "Enemies with #ySoaked take #b",
+      "% more damage rather than #b",
+      "%."
+    ]
+  },
+  "${ModID}:MinorElemental": {
+    "NAME": "Minor Elemental",
+    "FLAVOR": "You've made a new friend!",
+    "DESCRIPTIONS": [
+      "You cause #b",
+      " HP loss to ALL enemies at the start of your turn."
     ]
   },
   "${ModID}:Javelin": {
@@ -20,8 +30,8 @@
     "FLAVOR": "Throw it for ranged face stabbing.",
     "DESCRIPTIONS": [
       "Every time you play #b",
-      " #yAttacks in a single turn, apply #b",
-      " #ySoaked to ALL enemies."
+      " #yAttacks in a single turn, gain #b",
+      " #yIntelligence."
     ]
   },
   "${ModID}:PoisonSpearhead": {
@@ -43,16 +53,16 @@
     "NAME": "Rune of Ice",
     "FLAVOR": "A magical symbol made of ice that never thaws.",
     "DESCRIPTIONS": [
-      "#yHobbled enemies take #b",
-      " more attack damage."
+      "The first time each turn you cause HP loss, gain #b",
+      " #yVigor."
     ]
   },
   "${ModID}:RuneOfLivingWater": {
     "NAME": "Rune of Living Water",
     "FLAVOR": "It is made of water, yet somehow keeps its shape.",
     "DESCRIPTIONS": [
-      "Whenever you apply #yHobble, apply #b",
-      " #ySoaked."
+      "The first time each turn you cause HP loss, gain #b",
+      " #yVigor."
     ]
   },
   "${ModID}:SteamOrb": {
@@ -73,16 +83,15 @@
     "NAME": "Unmelting Ice",
     "FLAVOR": "It never melts.",
     "DESCRIPTIONS": [
-      "Whenever you #yEmbed a #yShard, deal #b",
-      " damage to your target."
+      "Whenever you play a #yFinisher, deal #b",
+      " damage for each #yShard removed."
     ]
   },
   "${ModID}:VialOfMineralWater": {
     "NAME": "Vial of Mineral Water",
     "FLAVOR": "Very healthy.",
     "DESCRIPTIONS": [
-      "Every #b",
-      " turns, draw an additional card."
+      "Whenever you shuffle your deck, trigger Mark on ALL enemies."
     ]
   },
   "${ModID}:Waterskin": {

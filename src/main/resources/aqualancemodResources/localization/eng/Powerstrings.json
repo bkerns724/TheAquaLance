@@ -15,6 +15,13 @@
       " extra card next turn."
     ]
   },
+  "${ModID}:IceSpikes": {
+    "NAME": "Ice Spikes",
+    "DESCRIPTIONS": [
+      "When this enemy attacks, it suffers #b",
+      " damage."
+    ]
+  },
   "${ModID}:Hedge": {
     "NAME": "Hedge",
     "DESCRIPTIONS": [
@@ -26,17 +33,17 @@
   "${ModID}:Soaked": {
     "NAME": "Soaked",
     "DESCRIPTIONS": [
-      "Whenever this enemy is attacked or suffers HP loss, it takes #b",
-      " more damage.  Reduce this amount by #b",
-      " at end of turn.",
-      " more damage."
+      "Receive #b",
+      "% more damage from non-Attacks for #b",
+      " turn.",
+      " turns."
     ]
   },
   "${ModID}:ElementalForm": {
     "NAME": "Water Elemental Form",
     "DESCRIPTIONS": [
-      "At the start of your turn, apply ",
-      " #ySoaked."
+      "Whenever you apply a debuff, gain #b",
+      " #yIntelligence."
     ]
   },
   "${ModID}:Haste": {
@@ -47,12 +54,25 @@
       " turn, draw 1 card and gain [E] ."
     ]
   },
-  "${ModID}:ColdHearted": {
-    "NAME": "Cold Hearted",
+  "${ModID}:Mark": {
+    "NAME": "Mark",
     "DESCRIPTIONS": [
-      "Whenever you apply ",
-      " debuffs in one turn, gain #b",
-      " #yHaste."
+      "Whenever you trigger Mark, loses #b",
+      " HP."
+    ]
+  },
+  "${ModID}:Int": {
+    "NAME": "Intelligence",
+    "DESCRIPTIONS": [
+      "Increases non-attack damage you cause by #b",
+      "."
+    ]
+  },
+  "${ModID}:LoseInt": {
+    "NAME": "Lose Intelligence",
+    "DESCRIPTIONS": [
+      "At the end of your turn, lose #b",
+      " #yIntelligence."
     ]
   },
   "${ModID}:Embedded": {
@@ -61,8 +81,8 @@
       "This string should never be seen.",
       " NL Takes #b",
       " damage whenever it attacks.",
-      " NL Loses #b",
-      " HP at the start of its turn.",
+      " NL Gains #b",
+      " #yPoison at the start of its turn.",
       " NL Whenever you attack this enemy, you gain #b",
       " Block.",
       " NL Whenever you discard a card, loses #b",
@@ -75,7 +95,7 @@
       " times",
       " time",
       " NL Deals #b",
-      " damage to ALL other enemies at the start of each turn.",
+      " damage to ALL other enemies at the start of its turn.",
       " NL Deals #b",
       " less damage.",
       " NL When you play a #yFinisher on this enemy,  deal equivalent damage #b",
@@ -100,11 +120,39 @@
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
   },
-  "${ModID}:Exploit": {
-    "NAME": "Exploit",
+  "${ModID}:ColdHearted": {
+    "NAME": "Cold Hearted",
     "DESCRIPTIONS": [
       "Whenever you apply a debuff, gain #b",
       " #yBlock."
+    ]
+  },
+  "${ModID}:Aggression": {
+    "NAME": "Aggression",
+    "DESCRIPTIONS": [
+      "Whenever you apply a debuff, cause #b",
+      " HP loss."
+    ]
+  },
+  "${ModID}:BloodLust": {
+    "NAME": "BloodLust",
+    "DESCRIPTIONS": [
+      "Whenever you deal damage, you deal #b",
+      " more damage until the end of your turn."
+    ]
+  },
+  "${ModID}:TempDamageUp": {
+    "NAME": "Extra Damage",
+    "DESCRIPTIONS": [
+      "Whenever you deal damage, you deal #b",
+      " more."
+    ]
+  },
+  "${ModID}:WildMagic": {
+    "NAME": "Wild Magic",
+    "DESCRIPTIONS": [
+      "Whenever you discard a card, cause #b",
+      " HP loss to a random enemy."
     ]
   },
   "${ModID}:Hobbled": {
@@ -122,19 +170,21 @@
       " less damage with attacks this turn."
     ]
   },
-  "${ModID}:Mist": {
-    "NAME": "Misty",
-    "DESCRIPTIONS": [
-      "The next #b",
-      " #ySigils you discard trigger twice.",
-      " #ySigil you discard triggers twice."
-    ]
-  },
   "${ModID}:Vitality": {
     "NAME": "Vitality",
     "DESCRIPTIONS": [
       "Your next blocking card gives #b",
       " additional #yBlock."
+    ]
+  },
+  "${ModID}:Rapids": {
+    "NAME": "Rapids",
+    "DESCRIPTIONS": [
+      "Whenever you play a card this turn, Draw #b",
+      " card and discard #b",
+      " random card.",
+      " cards and discard #b",
+      " random cards."
     ]
   },
   "${ModID}:DrawTwoTurns": {
@@ -143,6 +193,13 @@
       "Two turns from now, draw #b",
       " additional cards.",
       " additional card."
+    ]
+  },
+  "${ModID}:IceMastery": {
+    "NAME": "Ice Mastery",
+    "DESCRIPTIONS": [
+      "#yPop effects happen #b",
+      " times."
     ]
   },
   "${ModID}:DiscardTwoTurns": {

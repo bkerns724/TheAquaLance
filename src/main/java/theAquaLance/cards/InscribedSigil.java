@@ -2,9 +2,9 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.MarkPower;
 import theAquaLance.actions.TriggerEnemyMarkAction;
 import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
+import theAquaLance.powers.MyMarkPower;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -37,7 +37,7 @@ public class InscribedSigil extends AbstractEasyCard {
         enemies.removeIf(m -> m.halfDead);
         enemies.removeIf(Objects::isNull); // Might not even be possible, but making sure.
         for (AbstractMonster m : enemies) {
-            applyToEnemy(m, new MarkPower(m, magicNumber));
+            applyToEnemy(m, new MyMarkPower(m, magicNumber));
             atb(new TriggerEnemyMarkAction(m));
         }
     }

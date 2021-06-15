@@ -6,6 +6,20 @@
       " #yHobbled."
     ]
   },
+  "${ModID}:IntPotion": {
+    "NAME": "Intelligence Potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yIntelligence."
+    ]
+  },
+  "${ModID}:InsightPotion": {
+    "NAME": "Insight Potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yIntelligence for this turn."
+    ]
+  },
   "${ModID}:WaterBucket": {
     "NAME": "Water Bucket",
     "DESCRIPTIONS": [

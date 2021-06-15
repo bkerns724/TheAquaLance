@@ -22,7 +22,7 @@ import theAquaLance.relics.RuneOfIce;
 
 import java.util.ArrayList;
 
-import static theAquaLance.TheAquaLance.Enums.TURQUOISE_COLOR;
+import static theAquaLance.TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR;
 import static theAquaLance.AquaLanceMod.*;
 
 public class TheAquaLance extends CustomPlayer {
@@ -46,12 +46,13 @@ public class TheAquaLance extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
-    private static final int NUM_STRIKES = 4;
+    private static final int NUM_STRIKES = 3;
     private static final int NUM_DEFENDS = 4;
-    private static final String STARTER_CARD1 = Neutralize.ID;
+    private static final int NUM_ALT_STRIKES = 2;
+    private static final String STARTER_CARD1 = BloodJerk.ID;
     private static final String STARTER_CARD2 = ExtendedThrust.ID;
     private static final String STARTER_RELIC = RuneOfIce.ID;
-    private static final int STARTING_HP = 80;
+    private static final int STARTING_HP = 70;
 
     public TheAquaLance(String name, PlayerClass setClass) {
         super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/mainChar/orb/vfx.png", null),
@@ -87,7 +88,8 @@ public class TheAquaLance extends CustomPlayer {
             retVal.add(Strike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
-        retVal.add(STARTER_CARD1);
+        for (int i = 0; i < NUM_ALT_STRIKES; i++)
+            retVal.add(STARTER_CARD1);
         retVal.add(STARTER_CARD2);
         return retVal;
     }
@@ -116,7 +118,7 @@ public class TheAquaLance extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return TURQUOISE_COLOR;
+        return AQUALANCE_TURQUOISE_COLOR;
     }
 
     @Override
@@ -182,9 +184,9 @@ public class TheAquaLance extends CustomPlayer {
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_AQUALANCE;
-        @SpireEnum(name = "TURQUOISE_COLOR")
-        public static AbstractCard.CardColor TURQUOISE_COLOR;
-        @SpireEnum(name = "TURQUOISE_COLOR")
+        @SpireEnum(name = "AQUALANCE_COLOR")
+        public static AbstractCard.CardColor AQUALANCE_TURQUOISE_COLOR;
+        @SpireEnum(name = "AQUALANCE_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_AQUALANCE_COLOR;
     }

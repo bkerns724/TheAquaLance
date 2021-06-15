@@ -1,35 +1,28 @@
 package theAquaLance.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
 import theAquaLance.TheAquaLance;
-import theAquaLance.powers.EmbedPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class UnmeltingIce extends AbstractEasyRelic implements OnApplyPowerRelic {
+public class UnmeltingIce extends AbstractEasyRelic {
     public static final String ID = makeID("UnmeltingIce");
-    private static final int EMBED_DAMAGE = 3;
+    private static final int POP_DAMAGE = 4;
 
     public UnmeltingIce() {
-        super(ID, RelicTier.COMMON, LandingSound.CLINK, TheAquaLance.Enums.TURQUOISE_COLOR);
+        super(ID, RelicTier.COMMON, LandingSound.CLINK, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
     }
 
-    public boolean onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (!target.hasPower(ArtifactPower.POWER_ID) && power instanceof EmbedPower)
-            atb(new DamageAction(target, new DamageInfo(source, EMBED_DAMAGE, DamageInfo.DamageType.THORNS),
-                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        return true;
+    public void onTrigger(AbstractCreature target) {
+        atb(new DamageAction(target, new DamageInfo(adp(), POP_DAMAGE, DamageInfo.DamageType.THORNS),
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + EMBED_DAMAGE + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0] + POP_DAMAGE + DESCRIPTIONS[1];
     }
 }

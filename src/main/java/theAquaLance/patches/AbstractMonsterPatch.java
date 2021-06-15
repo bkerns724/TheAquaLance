@@ -25,7 +25,7 @@ public class AbstractMonsterPatch {
             // Need to call something when monster dies.
             for (AbstractPower p : __instance.powers) {
                 if (p instanceof EmbedPower)
-                    ((EmbedPower) p).unEmbedAll();
+                    ((EmbedPower) p).popAll();
             }
         }
 

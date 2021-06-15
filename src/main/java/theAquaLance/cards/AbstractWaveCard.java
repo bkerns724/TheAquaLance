@@ -54,11 +54,15 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
             }
             mergedCards.clear();
             cardToPreview.clear();
+            cardsToPreview = null;
+            previewIndex = 0;
             setDescription();
         }
     }
 
     public void addCard(AbstractWaveCard card) {
+        card.angle = 0.0F;
+        card.targetAngle = angle;
         mergedCards.add(card);
         cardToPreview.add(card);
     }
@@ -70,12 +74,12 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
     public void calculateBonuses() {
         baseDamage = damageCore;
         baseBlock = blockCore;
-        baseMagicNumber = magicCore;
+        baseSecondDamage = magicCore;
         areaAttack = areaCore;
         for (AbstractWaveCard c : mergedCards) {
             baseDamage += c.damageBonus;
             baseBlock += c.blockBonus;
-            baseMagicNumber += c.magicBonus;
+            baseSecondDamage += c.magicBonus;
             if (c.areaCore)
                 areaAttack = true;
         }
@@ -87,7 +91,7 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
         rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
         if (baseBlock > 0)
             rawDescription += cardStrings.EXTENDED_DESCRIPTION[1];
-        if (magicNumber > 0)
+        if (secondDamage > 0)
             rawDescription += cardStrings.EXTENDED_DESCRIPTION[2];
         rawDescription += cardStrings.EXTENDED_DESCRIPTION[3];
         initializeDescription();

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import static theAquaLance.AquaLanceMod.makeID;
@@ -36,7 +37,10 @@ public class PickOff extends AbstractEasyCard {
             }
         }
 
-        int enemyCount = getEnemies().size();
+        ArrayList<AbstractMonster> enemies = getEnemies();
+        enemies.removeIf(mon -> mon.halfDead);
+        int enemyCount = enemies.size();
+
         calculateCardDamage(weakestMonster);
         if (enemyCount < 3)
             atb(new DamageAction(weakestMonster, new DamageInfo(adp(), damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));

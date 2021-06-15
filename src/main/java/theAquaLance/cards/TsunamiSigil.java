@@ -1,7 +1,6 @@
 package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,15 +14,15 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class TsunamiSigil extends AbstractEasyCard {
     public final static String ID = makeID("TsunamiSigil");
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 2;
-    private final static int UPGRADE_SECOND_MAGIC = 1;
+    private final static int SECOND_DAMAGE = 3;
+    private final static int UPGRADE_SECOND = 1;
 
     public TsunamiSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
-        baseSecondMagic = secondMagic = SECOND_MAGIC;
+        baseSecondDamage = SECOND_DAMAGE;
         AbstractCardField.sigil.set(this, true);
     }
 
@@ -45,13 +44,15 @@ public class TsunamiSigil extends AbstractEasyCard {
 
     public void applyPowers() {
         int sigilCount = GameActionManagerField.sigilsThisCombat.get(AbstractDungeon.actionManager) + 1;
-        secondMagic = baseSecondMagic*sigilCount;
+        int temp = baseSecondDamage;
+        baseSecondDamage = temp*sigilCount;
         super.applyPowers();
-        isSecondMagicModified = secondMagic != baseSecondMagic;
+        baseSecondDamage = temp;
+        isSecondDamageModified = secondDamage != baseSecondDamage;
     }
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
-        upgradeSecondMagic(UPGRADE_SECOND_MAGIC);
+        upgradeSecondMagic(UPGRADE_SECOND);
     }
 }

@@ -3,9 +3,7 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.patches.AbstractCardPatch;
-import theAquaLance.powers.HastePower;
-
-import java.util.Iterator;
+import theAquaLance.powers.IntelligencePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -16,7 +14,7 @@ public class RiverSigil extends AbstractEasyCard {
     private final static int UPGRADE_MAGIC = 1;
 
     public RiverSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
@@ -30,7 +28,7 @@ public class RiverSigil extends AbstractEasyCard {
     }
 
     public void onManualDiscard() {
-        applyToSelf(new HastePower(adp(), magicNumber));
+        applyToSelf(new IntelligencePower(adp(), magicNumber));
     }
 
     public void upp() {

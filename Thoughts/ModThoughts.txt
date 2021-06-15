@@ -1,18 +1,25 @@
 New Mechanics
     Wave
-	Rebound.  Waves of equal or lesser cost merge into it when played, giving half their damage and effects to that wave.  Unmerge when discarded.
+	Rebound.  Waves of equal or lesser cost merge into it when played, adding a bonus effect.  Unmerges when discarded.
     Replenish
 	Draw another card when drawn.
+    Embed, Pop
+	Shards are attack cards that attach to enemies and apply a debuff.  Some cards will remove a shard, 
+	putting it back into your deck and giving the shard's pop bonus.
+    Sigils
+	Cards that can't be played normally, but have a special effect on discard.
 
 New Debuffs
     Hobble
-	Stops status cards and 
+	Stops status cards and debuffs
     Soaked
-	Enemy takes 1 extra damage from attacks and hp loss for each stack of Soaked
+	50% more damage from non-attack damage sources
+    Ice Spikes
+	Owner takes thorns damage when attacking
 
 New Buffs
-    Ice Armor
-	Reduces attack damage by X, then shatters
+    Int
+	Buffs hp loss you inflict
     Haste
 	1 draw, 1 energy at start of turn.  Turn based.
 

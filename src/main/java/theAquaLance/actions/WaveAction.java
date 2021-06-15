@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.MarkPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.cards.AbstractWaveCard;
+import theAquaLance.powers.IceSpikesPower;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -26,18 +27,19 @@ public class WaveAction extends AbstractGameAction {
     public void update() {
         card.applyPowers();
         card.calculateCardDamage((AbstractMonster) target);
-        if (card.baseBlock > 0)
+        if (card.block > 0)
             att(new GainBlockAction(adp(), card.block));
         if (!card.areaAttack) {
-            att(new DamageAction(target, new DamageInfo(adp(), card.damage, card.damageTypeForTurn), AquaLanceMod.Enums.WATER));
+            att(new DamageAction(target, new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL),
+                    AquaLanceMod.Enums.WATER));
             if (card.magicNumber > 0)
-                applyToEnemyTop((AbstractMonster) target, new MarkPower(target, card.magicNumber));
+                applyToEnemyTop(target, new IceSpikesPower(target, card.magicNumber));
         }
         else {
             att(new DamageAllEnemiesAction(adp(), card.multiDamage, DamageInfo.DamageType.NORMAL,
                     AquaLanceMod.Enums.WATER));
             if (card.magicNumber > 0)
-                forAllMonstersLiving(m -> applyToEnemyTop(m, new MarkPower(m, card.magicNumber)));
+                forAllMonstersLiving(m -> applyToEnemyTop(m, new IceSpikesPower(m, card.magicNumber)));
         }
 
         isDone = true;

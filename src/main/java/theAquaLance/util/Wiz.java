@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
@@ -163,11 +164,19 @@ public class Wiz {
         atb(new ApplyPowerAction(m, adp(), po, po.amount));
     }
 
+    public static void applyToEnemy(AbstractCreature m, AbstractPower po) {
+        atb(new ApplyPowerAction(m, adp(), po, po.amount));
+    }
+
     public static void applyToEnemy(AbstractMonster m, AbstractPower po, AbstractGameAction.AttackEffect effect) {
         atb(new ApplyPowerAction(m, adp(), po, po.amount, effect));
     }
 
-    public static void applyToEnemyTop(AbstractMonster m, AbstractPower po) {
+    public static void applyToEnemy(AbstractCreature m, AbstractPower po, AbstractGameAction.AttackEffect effect) {
+        atb(new ApplyPowerAction(m, adp(), po, po.amount, effect));
+    }
+
+    public static void applyToEnemyTop(AbstractCreature m, AbstractPower po) {
         att(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
     }
 
@@ -179,8 +188,10 @@ public class Wiz {
         att(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount));
     }
 
-    public static int getShardCount(AbstractMonster m) {
+    public static int getShardCount(AbstractCreature m) {
         int shardCount = 0;
+        if (m == null)
+            return 0;
         for (AbstractPower po : m.powers) {
             if (po instanceof EmbedPower)
                 shardCount += ((EmbedPower)po).cards.size();
@@ -188,7 +199,7 @@ public class Wiz {
         return shardCount;
     }
 
-    public static int getDebuffCount(AbstractMonster m) {
+    public static int getDebuffCount(AbstractCreature m) {
         if (m == null || m.powers == null)
             return 0;
         int debuffCount = 0;

@@ -9,7 +9,7 @@ public class SteamOrb extends AbstractEasyRelic {
     public static final String ID = makeID("SteamOrb");
 
     public SteamOrb() {
-        super(ID, RelicTier.BOSS, LandingSound.SOLID, TheAquaLance.Enums.TURQUOISE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.SOLID, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
     }
 
     public void onEquip() {

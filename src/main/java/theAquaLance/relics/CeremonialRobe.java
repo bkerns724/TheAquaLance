@@ -1,7 +1,6 @@
 package theAquaLance.relics;
 
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import theAquaLance.TheAquaLance;
 
 import static theAquaLance.AquaLanceMod.makeID;
@@ -13,7 +12,7 @@ public class CeremonialRobe extends AbstractEasyRelic {
     private static final int DRAW_AMOUNT = 1;
 
     public CeremonialRobe() {
-        super(ID, RelicTier.SHOP, LandingSound.FLAT, TheAquaLance.Enums.TURQUOISE_COLOR);
+        super(ID, RelicTier.SHOP, LandingSound.FLAT, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
     }
 
     public void onEquip() {

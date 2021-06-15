@@ -14,7 +14,7 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
     private static final int DEBUFF_AMOUNT = 1;
 
     public PoisonSpearhead() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheAquaLance.Enums.TURQUOISE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
     }
 
     @Override

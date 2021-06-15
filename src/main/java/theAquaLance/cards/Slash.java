@@ -11,9 +11,9 @@ import static theAquaLance.util.Wiz.*;
 
 public class Slash extends AbstractEasyCard {
     public final static String ID = makeID("Slash");
-    private final static int DAMAGE = 9;
-    private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 1;
+    private final static int DAMAGE = 4;
+    private final static int UPGRADE_DAMAGE = 2;
+    private final static int MAGIC = 2;
 
     public Slash() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
@@ -22,7 +22,8 @@ public class Slash extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
+        for (int i = 0; i < magicNumber; i++)
+            dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
         atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(p, p, magicNumber, false));
     }

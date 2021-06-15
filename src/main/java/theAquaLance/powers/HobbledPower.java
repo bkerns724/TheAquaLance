@@ -40,13 +40,6 @@ public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowe
     }
 
     @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        if (adp().hasRelic(RuneOfIce.ID) && type == DamageInfo.DamageType.NORMAL)
-            damage += RuneOfIce.BONUS_DAMAGE;
-        return damage;
-    }
-
-    @Override
     public void updateDescription() {
         if (amount != 1)
             description = DESC[0] + amount + DESC[1];

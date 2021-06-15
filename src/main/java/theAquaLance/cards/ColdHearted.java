@@ -8,21 +8,20 @@ import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
 public class ColdHearted extends AbstractEasyCard {
-    public final static String ID = makeID("ColdHearted");
-    private final static int MAGIC = 3;
+    public final static String ID = makeID("Exploit");
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
 
     public ColdHearted() {
-        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new ColdHeartedPower(p, 1));
+        applyToSelf(new ColdHeartedPower(p, magicNumber));
     }
 
     public void upp() {
-        isInnate = true;
-        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-        initializeDescription();
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

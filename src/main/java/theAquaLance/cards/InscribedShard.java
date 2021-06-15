@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.actions.EmbedAction;
 import theAquaLance.actions.TriggerEnemyMarkAction;
+import theAquaLance.powers.EmbedPower;
+import theAquaLance.powers.MyMarkPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -13,7 +15,7 @@ public class InscribedShard extends AbstractEmbedCard {
     public final static String ID = makeID("InscribedShard");
     private final static int DAMAGE = 3;
     private final static int UPG_DAMAGE = 1;
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 6;
     private final static int UPG_MAGIC = 2;
 
     public InscribedShard() {
@@ -26,15 +28,13 @@ public class InscribedShard extends AbstractEmbedCard {
         atb(new EmbedAction(this, m));
     }
 
-    @Override
-    public int getMarkAmount() {
-        return magicNumber;
+    public void onPopped(AbstractCreature host) {
+        atb(new TriggerEnemyMarkAction(host));
     }
 
-    public int getTriggerAmount() {return 1;}
-
-    public void onFinisher(AbstractCreature host) {
-        atb(new TriggerEnemyMarkAction((AbstractMonster) host));
+    @Override
+    public void atStartOfTurn(EmbedPower pow) {
+        applyToEnemy(pow.owner, new MyMarkPower(pow.owner, magicNumber));
     }
 
     public void upp() {

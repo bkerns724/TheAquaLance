@@ -1,9 +1,12 @@
 package theAquaLance.cards;
 
 import basemod.AutoAdd;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import theAquaLance.powers.EmbedPower;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -20,23 +23,15 @@ public abstract class AbstractEmbedCard extends AbstractEasyCard {
 
     public abstract void upp();
 
-    public int getJaggedAmount() {return 0;}
+    public void atStartOfTurn(EmbedPower pow) {}
 
-    public int getMarkAmount() {return 0;}
+    public void onAttacked(AbstractCreature attacker) {}
 
-    public int getTriggerAmount() {return 0;}
+    public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {}
 
-    public int getLeechAmount() {return 0;}
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {return damage;}
 
-    public int getDamageAmount() {return 0;}
+    public float getDamageModifier() {return 0.0F;}
 
-    public int getSapAmount() {return 0; }
-
-    public int getDiscardDamAmount() {return 0;}
-
-    public int getCatalystAmount() {return 0;}
-
-    public int getFountainAmount() {return 0;}
-
-    public void onFinisher(AbstractCreature host) {}
+    public void onPopped(AbstractCreature host) {}
 }
