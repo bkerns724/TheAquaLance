@@ -23,5 +23,6 @@ public class ElementalForm extends AbstractEasyCard {
     }
 
     public void upp() {
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

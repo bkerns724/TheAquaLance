@@ -17,8 +17,6 @@ public class RuneOfIce extends CardPreviewRelic {
 
     public RuneOfIce() {
         super(ID, new Texture(IMG_PATH), new Texture(OUTLINE_IMG_PATH), TIER, SOUND);
-        tips.clear();
-        tips.add(new PowerTip(name, flavorText));
         cardsToPreview.add(new FlashFreeze());
     }
 

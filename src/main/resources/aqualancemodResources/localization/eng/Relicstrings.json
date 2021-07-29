@@ -29,8 +29,8 @@
     "NAME": "Minor Elemental",
     "FLAVOR": "You've made a new friend!",
     "DESCRIPTIONS": [
-      "You cause #b",
-      " HP loss to ALL enemies at the start of your turn."
+      "You deal #b",
+      " #yMagic damage to ALL enemies at the start of your turn."
     ]
   },
   "${ModID}:Javelin": {

@@ -21,7 +21,7 @@
   },
   "${ModID}:PoisonShard": {
     "NAME": "Poison Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !aqualancemod:D2! magic damage at the start of their turn.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it at the start of its turn.",
     "EXTENDED_DESCRIPTION": [
       " NL Takes ",
       " magic damage at the start of their turn."
@@ -29,7 +29,7 @@
   },
   "${ModID}:BattlemageShard": {
     "NAME": "Battlemage Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you attack this enemy, cause !aqualancemod:D2! HP loss.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you attack this enemy, deal !aqualancemod:D2! aqualancemod:Magic damage to it.",
     "EXTENDED_DESCRIPTION": [
       " NL Takes ",
       " #yMagic damage when you attack it."
@@ -37,7 +37,7 @@
   },
   "${ModID}:CatalystShard": {
     "NAME": "Catalyst Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you apply a debuff to this enemy, they lose !aqualancemod:D2! HP.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you apply a debuff to this enemy, deal !aqualancemod:D2! aqualancemod:Magic damage to it.",
     "EXTENDED_DESCRIPTION": [
       " NL Whenever it receives a debuff, it takes ",
       " #yMagic damage."
@@ -45,7 +45,7 @@
   },
   "${ModID}:AttunedShard": {
     "NAME": "Attuned Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! aqualancemod:Magic damage whenever you shuffle your deck.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it whenever you shuffle your deck.",
     "EXTENDED_DESCRIPTION": [
       " NL Takes ",
       " #yMagic damage whenever you shuffle your deck."
@@ -53,7 +53,7 @@
   },
   "${ModID}:AntimagicShard": {
     "NAME": "Antimagic Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! aqualancemod:Magic damage whenever it applies a buff, debuff, or status card.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it whenever it applies a buff, debuff, or status card.",
     "EXTENDED_DESCRIPTION": [
       " NL Takes ",
       " #yMagic damage whenever it applies a buff, debuff, or status card."
@@ -61,7 +61,7 @@
   },
   "${ModID}:UnstableShard": {
     "NAME": "Unstable Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! aqualancemod:Magic damage whenever you discard an aqualancemod:Sigil.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it whenever you discard an aqualancemod:Sigil.",
     "EXTENDED_DESCRIPTION": [
       " NL Takes ",
       " #yMagic damage whenever you discard a #ySigil."
@@ -98,10 +98,6 @@
   "${ModID}:Flurry": {
     "NAME": "Flurry",
     "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each debuff on the target."
-  },
-  "${ModID}:FlingDebris": {
-    "NAME": "Fling Debris",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card."
   },
   "${ModID}:WaveMotion": {
     "NAME": "Wave Motion",
@@ -178,7 +174,7 @@
   },
   "${ModID}:DarkArts": {
     "NAME": "Dark Arts",
-    "DESCRIPTION": "Deal !M! X aqualancemod:Magic damage (!aqualancemod:D2!)."
+    "DESCRIPTION": "Deal !M! X aqualancemod:Magic damage ( !aqualancemod:D2! damage)."
   },
   "${ModID}:Pressure": {
     "NAME": "Pressure",
@@ -222,8 +218,8 @@
   },
   "${ModID}:PuritySigil": {
     "NAME": "Purity Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Exhaust !M! random status cards.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL Exhaust !M! random status or curse cards.",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Exhaust !M! random Status cards.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL Exhaust !M! random Status or Curse cards.",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:MarshSigil": {
@@ -242,7 +238,7 @@
   },
   "${ModID}:SteamExplosion": {
     "NAME": "Steam Explosion",
-    "DESCRIPTION": "Deal !aqualancemod:D! damage. NL Apply !M! Weak, Hobble, and Vulnerable. NL Overextend 5."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak, Hobble, and Vulnerable. NL Overextend 5."
   },
   "${ModID}:Anticipate": {
     "NAME": "Anticipate",
@@ -299,7 +295,7 @@
   },
   "${ModID}:Detonate": {
     "NAME": "Detonate",
-    "DESCRIPTION": "Deal !M! aqualancemod:Magic damage to ALL enemies for each aqualancemod:Shard in the target (!aqualancemod:D2! damage). NL Remove all aqualancemod:Shards in the target."
+    "DESCRIPTION": "Deal !M! aqualancemod:Magic damage to ALL enemies for each aqualancemod:Shard in the target ( !aqualancemod:D2! damage). NL Remove all aqualancemod:Shards in the target."
   },
   "${ModID}:Analyze": {
     "NAME": "Analyze",
@@ -365,10 +361,6 @@
   "${ModID}:Flow": {
     "NAME": "Flow",
     "DESCRIPTION": "Retain. NL Discard any number of cards and draw that many. NL Exhaust."
-  },
-  "${ModID}:WaterBurst": {
-    "NAME": "Water Burst",
-    "DESCRIPTION": "aqualancemod:Replenish. NL Cause !aqualancemod:D2! HP loss !M! times."
   },
   "${ModID}:Vortex": {
     "NAME": "Vortex",

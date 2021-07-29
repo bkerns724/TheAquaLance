@@ -9,7 +9,7 @@ import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
 public class Escalate extends AbstractEasyCard {
-    public final static String ID = makeID("ElementalForm");
+    public final static String ID = makeID("Escalate");
     private final static int MAGIC = 1;
 
     public Escalate() {

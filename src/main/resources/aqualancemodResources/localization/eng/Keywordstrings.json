@@ -15,7 +15,7 @@
       "Soaked",
       "soaked"
     ],
-    "DESCRIPTION": "Soaked creatures take 50% more damage from non-attack sources."
+    "DESCRIPTION": "Soaked creatures take #b50% more damage from non-attack sources."
   },
   {
     "PROPER_NAME": "Bonus",
@@ -47,7 +47,7 @@
       "Intelligence",
       "intelligence"
     ],
-    "DESCRIPTION": "Intelligence adds additional damage to HP loss."
+    "DESCRIPTION": "Intelligence adds additional damage to #yMagic damage."
   },
   {
     "PROPER_NAME": "Pop",
