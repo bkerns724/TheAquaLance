@@ -15,19 +15,25 @@
       " extra card next turn."
     ]
   },
-  "${ModID}:IceSpikes": {
-    "NAME": "Ice Spikes",
+  "${ModID}:EnergyReduction": {
+    "NAME": "Energy Reduction",
     "DESCRIPTIONS": [
-      "When this enemy attacks, it suffers #b",
-      " damage."
+      "Lose #b",
+      " [E] next turn."
     ]
   },
-  "${ModID}:Hedge": {
-    "NAME": "Hedge",
+  "${ModID}:Frostbite": {
+    "NAME": "Frostbite",
     "DESCRIPTIONS": [
-      "If you end your turn with a #ySigil in your hand, Draw #b",
-      " extra cards next turn.",
-      " extra card next turn."
+      "When this enemy attacks, it suffers #b",
+      " damage then reduces Frostbite by 1."
+    ]
+  },
+  "${ModID}:OverExtend": {
+    "NAME": "Overextend",
+    "DESCRIPTIONS": [
+      "Lose #b",
+      " #yBlock at the end of your turn. NL End your turn if you reach 15 Overextend."
     ]
   },
   "${ModID}:Soaked": {
@@ -39,11 +45,18 @@
       " turns."
     ]
   },
-  "${ModID}:ElementalForm": {
-    "NAME": "Water Elemental Form",
+  "${ModID}:Escalate": {
+    "NAME": "Escalate",
     "DESCRIPTIONS": [
       "Whenever you apply a debuff, gain #b",
       " #yIntelligence."
+    ]
+  },
+  "${ModID}:ElementalForm": {
+    "NAME": "Water Elemental Form",
+    "DESCRIPTIONS": [
+      "Whenever you play or discard a card, deal #b",
+      " #yMagic damage to a random enemy."
     ]
   },
   "${ModID}:Haste": {
@@ -54,17 +67,10 @@
       " turn, draw 1 card and gain [E] ."
     ]
   },
-  "${ModID}:Mark": {
-    "NAME": "Mark",
-    "DESCRIPTIONS": [
-      "Whenever you trigger Mark, loses #b",
-      " HP."
-    ]
-  },
   "${ModID}:Int": {
     "NAME": "Intelligence",
     "DESCRIPTIONS": [
-      "Increases non-attack damage you cause by #b",
+      "Increases #yMagic damage you cause by #b",
       "."
     ]
   },
@@ -75,31 +81,18 @@
       " #yIntelligence."
     ]
   },
+  "${ModID}:Vortex": {
+    "NAME": "Vortex",
+    "DESCRIPTIONS": [
+      "Whenever you discard a card, deal #b",
+      " #yMagic damage to ALL enemies."
+    ]
+  },
   "${ModID}:Embedded": {
     "NAME": "Shards",
     "DESCRIPTIONS": [
       "This string should never be seen.",
-      " NL Takes #b",
-      " damage whenever it attacks.",
-      " NL Gains #b",
-      " #yPoison at the start of its turn.",
-      " NL Whenever you attack this enemy, you gain #b",
-      " Block.",
-      " NL Whenever you discard a card, loses #b",
-      " HP.",
-      " Whenever you apply a debuff to this enemy, loses #b",
-      " HP.",
-      " NL Gains #b",
-      " Mark at the start of each turn.",
-      " NL #yFinishers trigger Mark #b",
-      " times",
-      " time",
-      " NL Deals #b",
-      " damage to ALL other enemies at the start of its turn.",
-      " NL Deals #b",
-      " less damage.",
-      " NL When you play a #yFinisher on this enemy,  deal equivalent damage #b",
-      " times to ALL other enemies."
+      "Shard Count: "
     ]
   },
   "${ModID}:EnergizedTurquoise": {
@@ -127,11 +120,18 @@
       " #yBlock."
     ]
   },
-  "${ModID}:Aggression": {
-    "NAME": "Aggression",
+  "${ModID}:TacticalCombat": {
+    "NAME": "Tactical Combat",
     "DESCRIPTIONS": [
-      "Whenever you apply a debuff, cause #b",
-      " HP loss."
+      "Whenever you deal attack damage, gain #b",
+      " #yBlock."
+    ]
+  },
+  "${ModID}:TacticalCombatPlus": {
+    "NAME": "Very Tactical Combat",
+    "DESCRIPTIONS": [
+      "Whenever you deal damage, gain #b",
+      " #yBlock."
     ]
   },
   "${ModID}:BloodLust": {
@@ -144,15 +144,8 @@
   "${ModID}:TempDamageUp": {
     "NAME": "Extra Damage",
     "DESCRIPTIONS": [
-      "Whenever you deal damage, you deal #b",
+      "Whenever you deal damage before the start of your next turn, you deal #b",
       " more."
-    ]
-  },
-  "${ModID}:WildMagic": {
-    "NAME": "Wild Magic",
-    "DESCRIPTIONS": [
-      "Whenever you discard a card, cause #b",
-      " HP loss to a random enemy."
     ]
   },
   "${ModID}:Hobbled": {
@@ -161,6 +154,13 @@
       "Negates the next #b",
       " debuffs or status cards.",
       " debuff or status card."
+    ]
+  },
+  "${ModID}:Pierce": {
+    "NAME": "Pierced",
+    "DESCRIPTIONS": [
+      "When attacked, receives #b",
+      " more damage."
     ]
   },
   "${ModID}:TempNegStrength": {
@@ -180,10 +180,10 @@
   "${ModID}:Rapids": {
     "NAME": "Rapids",
     "DESCRIPTIONS": [
-      "Whenever you play a card this turn, Draw #b",
-      " card and discard #b",
-      " random card.",
-      " cards and discard #b",
+      "Whenever you play a card this turn, discard #b",
+      " random card and draw #b",
+      " a card.",
+      " random cards and draw #b",
       " random cards."
     ]
   },
@@ -198,8 +198,15 @@
   "${ModID}:IceMastery": {
     "NAME": "Ice Mastery",
     "DESCRIPTIONS": [
-      "#yPop effects happen #b",
-      " times."
+      "Whenever you embed a #yShard, apply #b",
+      " #yFrostbite."
+    ]
+  },
+  "${ModID}:Pressure": {
+    "NAME": "Pressure",
+    "DESCRIPTIONS": [
+      "Whenever you play Pressure, Loses #b",
+      " HP."
     ]
   },
   "${ModID}:DiscardTwoTurns": {

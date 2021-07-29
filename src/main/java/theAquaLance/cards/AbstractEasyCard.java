@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,13 +17,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import theAquaLance.AquaLanceMod;
 import theAquaLance.TheAquaLance;
-import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
-import theAquaLance.patches.GameActionManagerPatch.GameActionManagerField;
-import theAquaLance.powers.IceMasteryPower;
-import theAquaLance.powers.IntelligencePower;
-import theAquaLance.powers.SoakedPower;
 import theAquaLance.util.CardArtRoller;
 
 import java.util.ArrayList;
@@ -43,7 +37,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     public boolean isSecondMagicModified;
 
     public int secondDamage;
-    public int baseSecondDamage;
+    public int baseSecondDamage = -1;
     public boolean upgradedSecondDamage;
     public boolean isSecondDamageModified;
     public int[] multiDamageTwo;
@@ -75,17 +69,6 @@ public abstract class AbstractEasyCard extends CustomCard {
         }
     }
 
-    public void onManualDiscard() {}
-
-    @Override
-    public void triggerOnManualDiscard() {
-        if (AbstractCardField.sigil.get(this)) {
-            Integer x = GameActionManagerField.sigilsThisCombat.get(AbstractDungeon.actionManager);
-            GameActionManagerField.sigilsThisCombat.set(AbstractDungeon.actionManager, x+1);
-        }
-        onManualDiscard();
-    }
-
     @Override
     protected Texture getPortraitImage() {
         return CardArtRoller.getPortraitTexture(this);
@@ -114,15 +97,18 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     @Override
     public void applyPowers() {
-        if (baseSecondDamage > -1) {
-            secondDamage = baseSecondDamage;
+        if (baseSecondDamage > 0) {
+            int tmp = baseDamage;
+            baseDamage = baseSecondDamage;
+            damageTypeForTurn = Enums.MAGIC;
 
-            float secDamage = secondDamage;
-            AbstractPower pow = adp().getPower(IntelligencePower.POWER_ID);
-            if (pow != null)
-                secDamage = ((IntelligencePower)pow).cardCalcHelper(secDamage);
+            super.applyPowers();
 
-            secondDamage = (int)Math.floor(secDamage);
+            secondDamage = damage;
+            multiDamageTwo = multiDamage;
+            baseDamage = tmp;
+            damageTypeForTurn = DamageInfo.DamageType.NORMAL;
+
             isSecondDamageModified = (secondDamage != baseSecondDamage);
         }
         super.applyPowers();
@@ -130,19 +116,18 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        if (baseSecondDamage > -1) {
-            secondDamage = baseSecondDamage;
+        if (baseSecondDamage > 0) {
+            int tmp = baseDamage;
+            baseDamage = baseSecondDamage;
+            damageTypeForTurn = Enums.MAGIC;
 
-            float secDamage = secondDamage;
-            AbstractPower pow = adp().getPower(IntelligencePower.POWER_ID);
-            if (pow != null)
-                secDamage = ((IntelligencePower)pow).cardCalcHelper(secDamage);
+            super.calculateCardDamage(mo);
 
-            pow = mo.getPower(SoakedPower.POWER_ID);
-            if (pow != null)
-                secDamage = ((SoakedPower)pow).cardCalcHelper(secDamage);
+            secondDamage = damage;
+            multiDamageTwo = multiDamage;
+            baseDamage = tmp;
+            damageTypeForTurn = DamageInfo.DamageType.NORMAL;
 
-            secondDamage = (int)Math.floor(secDamage);
             isSecondDamageModified = (secondDamage != baseSecondDamage);
         }
         super.calculateCardDamage(mo);
@@ -237,26 +222,15 @@ public abstract class AbstractEasyCard extends CustomCard {
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, baseSecondDamage, DamageInfo.DamageType.HP_LOSS), fx));
     }
 
-    protected void dmgTop(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn), fx));
-    }
-
     protected void allDmg(AbstractGameAction.AttackEffect fx) {
         atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, damageTypeForTurn, fx));
+    }
+
+    protected void allDmgTwo(AbstractGameAction.AttackEffect fx) {
+        atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamageTwo, AquaLanceMod.Enums.MAGIC, fx));
     }
 
     protected void blck() {
         atb(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
-
-    protected void onPopAction(AbstractCreature target) {
-        AbstractPower pow = adp().getPower(IceMasteryPower.POWER_ID);
-        int count = 1;
-        if (pow != null)
-            count += pow.amount;
-        for (int i = 0; i < count; i++)
-            popBonus(target);
-    }
-
-    protected void popBonus(AbstractCreature target) {}
 }

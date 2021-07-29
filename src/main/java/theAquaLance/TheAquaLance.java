@@ -46,11 +46,10 @@ public class TheAquaLance extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
-    private static final int NUM_STRIKES = 3;
-    private static final int NUM_DEFENDS = 4;
-    private static final int NUM_ALT_STRIKES = 2;
-    private static final String STARTER_CARD1 = BloodJerk.ID;
-    private static final String STARTER_CARD2 = ExtendedThrust.ID;
+    private static final int NUM_STRIKES = 5;
+    private static final int NUM_DEFENDS = 3;
+    private static final String STARTER_CARD1 = Pierce.ID;
+    private static final String STARTER_CARD2 = PowerThrust.ID;
     private static final String STARTER_RELIC = RuneOfIce.ID;
     private static final int STARTING_HP = 70;
 
@@ -88,8 +87,7 @@ public class TheAquaLance extends CustomPlayer {
             retVal.add(Strike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
-        for (int i = 0; i < NUM_ALT_STRIKES; i++)
-            retVal.add(STARTER_CARD1);
+        retVal.add(STARTER_CARD1);
         retVal.add(STARTER_CARD2);
         return retVal;
     }
@@ -138,7 +136,7 @@ public class TheAquaLance extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new ExtendedThrust();
+        return new PowerThrust();
     }
 
     @Override

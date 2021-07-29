@@ -26,6 +26,14 @@
     "DESCRIPTION": "If this card is absorbed by another card, provides the bonus effect."
   },
   {
+    "PROPER_NAME": "Magic",
+    "NAMES": [
+      "Magic",
+      "magic"
+    ],
+    "DESCRIPTION": "Magic damage ignores block and is not affected by most buffs and debuffs."
+  },
+  {
     "PROPER_NAME": "Mark",
     "NAMES": [
       "Mark",
@@ -62,12 +70,20 @@
     "DESCRIPTION": "Sigils are unplayable cards whose effects trigger on discarding them."
   },
   {
-    "PROPER_NAME": "Ice\u00a0Spikes",
+    "PROPER_NAME": "Frostbite",
     "NAMES": [
-      "Ice\u00a0Spikes",
-      "ice\u00a0spikes"
+      "Frostbite",
+      "frostbite"
     ],
-    "DESCRIPTION": "Enemies afflicted with Ice Spikes take damage whenever they attack for one turn."
+    "DESCRIPTION": "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
+  },
+  {
+    "PROPER_NAME": "Overextend",
+    "NAMES": [
+      "Overextend",
+      "overextend"
+    ],
+    "DESCRIPTION": "Lose #yBlock equal to Overextend at the end of your turn.  End your turn if you reach 15 Overextend."
   },
   {
     "PROPER_NAME": "Embed",
@@ -90,22 +106,6 @@
     "DESCRIPTION": "A card that becomes attached to an enemy as a debuff when played."
   },
   {
-    "PROPER_NAME": "Metallicize",
-    "NAMES": [
-      "Metallicize",
-      "metallicize"
-    ],
-    "DESCRIPTION": "Applies #yBlock at the end of your turn."
-  },
-  {
-    "PROPER_NAME": "Plated\u00a0Armor",
-    "NAMES": [
-      "Plated\u00a0Armor",
-      "plated\u00a0armor"
-    ],
-    "DESCRIPTION": "Applies #yBlock at the end of your turn.  Receiving unblocked damage reduces Plated Armor."
-  },
-  {
     "PROPER_NAME": "Vitality",
     "NAMES": [
       "Vitality",
@@ -119,7 +119,7 @@
       "Haste",
       "haste"
     ],
-    "DESCRIPTION": "If you have haste, gain 1 energy and draw 1 card at the start of your turn."
+    "DESCRIPTION": "If you have haste, gain [E] and draw 1 card at the start of your turn."
   },
   {
     "PROPER_NAME": "Replenish",

@@ -20,7 +20,7 @@ public class InsightPotion extends AbstractEasyPotion {
         super(POTION_ID, PotionRarity.COMMON, PotionSize.BOLT, PotionColor.WHITE, false, false);
         PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
         String[] potionDesc = potionStrings.DESCRIPTIONS;
-        description = potionDesc[0] + potency + potionDesc[1];
+        description = potionDesc[0] + potency + potionDesc[1] + potency + potionDesc[2];
         tips.clear();
         tips.add(new PowerTip(name, description));
         tips.add(new PowerTip(BaseMod.getKeywordTitle("aqualancemod:Intelligence"),

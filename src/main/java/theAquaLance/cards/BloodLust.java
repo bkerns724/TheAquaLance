@@ -9,17 +9,19 @@ import static theAquaLance.util.Wiz.*;
 
 public class BloodLust extends AbstractEasyCard {
     public final static String ID = makeID("BloodLust");
-    private final static int UPGRADED_COST = 1;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
 
     public BloodLust() {
         super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new BloodLustPower(adp(), 1));
+        applyToSelf(new BloodLustPower(adp(), magicNumber));
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

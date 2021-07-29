@@ -1,7 +1,5 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -16,8 +14,8 @@ public class CatalystShard extends AbstractEmbedCard {
     public final static String ID = makeID("CatalystShard");
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 1;
-    private final static int SECOND_DAMAGE = 3;
-    private final static int UPGRADE_SECOND = 1;
+    private final static int SECOND_DAMAGE = 5;
+    private final static int UPGRADE_SECOND = 2;
 
     public CatalystShard() {
         super(ID, 1, CardRarity.UNCOMMON);
@@ -30,15 +28,19 @@ public class CatalystShard extends AbstractEmbedCard {
     }
 
     @Override
-    public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.type == AbstractPower.PowerType.DEBUFF && source == adp()) {
-            dmgTwo(target, AquaLanceMod.Enums.BLOOD);
-        }
+    public void onReceivePower(AbstractCreature host, AbstractPower power,
+                               AbstractCreature target, AbstractCreature source) {
+        if (power.type == AbstractPower.PowerType.DEBUFF && !(source == target))
+            dmgTwo(host, AquaLanceMod.Enums.WATER);
     }
 
     @Override
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
         upgradeSecondDamage(UPGRADE_SECOND);
+    }
+
+    public String getDesc() {
+        return cardStrings.EXTENDED_DESCRIPTION[0] + secondDamage + cardStrings.EXTENDED_DESCRIPTION[1];
     }
 }

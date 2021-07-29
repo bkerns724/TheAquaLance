@@ -13,15 +13,16 @@ public class SteamBlast extends AbstractEasyCard {
     public final static String ID = makeID("SteamBlast");
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_DAMAGE = 4;
+    private final static int DAMAGE = 4;
 
     public SteamBlast() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
-        baseSecondDamage = SECOND_DAMAGE;
+        baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmgTwo(m, AbstractGameAction.AttackEffect.FIRE);
+        dmg(m, AbstractGameAction.AttackEffect.FIRE);
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
         applyToEnemy(m, new WeakPower(m, magicNumber, false));
     }

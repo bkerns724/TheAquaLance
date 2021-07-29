@@ -34,4 +34,6 @@ public abstract class AbstractEasyPower extends AbstractPower {
     }
 
     public void onManualDiscard() {}
+
+    public void onDiscardSigil() {}
 }

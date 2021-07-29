@@ -2,21 +2,19 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.patches.AbstractCardPatch;
-import theAquaLance.powers.SoakedPower;
+import theAquaLance.AquaLanceMod;
 
 import static theAquaLance.AquaLanceMod.makeID;
-import static theAquaLance.util.Wiz.*;
 
-public class WhirlpoolSigil extends AbstractEasyCard {
+public class WhirlpoolSigil extends AbstractSigilCard {
     public final static String ID = makeID("WhirlpoolSigil");
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_DAMAGE = 8;
+    private final static int UPGRADE_SECOND = 3;
 
     public WhirlpoolSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        baseMagicNumber = magicNumber = MAGIC;
-        AbstractCardPatch.AbstractCardField.sigil.set(this, true);
+        super(ID, CardRarity.COMMON);
+        baseSecondDamage = SECOND_DAMAGE;
+        isMultiDamage = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -27,11 +25,12 @@ public class WhirlpoolSigil extends AbstractEasyCard {
         return false;
     }
 
+    @Override
     public void onManualDiscard() {
-        forAllMonstersLiving((m) -> applyToEnemy(m, new SoakedPower(m, magicNumber)));
+        allDmgTwo(AquaLanceMod.Enums.WATER);
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeSecondDamage(UPGRADE_SECOND);
     }
 }

@@ -8,7 +8,7 @@ import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
 public class ColdHearted extends AbstractEasyCard {
-    public final static String ID = makeID("Exploit");
+    public final static String ID = makeID("ColdHearted");
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 

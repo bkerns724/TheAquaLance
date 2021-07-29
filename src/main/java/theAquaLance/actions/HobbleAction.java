@@ -12,25 +12,14 @@ import theAquaLance.powers.HobbledPower;
 import static theAquaLance.util.Wiz.*;
 
 public class HobbleAction extends AbstractGameAction {
-    private AbstractMonster m;
 
-    public HobbleAction(AbstractMonster m) {
-        this.m = m;
-        actionType = ActionType.REDUCE_POWER;
+    public HobbleAction() {
+        actionType = ActionType.DIALOG;
     }
 
     public void update() {
-        if (m == null) {
-            isDone = true;
-            return;
-        }
-        AbstractPower hobPow = m.getPower(HobbledPower.POWER_ID);
-        if (hobPow != null) {
-            hobPow.flash();
-            att(new TextAboveCreatureAction(adp(), ApplyPowerAction.TEXT[0]));
-            CardCrawlGame.sound.play("NULLIFY_SFX");
-            att(new ReducePowerAction(m, m, hobPow, 1));
-        }
+        att(new TextAboveCreatureAction(adp(), ApplyPowerAction.TEXT[0]));
+        CardCrawlGame.sound.play("NULLIFY_SFX");
         isDone = true;
     }
 }

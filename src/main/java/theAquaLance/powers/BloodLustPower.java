@@ -15,7 +15,7 @@ public class BloodLustPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public BloodLustPower(AbstractCreature owner, int amount) {
-        super("BloodLust", PowerType.BUFF, false, owner, amount);
+        super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
     }
 

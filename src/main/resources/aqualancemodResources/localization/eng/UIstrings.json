@@ -1,13 +1,18 @@
 {
-  "AquaLanceMod:ModSettingsPanel": {
+  "${ModID}:ModSettingsPanel": {
     "TEXT": [
       "Unlock ascension 20 for AquaLance",
       "Ascension 20 unlocked for AquaLance!"
     ]
   },
-  "ZeroCostFromDiscardToHandAction": {
+  "${ModID}:AttackFromDiscardToHandAction": {
     "TEXT": [
-      "Choose a Card to Put into Your Hand."
+      "Choose an attack to put into Your Hand."
+    ]
+  },
+  "${ModID}:AttackFromDrawToHandAction": {
+    "TEXT": [
+      "Choose an attack to put into Your Hand."
     ]
   }
 }

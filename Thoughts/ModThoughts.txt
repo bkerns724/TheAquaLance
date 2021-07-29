@@ -3,28 +3,34 @@ New Mechanics
 	Rebound.  Waves of equal or lesser cost merge into it when played, adding a bonus effect.  Unmerges when discarded.
     Replenish
 	Draw another card when drawn.
-    Embed, Pop
-	Shards are attack cards that attach to enemies and apply a debuff.  Some cards will remove a shard, 
-	putting it back into your deck and giving the shard's pop bonus.
     Sigils
-	Cards that can't be played normally, but have a special effect on discard.
+	Cards that can't be played normally, but have a special effect on discard.  Boosted by int.
+    Shards
+	Cards that stick in an enemy, go to discard upon enemy death/debuff removal.  Boosted by int.
 
 New Debuffs
     Hobble
-	Stops status cards and debuffs
+	Stops status cards and debuffs.  Stops 1 action per stack.
     Soaked
-	50% more damage from non-attack damage sources
-    Ice Spikes
-	Owner takes thorns damage when attacking
+	50% more damage from non-attack damage sources.  Stacks duration.
+    Overextend
+	Lose block at end of this turn.  At 15 overextend end your turn.
+    Frostbite
+	Like thorns, but decays when attacking
 
 New Buffs
     Int
-	Buffs hp loss you inflict
+	Buffs shards/powers/magic damage
     Haste
-	1 draw, 1 energy at start of turn.  Turn based.
+	1 draw, 1 energy at start of turn.  Stacks duration.
+
+Banned stuff
+    Exhaust (Except status/curse, relic cards), ethereal, card creation (outside start of combat relics)
+
 
 Todo
     Ending sequence
+    Put in sensory stone joke
     Fix char select picture
     Get non Silent character skelly
     Card art?

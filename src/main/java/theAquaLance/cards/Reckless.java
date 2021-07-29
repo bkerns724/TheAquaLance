@@ -17,7 +17,7 @@ public class Reckless extends AbstractEasyCard {
     private final static int UPGRADE_SECOND = 1;
 
     public Reckless() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }

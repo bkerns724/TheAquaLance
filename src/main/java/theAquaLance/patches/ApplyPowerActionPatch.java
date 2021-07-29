@@ -10,14 +10,20 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CtBehavior;
 import theAquaLance.cards.AbstractEmbedCard;
 import theAquaLance.powers.EmbedPower;
+import theAquaLance.powers.FrostbitePower;
+import theAquaLance.relics.UnmeltingIce;
+
+import java.util.Arrays;
+
+import static theAquaLance.util.Wiz.*;
 
 public class ApplyPowerActionPatch {
     @SpirePatch(
             clz = ApplyPowerAction.class,
-            method = "update",
-            paramtypez = {}
+            method = "update"
     )
     public static class ApplyPowerActionUpdatePatch {
+        @SpirePrefixPatch
         public static SpireReturn Prefix(ApplyPowerAction __instance) {
             float dur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class, "duration");
             float startingDur = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "startingDuration");
@@ -52,8 +58,34 @@ public class ApplyPowerActionPatch {
             @Override
             public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
                 Matcher matcher = new Matcher.MethodCallMatcher(AbstractPlayer.class, "hasRelic");
+                int[] Lines = LineFinder.findAllInOrder(ctMethodToPatch, matcher);
+                return Arrays.copyOfRange(Lines, 1, 2);
+            }
+        }
+    }
+
+    @SpirePatch(clz = ApplyPowerAction.class, method = SpirePatch.CONSTRUCTOR)
+    public static class ApplyPowerActionConstructorPatch {
+        @SpireInsertPatch(
+                locator = ApplyPowerActionConstructorPatch.Locator.class
+        )
+        public static SpireReturn Insert(ApplyPowerAction __instance) {
+            AbstractPower pow = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "powerToApply");
+            if (adp().hasRelic(UnmeltingIce.ID) && __instance.source != null && __instance.source.isPlayer &&
+                    pow.ID.equals(FrostbitePower.POWER_ID)) {
+                adp().getRelic(UnmeltingIce.ID).flash();
+                ++pow.amount;
+                ++__instance.amount;
+            }
+            return SpireReturn.Continue();
+        }
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
+                Matcher matcher = new Matcher.MethodCallMatcher(AbstractPlayer.class, "hasRelic");
                 return LineFinder.findInOrder(ctMethodToPatch, matcher);
             }
         }
+
     }
 }

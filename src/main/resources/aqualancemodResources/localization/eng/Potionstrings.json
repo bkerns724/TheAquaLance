@@ -17,7 +17,8 @@
     "NAME": "Insight Potion",
     "DESCRIPTIONS": [
       "Gain #b",
-      " #yIntelligence for this turn."
+      " #yIntelligence. At the end of your turn, Lose #b",
+      " #yIntelligence."
     ]
   },
   "${ModID}:WaterBucket": {
@@ -31,8 +32,8 @@
     "NAME": "Shark Fin Potion",
     "DESCRIPTIONS": [
       "Draw #b",
-      " cards, and discard #b",
-      " cards."
+      " extra card each turn.",
+      " extra cards each turn."
     ]
   }
 }

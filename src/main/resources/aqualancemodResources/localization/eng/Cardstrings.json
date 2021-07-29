@@ -7,37 +7,93 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "${ModID}:BloodJerk": {
-    "NAME": "Blood Jerk",
-    "DESCRIPTION": "Cause !aqualancemod:D2! HP loss."
+  "${ModID}:Pierce": {
+    "NAME": "Pierce",
+    "DESCRIPTION": "Deal !D! damage. NL Target takes !M! more attack damage for the rest of this turn."
   },
-  "${ModID}:PressurizedJet": {
-    "NAME": "Pressurized Jet",
-    "DESCRIPTION": "Cause !aqualancemod:D2! HP loss !M! times."
+  "${ModID}:Crash": {
+    "NAME": "Crash",
+    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card."
+  },
+  "${ModID}:WaterJet": {
+    "NAME": "Water Jet",
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard !M! card."
+  },
+  "${ModID}:PoisonShard": {
+    "NAME": "Poison Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !aqualancemod:D2! magic damage at the start of their turn.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Takes ",
+      " magic damage at the start of their turn."
+    ]
+  },
+  "${ModID}:BattlemageShard": {
+    "NAME": "Battlemage Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you attack this enemy, cause !aqualancemod:D2! HP loss.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Takes ",
+      " #yMagic damage when you attack it."
+    ]
+  },
+  "${ModID}:CatalystShard": {
+    "NAME": "Catalyst Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you apply a debuff to this enemy, they lose !aqualancemod:D2! HP.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Whenever it receives a debuff, it takes ",
+      " #yMagic damage."
+    ]
+  },
+  "${ModID}:AttunedShard": {
+    "NAME": "Attuned Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! aqualancemod:Magic damage whenever you shuffle your deck.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Takes ",
+      " #yMagic damage whenever you shuffle your deck."
+    ]
+  },
+  "${ModID}:AntimagicShard": {
+    "NAME": "Antimagic Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! aqualancemod:Magic damage whenever it applies a buff, debuff, or status card.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Takes ",
+      " #yMagic damage whenever it applies a buff, debuff, or status card."
+    ]
+  },
+  "${ModID}:UnstableShard": {
+    "NAME": "Unstable Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! aqualancemod:Magic damage whenever you discard an aqualancemod:Sigil.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Takes ",
+      " #yMagic damage whenever you discard a #ySigil."
+    ]
+  },
+  "${ModID}:SavageThrust": {
+    "NAME": "Savage Thrust",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Overextend !M!."
   },
   "${ModID}:BloodLust": {
     "NAME": "Blood Lust",
-    "DESCRIPTION": "Whenever you deal damage, you deal 1 more damage until the end of your turn."
+    "DESCRIPTION": "Whenever you deal damage, you deal !M! more damage until the start of your next turn."
   },
-  "${ModID}:HeatBlood": {
-    "NAME": "Heat Blood",
-    "DESCRIPTION": "Cause !aqualancemod:D2! HP loss. NL Draw a card. NL Discard a card."
+  "${ModID}:BloodHasWater": {
+    "NAME": "BloodHasWater",
+    "DESCRIPTION": "Deal !aqualancemod:D2! aqualancemod:Magic damage. NL Draw !M! card. NL Discard !M! card."
   },
-  "${ModID}:DualAttack": {
-    "NAME": "Dual Attack",
-    "DESCRIPTION": "Deal !D! damage. NL Cause !aqualancemod:D2! HP loss."
+  "${ModID}:WaterWhip": {
+    "NAME": "Water Whip",
+    "DESCRIPTION": "Deal !D! damage. NL Put an attack from your draw pile into your hand."
   },
-  "${ModID}:IceWall": {
-    "NAME": "Ice Wall",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! aqualancemod:Ice\u00a0Spikes."
+  "${ModID}:FreezingWater": {
+    "NAME": "Freezing Water",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! aqualancemod:Frostbite."
   },
   "${ModID}:WaterWall": {
     "NAME": "Water Wall",
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! aqualancemod:Soaked."
   },
-  "${ModID}:Slash": {
-    "NAME": "Slash",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Draw a card. NL Discard a card."
+  "${ModID}:Freeze": {
+    "NAME": "Freeze",
+    "DESCRIPTION": "Apply !M! aqualancemod:Frostbite."
   },
   "${ModID}:Flurry": {
     "NAME": "Flurry",
@@ -53,7 +109,7 @@
     "EXTENDED_DESCRIPTION": [
       "aqualancemod:Wave. NL Deal !D! damage.",
       " NL Gain !B! Block.",
-      " NL Apply !aqualancemod:D2! aqualancemod:Ice\u00a0Spikes.",
+      " NL Apply !M! aqualancemod:Frostbite.",
       " NL aqualancemod:Bonus: !aqualancemod:M2! damage."
     ]
   },
@@ -63,18 +119,18 @@
     "EXTENDED_DESCRIPTION": [
       "aqualancemod:Wave. NL Deal !D! damage.",
       " NL Gain !B! Block.",
-      " NL Apply !aqualancemod:D2! aqualancemod:Ice\u00a0Spikes.",
+      " NL Apply !M! aqualancemod:Frostbite.",
       " NL aqualancemod:Bonus: !aqualancemod:M2! Block."
     ]
   },
-  "${ModID}:IceWave": {
-    "NAME": "Icy Wave",
-    "DESCRIPTION": "aqualancemod:Wave. NL Deal !D! damage. NL Apply !M! aqualancemod:Ice\u00a0Spikes. NL aqualancemod:Bonus: !aqualancemod:M2! aqualancemod:Ice\u00a0Spikes.",
+  "${ModID}:ChillingWave": {
+    "NAME": "Chilling Wave",
+    "DESCRIPTION": "aqualancemod:Wave. NL Deal !D! damage. NL Apply !M! aqualancemod:Frostbite. NL aqualancemod:Bonus: !aqualancemod:M2! aqualancemod:Frostbite.",
     "EXTENDED_DESCRIPTION": [
       "aqualancemod:Wave. NL Deal !D! damage.",
       " NL Gain !B! Block.",
-      " NL Apply !aqualancemod:D2! aqualancemod:Ice\u00a0Spikes.",
-      " NL aqualancemod:Bonus: Cause !aqualancemod:M2! HP loss."
+      " NL Apply !M! aqualancemod:Frostbite.",
+      " NL aqualancemod:Bonus: Apply !aqualancemod:M2! aqualancemod:Frostbite."
     ]
   },
   "${ModID}:RideTheWave": {
@@ -83,23 +139,11 @@
     "EXTENDED_DESCRIPTION": [
       "aqualancemod:Wave. NL Deal !D! damage to ALL enemies.",
       " NL Gain !B! Block.",
-      " NL Apply !aqualancemod:D2! aqualancemod:Ice\u00a0Spikes to ALL enemies.",
+      " NL Apply !M! aqualancemod:Frostbite to ALL enemies.",
       " NL aqualancemod:Bonus: !aqualancemod:M2! damage."
     ]
   },
-  "${ModID}:Pressure": {
-    "NAME": "Pressure",
-    "DESCRIPTION": "Apply !M! aqualancemod:Mark for every debuff. NL Trigger aqualancemod:Mark."
-  },
-  "${ModID}:SappingShard": {
-    "NAME": "Sapping Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy deals !M! less damage."
-  },
-  "${ModID}:BattlemageShard": {
-    "NAME": "Battlemage Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you attack this enemy, cause !aqualancemod:D2! HP loss."
-  },
-  "${ModID}:Water Blast": {
+  "${ModID}:WaterBlast": {
     "NAME": "Water Blast",
     "DESCRIPTION": "Deal !D! damage and Apply !M! aqualancemod:Soaked to ALL enemies."
   },
@@ -113,59 +157,100 @@
   },
   "${ModID}:Fog": {
     "NAME": "Fog",
-    "DESCRIPTION": "Enemy deals !M! less damage this turn."
+    "DESCRIPTION": "Gain !B! Block. NL Enemy deals !M! less damage this turn."
   },
-  "${ModID}:Feint": {
-    "NAME": "Feint",
-    "DESCRIPTION": "Target deals !M! less damage this turn. NL Draw !M! cards."
+  "${ModID}:ChillWind": {
+    "NAME": "Chill Wind",
+    "DESCRIPTION": "Apply !aqualancemod:M2! aqualancemod:Frostbite. NL Draw !M! cards."
   },
   "${ModID}:Stab": {
     "NAME": "Stab",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! aqualancemod:Hobble."
   },
+  "${ModID}:AllIn": {
+    "NAME": "All In",
+    "DESCRIPTION": "Deal !D! damage. NL Lose [E] next turn."
+  },
+  "${ModID}:TacticalCombat": {
+    "NAME": "Tactical Combat",
+    "DESCRIPTION": "Whenever you deal attack damage, gain !M! Block.",
+    "UPGRADE_DESCRIPTION": "Whenever you deal damage, gain !M! Block."
+  },
+  "${ModID}:DarkArts": {
+    "NAME": "Dark Arts",
+    "DESCRIPTION": "Deal !M! X aqualancemod:Magic damage (!aqualancemod:D2!)."
+  },
+  "${ModID}:Pressure": {
+    "NAME": "Pressure",
+    "DESCRIPTION": "Apply !M! #yPressure per debuff on the target. NL Target loses HP equal to their #yPressure."
+  },
   "${ModID}:PommelParry": {
     "NAME": "Pommel Parry",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL Discard a card."
-  },
-  "${ModID}:SlipBehind": {
-    "NAME": "Slip Behind",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable."
   },
   "${ModID}:IceSigil": {
     "NAME": "Ice Sigil",
     "DESCRIPTION": "aqualancemod:Sigil. NL Gain !B! Block.",
     "EXTENDED_DESCRIPTION": [ "Sigils can not be played." ]
   },
-  "${ModID}:SirenSigil": {
-    "NAME": "Siren Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Enemies do !M! less damage with attacks this turn.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
-  "${ModID}:InscribedSigil": {
-    "NAME": "Inscribed Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! aqualancemod:Mark to ALL enemies. NL Trigger aqualancemod:Mark on ALL enemies.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
-  "${ModID}:PondSigil": {
-    "NAME": "Pond Sigil",
+  "${ModID}:RiverSigil": {
+    "NAME": "River Sigil",
     "DESCRIPTION": "aqualancemod:Sigil. NL Draw !M! cards.",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
-  "${ModID}:IceSlam": {
-    "NAME": "Ice Slam",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Pop 1: Apply !M! aqualancemod:Ice\u00a0Spikes."
+  "${ModID}:WaterfallSigil": {
+    "NAME": "Waterfall Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Gain [E] .",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL Gain [E] [E] .",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
-  "${ModID}:Engulf": {
-    "NAME": "Engulf",
-    "DESCRIPTION": "Deal !D! damage 2 times. NL aqualancemod:Pop 1:Deal !D! damage 2 times."
+  "${ModID}:CloudSigil": {
+    "NAME": "Cloud Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Gain !M! aqualancemod:Intelligence. NL Return this to your hand.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL aqualancemod:Replenish. NL Gain !M! aqualancemod:Intelligence. NL Return this to your hand.",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  },
+  "${ModID}:WhirlpoolSigil": {
+    "NAME": "Whirlpool Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Deal !aqualancemod:D2! aqualancemod:Magic damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  },
+  "${ModID}:RainSigil": {
+    "NAME": "Rain Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! Weak to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  },
+  "${ModID}:PuritySigil": {
+    "NAME": "Purity Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Exhaust !M! random status cards.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL Exhaust !M! random status or curse cards.",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  },
+  "${ModID}:MarshSigil": {
+    "NAME": "Marsh Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! Poison to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  },
+  "${ModID}:TsunamiSigil": {
+    "NAME": "Tsunami Sigil",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Deal !M! aqualancemod:Magic damage to ALL enemies for each aqualancemod:Sigil discarded this combat ( !aqualancemod:D2! damage).",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:SteamBlast": {
     "NAME": "Steam Blast",
-    "DESCRIPTION": "Cause 4 !aqualancemod:H! HP loss. NL Apply !M! Weak and Vulnerable"
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak and Vulnerable."
   },
   "${ModID}:SteamExplosion": {
     "NAME": "Steam Explosion",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Pop 1: Apply !M! Weak, Hobble, and Vulnerable."
+    "DESCRIPTION": "Deal !aqualancemod:D! damage. NL Apply !M! Weak, Hobble, and Vulnerable. NL Overextend 5."
+  },
+  "${ModID}:Anticipate": {
+    "NAME": "Anticipate",
+    "DESCRIPTION": "Scry !M!."
+  },
+  "${ModID}:Roll": {
+    "NAME": "Roll",
+    "DESCRIPTION": "Draw !M! cards. NL aqualancemod:Overextend 3."
   },
   "${ModID}:JumpKick": {
     "NAME": "Jump Kick",
@@ -177,35 +262,11 @@
   },
   "${ModID}:Momentum": {
     "NAME": "Momentum",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Gain 1 aqualancemod:Haste."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! aqualancemod:Haste."
   },
-  "${ModID}:ExtendedThrust": {
-    "NAME": "Extended Thrust",
+  "${ModID}:PowerThrust": {
+    "NAME": "Power Thrust",
     "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL Discard a card next turn."
-  },
-  "${ModID}:LeechShard": {
-    "NAME": "Leech Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you attack this enemy, gain !M! Block."
-  },
-  "${ModID}:IceShard": {
-    "NAME": "Ice Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: No Effect. NL aqualancemod:Popped: No Effect."
-  },
-  "${ModID}:ExplosiveShard": {
-    "NAME": "Explosive Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Pops itself in 3 turns. NL aqualancemod:Popped: Deal !M! damage."
-  },
-  "${ModID}:CatalystShard": {
-    "NAME": "Catalyst Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you apply a debuff to this enemy, they lose !M! HP."
-  },
-  "${ModID}:InscribedShard": {
-    "NAME": "Inscribed Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy gains !M! aqualancemod:Mark at the start of its turn. NL aqualancemod:Popped: Trigger aqualancemod:Mark."
-  },
-  "${ModID}:DecayShard": {
-    "NAME": "Decay Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Enemy takes !M! % more damage."
   },
   "${ModID}:River": {
     "NAME": "River",
@@ -215,20 +276,10 @@
     "NAME": "Reckless",
     "DESCRIPTION": "Gain !M! Strength and aqualancemod:Intelligence. NL Lose !aqualancemod:M2! Dexterity."
   },
-  "${ModID}:Hedge": {
-    "NAME": "Hedge",
-    "DESCRIPTION": "If you end your turn with a Sigil in hand, draw !M! extra card next turn.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL If you end your turn with a Sigil in hand, draw !M! extra card next turn."
-  },
   "${ModID}:Spray": {
     "NAME": "Spray",
     "DESCRIPTION": "Retain. NL Discard your entire hand.",
-    "UPGRADE_DESCRIPTION": "Retain. NL aqualancemod:Replenish. NL Discard your entire hand."
-  },
-  "${ModID}:RiverSigil": {
-    "NAME": "River Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Gain !M! aqualancemod:Intelligence.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Retain. NL Discard your entire hand."
   },
   "${ModID}:EvasiveManeuvers": {
     "NAME": "Evasive Maneuvers",
@@ -240,11 +291,24 @@
   },
   "${ModID}:IceMastery": {
     "NAME": "Ice Mastery",
-    "DESCRIPTION": "aqualancemod:Pop effects happen an extra time."
+    "DESCRIPTION": "Innate. NL Whenever you embed a aqualancemod:Shard, apply !M! aqualancemod:Frostbite."
   },
-  "${ModID}:Rush": {
-    "NAME": "Rush",
-    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards."
+  "${ModID}:Dash": {
+    "NAME": "Dash",
+    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards. NL Overextend !aqualancemod:M2!."
+  },
+  "${ModID}:Detonate": {
+    "NAME": "Detonate",
+    "DESCRIPTION": "Deal !M! aqualancemod:Magic damage to ALL enemies for each aqualancemod:Shard in the target (!aqualancemod:D2! damage). NL Remove all aqualancemod:Shards in the target."
+  },
+  "${ModID}:Analyze": {
+    "NAME": "Analyze",
+    "DESCRIPTION": "Gain !M! aqualancemod:Intelligence per aqualancemod:Shard in the target.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Gain !M! aqualancemod:Intelligence per aqualancemod:Shard in the target."
+  },
+  "${ModID}:ExploitOpening": {
+    "NAME": "Exploit Opening",
+    "DESCRIPTION": "Apply !M! Vulnerable. NL Put an attack card from your draw pile into your hand."
   },
   "${ModID}:Streamline": {
     "NAME": "Streamline",
@@ -253,29 +317,8 @@
   },
   "${ModID}:Jettison": {
     "NAME": "Jettison",
-    "DESCRIPTION": "Discard 1 card. NL Discard 1 card next turn. NL Gain !M! Vigor.",
-    "UPGRADE_DESCRIPTION": "Discard 1 card. NL Discard 1 card the next 2 turns. NL Gain !M! Vigor."
-  },
-  "${ModID}:ThunderheadSigil": {
-    "NAME": "Thunderhead Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Gain [E].",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Sigil. NL Gain [E][E].",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
-  "${ModID}:WhirlpoolSigil": {
-    "NAME": "Whirlpool Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! aqualancemod:Soaked to ALL enemies.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
-  "${ModID}:SnowSigil": {
-    "NAME": "Snow Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! Weak to the enemy with the highest HP.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
-  "${ModID}:HailSigil": {
-    "NAME": "Hail Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! Vulnerable to the enemy with the lowest HP.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+    "DESCRIPTION": "Discard 1 card. NL Discard 1 card next turn. NL Apply !M! aqualancemod:Soaked.",
+    "UPGRADE_DESCRIPTION": "Discard 1 card. NL Discard 1 card the next 2 turns. NL Apply !M! aqualancemod:Soaked."
   },
   "${ModID}:Flak": {
     "NAME": "Flak",
@@ -284,10 +327,6 @@
   "${ModID}:Study": {
     "NAME": "Study",
     "DESCRIPTION": "Gain !M! aqualancemod:Intelligence."
-  },
-  "${ModID}:WildMagic": {
-    "NAME": "Wild Magic",
-    "DESCRIPTION": "Whenever you discard a card, cause !M! HP loss to ALL enemies."
   },
   "${ModID}:Speed": {
     "NAME": "Speed",
@@ -301,54 +340,47 @@
   },
   "${ModID}:BloodBender": {
     "NAME": "Blood Bender",
-    "DESCRIPTION": "aqualancemod:Finisher. NL Deal !D! damage for each aqualancemod:Shard.",
-    "EXTENDED_DESCRIPTION": ["Enemy doesn't have any shards embedded."]
+    "DESCRIPTION": "Deal !aqualancemod:D2! aqualancemod:Magic damage once for each aqualancemod:Shard in the target. NL Remove all aqualancemod:Shards from the target."
   },
   "${ModID}:WildStabs": {
-    "NAME": "WildStabs",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Apply !aqualancemod:M2! Weak and Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL Apply !aqualancemod:M2! Weak, aqualancemod:Hobble, and Vulnerable."
+    "NAME": "Wild Stabs",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL aqualancemod:Overextend !aqualancemod:M2!."
   },
-  "${ModID}:Reserves": {
-    "NAME": "Reserves",
-    "DESCRIPTION": "Gain [E].",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Gain [E]."
+  "${ModID}:Splash": {
+    "NAME": "Splash",
+    "DESCRIPTION": "Apply !M! aqualancemod:Soaked to ALL enemies."
   },
   "${ModID}:ColdHearted": {
     "NAME": "Cold Hearted",
-    "DESCRIPTION": "Whenever you apply !M! debuffs in one turn, gain 1 aqualancemod:Haste.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you apply !M! debuffs in one turn, gain 1 aqualancemod:Haste."
+    "DESCRIPTION": "Whenever you apply a debuff, gain !M! Block."
   },
   "${ModID}:StillWater": {
     "NAME": "Still Water",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "${ModID}:FlashFreeze": {
+    "NAME": "Flash Freeze",
+    "DESCRIPTION": "Retain. NL Gain !B! Block. NL Exhaust."
+  },
+  "${ModID}:Flow": {
+    "NAME": "Flow",
+    "DESCRIPTION": "Retain. NL Discard any number of cards and draw that many. NL Exhaust."
+  },
   "${ModID}:WaterBurst": {
     "NAME": "Water Burst",
     "DESCRIPTION": "aqualancemod:Replenish. NL Cause !aqualancemod:D2! HP loss !M! times."
   },
-  "${ModID}:MarshSigil": {
-    "NAME": "Marsh Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Apply !M! poison to all enemies.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  "${ModID}:Vortex": {
+    "NAME": "Vortex",
+    "DESCRIPTION": "Whenever you discard a card, deal !M! aqualancemod:Magic damage to ALL enemies."
   },
-  "${ModID}:Scholar": {
-    "NAME": "Scholar",
-    "DESCRIPTION": "Gain !M! aqualancemod:Intelligence. NL Lose !aqualancemod:M2! Strength."
-  },
-  "${ModID}:TsunamiSigil": {
-    "NAME": "Tsunami Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Cause !M! HP loss for ALL aqualancemod:Sigils discarded this combat (!aqualancemod:D2! HP Loss).",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
-  },
-  "${ModID}:GeyserSigil": {
-    "NAME": "Geyser Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Deal !M! damage to ALL enemies in 3 turns.",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  "${ModID}:Escalate": {
+    "NAME": "Escalate",
+    "DESCRIPTION": "Whenever you apply a debuff, gain !M! aqualancemod:Intelligence.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Whenever you apply a debuff, gain !M! aqualancemod:Intelligence."
   },
   "${ModID}:ElementalForm": {
     "NAME": "Elemental Form",
-    "DESCRIPTION": "Whenever you apply a debuff, gain !M! aqualancemod:Intelligence.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Whenever you apply a debuff, gain !M! aqualancemod:Intelligence."
+    "DESCRIPTION": "Whenever you play or discard a card, deal !M! aqualancemod:Magic damage to a random enemy."
   }
 }

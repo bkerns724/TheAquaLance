@@ -37,30 +37,4 @@ public class AbstractMonsterPatch {
             }
         }
     }
-
-    @SpirePatch(
-            clz = AbstractMonster.class,
-            method = "damage",
-            paramtypez = { DamageInfo.class }
-    )
-    public static class SoakedHPLossPatch {
-        @SpireInsertPatch(
-                locator = Locator.class,
-                localvars = {"weakenedToZero", "damageAmount"}
-        )
-        public static void Insert(AbstractMonster __instance, DamageInfo info, boolean weakenedToZero, @ByRef int[] damageAmount) {
-            if (!__instance.hasPower(IntangiblePower.POWER_ID) && !__instance.hasPower(IntangiblePlayerPower.POWER_ID)
-                && info.type == DamageInfo.DamageType.HP_LOSS && !weakenedToZero && __instance.hasPower(SoakedPower.POWER_ID)) {
-                damageAmount[0] += __instance.getPower(SoakedPower.POWER_ID).amount;
-            }
-        }
-
-        private static class Locator extends SpireInsertLocator {
-            @Override
-            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-                Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractMonster.class, "decrementBlock");
-                return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
-            }
-        }
-    }
 }

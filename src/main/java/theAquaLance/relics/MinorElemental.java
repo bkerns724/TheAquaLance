@@ -1,6 +1,6 @@
 package theAquaLance.relics;
 
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.TheAquaLance;
@@ -15,14 +15,16 @@ public class MinorElemental extends AbstractEasyRelic {
     private EleHelper helper = new EleHelper();
 
     public MinorElemental() {
-        super(ID, RelicTier.UNCOMMON, LandingSound.FLAT, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
+        super(ID, RelicTier.RARE, LandingSound.FLAT, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
     }
 
     @Override
     public void atTurnStart() {
-        helper.applyPowers();
-        atb(new DamageAllEnemiesAction(adp(), helper.multiDamageTwo, DamageInfo.DamageType.HP_LOSS,
-                AquaLanceMod.Enums.WATER));
+        forAllMonstersLiving(m -> {
+            helper.calculateCardDamage(m);
+            atb(new DamageAction(m, new DamageInfo(adp(), helper.secondDamage, AquaLanceMod.Enums.MAGIC),
+                    AquaLanceMod.Enums.WATER));
+        });
     }
 
     public String getUpdatedDescription() {

@@ -8,13 +8,21 @@
       " #yDexterity."
     ]
   },
-  "${ModID}:PaperFish": {
-    "NAME": "Paper Fish",
+  "${ModID}:PaperPhish": {
+    "NAME": "Paper Phish",
     "FLAVOR": "It flops around a lot.  Somehow.",
     "DESCRIPTIONS": [
       "Enemies with #ySoaked take #b",
       "% more damage rather than #b",
       "%."
+    ]
+  },
+  "${ModID}:Glasses": {
+    "NAME": "Glasses",
+    "FLAVOR": "These help you see better.",
+    "DESCRIPTIONS": [
+      "Start each combat with #b",
+      " #yIntelligence."
     ]
   },
   "${ModID}:MinorElemental": {
@@ -53,16 +61,14 @@
     "NAME": "Rune of Ice",
     "FLAVOR": "A magical symbol made of ice that never thaws.",
     "DESCRIPTIONS": [
-      "The first time each turn you cause HP loss, gain #b",
-      " #yVigor."
+      "At the start of combat, add a #yFlash #yFreeze to your hand."
     ]
   },
   "${ModID}:RuneOfLivingWater": {
     "NAME": "Rune of Living Water",
     "FLAVOR": "It is made of water, yet somehow keeps its shape.",
     "DESCRIPTIONS": [
-      "The first time each turn you cause HP loss, gain #b",
-      " #yVigor."
+      "At the start of combat, add a #yFlash #yFreeze and a #yFlow to your hand."
     ]
   },
   "${ModID}:SteamOrb": {
@@ -83,15 +89,16 @@
     "NAME": "Unmelting Ice",
     "FLAVOR": "It never melts.",
     "DESCRIPTIONS": [
-      "Whenever you play a #yFinisher, deal #b",
-      " damage for each #yShard removed."
+      "Whenever you apply #yFrostbite, apply #b",
+      " more."
     ]
   },
   "${ModID}:VialOfMineralWater": {
     "NAME": "Vial of Mineral Water",
     "FLAVOR": "Very healthy.",
     "DESCRIPTIONS": [
-      "Whenever you shuffle your deck, trigger Mark on ALL enemies."
+      "Whenever you shuffle your deck, draw #b",
+      " extra cards."
     ]
   },
   "${ModID}:Waterskin": {

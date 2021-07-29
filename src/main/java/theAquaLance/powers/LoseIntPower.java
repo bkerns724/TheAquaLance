@@ -14,7 +14,7 @@ public class LoseIntPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public LoseIntPower(AbstractCreature owner, int amount) {
-        super("TempInt", PowerType.DEBUFF, false, owner, amount);
+        super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
     }
 

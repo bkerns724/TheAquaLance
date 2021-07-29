@@ -8,13 +8,13 @@ import theAquaLance.patches.AbstractCardPatch;
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class MarshSigil extends AbstractEasyCard {
+public class MarshSigil extends AbstractSigilCard {
     public final static String ID = makeID("MarshSigil");
-    private final static int MAGIC = 7;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int MAGIC = 8;
+    private final static int UPGRADE_MAGIC = 3;
 
     public MarshSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super(ID, CardRarity.RARE);
         baseMagicNumber = magicNumber = MAGIC;
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }

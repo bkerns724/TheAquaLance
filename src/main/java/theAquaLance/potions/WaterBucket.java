@@ -14,7 +14,7 @@ import static theAquaLance.util.Wiz.applyToEnemy;
 
 public class WaterBucket extends AbstractEasyPotion {
     public static final String POTION_ID = AquaLanceMod.makeID("WaterBucket");
-    private static final int DROWN_AMOUNT = 4;
+    private static final int SOAK_AMOUNT = 3;
 
     public WaterBucket() {
         super(POTION_ID, PotionRarity.COMMON, PotionSize.JAR, PotionColor.BLUE, true, true);
@@ -31,5 +31,5 @@ public class WaterBucket extends AbstractEasyPotion {
         applyToEnemy((AbstractMonster) target, new SoakedPower(target, potency), AquaLanceMod.Enums.WATER);
     }
 
-    public int getPotency(int ascensionLevel) { return DROWN_AMOUNT; }
+    public int getPotency(int ascensionLevel) { return SOAK_AMOUNT; }
 }

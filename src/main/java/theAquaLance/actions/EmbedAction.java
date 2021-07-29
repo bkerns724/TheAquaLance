@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theAquaLance.cards.AbstractEmbedCard;
 import theAquaLance.powers.EmbedPower;
+import theAquaLance.powers.FrostbitePower;
+import theAquaLance.powers.IceMasteryPower;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -74,6 +76,9 @@ public class EmbedAction extends AbstractGameAction {
                 c.current_y = m.hb.cY;
                 c.current_x = m.hb.cX;
             }
+            if (!c.hitArtifact)
+                if (adp().hasPower(IceMasteryPower.POWER_ID))
+                    applyToEnemyTop(m, new FrostbitePower(m, adp().getPower(IceMasteryPower.POWER_ID).amount));
             applyToEnemyTop(m, new EmbedPower(m, c));
             att(new DamageAction(m, new DamageInfo(adp(), c.damage, c.damageTypeForTurn)));
         }

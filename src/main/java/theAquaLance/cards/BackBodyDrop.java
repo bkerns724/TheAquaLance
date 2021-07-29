@@ -23,6 +23,10 @@ public class BackBodyDrop extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
         applyToEnemy(m, new HobbledPower(m, magicNumber));
+        System.out.println(this.textureBackgroundSmallImg);
+        System.out.println(this.textureBackgroundLargeImg);
+        System.out.println(this.textureOrbSmallImg);
+        System.out.println(this.textureOrbLargeImg);
     }
 
     public void upp() {

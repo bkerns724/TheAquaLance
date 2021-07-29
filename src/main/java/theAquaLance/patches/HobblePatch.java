@@ -5,14 +5,14 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PainfulStabsPower;
 import javassist.CtBehavior;
-import javassist.expr.Expr;
 import theAquaLance.actions.HobbleAction;
-import theAquaLance.powers.HobbledPower;
+import theAquaLance.powers.OnStatusPowerInterface;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -81,13 +81,21 @@ public class HobblePatch {
         @SpirePrefixPatch()
         public static SpireReturn HobbleStop(MakeTempCardInDiscardAction __instance) {
             AbstractMonster m = ActionField.actionMon.get(__instance);
-            if (m != null && m.hasPower(HobbledPower.POWER_ID)) {
-                AbstractPower hobPow = m.getPower(HobbledPower.POWER_ID);
-                if (hobPow.amount > 0) {
-                    __instance.isDone = true;
-                    att(new HobbleAction(m));
-                    return SpireReturn.Return(null);
+            AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDiscardAction.class, "c");
+            boolean negate = false;
+            for (AbstractPower p : m.powers)
+                if (p instanceof OnStatusPowerInterface) {
+                    if (!negate) {
+                        negate = ((OnStatusPowerInterface) p).onApplyStatus(m, c);
+                        if (negate)
+                            att(new HobbleAction());
+                    }
+                    else
+                        ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
                 }
+            if (negate) {
+                __instance.isDone = true;
+                return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
         }
@@ -98,13 +106,22 @@ public class HobblePatch {
         @SpirePrefixPatch()
         public static SpireReturn HobbleStop(MakeTempCardInDrawPileAction __instance) {
             AbstractMonster m = ActionField.actionMon.get(__instance);
-            if (m != null && m.hasPower(HobbledPower.POWER_ID)) {
-                AbstractPower hobPow = m.getPower(HobbledPower.POWER_ID);
-                if (hobPow.amount > 0) {
-                    __instance.isDone = true;
-                    att(new HobbleAction(m));
-                    return SpireReturn.Return(null);
+            AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDrawPileAction.class,
+                    "cardToMake");
+            boolean negate = false;
+            for (AbstractPower p : m.powers)
+                if (p instanceof OnStatusPowerInterface) {
+                    if (!negate) {
+                        negate = ((OnStatusPowerInterface) p).onApplyStatus(m, c);
+                        if (negate)
+                            att(new HobbleAction());
+                    }
+                    else
+                        ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
                 }
+            if (negate) {
+                __instance.isDone = true;
+                return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
         }
@@ -115,13 +132,21 @@ public class HobblePatch {
         @SpirePrefixPatch()
         public static SpireReturn HobbleStop(MakeTempCardInDiscardAndDeckAction __instance) {
             AbstractMonster m = ActionField.actionMon.get(__instance);
-            if (m != null && m.hasPower(HobbledPower.POWER_ID)) {
-                AbstractPower hobPow = m.getPower(HobbledPower.POWER_ID);
-                if (hobPow.amount > 0) {
-                    __instance.isDone = true;
-                    att(new HobbleAction(m));
-                    return SpireReturn.Return(null);
+            AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDiscardAndDeckAction.class,
+                    "cardToMake");
+            boolean negate = false;
+            for (AbstractPower p : m.powers)
+                if (p instanceof OnStatusPowerInterface) {
+                    if (!negate) {
+                        negate = ((OnStatusPowerInterface) p).onApplyStatus(m, c);
+                        if (negate)
+                            att(new HobbleAction());
+                    } else
+                        ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
                 }
+            if (negate) {
+                __instance.isDone = true;
+                return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
         }
@@ -132,13 +157,21 @@ public class HobblePatch {
         @SpirePrefixPatch()
         public static SpireReturn HobbleStop(MakeTempCardInHandAction __instance) {
             AbstractMonster m = ActionField.actionMon.get(__instance);
-            if (m != null && m.hasPower(HobbledPower.POWER_ID)) {
-                AbstractPower hobPow = m.getPower(HobbledPower.POWER_ID);
-                if (hobPow.amount > 0) {
-                    __instance.isDone = true;
-                    att(new HobbleAction(m));
-                    return SpireReturn.Return(null);
+            AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInHandAction.class,"c");
+            boolean negate = false;
+            for (AbstractPower p : m.powers)
+                if (p instanceof OnStatusPowerInterface) {
+                    if (!negate) {
+                        negate = ((OnStatusPowerInterface) p).onApplyStatus(m, c);
+                        if (negate)
+                            att(new HobbleAction());
+                    }
+                    else
+                        ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
                 }
+            if (negate) {
+                __instance.isDone = true;
+                return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
         }
@@ -165,6 +198,4 @@ public class HobblePatch {
             }
         }
     }
-
-
 }

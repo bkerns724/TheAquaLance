@@ -1,5 +1,6 @@
 package theAquaLance.cards;
 
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,12 +28,17 @@ public class BattlemageShard extends AbstractEmbedCard {
     }
 
     @Override
-    public void onAttacked(AbstractCreature attacker) {
-        dmgTwo(attacker, AquaLanceMod.Enums.WATER);
+    public void onAttacked(AbstractCreature attacker, AbstractCreature host, DamageInfo.DamageType type) {
+        if (attacker == adp() && type == DamageInfo.DamageType.NORMAL)
+            dmgTwo(host, AquaLanceMod.Enums.WATER);
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
         upgradeSecondDamage(UPGRADE_SECOND);
+    }
+
+    public String getDesc() {
+        return cardStrings.EXTENDED_DESCRIPTION[0] + baseSecondDamage + cardStrings.EXTENDED_DESCRIPTION[1];
     }
 }

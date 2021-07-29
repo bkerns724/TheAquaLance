@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.actions.WaveAction;
 import theAquaLance.actions.WaveMergeAction;
 import theAquaLance.patches.AbstractCardPatch;
-import theAquaLance.relics.SailorCharm;
 
 import java.util.ArrayList;
 
@@ -45,19 +44,17 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
 
     @Override
     public void onMoveToDiscard() {
-        if (!adp().hasRelic(SailorCharm.ID)) {
-            for (AbstractWaveCard c : mergedCards) {
-                c.current_x = this.hb.cX;
-                c.current_y = this.hb.cY;
-                adp().hand.moveToDiscardPile(c);
-                c.setDescription();
-            }
-            mergedCards.clear();
-            cardToPreview.clear();
-            cardsToPreview = null;
-            previewIndex = 0;
-            setDescription();
+        for (AbstractWaveCard c : mergedCards) {
+            c.current_x = this.hb.cX;
+            c.current_y = this.hb.cY;
+            adp().hand.moveToDiscardPile(c);
+            c.setDescription();
         }
+        mergedCards.clear();
+        cardToPreview.clear();
+        cardsToPreview = null;
+        previewIndex = 0;
+        setDescription();
     }
 
     public void addCard(AbstractWaveCard card) {
@@ -74,12 +71,12 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
     public void calculateBonuses() {
         baseDamage = damageCore;
         baseBlock = blockCore;
-        baseSecondDamage = magicCore;
+        baseMagicNumber = magicCore;
         areaAttack = areaCore;
         for (AbstractWaveCard c : mergedCards) {
             baseDamage += c.damageBonus;
             baseBlock += c.blockBonus;
-            baseSecondDamage += c.magicBonus;
+            baseMagicNumber += c.magicBonus;
             if (c.areaCore)
                 areaAttack = true;
         }
@@ -91,7 +88,7 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
         rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
         if (baseBlock > 0)
             rawDescription += cardStrings.EXTENDED_DESCRIPTION[1];
-        if (secondDamage > 0)
+        if (magicNumber > 0)
             rawDescription += cardStrings.EXTENDED_DESCRIPTION[2];
         rawDescription += cardStrings.EXTENDED_DESCRIPTION[3];
         initializeDescription();

@@ -26,8 +26,8 @@ public class SpeedPower extends AbstractEasyPower {
 
     public void atStartOfTurnPostDraw() {
         flash();
-        int drawAmount = 1;
-        int discardAmount = 1;
+        int drawAmount = amount;
+        int discardAmount = amount;
         AbstractPower drawPow = adp().getPower(DrawNextTurnPower.POWER_ID);
         if (drawPow != null)
             drawAmount += drawPow.amount;

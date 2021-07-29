@@ -3,18 +3,17 @@ package theAquaLance.powers;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
-import theAquaLance.relics.RuneOfIce;
 
 import static theAquaLance.util.Wiz.*;
 
-public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowerPower {
+public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowerPower, OnStatusPowerInterface {
     public static final String POWER_ID = AquaLanceMod.makeID("Hobbled");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -38,6 +37,19 @@ public class HobbledPower extends AbstractEasyPower implements BetterOnApplyPowe
         }
         return true;
     }
+
+    @Override
+    public boolean onApplyStatus(AbstractCreature source, AbstractCard c) {
+        if (c.type == AbstractCard.CardType.STATUS) {
+            flash();
+            att(new ReducePowerAction(source, source, this, 1));
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onNegatedStatus(AbstractCreature source, AbstractCard c) { }
 
     @Override
     public void updateDescription() {

@@ -18,14 +18,14 @@ public class RapidsPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public RapidsPower(AbstractCreature owner, int amount) {
-        super("Rapids", PowerType.BUFF, false, owner, amount);
+        super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
     }
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        atb(new DrawCardAction(amount));
         atb(new DiscardAction(adp(), adp(), amount, true));
+        atb(new DrawCardAction(amount));
     }
 
     @Override

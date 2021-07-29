@@ -1,31 +1,30 @@
 package theAquaLance.powers;
 
-import basemod.BaseMod;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.cards.AbstractEmbedCard;
-import theAquaLance.cards.IceMastery;
 import theAquaLance.relics.UnmeltingIce;
 
 import java.util.ArrayList;
 
 import static theAquaLance.util.Wiz.*;
 
-public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower {
+public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower, OnShufflePowerInterface,
+        OnStatusPowerInterface {
     public static final String POWER_ID = AquaLanceMod.makeID("Embedded");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public ArrayList<AbstractEmbedCard> cards;
+    public ArrayList<AbstractEmbedCard> popLaterCards;
 
     public EmbedPower(AbstractCreature owner, AbstractEmbedCard c) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, -1);
@@ -33,6 +32,7 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
         canGoNegative = false;
 
         cards = new ArrayList<>();
+        popLaterCards = new ArrayList<>();
         cards.add(c);
 
         updateDescription();
@@ -44,10 +44,12 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
     }
 
     public void popAll() {
-        for (AbstractEmbedCard c : cards) {
+        popLaterCards.addAll(cards);
+
+        for (AbstractEmbedCard c : popLaterCards)
             popCard(c);
-        }
-        cards.clear();
+
+        popLaterCards.clear();
 
         att(new RemoveSpecificPowerAction(owner, owner, this));
     }
@@ -63,34 +65,10 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
     }
 
     public void popCard(AbstractEmbedCard c) {
-        UnmeltingIce relic;
-        relic = ((UnmeltingIce) adp().getRelic(UnmeltingIce.ID));
-        if (relic != null && !owner.isDeadOrEscaped())
-            relic.onTrigger(owner);
-        if (!owner.isDeadOrEscaped()) {
-            int count = 1;
-            if (adp().hasPower(IceMasteryPower.POWER_ID))
-                count += adp().getPower(IceMasteryPower.POWER_ID).amount;
-            for (int i = 0; i < count; i++)
-                c.onPopped(owner);
-        }
-
-        int randomDest = AbstractDungeon.miscRng.random(0, 2);
         c.current_x = owner.hb.cX;
         c.current_y = owner.hb.cY;
-        switch (randomDest) {
-            case 0:
-                if (AbstractDungeon.player.hand.group.size() >= BaseMod.MAX_HAND_SIZE)
-                    adp().hand.moveToDiscardPile(c);
-                else
-                    adp().hand.addToRandomSpot(c);
-                break;
-            case 1:
-                adp().hand.moveToDiscardPile(c);
-                break;
-            case 2:
-                adp().hand.moveToDeck(c, true);
-        }
+        adp().hand.moveToDiscardPile(c);
+        cards.remove(c);
     }
 
     @Override
@@ -104,37 +82,53 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
     }
 
     @Override
+    public void atStartOfTurn() {
+        for (AbstractEmbedCard c: cards)
+            c.atStartOfTurn(owner);
+    }
+
+    @Override
+    public void onShuffle() {
+        for (AbstractEmbedCard c : cards)
+            c.onShuffle(owner);
+    }
+
+    @Override
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        for (AbstractEmbedCard c: cards)
+            c.onApplyPower(owner, power, source, target);
+    }
+
+    @Override
+    public boolean onApplyStatus(AbstractCreature source, AbstractCard c) {
+        for (AbstractEmbedCard car : cards)
+            car.onApplyStatus(owner, c);
+        return false;
+    }
+
+    @Override
+    public void onNegatedStatus(AbstractCreature source, AbstractCard c) {
+        for (AbstractEmbedCard car : cards)
+            car.onApplyStatus(owner, c);
+    }
+
+    @Override
+    public void onDiscardSigil() {
+        for (AbstractEmbedCard c : cards)
+            c.onDiscardSigil(owner);
+    }
+
+    @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         for (AbstractEmbedCard c : cards)
-            c.onAttacked(info.owner);
+            c.onAttacked(info.owner, owner, info.type);
         return damageAmount;
     }
 
     @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
-        float modifier = 100F;
-        for (AbstractEmbedCard c : cards)
-            modifier += c.getDamageModifier();
-        damage *= modifier/100.0F;
-        return damage;
-    }
-
-    @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        for (AbstractEmbedCard c : cards)
-            damage = c.atDamageGive(damage, type);
-        return damage;
-    }
-
-    @Override
-    public void atStartOfTurn() {
-        for (AbstractEmbedCard c: cards)
-            c.atStartOfTurn(this);
-    }
-
     public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         for (AbstractEmbedCard c : cards)
-            c.onReceivePower(power, target, source);
+            c.onReceivePower(owner, power, target, source);
         return true;
     }
 
@@ -144,8 +138,14 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
             description = powerStrings.DESCRIPTIONS[0];
         else {
             StringBuilder sb = new StringBuilder();
-            sb.append("Shard Count: ");
+            sb.append(powerStrings.DESCRIPTIONS[1]);
             sb.append(cards.size());
+
+            for (AbstractEmbedCard c : cards) {
+                c.applyPowers();
+                c.calculateCardDamage((AbstractMonster) owner);
+                sb.append(c.getDesc());
+            }
 
             description = sb.toString();
         }

@@ -12,10 +12,10 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.relics.DeadBranch;
 import com.megacrit.cardcrawl.relics.StrangeSpoon;
 import com.megacrit.cardcrawl.relics.UnceasingTop;
@@ -112,6 +112,8 @@ public class AquaLanceMod implements
         public static AbstractGameAction.AttackEffect WATER;
         @SpireEnum
         public static AbstractGameAction.AttackEffect BLOOD;
+        @SpireEnum
+        public static DamageInfo.DamageType MAGIC;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -199,7 +201,6 @@ public class AquaLanceMod implements
     public void receivePostDungeonInitialize()
     {
         if (AbstractDungeon.player.chosenClass == THE_AQUALANCE) {
-            AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(ChemicalX.ID));
             AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(StrangeSpoon.ID));
             AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(DeadBranch.ID));
             AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(UnceasingTop.ID));

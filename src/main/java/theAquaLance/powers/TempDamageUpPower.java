@@ -1,5 +1,6 @@
 package theAquaLance.powers;
 
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,13 +16,20 @@ public class TempDamageUpPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public TempDamageUpPower(AbstractCreature owner, int amount) {
-        super("TempDamageUp", PowerType.BUFF, false, owner, amount);
+        super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
     }
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return damage += amount;
+        if (type == DamageInfo.DamageType.NORMAL || type == AquaLanceMod.Enums.MAGIC)
+            damage += amount;
+        return damage;
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 
     @Override

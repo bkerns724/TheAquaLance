@@ -1,10 +1,10 @@
 package theAquaLance.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+import theAquaLance.cards.FlashFreeze;
+import theAquaLance.cards.Flow;
 
 import static theAquaLance.AquaLanceMod.*;
 import static theAquaLance.util.Wiz.*;
@@ -19,6 +19,8 @@ public class RuneOfLivingWater extends CardPreviewRelic {
 
     public RuneOfLivingWater() {
         super(ID, new Texture(IMG_PATH), new Texture(OUTLINE_IMG_PATH), TIER, SOUND);
+        cardsToPreview.add(new FlashFreeze());
+        cardsToPreview.add(new Flow());
     }
 
     public void obtain() {
@@ -34,20 +36,14 @@ public class RuneOfLivingWater extends CardPreviewRelic {
     }
 
     @Override
-    public void atTurnStart() {
-        counter = 1;
-    }
-
-    @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (target != adp() && counter > 0) {
-            counter = 0;
-            applyToSelf(new VigorPower(adp(), VIGOR_AMT));
-        }
+    public void atBattleStart() {
+        flash();
+        atb(new MakeTempCardInHandAction(new FlashFreeze()));
+        atb(new MakeTempCardInHandAction(new Flow()));
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + VIGOR_AMT + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0];
     }
 
     public boolean CanSpawn() {return adp().hasRelic(RuneOfIce.ID);}

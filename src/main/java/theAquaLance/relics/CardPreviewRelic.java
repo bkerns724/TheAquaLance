@@ -2,6 +2,7 @@ package theAquaLance.relics;
 
 import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,10 +11,16 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
+import theAquaLance.util.CardArtRoller;
+
+import java.util.ArrayList;
 
 @AutoAdd.Ignore
 public abstract class CardPreviewRelic extends CustomRelic {
     public AbstractCard cardToPreview;
+    protected ArrayList<AbstractCard> cardsToPreview = new ArrayList<>();
+    private float rotationTimer = 0;
+    protected int previewIndex = 0;
 
     public CardPreviewRelic(String id, Texture texture, RelicTier tier, LandingSound sfx) {
         super(id, texture, tier, sfx);
@@ -75,5 +82,30 @@ public abstract class CardPreviewRelic extends CustomRelic {
         }
         cardToPreview.drawScale = 1;
         cardToPreview.render(sb);
+    }
+
+    protected float getRotationTimeNeeded() {
+        return 1f;
+    }
+
+    public void update() {
+        super.update();
+        if (!cardsToPreview.isEmpty()) {
+            if (hb.hovered) {
+                if (rotationTimer <= 0F) {
+                    rotationTimer = getRotationTimeNeeded();
+                    if (previewIndex >= cardsToPreview.size())
+                        previewIndex = 0;
+                    cardToPreview = cardsToPreview.get(previewIndex);
+                    if (previewIndex == cardsToPreview.size() - 1) {
+                        previewIndex = 0;
+                    } else {
+                        previewIndex++;
+                    }
+                } else {
+                    rotationTimer -= Gdx.graphics.getDeltaTime();
+                }
+            }
+        }
     }
 }

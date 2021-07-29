@@ -1,12 +1,12 @@
 package theAquaLance.cards;
 
 import basemod.AutoAdd;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theAquaLance.powers.EmbedPower;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -21,17 +21,20 @@ public abstract class AbstractEmbedCard extends AbstractEasyCard {
 
     public abstract void use(AbstractPlayer p, AbstractMonster m);
 
-    public abstract void upp();
+    public void atStartOfTurn(AbstractCreature host) {}
 
-    public void atStartOfTurn(EmbedPower pow) {}
+    public void onShuffle(AbstractCreature host) {}
 
-    public void onAttacked(AbstractCreature attacker) {}
+    public void onApplyPower(AbstractCreature host, AbstractPower power, AbstractCreature source, AbstractCreature target) {}
 
-    public void onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {}
+    public void onApplyStatus(AbstractCreature host, AbstractCard card) {}
 
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {return damage;}
+    public void onAttacked(AbstractCreature attacker, AbstractCreature host, DamageInfo.DamageType type) {}
 
-    public float getDamageModifier() {return 0.0F;}
+    public void onDiscardSigil(AbstractCreature host) {}
 
-    public void onPopped(AbstractCreature host) {}
+    public void onReceivePower(AbstractCreature host, AbstractPower power,
+                               AbstractCreature target, AbstractCreature source) {}
+
+    public abstract String getDesc();
 }

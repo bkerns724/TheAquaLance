@@ -7,13 +7,13 @@ import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class IceSigil extends AbstractEasyCard {
+public class IceSigil extends AbstractSigilCard {
     public final static String ID = makeID("IceSigil");
     private final static int BLOCK = 8;
     private final static int UPGRADE_BLOCK = 3;
 
     public IceSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super(ID, CardRarity.COMMON);
         baseBlock = BLOCK;
         AbstractCardField.sigil.set(this, true);
     }

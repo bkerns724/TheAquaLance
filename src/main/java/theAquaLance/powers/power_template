@@ -21,7 +21,7 @@ public class ${NAME} extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public ${NAME}(AbstractCreature owner, int amount) {
-        super(${POWER_ID}, PowerType.#if ( ${TYPE.equals( "buff" )} )BUFF#else DEBUFF#end, #if (${TURN_BASED.equals("true")})true#else false#end, owner, amount);
+        super(POWER_ID, PowerType.#if ( ${TYPE.equals( "buff" )} )BUFF#else DEBUFF#end, #if (${TURN_BASED.equals("true")})true#else false#end, owner, amount);
         this.name = NAME;
     }
 
