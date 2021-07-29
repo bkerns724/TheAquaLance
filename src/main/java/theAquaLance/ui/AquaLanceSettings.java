@@ -8,11 +8,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Prefs;
+import theAquaLance.AquaLanceMod;
 
 import static theAquaLance.TheAquaLance.Enums.THE_AQUALANCE;
 
 public class AquaLanceSettings {
-    private static final String UI_ID = "AquaLanceMod:ModSettingsPanel";
+    private static final String UI_ID = AquaLanceMod.makeID("ModSettingsPanel");
 
     public static ModPanel createSettingsPanel() {
         String[] ModSettingsText = (CardCrawlGame.languagePack.getUIString(UI_ID).TEXT);

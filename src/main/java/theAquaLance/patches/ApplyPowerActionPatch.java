@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CtBehavior;
@@ -64,7 +65,12 @@ public class ApplyPowerActionPatch {
         }
     }
 
-    @SpirePatch(clz = ApplyPowerAction.class, method = SpirePatch.CONSTRUCTOR)
+    @SpirePatch(
+            clz = ApplyPowerAction.class,
+            method = SpirePatch.CONSTRUCTOR,
+            paramtypez = { AbstractCreature.class, AbstractCreature.class, AbstractPower.class, int.class,
+                    boolean.class, AbstractGameAction.AttackEffect.class }
+    )
     public static class ApplyPowerActionConstructorPatch {
         @SpireInsertPatch(
                 locator = ApplyPowerActionConstructorPatch.Locator.class

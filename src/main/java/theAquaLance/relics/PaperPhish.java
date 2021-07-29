@@ -1,13 +1,12 @@
 package theAquaLance.relics;
 
 import theAquaLance.TheAquaLance;
-import theAquaLance.powers.HobbledPower;
 import theAquaLance.powers.SoakedPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 
 public class PaperPhish extends AbstractEasyRelic {
-    public static final String ID = makeID("PaperFish");
+    public static final String ID = makeID("PaperPhish");
     public static final int SOAK_POWER = 75;
 
     public PaperPhish() {
