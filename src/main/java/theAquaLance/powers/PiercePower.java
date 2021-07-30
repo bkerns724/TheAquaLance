@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import theAquaLance.AquaLanceMod;
 
 public class PiercePower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("Pierced");
+    public static String POWER_ID = AquaLanceMod.makeID("Pierce");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -15,6 +15,7 @@ public class PiercePower extends AbstractEasyPower {
     public PiercePower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
+        priority = 4;
     }
 
     @Override

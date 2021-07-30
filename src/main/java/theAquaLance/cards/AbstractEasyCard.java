@@ -71,7 +71,11 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     @Override
     protected Texture getPortraitImage() {
-        return CardArtRoller.getPortraitTexture(this);
+        if (textureImg.contains("ui/missing.png")) {
+            return CardArtRoller.getPortraitTexture(this);
+        }
+        else
+            return super.getPortraitImage();
     }
 
     public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType) {
@@ -214,20 +218,20 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
-    protected void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
+    public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
     }
 
-    protected void dmgTwo(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
-        atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, baseSecondDamage, DamageInfo.DamageType.HP_LOSS), fx));
+    public void dmgTwo(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
+        atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, secondDamage, Enums.MAGIC), fx));
     }
 
-    protected void allDmg(AbstractGameAction.AttackEffect fx) {
-        atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, damageTypeForTurn, fx));
+    public void allDmg(AbstractGameAction.AttackEffect fx) {
+        atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, DamageInfo.DamageType.NORMAL, fx));
     }
 
-    protected void allDmgTwo(AbstractGameAction.AttackEffect fx) {
-        atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamageTwo, AquaLanceMod.Enums.MAGIC, fx));
+    public void allDmgTwo(AbstractGameAction.AttackEffect fx) {
+        atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamageTwo, Enums.MAGIC, fx));
     }
 
     protected void blck() {

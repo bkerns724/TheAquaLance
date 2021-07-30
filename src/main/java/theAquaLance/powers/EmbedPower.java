@@ -54,16 +54,6 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
         att(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
-    public void popOne() {
-        if (cards.size() > 0)
-            popCard(cards.get(0));
-
-        if (cards.isEmpty())
-            att(new RemoveSpecificPowerAction(owner, owner, this));
-        else
-            updateDescription();
-    }
-
     public void popCard(AbstractEmbedCard c) {
         c.current_x = owner.hb.cX;
         c.current_y = owner.hb.cY;
@@ -89,8 +79,12 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
 
     @Override
     public void onShuffle() {
-        for (AbstractEmbedCard c : cards)
+        System.out.println("In Embed Power");
+        for (AbstractEmbedCard c : cards) {
+            System.out.print("In Card: ");
+            System.out.println(c.name);
             c.onShuffle(owner);
+        }
     }
 
     @Override
@@ -130,6 +124,12 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
         for (AbstractEmbedCard c : cards)
             c.onReceivePower(owner, power, target, source);
         return true;
+    }
+
+    @Override
+    public void update(int slot) {
+        super.update(slot);
+        updateDescription();
     }
 
     @Override

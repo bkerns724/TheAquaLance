@@ -22,6 +22,7 @@ public class TsunamiSigil extends AbstractSigilCard {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondDamage = SECOND_DAMAGE;
         AbstractCardField.sigil.set(this, true);
+        isMultiDamage = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

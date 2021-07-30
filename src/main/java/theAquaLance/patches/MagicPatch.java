@@ -13,7 +13,7 @@ public class MagicPatch {
             clz = AbstractCreature.class,
             method = "decrementBlock"
     )
-    public static class ShufflePrefixPatch {
+    public static class MagicPrefixPatch {
         public static SpireReturn<Integer> Prefix(AbstractCreature __instance, DamageInfo info, int damageAmount) {
             if (info.type == AquaLanceMod.Enums.MAGIC)
                 return SpireReturn.Return(damageAmount);

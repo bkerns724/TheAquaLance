@@ -2,7 +2,6 @@ package theAquaLance.relics;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import theAquaLance.cards.FlashFreeze;
 
 import static theAquaLance.AquaLanceMod.*;

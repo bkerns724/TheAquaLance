@@ -16,6 +16,7 @@ public class FlashFreeze extends AbstractEasyCard {
         super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
         baseBlock = BLOCK;
         selfRetain = true;
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

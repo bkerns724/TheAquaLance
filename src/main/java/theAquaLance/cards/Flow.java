@@ -15,6 +15,7 @@ public class Flow extends AbstractEasyCard {
     public Flow() {
         super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
         selfRetain = true;
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -13,8 +13,8 @@ import static theAquaLance.util.Wiz.*;
 
 public class Crash extends AbstractEasyCard {
     public final static String ID = makeID("Crash");
-    private final static int DAMAGE = 18;
-    private final static int UPGRADE_DAMAGE = 6;
+    private final static int DAMAGE = 17;
+    private final static int UPGRADE_DAMAGE = 5;
     private final static int MAGIC = 1;
 
     public Crash() {
@@ -24,10 +24,10 @@ public class Crash extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        atb(new DiscardAction(adp(), adp(), magicNumber, false));
         if (m != null)
             this.addToBot(new VFXAction(new WeightyImpactEffect(m.hb.cX, m.hb.cY, Color.BLUE.cpy())));
         dmg(m, AbstractGameAction.AttackEffect.NONE);
-        atb(new DiscardAction(adp(), adp(), magicNumber, false));
     }
 
     public void upp() {

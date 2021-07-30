@@ -17,6 +17,7 @@ public class FormHelper extends AbstractEasyCard {
     public FormHelper() {
         super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         baseSecondDamage = SECOND_DAMAGE;
+        isMultiDamage = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

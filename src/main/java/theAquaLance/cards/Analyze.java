@@ -20,7 +20,8 @@ public class Analyze extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         int count = getShardCount(m);
-        applyToSelf(new IntelligencePower(adp(), count));
+        if (count > 0)
+            applyToSelf(new IntelligencePower(adp(), count));
     }
 
     public void upp() {

@@ -12,7 +12,7 @@ import static theAquaLance.util.Wiz.adp;
 import static theAquaLance.util.Wiz.atb;
 
 public class OverExtendPower extends AbstractEasyPower {
-    public static String POWER_ID = AquaLanceMod.makeID("OverExtend");
+    public static String POWER_ID = AquaLanceMod.makeID("Overextend");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

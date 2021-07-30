@@ -3,7 +3,7 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import theAquaLance.actions.DarkArtsAction;
+import theAquaLance.AquaLanceMod;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -23,7 +23,15 @@ public class DarkArts extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        atb(new DarkArtsAction(m, secondDamage, freeToPlayOnce));
+        if (adp().hasRelic("Chemical X"))
+            adp().getRelic("Chemical X").flash();
+
+        calculateCardDamage(m);
+        dmgTwo(m, AquaLanceMod.Enums.BLOOD);
+
+        if (!freeToPlayOnce) {
+            adp().energy.use(EnergyPanel.totalCount);
+        }
     }
 
     @Override
@@ -42,9 +50,6 @@ public class DarkArts extends AbstractEasyCard {
 
     private int getEnergyAvailable() {
         int effect = EnergyPanel.totalCount;
-        if (energyOnUse != -1) {
-            effect = this.energyOnUse;
-        }
 
         if (adp().hasRelic("Chemical X"))
             effect += 2;

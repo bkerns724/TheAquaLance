@@ -60,14 +60,14 @@ public class SoakedPower extends AbstractEasyPower {
     }
 
     @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.NORMAL) {
+    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+        if (type == AquaLanceMod.Enums.MAGIC) {
             if (adp().hasRelic(PaperPhish.ID))
-                damageAmount *= 1.0F + (PaperPhish.SOAK_POWER/100.0F);
+                damage *= 1.0F + (PaperPhish.SOAK_POWER/100.0F);
             else
-                damageAmount *= 1.0F + (NORMAL_SOAK/100.0F);
+                damage *= 1.0F + (NORMAL_SOAK/100.0F);
         }
 
-        return damageAmount;
+        return damage;
     }
 }

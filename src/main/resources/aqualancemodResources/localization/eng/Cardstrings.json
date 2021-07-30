@@ -13,7 +13,7 @@
   },
   "${ModID}:Crash": {
     "NAME": "Crash",
-    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card."
+    "DESCRIPTION": "Discard !M! card. NL Deal !D! damage."
   },
   "${ModID}:WaterJet": {
     "NAME": "Water Jet",
@@ -81,7 +81,7 @@
   },
   "${ModID}:WaterWhip": {
     "NAME": "Water Whip",
-    "DESCRIPTION": "Deal !D! damage. NL Put an attack from your draw pile into your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Put an attack from your discard pile into your hand."
   },
   "${ModID}:FreezingWater": {
     "NAME": "Freezing Water",
@@ -97,7 +97,7 @@
   },
   "${ModID}:Flurry": {
     "NAME": "Flurry",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each debuff on the target."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage for each debuff on the target."
   },
   "${ModID}:WaveMotion": {
     "NAME": "Wave Motion",
@@ -178,7 +178,7 @@
   },
   "${ModID}:Pressure": {
     "NAME": "Pressure",
-    "DESCRIPTION": "Apply !M! #yPressure per debuff on the target. NL Target loses HP equal to their #yPressure."
+    "DESCRIPTION": "Apply !M! *Pressure per debuff on the target. NL Target loses HP equal to their *Pressure."
   },
   "${ModID}:PommelParry": {
     "NAME": "Pommel Parry",
@@ -229,7 +229,7 @@
   },
   "${ModID}:TsunamiSigil": {
     "NAME": "Tsunami Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Deal !M! aqualancemod:Magic damage to ALL enemies for each aqualancemod:Sigil discarded this combat ( !aqualancemod:D2! damage).",
+    "DESCRIPTION": "aqualancemod:Sigil. NL Deal aqualancemod:Magic damage to ALL enemies equal to !M! times the number of aqualancemod:Sigils discarded this combat ( !aqualancemod:D2! damage).",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:SteamBlast": {
@@ -266,7 +266,7 @@
   },
   "${ModID}:River": {
     "NAME": "River",
-    "DESCRIPTION": "Apply !M! aqualancemod:Soaked. NL Gain !M! aqualancemod:Haste."
+    "DESCRIPTION": "Gain !M! aqualancemod:Haste."
   },
   "${ModID}:Reckless": {
     "NAME": "Reckless",
@@ -295,7 +295,7 @@
   },
   "${ModID}:Detonate": {
     "NAME": "Detonate",
-    "DESCRIPTION": "Deal !M! aqualancemod:Magic damage to ALL enemies for each aqualancemod:Shard in the target ( !aqualancemod:D2! damage). NL Remove all aqualancemod:Shards in the target."
+    "DESCRIPTION": "Deal aqualancemod:Magic damage to ALL enemies equal to !M! times the number of aqualancemod:Shards in the target ( !aqualancemod:D2! damage). NL Remove all aqualancemod:Shards in the target."
   },
   "${ModID}:Analyze": {
     "NAME": "Analyze",
@@ -336,7 +336,7 @@
   },
   "${ModID}:BloodBender": {
     "NAME": "Blood Bender",
-    "DESCRIPTION": "Deal !aqualancemod:D2! aqualancemod:Magic damage once for each aqualancemod:Shard in the target. NL Remove all aqualancemod:Shards from the target."
+    "DESCRIPTION": "Deal !aqualancemod:D2! aqualancemod:Magic damage for each aqualancemod:Shard in the target. NL Remove all aqualancemod:Shards from the target."
   },
   "${ModID}:WildStabs": {
     "NAME": "Wild Stabs",

@@ -34,5 +34,6 @@ public class CloudSigil extends AbstractSigilCard {
 
     public void upp() {
         uDesc();
+        AbstractCardPatch.AbstractCardField.replenish.set(this, true);
     }
 }

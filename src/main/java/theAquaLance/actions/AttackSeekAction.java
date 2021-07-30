@@ -16,6 +16,7 @@ public class AttackSeekAction extends AbstractGameAction {
 
     public AttackSeekAction() {
         actionType = ActionType.CARD_MANIPULATION;
+        duration = Settings.ACTION_DUR_FASTER;
     }
 
     public void update() {

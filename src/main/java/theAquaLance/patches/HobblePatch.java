@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PainfulStabsPower;
 import javassist.CtBehavior;
+import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.HobbleAction;
 import theAquaLance.powers.OnStatusPowerInterface;
 
@@ -80,8 +81,15 @@ public class HobblePatch {
     public static class HobbleStopCardDiscardPatch {
         @SpirePrefixPatch()
         public static SpireReturn HobbleStop(MakeTempCardInDiscardAction __instance) {
+            AquaLanceMod.logger.info("boop");
             AbstractMonster m = ActionField.actionMon.get(__instance);
             AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDiscardAction.class, "c");
+            float dur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
+                    "duration");
+            float startDur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
+                    "startDuration");
+            if (m == null || c == null || dur != startDur)
+                return SpireReturn.Continue();
             boolean negate = false;
             for (AbstractPower p : m.powers)
                 if (p instanceof OnStatusPowerInterface) {
@@ -93,10 +101,8 @@ public class HobblePatch {
                     else
                         ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
                 }
-            if (negate) {
-                __instance.isDone = true;
+            if (negate)
                 return SpireReturn.Return(null);
-            }
             return SpireReturn.Continue();
         }
     }
@@ -108,6 +114,12 @@ public class HobblePatch {
             AbstractMonster m = ActionField.actionMon.get(__instance);
             AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDrawPileAction.class,
                     "cardToMake");
+            float dur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
+                    "duration");
+            float startDur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
+                    "startDuration");
+            if (m == null || c == null || dur != startDur)
+                return SpireReturn.Continue();
             boolean negate = false;
             for (AbstractPower p : m.powers)
                 if (p instanceof OnStatusPowerInterface) {
@@ -134,6 +146,12 @@ public class HobblePatch {
             AbstractMonster m = ActionField.actionMon.get(__instance);
             AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDiscardAndDeckAction.class,
                     "cardToMake");
+            float dur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
+                    "duration");
+            float startDur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
+                    "startDuration");
+            if (m == null || c == null || dur != startDur)
+                return SpireReturn.Continue();
             boolean negate = false;
             for (AbstractPower p : m.powers)
                 if (p instanceof OnStatusPowerInterface) {
@@ -158,6 +176,8 @@ public class HobblePatch {
         public static SpireReturn HobbleStop(MakeTempCardInHandAction __instance) {
             AbstractMonster m = ActionField.actionMon.get(__instance);
             AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInHandAction.class,"c");
+            if (m == null || c == null)
+                return SpireReturn.Continue();
             boolean negate = false;
             for (AbstractPower p : m.powers)
                 if (p instanceof OnStatusPowerInterface) {

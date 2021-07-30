@@ -3,7 +3,6 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.powers.HastePower;
-import theAquaLance.powers.SoakedPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -19,7 +18,6 @@ public class River extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new SoakedPower(m, magicNumber, false));
         applyToSelf(new HastePower(adp(), magicNumber));
     }
 

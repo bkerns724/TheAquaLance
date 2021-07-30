@@ -16,6 +16,7 @@ public class AttackHologramAction extends AbstractGameAction {
 
     public AttackHologramAction() {
         actionType = ActionType.CARD_MANIPULATION;
+        duration = Settings.ACTION_DUR_FASTER;
     }
 
     public void update() {

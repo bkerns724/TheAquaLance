@@ -1,8 +1,6 @@
 package theAquaLance.powers;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -27,6 +25,11 @@ public class ElementalFormPower extends AbstractEasyPower {
         helperCard.baseSecondDamage = amount;
     }
 
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        helperCard.baseSecondDamage = amount;
+    }
+
     @Override
     public void onAfterCardPlayed(AbstractCard usedCard) {
         Triggered();
@@ -42,8 +45,7 @@ public class ElementalFormPower extends AbstractEasyPower {
         AbstractMonster m = getRandomItem(monsters);
         helperCard.calculateCardDamage(m);
         flash();
-        atb(new DamageAction(m, new DamageInfo(adp(), helperCard.secondDamage, AquaLanceMod.Enums.MAGIC),
-                AquaLanceMod.Enums.WATER));
+        helperCard.dmgTwo(m, AquaLanceMod.Enums.WATER);
     }
 
     @Override

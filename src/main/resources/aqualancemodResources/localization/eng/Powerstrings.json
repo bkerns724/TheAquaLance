@@ -29,7 +29,7 @@
       " damage then reduces Frostbite by 1."
     ]
   },
-  "${ModID}:OverExtend": {
+  "${ModID}:Overextend": {
     "NAME": "Overextend",
     "DESCRIPTIONS": [
       "Lose #b",
@@ -40,7 +40,7 @@
     "NAME": "Soaked",
     "DESCRIPTIONS": [
       "Receive #b",
-      "% more damage from non-Attacks for #b",
+      "% more damage from #yMagic for #b",
       " turn.",
       " turns."
     ]
@@ -71,6 +71,7 @@
     "NAME": "Intelligence",
     "DESCRIPTIONS": [
       "Increases #yMagic damage you cause by #b",
+      "Decreases #yMagic damage you cause by #b",
       "."
     ]
   },

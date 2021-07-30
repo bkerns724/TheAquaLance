@@ -3,10 +3,6 @@ package theAquaLance.patches;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import theAquaLance.powers.AbstractEasyPower;
 import theAquaLance.relics.SteamOrb;
 
 import static theAquaLance.util.Wiz.adp;

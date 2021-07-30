@@ -28,6 +28,7 @@ public class AttunedShard extends AbstractEmbedCard {
 
     @Override
     public void onShuffle(AbstractCreature host) {
+        System.out.println("In attuned shard");
         dmgTwo(host, AquaLanceMod.Enums.WATER);
     }
 
