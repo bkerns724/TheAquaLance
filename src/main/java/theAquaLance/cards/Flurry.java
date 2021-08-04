@@ -18,7 +18,6 @@ public class Flurry extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
         for (int i = 0; i < getDebuffCount(m); i++)
             dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
 

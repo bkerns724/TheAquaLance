@@ -1,17 +1,16 @@
 package theAquaLance.powers;
 
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
-
 import static theAquaLance.util.Wiz.*;
 
 public class EscalatePower extends AbstractEasyPower {
-    public static final String POWER_ID = AquaLanceMod.makeID("Escalate");
+    public static String POWER_ID = AquaLanceMod.makeID("Escalate");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -23,7 +22,7 @@ public class EscalatePower extends AbstractEasyPower {
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (target != source && !(power instanceof GainStrengthPower))
+        if (power.type == PowerType.DEBUFF && source != target && !power.ID.equals(GainStrengthPower.POWER_ID))
             applyToSelf(new IntelligencePower(adp(), amount));
     }
 

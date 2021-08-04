@@ -47,8 +47,8 @@ public class UseCardActionPatch {
                     return SpireReturn.Continue();
                 }
             }
-            else if (AbstractCardPatch.AbstractCardField.boomerang.get(targetCard)) {
-
+            // Wave cards go back on draw pile
+            else if (AbstractCardPatch.AbstractCardField.boomerang.get(targetCard) && !targetCard.exhaust) {
                 targetCard.exhaustOnUseOnce = false;
                 targetCard.dontTriggerOnUseCard = false;
                 adp().hand.moveToDeck(targetCard, false);

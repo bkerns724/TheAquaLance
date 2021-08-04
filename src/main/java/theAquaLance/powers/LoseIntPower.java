@@ -1,5 +1,6 @@
 package theAquaLance.powers;
 
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -21,6 +22,7 @@ public class LoseIntPower extends AbstractEasyPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         applyToSelf(new IntelligencePower(adp(), -amount));
+        atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 
     @Override

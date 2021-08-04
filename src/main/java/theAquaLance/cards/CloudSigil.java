@@ -2,7 +2,6 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.actions.ReturnToHandAction;
 import theAquaLance.patches.AbstractCardPatch;
 import theAquaLance.powers.IntelligencePower;
 
@@ -11,7 +10,8 @@ import static theAquaLance.util.Wiz.*;
 
 public class CloudSigil extends AbstractSigilCard {
     public final static String ID = makeID("CloudSigil");
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
 
     public CloudSigil() {
         super(ID, CardRarity.UNCOMMON);
@@ -29,11 +29,9 @@ public class CloudSigil extends AbstractSigilCard {
 
     public void onManualDiscard() {
         applyToSelf(new IntelligencePower(adp(), magicNumber));
-        atb(new ReturnToHandAction(this));
     }
 
     public void upp() {
-        uDesc();
-        AbstractCardPatch.AbstractCardField.replenish.set(this, true);
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

@@ -16,7 +16,7 @@ public class SteamBlast extends AbstractEasyCard {
     private final static int DAMAGE = 4;
 
     public SteamBlast() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }

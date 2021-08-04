@@ -6,9 +6,9 @@ public class ChillingWave extends AbstractWaveCard {
     public final static String ID = makeID("ChillingWave");
     private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 2;
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int BONUS = 3;
+    private final static int BONUS = 4;
     private final static int BONUS_UPGRADE = 1;
 
     public ChillingWave() {

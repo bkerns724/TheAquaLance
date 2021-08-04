@@ -45,6 +45,6 @@ public class TsunamiSigil extends AbstractSigilCard {
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
-        upgradeSecondMagic(UPGRADE_SECOND);
+        upgradeSecondDamage(UPGRADE_SECOND);
     }
 }

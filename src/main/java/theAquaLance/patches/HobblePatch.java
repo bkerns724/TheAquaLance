@@ -5,13 +5,14 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.unique.BurnIncreaseAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PainfulStabsPower;
 import javassist.CtBehavior;
-import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.HobbleAction;
 import theAquaLance.powers.OnStatusPowerInterface;
 
@@ -70,7 +71,8 @@ public class HobblePatch {
             if ((action instanceof MakeTempCardInDiscardAction
                     || action instanceof MakeTempCardInDiscardAndDeckAction
                     || action instanceof MakeTempCardInDrawPileAction
-                    || action instanceof MakeTempCardInHandAction)
+                    || action instanceof MakeTempCardInHandAction
+                    || action instanceof BurnIncreaseAction)
                     && m != null) {
                 ActionField.actionMon.set(action, m);
             }
@@ -81,7 +83,6 @@ public class HobblePatch {
     public static class HobbleStopCardDiscardPatch {
         @SpirePrefixPatch()
         public static SpireReturn HobbleStop(MakeTempCardInDiscardAction __instance) {
-            AquaLanceMod.logger.info("boop");
             AbstractMonster m = ActionField.actionMon.get(__instance);
             AbstractCard c = ReflectionHacks.getPrivate(__instance, MakeTempCardInDiscardAction.class, "c");
             float dur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class,
@@ -101,8 +102,10 @@ public class HobblePatch {
                     else
                         ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
                 }
-            if (negate)
+            if (negate) {
+                __instance.isDone = true;
                 return SpireReturn.Return(null);
+            }
             return SpireReturn.Continue();
         }
     }
@@ -197,6 +200,36 @@ public class HobblePatch {
         }
     }
 
+    // Hexaghost stop burns but not upgrading burns
+    @SpirePatch(clz = BurnIncreaseAction.class, method = "update")
+    public static class HexaghostHobblePatch {
+        @SpirePrefixPatch
+        public static SpireReturn HexaStop(BurnIncreaseAction __instance) {
+            AbstractMonster m = ActionField.actionMon.get(__instance);
+            if (m == null)
+                return SpireReturn.Continue();
+            float dur = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class, "duration");
+            boolean gotBurned = ReflectionHacks.getPrivate(__instance, BurnIncreaseAction.class, "gotBurned");
+            if (dur < 1.5F && !gotBurned) {
+                boolean negate = false;
+                AbstractCard c = new Burn();
+                for (AbstractPower p : m.powers)
+                    if (p instanceof OnStatusPowerInterface) {
+                        if (!negate) {
+                            negate = ((OnStatusPowerInterface) p).onApplyStatus(m, c);
+                            if (negate)
+                                att(new HobbleAction());
+                        } else
+                            ((OnStatusPowerInterface) p).onNegatedStatus(m, c);
+                    }
+                if (negate)
+                    ReflectionHacks.setPrivate(__instance, BurnIncreaseAction.class, "gotBurned", true);
+            }
+            return SpireReturn.Continue();
+        }
+    }
+
+    // Book of stabbing
     @SpirePatch(clz = PainfulStabsPower.class, method = "onInflictDamage")
     public static class HobbleStopCardStabPatch {
         @SpireInsertPatch(locator = Locator.class)

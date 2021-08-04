@@ -36,7 +36,7 @@ public class ElementalFormPower extends AbstractEasyPower {
     }
 
     @Override
-    public void onManualDiscard() {
+    public void onDiscardSigil() {
         Triggered();
     }
 

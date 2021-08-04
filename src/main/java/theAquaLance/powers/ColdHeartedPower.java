@@ -25,7 +25,7 @@ public class ColdHeartedPower extends AbstractEasyPower {
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.type == PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID)) {
+        if (power.type == PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID) && target != source) {
             if (Settings.FAST_MODE)
                 atb(new GainBlockAction(owner, amount, true));
             else

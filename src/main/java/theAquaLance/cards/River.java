@@ -9,11 +9,11 @@ import static theAquaLance.util.Wiz.*;
 
 public class River extends AbstractEasyCard {
     public final static String ID = makeID("River");
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
     public River() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
     }
 

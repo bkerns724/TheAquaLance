@@ -105,13 +105,12 @@
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
   },
-  "${ModID}:Flak": {
-    "NAME": "Flak",
+  "${ModID}:IceArmor": {
+    "NAME": "Ice Armor",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, gain #b",
-      " #yBlock.",
-      " #yBlock.",
-      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+      "Gain #b",
+      " #yBlock at the end of your turn.  This amount is increase by #b",
+      " times your #yIntelligence."
     ]
   },
   "${ModID}:ColdHearted": {
@@ -121,32 +120,11 @@
       " #yBlock."
     ]
   },
-  "${ModID}:TacticalCombat": {
-    "NAME": "Tactical Combat",
+  "${ModID}:BrrZerk": {
+    "NAME": "Brr Zerk",
     "DESCRIPTIONS": [
-      "Whenever you deal attack damage, gain #b",
-      " #yBlock."
-    ]
-  },
-  "${ModID}:TacticalCombatPlus": {
-    "NAME": "Very Tactical Combat",
-    "DESCRIPTIONS": [
-      "Whenever you deal damage, gain #b",
-      " #yBlock."
-    ]
-  },
-  "${ModID}:BloodLust": {
-    "NAME": "BloodLust",
-    "DESCRIPTIONS": [
-      "Whenever you deal damage, you deal #b",
-      " more damage until the end of your turn."
-    ]
-  },
-  "${ModID}:TempDamageUp": {
-    "NAME": "Extra Damage",
-    "DESCRIPTIONS": [
-      "Whenever you deal damage before the start of your next turn, you deal #b",
-      " more."
+      "Whenever you attack, apply #b",
+      " #yFrostbite."
     ]
   },
   "${ModID}:Hobbled": {
@@ -157,13 +135,6 @@
       " debuff or status card."
     ]
   },
-  "${ModID}:Pierce": {
-    "NAME": "Pierced",
-    "DESCRIPTIONS": [
-      "When attacked, receives #b",
-      " more damage."
-    ]
-  },
   "${ModID}:TempNegStrength": {
     "NAME": "Damage Down",
     "DESCRIPTIONS": [
@@ -171,21 +142,14 @@
       " less damage with attacks this turn."
     ]
   },
-  "${ModID}:Vitality": {
-    "NAME": "Vitality",
-    "DESCRIPTIONS": [
-      "Your next blocking card gives #b",
-      " additional #yBlock."
-    ]
-  },
   "${ModID}:Rapids": {
     "NAME": "Rapids",
     "DESCRIPTIONS": [
       "Whenever you play a card this turn, discard #b",
-      " random card and draw #b",
-      " a card.",
-      " random cards and draw #b",
-      " random cards."
+      " random card to draw #b",
+      " card.",
+      " random cards to draw #b",
+      " cards."
     ]
   },
   "${ModID}:DrawTwoTurns": {
@@ -216,13 +180,6 @@
       "Two turns from now, discard #b",
       " cards.",
       " card."
-    ]
-  },
-  "${ModID}:StormSigil": {
-    "NAME": "Storm Sigil",
-    "DESCRIPTIONS": [
-      "Whenever you discard a card, deal #b",
-      " damage per #yShard to ALL enemies."
     ]
   },
   "${ModID}:Speed": {

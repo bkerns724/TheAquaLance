@@ -19,7 +19,7 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
 
     @Override
     public boolean onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (source == adp() && power.type == AbstractPower.PowerType.DEBUFF) {
+        if (source == adp() && power.type == AbstractPower.PowerType.DEBUFF && target != source) {
             if (power.amount > 0) {
                 power.amount++;
                 power.updateDescription();

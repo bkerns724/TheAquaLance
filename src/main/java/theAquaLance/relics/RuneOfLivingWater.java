@@ -15,7 +15,6 @@ public class RuneOfLivingWater extends CardPreviewRelic {
     public static final String OUTLINE_IMG_PATH = makeRelicPath(ID.replace(modID + ":", "") + "_outline.png");
     private static final RelicTier TIER = RelicTier.BOSS;
     private static final LandingSound SOUND = LandingSound.MAGICAL;
-    private static final int VIGOR_AMT = 6;
 
     public RuneOfLivingWater() {
         super(ID, new Texture(IMG_PATH), new Texture(OUTLINE_IMG_PATH), TIER, SOUND);
@@ -46,5 +45,8 @@ public class RuneOfLivingWater extends CardPreviewRelic {
         return DESCRIPTIONS[0];
     }
 
-    public boolean CanSpawn() {return adp().hasRelic(RuneOfIce.ID);}
+    @Override
+    public boolean canSpawn() {
+        return adp().hasRelic(RuneOfIce.ID);
+    }
 }

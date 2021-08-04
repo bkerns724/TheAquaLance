@@ -1,5 +1,6 @@
 package theAquaLance.powers;
 
+import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -29,7 +30,10 @@ public class FrostbitePower extends AbstractEasyPower {
             att(new DamageAction(owner,
                     new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
                     AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-            att(new ReducePowerAction(owner, owner, this, 1));
+            ReducePowerAction reduceAction = new ReducePowerAction(owner, owner, this, 1);
+            ReflectionHacks.setPrivate(reduceAction, ReducePowerAction.class, "startDuration", 0.01F);
+            ReflectionHacks.setPrivate(reduceAction, ReducePowerAction.class, "duration", 0.01F);
+            att(reduceAction);
         }
     }
 

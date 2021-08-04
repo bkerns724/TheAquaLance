@@ -13,7 +13,7 @@ public class WildStabs extends AbstractEasyCard {
     private final static int DAMAGE = 7;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 10;
+    private final static int SECOND_MAGIC = 8;
 
     public WildStabs() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
