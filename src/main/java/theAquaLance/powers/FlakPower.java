@@ -26,9 +26,6 @@ public class FlakPower extends AbstractEasyPower {
 
     @Override
     public void updateDescription() {
-        if (amount == 1)
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
-        else
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 }

@@ -3,7 +3,7 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
+import theAquaLance.powers.HobbledPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -21,11 +21,13 @@ public class Ambush extends AbstractEasyCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         isInnate = true;
+        exhaust = true;
+        isEthereal = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_HEAVY);
-        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
+        applyToEnemy(m, new HobbledPower(m, magicNumber));
     }
 
     public void upp() {

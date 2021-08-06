@@ -12,7 +12,7 @@ public class MagicStrike extends AbstractEasyCard {
     public final static String ID = makeID("MagicStrike");
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 2;
-    private final static int SECOND_DAMAGE = 3;
+    private final static int SECOND_DAMAGE = 4;
     private final static int UPGRADE_SECOND = 2;
     private final static int COST = 1;
 

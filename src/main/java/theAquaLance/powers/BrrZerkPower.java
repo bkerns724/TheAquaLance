@@ -21,6 +21,7 @@ public class BrrZerkPower extends AbstractEasyPower {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        if (target != owner && info.type == DamageInfo.DamageType.NORMAL)
         applyToEnemyTop(target, new FrostbitePower(target, amount));
     }
 

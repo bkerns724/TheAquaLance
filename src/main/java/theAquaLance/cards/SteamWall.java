@@ -16,6 +16,7 @@ public class SteamWall extends AbstractEasyCard {
 
     public SteamWall() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        baseBlock = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
     }
 

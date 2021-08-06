@@ -12,17 +12,18 @@ public class Roll extends AbstractEasyCard {
     public final static String ID = makeID("Roll");
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int OVER_EXTEND = 3;
+    private final static int SECOND_MAGIC = 2;
     private final static int COST = 0;
 
     public Roll() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         atb(new DrawCardAction(magicNumber));
-        applyToSelf(new OverExtendPower(adp(), OVER_EXTEND));
+        applyToSelf(new OverExtendPower(adp(), secondMagic));
     }
 
     public void upp() {

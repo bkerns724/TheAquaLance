@@ -21,8 +21,8 @@ public class RapidsAction extends AbstractGameAction {
             if (handSize < amount)
                 amount = handSize;
             if (handSize > 0) {
-                att(new DiscardAction(adp(), adp(), amount, true));
                 att(new DrawCardAction(amount));
+                att(new DiscardAction(adp(), adp(), amount, true));
             }
         }
 

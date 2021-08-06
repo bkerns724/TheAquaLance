@@ -74,7 +74,7 @@ public class AquaLanceMod implements
     public static final String WATER_EFFECT_FILE = modID + "Resources/images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = modID + "Resources/images/vfx/Blood.png";
     public static final String THEME_KEY = makeID("Theme Song");
-    public static final String THEME_OGG = modID + "Resources/audio/Theme.ogg";
+    public static final String THEME_OGG = modID + "Resources/audio/Theme2.ogg";
 
     private static final String BADGE_IMG = modID + "Resources/images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {

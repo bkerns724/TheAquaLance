@@ -109,14 +109,20 @@
     "NAME": "Ice Armor",
     "DESCRIPTIONS": [
       "Gain #b",
-      " #yBlock at the end of your turn.  This amount is increase by #b",
-      " times your #yIntelligence."
+      " #yBlock at the end of your turn."
     ]
   },
   "${ModID}:ColdHearted": {
     "NAME": "Cold Hearted",
     "DESCRIPTIONS": [
       "Whenever you apply a debuff, gain #b",
+      " #yBlock."
+    ]
+  },
+  "${ModID}:Flak": {
+    "NAME": "Flak",
+    "DESCRIPTIONS": [
+      "Whenever you discard a card, gain #b",
       " #yBlock."
     ]
   },

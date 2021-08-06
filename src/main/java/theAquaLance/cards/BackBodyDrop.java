@@ -2,7 +2,7 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.powers.HobbledPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -22,11 +22,7 @@ public class BackBodyDrop extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        applyToEnemy(m, new HobbledPower(m, magicNumber));
-        System.out.println(this.textureBackgroundSmallImg);
-        System.out.println(this.textureBackgroundLargeImg);
-        System.out.println(this.textureOrbSmallImg);
-        System.out.println(this.textureOrbLargeImg);
+        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
     }
 
     public void upp() {

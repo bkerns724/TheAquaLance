@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class WaterWhip extends AbstractEasyCard {
     public final static String ID = makeID("WaterWhip");
-    private final static int DAMAGE = 6;
+    private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 1;
 

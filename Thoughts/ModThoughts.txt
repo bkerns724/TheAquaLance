@@ -28,15 +28,14 @@ Banned stuff
     Exhaust (Except status/curse, relic cards), ethereal, card creation (outside start of combat relics)
 
 Debug
-    Tsunami Sigil upgrade preview
-    Don't let Escalate trigger on artifact
 
 Design
 
 Todo
     Theme song to form card, off heart battle
-    Ending sequence
     Put in sensory stone joke
+    Ending sequence
+
     Fix char select picture
     Get non Silent character skelly
     Card art?

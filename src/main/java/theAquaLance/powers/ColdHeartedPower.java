@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -25,7 +26,8 @@ public class ColdHeartedPower extends AbstractEasyPower {
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.type == PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID) && target != source) {
+        if (power.type == PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID) && target != source &&
+                !power.ID.equals(GainStrengthPower.POWER_ID)) {
             if (Settings.FAST_MODE)
                 atb(new GainBlockAction(owner, amount, true));
             else

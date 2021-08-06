@@ -9,7 +9,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class TriggerPressureAction extends AbstractGameAction {
     private AbstractMonster m;
-    private final static float DURATION = 0.5F;
+    private final static float DURATION = 0.1F;
 
     public TriggerPressureAction(AbstractMonster m) {
         this.m = m;
@@ -18,12 +18,8 @@ public class TriggerPressureAction extends AbstractGameAction {
     }
 
     public void update() {
-        if (duration == DURATION) {
-            if (m != null && m.hasPower(PressurePower.POWER_ID))
-                att(new LoseHPAction(m, adp(), m.getPower(PressurePower.POWER_ID).amount));
-            else
-                isDone = true;
-        }
-        tickDuration();
+        if (m != null && m.hasPower(PressurePower.POWER_ID))
+            att(new LoseHPAction(m, adp(), m.getPower(PressurePower.POWER_ID).amount));
+        isDone = true;
     }
 }

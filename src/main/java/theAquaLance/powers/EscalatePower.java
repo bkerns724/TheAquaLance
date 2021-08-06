@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
 
@@ -22,8 +23,10 @@ public class EscalatePower extends AbstractEasyPower {
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.type == PowerType.DEBUFF && source != target && !power.ID.equals(GainStrengthPower.POWER_ID))
+        if (power.type == PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID) && target != source &&
+                !power.ID.equals(GainStrengthPower.POWER_ID)) {
             applyToSelf(new IntelligencePower(adp(), amount));
+        }
     }
 
     @Override

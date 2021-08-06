@@ -11,41 +11,26 @@ import static theAquaLance.util.Wiz.*;
 
 public class Detonate extends AbstractEasyCard {
     public final static String ID = makeID("Detonate");
-    private final static int MAGIC = 10;
-    private final static int UPGRADE_MAGIC = 3;
-    private final static int SECOND_DAMAGE = 10;
+    private final static int SECOND_DAMAGE = 9;
     private final static int UPGRADE_SECOND = 3;
     private final static int COST = 2;
 
     public Detonate() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseSecondDamage = SECOND_DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         isMultiDamage = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        allDmgTwo(AquaLanceMod.Enums.WATER);
         EmbedPower pow = (EmbedPower) m.getPower(EmbedPower.POWER_ID);
-        if (pow != null)
+        if (pow != null) {
+            for (int i = 0; i < getShardCount(m); i++)
+                allDmgTwo(AquaLanceMod.Enums.WATER);
             atb(new PopAllAction(m));
-    }
-
-    @Override
-    public void applyPowers() {
-        baseSecondDamage = 0;
-        super.applyPowers();
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int count = getShardCount(mo);
-        baseSecondDamage = baseMagicNumber*count;
-        super.calculateCardDamage(mo);
+        }
     }
 
     public void upp() {
         upgradeSecondDamage(UPGRADE_SECOND);
-        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

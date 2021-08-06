@@ -4,6 +4,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.EmbedAction;
 
@@ -16,9 +18,10 @@ public class CatalystShard extends AbstractEmbedCard {
     private final static int UPGRADE_DAMAGE = 1;
     private final static int SECOND_DAMAGE = 5;
     private final static int UPGRADE_SECOND = 2;
+    private final static int COST = 2;
 
     public CatalystShard() {
-        super(ID, 1, CardRarity.UNCOMMON);
+        super(ID, COST, CardRarity.UNCOMMON);
         baseDamage = DAMAGE;
         baseSecondDamage = SECOND_DAMAGE;
     }
@@ -30,8 +33,10 @@ public class CatalystShard extends AbstractEmbedCard {
     @Override
     public void onReceivePower(AbstractCreature host, AbstractPower power,
                                AbstractCreature target, AbstractCreature source) {
-        if (power.type == AbstractPower.PowerType.DEBUFF && !(source == target))
+        if (power.type == AbstractPower.PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID) && target != source &&
+                !power.ID.equals(GainStrengthPower.POWER_ID)) {
             dmgTwo(host, AquaLanceMod.Enums.WATER);
+        }
     }
 
     @Override

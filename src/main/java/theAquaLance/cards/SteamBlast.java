@@ -23,8 +23,8 @@ public class SteamBlast extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.FIRE);
-        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
         applyToEnemy(m, new WeakPower(m, magicNumber, false));
+        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
     }
 
     public void upp() {

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.AquaLanceMod;
+import theAquaLance.actions.TsunamiAction;
 import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
 import theAquaLance.patches.DiscardHookPatch.GameActionManagerField;
 
@@ -34,11 +35,11 @@ public class TsunamiSigil extends AbstractSigilCard {
     }
 
     public void onManualDiscard() {
-        allDmgTwo(AquaLanceMod.Enums.WATER);
+        atb(new TsunamiAction(this));
     }
 
     public void applyPowers() {
-        int sigilCount = GameActionManagerField.sigilsThisCombat.get(AbstractDungeon.actionManager) + 1;
+        int sigilCount = GameActionManagerField.sigilsThisCombat.get(AbstractDungeon.actionManager);
         baseSecondDamage = magicNumber*sigilCount;
         super.applyPowers();
     }
