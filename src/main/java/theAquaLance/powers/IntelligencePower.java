@@ -34,7 +34,6 @@ public class IntelligencePower extends AbstractEasyPower {
         if (amount <= -999) {
             amount = -999;
         }
-
     }
 
     public void reducePower(int reduceAmount) {

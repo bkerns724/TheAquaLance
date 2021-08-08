@@ -3,6 +3,7 @@ package theAquaLance;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
@@ -13,20 +14,24 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import theAquaLance.cards.*;
+import theAquaLance.patches.CutsceneMultiScreenPatch;
 import theAquaLance.relics.RuneOfIce;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static theAquaLance.TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR;
 import static theAquaLance.AquaLanceMod.*;
 
 public class TheAquaLance extends CustomPlayer {
-    private static final String[] orbTextures = {
+    private static final String[] ORB_TEXTURES = {
             modID + "Resources/images/char/mainChar/orb/layer1.png",
             modID + "Resources/images/char/mainChar/orb/layer2.png",
             modID + "Resources/images/char/mainChar/orb/layer3.png",
@@ -38,6 +43,22 @@ public class TheAquaLance extends CustomPlayer {
             modID + "Resources/images/char/mainChar/orb/layer3d.png",
             modID + "Resources/images/char/mainChar/orb/layer4d.png",
             modID + "Resources/images/char/mainChar/orb/layer5d.png",};
+
+    private static final String CUTSCENE_FOLDER = modID + "Resources/images/cutScene/";
+    private static final String CUTSCENE_BG = "blueBg.jpg";
+    private static final String[] CUTSCENE_PANELS = {
+            "panelOne.png",
+            "panelTwo.png",
+            "panelThree.png",
+            "panelFour.png",
+            "panelFive.png",
+            "panelSix.png",
+            "panelSeven.png",
+            "panelEight.png",
+            "panelNine.png",
+            "panelTen.png",
+            "panelEleven.png",
+            "panelTwelve.png"};
 
     private static final String SKELETON_ATLAS = modID + "Resources/images/char/mainChar/idle/skeleton.atlas";
     private static final String SKELETON_JSON = modID + "Resources/images/char/mainChar/idle/skeleton.json";
@@ -55,7 +76,7 @@ public class TheAquaLance extends CustomPlayer {
     private static final int STARTING_HP = 70;
 
     public TheAquaLance(String name, PlayerClass setClass) {
-        super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/mainChar/orb/vfx.png", null),
+        super(name, setClass, new CustomEnergyOrb(ORB_TEXTURES, modID + "Resources/images/char/mainChar/orb/vfx.png", null),
                 null, null);
 
         initializeClass(null,
@@ -179,6 +200,33 @@ public class TheAquaLance extends CustomPlayer {
     @Override
     public String getVampireText() {
         return TEXT[2];
+    }
+
+    @Override
+    public List<CutscenePanel> getCutscenePanels() {
+        List<CutscenePanel> panels = new ArrayList<>();
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[0]));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[1], STAB_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[2], MULTI_STAB_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[3], SPLASH_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[4], MULTI_STAB_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[5], WATERFALL_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[6], FOOTSTEPS_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[7], TRUCK_KEY));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[8], "BLUNT_HEAVY"));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[9]));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[10]));
+        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[11], FIRE_KEY));
+
+        CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(3), true);
+        CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(6), true);
+        CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(9), true);
+
+        return panels;
+    }
+
+    public Texture getCutsceneBg() {
+        return ImageMaster.loadImage(CUTSCENE_FOLDER + CUTSCENE_BG);
     }
 
     public static class Enums {

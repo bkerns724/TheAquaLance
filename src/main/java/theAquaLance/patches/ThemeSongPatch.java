@@ -19,7 +19,7 @@ public class ThemeSongPatch {
     public static class InsertSongPatch {
         @SpirePrefixPatch
         public static SpireReturn<Music> Prefix(TempMusic __instance, String key) {
-            if (key.equals("BOSS_ENDING") && adp().getCardColor() == TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR)
+            if (key.equals("THEME_SONG"))
                 return SpireReturn.Return(MainMusic.newMusic(AquaLanceMod.THEME_OGG));
             else
                 return SpireReturn.Continue();

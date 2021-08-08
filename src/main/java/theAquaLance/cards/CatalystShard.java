@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.EmbedAction;
+import theAquaLance.powers.EmbedPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -35,6 +36,9 @@ public class CatalystShard extends AbstractEmbedCard {
                                AbstractCreature target, AbstractCreature source) {
         if (power.type == AbstractPower.PowerType.DEBUFF && !target.hasPower(ArtifactPower.POWER_ID) && target != source &&
                 !power.ID.equals(GainStrengthPower.POWER_ID)) {
+            if (power instanceof EmbedPower)
+                if (((EmbedPower) power).cards.contains(this))
+                    return;
             dmgTwo(host, AquaLanceMod.Enums.WATER);
         }
     }

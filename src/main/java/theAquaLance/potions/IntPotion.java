@@ -12,7 +12,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class IntPotion extends AbstractEasyPotion {
     public static final String POTION_ID = AquaLanceMod.makeID("IntPotion");
-    private static final int INT_AMOUNT = 2;
+    private static final int INT_AMOUNT = 3;
 
     public IntPotion() {
         super(POTION_ID, PotionRarity.COMMON, PotionSize.EYE, PotionColor.ENERGY, false, false);

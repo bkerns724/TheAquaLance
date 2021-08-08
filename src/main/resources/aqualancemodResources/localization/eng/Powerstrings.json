@@ -108,8 +108,9 @@
   "${ModID}:IceArmor": {
     "NAME": "Ice Armor",
     "DESCRIPTIONS": [
-      "Gain #b",
-      " #yBlock at the end of your turn."
+      "Gain #yBlock equal to #b",
+      " times your #yIntelligence at the end of your turn.  This is #b",
+      " #yBlock."
     ]
   },
   "${ModID}:ColdHearted": {

@@ -2,6 +2,7 @@ package theAquaLance;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.eventUtil.AddEventParams;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -16,6 +17,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.relics.DeadBranch;
 import com.megacrit.cardcrawl.relics.StrangeSpoon;
 import com.megacrit.cardcrawl.relics.UnceasingTop;
@@ -44,6 +46,7 @@ public class AquaLanceMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
+        AddAudioSubscriber,
         PostDungeonInitializeSubscriber {
 
     public static final String modID = "aqualancemod";
@@ -73,8 +76,30 @@ public class AquaLanceMod implements
     private static final String CHARSELECT_PORTRAIT = modID + "Resources/images/charSelect/charBG.png";
     public static final String WATER_EFFECT_FILE = modID + "Resources/images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = modID + "Resources/images/vfx/Blood.png";
+
     public static final String THEME_KEY = makeID("Theme Song");
     public static final String THEME_OGG = modID + "Resources/audio/Theme2.ogg";
+
+    public static final String STAB_KEY = makeID("Stab Sound");
+    public static final String STAB_OGG = modID + "Resources/audio/Stab.ogg";
+
+    public static final String MULTI_STAB_KEY = makeID("Multi Stab Sound");
+    public static final String MULTI_STAB_OGG = modID + "Resources/audio/MultiStab.ogg";
+
+    public static final String SPLASH_KEY = makeID("Splash Sound");
+    public static final String SPLASH_OGG = modID + "Resources/audio/Splash.ogg";
+
+    public static final String WATERFALL_KEY = makeID("Waterfall Sound");
+    public static final String WATERFALL_OGG = modID + "Resources/audio/Waterfall.ogg";
+
+    public static final String FOOTSTEPS_KEY = makeID("Footsteps Sound");
+    public static final String FOOTSTEPS_OGG = modID + "Resources/audio/Footsteps.ogg";
+
+    public static final String TRUCK_KEY = makeID("Truck Sound");
+    public static final String TRUCK_OGG = modID + "Resources/audio/Truck.ogg";
+
+    public static final String FIRE_KEY = makeID("Fire Sound");
+    public static final String FIRE_OGG = modID + "Resources/audio/Fire.ogg";
 
     private static final String BADGE_IMG = modID + "Resources/images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -184,6 +209,18 @@ public class AquaLanceMod implements
     }
 
     @Override
+    public void receiveAddAudio() {
+        BaseMod.addAudio(THEME_KEY, THEME_OGG);
+        BaseMod.addAudio(STAB_KEY, STAB_OGG);
+        BaseMod.addAudio(MULTI_STAB_KEY, MULTI_STAB_OGG);
+        BaseMod.addAudio(SPLASH_KEY, SPLASH_OGG);
+        BaseMod.addAudio(WATERFALL_KEY, WATERFALL_OGG);
+        BaseMod.addAudio(FOOTSTEPS_KEY, FOOTSTEPS_OGG);
+        BaseMod.addAudio(TRUCK_KEY, TRUCK_OGG);
+        BaseMod.addAudio(FIRE_KEY, FIRE_OGG);
+    }
+
+    @Override
     public void receivePostInitialize() {
         BaseMod.addPotion(HobblePotion.class, Color.GREEN.cpy(), null, Color.YELLOW.cpy(), HobblePotion.POTION_ID, THE_AQUALANCE);
         BaseMod.addPotion(IntPotion.class, Color.YELLOW.cpy(), null, null, IntPotion.POTION_ID, THE_AQUALANCE);
@@ -204,6 +241,7 @@ public class AquaLanceMod implements
             AbstractDungeon.shopRelicPool.removeIf(r -> r.equals(StrangeSpoon.ID));
             AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(DeadBranch.ID));
             AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(UnceasingTop.ID));
+            AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(ChemicalX.ID));
         }
     }
 }

@@ -24,18 +24,17 @@ New Buffs
     Haste
 	1 draw, 1 energy at start of turn.  Stacks duration.
 
-Banned stuff
-    Exhaust (Except status/curse, relic cards), ethereal, card creation (outside start of combat relics)
+Discouraged stuff
+    Exhaust, ethereal, card creation (outside start of combat relics)
 
 Debug
 
 Design
 
 Todo
-    Theme song to form card, off heart battle
-    Put in sensory stone joke
     Ending sequence
 
+    Ask Alison about card background commission
     Fix char select picture
     Get non Silent character skelly
     Card art?

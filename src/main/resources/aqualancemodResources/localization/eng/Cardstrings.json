@@ -317,7 +317,8 @@
   },
   "${ModID}:IceArmor": {
     "NAME": "Ice Armor",
-    "DESCRIPTION": "Gain !M! Block at the end of your turn. NL This Block is increased by your aqualancemod:Intelligence."
+    "DESCRIPTION": "Gain Block equal to !M! times your intelligence at the end of your turn.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Gain Block equal to !M! times your intelligence at the end of your turn."
   },
   "${ModID}:Study": {
     "NAME": "Study",
