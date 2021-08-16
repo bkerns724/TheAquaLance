@@ -28,7 +28,7 @@ public class CloudSigil extends AbstractSigilCard {
     }
 
     public void onManualDiscard() {
-        applyToSelf(new IntelligencePower(adp(), magicNumber));
+        applyToSelfTop(new IntelligencePower(adp(), magicNumber));
     }
 
     public void upp() {

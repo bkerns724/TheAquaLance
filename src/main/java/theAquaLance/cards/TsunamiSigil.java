@@ -34,7 +34,8 @@ public class TsunamiSigil extends AbstractSigilCard {
     }
 
     public void onManualDiscard() {
-        atb(new TsunamiAction(this));
+        calculateCardDamage(null);
+        att(new TsunamiAction(this));
     }
 
     public void applyPowers() {

@@ -30,7 +30,6 @@ Discouraged stuff
 Debug
 
 Design
-    Change overextend to not end turn
 
 Major Todo
     Get card backgrounds to Alison Moons

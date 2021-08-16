@@ -28,7 +28,7 @@ public class IceSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        blck();
+        blckTop();
     }
 
     public void upp() {

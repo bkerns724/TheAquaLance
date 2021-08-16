@@ -35,11 +35,15 @@ public class DiscardHookPatch {
                     for (AbstractPower po : m.powers) {
                         if (po instanceof EmbedPower)
                             ((EmbedPower) po).onManualDiscard();
+                        if (po instanceof AbstractEasyPower) {
+                            ((AbstractEasyPower) po).onManualDiscard();
+                        }
                     }
                 }
                 for (AbstractPower p : adp().powers) {
-                    if (p instanceof AbstractEasyPower)
+                    if (p instanceof AbstractEasyPower) {
                         ((AbstractEasyPower) p).onManualDiscard();
+                    }
                 }
             }
         }

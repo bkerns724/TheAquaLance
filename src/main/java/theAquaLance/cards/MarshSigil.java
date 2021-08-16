@@ -29,7 +29,7 @@ public class MarshSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        forAllMonstersLiving((m) -> applyToEnemy(m, new PoisonPower(m, adp(), magicNumber)));
+        forAllMonstersLiving((m) -> applyToEnemyTop(m, new PoisonPower(m, adp(), magicNumber)));
     }
 
     public void upp() {

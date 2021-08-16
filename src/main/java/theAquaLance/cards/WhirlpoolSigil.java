@@ -27,7 +27,8 @@ public class WhirlpoolSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        allDmgTwo(AquaLanceMod.Enums.WATER);
+        calculateCardDamage(null);
+        allDmgTwoTop(AquaLanceMod.Enums.WATER);
     }
 
     public void upp() {

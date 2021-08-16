@@ -9,7 +9,8 @@
   },
   "${ModID}:Feint": {
     "NAME": "Feint",
-    "DESCRIPTION": "Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card."
+    "DESCRIPTION": "Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card."
   },
   "${ModID}:Crash": {
     "NAME": "Crash",
@@ -250,7 +251,7 @@
   "${ModID}:Roll": {
     "NAME": "Roll",
     "DESCRIPTION": "Draw !M! cards. NL Draw !aqualancemod:M2! card next turn.",
-    "UGPRADE_DESCRIPTION": "Draw !M! cards. NL Draw !aqualancemod:M2! cards next turn."
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Draw !aqualancemod:M2! cards next turn."
   },
   "${ModID}:SpinKick": {
     "NAME": "Spin Kick",
@@ -262,7 +263,7 @@
   },
   "${ModID}:PowerThrust": {
     "NAME": "Power Thrust",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL Discard a card next turn."
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card."
   },
   "${ModID}:Surge": {
     "NAME": "Surge",

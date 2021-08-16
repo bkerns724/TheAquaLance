@@ -15,7 +15,7 @@ public class Flow extends AbstractEasyCard {
     private final static int MAGIC = 1;
 
     public Flow() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
     }

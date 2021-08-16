@@ -17,7 +17,7 @@ public class SoakedPower extends AbstractEasyPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private boolean justApplied = false;
-    public static final int NORMAL_SOAK = 50;  // Percent
+    public static final int NORMAL_SOAK = 50;
 
     public SoakedPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, true, owner, amount);
@@ -63,9 +63,9 @@ public class SoakedPower extends AbstractEasyPower {
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
         if (type == AquaLanceMod.Enums.MAGIC) {
             if (adp().hasRelic(PaperPhish.ID))
-                damage *= 1.0F + (PaperPhish.SOAK_POWER/100.0F);
+                damage *= 1.75F;
             else
-                damage *= 1.0F + (NORMAL_SOAK/100.0F);
+                damage *= 1.5F;
         }
 
         return damage;

@@ -20,6 +20,7 @@ public class FlakPower extends AbstractEasyPower {
         this.name = NAME;
     }
 
+    @Override
     public void onManualDiscard() {
         atb(new GainBlockAction(adp(), amount));
     }

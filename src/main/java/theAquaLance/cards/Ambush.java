@@ -17,7 +17,7 @@ public class Ambush extends AbstractEasyCard {
     private final static int COST = 1;
 
     public Ambush() {
-        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         isInnate = true;

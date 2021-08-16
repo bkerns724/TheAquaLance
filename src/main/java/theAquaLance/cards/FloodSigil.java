@@ -28,7 +28,7 @@ public class FloodSigil extends AbstractSigilCard {
     }
 
     public void onManualDiscard() {
-        applyToSelf(new MetallicizePower(adp(), magicNumber));
+        applyToSelfTop(new MetallicizePower(adp(), magicNumber));
     }
 
     public void upp() {

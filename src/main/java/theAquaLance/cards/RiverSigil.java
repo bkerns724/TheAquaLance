@@ -28,7 +28,7 @@ public class RiverSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        atb(new DrawCardAction(magicNumber));
+        att(new DrawCardAction(magicNumber));
     }
 
     public void upp() {

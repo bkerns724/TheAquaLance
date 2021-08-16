@@ -1,5 +1,6 @@
 package theAquaLance.powers;
 
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -25,8 +26,12 @@ public class FeintPower extends AbstractEasyPower {
     }
 
     @Override
+    public void atStartOfTurn() {
+        atb(new RemoveSpecificPowerAction(owner, owner, this));
+    }
+
+    @Override
     public void updateDescription() {
-        if (amount == 1)
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 }

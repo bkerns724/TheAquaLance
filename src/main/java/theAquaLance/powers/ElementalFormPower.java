@@ -45,7 +45,7 @@ public class ElementalFormPower extends AbstractEasyPower {
         AbstractMonster m = getRandomItem(monsters);
         helperCard.calculateCardDamage(m);
         flash();
-        helperCard.dmgTwo(m, AquaLanceMod.Enums.WATER);
+        helperCard.dmgTwoTop(m, AquaLanceMod.Enums.WATER);
     }
 
     @Override

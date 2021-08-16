@@ -1,6 +1,7 @@
 package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.powers.ElementalFormPower;
@@ -22,6 +23,7 @@ public class ElementalForm extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        boolean secondPlay = adp().hasPower(ElementalForm.ID);
         applyToSelf(new ElementalFormPower(adp(), magicNumber));
 
         Iterator<AbstractMonster> var1 = AbstractDungeon.getMonsters().monsters.iterator();
@@ -33,7 +35,11 @@ public class ElementalForm extends AbstractEasyCard {
             mo = var1.next();
         } while(mo.type != AbstractMonster.EnemyType.BOSS);
 
-        AbstractDungeon.getCurrRoom().playBgmInstantly("THEME_SONG");
+        if (!secondPlay) {
+            CardCrawlGame.music.fadeAll();
+            AbstractDungeon.scene.fadeOutAmbiance();
+            AbstractDungeon.getCurrRoom().playBgmInstantly("THEME_SONG");
+        }
     }
 
     public void upp() {

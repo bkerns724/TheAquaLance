@@ -28,7 +28,7 @@ public class WaterSigil extends AbstractSigilCard {
     }
 
     public void onManualDiscard() {
-        forAllMonstersLiving(m-> applyToEnemy(m, new TempNegStrengthPower(m, magicNumber)));
+        forAllMonstersLiving(m-> applyToEnemyTop(m, new TempNegStrengthPower(m, magicNumber)));
     }
 
     public void upp() {

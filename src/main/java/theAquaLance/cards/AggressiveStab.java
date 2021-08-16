@@ -15,7 +15,7 @@ public class AggressiveStab extends AbstractEasyCard {
     private final static int MAGIC = 3;
 
     public AggressiveStab() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }

@@ -48,7 +48,7 @@
     "DESCRIPTIONS": [
       "Every time you apply a debuff, increase the stacks applied by #b",
       " or #b",
-      " 25%, whichever is greater."
+      "%, whichever is greater."
     ]
   },
   "${ModID}:CrownOfThorns": {

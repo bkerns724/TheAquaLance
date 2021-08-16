@@ -28,7 +28,7 @@ public class WaterfallSigil extends AbstractSigilCard {
     }
 
     public void onManualDiscard() {
-        atb(new GainEnergyAction(magicNumber));
+        att(new GainEnergyAction(magicNumber));
     }
 
     public void upp() {

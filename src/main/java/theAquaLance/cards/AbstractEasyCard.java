@@ -109,7 +109,8 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.applyPowers();
 
             secondDamage = damage;
-            multiDamageTwo = multiDamage;
+            if (isMultiDamage && multiDamage != null)
+                multiDamageTwo = multiDamage.clone();
             baseDamage = tmp;
             damageTypeForTurn = DamageInfo.DamageType.NORMAL;
 
@@ -128,7 +129,9 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.calculateCardDamage(mo);
 
             secondDamage = damage;
-            multiDamageTwo = multiDamage;
+            if (isMultiDamage && multiDamage != null)
+                multiDamageTwo = multiDamage.clone();
+
             baseDamage = tmp;
             damageTypeForTurn = DamageInfo.DamageType.NORMAL;
 
@@ -226,6 +229,10 @@ public abstract class AbstractEasyCard extends CustomCard {
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, secondDamage, Enums.MAGIC), fx));
     }
 
+    public void dmgTwoTop(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
+        att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, secondDamage, Enums.MAGIC), fx));
+    }
+
     public void allDmg(AbstractGameAction.AttackEffect fx) {
         atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, DamageInfo.DamageType.NORMAL, fx));
     }
@@ -240,5 +247,9 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     protected void blck() {
         atb(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
+    }
+
+    protected void blckTop() {
+        att(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
 }
