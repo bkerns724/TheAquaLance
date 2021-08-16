@@ -14,7 +14,7 @@ import static theAquaLance.util.Wiz.applyToSelf;
 
 public class InsightPotion extends AbstractEasyPotion {
     public static final String POTION_ID = AquaLanceMod.makeID("InsightPotion");
-    private static final int INT_AMOUNT = 7;
+    private static final int INT_AMOUNT = 5;
 
     public InsightPotion() {
         super(POTION_ID, PotionRarity.COMMON, PotionSize.BOLT, PotionColor.WHITE, false, false);

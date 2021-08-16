@@ -10,8 +10,8 @@ import static theAquaLance.util.Wiz.*;
 public class EvasiveManeuvers extends AbstractEasyCard {
     public final static String ID = makeID("EvasiveManeuvers");
     private final static int BLOCK = 5;
-    private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 1;
+    private final static int UPGRADE_MAGIC = 1;
 
     public EvasiveManeuvers() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -25,6 +25,6 @@ public class EvasiveManeuvers extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeBlock(UPGRADE_BLOCK);
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

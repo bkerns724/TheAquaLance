@@ -9,11 +9,11 @@ import static theAquaLance.util.Wiz.*;
 
 public class Flurry extends AbstractEasyCard {
     public final static String ID = makeID("Flurry");
-    private final static int DAMAGE = 4;
+    private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 2;
 
     public Flurry() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
     }
 

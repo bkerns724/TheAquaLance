@@ -9,6 +9,7 @@ import static theAquaLance.util.Wiz.*;
 public class VialOfMineralWater extends AbstractEasyRelic {
     public static final String ID = makeID("VialOfMineralWater");
     private static final int DRAW_AMOUNT = 2;
+    private boolean triggered = false;
 
     public VialOfMineralWater() {
         super(ID, RelicTier.RARE, LandingSound.MAGICAL, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
@@ -16,7 +17,16 @@ public class VialOfMineralWater extends AbstractEasyRelic {
 
     @Override
     public void onShuffle() {
-        atb(new DrawCardAction(DRAW_AMOUNT));
+        if(!triggered) {
+            atb(new DrawCardAction(DRAW_AMOUNT));
+            flash();
+            triggered = true;
+        }
+    }
+
+    @Override
+    public void atTurnStart() {
+        triggered = false;
     }
 
     public String getUpdatedDescription() {

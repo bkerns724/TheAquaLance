@@ -83,7 +83,7 @@
       "Overextend",
       "overextend"
     ],
-    "DESCRIPTION": "Lose #yBlock equal to Overextend at the end of your turn.  End your turn if you reach 15 Overextend."
+    "DESCRIPTION": "Lose #yBlock equal to Overextend at the end of your turn."
   },
   {
     "PROPER_NAME": "Embed",

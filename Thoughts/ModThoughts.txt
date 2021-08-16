@@ -14,7 +14,7 @@ New Debuffs
     Soaked
 	50% more damage from magic.  Stacks duration.
     Overextend
-	Lose block at end of this turn.  At 15 overextend end your turn.
+	Lose block at end of this turn.
     Frostbite
 	Like thorns, but decays when attacking
 
@@ -30,11 +30,32 @@ Discouraged stuff
 Debug
 
 Design
+    Change overextend to not end turn
 
-Todo
-    Ending sequence
-
-    Ask Alison about card background commission
+Major Todo
+    Get card backgrounds to Alison Moons
     Fix char select picture
     Get non Silent character skelly
     Card art?
+
+
+SQUEENY
+
+The heart kill cg is way too long
+    ROFL
+
+
+AZOTH
+
+I found that there seemed to be a lack of magic cards but plenty of intelligence on my run.
+    Adding a little more payoff
+
+
+ALCHYR
+Lack of defense early.  Starting deck is a problem.
+    Going to 4 defends, buff starting relic.  Starting deck thicker though.
+    I am sure the block commons are good.
+There aren't too many "pick this card up early on to deal with enemies" options.
+    Buffed attack common damage a little
+There are a lot of synergy and minor debuff cards in the common pool
+    Need to keep an eye on synergy, debuffs are fine

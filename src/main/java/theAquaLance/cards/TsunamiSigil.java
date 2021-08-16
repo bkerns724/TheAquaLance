@@ -3,7 +3,6 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.TsunamiAction;
 import theAquaLance.patches.AbstractCardPatch.AbstractCardField;
 import theAquaLance.patches.DiscardHookPatch.GameActionManagerField;
@@ -13,10 +12,10 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class TsunamiSigil extends AbstractSigilCard {
     public final static String ID = makeID("TsunamiSigil");
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 2;
-    private final static int SECOND_DAMAGE = 5;
-    private final static int UPGRADE_SECOND = 2;
+    private final static int MAGIC = 4;
+    private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_DAMAGE = 4;
+    private final static int UPGRADE_SECOND = 1;
 
     public TsunamiSigil() {
         super(ID, CardRarity.RARE);

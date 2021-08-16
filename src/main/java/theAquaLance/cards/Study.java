@@ -9,7 +9,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Study extends AbstractEasyCard {
     public final static String ID = makeID("Study");
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 
     public Study() {

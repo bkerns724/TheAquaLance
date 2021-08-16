@@ -33,7 +33,7 @@
     "NAME": "Overextend",
     "DESCRIPTIONS": [
       "Lose #b",
-      " #yBlock at the end of your turn. NL End your turn if you reach 15 Overextend."
+      " #yBlock at the end of your turn."
     ]
   },
   "${ModID}:Soaked": {
@@ -80,13 +80,6 @@
     "DESCRIPTIONS": [
       "At the end of your turn, lose #b",
       " #yIntelligence."
-    ]
-  },
-  "${ModID}:Vortex": {
-    "NAME": "Vortex",
-    "DESCRIPTIONS": [
-      "Whenever you discard a card, deal #b",
-      " #yMagic damage to ALL enemies."
     ]
   },
   "${ModID}:Embedded": {
@@ -159,14 +152,6 @@
       " cards."
     ]
   },
-  "${ModID}:DrawTwoTurns": {
-    "NAME": "Draw in Two Turns",
-    "DESCRIPTIONS": [
-      "Two turns from now, draw #b",
-      " additional cards.",
-      " additional card."
-    ]
-  },
   "${ModID}:IceMastery": {
     "NAME": "Ice Mastery",
     "DESCRIPTIONS": [
@@ -181,12 +166,18 @@
       " HP."
     ]
   },
-  "${ModID}:DiscardTwoTurns": {
-    "NAME": "Discard in Two Turns",
+  "${ModID}:Streamline": {
+    "NAME": "Streamline",
     "DESCRIPTIONS": [
-      "Two turns from now, discard #b",
-      " cards.",
-      " card."
+      "Whenever you discard a card this turn, gain #b",
+      " #yBlock."
+    ]
+  },
+  "${ModID}:Feint": {
+    "NAME": "Feint",
+    "DESCRIPTIONS": [
+      "Whenever you discard a card this turn, gains #b",
+      " #yVulnerable."
     ]
   },
   "${ModID}:Speed": {

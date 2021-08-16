@@ -9,7 +9,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class IceSigil extends AbstractSigilCard {
     public final static String ID = makeID("IceSigil");
-    private final static int BLOCK = 8;
+    private final static int BLOCK = 9;
     private final static int UPGRADE_BLOCK = 3;
 
     public IceSigil() {

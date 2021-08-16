@@ -12,8 +12,8 @@ public class ChillWind extends AbstractEasyCard {
     public final static String ID = makeID("ChillWind");
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 4;
-    private final static int UPGRADE_SECOND = 1;
+    private final static int SECOND_MAGIC = 5;
+    private final static int UPGRADE_SECOND = 2;
 
     public ChillWind() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);

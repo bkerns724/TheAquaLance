@@ -18,7 +18,7 @@ public class BattlemageShard extends AbstractEmbedCard {
     private final static int UPGRADE_SECOND = 2;
 
     public BattlemageShard() {
-        super(ID, 2, CardRarity.RARE);
+        super(ID, 2, CardRarity.UNCOMMON);
         baseDamage = DAMAGE;
         baseSecondDamage = SECOND_DAMAGE;
     }

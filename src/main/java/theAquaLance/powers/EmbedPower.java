@@ -1,6 +1,7 @@
 package theAquaLance.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.cards.AbstractEmbedCard;
 import theAquaLance.relics.UnmeltingIce;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 
 import static theAquaLance.util.Wiz.*;
 
-public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower, OnShufflePowerInterface,
+public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower,
         OnStatusPowerInterface {
     public static final String POWER_ID = AquaLanceMod.makeID("Embedded");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -59,6 +61,7 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
         c.current_y = owner.hb.cY;
         adp().hand.moveToDiscardPile(c);
         cards.remove(c);
+        updateDescription();
     }
 
     @Override
@@ -75,16 +78,6 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
     public void atStartOfTurn() {
         for (AbstractEmbedCard c: cards)
             c.atStartOfTurn(owner);
-    }
-
-    @Override
-    public void onShuffle() {
-        System.out.println("In Embed Power");
-        for (AbstractEmbedCard c : cards) {
-            System.out.print("In Card: ");
-            System.out.println(c.name);
-            c.onShuffle(owner);
-        }
     }
 
     @Override

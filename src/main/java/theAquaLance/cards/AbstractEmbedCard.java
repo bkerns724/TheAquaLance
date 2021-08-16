@@ -23,8 +23,6 @@ public abstract class AbstractEmbedCard extends AbstractEasyCard {
 
     public void atStartOfTurn(AbstractCreature host) {}
 
-    public void onShuffle(AbstractCreature host) {}
-
     public void onApplyPower(AbstractCreature host, AbstractPower power, AbstractCreature source, AbstractCreature target) {}
 
     public void onApplyStatus(AbstractCreature host, AbstractCard card) {}

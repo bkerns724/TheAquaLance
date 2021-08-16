@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class WaterBlast extends AbstractEasyCard {
     public final static String ID = makeID("WaterBlast");
-    private final static int DAMAGE = 12;
+    private final static int DAMAGE = 13;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;

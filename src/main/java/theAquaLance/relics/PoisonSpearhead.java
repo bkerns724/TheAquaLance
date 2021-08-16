@@ -11,7 +11,8 @@ import static theAquaLance.util.Wiz.*;
 
 public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRelic {
     public static final String ID = makeID("PoisonSpearhead");
-    private static final int DEBUFF_AMOUNT = 1;
+    private static final int ADD_INCREASE = 1;
+    private static final float MULT_INCREASE = 0.25F;
 
     public PoisonSpearhead() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
@@ -21,10 +22,12 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
     public boolean onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (source == adp() && power.type == AbstractPower.PowerType.DEBUFF && target != source) {
             if (power.amount > 0) {
-                power.amount++;
+                float increase = Math.max(ADD_INCREASE, power.amount * MULT_INCREASE);
+                power.amount += increase;
                 power.updateDescription();
             } else if (power.amount < 0 && power.canGoNegative) {
-                power.amount--;
+                float decrease = Math.min(-ADD_INCREASE, power.amount * MULT_INCREASE);
+                power.amount -= decrease;
                 power.updateDescription();
             }
         }
@@ -34,15 +37,21 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
     @Override
     public int onApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (source == adp() && power.type == AbstractPower.PowerType.DEBUFF) {
-            if (power.amount > 0)
-                return stackAmount + 1;
-            else if (power.amount < 0 && power.canGoNegative)
-                return stackAmount - 1;
+            if (power.amount > 0) {
+                float increase = Math.max(ADD_INCREASE, power.amount * MULT_INCREASE);
+                power.amount += increase;
+                power.updateDescription();
+            }
+            else if (power.amount < 0 && power.canGoNegative) {
+                float decrease = Math.min(-ADD_INCREASE, power.amount * MULT_INCREASE);
+                power.amount -= decrease;
+                power.updateDescription();
+            }
         }
         return stackAmount;
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + DEBUFF_AMOUNT + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0] + ADD_INCREASE + DESCRIPTIONS[1] + MULT_INCREASE*100 + DESCRIPTIONS[2];
     }
 }

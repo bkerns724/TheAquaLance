@@ -9,13 +9,13 @@ import static theAquaLance.util.Wiz.*;
 
 public class Rapids extends AbstractEasyCard {
     public final static String ID = makeID("Rapids");
-    private final static int COST = 1;
-    private final static int UPGRADED_COST = 0;
+    private final static int COST = 0;
     private final static int MAGIC = 1;
 
     public Rapids() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -23,6 +23,7 @@ public class Rapids extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        exhaust = false;
+        uDesc();
     }
 }

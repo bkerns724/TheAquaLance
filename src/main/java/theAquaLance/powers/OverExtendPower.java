@@ -24,13 +24,6 @@ public class OverExtendPower extends AbstractEasyPower {
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        if (amount >= END_TURN_AMOUNT)
-            atb(new PressEndTurnButtonAction());
-    }
-
-    @Override
     public void atEndOfTurn(boolean isPlayer) {
         atb(new LoseBlockAction(adp(), adp(), amount));
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));

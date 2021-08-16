@@ -9,8 +9,8 @@ import static theAquaLance.util.Wiz.*;
 public class FlashFreeze extends AbstractEasyCard {
     public final static String ID = makeID("FlashFreeze");
     private final static int BLOCK = 8;
-    private final static int UPGRADE_BLOCK = 3;
-    private final static int COST = 1;
+    private final static int UPGRADE_BLOCK = 4;
+    private final static int COST = 0;
 
     public FlashFreeze() {
         super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);

@@ -7,9 +7,9 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "${ModID}:MagicStrike": {
-    "NAME": "Magic Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !aqualancemod:D2! aqualancemod:Magic damage."
+  "${ModID}:Feint": {
+    "NAME": "Feint",
+    "DESCRIPTION": "Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card."
   },
   "${ModID}:Crash": {
     "NAME": "Crash",
@@ -43,12 +43,15 @@
       " #yMagic damage."
     ]
   },
-  "${ModID}:AttunedShard": {
-    "NAME": "Attuned Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it whenever you shuffle your deck.",
+  "${ModID}:BombShard": {
+    "NAME": "Bomb Shard",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: In !aqualancemod:M2! turns, deal !aqualancemod:D2! aqualancemod:Magic damage to the enemy and remove this aqualancemod:Shard.",
     "EXTENDED_DESCRIPTION": [
-      " NL Takes ",
-      " #yMagic damage whenever you shuffle your deck."
+      " NL In ",
+      " turn, ",
+      " turns, ",
+      " takes #yMagic damage ",
+      " times."
     ]
   },
   "${ModID}:AntimagicShard": {
@@ -79,9 +82,9 @@
     "NAME": "Freezing Water",
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! aqualancemod:Frostbite."
   },
-  "${ModID}:WaterWall": {
-    "NAME": "Water Wall",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! aqualancemod:Soaked."
+  "${ModID}:Flow": {
+    "NAME": "Flow",
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card. NL Discard !M! card."
   },
   "${ModID}:Freeze": {
     "NAME": "Freeze",
@@ -135,13 +138,14 @@
     "NAME": "Water Blast",
     "DESCRIPTION": "Deal !D! damage and Apply !M! aqualancemod:Soaked to ALL enemies."
   },
-  "${ModID}:PickOff": {
-    "NAME": "Pick Off",
-    "DESCRIPTION": "Base damage is !M! per enemy. NL Deal !D! damage to the enemy with the lowest HP."
+  "${ModID}:AggressiveStab": {
+    "NAME": "Aggressive Stab",
+    "DESCRIPTION": "Deal !D! damage. NL !M! aqualancemod:Overextend."
   },
   "${ModID}:Rapids": {
     "NAME": "Rapids",
-    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
+    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
   },
   "${ModID}:Fog": {
     "NAME": "Fog",
@@ -151,8 +155,8 @@
     "NAME": "Chill Wind",
     "DESCRIPTION": "Apply !aqualancemod:M2! aqualancemod:Frostbite. NL Draw !M! cards."
   },
-  "${ModID}:Stab": {
-    "NAME": "Stab",
+  "${ModID}:DisablingStab": {
+    "NAME": "Disabling Stab",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! aqualancemod:Hobble."
   },
   "${ModID}:Ambush": {
@@ -163,9 +167,9 @@
     "NAME": "Pressure",
     "DESCRIPTION": "Apply !M! *Pressure per debuff on the target. NL Target loses HP equal to their *Pressure."
   },
-  "${ModID}:TacticalAssault": {
-    "NAME": "Tactical Assault",
-    "DESCRIPTION": "Deal !D! damage. NL Increase ALL stackable debuffs by !M!."
+  "${ModID}:SavageThrust": {
+    "NAME": "Savage Thrust",
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle a *Void into your draw pile."
   },
   "${ModID}:Parry": {
     "NAME": "Parry",
@@ -204,7 +208,7 @@
   },
   "${ModID}:FloodSigil": {
     "NAME": "Flood Sigil",
-    "DESCRIPTION": "aqualancemod:Sigil. NL Deal !aqualancemod:D2! aqualancemod:Magic damage to the lowest health enemy !M! times.",
+    "DESCRIPTION": "aqualancemod:Sigil. NL At the end of your turn, gain !M! Block.",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
   },
   "${ModID}:WaterSigil": {
@@ -245,7 +249,8 @@
   },
   "${ModID}:Roll": {
     "NAME": "Roll",
-    "DESCRIPTION": "Draw !M! cards. NL aqualancemod:Overextend !aqualancemod:M2!."
+    "DESCRIPTION": "Draw !M! cards. NL Draw !aqualancemod:M2! card next turn.",
+    "UGPRADE_DESCRIPTION": "Draw !M! cards. NL Draw !aqualancemod:M2! cards next turn."
   },
   "${ModID}:SpinKick": {
     "NAME": "Spin Kick",
@@ -253,7 +258,7 @@
   },
   "${ModID}:Momentum": {
     "NAME": "Momentum",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! aqualancemod:Haste."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! aqualancemod:Haste if the enemy has a aqualancemod:Shard in it."
   },
   "${ModID}:PowerThrust": {
     "NAME": "Power Thrust",
@@ -307,17 +312,15 @@
   },
   "${ModID}:Streamline": {
     "NAME": "Streamline",
-    "DESCRIPTION": "Draw 1 card. NL Draw 1 card next turn.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Draw 1 card the next !M! turns."
+    "DESCRIPTION": "Whenever you draw or discard a card this turn, gain !M! Block."
   },
   "${ModID}:Jettison": {
     "NAME": "Jettison",
-    "DESCRIPTION": "Discard 1 card. NL Discard 1 card next turn. NL Apply !M! aqualancemod:Soaked.",
-    "UPGRADE_DESCRIPTION": "Discard 1 card. NL Discard 1 card the next 2 turns. NL Apply !M! aqualancemod:Soaked."
+    "DESCRIPTION": "Discard 1 card. NL Discard 1 card next turn. NL Apply !M! aqualancemod:Soaked."
   },
   "${ModID}:IceArmor": {
     "NAME": "Ice Armor",
-    "DESCRIPTION": "Gain Block equal to !M! times your intelligence at the end of your turn.",
+    "DESCRIPTION": "Gain Block equal to your intelligence at the end of your turn.",
     "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Gain Block equal to !M! times your intelligence at the end of your turn."
   },
   "${ModID}:Study": {
@@ -362,13 +365,10 @@
     "NAME": "Flash Freeze",
     "DESCRIPTION": "Retain. NL Gain !B! Block. NL Exhaust."
   },
-  "${ModID}:Flow": {
-    "NAME": "Flow",
-    "DESCRIPTION": "Retain. NL Discard any number of cards and draw that many. NL Exhaust."
-  },
   "${ModID}:Escalate": {
     "NAME": "Escalate",
-    "DESCRIPTION": "Whenever you apply a debuff, gain !M! aqualancemod:Intelligence."
+    "DESCRIPTION": "Whenever you apply a debuff, gain !M! aqualancemod:Intelligence.",
+    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Whenever you apply a debuff, gain !M! aqualancemod:Intelligence."
   },
   "${ModID}:ElementalForm": {
     "NAME": "Elemental Form",

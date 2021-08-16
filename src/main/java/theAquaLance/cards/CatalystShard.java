@@ -22,7 +22,7 @@ public class CatalystShard extends AbstractEmbedCard {
     private final static int COST = 2;
 
     public CatalystShard() {
-        super(ID, COST, CardRarity.UNCOMMON);
+        super(ID, COST, CardRarity.RARE);
         baseDamage = DAMAGE;
         baseSecondDamage = SECOND_DAMAGE;
     }

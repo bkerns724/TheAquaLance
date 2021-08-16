@@ -46,8 +46,9 @@
     "NAME": "Poisoned Spear Head",
     "FLAVOR": "I shouldn't have licked it.",
     "DESCRIPTIONS": [
-      "Every time you apply a debuff, apply #b",
-      " more stack."
+      "Every time you apply a debuff, increase the stacks applied by #b",
+      " or #b",
+      " 25%, whichever is greater."
     ]
   },
   "${ModID}:CrownOfThorns": {
@@ -68,14 +69,17 @@
     "NAME": "Rune of Living Water",
     "FLAVOR": "It is made of water, yet somehow keeps its shape.",
     "DESCRIPTIONS": [
-      "At the start of combat, add a #yFlash #yFreeze and a #yFlow to your hand."
+      "At the start of combat, add #b",
+      " #yFlash #yFreeze+ to your hand."
     ]
   },
   "${ModID}:SteamOrb": {
     "NAME": "Steam Orb",
     "FLAVOR": "You can feel the heat when it is close.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn.  Your discards target randomly."
+      "Gain [E] at the start of your turn.  For each card you draw above #b",
+      " each turn, gain #b",
+      " #yOverextend."
     ]
   },
   "${ModID}:SailorCharm": {
@@ -97,7 +101,7 @@
     "NAME": "Vial of Mineral Water",
     "FLAVOR": "Very healthy.",
     "DESCRIPTIONS": [
-      "Whenever you shuffle your deck, draw #b",
+      "Once per turn, when you shuffle your deck, draw #b",
       " extra cards."
     ]
   },

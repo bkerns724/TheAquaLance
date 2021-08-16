@@ -21,7 +21,7 @@ public class AntimagicShard extends AbstractEmbedCard {
     private final static int COST = 1;
 
     public AntimagicShard() {
-        super(ID, COST, CardRarity.UNCOMMON);
+        super(ID, COST, CardRarity.COMMON);
         baseDamage = DAMAGE;
         baseSecondDamage = SECOND_DAMAGE;
     }
