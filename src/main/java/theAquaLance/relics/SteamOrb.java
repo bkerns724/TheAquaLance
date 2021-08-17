@@ -27,20 +27,22 @@ public class SteamOrb extends AbstractEasyRelic {
     @Override
     public void atTurnStart() {
         counter = 0;
-        stopPulse();
+        pulse = false;
     }
 
     @Override
     public void onVictory() {
         counter = -1;
-        stopPulse();
+        pulse = false;
     }
 
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
         counter++;
-        if (counter == 6)
+        if (counter == 6) {
+            pulse = true;
             beginPulse();
+        }
         if (counter > 6)
             applyToSelf(new OverExtendPower(adp(), OVEREXTEND));
     }

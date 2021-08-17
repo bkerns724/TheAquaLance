@@ -30,6 +30,16 @@ Discouraged stuff
 Debug
 
 Design
+    Really need to think about shards and faster scaling.
+    Flow is a little too good
+    Replace anti-magic shard
+    Make sure shard reactions are add to top
+    Buff flak
+    Buff roll
+    Check damage on attacking with shard respecting buffs.
+    Brr zerk to rare
+    Feint wear off timing
+    What to do with duplicate potion and shards?
 
 Major Todo
     Get card backgrounds to Alison Moons

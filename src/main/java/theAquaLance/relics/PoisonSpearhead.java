@@ -13,6 +13,7 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
     public static final String ID = makeID("PoisonSpearhead");
     private static final int ADD_INCREASE = 1;
     private static final float MULT_INCREASE = 0.25F;
+    private static final float MULT_FOR_STRING = 25;
 
     public PoisonSpearhead() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
@@ -52,6 +53,6 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + ADD_INCREASE + DESCRIPTIONS[1] + MULT_INCREASE*100 + DESCRIPTIONS[2];
+        return DESCRIPTIONS[0] + ADD_INCREASE + DESCRIPTIONS[1] + MULT_FOR_STRING + DESCRIPTIONS[2];
     }
 }

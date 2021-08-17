@@ -9,8 +9,7 @@
   },
   "${ModID}:Feint": {
     "NAME": "Feint",
-    "DESCRIPTION": "Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card.",
-    "UPGRADE_DESCRIPTION": "aqualancemod:Replenish. NL Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card."
+    "DESCRIPTION": "Whenever you discard a card this turn, apply !M! Vulnerable. NL Discard !M! card."
   },
   "${ModID}:Crash": {
     "NAME": "Crash",
@@ -46,7 +45,7 @@
   },
   "${ModID}:BombShard": {
     "NAME": "Bomb Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: In !aqualancemod:M2! turns, deal !aqualancemod:D2! aqualancemod:Magic damage to the enemy and remove this aqualancemod:Shard.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: In !aqualancemod:M2! turns, deal !aqualancemod:D2! aqualancemod:Magic damage to the enemy !M! times and remove this aqualancemod:Shard.",
     "EXTENDED_DESCRIPTION": [
       " NL In ",
       " turn, ",
@@ -317,7 +316,7 @@
   },
   "${ModID}:Jettison": {
     "NAME": "Jettison",
-    "DESCRIPTION": "Discard 1 card. NL Discard 1 card next turn. NL Apply !M! aqualancemod:Soaked."
+    "DESCRIPTION": "Apply !M! aqualancemod:Soaked. NL Discard 1 card. NL Discard 1 card next turn."
   },
   "${ModID}:IceArmor": {
     "NAME": "Ice Armor",

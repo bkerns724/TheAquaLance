@@ -20,9 +20,9 @@ public class Jettison extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        applyToEnemy(m, new SoakedPower(m, magicNumber));
         atb(new DiscardAction(p, p, 1, false));
         applyToSelf(new DiscardNextTurnPower(adp(), 1));
-        applyToEnemy(m, new SoakedPower(m, magicNumber));
     }
 
     public void upp() {
