@@ -16,13 +16,9 @@ public class ShufflePatch {
     public static class EmptyDeckShuffleActionPatch {
         @SpirePostfixPatch
         public static void Postfix(EmptyDeckShuffleAction __instance) {
-            System.out.println("Patch works");
             forAllMonstersLiving(m -> {
-                System.out.println("Found monster");
                 for (AbstractPower p : m.powers) {
                     if (p instanceof OnShufflePowerInterface) {
-                        System.out.print("Found Power: ");
-                        System.out.print(p.name);
                         ((OnShufflePowerInterface) p).onShuffle();
                     }
                 }

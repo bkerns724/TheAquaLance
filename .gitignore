@@ -1,5 +1,9 @@
 *.class
 
+# My Notes and other stuff
+src/main/resources/aqualancemodResources/images/cutScene/IconStorage
+Thoughts/
+
 # Weird ods thing
 *.ods[#]
 
@@ -84,4 +88,3 @@ $RECYCLE.BIN/
 
 # Spriter files
 *.autosave.scml
-/src/main/resources/aqualancemodResources/images/relics/Waterskin.png

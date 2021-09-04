@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Ambush extends AbstractEasyCard {
     public final static String ID = makeID("Ambush");
-    private final static int DAMAGE = 15;
+    private final static int DAMAGE = 18;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
@@ -22,7 +22,6 @@ public class Ambush extends AbstractEasyCard {
         baseMagicNumber = magicNumber = MAGIC;
         isInnate = true;
         exhaust = true;
-        isEthereal = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

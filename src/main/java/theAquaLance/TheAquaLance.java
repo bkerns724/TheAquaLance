@@ -15,11 +15,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theAquaLance.VFX.AquaLanceVictoryEffect;
 import theAquaLance.cards.*;
 import theAquaLance.patches.CutsceneMultiScreenPatch;
 import theAquaLance.relics.RuneOfIce;
@@ -71,7 +74,7 @@ public class TheAquaLance extends CustomPlayer {
     private static final int NUM_DEFENDS = 4;
     private static final int NUM_STARTER_1 = 2;
     private static final String STARTER_CARD1 = PowerThrust.ID;
-    private static final String STARTER_CARD2 = Feint.ID;
+    private static final String STARTER_CARD2 = ReverbShard.ID;
     private static final String STARTER_RELIC = RuneOfIce.ID;
     private static final int STARTING_HP = 70;
 
@@ -185,10 +188,9 @@ public class TheAquaLance extends CustomPlayer {
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
                 AquaLanceMod.Enums.WATER,
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                AquaLanceMod.Enums.WATER
+                AquaLanceMod.Enums.BLOOD
         };
     }
 
@@ -205,28 +207,40 @@ public class TheAquaLance extends CustomPlayer {
     @Override
     public List<CutscenePanel> getCutscenePanels() {
         List<CutscenePanel> panels = new ArrayList<>();
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[0]));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[1], STAB_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[2], MULTI_STAB_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[3], SPLASH_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[4], MULTI_STAB_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[5], WATERFALL_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[6], FOOTSTEPS_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[7], TRUCK_KEY));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[8], "BLUNT_HEAVY"));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[9]));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[10]));
-        panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[11], FIRE_KEY));
+        if (isExtendedCut()) {
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[0]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[1]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[2]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[3]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[4]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[5]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[6]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[7]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[8]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[9]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[10]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[11]));
 
-        CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(3), true);
-        CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(6), true);
-        CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(9), true);
+            CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(3), true);
+            CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(6), true);
+            CutsceneMultiScreenPatch.CutscenePanelNewScreenField.startsNewScreen.set(panels.get(9), true);
+        }
+        else {
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[9]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[10]));
+            panels.add(new CutscenePanel(CUTSCENE_FOLDER + CUTSCENE_PANELS[11]));
+        }
 
         return panels;
     }
 
     public Texture getCutsceneBg() {
         return ImageMaster.loadImage(CUTSCENE_FOLDER + CUTSCENE_BG);
+    }
+
+    @Override
+    public void updateVictoryVfx(ArrayList<AbstractGameEffect> effects) {
+        effects.add(new AquaLanceVictoryEffect());
     }
 
     public static class Enums {

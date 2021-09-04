@@ -1,23 +1,22 @@
 {
-  "${ModID}:ModSettingsPanel": {
-    "TEXT": [
-      "Unlock ascension 20 for AquaLance",
-      "Ascension 20 unlocked for AquaLance!"
-    ]
-  },
-  "${ModID}:AttackFromDiscardToHandAction": {
-    "TEXT": [
-      "Choose an attack to put into Your Hand."
-    ]
-  },
-  "${ModID}:AttackFromDrawToHandAction": {
-    "TEXT": [
-      "Choose an attack to put into Your Hand."
-    ]
-  },
   "${ModID}:SensoryStone": {
     "TEXT": [
       "~[#40E0D0]APPREHENSION.~ NL NL You wake up ~slowly~, rubbing grit out of your eyes.  As you enter your kitchen to make breakfast, you are #y@surprised@ to find it is a #r@mess,@ with dirty pots and utensils strewn about.  On the counter is a mostly eaten plate of stir fry. NL NL \"Oh no, not again,\" you murmur. \"I've been sleep wokking.\""
+    ]
+  },
+  "${ModID}:FetchShardAction": {
+    "TEXT": [
+      "Choose a card to put into your hand."
+    ]
+  },
+  "${ModID}:ThemeSongConfig": {
+    "TEXT": [
+      "Enables the AquaLance theme song."
+    ]
+  },
+  "${ModID}:ExtendedCutConfig": {
+    "TEXT": [
+      "Enables the AquaLance extended cut."
     ]
   }
 }

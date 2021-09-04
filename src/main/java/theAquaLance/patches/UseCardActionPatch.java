@@ -40,6 +40,7 @@ public class UseCardActionPatch {
                 }
                 else if (((AbstractEmbedCard)targetCard).hitArtifact) {
                     ((AbstractEmbedCard) targetCard).hitArtifact = false;
+                    ((AbstractEmbedCard)targetCard).missedMonsters = false;
                     return SpireReturn.Continue();
                 }
                 else {

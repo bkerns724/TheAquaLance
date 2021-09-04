@@ -7,7 +7,7 @@
       "Hobbled",
       "hobbled"
     ],
-    "DESCRIPTION": "Hobbled prevents debuffs and status cards."
+    "DESCRIPTION": "Hobbled negates the next debuff or status infliction."
   },
   {
     "PROPER_NAME": "Soaked",
@@ -50,16 +50,6 @@
     "DESCRIPTION": "Intelligence adds additional damage to #yMagic damage."
   },
   {
-    "PROPER_NAME": "Pop",
-    "NAMES": [
-      "Pop",
-      "pop",
-      "Popped",
-      "popped"
-    ],
-    "DESCRIPTION": "A card that pops a shard removes the oldest shard from the target.  Most shards have an extra effect when they are popped."
-  },
-  {
     "PROPER_NAME": "Sigil",
     "NAMES": [
       "Sigil",
@@ -67,7 +57,7 @@
       "Sigils",
       "sigils"
     ],
-    "DESCRIPTION": "Sigils are unplayable cards whose effects trigger on discarding them."
+    "DESCRIPTION": "Sigils are unplayable cards whose effects trigger when they are discarded from your hand."
   },
   {
     "PROPER_NAME": "Frostbite",
@@ -78,14 +68,6 @@
     "DESCRIPTION": "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
   },
   {
-    "PROPER_NAME": "Overextend",
-    "NAMES": [
-      "Overextend",
-      "overextend"
-    ],
-    "DESCRIPTION": "Lose #yBlock equal to Overextend at the end of your turn."
-  },
-  {
     "PROPER_NAME": "Embed",
     "NAMES": [
       "Embed",
@@ -93,7 +75,7 @@
       "Embedded",
       "embedded"
     ],
-    "DESCRIPTION": "Embed effects are debuffs that are applied an enemy while a #yShard is stuck to them."
+    "DESCRIPTION": "The effect this card will have once it is used on an enemy."
   },
   {
     "PROPER_NAME": "Shard",
@@ -103,7 +85,7 @@
       "Shards",
       "shards"
     ],
-    "DESCRIPTION": "A card that becomes attached to an enemy as a debuff when played."
+    "DESCRIPTION": "A card that becomes attached to an enemy as a debuff when played.  It also increases the enemy's Shard count.  It is discarded if the debuff is removed."
   },
   {
     "PROPER_NAME": "Vitality",
@@ -114,20 +96,12 @@
     "DESCRIPTION": "Vitality adds #yBlock to your next blocking card."
   },
   {
-    "PROPER_NAME": "Haste",
+    "PROPER_NAME": "Attuned",
     "NAMES": [
-      "Haste",
-      "haste"
+      "Attuned",
+      "attuned"
     ],
-    "DESCRIPTION": "If you have haste, gain [E] and draw 1 card at the start of your turn."
-  },
-  {
-    "PROPER_NAME": "Replenish",
-    "NAMES": [
-      "Replenish",
-      "replenish"
-    ],
-    "DESCRIPTION": "Whenever you draw this card, draw another card."
+    "DESCRIPTION": "Attuned cards get a larger damage bonus from each point of #yIntelligence."
   },
   {
     "PROPER_NAME": "Wave",

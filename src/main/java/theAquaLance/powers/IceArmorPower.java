@@ -51,6 +51,9 @@ public class IceArmorPower extends AbstractTwoAmountEasyPower {
             amount2 = amount * pow.amount;
         else
             amount2 = 0;
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[2];
+        if (amount == 1)
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[3];
+        else
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2] + amount2 + DESCRIPTIONS[3];
     }
 }

@@ -11,7 +11,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Reckless extends AbstractEasyCard {
     public final static String ID = makeID("Reckless");
-    private final static int MAGIC = 4;
+    private final static int MAGIC = 6;
     private final static int UPGRADE_MAGIC = 2;
     private final static int SECOND_MAGIC = 2;
     private final static int UPGRADE_SECOND = 1;

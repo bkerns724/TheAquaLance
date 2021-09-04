@@ -30,7 +30,7 @@ public class BattlemageShard extends AbstractEmbedCard {
     @Override
     public void onAttacked(AbstractCreature attacker, AbstractCreature host, DamageInfo.DamageType type) {
         if (attacker == adp() && type == DamageInfo.DamageType.NORMAL)
-            dmgTwo(host, AquaLanceMod.Enums.WATER);
+            dmgTwoTop(host, AquaLanceMod.Enums.WATER);
     }
 
     public void upp() {

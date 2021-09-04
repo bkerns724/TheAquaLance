@@ -9,16 +9,16 @@ import theAquaLance.actions.EmbedAction;
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
-public class UnstableShard extends AbstractEmbedCard {
-    public final static String ID = makeID("UnstableShard");
+public class ReverbShard extends AbstractEmbedCard {
+    public final static String ID = makeID("ReverbShard");
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 1;
-    private final static int SECOND_DAMAGE = 5;
-    private final static int UPGRADE_SECOND = 2;
+    private final static int SECOND_DAMAGE = 4;
+    private final static int UPGRADE_SECOND = 1;
     private final static int COST = 1;
 
-    public UnstableShard() {
-        super(ID, COST, CardRarity.UNCOMMON);
+    public ReverbShard() {
+        super(ID, COST, CardRarity.BASIC);
         baseDamage = DAMAGE;
         baseSecondDamage = SECOND_DAMAGE;
     }
@@ -28,7 +28,7 @@ public class UnstableShard extends AbstractEmbedCard {
     }
 
     @Override
-    public void onDiscardSigil(AbstractCreature host) {
+    public void onDiscard(AbstractCreature host) {
         dmgTwo(host, AquaLanceMod.Enums.WATER);
     }
 

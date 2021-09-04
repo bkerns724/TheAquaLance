@@ -9,7 +9,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class Fog extends AbstractEasyCard {
     public final static String ID = makeID("Fog");
-    private final static int BLOCK = 5;
+    private final static int BLOCK = 6;
     private final static int UPGRADE_BLOCK = 2;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;

@@ -1,6 +1,8 @@
 package theAquaLance.cards;
 
 import basemod.AutoAdd;
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.actions.WaveAction;
@@ -8,6 +10,7 @@ import theAquaLance.actions.WaveMergeAction;
 import theAquaLance.patches.AbstractCardPatch;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static theAquaLance.util.Wiz.*;
 
@@ -40,22 +43,22 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
         atb(new WaveAction(this, m));
     }
 
-    public abstract void upp();
+    @Override
+    public List<String> getCardDescriptors() {
+        ArrayList<String> retVal = new ArrayList<>();
+        retVal.add("Wave");
+        return retVal;
+    }
 
     @Override
-    public void onMoveToDiscard() {
-        for (AbstractWaveCard c : mergedCards) {
-            c.current_x = this.hb.cX;
-            c.current_y = this.hb.cY;
-            adp().hand.moveToDiscardPile(c);
-            c.setDescription();
-        }
-        mergedCards.clear();
-        cardToPreview.clear();
-        cardsToPreview = null;
-        previewIndex = 0;
-        setDescription();
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("aqualancemod:Wave"),
+                BaseMod.getKeywordDescription("aqualancemod:Wave")));
+        return retVal;
     }
+
+    public abstract void upp();
 
     public void addCard(AbstractWaveCard card) {
         card.angle = 0.0F;
@@ -64,6 +67,7 @@ public abstract class AbstractWaveCard extends AbstractEasyCard  {
         cardToPreview.add(card);
     }
 
+    // Currently not used, but it feels like I should have this function
     public void removeCard(AbstractWaveCard card) {
         mergedCards.remove(card);
     }

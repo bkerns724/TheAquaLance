@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class WaterSigil extends AbstractSigilCard {
     public final static String ID = makeID("WaterSigil");
-    private final static int MAGIC = 4;
+    private final static int MAGIC = 6;
     private final static int UPGRADE_MAGIC = 2;
 
     public WaterSigil() {

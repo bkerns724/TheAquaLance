@@ -26,7 +26,7 @@ public class WaveAction extends AbstractGameAction {
     public void update() {
         card.applyPowers();
         card.calculateCardDamage((AbstractMonster) target);
-        if (card.block > 0)
+        if (card.baseBlock > 0)
             att(new GainBlockAction(adp(), card.block));
         if (!card.areaAttack) {
             if (card.magicNumber > 0)

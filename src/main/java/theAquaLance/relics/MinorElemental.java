@@ -1,7 +1,9 @@
 package theAquaLance.relics;
 
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.TheAquaLance;
 import theAquaLance.cards.EleHelper;
@@ -20,6 +22,8 @@ public class MinorElemental extends AbstractEasyRelic {
 
     @Override
     public void atTurnStart() {
+        flash();
+        atb(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         forAllMonstersLiving(m -> {
             helper.calculateCardDamage(m);
             atb(new DamageAction(m, new DamageInfo(adp(), helper.secondDamage, AquaLanceMod.Enums.MAGIC),

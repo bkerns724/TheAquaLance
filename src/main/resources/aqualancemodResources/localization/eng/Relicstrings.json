@@ -78,8 +78,8 @@
     "FLAVOR": "You can feel the heat when it is close.",
     "DESCRIPTIONS": [
       "Gain [E] at the start of your turn.  For each card you draw above #b",
-      " each turn, gain #b",
-      " #yOverextend."
+      " each turn, lose #b",
+      " #yBlock at the end of your turn."
     ]
   },
   "${ModID}:SailorCharm": {

@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 
 public class PowerThrust extends AbstractEasyCard {
     public final static String ID = makeID("PowerThrust");
-    private final static int DAMAGE = 9;
+    private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 1;
 

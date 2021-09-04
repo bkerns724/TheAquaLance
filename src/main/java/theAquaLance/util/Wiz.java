@@ -27,7 +27,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Wiz {
-    //The wonderful Wizard of Oz allows access to most easy compilations of data, or functions.
+    // Thanks for the shortcuts Vex
 
     public static final String POW = "Power";
 
@@ -62,7 +62,7 @@ public class Wiz {
 
     public static ArrayList<AbstractMonster> getEnemies() {
         ArrayList<AbstractMonster> monsters = new ArrayList<>(AbstractDungeon.getMonsters().monsters);
-        monsters.removeIf(m -> m.isDead || m.isDying);
+        monsters.removeIf(m -> m.isDead || m.isDying || m.halfDead);
         return monsters;
     }
 

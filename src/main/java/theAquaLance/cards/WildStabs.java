@@ -3,7 +3,7 @@ package theAquaLance.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.powers.OverExtendPower;
+import theAquaLance.powers.LoseBlockPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -26,7 +26,7 @@ public class WildStabs extends AbstractEasyCard {
         for (int i = 0; i < magicNumber; i++) {
             dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
         }
-        applyToSelf(new OverExtendPower(adp(), secondMagic));
+        applyToSelf(new LoseBlockPower(adp(), secondMagic));
     }
 
     public void upp() {

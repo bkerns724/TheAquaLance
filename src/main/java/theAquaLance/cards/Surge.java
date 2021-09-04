@@ -17,7 +17,7 @@ public class Surge extends AbstractEasyCard {
     private final static int UPGRADE_SECOND = 2;
 
     public Surge() {
-        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }

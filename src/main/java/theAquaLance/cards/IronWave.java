@@ -4,12 +4,12 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class IronWave extends AbstractWaveCard {
     public final static String ID = makeID("IronWave");
-    private final static int DAMAGE = 6;
+    private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int BLOCK = 4;
     private final static int UPGRADE_BLOCK = 2;
-    private final static int BLOCK_BONUS = 3;
-    private final static int BONUS_UPGRADE = 1;
+    private final static int BLOCK_BONUS = 4;
+    private final static int BONUS_UPGRADE = 2;
 
     public IronWave() {
         super(ID, 1, CardRarity.UNCOMMON);

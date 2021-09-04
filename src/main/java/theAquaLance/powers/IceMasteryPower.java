@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theAquaLance.AquaLanceMod;
 
-// Code is in EmbedAction
+import static theAquaLance.util.Wiz.*;
 
 public class IceMasteryPower extends AbstractEasyPower {
     public static String POWER_ID = AquaLanceMod.makeID("IceMastery");
@@ -16,6 +16,15 @@ public class IceMasteryPower extends AbstractEasyPower {
     public IceMasteryPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        forAllMonstersLiving(m -> {
+            int count = getShardCount(m);
+            if (count > 0)
+                applyToEnemy(m, new FrostbitePower(m, count*amount));
+        });
     }
 
     @Override

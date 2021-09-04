@@ -2,7 +2,7 @@ package theAquaLance.relics;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theAquaLance.TheAquaLance;
-import theAquaLance.powers.OverExtendPower;
+import theAquaLance.powers.LoseBlockPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -44,7 +44,7 @@ public class SteamOrb extends AbstractEasyRelic {
             beginPulse();
         }
         if (counter > 6)
-            applyToSelf(new OverExtendPower(adp(), OVEREXTEND));
+            applyToSelf(new LoseBlockPower(adp(), OVEREXTEND));
     }
 
     public String getUpdatedDescription() {

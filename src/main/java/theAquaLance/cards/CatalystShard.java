@@ -39,7 +39,7 @@ public class CatalystShard extends AbstractEmbedCard {
             if (power instanceof EmbedPower)
                 if (((EmbedPower) power).cards.contains(this))
                     return;
-            dmgTwo(host, AquaLanceMod.Enums.WATER);
+            dmgTwoTop(host, AquaLanceMod.Enums.WATER);
         }
     }
 

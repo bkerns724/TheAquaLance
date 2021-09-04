@@ -29,11 +29,19 @@
       " damage then reduces Frostbite by 1."
     ]
   },
-  "${ModID}:Overextend": {
-    "NAME": "Overextend",
+  "${ModID}:LoseBlock": {
+    "NAME": "Lose Block",
     "DESCRIPTIONS": [
       "Lose #b",
       " #yBlock at the end of your turn."
+    ]
+  },
+  "${ModID}:Momentum": {
+    "NAME": "Momentum",
+    "DESCRIPTIONS": [
+      "The first #b",
+      " time you attack each turn, draw a card.",
+      " times you attack each turn, draw a card."
     ]
   },
   "${ModID}:Soaked": {
@@ -48,7 +56,7 @@
   "${ModID}:Escalate": {
     "NAME": "Escalate",
     "DESCRIPTIONS": [
-      "Whenever you apply a debuff, gain #b",
+      "Whenever you apply a debuff to an enemy, gain #b",
       " #yIntelligence."
     ]
   },
@@ -102,6 +110,7 @@
     "NAME": "Ice Armor",
     "DESCRIPTIONS": [
       "Gain #yBlock equal to #b",
+      " your #yIntelligence at the end of your turn.  This is #b",
       " times your #yIntelligence at the end of your turn.  This is #b",
       " #yBlock."
     ]
@@ -131,8 +140,8 @@
     "NAME": "Hobbled",
     "DESCRIPTIONS": [
       "Negates the next #b",
-      " debuffs or status cards.",
-      " debuff or status card."
+      " debuffs or status inflictions.",
+      " debuff or status infliction."
     ]
   },
   "${ModID}:TempNegStrength": {
@@ -155,8 +164,14 @@
   "${ModID}:IceMastery": {
     "NAME": "Ice Mastery",
     "DESCRIPTIONS": [
-      "Whenever you embed a #yShard, apply #b",
-      " #yFrostbite."
+      "At the end of your turn, each enemy gains #b",
+      " #yFrostbite per #yShard."
+    ]
+  },
+  "${ModID}:InvisibleSpray": {
+    "NAME": "Not Here",
+    "DESCRIPTIONS": [
+      "Bug with Spray card, I should not be seen."
     ]
   },
   "${ModID}:Pressure": {

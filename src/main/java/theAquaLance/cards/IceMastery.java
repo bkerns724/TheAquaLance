@@ -1,5 +1,6 @@
 package theAquaLance.cards;
 
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAquaLance.powers.IceMasteryPower;
@@ -9,14 +10,13 @@ import static theAquaLance.util.Wiz.*;
 
 public class IceMastery extends AbstractEasyCard {
     public final static String ID = makeID("IceMastery");
-    private final static int MAGIC = 6;
-    private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
+    private final static int UPGRADED_COST = 0;
+    private final static int MAGIC = 1;
 
     public IceMastery() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         magicNumber = baseMagicNumber = MAGIC;
-        isInnate = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -24,6 +24,6 @@ public class IceMastery extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

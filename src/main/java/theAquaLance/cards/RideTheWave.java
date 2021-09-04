@@ -4,9 +4,9 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class RideTheWave extends AbstractWaveCard {
     public final static String ID = makeID("RideTheWave");
-    private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 4;
-    private final static int DAMAGE_BONUS = 5;
+    private final static int DAMAGE = 15;
+    private final static int UPGRADE_DAMAGE = 5;
+    private final static int DAMAGE_BONUS = 8;
     private final static int BONUS_UPGRADE = 2;
 
     public RideTheWave() {

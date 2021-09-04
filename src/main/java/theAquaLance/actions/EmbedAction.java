@@ -76,9 +76,10 @@ public class EmbedAction extends AbstractGameAction {
                 c.current_y = m.hb.cY;
                 c.current_x = m.hb.cX;
             }
-            if (!c.hitArtifact)
-                if (adp().hasPower(IceMasteryPower.POWER_ID))
-                    applyToEnemyTop(m, new FrostbitePower(m, adp().getPower(IceMasteryPower.POWER_ID).amount));
+            if (c.purgeOnUse) {
+                c.purgeOnUse = false;
+                c.purgeOnExit = true;
+            }
             applyToEnemyTop(m, new EmbedPower(m, c));
             c.calculateCardDamage(m);
             att(new DamageAction(m, new DamageInfo(adp(), c.damage, c.damageTypeForTurn)));

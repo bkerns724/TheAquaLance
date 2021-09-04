@@ -1,20 +1,16 @@
 New Mechanics
     Wave
-	Rebound.  Waves of equal or lesser cost merge into it when played, adding a bonus effect.  Unmerges when discarded.
-    Replenish
-	Draw another card when drawn.
+	Rebound.  Waves of equal or lesser cost merge into it when played, adding a bonus effect.
     Sigils
-	Cards that can't be played normally, but have a special effect on discard.  Boosted by int.
+	Cards that can't be played normally, but have a special effect on discard.
     Shards
-	Cards that stick in an enemy, go to discard upon enemy death/debuff removal.  Boosted by int.
+	Cards that stick in an enemy, go to discard upon enemy death/debuff removal.
 
 New Debuffs
     Hobble
 	Stops status cards and debuffs.  Stops 1 action per stack.
     Soaked
 	50% more damage from magic.  Stacks duration.
-    Overextend
-	Lose block at end of this turn.
     Frostbite
 	Like thorns, but decays when attacking
 
@@ -28,43 +24,28 @@ Discouraged stuff
     Exhaust, ethereal, card creation (outside start of combat relics)
 
 Debug
+    Poison Spearhead test
+    Does Minor Elemental animate properly?
+    Ride The Wave + Oddly Smooth Stone blocks?
+    Test: Tsunami Sigil doesn't count itself.
+    Test: Make duplicate shards exhaust after popping.
+    Test: Fetch shard from draw pile.
+    Lash Out/Boil Blood hover over enemy respects soak?
+    Test: Options for "extended cut" victory sequence and theme song
+
+Code
+    Add an option for vfx toggle for wave/shard.
+    Find this stupid Lagavulin bug and patch it out.
 
 Design
-    Really need to think about shards and faster scaling.
-    Flow is a little too good
-    Replace anti-magic shard
-    Make sure shard reactions are add to top
-    Buff flak
-    Buff roll
-    Check damage on attacking with shard respecting buffs.
-    Brr zerk to rare
-    Feint wear off timing
-    What to do with duplicate potion and shards?
+    Sigil card that rewards shards?
 
-Major Todo
-    Get card backgrounds to Alison Moons
-    Fix char select picture
+Art Todo
+    New merge vfx look a bit bad.  Tweak color.  Test.
+    Ask Celicath if merge/shard vfx is still uncomfortable
+    Get card backgrounds to Alison Moons?
+	Do I still want this?
+    Reconsider javelin art
+    Better char select picture.  Make correct resolution.
     Get non Silent character skelly
     Card art?
-
-
-SQUEENY
-
-The heart kill cg is way too long
-    ROFL
-
-
-AZOTH
-
-I found that there seemed to be a lack of magic cards but plenty of intelligence on my run.
-    Adding a little more payoff
-
-
-ALCHYR
-Lack of defense early.  Starting deck is a problem.
-    Going to 4 defends, buff starting relic.  Starting deck thicker though.
-    I am sure the block commons are good.
-There aren't too many "pick this card up early on to deal with enemies" options.
-    Buffed attack common damage a little
-There are a lot of synergy and minor debuff cards in the common pool
-    Need to keep an eye on synergy, debuffs are fine

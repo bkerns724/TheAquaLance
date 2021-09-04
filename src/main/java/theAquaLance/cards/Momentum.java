@@ -1,34 +1,28 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theAquaLance.powers.EmbedPower;
-import theAquaLance.powers.HastePower;
+import theAquaLance.powers.MomentumPower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
 
 public class Momentum extends AbstractEasyCard {
     public final static String ID = makeID("Momentum");
-    private final static int DAMAGE = 8;
     private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int UPGRADED_COST = 0;
     private final static int COST = 1;
 
     public Momentum() {
-        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = DAMAGE;
+        super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        if (m.hasPower(EmbedPower.POWER_ID))
-            applyToSelf(new HastePower(p, magicNumber));
+        applyToSelf(new MomentumPower(adp(), magicNumber));
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

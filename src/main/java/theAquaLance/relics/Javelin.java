@@ -33,10 +33,8 @@ public class Javelin extends AbstractEasyRelic {
             if (counter % NUM_CARDS == 0) {
                 counter = 0;
                 flash();
-                for (AbstractMonster m : getEnemies()) {
-                    addToBot(new RelicAboveCreatureAction(m, this));
-                    applyToSelf(new IntelligencePower(adp(), INT_AMT));
-                }
+                addToBot(new RelicAboveCreatureAction(adp(), this));
+                applyToSelf(new IntelligencePower(adp(), INT_AMT));
             }
         }
 

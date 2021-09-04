@@ -3,6 +3,7 @@ package theAquaLance.powers;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.ShowCardAndPoofAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -19,8 +20,7 @@ import java.util.ArrayList;
 
 import static theAquaLance.util.Wiz.*;
 
-public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower,
-        OnStatusPowerInterface {
+public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower {
     public static final String POWER_ID = AquaLanceMod.makeID("Embedded");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -57,9 +57,13 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
     }
 
     public void popCard(AbstractEmbedCard c) {
+        c.onPop(owner);
         c.current_x = owner.hb.cX;
         c.current_y = owner.hb.cY;
-        adp().hand.moveToDiscardPile(c);
+        if (c.purgeOnExit)
+            att(new ShowCardAndPoofAction(c));
+        else
+            adp().hand.moveToDiscardPile(c);
         cards.remove(c);
         updateDescription();
     }
@@ -81,28 +85,21 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        for (AbstractEmbedCard c: cards)
-            c.onApplyPower(owner, power, source, target);
-    }
-
-    @Override
-    public boolean onApplyStatus(AbstractCreature source, AbstractCard c) {
-        for (AbstractEmbedCard car : cards)
-            car.onApplyStatus(owner, c);
-        return false;
-    }
-
-    @Override
-    public void onNegatedStatus(AbstractCreature source, AbstractCard c) {
-        for (AbstractEmbedCard car : cards)
-            car.onApplyStatus(owner, c);
+    public void onCardDraw(AbstractCard card) {
+        for (AbstractEmbedCard c : cards)
+            c.onCardDraw(owner);
     }
 
     @Override
     public void onDiscardSigil() {
         for (AbstractEmbedCard c : cards)
             c.onDiscardSigil(owner);
+    }
+
+    @Override
+    public void onManualDiscard() {
+        for (AbstractEmbedCard c : cards)
+            c.onDiscard(owner);
     }
 
     @Override

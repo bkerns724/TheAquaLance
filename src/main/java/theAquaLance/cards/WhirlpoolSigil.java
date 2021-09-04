@@ -8,7 +8,7 @@ import static theAquaLance.AquaLanceMod.makeID;
 
 public class WhirlpoolSigil extends AbstractSigilCard {
     public final static String ID = makeID("WhirlpoolSigil");
-    private final static int SECOND_DAMAGE = 9;
+    private final static int SECOND_DAMAGE = 10;
     private final static int UPGRADE_SECOND = 3;
 
     public WhirlpoolSigil() {

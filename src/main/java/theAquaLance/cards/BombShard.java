@@ -2,7 +2,9 @@ package theAquaLance.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.EmbedAction;
 import theAquaLance.powers.EmbedPower;
@@ -14,9 +16,9 @@ public class BombShard extends AbstractEmbedCard {
     public final static String ID = makeID("BombShard");
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 1;
-    private final static int SECOND_DAMAGE = 3;
-    private final static int MAGIC_NUMBER = 6;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int SECOND_DAMAGE = 20;
+    private final static int MAGIC_NUMBER = 3;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 3;
     private int counter = 0;
 
@@ -25,7 +27,7 @@ public class BombShard extends AbstractEmbedCard {
         baseDamage = DAMAGE;
         baseSecondDamage = SECOND_DAMAGE;
         magicNumber = baseMagicNumber = MAGIC_NUMBER;
-        baseSecondMagic = secondMagic = SECOND_MAGIC;
+        secondMagic = baseSecondMagic = SECOND_MAGIC;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -38,15 +40,39 @@ public class BombShard extends AbstractEmbedCard {
         counter--;
         EmbedPower pow = (EmbedPower) host.getPower(EmbedPower.POWER_ID);
         if (counter <= 0) {
-            for (int i = 0; i < magicNumber; i++)
-                dmgTwo(host, AquaLanceMod.Enums.WATER);
             if (pow != null)
                 pow.popCard(this);
             counter = secondMagic;
         }
         else
             pow.updateDescription();
+    }
 
+    @Override
+    public void onPop(AbstractCreature host) {
+        dmgTwoTop(host, AquaLanceMod.Enums.WATER);
+    }
+
+    @Override
+    public void applyPowers() {
+        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        if (intelligence != null)
+            intelligence.amount *= magicNumber;
+
+        super.applyPowers();
+        if (intelligence != null)
+            intelligence.amount /= magicNumber;
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        if (intelligence != null)
+            intelligence.amount *= magicNumber;
+
+        super.calculateCardDamage(mo);
+        if (intelligence != null)
+            intelligence.amount /= magicNumber;
     }
 
     public void upp() {
@@ -56,9 +82,10 @@ public class BombShard extends AbstractEmbedCard {
 
     public String getDesc() {
         String[] DESC = cardStrings.EXTENDED_DESCRIPTION;
+        applyPowers();
         if (counter == 1)
-            return DESC[0] + counter + DESC[1] + secondDamage + DESC[3] + magicNumber + DESC[4];
+            return DESC[0] + counter + DESC[1] + secondDamage + DESC[3];
         else
-            return DESC[0] + counter + DESC[2] + secondDamage + DESC[3] + magicNumber + DESC[4];
+            return DESC[0] + counter + DESC[2] + secondDamage + DESC[3];
     }
 }

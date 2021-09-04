@@ -10,7 +10,7 @@ import static theAquaLance.util.Wiz.*;
 public class BackBodyDrop extends AbstractEasyCard {
     public final static String ID = makeID("BackBodyDrop");
     private final static int BLOCK = 12;
-    private final static int UPGRADE_BLOCK = 4;
+    private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 2;
     private final static int UPG_MAGIC = 1;
 

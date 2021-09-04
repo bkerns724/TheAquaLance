@@ -33,8 +33,6 @@ public class DiscardHookPatch {
                 ArrayList<AbstractMonster> enemies = getEnemies();
                 for (AbstractMonster m : enemies) {
                     for (AbstractPower po : m.powers) {
-                        if (po instanceof EmbedPower)
-                            ((EmbedPower) po).onManualDiscard();
                         if (po instanceof AbstractEasyPower) {
                             ((AbstractEasyPower) po).onManualDiscard();
                         }

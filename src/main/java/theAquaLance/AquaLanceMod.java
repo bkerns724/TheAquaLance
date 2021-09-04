@@ -2,20 +2,25 @@ package theAquaLance;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
-import basemod.eventUtil.AddEventParams;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.relics.DeadBranch;
@@ -31,9 +36,10 @@ import theAquaLance.potions.*;
 import theAquaLance.relics.AbstractEasyRelic;
 import theAquaLance.relics.RuneOfIce;
 import theAquaLance.relics.RuneOfLivingWater;
-import theAquaLance.ui.AquaLanceSettings;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 import static theAquaLance.TheAquaLance.Enums.THE_AQUALANCE;
 
@@ -49,6 +55,8 @@ public class AquaLanceMod implements
         AddAudioSubscriber,
         PostDungeonInitializeSubscriber {
 
+    public static final String SETTINGS_FILE = "AqualanceModSettings";
+
     public static final String modID = "aqualancemod";
     public static final String JSON_PRE = "AquaLanceMod:";
 
@@ -57,6 +65,14 @@ public class AquaLanceMod implements
     public static String makeID(String idText) {
         return modID + ":" + idText;
     }
+
+    public static final String THEME_SONG_SETTING = "ThemeSongSetting";
+    public static final String THEME_SONG_UISTRING = "ThemeSongConfig";
+
+    public static final String EXTENDED_CUT_SETTING = "ExtendedCutSetting";
+    public static final String EXTENDED_CUT_UISTRING = "ExtendedCutConfig";
+
+    private static SpireConfig modConfig = null;
 
     public static final Color AQUALANCE_EYE_COLOR = CardHelper.getColor(64, 224, 208);
 
@@ -107,8 +123,6 @@ public class AquaLanceMod implements
     };
 
     public AquaLanceMod() {
-        BaseMod.subscribe(this);
-
         BaseMod.addColor(TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
                 AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR, AQUALANCE_EYE_COLOR,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
@@ -146,7 +160,16 @@ public class AquaLanceMod implements
     }
 
     public static void initialize() {
-        AquaLanceMod thismod = new AquaLanceMod();
+        BaseMod.subscribe(new AquaLanceMod());
+
+        try {
+            Properties defaults = new Properties();
+            defaults.put(THEME_SONG_SETTING, Boolean.toString(false));
+            defaults.put(EXTENDED_CUT_SETTING, Boolean.toString(true));
+            modConfig = new SpireConfig(modID, "Config", defaults);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -228,11 +251,42 @@ public class AquaLanceMod implements
         BaseMod.addPotion(WaterBucket.class, new Color(0,206/256F,209/256F, 1), null, null, WaterBucket.POTION_ID, THE_AQUALANCE);
         BaseMod.addPotion(SharkFinPotion.class, Color.LIGHT_GRAY.cpy(), null, null, SharkFinPotion.POTION_ID, THE_AQUALANCE);
 
+        ModPanel settingsPanel = new ModPanel();
+
+        float currentYposition = 740f;
+        float spacingY = 55f;
+
+        ModLabeledToggleButton themeSongButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
+                makeID(THEME_SONG_UISTRING)).TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR,
+                FontHelper.charDescFont, isThemeSong(), settingsPanel, label -> {},
+                button -> {
+                    if (modConfig != null) {
+                        modConfig.setBool(THEME_SONG_SETTING, button.enabled);
+                        saveConfig();
+                    }
+                });
+
+        currentYposition -= spacingY;
+        ModLabeledToggleButton extendedCutButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
+                makeID(EXTENDED_CUT_UISTRING)).TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR,
+                FontHelper.charDescFont, isExtendedCut(), settingsPanel, label -> {},
+                button -> {
+                    if (modConfig != null) {
+                        modConfig.setBool(EXTENDED_CUT_SETTING, button.enabled);
+                        saveConfig();
+                    }
+                });
+
+        settingsPanel.addUIElement(themeSongButton);
+        settingsPanel.addUIElement(extendedCutButton);
+
         logger.info("Load Badge Image and make settings panel");
         Texture badgeTexture = new Texture(BADGE_IMG);
         BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
-                AquaLanceSettings.createSettingsPanel());
+                settingsPanel);
+
         logger.info("Done loading badge Image");
+        logger.info("Done loading badge Image and mod options");
     }
 
     public void receivePostDungeonInitialize()
@@ -243,5 +297,27 @@ public class AquaLanceMod implements
             AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(UnceasingTop.ID));
             AbstractDungeon.rareRelicPool.removeIf(r -> r.equals(ChemicalX.ID));
         }
+    }
+
+    private void saveConfig() {
+        try {
+            modConfig.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean isExtendedCut() {
+        if (modConfig == null) {
+            return false;
+        }
+        return modConfig.getBool(EXTENDED_CUT_SETTING);
+    }
+
+    public static boolean isThemeSong() {
+        if (modConfig == null) {
+            return false;
+        }
+        return modConfig.getBool(THEME_SONG_SETTING);
     }
 }
