@@ -26,8 +26,7 @@ public class MagicPatch {
         public static SpireReturn<Integer> Prefix(AbstractPower __instance, DamageInfo info, int damage) {
             if (info.type == AquaLanceMod.Enums.MAGIC)
                 return SpireReturn.Return(damage);
-            else
-                return SpireReturn.Continue();
+            return SpireReturn.Continue();
         }
     }
 
