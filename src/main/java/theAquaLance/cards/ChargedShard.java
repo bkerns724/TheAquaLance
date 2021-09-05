@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.ShardXAction;
+import theAquaLance.powers.IntelligencePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -48,7 +49,7 @@ public class ChargedShard extends AbstractEmbedCard {
 
     @Override
     public void applyPowers() {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= attuned;
 
@@ -59,7 +60,7 @@ public class ChargedShard extends AbstractEmbedCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= attuned;
 

@@ -25,6 +25,7 @@ public class MomentumPower extends AbstractEasyPower {
 
     @Override
     public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
         counter++;
     }
 

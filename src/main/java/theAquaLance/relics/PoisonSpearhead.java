@@ -13,8 +13,6 @@ import static theAquaLance.util.Wiz.*;
 public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRelic {
     public static final String ID = makeID("PoisonSpearhead");
     private static final int ADD_INCREASE = 1;
-    private static final float MULT_INCREASE = 0.25F;
-    private static final int MULT_FOR_STRING = 25;
 
     public PoisonSpearhead() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheAquaLance.Enums.AQUALANCE_TURQUOISE_COLOR);
@@ -41,20 +39,13 @@ public class PoisonSpearhead extends AbstractEasyRelic implements OnApplyPowerRe
     @Override
     public int onApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (source == adp() && power.type == AbstractPower.PowerType.DEBUFF && target != source) {
-            if (stackAmount > 0) {
-                float increase = Math.max(ADD_INCREASE, stackAmount * MULT_INCREASE);
-                stackAmount += increase;
-                power.updateDescription();
-            } else if (stackAmount < 0 && power.canGoNegative) {
-                float decrease = Math.min(-ADD_INCREASE, stackAmount * MULT_INCREASE);
-                stackAmount -= decrease;
-                power.updateDescription();
-            }
+            stackAmount += 1;
+            power.updateDescription();
         }
         return stackAmount;
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + ADD_INCREASE + DESCRIPTIONS[1] + MULT_FOR_STRING + DESCRIPTIONS[2];
+        return DESCRIPTIONS[0] + ADD_INCREASE + DESCRIPTIONS[1];
     }
 }

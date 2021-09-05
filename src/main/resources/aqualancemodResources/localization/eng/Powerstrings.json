@@ -118,14 +118,14 @@
   "${ModID}:ColdHearted": {
     "NAME": "Cold Hearted",
     "DESCRIPTIONS": [
-      "Whenever you apply a debuff, gain #b",
+      "Whenever you apply a debuff to an enemy, gain #b",
       " #yBlock."
     ]
   },
   "${ModID}:Flak": {
     "NAME": "Flak",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, gain #b",
+      "Whenever you discard a card from hand, gain #b",
       " #yBlock."
     ]
   },

@@ -12,9 +12,9 @@ import static theAquaLance.util.Wiz.*;
 public class Surge extends AbstractEasyCard {
     public final static String ID = makeID("Surge");
     private final static int MAGIC = 1;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
-    private final static int SECOND_MAGIC = 4;
-    private final static int UPGRADE_SECOND = 2;
+    private final static int SECOND_MAGIC = 6;
 
     public Surge() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
@@ -29,6 +29,6 @@ public class Surge extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeSecondMagic(UPGRADE_SECOND);
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

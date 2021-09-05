@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.actions.EmbedAction;
+import theAquaLance.actions.PopOneAction;
 import theAquaLance.powers.EmbedPower;
+import theAquaLance.powers.IntelligencePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -17,7 +19,7 @@ public class BombShard extends AbstractEmbedCard {
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 1;
     private final static int SECOND_DAMAGE = 20;
-    private final static int MAGIC_NUMBER = 3;
+    private final static int MAGIC_NUMBER = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 3;
     private int counter = 0;
@@ -41,7 +43,7 @@ public class BombShard extends AbstractEmbedCard {
         EmbedPower pow = (EmbedPower) host.getPower(EmbedPower.POWER_ID);
         if (counter <= 0) {
             if (pow != null)
-                pow.popCard(this);
+                addToBot(new PopOneAction(host, this));
             counter = secondMagic;
         }
         else
@@ -50,12 +52,15 @@ public class BombShard extends AbstractEmbedCard {
 
     @Override
     public void onPop(AbstractCreature host) {
-        dmgTwoTop(host, AquaLanceMod.Enums.WATER);
+        if (host instanceof AbstractMonster) {
+            calculateCardDamage((AbstractMonster) host);
+            dmgTwoTop(host, AquaLanceMod.Enums.WATER);
+        }
     }
 
     @Override
     public void applyPowers() {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= magicNumber;
 
@@ -66,7 +71,7 @@ public class BombShard extends AbstractEmbedCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= magicNumber;
 

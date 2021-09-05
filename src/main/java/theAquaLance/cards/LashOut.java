@@ -1,12 +1,12 @@
 package theAquaLance.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
 import theAquaLance.powers.DiscardNextTurnPower;
+import theAquaLance.powers.IntelligencePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -15,9 +15,8 @@ public class LashOut extends AbstractEasyCard {
     public final static String ID = makeID("LashOut");
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_DAMAGE = 15;
-    private final static int UPGRADE_SECOND_DAMAGE = 4;
-    private final static int SECOND_MAGIC = 1;
+    private final static int SECOND_DAMAGE = 12;
+    private final static int SECOND_MAGIC = 2;
     private final static int COST = 0;
 
     public LashOut() {
@@ -30,13 +29,12 @@ public class LashOut extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
         dmgTwo(m, AquaLanceMod.Enums.BLOOD);
-        atb(new DiscardAction(adp(), adp(), secondMagic, false));
         applyToSelf(new DiscardNextTurnPower(adp(), secondMagic));
     }
 
     @Override
     public void applyPowers() {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= magicNumber;
 
@@ -47,7 +45,7 @@ public class LashOut extends AbstractEasyCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= magicNumber;
 
@@ -57,7 +55,6 @@ public class LashOut extends AbstractEasyCard {
     }
 
     public void upp() {
-        upgradeSecondDamage(UPGRADE_SECOND_DAMAGE);
         upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

@@ -9,9 +9,9 @@ import static theAquaLance.util.Wiz.*;
 
 public class FreezingWater extends AbstractEasyCard {
     public final static String ID = makeID("FreezingWater");
-    private final static int BLOCK = 8;
+    private final static int BLOCK = 7;
     private final static int UPGRADE_BLOCK = 2;
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
     public FreezingWater() {

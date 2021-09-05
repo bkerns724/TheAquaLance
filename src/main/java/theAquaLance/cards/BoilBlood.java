@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAquaLance.AquaLanceMod;
+import theAquaLance.powers.IntelligencePower;
 
 import static theAquaLance.AquaLanceMod.makeID;
 import static theAquaLance.util.Wiz.*;
@@ -30,7 +31,7 @@ public class BoilBlood extends AbstractEasyCard {
 
     @Override
     public void applyPowers() {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= magicNumber;
 
@@ -41,7 +42,7 @@ public class BoilBlood extends AbstractEasyCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower intelligence = AbstractDungeon.player.getPower("intelligence");
+        AbstractPower intelligence = AbstractDungeon.player.getPower(IntelligencePower.POWER_ID);
         if (intelligence != null)
             intelligence.amount *= magicNumber;
 

@@ -25,10 +25,10 @@
   },
   "${ModID}:ShatterShard": {
     "NAME": "Shatter Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you discard !M! aqualancemod:Sigils in 1 turn, deal !aqualancemod:D2! aqualancemod:Magic damage.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Whenever you discard !M! aqualancemod:Sigils from hand in 1 turn, deal !aqualancemod:D2! aqualancemod:Magic damage.",
     "EXTENDED_DESCRIPTION": [
       " NL Whenever you discard ",
-      " sigils in #b1 turn, deal ",
+      " sigils from hand in #b1 turn, deal ",
       " #yMagic damage."
     ]
   },
@@ -68,10 +68,10 @@
   },
   "${ModID}:ReverbShard": {
     "NAME": "Reverb Shard",
-    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it whenever you discard a card.",
+    "DESCRIPTION": "Deal !D! damage. NL aqualancemod:Embed: Deal !aqualancemod:D2! aqualancemod:Magic damage to it whenever you discard a card from hand.",
     "EXTENDED_DESCRIPTION": [
       " NL Takes ",
-      " #yMagic damage whenever you discard a card."
+      " #yMagic damage whenever you discard a card from hand."
     ]
   },
   "${ModID}:ChargedShard": {
@@ -107,7 +107,7 @@
     "NAME": "Wave Motion",
     "DESCRIPTION": "aqualancemod:Wave. NL Deal !D! damage. NL aqualancemod:Bonus: !aqualancemod:M2! damage.",
     "EXTENDED_DESCRIPTION": [
-      "aqualancemod:Wave. NL Deal !D! damage.",
+      "Deal !D! damage.",
       " NL Gain !B! Block.",
       " NL Apply !M! aqualancemod:Frostbite.",
       " NL aqualancemod:Bonus: !aqualancemod:M2! damage."
@@ -117,7 +117,7 @@
     "NAME": "Iron Wave",
     "DESCRIPTION": "aqualancemod:Wave. NL Deal !D! damage. NL Gain !B! Block. NL aqualancemod:Bonus: !aqualancemod:M2! Block.",
     "EXTENDED_DESCRIPTION": [
-      "aqualancemod:Wave. NL Deal !D! damage.",
+      "Deal !D! damage.",
       " NL Gain !B! Block.",
       " NL Apply !M! aqualancemod:Frostbite.",
       " NL aqualancemod:Bonus: !aqualancemod:M2! Block."
@@ -127,7 +127,7 @@
     "NAME": "Chilling Wave",
     "DESCRIPTION": "aqualancemod:Wave. NL Deal !D! damage. NL Apply !M! aqualancemod:Frostbite. NL aqualancemod:Bonus: !aqualancemod:M2! aqualancemod:Frostbite.",
     "EXTENDED_DESCRIPTION": [
-      "aqualancemod:Wave. NL Deal !D! damage.",
+      "Deal !D! damage.",
       " NL Gain !B! Block.",
       " NL Apply !M! aqualancemod:Frostbite.",
       " NL aqualancemod:Bonus: Apply !aqualancemod:M2! aqualancemod:Frostbite."
@@ -137,7 +137,7 @@
     "NAME": "Ride The Wave",
     "DESCRIPTION": "aqualancemod:Wave. NL Deal !D! damage to ALL enemies. NL aqualancemod:Bonus: !aqualancemod:M2! damage.",
     "EXTENDED_DESCRIPTION": [
-      "aqualancemod:Wave. NL Deal !D! damage to ALL enemies.",
+      "Deal !D! damage to ALL enemies.",
       " NL Gain !B! Block.",
       " NL Apply !M! aqualancemod:Frostbite to ALL enemies.",
       " NL aqualancemod:Bonus: !aqualancemod:M2! damage."
@@ -310,7 +310,7 @@
   },
   "${ModID}:LashOut": {
     "NAME": "Lash Out",
-    "DESCRIPTION": "aqualancemod:Attuned !M!. NL Deal !aqualancemod:D2! aqualancemod:Magic damage. NL Discard !aqualancemod:M2! card. NL Discard !aqualancemod:M2! next turn."
+    "DESCRIPTION": "aqualancemod:Attuned !M!. NL Deal !aqualancemod:D2! aqualancemod:Magic damage. NL Discard !aqualancemod:M2! cards next turn."
   },
   "${ModID}:Detonate": {
     "NAME": "Detonate",
@@ -323,7 +323,7 @@
   },
   "${ModID}:IceArmor": {
     "NAME": "Ice Armor",
-    "DESCRIPTION": "Gain Block equal to your intelligence at the end of your turn."
+    "DESCRIPTION": "Gain Block equal to your aqualancemod:Intelligence at the end of your turn."
   },
   "${ModID}:Study": {
     "NAME": "Study",
@@ -361,7 +361,7 @@
   },
   "${ModID}:ColdHearted": {
     "NAME": "Cold Hearted",
-    "DESCRIPTION": "Whenever you apply a debuff, gain !M! Block."
+    "DESCRIPTION": "Whenever you apply a debuff to an enemy, gain !M! Block."
   },
   "${ModID}:StillWater": {
     "NAME": "Still Water",

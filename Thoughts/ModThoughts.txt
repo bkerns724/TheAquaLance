@@ -35,7 +35,7 @@ Debug
 
 Code
     Add an option for vfx toggle for wave/shard.
-    Find this stupid Lagavulin bug and patch it out.
+    Patch heart bopping between acts 3 and 4
 
 Design
     Sigil card that rewards shards?
@@ -49,3 +49,6 @@ Art Todo
     Better char select picture.  Make correct resolution.
     Get non Silent character skelly
     Card art?
+
+Playtest
+    Rethink Iron Wave

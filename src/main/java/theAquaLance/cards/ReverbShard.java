@@ -14,7 +14,7 @@ public class ReverbShard extends AbstractEmbedCard {
     public final static String ID = makeID("ReverbShard");
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 1;
-    private final static int SECOND_DAMAGE = 4;
+    private final static int SECOND_DAMAGE = 3;
     private final static int UPGRADE_SECOND = 1;
     private final static int COST = 1;
 
@@ -30,7 +30,7 @@ public class ReverbShard extends AbstractEmbedCard {
 
     @Override
     public void onDiscard(AbstractCreature host) {
-        dmgTwo(host, AquaLanceMod.Enums.WATER);
+        dmgTwoTop(host, AquaLanceMod.Enums.WATER);
     }
 
     public void upp() {

@@ -65,7 +65,10 @@ public class EmbedPower extends AbstractEasyPower implements OnReceivePowerPower
         else
             adp().hand.moveToDiscardPile(c);
         cards.remove(c);
-        updateDescription();
+        if (cards.size() == 0)
+            att(new RemoveSpecificPowerAction(adp(), adp(), this));
+        else
+            updateDescription();
     }
 
     @Override

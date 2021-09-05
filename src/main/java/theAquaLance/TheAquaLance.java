@@ -71,7 +71,7 @@ public class TheAquaLance extends CustomPlayer {
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
     private static final int NUM_STRIKES = 5;
-    private static final int NUM_DEFENDS = 4;
+    private static final int NUM_DEFENDS = 3;
     private static final int NUM_STARTER_1 = 2;
     private static final String STARTER_CARD1 = PowerThrust.ID;
     private static final String STARTER_CARD2 = ReverbShard.ID;
