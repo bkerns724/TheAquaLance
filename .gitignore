@@ -2,7 +2,8 @@
 
 # My Notes and other stuff
 src/main/resources/arcanistmodResources/images/cutScene/IconStorage
-Thoughts/
+Thoughts
+ThoughtsBackup
 
 # Weird ods thing
 *.ods[#]
@@ -19,7 +20,7 @@ out/
 
 # maven build target
 target/
-!target/TheAquaLance.jar
+!target/TheArcanist.jar
 dependency-reduced-pom.xml
 
 # Mobile Tools for Java (J2ME)
@@ -88,3 +89,4 @@ $RECYCLE.BIN/
 
 # Spriter files
 *.autosave.scml
+/Thoughts/
