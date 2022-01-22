@@ -1,0 +1,19 @@
+{
+  "${ModID}:CeremonialRobe": {
+    "NAME": "Ceremonial Robe",
+    "FLAVOR": "Elegant, but difficult to fight in.",
+    "DESCRIPTIONS": [
+      "Draw #b",
+      " additional card each turn.  At the start of each combat, lose #b",
+      " #yDexterity."
+    ]
+  },
+  "${ModID}:UnmeltingIce": {
+    "NAME": "Unmelting Ice",
+    "FLAVOR": "It never melts.",
+    "DESCRIPTIONS": [
+      "Whenever you apply #yFrostbite, apply #b",
+      " more."
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "${ModID}:DiscardNextTurn": {
+    "NAME": "Discard Next Turn",
+    "DESCRIPTIONS": [
+      "Discard #b",
+      " cards next turn.",
+      " card next turn."
+    ]
+  },
+  "${ModID}:DrawNextTurn": {
+    "NAME": "Draw Next Turn",
+    "DESCRIPTIONS": [
+      "Draw #b",
+      " extra cards next turn.",
+      " extra card next turn."
+    ]
+  },
+  "${ModID}:Frostbite": {
+    "NAME": "Frostbite",
+    "DESCRIPTIONS": [
+      "When this enemy attacks, it suffers #b",
+      " damage then reduces Frostbite by 1."
+    ]
+  },
+  "${ModID}:Momentum": {
+    "NAME": "Momentum",
+    "DESCRIPTIONS": [
+      "The first #b",
+      " time you attack each turn, draw a card.",
+      " times you attack each turn, draw a card."
+    ]
+  },
+  "${ModID}:EnergizedTurquoise": {
+    "NAME": "Energized",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " additional [E] next turn.",
+      " additional [E] next turn.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
+  },
+  "${ModID}:BrrZerk": {
+    "NAME": "Brr Zerk",
+    "DESCRIPTIONS": [
+      "Whenever you attack, apply #b",
+      " #yFrostbite."
+    ]
+  },
+  "${ModID}:TempNegStrength": {
+    "NAME": "Damage Down",
+    "DESCRIPTIONS": [
+      "Does #b",
+      " less damage with attacks this turn."
+    ]
+  },
+  "${ModID}:Rapids": {
+    "NAME": "Rapids",
+    "DESCRIPTIONS": [
+      "Whenever you play a card this turn, discard #b",
+      " random card to draw #b",
+      " card.",
+      " random cards to draw #b",
+      " cards."
+    ]
+  },
+  "${ModID}:InvisibleSpray": {
+    "NAME": "Not Here",
+    "DESCRIPTIONS": [
+      "Bug with Spray card, I should not be seen."
+    ]
+  },
+  "${ModID}:Speed": {
+    "NAME": "Speed",
+    "DESCRIPTIONS": [
+      "At the start of your turn, draw #b",
+      " card and discard #b",
+      " card.",
+      " cards and discard #b",
+      " cards."
+    ]
+  }
+}

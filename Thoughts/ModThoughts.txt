@@ -1,54 +1,166 @@
+Too doo List
+    Cards
+	Code Damage mods
+	Code 4 starter commons and randomization, card for gremlin event
+	Code Lore tooltip mechanic
+	    Add tooltips to already coded cards
+	Make it so sigils play instead of being discarded
+	    Code sigil cards
+	Redo wave into Resonant
+	    Code resonant cards
+	Code Remaining cards
+    Relics
+	Code 4 commons
+	    Code random starting relic
+        Code remaining relics
+	Access to Bandages and Tingsha
+    Potions
+	Code every potion
+    Debug settings
+    Char Select
+	Background
+	Icon
+    Mess with card color trail: ARCANIST_EYE_COLOR
+    Add more puns to Sensory Stone event
+    Ending sequence
+    Card art
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 New Mechanics
-    Wave
-	Rebound.  Waves of equal or lesser cost merge into it when played, adding a bonus effect.
+    Resonant, formerly Wave
+	All 1 cost.  Resonant cards merge together to form a more power card.
+	    All resonant cards played in one turn become a single power.
+	    This power puts a resonant 1 cost 3 damage attack card in your hand with all bonuses from resonant cards played last time
+	    All resonant cards give a damage bonus equal to their damage - 4.
     Sigils
 	Cards that can't be played normally, but have a special effect on discard.
-    Shards
-	Cards that stick in an enemy, go to discard upon enemy death/debuff removal.
+    Lore tooltips
+	No gameplay effect, but will have to code something up
+
+Themes
+    Debuff
+    Sigils/discard
+    Resonant
+    CHAOS
+
+Mini Themes (2/3/1 common uncommon rare attacks)
+    Frost cards, which apply 1 frostbite per 3 damage.
+    Force cards, which apply 1 crushed per 6 damage.
+    Dark cards, which which grant 1 temp hp per 2 damage.
 
 New Debuffs
-    Hobble
-	Stops status cards and debuffs.  Stops 1 action per stack.
-    Soaked
-	50% more damage from magic.  Stacks duration.
+    Crushed
+	Takes x extra damage from attacks.  Ticks down one a turn.
     Frostbite
-	Like thorns, but decays when attacking
+	Takes x damage when attacking.  Ticks down one each attack.
+    Hex
+	When you debuff the enemy, do hp_loss equal to Hex.  (Maybe less hex but more hp loss per hex?)
 
 New Buffs
-    Int
-	Buffs shards/powers/magic damage
-    Haste
-	1 draw, 1 energy at start of turn.  Stacks duration.
+    Shadow Cloak
+	The first attack each turn does 25% extra damage per stack.
 
-Discouraged stuff
-    Exhaust, ethereal, card creation (outside start of combat relics)
+Random Starter Relic
+    One of four character specific commons
+    Also start with Resonant Codex, which explains a few things
 
-Debug
-    Poison Spearhead test
-    Does Minor Elemental animate properly?
-    Ride The Wave + Oddly Smooth Stone blocks?
-    Test: Tsunami Sigil doesn't count itself.
-    Test: Make duplicate shards exhaust after popping.
-    Test: Fetch shard from draw pile.
-    Lash Out/Boil Blood hover over enemy respects soak?
-    Test: Options for "extended cut" victory sequence and theme song
+Basic	2
+    4 Strikes
+    4 Defends
 
-Code
-    Add an option for vfx toggle for wave/shard.
-    Patch heart bopping between acts 3 and 4
+Common	20
+    11 attacks
+	4 possible starters
+	    Each discard
+	    1 of each element & a generic
+	    2 different ones go in the starter deck, randomly chosen
+	4 other
+	    1 AoE
+	    1 Hex Payoff
+	    1 Heavy Attack
+	    1 Debuff payoff
+	    1 draw
+	1 Resonant
+	1 sigil
+	    AoE
 
-Design
-    Sigil card that rewards shards?
+	Total
+	    2 each element
+	    2 draw
 
-Art Todo
-    New merge vfx look a bit bad.  Tweak color.  Test.
-    Ask Celicath if merge/shard vfx is still uncomfortable
-    Get card backgrounds to Alison Moons?
-	Do I still want this?
-    Reconsider javelin art
-    Better char select picture.  Make correct resolution.
-    Get non Silent character skelly
-    Card art?
+    9 skills
+	3 Block
+	    Hex
+	    Temp str down
+	    Draw
+	1 Weak
+	1 Vuln
+	1 Lots of draw, next turn setup
+	1 CHAOS
+    	2 sigils
+	    1 Block
+	    1 Hex
 
-Playtest
-    Rethink Iron Wave
+Uncom	35  UPDATE UPDATE UPDATE
+    12 attacks
+	For each element
+	    1 Resonant
+	    1 regular
+
+	1 sigil
+	2 AoE
+	1 discard
+	1 draw
+	1 hex
+	1 hex payoff
+    16 skills
+	4 Block
+	6 sigils
+	    1 each element
+	    2 scaling
+	    
+	2 debuff synergy
+	2 Shadowcloak
+	1 Hex
+	2 Hex payoff
+	2 cycle
+	    Some of these can be combined in one card
+	Some generic
+    7 powers
+	1 Sigil Synergy, block
+	1 Debuff Synergy, block
+	1 Shadowcloak
+	1 Hex
+	1 Draw
+	1 Sigil synergy, energy
+	1 CHAOS
+
+Rare	18
+    5 attacks
+	1 of each element
+	1 Resonant
+	1 ???
+    6 skills
+	1 Hex Payoff
+	1 Debuff Payoff
+	2 sigils
+	1 Resonant Synergy
+	BLOCK
+    7 powers
+	1 Debuff Synergy
+	1 Sigil Synergy
+	3 element synergy
+	1 Resonant synergy
+	1 generic
+	FORM POWER
+
+	3 3 cost
+	2 0 cost
+	4 2 cost
+	2 U
+	5 1 cost
+
+	6 exhaust  

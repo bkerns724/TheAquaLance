@@ -1,7 +1,7 @@
 *.class
 
 # My Notes and other stuff
-src/main/resources/aqualancemodResources/images/cutScene/IconStorage
+src/main/resources/arcanistmodResources/images/cutScene/IconStorage
 Thoughts/
 
 # Weird ods thing

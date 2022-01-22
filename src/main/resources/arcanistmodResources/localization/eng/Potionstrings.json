@@ -1,0 +1,9 @@
+{
+  "${ModID}:IntPotion": {
+    "NAME": "Intelligence Potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yIntelligence."
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "PROPER_NAME": "Sigil",
+    "NAMES": [
+      "Sigil",
+      "sigil",
+      "Sigils",
+      "sigils"
+    ],
+    "DESCRIPTION": "Sigils are unplayable cards whose effects trigger when they are discarded from your hand."
+  },
+  {
+    "PROPER_NAME": "Frostbite",
+    "NAMES": [
+      "Frostbite",
+      "frostbite"
+    ],
+    "DESCRIPTION": "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
+  }
+]

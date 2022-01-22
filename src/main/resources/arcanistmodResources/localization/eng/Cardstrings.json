@@ -1,0 +1,70 @@
+{
+  "${ModID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${ModID}:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${ModID}:Rapids": {
+    "NAME": "Rapids",
+    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
+  },
+  "${ModID}": {
+    "NAME": "Barrier",
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card."
+  },
+  "${ModID}:Blink": {
+    "NAME": "Blink",
+    "DESCRIPTION": "Gain !B! Block. NL Discard !M! card."
+  },
+  "${ModID}:Barrierja": {
+    "NAME": "Barrierja",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${ModID}:SoulFlame": {
+    "NAME": "SoulFlame",
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard a card."
+  },
+  "${ModID}:WaterfallSigil": {
+    "NAME": "Waterfall Sigil",
+    "DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] .",
+    "UPGRADE_DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] [E] .",
+    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+  },
+  "${ModID}:BrrZerk": {
+    "NAME": "Brr Zerk",
+    "DESCRIPTION": "Whenever you attack, apply !M! arcanistmod:Frostbite."
+  },
+  "${ModID}:Gale": {
+    "NAME": "Gale",
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! cards."
+  },
+  "${ModID}:Eruption": {
+    "NAME": "Eruption",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Exhaust."
+  },
+  "${ModID}:WellPrepared": {
+    "NAME": "Prepared",
+    "DESCRIPTION": "Draw !M! cards. NL Discard 1 card."
+  },
+  "${ModID}:Momentum": {
+    "NAME": "Momentum",
+    "DESCRIPTION": "The first time you play an attack each turn, draw !M! card."
+  },
+  "${ModID}:Spray": {
+    "NAME": "Spray",
+    "DESCRIPTION": "Retain. NL Discard your entire hand and gain !M! Block for each card discarded."
+  },
+  "${ModID}:Dash": {
+    "NAME": "Dash",
+    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards."
+  },
+  "${ModID}:Haste": {
+    "NAME": "Haste",
+    "DESCRIPTION": "At the start of your turn, draw !M! card and discard !M! card.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, draw !M! card and discard !M! card."
+  }
+}
