@@ -1,5 +1,7 @@
 package theArcanist;
 
+import IconsAddon.icons.AbstractCustomIcon;
+import IconsAddon.util.CustomIconHelper;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
@@ -15,6 +17,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -28,7 +31,9 @@ import theArcanist.relics.UnmeltingIce;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import static IconsAddon.util.CustomIconHelper.getAllIcons;
 import static theArcanist.TheArcanist.Enums.ARCANIST_BLARPLE_COLOR;
 import static theArcanist.ArcanistMod.*;
 
@@ -69,22 +74,24 @@ public class TheArcanist extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
-    private static final int NUM_STRIKES = 5;
-    private static final int NUM_DEFENDS = 3;
-    private static final String STARTER_CARD1 = Gale.ID;
-    private static final String STARTER_CARD2 = SoulFlame.ID;
+    private static final int NUM_STRIKES = 4;
+    private static final int NUM_DEFENDS = 4;
+    private static final AbstractCard STARTER_CARD1 = new PhantomFist();
+    private static final AbstractCard STARTER_CARD2 = new SoulFlame();
+    private static final AbstractCard STARTER_CARD3 = new FrozenLance();
+    private static final AbstractCard STARTER_CARD4 = new VoidTendrils();
     private static final String STARTER_RELIC = UnmeltingIce.ID;
     private static final int STARTING_HP = 70;
 
     public TheArcanist(String name, PlayerClass setClass) {
-        super(name, setClass, new CustomEnergyOrb(ORB_TEXTURES, modID + "Resources/images/char/mainChar/orb/vfx.png", null),
-                null, null);
+        super(name, setClass,
+                new CustomEnergyOrb(ORB_TEXTURES, modID + "Resources/images/char/mainChar/orb/vfx.png",
+                        null),
+                null,null);
 
         initializeClass(null,
-                SHOULDER1,
-                SHOULDER2,
-                CORPSE,
-                getLoadout(), 20.0F, -10.0F, 166.0F, 327.0F, new EnergyManager(3));
+                SHOULDER1, SHOULDER2, CORPSE,
+                getLoadout(), -20.0F, -24.0F, 240.0F, 240.0F, new EnergyManager(3));
 
         logger.info("Start Arcanist animation");
         loadAnimation(SKELETON_ATLAS, SKELETON_JSON, 1.0F);
@@ -110,8 +117,21 @@ public class TheArcanist extends CustomPlayer {
             retVal.add(Strike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
-        retVal.add(STARTER_CARD1);
-        retVal.add(STARTER_CARD2);
+        ArrayList<String> starters = new ArrayList<>();
+        starters.add(STARTER_CARD1.cardID);
+        starters.add(STARTER_CARD2.cardID);
+        starters.add(STARTER_CARD3.cardID);
+        starters.add(STARTER_CARD4.cardID);
+
+        if (AbstractDungeon.miscRng != null) {
+            int x = AbstractDungeon.miscRng.random(0, starters.size() - 1);
+            int y = AbstractDungeon.miscRng.random(0, starters.size() - 2);
+
+            retVal.add(starters.get(x));
+            starters.remove(x);
+            retVal.add(starters.get(y));
+        }
+
         return retVal;
     }
 
@@ -125,6 +145,11 @@ public class TheArcanist extends CustomPlayer {
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         // CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
+        ArrayList<AbstractCustomIcon> icons = CustomIconHelper.getAllIcons();
+        for (AbstractCustomIcon x : icons) {
+            logger.info(x.name);
+            logger.info(x.cardCode());
+        }
     }
 
     @Override
@@ -159,6 +184,17 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
+        ArrayList<AbstractCard> starters = new ArrayList<>();
+        starters.add(STARTER_CARD1);
+        starters.add(STARTER_CARD2);
+        starters.add(STARTER_CARD3);
+        starters.add(STARTER_CARD4);
+        if (AbstractDungeon.miscRng != null) {
+            int x = AbstractDungeon.miscRng.random(0, starters.size() - 1);
+            logger.info("Gremlin Card loaded proper");
+            return starters.get(x);
+        }
+        logger.info("Gremlin Card failed to load");
         return new Gale();
     }
 

@@ -1,5 +1,6 @@
 package theArcanist;
 
+import IconsAddon.util.CustomIconHelper;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
@@ -15,7 +16,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -26,10 +26,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theArcanist.cards.AbstractEasyCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
+import theArcanist.cards.damageMods.DarkIcon;
+import theArcanist.cards.damageMods.ForceIcon;
+import theArcanist.cards.damageMods.IceIcon;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractEasyRelic;
 import theArcanist.relics.UnmeltingIce;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
@@ -44,6 +48,7 @@ public class ArcanistMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
+        AddAudioSubscriber,
         PostInitializeSubscriber {
 
     public static final String SETTINGS_FILE = "ArcanistModSettings";
@@ -78,8 +83,16 @@ public class ArcanistMod implements
     private static final String CARD_ENERGY_L = RESOURCES_PRE + "images/1024/energy.png";
     private static final String CHARSELECT_BUTTON = RESOURCES_PRE + "images/charSelect/charButton.png";
     private static final String CHARSELECT_PORTRAIT = RESOURCES_PRE + "images/charSelect/charBG.png";
+
     public static final String WATER_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Blood.png";
+    public static final String ICE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice.png";
+    public static final String PHANTOM_FIST_EFFECT_FILE = RESOURCES_PRE + "images/vfx/PhantomFist.png";
+    public static final String DARK_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/DarkCoil.png";
+    public static final String LIGHT_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/LightCoil.png";
+
+    public static final String COLD_KEY = makeID("Cold");
+    private static final String COLD_OGG = RESOURCES_PRE + "audio/Cold.ogg";
 
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -116,7 +129,13 @@ public class ArcanistMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect BLOOD;
         @SpireEnum
-        public static DamageInfo.DamageType MAGIC;
+        public static AbstractGameAction.AttackEffect FIST;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect ICE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect DARK_COIL;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect LIGHT_COIL;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -194,6 +213,10 @@ public class ArcanistMod implements
 
     @Override
     public void receivePostInitialize() {
+        CustomIconHelper.addCustomIcon(ForceIcon.get());
+        CustomIconHelper.addCustomIcon(IceIcon.get());
+        CustomIconHelper.addCustomIcon(DarkIcon.get());
+
         BaseMod.addPotion(IntPotion.class, Color.YELLOW.cpy(), null, null, IntPotion.POTION_ID, THE_ARCANIST);
 
         ModPanel settingsPanel = new ModPanel();
@@ -238,5 +261,10 @@ public class ArcanistMod implements
             return false;
         }
         return modConfig.getBool(EXTENDED_CUT_SETTING);
+    }
+
+    @Override
+    public void receiveAddAudio() {
+        BaseMod.addAudio(COLD_KEY, COLD_OGG);
     }
 }

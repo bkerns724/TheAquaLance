@@ -16,5 +16,13 @@
       "frostbite"
     ],
     "DESCRIPTION": "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
+  },
+  {
+    "PROPER_NAME": "Crushed",
+    "NAMES": [
+      "Crushed",
+      "crushed"
+    ],
+    "DESCRIPTION": "Crushed enemies take more damage from attacks."
   }
 ]

@@ -10,12 +10,12 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
 
-public class WaterEffectPatch {
+public class AttackEffectsPatch {
     @SpirePatch(
             clz = FlashAtkImgEffect.class,
             method = "loadImage"
     )
-    public static class WaterPatch {
+    public static class VfxPatch {
         @SpirePrefixPatch
         public static SpireReturn<TextureAtlas.AtlasRegion> Prefix(FlashAtkImgEffect __instance) {
             AbstractGameAction.AttackEffect effect = ReflectionHacks.getPrivate(__instance, FlashAtkImgEffect.class, "effect");
@@ -29,6 +29,21 @@ public class WaterEffectPatch {
                 TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
                 return SpireReturn.Return(atReg);
             }
+            if (effect == ArcanistMod.Enums.ICE) {
+                Texture texture = TexLoader.getTexture(ArcanistMod.ICE_EFFECT_FILE);
+                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+                return SpireReturn.Return(atReg);
+            }
+            if (effect == ArcanistMod.Enums.FIST) {
+                Texture texture = TexLoader.getTexture(ArcanistMod.PHANTOM_FIST_EFFECT_FILE);
+                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+                return SpireReturn.Return(atReg);
+            }
+            if (effect == ArcanistMod.Enums.DARK_COIL) {
+                Texture texture = TexLoader.getTexture(ArcanistMod.DARK_COIL_EFFECT_FILE);
+                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+                return SpireReturn.Return(atReg);
+            }
             return SpireReturn.Continue();
         }
     }
@@ -37,7 +52,7 @@ public class WaterEffectPatch {
             clz = FlashAtkImgEffect.class,
             method = "playSound"
     )
-    public static class WaterSoundPatch {
+    public static class SfxPatch {
         @SpirePrefixPatch
         public static SpireReturn Prefix(FlashAtkImgEffect __instance, AbstractGameAction.AttackEffect effect) {
             if (effect == ArcanistMod.Enums.WATER) {
@@ -46,6 +61,14 @@ public class WaterEffectPatch {
             }
             if (effect == ArcanistMod.Enums.BLOOD) {
                 CardCrawlGame.sound.play("ATTACK_POISON");
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.FIST) {
+                CardCrawlGame.sound.play("BLUNT_HEAVY");
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.ICE) {
+                CardCrawlGame.sound.play(ArcanistMod.COLD_KEY);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();

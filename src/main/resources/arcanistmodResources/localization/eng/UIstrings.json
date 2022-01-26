@@ -6,7 +6,7 @@
   },
   "${ModID}:ExtendedCutConfig": {
     "TEXT": [
-      "Enables the AquaLance extended cut."
+      "Enables the Arcanist extended cut."
     ]
   }
 }

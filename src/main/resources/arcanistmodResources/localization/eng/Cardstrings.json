@@ -7,12 +7,48 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "${ModID}:IceDamage": {
+    "NAME": "Cold",
+    "DESCRIPTION": "Cold [${ModID}:IceIcon]",
+    "EXTENDED_DESCRIPTION": ["Apply 1 #yFrostbite for every 3 damage dealt.",
+      "Frostbite",
+      "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
+    ]
+  },
+  "${ModID}:DarkDamage": {
+    "NAME": "Dark",
+    "DESCRIPTION": "Dark [${ModID}:DarkIcon]",
+    "EXTENDED_DESCRIPTION": ["Gain 1 #yTemporary #yHP for every 2 unblocked damage dealt.",
+      "Temporary HP",
+      "Temporary HP is lost at the end of battle."
+    ]
+  },
+  "${ModID}:ForceDamage": {
+    "NAME": "Force",
+    "DESCRIPTION": "Force [${ModID}:ForceIcon]",
+    "EXTENDED_DESCRIPTION": ["Apply 1 #yCrushed for every 6 damage dealt.",
+      "Crushed",
+      "Crushed enemies take more damage from attacks."
+    ]
+  },
+  "${ModID}:FrozenLance": {
+    "NAME": "Frozen Lance",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Discard !M! card."
+  },
+  "${ModID}:PhantomFist": {
+    "NAME": "Phantom Fist",
+    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL Discard !M! card."
+  },
+  "${ModID}:VoidTendrils": {
+    "NAME": "Void Tendrils",
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Discard !M! card."
+  },
   "${ModID}:Rapids": {
     "NAME": "Rapids",
     "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
   },
-  "${ModID}": {
+  "${ModID}:Barrier": {
     "NAME": "Barrier",
     "DESCRIPTION": "Gain !B! Block. NL Draw !M! card."
   },
@@ -20,7 +56,7 @@
     "NAME": "Blink",
     "DESCRIPTION": "Gain !B! Block. NL Discard !M! card."
   },
-  "${ModID}:Barrierja": {
+  "${ModID}:BarrierJa": {
     "NAME": "Barrierja",
     "DESCRIPTION": "Gain !B! Block."
   },
@@ -28,8 +64,8 @@
     "NAME": "SoulFlame",
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard a card."
   },
-  "${ModID}:WaterfallSigil": {
-    "NAME": "Waterfall Sigil",
+  "${ModID}:WhirlpoolSigil": {
+    "NAME": "Whirlpool Sigil",
     "DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] .",
     "UPGRADE_DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] [E] .",
     "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
