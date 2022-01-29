@@ -86,7 +86,9 @@ public class ArcanistMod implements
 
     public static final String WATER_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Blood.png";
+    public static final String ACID_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Acid.png";
     public static final String ICE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice.png";
+    public static final String SOUL_FIRE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/SoulFire.png";
     public static final String PHANTOM_FIST_EFFECT_FILE = RESOURCES_PRE + "images/vfx/PhantomFist.png";
     public static final String DARK_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/DarkCoil.png";
     public static final String LIGHT_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/LightCoil.png";
@@ -129,13 +131,15 @@ public class ArcanistMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect BLOOD;
         @SpireEnum
+        public static AbstractGameAction.AttackEffect ACID;
+        @SpireEnum
         public static AbstractGameAction.AttackEffect FIST;
         @SpireEnum
         public static AbstractGameAction.AttackEffect ICE;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK_COIL;
+        public static AbstractGameAction.AttackEffect SOUL_FIRE;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect LIGHT_COIL;
+        public static AbstractGameAction.AttackEffect DARK_COIL;
     }
 
     public static String makeCardPath(String resourcePath) {

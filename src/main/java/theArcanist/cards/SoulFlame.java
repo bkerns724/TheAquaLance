@@ -1,10 +1,10 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theArcanist.ArcanistMod.Enums;
 
 import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
@@ -23,7 +23,7 @@ public class SoulFlame extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.FIRE);
+        dmg(m, Enums.SOUL_FIRE);
         atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(p, p, magicNumber, false));
     }

@@ -184,17 +184,13 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        ArrayList<AbstractCard> starters = new ArrayList<>();
-        starters.add(STARTER_CARD1);
-        starters.add(STARTER_CARD2);
-        starters.add(STARTER_CARD3);
-        starters.add(STARTER_CARD4);
         if (AbstractDungeon.miscRng != null) {
-            int x = AbstractDungeon.miscRng.random(0, starters.size() - 1);
-            logger.info("Gremlin Card loaded proper");
-            return starters.get(x);
+            ArrayList<AbstractCard> cardList = new ArrayList<>();
+            cardList.add(new AcidSpray());
+            cardList.add(new Miasma());
+            int x = AbstractDungeon.miscRng.random(0, cardList.size() - 1);
+            return cardList.get(x);
         }
-        logger.info("Gremlin Card failed to load");
         return new Gale();
     }
 

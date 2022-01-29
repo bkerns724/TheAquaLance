@@ -31,6 +31,14 @@
       "Crushed enemies take more damage from attacks."
     ]
   },
+  "${ModID}:AcidSpray": {
+    "NAME": "Acid Spray",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+  },
+  "${ModID}:Miasma": {
+    "NAME": "Miasma",
+    "DESCRIPTION": "Apply !arcanistmod:M2! Weak. NL Target deals !M! less damage with attacks this turn."
+  },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
     "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Discard !M! card."

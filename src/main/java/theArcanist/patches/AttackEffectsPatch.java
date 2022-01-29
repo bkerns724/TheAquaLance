@@ -29,8 +29,18 @@ public class AttackEffectsPatch {
                 TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
                 return SpireReturn.Return(atReg);
             }
+            if (effect == ArcanistMod.Enums.ACID) {
+                Texture texture = TexLoader.getTexture(ArcanistMod.ACID_EFFECT_FILE);
+                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+                return SpireReturn.Return(atReg);
+            }
             if (effect == ArcanistMod.Enums.ICE) {
                 Texture texture = TexLoader.getTexture(ArcanistMod.ICE_EFFECT_FILE);
+                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+                return SpireReturn.Return(atReg);
+            }
+            if (effect == ArcanistMod.Enums.SOUL_FIRE) {
+                Texture texture = TexLoader.getTexture(ArcanistMod.SOUL_FIRE_EFFECT_FILE);
                 TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
                 return SpireReturn.Return(atReg);
             }
@@ -63,12 +73,20 @@ public class AttackEffectsPatch {
                 CardCrawlGame.sound.play("ATTACK_POISON");
                 return SpireReturn.Return();
             }
+            if (effect == ArcanistMod.Enums.ACID) {
+                CardCrawlGame.sound.play("ATTACK_POISON");
+                return SpireReturn.Return();
+            }
             if (effect == ArcanistMod.Enums.FIST) {
                 CardCrawlGame.sound.play("BLUNT_HEAVY");
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.ICE) {
                 CardCrawlGame.sound.play(ArcanistMod.COLD_KEY);
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.SOUL_FIRE) {
+                CardCrawlGame.sound.play("ATTACK_FIRE");
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
