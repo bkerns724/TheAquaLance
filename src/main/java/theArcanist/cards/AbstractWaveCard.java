@@ -10,10 +10,8 @@ import theArcanist.patches.AbstractCardPatch;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theArcanist.util.Wiz.*;
-
 @AutoAdd.Ignore
-public abstract class AbstractWaveCard extends AbstractEasyCard  {
+public abstract class AbstractWaveCard extends AbstractArcanistCard {
     public ArrayList<AbstractWaveCard> mergedCards;
 
     protected int damageCore = 0;

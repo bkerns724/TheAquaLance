@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Blink extends AbstractEasyCard {
+public class Blink extends AbstractArcanistCard {
     public final static String ID = makeID("Blink");
     private final static int BLOCK = 10;
     private final static int UPGRADE_BLOCK = 3;

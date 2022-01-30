@@ -4,9 +4,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
-public class BarrierJa extends AbstractEasyCard {
+public class BarrierJa extends AbstractArcanistCard {
     public final static String ID = makeID("BarrierJa");
     private final static int BLOCK = 15;
     private final static int UPGRADE_BLOCK = 5;

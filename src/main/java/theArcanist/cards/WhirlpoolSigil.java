@@ -19,7 +19,7 @@ public class WhirlpoolSigil extends AbstractSigilCard {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
         return false;
     }
 

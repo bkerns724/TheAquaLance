@@ -10,7 +10,7 @@ import theArcanist.cards.damageMods.IceDamage;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class FrozenLance extends AbstractEasyCard {
+public class FrozenLance extends AbstractArcanistCard {
     public final static String ID = makeID("FrozenLance");
     private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 3;

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Gale extends AbstractEasyCard {
+public class Gale extends AbstractArcanistCard {
     public final static String ID = makeID("Gale");
     private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 4;

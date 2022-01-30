@@ -7,7 +7,7 @@ import theArcanist.powers.RapidsPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Rapids extends AbstractEasyCard {
+public class Rapids extends AbstractArcanistCard {
     public final static String ID = makeID("Rapids");
     private final static int COST = 0;
     private final static int MAGIC = 1;

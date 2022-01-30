@@ -10,7 +10,7 @@ import theArcanist.powers.InvisibleSprayPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Spray extends AbstractEasyCard {
+public class Spray extends AbstractArcanistCard {
     public final static String ID = makeID("Spray");
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;

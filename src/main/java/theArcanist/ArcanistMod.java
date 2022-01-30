@@ -24,7 +24,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theArcanist.cards.AbstractEasyCard;
+import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.DarkIcon;
 import theArcanist.cards.damageMods.ForceIcon;
@@ -33,7 +33,6 @@ import theArcanist.potions.*;
 import theArcanist.relics.AbstractEasyRelic;
 import theArcanist.relics.UnmeltingIce;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
@@ -52,6 +51,8 @@ public class ArcanistMod implements
         PostInitializeSubscriber {
 
     public static final String SETTINGS_FILE = "ArcanistModSettings";
+
+    public static String EMPTY_LORE_STRING = "No Lore";
 
     public static final String modID = "arcanistmod";
     public static final String RESOURCES_PRE = "arcanistmodResources/";
@@ -185,8 +186,13 @@ public class ArcanistMod implements
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new SecondMagicNumber());
+
+        CustomIconHelper.addCustomIcon(ForceIcon.get());
+        CustomIconHelper.addCustomIcon(IceIcon.get());
+        CustomIconHelper.addCustomIcon(DarkIcon.get());
+
         new AutoAdd(modID)
-                .packageFilter(AbstractEasyCard.class)
+                .packageFilter(AbstractArcanistCard.class)
                 .setDefaultSeen(true)
                 .cards();
     }
@@ -217,10 +223,6 @@ public class ArcanistMod implements
 
     @Override
     public void receivePostInitialize() {
-        CustomIconHelper.addCustomIcon(ForceIcon.get());
-        CustomIconHelper.addCustomIcon(IceIcon.get());
-        CustomIconHelper.addCustomIcon(DarkIcon.get());
-
         BaseMod.addPotion(IntPotion.class, Color.YELLOW.cpy(), null, null, IntPotion.POTION_ID, THE_ARCANIST);
 
         ModPanel settingsPanel = new ModPanel();

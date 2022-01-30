@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.*;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class AcidSpray extends AbstractEasyCard {
+public class AcidSpray extends AbstractArcanistCard {
     public final static String ID = makeID("AcidSpray");
     private final static int DAMAGE = 8;
     private final static int MAGIC = 1;

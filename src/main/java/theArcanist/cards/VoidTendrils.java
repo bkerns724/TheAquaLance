@@ -7,11 +7,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.DarkDamage;
 
-import static theArcanist.ArcanistMod.DARK_COIL_EFFECT_FILE;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class VoidTendrils extends AbstractEasyCard {
+public class VoidTendrils extends AbstractArcanistCard {
     public final static String ID = makeID("VoidTendrils");
     private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 2;

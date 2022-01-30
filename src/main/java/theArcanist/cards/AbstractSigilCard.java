@@ -17,7 +17,7 @@ import java.util.List;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
-public abstract class AbstractSigilCard extends AbstractEasyCard {
+public abstract class AbstractSigilCard extends AbstractArcanistCard {
     public AbstractSigilCard(final String cardID, final CardRarity rarity) {
         super(cardID, -2, CardType.SKILL, rarity, CardTarget.NONE);
         AbstractCardPatch.AbstractCardField.sigil.set(this, true);
@@ -40,8 +40,8 @@ public abstract class AbstractSigilCard extends AbstractEasyCard {
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("aqualancemod:Sigil"),
-                BaseMod.getKeywordDescription("aqualancemod:Sigil")));
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("arcanistmod:Sigil"),
+                BaseMod.getKeywordDescription("arcanistmod:Sigil")));
         return retVal;
     }
 

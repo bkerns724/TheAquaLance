@@ -25,8 +25,7 @@ import static theArcanist.ArcanistMod.*;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
-public abstract class AbstractEasyCard extends CustomCard {
-
+public abstract class AbstractArcanistCard extends CustomCard {
     protected final CardStrings cardStrings;
 
     public int secondMagic;
@@ -40,16 +39,20 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     private boolean needsArtRefresh = false;
 
-    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
+    public String lore = EMPTY_LORE_STRING;
+
+    public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
     }
 
-    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
+    public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
+        if (cardStrings.EXTENDED_DESCRIPTION != null)
+            lore = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         initializeDescription();
 

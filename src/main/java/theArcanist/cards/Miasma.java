@@ -8,7 +8,7 @@ import theArcanist.powers.TempNegStrengthPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Miasma extends AbstractEasyCard {
+public class Miasma extends AbstractArcanistCard {
     public final static String ID = makeID("Miasma");
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 2;

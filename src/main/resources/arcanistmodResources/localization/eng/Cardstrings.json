@@ -1,16 +1,20 @@
 {
   "${ModID}:Strike": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage.",
+    "EXTENDED_DESCRIPTION": [
+      "We've lost so many wizards we have to send our apprentices to the battle field.  Some of them are only good at hitting the monsters with a stick." ]
   },
   "${ModID}:Defend": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": ["A shield isn't as good as a spell but at least you can learn to use it faster."]
   },
   "${ModID}:IceDamage": {
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",
-    "EXTENDED_DESCRIPTION": ["Apply 1 #yFrostbite for every 3 damage dealt.",
+    "EXTENDED_DESCRIPTION": [
+      "Apply 1 #yFrostbite for every 3 damage dealt.",
       "Frostbite",
       "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
     ]
@@ -18,7 +22,8 @@
   "${ModID}:DarkDamage": {
     "NAME": "Dark",
     "DESCRIPTION": "Dark [${ModID}:DarkIcon]",
-    "EXTENDED_DESCRIPTION": ["Gain 1 #yTemporary #yHP for every 2 unblocked damage dealt.",
+    "EXTENDED_DESCRIPTION": [
+      "Gain 1 #yTemporary #yHP for every 2 unblocked damage dealt.",
       "Temporary HP",
       "Temporary HP is lost at the end of battle."
     ]
@@ -26,30 +31,36 @@
   "${ModID}:ForceDamage": {
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
-    "EXTENDED_DESCRIPTION": ["Apply 1 #yCrushed for every 6 damage dealt.",
+    "EXTENDED_DESCRIPTION": [
+      "Apply 1 #yCrushed for every 6 damage dealt.",
       "Crushed",
       "Crushed enemies take more damage from attacks."
     ]
   },
   "${ModID}:AcidSpray": {
     "NAME": "Acid Spray",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable.",
+    "EXTENDED_DESCRIPTION": ["Not one of my favored elements, but it's great for eating through defenses."]
   },
   "${ModID}:Miasma": {
     "NAME": "Miasma",
-    "DESCRIPTION": "Apply !arcanistmod:M2! Weak. NL Target deals !M! less damage with attacks this turn."
+    "DESCRIPTION": "Apply !arcanistmod:M2! Weak. NL Target deals !M! less damage with attacks this turn.",
+    "EXTENDED_DESCRIPTION": ["The victims can never say what exactly was wrong with them, only that it was a horrible feeling."]
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Discard !M! card."
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Discard !M! card.",
+    "EXTENDED_DESCRIPTION": ["This spell was invented by the Aqualance?  What kind of stupid name is that?"]
   },
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
-    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL Discard !M! card."
+    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL Discard !M! card.",
+    "EXTENDED_DESCRIPTION": [ "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel." ]
   },
   "${ModID}:VoidTendrils": {
     "NAME": "Void Tendrils",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Discard !M! card."
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Discard !M! card.",
+    "EXTENDED_DESCRIPTION": ["It is a fantastic spell for offense and defense but it looks evil so NOOOOOO, we shouldn't use it."]
   },
   "${ModID}:Rapids": {
     "NAME": "Rapids",
@@ -58,37 +69,45 @@
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card."
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card.",
+    "EXTENDED_DESCRIPTION": ["A great spell for when you need to defend yourself but stay mobile."]
   },
   "${ModID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "Gain !B! Block. NL Discard !M! card."
+    "DESCRIPTION": "Gain !B! Block. NL Discard !M! card.",
+    "EXTENDED_DESCRIPTION": ["Many times, the best defense is simply not being there."]
   },
   "${ModID}:BarrierJa": {
     "NAME": "Barrierja",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": ["Who the fuck named it that?"]
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard a card."
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard a card.",
+    "EXTENDED_DESCRIPTION": ["The great thing about soul flame is that it isn't the body that's burning, so your ice spells still work!"]
   },
   "${ModID}:WhirlpoolSigil": {
     "NAME": "Whirlpool Sigil",
     "DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] .",
     "UPGRADE_DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] [E] .",
-    "EXTENDED_DESCRIPTION": ["Sigils can not be played."]
+    "EXTENDED_DESCRIPTION": ["The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana.",
+      "Sigils can not be played."]
   },
   "${ModID}:BrrZerk": {
     "NAME": "Brr Zerk",
-    "DESCRIPTION": "Whenever you attack, apply !M! arcanistmod:Frostbite."
+    "DESCRIPTION": "Whenever you attack, apply !M! arcanistmod:Frostbite.",
+    "EXTENDED_DESCRIPTION": ["This difficult technique is not a spell, but a way to alter your spells to also freeze the target."]
   },
   "${ModID}:Gale": {
     "NAME": "Gale",
-    "DESCRIPTION": "Deal !D! damage. NL Draw !M! cards."
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! cards.",
+    "EXTENDED_DESCRIPTION": ["Pushing your opponent away is a great way to get room for a stronger spell."]
   },
   "${ModID}:Eruption": {
     "NAME": "Eruption",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["All right, shit like this is why I studied magic!"]
   },
   "${ModID}:WellPrepared": {
     "NAME": "Prepared",
@@ -96,19 +115,23 @@
   },
   "${ModID}:Momentum": {
     "NAME": "Momentum",
-    "DESCRIPTION": "The first time you play an attack each turn, draw !M! card."
+    "DESCRIPTION": "The first time you play an attack each turn, draw !M! card.",
+    "EXTENDED_DESCRIPTION": ["If you can cast spells and run at the same time, that is much better than being a sitting duck.  Don't neglect your physical training."]
   },
   "${ModID}:Spray": {
     "NAME": "Spray",
-    "DESCRIPTION": "Retain. NL Discard your entire hand and gain !M! Block for each card discarded."
+    "DESCRIPTION": "Retain. NL Discard your entire hand and gain !M! Block for each card discarded.",
+    "EXTENDED_DESCRIPTION": ["A simple propulsion spell is so much more deadly when you carry a lot of small sharp metal objects."]
   },
   "${ModID}:Dash": {
     "NAME": "Dash",
-    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards."
+    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards.",
+    "EXTENDED_DESCRIPTION": ["Not my favorite strategy, but sometimes you just gotta run like fuck."]
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
     "DESCRIPTION": "At the start of your turn, draw !M! card and discard !M! card.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, draw !M! card and discard !M! card."
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, draw !M! card and discard !M! card.",
+    "EXTENDED_DESCRIPTION": ["It's a spell, not a skill.  Why would you call it that?"]
   }
 }

@@ -1,17 +1,19 @@
 package theArcanist.cards;
 
 import IconsAddon.util.DamageModifierManager;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.ForceDamage;
 
+import java.util.ArrayList;
+
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class PhantomFist extends AbstractEasyCard {
+public class PhantomFist extends AbstractArcanistCard {
     public final static String ID = makeID("PhantomFist");
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 4;

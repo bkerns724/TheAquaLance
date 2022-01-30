@@ -7,7 +7,7 @@ import theArcanist.powers.SpeedPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Haste extends AbstractEasyCard {
+public class Haste extends AbstractArcanistCard {
     public final static String ID = makeID("Haste");
     private final static int MAGIC = 1;
 

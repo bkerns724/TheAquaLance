@@ -9,7 +9,7 @@ import theArcanist.ArcanistMod.Enums;
 import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
 
-public class SoulFlame extends AbstractEasyCard {
+public class SoulFlame extends AbstractArcanistCard {
     public final static String ID = makeID("SoulFlame");
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 4;

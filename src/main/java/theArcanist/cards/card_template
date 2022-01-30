@@ -1,6 +1,6 @@
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.cards.AbstractEasyCard;
+import theArcanist.cards.AbstractArcanistCard;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;

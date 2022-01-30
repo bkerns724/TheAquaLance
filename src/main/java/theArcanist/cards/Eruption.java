@@ -5,9 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
-public class Eruption extends AbstractEasyCard {
+public class Eruption extends AbstractArcanistCard {
     public final static String ID = makeID("Eruption");
     private final static int DAMAGE = 32;
     private final static int UPGRADE_DAMAGE = 8;

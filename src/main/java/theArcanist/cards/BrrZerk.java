@@ -7,7 +7,7 @@ import theArcanist.powers.BrrZerkPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class BrrZerk extends AbstractEasyCard {
+public class BrrZerk extends AbstractArcanistCard {
     public final static String ID = makeID("BrrZerk");
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
