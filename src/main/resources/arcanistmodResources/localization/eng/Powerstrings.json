@@ -76,6 +76,34 @@
       "Bug with Spray card, I should not be seen."
     ]
   },
+  "${ModID}:Decaying": {
+    "NAME": "Decaying",
+    "DESCRIPTIONS": [
+      "Loses #b",
+      " HP at the start of its turn."
+    ]
+  },
+  "${ModID}:Shadowcloak": {
+    "NAME": "Shadowcloak",
+    "DESCRIPTIONS": [
+      "The first attack you play each turn does #b",
+      "% more damage."
+    ]
+  },
+  "${ModID}:TempHPOnHit": {
+    "NAME": "Life Leech",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yTemporary #yHP whenever you strike a target."
+    ]
+  },
+  "${ModID}:Curse": {
+    "NAME": "Curse",
+    "DESCRIPTIONS": [
+      "When debuffed, this creature will lose #b",
+      " HP."
+    ]
+  },
   "${ModID}:Speed": {
     "NAME": "Speed",
     "DESCRIPTIONS": [

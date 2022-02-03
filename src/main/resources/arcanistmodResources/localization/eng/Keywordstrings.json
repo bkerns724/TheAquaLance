@@ -15,7 +15,7 @@
       "Frostbite",
       "frostbite"
     ],
-    "DESCRIPTION": "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
+    "DESCRIPTION": "When a creature with Frostbite attacks it takes damage equal to its Frostbite and reduces Frostbite by 1."
   },
   {
     "PROPER_NAME": "Crushed",
@@ -23,6 +23,22 @@
       "Crushed",
       "crushed"
     ],
-    "DESCRIPTION": "Crushed enemies take more damage from attacks."
+    "DESCRIPTION": "Crushed creatures take more damage from attacks."
+  },
+  {
+    "PROPER_NAME": "Curse",
+    "NAMES": [
+      "Curse",
+      "curse"
+    ],
+    "DESCRIPTION": "Cursed creatures lose HP when they are debuffed."
+  },
+  {
+    "PROPER_NAME": "Shadowcloak",
+    "NAMES": [
+      "Shadowcloak",
+      "shadowcloak"
+    ],
+    "DESCRIPTION": "Grants 25% extra damage on the first attack each turn."
   }
 ]

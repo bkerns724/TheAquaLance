@@ -8,9 +8,9 @@ import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
 
 
-public abstract class AbstractEasyPower extends AbstractPower {
+public abstract class AbstractArcanistPower extends AbstractPower {
 
-    public AbstractEasyPower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
+    public AbstractArcanistPower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
         this.ID = id;
         this.isTurnBased = isTurnBased;
         this.owner = owner;

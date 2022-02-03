@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import theArcanist.ArcanistMod;
 
-public class CrushedPower extends AbstractEasyPower {
+public class CrushedPower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID("Crushed");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

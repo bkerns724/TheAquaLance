@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theArcanist.powers.AbstractEasyPower;
+import theArcanist.powers.AbstractArcanistPower;
 
 import java.util.ArrayList;
 
@@ -32,14 +32,14 @@ public class DiscardHookPatch {
                 ArrayList<AbstractMonster> enemies = getEnemies();
                 for (AbstractMonster m : enemies) {
                     for (AbstractPower po : m.powers) {
-                        if (po instanceof AbstractEasyPower) {
-                            ((AbstractEasyPower) po).onManualDiscard();
+                        if (po instanceof AbstractArcanistPower) {
+                            ((AbstractArcanistPower) po).onManualDiscard();
                         }
                     }
                 }
                 for (AbstractPower p : adp().powers) {
-                    if (p instanceof AbstractEasyPower) {
-                        ((AbstractEasyPower) p).onManualDiscard();
+                    if (p instanceof AbstractArcanistPower) {
+                        ((AbstractArcanistPower) p).onManualDiscard();
                     }
                 }
             }

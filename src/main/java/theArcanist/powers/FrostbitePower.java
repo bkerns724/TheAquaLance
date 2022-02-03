@@ -12,7 +12,7 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.*;
 
-public class FrostbitePower extends AbstractEasyPower {
+public class FrostbitePower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID("Frostbite");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

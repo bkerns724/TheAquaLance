@@ -9,7 +9,7 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.*;
 
-public class DrawNextTurnPower extends AbstractEasyPower {
+public class DrawNextTurnPower extends AbstractArcanistPower {
     public static final String POWER_ID = ArcanistMod.makeID("DrawNextTurn");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

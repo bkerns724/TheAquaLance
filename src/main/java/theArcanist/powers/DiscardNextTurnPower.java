@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import static theArcanist.util.Wiz.*;
 
-public class DiscardNextTurnPower extends AbstractEasyPower {
+public class DiscardNextTurnPower extends AbstractArcanistPower {
     public static final String POWER_ID = ArcanistMod.makeID("DiscardNextTurn");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

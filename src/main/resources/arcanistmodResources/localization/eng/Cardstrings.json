@@ -44,7 +44,7 @@
   },
   "${ModID}:Miasma": {
     "NAME": "Miasma",
-    "DESCRIPTION": "Apply !arcanistmod:M2! Weak. NL Target deals !M! less damage with attacks this turn.",
+    "DESCRIPTION": "Apply !${ModID}:M2! Weak. NL Target deals !M! less damage with attacks this turn.",
     "EXTENDED_DESCRIPTION": ["The victims can never say what exactly was wrong with them, only that it was a horrible feeling."]
   },
   "${ModID}:FrozenLance": {
@@ -87,16 +87,68 @@
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard a card.",
     "EXTENDED_DESCRIPTION": ["The great thing about soul flame is that it isn't the body that's burning, so your ice spells still work!"]
   },
-  "${ModID}:WhirlpoolSigil": {
-    "NAME": "Whirlpool Sigil",
-    "DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] .",
-    "UPGRADE_DESCRIPTION": "arcanistmod:Sigil. NL Gain [E] [E] .",
-    "EXTENDED_DESCRIPTION": ["The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana.",
-      "Sigils can not be played."]
+  "${ModID}:TinglingSigil": {
+    "NAME": "Tingling Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana."]
+  },
+  "${ModID}:HardSigil": {
+    "NAME": "Hard Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": ["Sigils have the qualities of the spell stored inside, though to a lesser degree.  This shielding spell makes its sigil tough to break."]
+  },
+  "${ModID}:CursedSigil": {
+    "NAME": "Cursed Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Curse to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["A proper sigil can only be activated by a trigger word spoken by its creator.  You wouldn't want a hexing sigil going off while you're carrying it, so enchant it properly."]
+  },
+  "${ModID}:BurningSigil": {
+    "NAME": "Burning Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! damage to ALL enemies. NL Lose !M! HP.",
+    "EXTENDED_DESCRIPTION": ["Our country is being overrun by these spire monsters.  Yes, I paid a price for this power, but it is a lesser price than losing this war."]
+  },
+  "${ModID}:IronSigil": {
+    "NAME": "Iron Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL At the end of your turn, gain !M! Block.",
+    "EXTENDED_DESCRIPTION": ["This spell isn't particularly powerful but lasts quite a while, so use it in longer combats."]
+  },
+  "${ModID}:WailingSigil": {
+    "NAME": "Wailing Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL ALL enemies lose !M! Strength this turn.",
+    "EXTENDED_DESCRIPTION": ["If you enchant this one properly, it makes a constant squealing sound.  The stronger the spell, the more annoying the squeal."]
+  },
+  "${ModID}:ChameleonSigil": {
+    "NAME": "Chameleon Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Gain !M! ${ModID}:Shadowcloak. NL Draw 1 less card next turn.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Sigil. NL Gain !M! ${ModID}:Shadowcloak.",
+    "EXTENDED_DESCRIPTION": ["A subtle but useful spell."]
+  },
+  "${ModID}:ColdSigil": {
+    "NAME": "Cold Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Frostbite to ALL enemies per debuff they have.",
+    "EXTENDED_DESCRIPTION": ["This is a mean one. NL The more pain they're already suffering, the more they hurt."]
+  },
+  "${ModID}:HeavySigil": {
+    "NAME": "Heavy Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Crushed to ALL enemies per stack of Hex they have.",
+    "EXTENDED_DESCRIPTION": ["It's tricky, but if you set up a spell correctly it can take advantage of the bad luck a cursed target has."]
+  },
+  "${ModID}:BlackSigil": {
+    "NAME": "Black Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Whenever you attack this turn, gain !M! Temporary_HP.",
+    "EXTENDED_DESCRIPTION": ["It's not really black, its void.  The absence of light, dark, color, anything like that.  But of course our eyes can't see that.  This scares a lot of people away but its fine, really.  Everything's fine."]
+  },
+  "${ModID}:AdrenalineSigil": {
+    "NAME": "Adrenaline Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Exhaust !M! random Status cards."
+  },
+  "${ModID}:CrumblingSigil": {
+    "NAME": "Crumbling Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL ALL enemies take !M! damage at the start of their turn."
   },
   "${ModID}:BrrZerk": {
     "NAME": "Brr Zerk",
-    "DESCRIPTION": "Whenever you attack, apply !M! arcanistmod:Frostbite.",
+    "DESCRIPTION": "Whenever you attack, apply !M! ${ModID}:Frostbite.",
     "EXTENDED_DESCRIPTION": ["This difficult technique is not a spell, but a way to alter your spells to also freeze the target."]
   },
   "${ModID}:Gale": {

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import static theArcanist.util.Wiz.*;
 
-public class TempNegStrengthPower extends AbstractEasyPower {
+public class TempNegStrengthPower extends AbstractArcanistPower {
     public static final String POWER_ID = ArcanistMod.makeID("TempNegStrength");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

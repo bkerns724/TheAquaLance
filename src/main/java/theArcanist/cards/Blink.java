@@ -14,7 +14,6 @@ public class Blink extends AbstractArcanistCard {
     private final static int MAGIC = 1;
     private final static int COST = 1;
 
-    // skill, uncommon, self
     public Blink() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = BLOCK;

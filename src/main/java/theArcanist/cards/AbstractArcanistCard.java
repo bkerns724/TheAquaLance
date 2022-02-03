@@ -128,6 +128,10 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            if (cardStrings.UPGRADE_DESCRIPTION != null) {
+                this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+                this.initializeDescription();
+            }
             upp();
         }
     }

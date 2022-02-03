@@ -11,7 +11,7 @@ import theArcanist.actions.RapidsAction;
 
 import static theArcanist.util.Wiz.*;
 
-public class RapidsPower extends AbstractEasyPower {
+public class RapidsPower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID("Rapids");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

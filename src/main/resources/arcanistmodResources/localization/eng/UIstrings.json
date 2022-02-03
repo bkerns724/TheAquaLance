@@ -8,5 +8,10 @@
     "TEXT": [
       "Enables the Arcanist extended cut."
     ]
+  },
+  "${ModID}:SigilMessage": {
+    "TEXT": [
+      "Sigils can only be played via discard."
+    ]
   }
 }

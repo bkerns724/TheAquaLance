@@ -6,11 +6,13 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import javassist.CtBehavior;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.AbstractArcanistCard;
+import theArcanist.cards.AbstractSigilCard;
 
 import java.util.ArrayList;
 
@@ -55,21 +57,17 @@ public class LoreTooltipPatch {
 
                 y[0] -= h + ___BOX_EDGE_H * 3.15F;
         }
-    }
-    @SpireInsertPatch (
-            locator = Locator.class
-    )
-    public static void TipHelperSpacing(float x, @ByRef float[] y, SpriteBatch sb, ArrayList<String> keywords) {
-        if (keywords.size() == 3)
-            y[0] += (float)(keywords.size() - 1) * 62.0F * Settings.scale;
-    }
-    private static class Locator extends SpireInsertLocator {
-        private Locator() {
-        }
-
-        public int[] Locate(CtBehavior ctBehavior) throws Exception {
-            Matcher matcher = new Matcher.FieldAccessMatcher(ArrayList.class, "iterator");
-            return LineFinder.findInOrder(ctBehavior, matcher);
+        @SpirePrefixPatch
+        public static void TipHelperSpacing(float x, @ByRef float[] y, SpriteBatch sb, ArrayList<String> keywords,
+                                            AbstractCard ___card) {
+            if (!(___card instanceof AbstractArcanistCard))
+                return;
+            else if (((AbstractArcanistCard) ___card).lore.equals(ArcanistMod.EMPTY_LORE_STRING))
+                return;
+            if (keywords.size() >= 3)
+                y[0] += 62.0f * Settings.scale;
+            if (keywords.size() >= 2)
+                y[0] += 31.0f * Settings.scale;
         }
     }
 }

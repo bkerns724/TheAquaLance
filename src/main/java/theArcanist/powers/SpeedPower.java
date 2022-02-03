@@ -10,7 +10,7 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.*;
 
-public class SpeedPower extends AbstractEasyPower {
+public class SpeedPower extends AbstractArcanistPower {
     public static final String POWER_ID = ArcanistMod.makeID("Haste");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

@@ -1,7 +1,5 @@
 package theArcanist;
 
-import IconsAddon.icons.AbstractCustomIcon;
-import IconsAddon.util.CustomIconHelper;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
@@ -9,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
+import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -30,10 +30,9 @@ import theArcanist.patches.CutsceneMultiScreenPatch;
 import theArcanist.relics.UnmeltingIce;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 
-import static IconsAddon.util.CustomIconHelper.getAllIcons;
 import static theArcanist.TheArcanist.Enums.ARCANIST_BLARPLE_COLOR;
 import static theArcanist.ArcanistMod.*;
 
@@ -145,7 +144,7 @@ public class TheArcanist extends CustomPlayer {
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         // CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
-        ArrayList<AbstractCustomIcon> icons = CustomIconHelper.getAllIcons();
+        Collection<AbstractCustomIcon> icons = CustomIconHelper.getAllIcons();
         for (AbstractCustomIcon x : icons) {
             logger.info(x.name);
             logger.info(x.cardCode());

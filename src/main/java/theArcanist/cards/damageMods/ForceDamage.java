@@ -1,8 +1,8 @@
 package theArcanist.cards.damageMods;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
