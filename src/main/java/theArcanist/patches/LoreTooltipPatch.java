@@ -1,7 +1,10 @@
 package theArcanist.patches;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,13 +13,18 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import javassist.*;
 import theArcanist.ArcanistMod;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+import static basemod.patches.com.megacrit.cardcrawl.screens.SingleCardViewPopup.TitleFontSize.fontFile;
+
 public class LoreTooltipPatch {
+    private static BitmapFont loreFont = LoreTooltipPatch.prepFont(22.0f, false);
+
     @SpirePatch(
             clz = TipHelper.class,
             method = "renderKeywords"
@@ -60,7 +68,7 @@ public class LoreTooltipPatch {
             sb.draw(ArcanistMod.TIP_MID, x, y[0] - h - ___BOX_EDGE_H, ___BOX_W, h + ___BOX_EDGE_H);
             sb.draw(ArcanistMod.TIP_BOT, x, y[0] - h - ___BOX_BODY_H, ___BOX_W, ___BOX_EDGE_H);
 
-            FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, s,x + ___TEXT_OFFSET_X,
+            FontHelper.renderSmartText(sb, loreFont, s,x + ___TEXT_OFFSET_X,
                     y[0], ___BODY_TEXT_WIDTH, ___TIP_DESC_LINE_SPACING,
                     textColor);
 
@@ -117,5 +125,48 @@ public class LoreTooltipPatch {
             abstractCardClass.addField(field2);
             abstractCardClass.addField(field3);
         }
+    }
+
+    public static BitmapFont prepFont(float size, boolean isLinearFiltering) {
+        FreeTypeFontGenerator g = new FreeTypeFontGenerator(fontFile);
+
+        if (Settings.BIG_TEXT_MODE) {
+            size *= 1.2F;
+        }
+
+        float fontScale = 1.0f;
+
+        FreeTypeFontGenerator.FreeTypeFontParameter p = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        p.characters = "";
+        p.incremental = true;
+        p.size = Math.round(size * fontScale * Settings.scale);
+        p.gamma = 0.9f;
+        p.spaceX = 0;
+        p.spaceY = 0;
+        p.borderColor = new Color(0.4F, 0.1F, 0.1F, 1.0F);
+        p.borderStraight = false;
+        p.borderWidth = 0.0f;
+        p.borderGamma = 0.9f;
+        p.shadowColor = new Color(0, 0, 0, 0);
+        p.shadowOffsetX = 0;
+        p.shadowOffsetY = 0;
+        if (isLinearFiltering) {
+            p.minFilter = Texture.TextureFilter.Linear;
+            p.magFilter = Texture.TextureFilter.Linear;
+        } else {
+            p.minFilter = Texture.TextureFilter.Nearest;
+            p.magFilter = Texture.TextureFilter.MipMapLinearNearest;
+        }
+
+        g.scaleForPixelHeight(p.size);
+        BitmapFont font = g.generateFont(p);
+        font.setUseIntegerPositions(!isLinearFiltering);
+        font.getData().markupEnabled = true;
+        if (LocalizedStrings.break_chars != null) {
+            font.getData().breakChars = LocalizedStrings.break_chars.toCharArray();
+        }
+
+        font.getData().fontFile = fontFile;
+        return font;
     }
 }
