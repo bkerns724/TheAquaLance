@@ -1,8 +1,10 @@
 package theArcanist.cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import theArcanist.patches.LoreTooltipPatch;
 
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardRarity.SPECIAL;
 import static theArcanist.ArcanistMod.*;

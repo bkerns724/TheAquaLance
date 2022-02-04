@@ -1,5 +1,6 @@
 package theArcanist.cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,6 +23,8 @@ public class PhantomFist extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new ForceDamage());
+        ArcanistMod.setLoreColor(this, Color.PINK.cpy());
+        ArcanistMod.setLoreTextColor(this, Color.BLACK.cpy());
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

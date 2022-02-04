@@ -24,14 +24,12 @@ public class CutsceneMultiScreenPatch {
     )
     public static class CutsceneFadeOlderPanelsOnNewScreen {
         public static void fadePanelsOnPreviousScreen(ArrayList<CutscenePanel> panels, CutscenePanel panelBeingActivated) {
-            System.out.println("beep");
             if (CutscenePanelNewScreenField.startsNewScreen.get(panelBeingActivated)) {
                 for (CutscenePanel panel : panels) {
                     if (panel == panelBeingActivated) {
                         return;
                     }
                     if (!panel.fadeOut) {
-                        System.out.println("boop");
                         panel.fadeOut();
                     }
                 }

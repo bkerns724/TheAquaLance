@@ -24,6 +24,5 @@ public class Rapids extends AbstractArcanistCard {
 
     public void upp() {
         exhaust = false;
-        uDesc();
     }
 }

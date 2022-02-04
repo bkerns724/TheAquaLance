@@ -22,7 +22,5 @@ public class Haste extends AbstractArcanistCard {
 
     public void upp() {
         isInnate = true;
-        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-        initializeDescription();
     }
 }

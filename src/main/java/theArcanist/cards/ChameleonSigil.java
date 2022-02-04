@@ -2,7 +2,7 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
-import theArcanist.powers.ShadowCloakPower;
+import theArcanist.powers.ShadowcloakPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -19,7 +19,7 @@ public class ChameleonSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        applyToSelf(new ShadowCloakPower(AbstractDungeon.player, magicNumber));
+        applyToSelf(new ShadowcloakPower(AbstractDungeon.player, magicNumber));
         if (!upgraded)
             applyToSelf(new DrawReductionPower(AbstractDungeon.player, DRAW_REDUCTION));
     }

@@ -11,8 +11,8 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.*;
 
-public class ShadowCloakPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("ShadowCloak");
+public class ShadowcloakPower extends AbstractArcanistPower {
+    public static String POWER_ID = ArcanistMod.makeID("Shadowcloak");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -20,7 +20,7 @@ public class ShadowCloakPower extends AbstractArcanistPower {
     public static final float DAMAGE_MULT = DAMAGE_MULT_DESC/100.0f;
     private boolean triggered;
 
-    public ShadowCloakPower(AbstractCreature owner, int amount) {
+    public ShadowcloakPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
         priority = 98;

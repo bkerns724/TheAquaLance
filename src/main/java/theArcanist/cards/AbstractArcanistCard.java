@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -16,6 +17,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
 import theArcanist.util.CardArtRoller;
 
@@ -39,8 +41,6 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
     private boolean needsArtRefresh = false;
 
-    public String lore = EMPTY_LORE_STRING;
-
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
     }
@@ -51,8 +51,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
-        if (cardStrings.EXTENDED_DESCRIPTION != null)
-            lore = cardStrings.EXTENDED_DESCRIPTION[0];
+        ArcanistMod.setLore(this, cardStrings);
+        ArcanistMod.setLoreColor(this, Color.PURPLE.cpy());
         initializeTitle();
         initializeDescription();
 
@@ -114,11 +114,6 @@ public abstract class AbstractArcanistCard extends CustomCard {
         upgradedSecondMagic = true;
     }
 
-    protected void uDesc() {
-        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-        initializeDescription();
-    }
-
     protected void upgradeCardToPreview() {
         for (AbstractCard q : cardToPreview) {
             q.upgrade();
@@ -128,11 +123,10 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            if (cardStrings.UPGRADE_DESCRIPTION != null) {
-                this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-                this.initializeDescription();
-            }
             upp();
+            if (cardStrings.UPGRADE_DESCRIPTION != null)
+                rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 

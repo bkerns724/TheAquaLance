@@ -16,6 +16,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -32,8 +33,10 @@ import theArcanist.cards.damageMods.IceIcon;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractEasyRelic;
 import theArcanist.relics.UnmeltingIce;
+import theArcanist.util.TexLoader;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
@@ -51,8 +54,6 @@ public class ArcanistMod implements
         PostInitializeSubscriber {
 
     public static final String SETTINGS_FILE = "ArcanistModSettings";
-
-    public static String EMPTY_LORE_STRING = "No Lore";
 
     public static final String modID = "arcanistmod";
     public static final String RESOURCES_PRE = "arcanistmodResources/";
@@ -84,6 +85,14 @@ public class ArcanistMod implements
     private static final String CARD_ENERGY_L = RESOURCES_PRE + "images/1024/energy.png";
     private static final String CHARSELECT_BUTTON = RESOURCES_PRE + "images/charSelect/charButton.png";
     private static final String CHARSELECT_PORTRAIT = RESOURCES_PRE + "images/charSelect/charBG.png";
+
+    private static final String TIP_TOP_STRING = "arcanistmodResources/images/ui/tipTop.png";
+    private static final String TIP_MID_STRING = "arcanistmodResources/images/ui/tipMid.png";
+    private static final String TIP_BOT_STRING = "arcanistmodResources/images/ui/tipBot.png";
+
+    public static Texture TIP_TOP;
+    public static Texture TIP_MID;
+    public static Texture TIP_BOT;
 
     public static final String WATER_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Blood.png";
@@ -252,6 +261,10 @@ public class ArcanistMod implements
 
         logger.info("Done loading badge Image");
         logger.info("Done loading badge Image and mod options");
+
+        TIP_TOP = new Texture(TIP_TOP_STRING);
+        TIP_MID = new Texture(TIP_MID_STRING);
+        TIP_BOT = new Texture(TIP_BOT_STRING);
     }
 
     private void saveConfig() {
@@ -272,5 +285,60 @@ public class ArcanistMod implements
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
+    }
+
+    public static String getLore(CardStrings cardStrings) {
+        try {
+            Field field2 = CardStrings.class.getField("LORE");
+            return (String) field2.get(cardStrings);
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean setLore(AbstractCard card, String lore) {
+        try {
+            Field field = AbstractCard.class.getField("lore");
+            field.set(card, lore);
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean setLore(AbstractCard card, CardStrings cardStrings) {
+        try {
+            Field field1 = AbstractCard.class.getField("lore");
+            Field field2 = CardStrings.class.getField("LORE");
+            field1.set(card, field2.get(cardStrings));
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean setLoreColor(AbstractCard card, Color loreColor) {
+        try {
+            Field field = AbstractCard.class.getField("loreColor");
+            field.set(card, loreColor);
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean setLoreTextColor(AbstractCard card, Color loreTextColor) {
+        try {
+            Field field = AbstractCard.class.getField("loreTextColor");
+            field.set(card, loreTextColor);
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 }
