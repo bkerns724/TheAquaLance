@@ -26,7 +26,7 @@ public class InvisibleSprayPower extends AbstractArcanistPower implements Invisi
     }
 
     @Override
-    public void updateDescription() {
+    public void upDescription() {
         description = DESCRIPTIONS[0];
     }
 }

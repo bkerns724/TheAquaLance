@@ -38,10 +38,7 @@ public class SpeedPower extends AbstractArcanistPower {
 
 
     @Override
-    public void updateDescription() {
-        if (amount == 1)
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
-        else
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[3] + amount + DESCRIPTIONS[4];
+    public void upDescription() {
+        description = DESCRIPTIONS[0];
     }
 }

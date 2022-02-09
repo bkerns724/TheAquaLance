@@ -1,10 +1,13 @@
 package theArcanist.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod.Enums;
+import theArcanist.cards.damageMods.ForceDamage;
+import theArcanist.cards.damageMods.SoulFireDamage;
 
 import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
@@ -20,6 +23,7 @@ public class SoulFlame extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        DamageModifierManager.addModifier(this, new SoulFireDamage());
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

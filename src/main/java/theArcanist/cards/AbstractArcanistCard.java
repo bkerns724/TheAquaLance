@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -17,12 +18,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
 import theArcanist.util.CardArtRoller;
 
 import java.util.ArrayList;
 
+import static LoreMod.LoreMod.setLoreColor;
 import static theArcanist.ArcanistMod.*;
 import static theArcanist.util.Wiz.*;
 
@@ -41,6 +42,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
     private boolean needsArtRefresh = false;
 
+    private static final Color LORE_COLOR = new Color(90/255f, 0f, 140/255f, 1f);
+
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
     }
@@ -51,8 +54,11 @@ public abstract class AbstractArcanistCard extends CustomCard {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
-        ArcanistMod.setLore(this, cardStrings);
-        ArcanistMod.setLoreColor(this, Color.PURPLE.cpy());
+
+        if (Loader.isModLoaded("loremod")) {
+            setLoreColor(this, LORE_COLOR);
+        }
+
         initializeTitle();
         initializeDescription();
 

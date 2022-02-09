@@ -14,6 +14,8 @@ import theArcanist.ArcanistMod;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.floor;
+import static java.lang.Math.sqrt;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
@@ -31,9 +33,14 @@ public class DarkDamage extends AbstractDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
         AbstractPlayer p = AbstractDungeon.player;
-        int tempHP = unblockedAmount/2;
+        int tempHP = GetTriangleNumberRootFloor(unblockedAmount);
         if (tempHP > 0)
             att(new AddTemporaryHPAction(p, p, tempHP));
+    }
+
+    private static int GetTriangleNumberRootFloor(int n) {
+        double x = -0.5f + sqrt(0.25f + 2*n);
+        return (int) floor(x);
     }
 
     @Override

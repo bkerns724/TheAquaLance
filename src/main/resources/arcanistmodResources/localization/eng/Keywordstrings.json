@@ -10,6 +10,15 @@
     "DESCRIPTION": "Sigils are unplayable cards whose effects trigger when they are discarded from your hand."
   },
   {
+    "PROPER_NAME": "Scourge [${ModID}:ScourgeIcon]",
+    "NAMES": [
+      "Scourge",
+      "scourge",
+      "scourgeDontTranslateThisLine"
+    ],
+    "DESCRIPTION": "[${ModID}:ScourgeIcon] is equal to the amount of #yJinx on the target."
+  },
+  {
     "PROPER_NAME": "Frostbite",
     "NAMES": [
       "Frostbite",
@@ -26,12 +35,12 @@
     "DESCRIPTION": "Crushed creatures take more damage from attacks."
   },
   {
-    "PROPER_NAME": "Curse",
+    "PROPER_NAME": "Jinx",
     "NAMES": [
-      "Curse",
-      "curse"
+      "Jinx",
+      "jinx"
     ],
-    "DESCRIPTION": "Cursed creatures lose HP when they are debuffed."
+    "DESCRIPTION": "Jinxed creatures lose HP when they are debuffed."
   },
   {
     "PROPER_NAME": "Shadowcloak",

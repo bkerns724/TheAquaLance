@@ -1,5 +1,6 @@
 package theArcanist.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,12 +13,16 @@ public class WellPrepared extends AbstractArcanistCard {
     public final static String ID = makeID("WellPrepared");
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_MAGIC = 3;
     private final static int COST = 0;
 
     // skill, rare, self
     public WellPrepared() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
+        secondMagic = baseSecondMagic = SECOND_MAGIC;
+        ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, secondMagic);
+        ExhaustiveField.ExhaustiveFields.exhaustive.set(this, secondMagic);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

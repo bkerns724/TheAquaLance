@@ -23,7 +23,7 @@
     "NAME": "Dark",
     "DESCRIPTION": "Dark [${ModID}:DarkIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Gain 1 #yTemporary #yHP for every 2 unblocked damage dealt.",
+      "Gain #yTemporary #yHP based on unblocked damage dealt.  Has diminishing returns.",
       "Temporary HP",
       "Temporary HP is lost at the end of battle."
     ]
@@ -35,6 +35,13 @@
       "Apply 1 #yCrushed for every 6 damage dealt.",
       "Crushed",
       "Crushed enemies take more damage from attacks."
+    ]
+  },
+  "${ModID}:SoulFireDamage": {
+    "NAME": "Soul Fire",
+    "DESCRIPTION": "Soul Fire [${ModID}:SoulFireIcon]",
+    "EXTENDED_DESCRIPTION": [
+      "Ignores Block."
     ]
   },
   "${ModID}:AcidSpray": {
@@ -74,7 +81,7 @@
   "${ModID}:Blink": {
     "NAME": "Blink",
     "DESCRIPTION": "Gain !B! Block. NL Discard !M! card.",
-    "LORE": "Many times, the best defense is simply not being there."
+    "LORE": "Quite often the best defense is simply not being there."
   },
   "${ModID}:BarrierJa": {
     "NAME": "Barrierja",
@@ -83,8 +90,8 @@
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Discard a card.",
-    "LORE": "The great thing about soul flame is that it isn't the body that's burning, so your ice spells still work!"
+    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Draw !M! card. NL Discard a card.",
+    "LORE": "With soul flame, it isn't the body that's burning, so your ice spells still work."
   },
   "${ModID}:TinglingSigil": {
     "NAME": "Tingling Sigil",
@@ -98,12 +105,12 @@
   },
   "${ModID}:CursedSigil": {
     "NAME": "Cursed Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Curse to ALL enemies.",
+    "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Jinx to ALL enemies.",
     "LORE": "A proper sigil can only be activated by a trigger word spoken by its creator.  You wouldn't want a hexing sigil going off while you're carrying it, so enchant it properly."
   },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! damage to ALL enemies. NL Lose !M! HP.",
+    "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! [${ModID}:SoulFireIcon] damage to ALL enemies. NL Lose !M! HP.",
     "LORE": "Our country is being overrun by these spire monsters.  Yes, I paid a price for this power, but it is a lesser price than losing this war."
   },
   "${ModID}:IronSigil": {
@@ -128,8 +135,7 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Crushed to ALL enemies per stack of Hex they have.",
-    "LORE": "It's tricky, but if you set up a spell correctly it can take advantage of the bad luck a cursed target has."
+    "DESCRIPTION": "${ModID}:Sigil. NL Apply [${ModID}:ScourgeIcon] ${ModID}:Crushed to ALL enemies."
   },
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
@@ -156,12 +162,12 @@
   },
   "${ModID}:Eruption": {
     "NAME": "Eruption",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage to ALL enemies. NL Exhaust.",
     "LORE": "All right, shit like this is why I studied magic!"
   },
   "${ModID}:WellPrepared": {
     "NAME": "Prepared",
-    "DESCRIPTION": "Draw !M! cards. NL Discard 1 card."
+    "DESCRIPTION": "Draw !M! cards. NL Discard 1 card. NL Exhaustive !stslib:ex!."
   },
   "${ModID}:Momentum": {
     "NAME": "Momentum",

@@ -1,7 +1,13 @@
 package theArcanist.cards;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
+import theArcanist.ArcanistMod;
 import theArcanist.powers.CrushedPower;
 import theArcanist.powers.CursePower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -14,6 +20,15 @@ public class HeavySigil extends AbstractSigilCard {
     public HeavySigil() {
         super(ID, CardRarity.UNCOMMON, CardType.SKILL, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
+    }
+
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        ArrayList<TooltipInfo> list = new ArrayList<>();
+        TooltipInfo info = new TooltipInfo(BaseMod.getKeywordTitle(ArcanistMod.SCOURGE_NAME),
+                BaseMod.getKeywordDescription(ArcanistMod.SCOURGE_NAME));
+        list.add(info);
+        return list;
     }
 
     @Override

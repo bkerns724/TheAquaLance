@@ -34,7 +34,7 @@ public class TempNegStrengthPower extends AbstractArcanistPower {
     }
 
     @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+    public void upDescription() {
+        description = DESCRIPTIONS[0];
     }
 }

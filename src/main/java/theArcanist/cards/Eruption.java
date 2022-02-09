@@ -1,8 +1,10 @@
 package theArcanist.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theArcanist.cards.damageMods.SoulFireDamage;
 
 import static theArcanist.ArcanistMod.makeID;
 
@@ -18,6 +20,7 @@ public class Eruption extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         isMultiDamage = true;
         exhaust = true;
+        DamageModifierManager.addModifier(this, new SoulFireDamage());
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
