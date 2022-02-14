@@ -11,23 +11,21 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.*;
 
-public class CursePower extends AbstractArcanistPower implements OnReceivePowerPower {
-    public static String POWER_ID = ArcanistMod.makeID("Curse");
+public class JinxPower extends AbstractArcanistPower implements OnReceivePowerPower {
+    public static String POWER_ID = ArcanistMod.makeID("Jinx");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public CursePower(AbstractCreature owner, int amount) {
+    public JinxPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
     }
 
     @Override
     public boolean onReceivePower(AbstractPower pow, AbstractCreature target, AbstractCreature source) {
-        if (!pow.ID.equals(GainStrengthPower.POWER_ID) && pow.type == PowerType.DEBUFF) {
-            atb(new LoseHPAction(target, source, amount));
-            flash();
-        }
+        if (!pow.ID.equals(GainStrengthPower.POWER_ID) && pow.type == PowerType.DEBUFF)
+            att(new LoseHPAction(target, source, amount));
         return true;
     }
 

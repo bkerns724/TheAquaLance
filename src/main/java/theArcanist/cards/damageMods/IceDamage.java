@@ -3,15 +3,16 @@ package theArcanist.cards.damageMods;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.powers.FrostbitePower;
-import theArcanist.util.Wiz;
-
 import java.util.ArrayList;
+
+import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
@@ -36,8 +37,10 @@ public class IceDamage extends AbstractDamageModifier {
                                         AbstractCreature target) {
         int totalDamage = unblockedAmount + blockedAmount;
         int frostbite = totalDamage/3;
-        if (frostbite > 0)
-            Wiz.applyToEnemyTop(target, new FrostbitePower(target, frostbite));
+        if (frostbite > 0) {
+            applyToEnemyTop(target, new FrostbitePower(target, frostbite));
+            att(new WaitAction(0.1f));
+        }
     }
 
     @Override

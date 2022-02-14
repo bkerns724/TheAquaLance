@@ -26,7 +26,7 @@ public class ChanneledVice extends AbstractArcanistCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.FIST);
-        applyToSelf(new ResonatingPower(p, baseDamage, false, false, true, false));
+        applyToSelf(new ResonatingPower(p, baseDamage, false, false, true, false, 0));
     }
 
     public void upp() {

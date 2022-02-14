@@ -3,12 +3,15 @@ package theArcanist.cards;
 import basemod.AutoAdd;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
+import theArcanist.VFX.DarkWaveEffect;
 import theArcanist.cards.damageMods.*;
 import theArcanist.patches.ResonantPowerPatch;
+import theArcanist.powers.JinxPower;
 import theArcanist.powers.ResonatingPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -24,13 +27,14 @@ public class GenericResonantCard extends AbstractArcanistCard {
     private boolean fire;
     private AttackEffect attackEffect = AttackEffect.NONE;
 
-    public GenericResonantCard(int damage, boolean cold, boolean dark, boolean force, boolean fire) {
+    public GenericResonantCard(int damage, boolean cold, boolean dark, boolean force, boolean fire, int jinx) {
         super(ID, COST, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.cold = cold;
         this.dark = dark;
         this.force = force;
         this.fire = fire;
         baseDamage = damage;
+        magicNumber = baseMagicNumber = jinx;
 
         ResonantPowerPatch.AbstractCardField.resonance.set(this, true);
 
@@ -47,8 +51,12 @@ public class GenericResonantCard extends AbstractArcanistCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (attackEffect == AttackEffect.NONE)
+            vfx(new DarkWaveEffect(p.hb.cX, p.hb.cY, m.hb.cX), 0.5F);
         dmg(m, attackEffect);
-        applyToSelf(new ResonatingPower(p, baseDamage, cold, dark, force, fire));
+        if (magicNumber > 0)
+            applyToEnemy(m, new JinxPower(m, magicNumber));
+        applyToSelf(new ResonatingPower(p, baseDamage, cold, dark, force, fire, magicNumber));
     }
 
     public void upp() {
@@ -61,6 +69,7 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (fire) count++;
         if (force) count++;
         if (dark) count++;
+        if (magicNumber > 0) count++;
 
         StringBuilder sBuilder = new StringBuilder(cardStrings.EXTENDED_DESCRIPTION[0]);
         if (cold)
@@ -75,6 +84,9 @@ public class GenericResonantCard extends AbstractArcanistCard {
             sBuilder.append("  ");
         if (count >= 2) sBuilder.append("NL ");
         sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[1]);
+        if (magicNumber > 0)
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[2]);
+        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
         rawDescription = sBuilder.toString();
 
         if (count == 1) {
@@ -90,17 +102,21 @@ public class GenericResonantCard extends AbstractArcanistCard {
                 attackEffect = ArcanistMod.Enums.SOUL_FIRE;
                 name = "Channeled Flame";
             }
-            else /*dark */{
+            else if (dark){
                 attackEffect = ArcanistMod.Enums.DARK_COIL;
                 name = "Channeled Void";
             }
+            else {
+                attackEffect = AttackEffect.NONE;
+            }
         }
+        // Should not happen
         else if (count == 0) {
-            attackEffect = AttackEffect.LIGHTNING;
-            name = "Channeled Storm";
+            attackEffect = AttackEffect.BLUNT_HEAVY;
+            name = "Basic Channel";
         }
         else {
-            attackEffect = AttackEffect.LIGHTNING;
+            attackEffect = ArcanistMod.Enums.BLOOD;
             name = "Blended Channel";
         }
 
@@ -110,6 +126,6 @@ public class GenericResonantCard extends AbstractArcanistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new GenericResonantCard(baseDamage, cold, dark, force, fire);
+        return new GenericResonantCard(baseDamage, cold, dark, force, fire, magicNumber);
     }
 }

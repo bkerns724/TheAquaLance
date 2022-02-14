@@ -1,6 +1,6 @@
 package theArcanist.cards;
 
-import theArcanist.powers.CursePower;
+import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -17,7 +17,7 @@ public class CursedSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        forAllMonstersLiving(monster -> applyToEnemy(monster, new CursePower(monster, magicNumber)));
+        forAllMonstersLiving(monster -> applyToEnemy(monster, new JinxPower(monster, magicNumber)));
     }
 
     public void upp() {

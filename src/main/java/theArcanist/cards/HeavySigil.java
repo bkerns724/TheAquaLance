@@ -4,7 +4,7 @@ import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import theArcanist.ArcanistMod;
 import theArcanist.powers.CrushedPower;
-import theArcanist.powers.CursePower;
+import theArcanist.powers.JinxPower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +34,8 @@ public class HeavySigil extends AbstractSigilCard {
     @Override
     public void onManualDiscard() {
         forAllMonstersLiving(monster -> {
-            if (monster.hasPower(CursePower.POWER_ID)) {
-                int amount = monster.getPower(CursePower.POWER_ID).amount;
+            if (monster.hasPower(JinxPower.POWER_ID)) {
+                int amount = monster.getPower(JinxPower.POWER_ID).amount;
                 applyToEnemy(monster, new CrushedPower(monster, amount*magicNumber));
             }
         });

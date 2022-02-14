@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
-
 import java.util.ArrayList;
 
 @AutoAdd.Ignore

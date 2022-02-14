@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.actions.MyAddTempHPAction;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class DarkDamage extends AbstractDamageModifier {
         AbstractPlayer p = AbstractDungeon.player;
         int tempHP = GetTriangleNumberRootFloor(unblockedAmount);
         if (tempHP > 0)
-            att(new AddTemporaryHPAction(p, p, tempHP));
+            att(new MyAddTempHPAction(p, p, tempHP));
     }
 
     private static int GetTriangleNumberRootFloor(int n) {

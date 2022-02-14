@@ -26,7 +26,7 @@ public class ChanneledVoid extends AbstractArcanistCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.DARK_COIL);
-        applyToSelf(new ResonatingPower(p, baseDamage, false, true, false, false));
+        applyToSelf(new ResonatingPower(p, baseDamage, false, true, false, false, 0));
     }
 
     public void upp() {

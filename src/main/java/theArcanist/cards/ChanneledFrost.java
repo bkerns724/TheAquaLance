@@ -26,7 +26,7 @@ public class ChanneledFrost extends AbstractArcanistCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.ICE);
-        applyToSelf(new ResonatingPower(p, baseDamage, true, false, false, false));
+        applyToSelf(new ResonatingPower(p, baseDamage, true, false, false, false, 0));
     }
 
     public void upp() {

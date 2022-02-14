@@ -24,18 +24,21 @@ public class ResonatingPower extends AbstractArcanistPower {
     public boolean dark = false;
     public boolean fire = false;
 
-    public ResonatingPower(AbstractCreature owner, int amount, boolean cold, boolean dark, boolean force, boolean fire) {
+    public ResonatingPower(AbstractCreature owner, int amount, boolean cold, boolean dark, boolean force, boolean fire, int jinx) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
         this.dark = dark;
         this.cold = cold;
         this.force = force;
         this.fire = fire;
+        isTwoAmount = true;
+        amount2 = jinx;
     }
 
     public void stackPower(ResonatingPower pow) {
         ArcanistMod.logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         amount += max(0, pow.amount - DEDUCTION);
+        amount2 += pow.amount2;
         if (pow.force) {
             if (!force)
                 force = true;
@@ -67,8 +70,8 @@ public class ResonatingPower extends AbstractArcanistPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        GenericResonantCard card = new GenericResonantCard(amount, cold, dark, force, fire);
-        atb(new MakeTempCardInDrawPileAction(card, 1, false, false));
+        GenericResonantCard card = new GenericResonantCard(amount, cold, dark, force, fire, amount2);
+        topDeck(card);
         atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 

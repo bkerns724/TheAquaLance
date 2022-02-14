@@ -15,7 +15,9 @@
     "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate.",
     "EXTENDED_DESCRIPTION":[
       "Deal !D! ",
-      "damage. NL ${ModID}:Resonate."
+      "damage. NL ",
+      "Apply !M! ${ModID}:Jinx. NL ",
+      "${ModID}:Resonate."
     ],
     "LORE": "You can use this over and over."
   },
@@ -174,6 +176,10 @@
   "${ModID}:ChanneledVice": {
     "NAME": "Channeled Vice",
     "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL ${ModID}:Resonate."
+  },
+  "${ModID}:ChanneledCurse": {
+    "NAME": "Channeled Curse",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx. NL ${ModID}:Resonate."
   },
   "${ModID}:BrrZerk": {
     "NAME": "Brr Zerk",
