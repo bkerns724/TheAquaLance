@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -23,7 +22,7 @@ import theArcanist.util.CardArtRoller;
 
 import java.util.ArrayList;
 
-import static LoreMod.LoreMod.setLoreColor;
+import static com.evacipated.cardcrawl.mod.stslib.patches.LoreTooltips.setLoreColor;
 import static theArcanist.ArcanistMod.*;
 import static theArcanist.util.Wiz.*;
 
@@ -55,9 +54,7 @@ public abstract class AbstractArcanistCard extends CustomCard {
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
 
-        if (Loader.isModLoaded("loremod")) {
-            setLoreColor(this, LORE_COLOR);
-        }
+        setLoreColor(this, LORE_COLOR);
 
         initializeTitle();
         initializeDescription();

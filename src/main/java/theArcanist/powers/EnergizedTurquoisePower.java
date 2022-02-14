@@ -26,8 +26,7 @@ public class EnergizedTurquoisePower extends AbstractArcanistPower {
         atb(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
     }
 
-    @Override
-    public void upDescription() {
+    public void updateDescription() {
         description = DESCRIPTIONS[0];
     }
 }

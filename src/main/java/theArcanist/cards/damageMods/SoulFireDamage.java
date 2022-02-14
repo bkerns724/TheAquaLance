@@ -15,9 +15,15 @@ public class SoulFireDamage extends AbstractDamageModifier {
     public static final String ID = ArcanistMod.makeID("SoulFireDamage");
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo soulFireTooltip;
+    private boolean visibleTips = true;
 
     public SoulFireDamage() {
         soulFireTooltip = null;
+    }
+
+    public SoulFireDamage(boolean visTips) {
+        this();
+        visibleTips = visTips;
     }
 
     @Override
@@ -27,6 +33,8 @@ public class SoulFireDamage extends AbstractDamageModifier {
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
+        if (!visibleTips)
+            return new ArrayList<TooltipInfo>();
         if (soulFireTooltip == null)
             soulFireTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
 

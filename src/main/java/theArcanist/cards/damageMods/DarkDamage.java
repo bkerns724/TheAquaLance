@@ -24,10 +24,16 @@ public class DarkDamage extends AbstractDamageModifier {
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo darkTooltip;
     public TooltipInfo darkTooltip2;
+    private boolean visibleTips = true;
 
     public DarkDamage() {
         darkTooltip = null;
         darkTooltip2 = null;
+    }
+
+    public DarkDamage(boolean visTips) {
+        this();
+        visibleTips = visTips;
     }
 
     @Override
@@ -45,6 +51,8 @@ public class DarkDamage extends AbstractDamageModifier {
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
+        if (!visibleTips)
+            return new ArrayList<TooltipInfo>();
         if (darkTooltip == null)
             darkTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         if (darkTooltip2 == null)

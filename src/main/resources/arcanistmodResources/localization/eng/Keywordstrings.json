@@ -19,6 +19,14 @@
     "DESCRIPTION": "[${ModID}:ScourgeIcon] is equal to the amount of #yJinx on the target."
   },
   {
+    "PROPER_NAME": "Resonate",
+    "NAMES": [
+      "Resonate",
+      "resonate"
+    ],
+    "DESCRIPTION": "When played, combines with other resonant cards played that turn and is added to the top of your draw pile next turn."
+  },
+  {
     "PROPER_NAME": "Frostbite",
     "NAMES": [
       "Frostbite",

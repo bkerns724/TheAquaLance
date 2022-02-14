@@ -19,10 +19,16 @@ public class ForceDamage extends AbstractDamageModifier {
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo forceTooltip;
     public TooltipInfo forceTooltip2;
+    private boolean visibleTips = true;
 
     public ForceDamage() {
         forceTooltip = null;
         forceTooltip2 = null;
+    }
+
+    public ForceDamage(boolean visTips) {
+        this();
+        visibleTips = visTips;
     }
 
     @Override
@@ -36,6 +42,8 @@ public class ForceDamage extends AbstractDamageModifier {
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
+        if (!visibleTips)
+            return new ArrayList<TooltipInfo>();
         if (forceTooltip == null)
             forceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         if (forceTooltip2 == null)

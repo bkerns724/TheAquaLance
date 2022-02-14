@@ -10,6 +10,15 @@
     "DESCRIPTION": "Gain !B! Block.",
     "LORE": "A shield isn't as good as a spell but at least you can learn to use it faster."
   },
+  "${ModID}:GenericResonantCard": {
+    "NAME": "Resonate",
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate.",
+    "EXTENDED_DESCRIPTION":[
+      "Deal !D! ",
+      "damage. NL ${ModID}:Resonate."
+    ],
+    "LORE": "You can use this over and over."
+  },
   "${ModID}:IceDamage": {
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",
@@ -149,6 +158,22 @@
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL ALL enemies take !M! damage at the start of their turn."
+  },
+  "${ModID}:ChanneledFlame": {
+    "NAME": "Channeled Flame",
+    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL ${ModID}:Resonate."
+  },
+  "${ModID}:ChanneledFrost": {
+    "NAME": "Channeled Frost",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL ${ModID}:Resonate."
+  },
+  "${ModID}:ChanneledVoid": {
+    "NAME": "Channeled Void",
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL ${ModID}:Resonate."
+  },
+  "${ModID}:ChanneledVice": {
+    "NAME": "Channeled Vice",
+    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL ${ModID}:Resonate."
   },
   "${ModID}:BrrZerk": {
     "NAME": "Brr Zerk",

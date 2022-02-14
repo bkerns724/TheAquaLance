@@ -19,10 +19,16 @@ public class IceDamage extends AbstractDamageModifier {
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo iceTooltip;
     public TooltipInfo iceTooltip2;
+    private boolean visibleTips = true;
 
     public IceDamage() {
         iceTooltip = null;
         iceTooltip2 = null;
+    }
+
+    public IceDamage(boolean visibleTips) {
+        this();
+        this.visibleTips = visibleTips;
     }
 
     @Override
@@ -36,6 +42,8 @@ public class IceDamage extends AbstractDamageModifier {
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
+        if (!visibleTips)
+            return new ArrayList<TooltipInfo>();
         if (iceTooltip == null)
             iceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         if (iceTooltip2 == null)

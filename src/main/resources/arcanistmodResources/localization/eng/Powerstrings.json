@@ -2,25 +2,31 @@
   "${ModID}:DiscardNextTurn": {
     "NAME": "Discard Next Turn",
     "DESCRIPTIONS": [
-      "{@@}Discard !A! {!A!|1=card|@=cards} next turn."
+      "Discard !A! card next turn."
     ]
   },
   "${ModID}:DrawNextTurn": {
     "NAME": "Draw Next Turn",
     "DESCRIPTIONS": [
-      "{@@}Draw !A! {!A!|1=card|@=cards} next turn."
+      "Draw !A! card next turn."
+    ]
+  },
+  "${ModID}:Resonating": {
+    "NAME": "Resonating",
+    "DESCRIPTIONS": [
+      "Adds a #yResonant card to your hand next turn."
     ]
   },
   "${ModID}:Frostbite": {
     "NAME": "Frostbite",
     "DESCRIPTIONS": [
-      "When this enemy attacks, it suffers !A! damage then reduces Frostbite by 1."
+      "Whenever this enemy attacks, it suffers !A! damage then reduces Frostbite by 1."
     ]
   },
   "${ModID}:Momentum": {
     "NAME": "Momentum",
     "DESCRIPTIONS": [
-      "{@@}The first !A! {!A!|1=time|@=times} you attack each turn, draw a card."
+      "The first !A! time you attack each turn, draw a card."
     ]
   },
   "${ModID}:EnergizedTurquoise": {
@@ -44,13 +50,13 @@
   "${ModID}:Crushed": {
     "NAME": "Crushed",
     "DESCRIPTIONS": [
-      "{@@}Takes !A! more damage from attacks."
+      "Takes !A! more damage from attacks."
     ]
   },
   "${ModID}:Rapids": {
     "NAME": "Rapids",
     "DESCRIPTIONS": [
-      "{@@}Whenever you play a card this turn, discard !A! random {!A!|1=card|@=cards} to draw !A! random {!A!|1=card|@=cards}."
+      "Whenever you play a card this turn, discard !A! random card to draw !A! random card."
     ]
   },
   "${ModID}:InvisibleSpray": {
@@ -87,7 +93,7 @@
   "${ModID}:Speed": {
     "NAME": "Speed",
     "DESCRIPTIONS": [
-      "At the start of your turn, draw !A! {!A!|1=card|@=cards} and discard {!A!|1=card|@=cards}."
+      "At the start of your turn, draw !A! card and discard card."
     ]
   }
 }

@@ -40,7 +40,7 @@ public class FrostbitePower extends AbstractArcanistPower {
     }
 
     @Override
-    public void upDescription() {
+    public void updateDescription() {
         description = DESCRIPTIONS[0];
     }
 }

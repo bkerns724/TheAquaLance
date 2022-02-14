@@ -11,6 +11,7 @@ public class SoulFireIcon extends AbstractCustomIcon {
     private static final String TEXTURE_STRING = "arcanistmodResources/images/damageIcons/SoulFire.png";
     private static final Texture TEXTURE =
             TexLoader.getTexture(TEXTURE_STRING);
+    public static final String CODE = "[" + ID + "Icon]";
 
     private SoulFireIcon() {
         super(ID, TEXTURE);

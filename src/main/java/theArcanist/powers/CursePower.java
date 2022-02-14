@@ -32,7 +32,7 @@ public class CursePower extends AbstractArcanistPower implements OnReceivePowerP
     }
 
     @Override
-    public void upDescription() {
+    public void updateDescription() {
         description = DESCRIPTIONS[0];
     }
 }

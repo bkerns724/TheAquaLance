@@ -14,14 +14,6 @@ import static theArcanist.util.Wiz.getEnemies;
 
 public class DiscardHookPatch {
     @SpirePatch(
-        clz = GameActionManager.class,
-        method = SpirePatch.CLASS
-    )
-    public static class GameActionManagerField {
-        public static SpireField<Integer> sigilsThisCombat = new SpireField<>(() -> 0);
-    }
-
-    @SpirePatch(
             clz = GameActionManager.class,
             method = "incrementDiscard"
     )
@@ -43,16 +35,6 @@ public class DiscardHookPatch {
                     }
                 }
             }
-        }
-    }
-
-    @SpirePatch(
-            clz = GameActionManager.class,
-            method = "clear"
-    )
-    public static class GameActionManagerClearPatch {
-        public static void Prefix(GameActionManager __instance) {
-            GameActionManagerField.sigilsThisCombat.set(__instance, 0);
         }
     }
 }

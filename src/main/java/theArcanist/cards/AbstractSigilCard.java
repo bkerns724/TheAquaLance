@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
-import theArcanist.patches.AbstractCardPatch;
-import theArcanist.patches.DiscardHookPatch;
 import theArcanist.powers.AbstractArcanistPower;
 
 import java.util.ArrayList;
@@ -28,7 +26,6 @@ public abstract class AbstractSigilCard extends AbstractArcanistCard {
 
     public AbstractSigilCard(final String cardID, final CardRarity rarity, final CardType type, final CardTarget target) {
         super(cardID, -2, type, rarity, target);
-        AbstractCardPatch.AbstractCardField.sigil.set(this, true);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -62,10 +59,6 @@ public abstract class AbstractSigilCard extends AbstractArcanistCard {
     @Override
     public void triggerOnManualDiscard() {
         beingDiscarded = true;
-        // Todo:  if none of my cards use these remember to remove
-        // Lets the GameActionManager count number of discards (all cards) this combat
-        Integer x = DiscardHookPatch.GameActionManagerField.sigilsThisCombat.get(AbstractDungeon.actionManager);
-        DiscardHookPatch.GameActionManagerField.sigilsThisCombat.set(AbstractDungeon.actionManager, x+1);
         autoPlayWhenDiscarded();
         // Powers that trigger on discard
         forAllMonstersLiving(m -> {
