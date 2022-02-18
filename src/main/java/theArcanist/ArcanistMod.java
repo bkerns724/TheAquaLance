@@ -16,6 +16,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -65,7 +66,6 @@ public class ArcanistMod implements
 
     private static SpireConfig modConfig = null;
 
-    // todo: Revisit this
     public static final Color ARCANIST_EYE_COLOR = CardHelper.getColor(64, 224, 208);
 
     public static final String SHOULDER1 = RESOURCES_PRE + "images/char/mainChar/shoulder.png";
@@ -139,6 +139,8 @@ public class ArcanistMod implements
         public static AbstractGameAction.AttackEffect SOUL_FIRE;
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_COIL;
+        @SpireEnum
+        public static AbstractCard.CardRarity UNIQUE;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -224,7 +226,9 @@ public class ArcanistMod implements
     @Override
     public void receivePostInitialize() {
         BaseMod.addPotion(IntPotion.class, Color.YELLOW.cpy(), null, null, IntPotion.POTION_ID, THE_ARCANIST);
+    }
 
+    private void setupSettings () {
         ModPanel settingsPanel = new ModPanel();
 
         float currentYposition = 740f;

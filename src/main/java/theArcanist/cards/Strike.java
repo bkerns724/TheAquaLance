@@ -19,7 +19,11 @@ public class Strike extends AbstractArcanistCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
+        if (damage < 15)
+            dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
+        else
+            dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+
     }
 
     public void upp() {

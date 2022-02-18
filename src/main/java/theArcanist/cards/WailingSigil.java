@@ -1,5 +1,9 @@
 package theArcanist.cards;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import theArcanist.powers.TempNegStrengthPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -17,6 +21,8 @@ public class WailingSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
+        AbstractPlayer p = AbstractDungeon.player;
+        vfx(new ShockWaveEffect(p.hb.cX, p.hb.cY, Color.BLACK, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.3F);
         forAllMonstersLiving(monster -> applyToEnemy(monster, new TempNegStrengthPower(monster, magicNumber)));
     }
 

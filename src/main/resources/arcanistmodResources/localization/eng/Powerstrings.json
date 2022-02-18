@@ -53,8 +53,8 @@
       "Takes !A! more damage from attacks."
     ]
   },
-  "${ModID}:Rapids": {
-    "NAME": "Rapids",
+  "${ModID}:ChaoticMind": {
+    "NAME": "Chaotic Mind",
     "DESCRIPTIONS": [
       "Whenever you play a card this turn, discard !A! random card to draw !A! random card."
     ]

@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-import static com.megacrit.cardcrawl.cards.AbstractCard.CardRarity.SPECIAL;
 import static theArcanist.ArcanistMod.*;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -17,7 +16,7 @@ public class AcidSpray extends AbstractArcanistCard {
     private final static int COST = 1;
 
     public AcidSpray() {
-        super(ID, COST, CardType.ATTACK, SPECIAL, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, Enums.UNIQUE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
     }

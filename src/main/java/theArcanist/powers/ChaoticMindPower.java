@@ -11,13 +11,13 @@ import theArcanist.actions.RapidsAction;
 
 import static theArcanist.util.Wiz.*;
 
-public class RapidsPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("Rapids");
+public class ChaoticMindPower extends AbstractArcanistPower {
+    public static String POWER_ID = ArcanistMod.makeID("ChaoticMind");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public RapidsPower(AbstractCreature owner, int amount) {
+    public ChaoticMindPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
     }

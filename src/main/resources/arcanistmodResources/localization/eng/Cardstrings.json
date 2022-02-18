@@ -80,8 +80,13 @@
     "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Discard !M! card.",
     "LORE": "It is a fantastic spell for offense and defense but it looks evil so NOOOOOO, we shouldn't use it."
   },
-  "${ModID}:Rapids": {
-    "NAME": "Rapids",
+  "${ModID}:SoulFlame": {
+    "NAME": "SoulFlame",
+    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Draw !M! card. NL Discard a card.",
+    "LORE": "With soul flame, it isn't the body that's burning, so your ice spells still work."
+  },
+  "${ModID}:ChaoticMind": {
+    "NAME": "Chaotic Mind",
     "DESCRIPTION": "{@@}Whenever you play a card this turn, discard !M! random card to draw !M! card.{!Upgrades!|<1= NL Exhaust.}"
   },
   "${ModID}:Barrier": {
@@ -98,11 +103,6 @@
     "NAME": "Barrierja",
     "DESCRIPTION": "Gain !B! Block.",
     "LORE": "Who the fuck named it that?"
-  },
-  "${ModID}:SoulFlame": {
-    "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Draw !M! card. NL Discard a card.",
-    "LORE": "With soul flame, it isn't the body that's burning, so your ice spells still work."
   },
   "${ModID}:TinglingSigil": {
     "NAME": "Tingling Sigil",
