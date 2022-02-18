@@ -59,6 +59,18 @@
       "Whenever you play a card this turn, discard !A! random card to draw !A! random card."
     ]
   },
+  "${ModID}:Corroded": {
+    "NAME": "Corroded",
+    "DESCRIPTIONS": [
+      "Vulnerable increases damage by an additional 50% for !A! turns."
+    ]
+  },
+  "${ModID}:Nauseous": {
+    "NAME": "Nauseous",
+    "DESCRIPTIONS": [
+      "Weak reduces damage by an additional 25% for !A! turns."
+    ]
+  },
   "${ModID}:InvisibleSpray": {
     "NAME": "Not Here",
     "DESCRIPTIONS": [

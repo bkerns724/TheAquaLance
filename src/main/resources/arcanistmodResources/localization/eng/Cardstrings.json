@@ -82,7 +82,7 @@
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Draw !M! card. NL Discard a card.",
+    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Discard !M! card.",
     "LORE": "With soul flame, it isn't the body that's burning, so your ice spells still work."
   },
   "${ModID}:ChaoticMind": {
@@ -103,6 +103,10 @@
     "NAME": "Barrierja",
     "DESCRIPTION": "Gain !B! Block.",
     "LORE": "Who the fuck named it that?"
+  },
+  "${ModID}:AcidRain": {
+    "NAME": "Acid Rain",
+    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies. NL For !${ModID}:M2! turns Vulnerable increases damage taken by an additional 50%."
   },
   "${ModID}:TinglingSigil": {
     "NAME": "Tingling Sigil",
@@ -161,6 +165,10 @@
     "NAME": "Crumbling Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL ALL enemies take !M! damage at the start of their turn."
   },
+  "${ModID}:StinkingCloud": {
+    "NAME": "Stinking Cloud",
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL For !${ModID}:M2! turns Weak reduces damage by an additional 25%."
+  },
   "${ModID}:ChanneledFlame": {
     "NAME": "Channeled Flame",
     "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL ${ModID}:Resonate."
@@ -210,8 +218,8 @@
     "DESCRIPTION": "Retain. NL Discard your entire hand and gain !M! Block for each card discarded.",
     "LORE": "A simple propulsion spell is so much more deadly when you carry a lot of small sharp metal objects."
   },
-  "${ModID}:Dash": {
-    "NAME": "Dash",
+  "${ModID}:Run": {
+    "NAME": "Run",
     "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards.",
     "LORE": "Not my favorite strategy, but sometimes you just gotta run like fuck."
   },

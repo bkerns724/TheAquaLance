@@ -8,13 +8,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Dash extends AbstractArcanistCard {
-    public final static String ID = makeID("Dash");
+public class Run extends AbstractArcanistCard {
+    public final static String ID = makeID("Run");
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 3;
 
-    public Dash() {
+    public Run() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;

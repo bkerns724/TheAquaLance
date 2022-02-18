@@ -28,7 +28,6 @@ public class SoulFlame extends AbstractArcanistCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, Enums.SOUL_FIRE);
-        atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(p, p, magicNumber, false));
     }
 

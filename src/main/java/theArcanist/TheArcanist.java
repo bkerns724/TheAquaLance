@@ -183,11 +183,22 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        if (AbstractDungeon.miscRng != null) {
+        if (AbstractDungeon.cardRng != null) {
             ArrayList<AbstractCard> cardList = new ArrayList<>();
             cardList.add(new AcidSpray());
             cardList.add(new Miasma());
-            int x = AbstractDungeon.miscRng.random(0, cardList.size() - 1);
+            int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
+            return cardList.get(x);
+        }
+        return new Gale();
+    }
+
+    public static AbstractCard getCardForLibrary() {
+        if (AbstractDungeon.cardRng != null) {
+            ArrayList<AbstractCard> cardList = new ArrayList<>();
+            cardList.add(new StinkingCloud());
+            cardList.add(new AcidRain());
+            int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }
         return new Gale();
