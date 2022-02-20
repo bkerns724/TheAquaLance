@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
 
-import java.util.regex.Pattern;
-
 public abstract class AbstractArcanistPower extends AbstractPower {
     public int amount2 = -1;
     public boolean isTwoAmount = false;

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -22,7 +23,6 @@ import theArcanist.util.CardArtRoller;
 
 import java.util.ArrayList;
 
-import static com.evacipated.cardcrawl.mod.stslib.patches.LoreTooltips.setLoreColor;
 import static theArcanist.ArcanistMod.*;
 import static theArcanist.util.Wiz.*;
 
@@ -41,7 +41,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
     private boolean needsArtRefresh = false;
 
-    private static final Color LORE_COLOR = new Color(90/255f, 0f, 140/255f, 1f);
+    private static final Color FLAVOR_BOX_COLOR = new Color(90/255f, 0f, 140/255f, 1f);
+    private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
@@ -54,7 +55,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
 
-        setLoreColor(this, LORE_COLOR);
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_TEXT_COLOR);
 
         initializeTitle();
         initializeDescription();
@@ -183,4 +185,9 @@ public abstract class AbstractArcanistCard extends CustomCard {
     protected void blckTop() {
         att(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
+
+    // I'm tired of typing in upgradeMag and having it auto-complete to updradedMagicNumber (extra d).
+    protected void upMagic(int x) {upgradeMagicNumber(x);}
+
+    protected void upMagic2(int x) {upgradeSecondMagic(x);}
 }

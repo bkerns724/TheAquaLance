@@ -16,29 +16,33 @@ public class ResonatingPower extends AbstractArcanistPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final int DEDUCTION = 8;
+    public static final int DEDUCTION = 6;
     public static final int TYPE_BONUS = 4;
 
     public boolean cold = false;
     public boolean force = false;
     public boolean dark = false;
     public boolean fire = false;
+    public int jinx = 0;
+    public int chaos = 0;
 
-    public ResonatingPower(AbstractCreature owner, int amount, boolean cold, boolean dark, boolean force, boolean fire, int jinx) {
+    public ResonatingPower(AbstractCreature owner, int amount, boolean cold, boolean dark, boolean force, boolean fire,
+                           int jinx, int chaos) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
         this.dark = dark;
         this.cold = cold;
         this.force = force;
         this.fire = fire;
-        isTwoAmount = true;
-        amount2 = jinx;
+        this.jinx = jinx;
+        this.chaos = chaos;
     }
 
     public void stackPower(ResonatingPower pow) {
         ArcanistMod.logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         amount += max(0, pow.amount - DEDUCTION);
-        amount2 += pow.amount2;
+        jinx += pow.jinx;
+        chaos += pow.chaos;
         if (pow.force) {
             if (!force)
                 force = true;
@@ -70,7 +74,7 @@ public class ResonatingPower extends AbstractArcanistPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        GenericResonantCard card = new GenericResonantCard(amount, cold, dark, force, fire, amount2);
+        GenericResonantCard card = new GenericResonantCard(amount, cold, dark, force, fire, jinx, chaos);
         topDeck(card);
         atb(new RemoveSpecificPowerAction(owner, owner, this));
     }

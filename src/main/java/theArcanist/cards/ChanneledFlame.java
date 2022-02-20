@@ -26,7 +26,7 @@ public class ChanneledFlame extends AbstractArcanistCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.SOUL_FIRE);
-        applyToSelf(new ResonatingPower(p, baseDamage, false, false, false, true, 0));
+        applyToSelf(new ResonatingPower(p, baseDamage, false, false, false, true, 0, 0));
     }
 
     public void upp() {

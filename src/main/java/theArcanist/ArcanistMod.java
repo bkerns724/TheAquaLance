@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.neow.NeowReward;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -141,6 +142,8 @@ public class ArcanistMod implements
         public static AbstractGameAction.AttackEffect DARK_COIL;
         @SpireEnum
         public static AbstractCard.CardRarity UNIQUE;
+        @SpireEnum
+        public static NeowReward.NeowRewardType UNIQUE_REWARD;
     }
 
     public static String makeCardPath(String resourcePath) {

@@ -65,6 +65,12 @@
       "Vulnerable increases damage by an additional 50% for !A! turns."
     ]
   },
+  "${ModID}:ExplosiveSigil": {
+    "NAME": "Explosive Sigils",
+    "DESCRIPTIONS": [
+      "Whenever you discard a #ySigil, ALL enemies lose !A! HP."
+    ]
+  },
   "${ModID}:Nauseous": {
     "NAME": "Nauseous",
     "DESCRIPTIONS": [
@@ -106,6 +112,31 @@
     "NAME": "Speed",
     "DESCRIPTIONS": [
       "At the start of your turn, draw !A! card and discard card."
+    ]
+  },
+  "${ModID}:SoulFeed": {
+    "NAME": "Soul Feed",
+    "DESCRIPTIONS": [
+      "Whenever a non-minion enemy dies, gain 1 Max HP."
+    ]
+  },
+  "${ModID}:HundredCuts": {
+    "NAME": "Hundred Cuts",
+    "DESCRIPTIONS": [
+      "Whenever you play a card, deal !A! damage to a random enemy."
+    ]
+  },
+  "${ModID}:StoneSkin": {
+    "NAME": "Stoneskin",
+    "DESCRIPTIONS": [
+      "Whenever you would take damage, take !A! less."
+    ]
+  },
+  "${ModID}:JinxThorns": {
+    "NAME": "Scourging Bubble",
+    "DESCRIPTIONS": [
+      "Whenever your are attacked, deal [${ModID}:ScourgeIcon] damage back.",
+      "Whenever your are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
     ]
   }
 }

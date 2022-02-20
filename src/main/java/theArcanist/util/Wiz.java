@@ -2,10 +2,9 @@ package theArcanist.util;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,6 +19,7 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theArcanist.actions.TimedVFXAction;
+import theArcanist.powers.JinxPower;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
@@ -27,9 +27,6 @@ import java.util.function.Predicate;
 
 public class Wiz {
     // Thanks for the shortcuts Vex
-
-    public static final String POW = "Power";
-
     public static AbstractPlayer adp() {
         return AbstractDungeon.player;
     }
@@ -38,6 +35,26 @@ public class Wiz {
         for (AbstractCard c : cardsList) {
             consumer.accept(c);
         }
+    }
+
+    public static void thornDmg(AbstractCreature m, int amount, AbstractGameAction.AttackEffect AtkFX) {
+        atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AtkFX));
+    }
+
+    public static void thornDmg(AbstractCreature m, int amount) {
+        thornDmg(m, amount, AbstractGameAction.AttackEffect.NONE);
+    }
+
+    public static void discard(int amount, boolean isRandom) {
+        atb(new DiscardAction(adp(), adp(), amount, isRandom));
+    }
+
+    public static void discard(int amount) {
+        discard(amount, false);
+    }
+
+    public static void removePower(AbstractPower pow) {
+        atb(new RemoveSpecificPowerAction(pow.owner, pow.owner, pow));
     }
 
     public static ArrayList<AbstractCard> getAllCardsInCardGroups(boolean includeHand, boolean includeExhaust) {
@@ -131,6 +148,10 @@ public class Wiz {
         atb(new VFXAction(gameEffect, duration));
     }
 
+    public static void vfxTop(AbstractGameEffect gameEffect, float duration) {
+        att(new VFXAction(gameEffect, duration));
+    }
+
     public static void tfx(AbstractGameEffect gameEffect) {
         atb(new TimedVFXAction(gameEffect));
     }
@@ -196,5 +217,11 @@ public class Wiz {
                 debuffCount++;
         }
         return debuffCount;
+    }
+
+    public static int getJinxAmount(AbstractCreature m) {
+        if (m == null || !m.hasPower(JinxPower.POWER_ID))
+            return 0;
+        return m.getPower(JinxPower.POWER_ID).amount;
     }
 }

@@ -5,28 +5,25 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.DarkDamage;
-import theArcanist.patches.ResonantPowerPatch.AbstractCardField;
-import theArcanist.powers.ResonatingPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class ChanneledVoid extends AbstractArcanistCard {
-    public final static String ID = makeID("ChanneledVoid");
-    private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 2;
+public class VoidBall extends AbstractArcanistCard {
+    public final static String ID = makeID("VoidBall");
+    private final static int DAMAGE = 6;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
 
-    public ChanneledVoid() {
-        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    public VoidBall() {
+        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseDamage = DAMAGE;
         DamageModifierManager.addModifier(this, new DarkDamage());
-        AbstractCardField.resonance.set(this, true);
+        isMultiDamage = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.DARK_COIL);
-        applyToSelf(new ResonatingPower(p, baseDamage, false, true, false, false, 0, 0));
+        allDmg(ArcanistMod.Enums.DARK_COIL);
     }
 
     public void upp() {

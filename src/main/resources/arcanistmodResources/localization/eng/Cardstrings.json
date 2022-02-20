@@ -2,24 +2,13 @@
   "${ModID}:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage.",
-    "LORE": 
+    "FLAVOR": 
       "We've lost so many wizards we have to send our apprentices to the battle field.  Some of them are only good at hitting the monsters with a stick."
   },
   "${ModID}:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block.",
-    "LORE": "A shield isn't as good as a spell but at least you can learn to use it faster."
-  },
-  "${ModID}:GenericResonantCard": {
-    "NAME": "Resonate",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate.",
-    "EXTENDED_DESCRIPTION":[
-      "Deal !D! ",
-      "damage. NL ",
-      "Apply !M! ${ModID}:Jinx. NL ",
-      "${ModID}:Resonate."
-    ],
-    "LORE": "You can use this over and over."
+    "FLAVOR": "A shield isn't as good as a spell but at least you can learn to use it faster."
   },
   "${ModID}:IceDamage": {
     "NAME": "Cold",
@@ -58,32 +47,32 @@
   "${ModID}:AcidSpray": {
     "NAME": "Acid Spray",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable.",
-    "LORE": "Not one of my favored elements, but it's great for eating through defenses."
+    "FLAVOR": "Not one of my favored elements, but it's great for eating through defenses."
   },
   "${ModID}:Miasma": {
     "NAME": "Miasma",
     "DESCRIPTION": "Apply !${ModID}:M2! Weak. NL Target deals !M! less damage with attacks this turn.",
-    "LORE": "The victims can never say what exactly was wrong with them, only that it was a horrible feeling."
+    "FLAVOR": "The victims can never say what exactly was wrong with them, only that it was a horrible feeling."
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
     "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Discard !M! card.",
-    "LORE": "This spell was invented by the Aqualance?  What kind of stupid name is that?"
+    "FLAVOR": "This spell was invented by the Aqualance?  What kind of stupid name is that?"
   },
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
     "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL Discard !M! card.",
-    "LORE":  "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
+    "FLAVOR":  "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:VoidTendrils": {
     "NAME": "Void Tendrils",
     "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Discard !M! card.",
-    "LORE": "It is a fantastic spell for offense and defense but it looks evil so NOOOOOO, we shouldn't use it."
+    "FLAVOR": "It is a fantastic spell for offense and defense but it looks evil so NOOOOOO, we shouldn't use it."
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
     "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Discard !M! card.",
-    "LORE": "With soul flame, it isn't the body that's burning, so your ice spells still work."
+    "FLAVOR": "With soul flame, it isn't the body that's burning, so your ice spells still work."
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
@@ -92,17 +81,17 @@
   "${ModID}:Barrier": {
     "NAME": "Barrier",
     "DESCRIPTION": "Gain !B! Block. NL Draw !M! card.",
-    "LORE": "A great spell for when you need to defend yourself but stay mobile."
+    "FLAVOR": "A great spell for when you need to defend yourself but stay mobile."
   },
   "${ModID}:Blink": {
     "NAME": "Blink",
     "DESCRIPTION": "Gain !B! Block. NL Discard !M! card.",
-    "LORE": "Quite often the best defense is simply not being there."
+    "FLAVOR": "Quite often the best defense is simply not being there."
   },
   "${ModID}:BarrierJa": {
     "NAME": "Barrierja",
     "DESCRIPTION": "Gain !B! Block.",
-    "LORE": "Who the fuck named it that?"
+    "FLAVOR": "Who the fuck named it that?"
   },
   "${ModID}:AcidRain": {
     "NAME": "Acid Rain",
@@ -111,42 +100,42 @@
   "${ModID}:TinglingSigil": {
     "NAME": "Tingling Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! damage to ALL enemies.",
-    "LORE": "The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana."
+    "FLAVOR": "The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana."
   },
   "${ModID}:HardSigil": {
     "NAME": "Hard Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL Gain !B! Block.",
-    "LORE": "Sigils have the qualities of the spell stored inside, though to a lesser degree.  This shielding spell makes its sigil tough to break."
+    "FLAVOR": "Sigils have the qualities of the spell stored inside, though to a lesser degree.  This shielding spell makes its sigil tough to break."
   },
   "${ModID}:CursedSigil": {
     "NAME": "Cursed Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Jinx to ALL enemies.",
-    "LORE": "A proper sigil can only be activated by a trigger word spoken by its creator.  You wouldn't want a hexing sigil going off while you're carrying it, so enchant it properly."
+    "FLAVOR": "A proper sigil can only be activated by a trigger word spoken by its creator.  You wouldn't want a hexing sigil going off while you're carrying it, so enchant it properly."
   },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! [${ModID}:SoulFireIcon] damage to ALL enemies. NL Lose !M! HP.",
-    "LORE": "Our country is being overrun by these spire monsters.  Yes, I paid a price for this power, but it is a lesser price than losing this war."
+    "FLAVOR": "Our country is being overrun by these spire monsters.  Yes, I paid a price for this power, but it is a lesser price than losing this war."
   },
   "${ModID}:IronSigil": {
     "NAME": "Iron Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL At the end of your turn, gain !M! Block.",
-    "LORE": "This spell isn't particularly powerful but lasts quite a while, so use it in longer combats."
+    "FLAVOR": "This spell isn't particularly powerful but lasts quite a while, so use it in longer combats."
   },
-  "${ModID}:WailingSigil": {
-    "NAME": "Wailing Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL ALL enemies lose !M! Strength this turn.",
-    "LORE": "If you enchant this one properly, it makes a constant squealing sound.  The stronger the spell, the more annoying the squeal."
+  "${ModID}:JaggedSigil": {
+    "NAME": "Jagged Sigil",
+    "DESCRIPTION": "${ModID}:Sigil. NL Whenever you discard a sigil, ALL enemies lose !M! HP.",
+    "FLAVOR": "It can be a little uncomfortable to carry this one around."
   },
   "${ModID}:ChameleonSigil": {
     "NAME": "Chameleon Sigil",
     "DESCRIPTION": "{@@}${ModID}:Sigil. NL Gain !M! ${ModID}:Shadowcloak.{!Upgrades!|<1= NL Draw 1 less card next turn.}",
-    "LORE": "A subtle but useful spell."
+    "FLAVOR": "A subtle but useful spell."
   },
   "${ModID}:ColdSigil": {
     "NAME": "Cold Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL Apply !M! ${ModID}:Frostbite to ALL enemies per debuff they have.",
-    "LORE": "This is a mean one. NL The more pain they're already suffering, the more they hurt."
+    "FLAVOR": "This is a mean one. NL The more pain they're already suffering, the more they hurt."
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
@@ -155,11 +144,11 @@
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
     "DESCRIPTION": "${ModID}:Sigil. NL Whenever you attack this turn, gain !M! Temporary_HP.",
-    "LORE": "It's not really black, its void.  The absence of light, dark, color, anything like that.  But of course our eyes can't see that.  This scares a lot of people away but its fine, really.  Everything's fine."
+    "FLAVOR": "It's not really black, its void.  The absence of light, dark, color, anything like that.  But of course our eyes can't see that.  This scares a lot of people away but its fine, really.  Everything's fine."
   },
   "${ModID}:AdrenalineSigil": {
     "NAME": "Adrenaline Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL Exhaust !M! random Status cards."
+    "DESCRIPTION": "${ModID}:Sigil. NL Gain !M! artifact."
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
@@ -168,6 +157,10 @@
   "${ModID}:StinkingCloud": {
     "NAME": "Stinking Cloud",
     "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL For !${ModID}:M2! turns Weak reduces damage by an additional 25%."
+  },
+  "${ModID}:ScourgeBubble": {
+    "NAME": "Scourge Bubble",
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal [${ModID}:ScourgeIcon] damage back."
   },
   "${ModID}:ChanneledFlame": {
     "NAME": "Channeled Flame",
@@ -189,20 +182,35 @@
     "NAME": "Channeled Curse",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx. NL ${ModID}:Resonate."
   },
+  "${ModID}:ChanneledChaos": {
+    "NAME": "Channeled Chaos",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! random buff. NL ${ModID}:Resonate."
+  },
+  "${ModID}:GenericResonantCard": {
+    "NAME": "Resonate",
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate.",
+    "EXTENDED_DESCRIPTION":[
+      "Deal !D! ",
+      "damage. NL ",
+      "Apply !M! ${ModID}:Jinx. NL ",
+      "${ModID}:Resonate."
+    ],
+    "FLAVOR": "You can use this over and over."
+  },
   "${ModID}:BrrZerk": {
     "NAME": "Brr Zerk",
     "DESCRIPTION": "Whenever you attack, apply !M! ${ModID}:Frostbite.",
-    "LORE": "This difficult technique is not a spell, but a way to alter your spells to also freeze the target."
+    "FLAVOR": "This difficult technique is not a spell, but a way to alter your spells to also freeze the target."
   },
   "${ModID}:Gale": {
     "NAME": "Gale",
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! cards.",
-    "LORE": "Pushing your opponent away is a great way to get room for a stronger spell."
+    "FLAVOR": "Pushing your opponent away is a great way to get room for a stronger spell."
   },
   "${ModID}:Eruption": {
     "NAME": "Eruption",
     "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage to ALL enemies. NL Exhaust.",
-    "LORE": "All right, shit like this is why I studied magic!"
+    "FLAVOR": "All right, shit like this is why I studied magic!"
   },
   "${ModID}:WellPrepared": {
     "NAME": "Prepared",
@@ -211,20 +219,77 @@
   "${ModID}:Momentum": {
     "NAME": "Momentum",
     "DESCRIPTION": "The first time you play an attack each turn, draw !M! card.",
-    "LORE": "If you can cast spells and run at the same time, that is much better than being a sitting duck.  Don't neglect your physical training."
+    "FLAVOR": "If you can cast spells and run at the same time, that is much better than being a sitting duck.  Don't neglect your physical training."
   },
   "${ModID}:Spray": {
     "NAME": "Spray",
     "DESCRIPTION": "Retain. NL Discard your entire hand and gain !M! Block for each card discarded.",
-    "LORE": "A simple propulsion spell is so much more deadly when you carry a lot of small sharp metal objects."
+    "FLAVOR": "A simple propulsion spell is so much more deadly when you carry a lot of small sharp metal objects."
   },
   "${ModID}:Run": {
     "NAME": "Run",
     "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards.",
-    "LORE": "Not my favorite strategy, but sometimes you just gotta run like fuck."
+    "FLAVOR": "Not my favorite strategy, but sometimes you just gotta run like fuck."
+  },
+  "${ModID}:ManaBlood": {
+    "NAME": "Mana Blood",
+    "DESCRIPTION": "{@@}At the start of your turn, gain [E] and draw !M! {!M!|1=card|@=cards}."
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
     "DESCRIPTION": "{@@}{!Upgrades!|1=Innate. NL }At the start of your turn, draw !M! card and discard !M! card."
+  },
+  "${ModID}:ArcaneBeam": {
+    "NAME": "Arcane Beam",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${ModID}:ChaoticFlurry": {
+    "NAME": "Chaotic Flurry",
+    "DESCRIPTION": "{@@}Play the top !M! {!M!|1=card|@=cards} of your draw pile. NL Exhaust."
+  },
+  "${ModID}:SoulFeed": {
+    "NAME": "Soul Feed",
+    "DESCRIPTION": "Whenever a non-minion enemy dies, gain !M! Max HP."
+  },
+  "${ModID}:SuddenChill": {
+    "NAME": "Sudden Chill",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Apply [${ModID}:ScourgeIcon] ${ModID}:Frostbite."
+  },
+  "${ModID}:BoulderShot": {
+    "NAME": "Boulder Shot",
+    "DESCRIPTION": "Deal !D! damage for each debuff on the enemy."
+  },
+  "${ModID}:PhantomMace": {
+    "NAME": "Phantom Mace",
+    "DESCRIPTION": "Deal [${ModID}:ForceIcon] !D! damage. NL Enemy loses !M! Strength this turn."
+  },
+  "${ModID}:VoidBall": {
+    "NAME": "Void Ball",
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage to ALL enemies."
+  },
+  "${ModID}:Enfeeble": {
+    "NAME": "Enfeeble",
+    "DESCRIPTION": "Apply !M! Weak. NL Exhaust."
+  },
+  "${ModID}:Grease": {
+    "NAME": "Grease",
+    "DESCRIPTION": "Apply !M! Vulnerable. NL Exhaust."
+  },
+  "${ModID}:RipplingShadows": {
+    "NAME": "Rippling Shadows",
+    "DESCRIPTION": "{@@}Gain !${ModID}:M2! ${ModID}:Shadowcloak. NL Draw !M! {!M!|1=card|@=cards}. NL Discard a card."
+  },
+  "${ModID}:ChaosMagic": {
+    "NAME": "Chaos Magic",
+    "DESCRIPTION": "Gain a buff.",
+    "UPGRADE_DESCRIPTION": "Gain a buff. NL 1 out of 3 chance for an additional buff."
+  },
+  "${ModID}:Concentrate": {
+    "NAME": "Concentrate",
+    "DESCRIPTION": "Next turn gain [E] and draw !M! cards."
+  },
+  "${ModID}:CurseWeapon": {
+    "NAME": "Curse Weapon",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Jinx."
   }
 }

@@ -30,7 +30,7 @@ public class ChanneledCurse extends AbstractArcanistCard {
             vfx(new DarkWaveEffect(p.hb.cX, p.hb.cY, m.hb.cX), 0.5F);
         dmg(m, AttackEffect.NONE);
         applyToEnemy(m, new JinxPower(m, magicNumber));
-        applyToSelf(new ResonatingPower(p, baseDamage, false, false, false, false, magicNumber));
+        applyToSelf(new ResonatingPower(p, baseDamage, false, false, false, false, magicNumber, 0));
     }
 
     public void upp() {

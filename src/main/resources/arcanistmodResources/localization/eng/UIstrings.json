@@ -13,5 +13,10 @@
     "TEXT": [
       "Sigils can only be played via discard."
     ]
+  },
+  "${ModID}:NeowPatch": {
+    "TEXT": [
+      "#gObtain #gan #gunique #gArcanist #gcard."
+    ]
   }
 }

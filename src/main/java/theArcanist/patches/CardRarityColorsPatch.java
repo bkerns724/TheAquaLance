@@ -1,6 +1,5 @@
 package theArcanist.patches;
 
-import basemod.BaseMod;
 import basemod.ReflectionHacks;
 import basemod.patches.com.megacrit.cardcrawl.screens.SingleCardViewPopup.RenderCardDescriptorsSCV;
 import com.badlogic.gdx.graphics.Color;
