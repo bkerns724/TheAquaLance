@@ -53,6 +53,14 @@ public class Wiz {
         discard(amount, false);
     }
 
+    public static void discardTop(int amount, boolean isRandom) {
+        att(new DiscardAction(adp(), adp(), amount, isRandom));
+    }
+
+    public static void discardTop(int amount) {
+        discardTop(amount, false);
+    }
+
     public static void removePower(AbstractPower pow) {
         atb(new RemoveSpecificPowerAction(pow.owner, pow.owner, pow));
     }

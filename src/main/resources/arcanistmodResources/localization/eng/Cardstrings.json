@@ -291,5 +291,33 @@
   "${ModID}:CurseWeapon": {
     "NAME": "Curse Weapon",
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Jinx."
+  },
+  "${ModID}:Zap": {
+    "NAME": "Zap",
+    "DESCRIPTION": "Deal !D! damage. NL Apply [${ModID}:ScourgeIcon] Weak."
+  },
+  "${ModID}:SickBurn": {
+    "NAME": "Sick Burn",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Poison."
+  },
+  "${ModID}:Shockwave": {
+    "NAME": "Shockwave",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+  },
+  "${ModID}:DarkEmbrace": {
+    "NAME": "Dark Embrace",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
+  },
+  "${ModID}:IceDaggers": {
+    "NAME": "Ice Daggers",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage !M! times."
+  },
+  "${ModID}:SoulNeedle": {
+    "NAME": "Soul Needle",
+    "DESCRIPTION": "Deal !D! damage times. NL Apply !M! ${ModID}:Jinx."
+  },
+  "${ModID}:SackOfDebris": {
+    "NAME": "SackOfDebris",
+    "DESCRIPTION": "Retain. NL Discard your hand. NL Deal !D! damage to a random enemy for each discarded card."
   }
 }
