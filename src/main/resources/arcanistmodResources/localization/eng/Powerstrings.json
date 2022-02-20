@@ -53,6 +53,21 @@
       "Takes !A! more damage from attacks."
     ]
   },
+  "${ModID}:SpiritPressure": {
+    "NAME": "Spirit Pressure",
+    "DESCRIPTIONS": [
+      "At the start of your turn, apply !A! #yJinx to ALL enemies."
+    ]
+  },
+  "${ModID}:ChaosAura": {
+    "NAME": "Chaos Aura",
+    "DESCRIPTIONS": [
+      "At the start of your turn, apply #b",
+      " and #b",
+      "/3",
+      " negative effects to ALL enemies."
+    ]
+  },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
     "DESCRIPTIONS": [
@@ -137,6 +152,36 @@
     "DESCRIPTIONS": [
       "Whenever your are attacked, deal [${ModID}:ScourgeIcon] damage back.",
       "Whenever your are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
+    ]
+  },
+  "${ModID}:DarkerEmbrace": {
+    "NAME": "Dark Embrace",
+    "DESCRIPTIONS": [
+      "Gain !A! #yTemporary #yHP whenever you attack this enemy."
+    ]
+  },
+  "${ModID}:Malevolence": {
+    "NAME": "Malevolence",
+    "DESCRIPTIONS": [
+      "Whenever you apply a debuff to an enemy, deal !A! damage, then increase this amount by !A2!."
+    ]
+  },
+  "${ModID}:IgnorePain": {
+    "NAME": "Ignore Pain",
+    "DESCRIPTIONS": [
+      "At the start of your turn, exhaust the first !A! status cards in your draw pile (checked first) or discard pile."
+    ]
+  },
+  "${ModID}:ManaBurst": {
+    "NAME": "Mana Burst",
+    "DESCRIPTIONS": [
+      "The first !A! times you discard a #ySigil each turn, gain [E]."
+    ]
+  },
+  "${ModID}:DreadfulFinale": {
+    "NAME": "Dreadful Finale",
+    "DESCRIPTIONS": [
+      "Whenever you end your turn with no cards in hand, ALL enemies lose !A! #yStrength that turn."
     ]
   }
 }

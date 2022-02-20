@@ -319,5 +319,34 @@
   "${ModID}:SackOfDebris": {
     "NAME": "SackOfDebris",
     "DESCRIPTION": "Retain. NL Discard your hand. NL Deal !D! damage to a random enemy for each discarded card."
+  },
+  "${ModID}:DreadfulFinale": {
+    "NAME": "Dreadful Finale",
+    "DESCRIPTION": "If you end your turn with no cards in your hand, ALL enemies lose !M! Strength that turn."
+  },
+  "${ModID}:Malevolence": {
+    "NAME": "Malevolence",
+    "DESCRIPTION": "Whenever you apply a debuff to an enemy, deal !M! damage, then increase this amount by 1."
+  },
+  "${ModID}:IgnorePain": {
+    "NAME": "Ignore Pain",
+    "DESCRIPTION": "At the start of your turn, exhaust the first status card in your draw pile (checked first) or discard pile."
+  },
+  "${ModID}:ManaBurst": {
+    "NAME": "Mana Burst",
+    "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E]."
+  },
+  "${ModID}:SpiritPressure": {
+    "NAME": "Spirit Pressure",
+    "DESCRIPTION": "At the start of your turn, apply !M! ${ModID}:Jinx to ALL enemies."
+  },
+  "${ModID}:ChaosAura": {
+    "NAME": "Chaos Aura",
+    "DESCRIPTION": "At the start of your turn, apply a negative effect to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, apply a negative effect to ALL enemies. NL 1 out of 3 chance for an additional effect."
+  },
+  "${ModID}:Write": {
+    "NAME": "Write",
+    "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."
   }
 }

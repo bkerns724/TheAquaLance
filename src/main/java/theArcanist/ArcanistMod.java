@@ -95,6 +95,8 @@ public class ArcanistMod implements
 
     public static final String COLD_KEY = makeID("Cold");
     private static final String COLD_OGG = RESOURCES_PRE + "audio/Cold.ogg";
+    public static final String PEW_KEY = makeID("Pew");
+    private static final String PEW_OGG = RESOURCES_PRE + "audio/Pew.ogg";
 
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -279,5 +281,6 @@ public class ArcanistMod implements
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
+        BaseMod.addAudio(PEW_KEY, PEW_OGG);
     }
 }
