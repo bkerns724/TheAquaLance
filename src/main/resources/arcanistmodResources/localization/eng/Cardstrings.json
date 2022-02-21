@@ -88,10 +88,10 @@
     "DESCRIPTION": "Gain !B! Block. NL Discard !M! card.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
-  "${ModID}:BarrierJa": {
-    "NAME": "Barrierja",
+  "${ModID}:GreaterBarrier": {
+    "NAME": "Greater Barrier",
     "DESCRIPTION": "Gain !B! Block.",
-    "FLAVOR": "Who the fuck named it that?"
+    "FLAVOR": "Like Barrier, but with blackjack and hookers."
   },
   "${ModID}:AcidRain": {
     "NAME": "Acid Rain",
@@ -344,6 +344,30 @@
     "NAME": "Chaos Aura",
     "DESCRIPTION": "At the start of your turn, apply a negative effect to ALL enemies.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, apply a negative effect to ALL enemies. NL 1 out of 3 chance for an additional effect."
+  },
+  "${ModID}:CursedSteam": {
+    "NAME": "Cursed Steam",
+    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and 1 Jinx."
+  },
+  "${ModID}:Flare": {
+    "NAME": "Flare",
+    "DESCRIPTION": "Gain !M! Block per debuff on the enemy. NL !B! Block."
+  },
+  "${ModID}:Bane": {
+    "NAME": "Bane",
+    "DESCRIPTION": "{@@}${ModID}:Jinx is {!Upgrades!|0=X|@=X+1} times more effective on the enemy. NL !M! {!M!|1=time|@=times} more effective."
+  },
+  "${ModID}:SonicReverberation": {
+    "NAME": "Sonic Reverberation",
+    "DESCRIPTION": "Apply [${ModID}:ScourgeIcon] Vulnerable. NL Draw !M! card. NL Discard 1 card."
+  },
+  "${ModID}:Invisibility": {
+    "NAME": "Invisibility",
+    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Exhaust."
+  },
+  "${ModID}:Stoneskin": {
+    "NAME": "Stoneskin",
+    "DESCRIPTION": "Gain !B! Block. NL Take !M! less damage this turn."
   },
   "${ModID}:Write": {
     "NAME": "Write",

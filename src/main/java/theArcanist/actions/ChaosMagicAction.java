@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.watcher.ForesightPower;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 import theArcanist.powers.HundredCutsPower;
-import theArcanist.powers.StoneSkinPower;
+import theArcanist.powers.StoneskinPower;
 
 import static theArcanist.util.Wiz.*;
 
@@ -56,7 +56,7 @@ public class ChaosMagicAction extends AbstractGameAction {
                 att(new MyAddTempHPAction(p, p, 5));
                 break;
             case 8:
-                applyToSelfTop(new StoneSkinPower(p, 2));
+                applyToSelfTop(new StoneskinPower(p, 2));
                 break;
             case 9:
                 applyToSelf(new ForesightPower(p, 1));

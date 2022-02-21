@@ -74,6 +74,12 @@
       "Whenever you play a card this turn, discard !A! random card to draw !A! random card."
     ]
   },
+  "${ModID}:Bane": {
+    "NAME": "Bane",
+    "DESCRIPTIONS": [
+      "#yJinx is !A! times more effective on the enemy."
+    ]
+  },
   "${ModID}:Corroded": {
     "NAME": "Corroded",
     "DESCRIPTIONS": [
