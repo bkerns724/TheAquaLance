@@ -369,6 +369,10 @@
     "NAME": "Stoneskin",
     "DESCRIPTION": "Gain !B! Block. NL Take !M! less damage this turn."
   },
+  "${ModID}:HideInSleeve": {
+    "NAME": "Hide In Sleeve",
+    "DESCRIPTION": "Add a random ${ModID}:Sigil to your hand. NL Discard it."
+  },
   "${ModID}:Write": {
     "NAME": "Write",
     "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."

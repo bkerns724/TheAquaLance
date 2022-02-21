@@ -190,4 +190,14 @@ public abstract class AbstractArcanistCard extends CustomCard {
     protected void upMagic(int x) {upgradeMagicNumber(x);}
 
     protected void upMagic2(int x) {upgradeSecondMagic(x);}
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractArcanistCard card = (AbstractArcanistCard) super.makeStatEquivalentCopy();
+        card.secondMagic = secondMagic;
+        card.baseSecondMagic = baseSecondMagic;
+        card.upgradedSecondMagic = upgradedSecondMagic;
+        card.isSecondMagicModified = isSecondMagicModified;
+        return card;
+    }
 }
