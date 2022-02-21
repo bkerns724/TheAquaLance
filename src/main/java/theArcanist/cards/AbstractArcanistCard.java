@@ -56,7 +56,7 @@ public abstract class AbstractArcanistCard extends CustomCard {
         name = originalName = cardStrings.NAME;
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_TEXT_COLOR);
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
 
         initializeTitle();
         initializeDescription();

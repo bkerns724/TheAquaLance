@@ -302,7 +302,7 @@
   },
   "${ModID}:Shockwave": {
     "NAME": "Shockwave",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage to ALL enemies."
   },
   "${ModID}:DarkEmbrace": {
     "NAME": "Dark Embrace",
@@ -372,6 +372,22 @@
   "${ModID}:HideInSleeve": {
     "NAME": "Hide In Sleeve",
     "DESCRIPTION": "Add a random ${ModID}:Sigil to your hand. NL Discard it."
+  },
+  "${ModID}:SoulIgnition": {
+    "NAME": "Soul Ignition",
+    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Can only target an enemy with at least !M! debuffs."
+  },
+  "${ModID}:Waterfall": {
+    "NAME": "Waterfall",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Applied ${ModID}:Frostbite is equal to damage done."
+  },
+  "${ModID}:Collapse": {
+    "NAME": "Collapse",
+    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL ${ModID}:Crushed affects this card !M! times."
+  },
+  "${ModID}:ShadowLance": {
+    "NAME": "ShadowLance",
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Enemy loses !M! Strength. NL Gain !M! Strength."
   },
   "${ModID}:Write": {
     "NAME": "Write",
