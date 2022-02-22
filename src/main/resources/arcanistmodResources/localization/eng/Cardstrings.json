@@ -405,6 +405,19 @@
     "NAME": "Chaos Form",
     "DESCRIPTION": "At the start of your turn, benefit from a powerful effect."
   },
+  "${ModID}:Madness": {
+    "NAME": "Madness",
+    "DESCRIPTION": "Enemy enters Wrath."
+  },
+  "${ModID}:Vanish": {
+    "NAME": "Vanish",
+    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Gain !${ModID}:M2! Block per ${ModID}:Shadowcloak. NL !B! Block."
+  },
+  "${ModID}:SoulCurse": {
+    "NAME": "Soul Curse",
+    "DESCRIPTION": "Apply [${ModID}:ScourgeIcon] ${ModID}:Jinx. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply [${ModID}:ScourgeIcon] ${ModID}:Jinx."
+  },
   "${ModID}:Write": {
     "NAME": "Write",
     "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."
