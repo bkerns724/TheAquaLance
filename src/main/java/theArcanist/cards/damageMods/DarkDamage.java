@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.actions.MyAddTempHPAction;
+import theArcanist.powers.EldritchStaffPower;
 
 import java.util.ArrayList;
 
@@ -39,10 +40,15 @@ public class DarkDamage extends AbstractDamageModifier {
 
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
-        AbstractPlayer p = AbstractDungeon.player;
         int tempHP = GetTriangleNumberRootFloor(unblockedAmount);
-        if (tempHP > 0)
-            att(new MyAddTempHPAction(p, p, tempHP));
+        if (tempHP > 0) {
+            if (adp().hasPower(EldritchStaffPower.POWER_ID)) {
+                int mult = adp().getPower(EldritchStaffPower.POWER_ID).amount + 1;
+                att(new MyAddTempHPAction(adp(), adp(), tempHP*mult));
+            }
+            else
+                att(new MyAddTempHPAction(adp(), adp(), tempHP));
+        }
     }
 
     private static int GetTriangleNumberRootFloor(int n) {

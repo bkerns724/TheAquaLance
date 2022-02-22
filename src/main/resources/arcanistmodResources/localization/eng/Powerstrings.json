@@ -189,5 +189,29 @@
     "DESCRIPTIONS": [
       "Whenever you end your turn with no cards in hand, ALL enemies lose !A! #yStrength that turn."
     ]
+  },
+  "${ModID}:ShockwaveSigils": {
+    "NAME": "Shockwave Sigils",
+    "DESCRIPTIONS": [
+      "Whenever you discard a #ySigil, apply !A! crushed to ALL enemies."
+    ]
+  },
+  "${ModID}:EldritchStaff": {
+    "NAME": "Eldritch Staff",
+    "DESCRIPTIONS": [
+      "[${ModID}:DarkIcon] attacks grant !A! times as much #yTemporary #yHP."
+    ]
+  },
+  "${ModID}:SadisticGlee": {
+    "NAME": "Sadistic Glee",
+    "DESCRIPTIONS": [
+      "Gain !A! #yBlock whenever you apply a debuff to an enemy."
+    ]
+  },
+  "${ModID}:ChaosForm": {
+    "NAME": "Chaos Form",
+    "DESCRIPTIONS": [
+      "This was definitely a good idea."
+    ]
   }
 }

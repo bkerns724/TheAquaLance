@@ -389,6 +389,22 @@
     "NAME": "ShadowLance",
     "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Enemy loses !M! Strength. NL Gain !M! Strength."
   },
+  "${ModID}:ShockwaveSigils": {
+    "NAME": "Shockwave Sigils",
+    "DESCRIPTION": "Discard a ${ModID}:Sigil applies !M! ${ModID}:Crushed to ALL enemies."
+  },
+  "${ModID}:EldritchStaff": {
+    "NAME": "Eldritch Staff",
+    "DESCRIPTION": "[${ModID}:DarkIcon] attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
+  },
+  "${ModID}:SadisticGlee": {
+    "NAME": "Sadistic Glee",
+    "DESCRIPTION": "Gain !M! #yBlock whenever you apply a debuff to an enemy."
+  },
+  "${ModID}:ChaosForm": {
+    "NAME": "Chaos Form",
+    "DESCRIPTION": "At the start of your turn, benefit from a powerful effect."
+  },
   "${ModID}:Write": {
     "NAME": "Write",
     "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."
