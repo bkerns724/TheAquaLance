@@ -62,10 +62,7 @@
   "${ModID}:ChaosAura": {
     "NAME": "Chaos Aura",
     "DESCRIPTIONS": [
-      "At the start of your turn, apply #b",
-      " and #b",
-      "/3",
-      " negative effects to ALL enemies."
+      "At the start of your turn, apply !A! negative effects to ALL enemies.  !A2! out of 3 chance of an addition effect."
     ]
   },
   "${ModID}:ChaoticMind": {

@@ -7,15 +7,14 @@ import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.ForceDamage;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
-public class Shockwave extends AbstractArcanistCard {
-    public final static String ID = makeID("Shockwave");
+public class CompressionWave extends AbstractArcanistCard {
+    public final static String ID = makeID("CompressionWave");
     private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
-    public Shockwave() {
+    public CompressionWave() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseDamage = DAMAGE;
         isMultiDamage = true;

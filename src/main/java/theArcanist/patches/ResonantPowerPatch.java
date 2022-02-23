@@ -47,7 +47,6 @@ public class ResonantPowerPatch {
                 return SpireReturn.Continue();
             }
             if (pow instanceof ResonatingPower && p instanceof ResonatingPower) {
-                ((ResonatingPower) p).stackPower((ResonatingPower) pow);
                 AbstractDungeon.effectList.add(new PowerBuffEffect(__instance.target.hb.cX - __instance.target.animX,
                         __instance.target.hb.cY + __instance.target.hb.height / 2.0F, pow.name + RESONATING_MSG));
 

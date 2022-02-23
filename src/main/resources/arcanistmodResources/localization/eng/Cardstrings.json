@@ -300,8 +300,8 @@
     "NAME": "Sick Burn",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Poison."
   },
-  "${ModID}:Shockwave": {
-    "NAME": "Shockwave",
+  "${ModID}:CompressionWave": {
+    "NAME": "Compression Wave",
     "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage to ALL enemies."
   },
   "${ModID}:DarkEmbrace": {

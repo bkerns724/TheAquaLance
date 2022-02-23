@@ -19,6 +19,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.TheArcanist;
+import theArcanist.patches.ColoredDamagePatch;
+import theArcanist.patches.ColoredDamagePatch.DamageActionColorField;
 import theArcanist.util.CardArtRoller;
 
 import java.util.ArrayList;
@@ -169,7 +171,15 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
     }
-    // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
+
+    public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx, Color color) {
+        DamageAction damageAction = new DamageAction(m,
+                new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
+        DamageActionColorField.damageColor.set(damageAction, color);
+        DamageActionColorField.fadeSpeed.set(damageAction, ColoredDamagePatch.FadeSpeed.MODERATE);
+        atb(damageAction);
+    }
+
     public void dmgTop(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
     }
@@ -186,7 +196,6 @@ public abstract class AbstractArcanistCard extends CustomCard {
         att(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
 
-    // I'm tired of typing in upgradeMag and having it auto-complete to updradedMagicNumber (extra d).
     protected void upMagic(int x) {upgradeMagicNumber(x);}
 
     protected void upMagic2(int x) {upgradeSecondMagic(x);}

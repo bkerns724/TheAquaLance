@@ -18,14 +18,13 @@ public class LibraryEventPatch {
                 locator = Locator.class,
                 localvars = "group"
         )
-        public static SpireReturn insertPatch(TheLibrary __instance, int buttonPressed, @ByRef CardGroup[] group) {
+        public static void insertPatch(TheLibrary __instance, int buttonPressed, @ByRef CardGroup[] group) {
             if (AbstractDungeon.player.chosenClass != TheArcanist.Enums.THE_ARCANIST)
-                return SpireReturn.Continue();
+                return;
             int index = AbstractDungeon.cardRng.random(0, 19);
             AbstractCard card = TheArcanist.getCardForLibrary();
             group[0].group.remove(index);
             group[0].group.add(index, card);
-            return SpireReturn.Continue();
         }
         private static class Locator extends SpireInsertLocator {
             private Locator() {}

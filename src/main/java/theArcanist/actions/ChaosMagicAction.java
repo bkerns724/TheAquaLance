@@ -2,6 +2,7 @@ package theArcanist.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
@@ -45,9 +46,11 @@ public class ChaosMagicAction extends AbstractGameAction {
                 break;
             case 4:
                 att(new ChannelAction(new Lightning()));
+                att(new IncreaseMaxOrbAction(1));
                 break;
             case 5:
                 att(new ChannelAction(new Frost()));
+                att(new IncreaseMaxOrbAction(1));
                 break;
             case 6:
                 applyToSelfTop(new MantraPower(p, 5));

@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.DevotionPower;
 import com.megacrit.cardcrawl.relics.CultistMask;
+import com.megacrit.cardcrawl.relics.Sozu;
 import theArcanist.cards.AbstractSigilCard;
 import theArcanist.cards.Strike;
 
@@ -59,18 +60,18 @@ public class ChaosFormAction extends AbstractGameAction {
 
         switch(x) {
             case 0:
-                atb(new DrawCardAction(2));
-                atb(new GainEnergyAction(2));
+                att(new DrawCardAction(2));
+                att(new GainEnergyAction(2));
                 break;
             case 1:
                 applyToSelf(new MayhemPower(adp(), 1));
                 break;
             case 2:
-                atb(new IncreaseMaxOrbAction(3));
+                att(new IncreaseMaxOrbAction(3));
                 applyToSelf(new FocusPower(adp(), 2));
-                atb(new ChannelAction(new Lightning()));
-                atb(new ChannelAction(new Frost()));
-                atb(new ChannelAction(new Lightning()));
+                att(new ChannelAction(new Lightning()));
+                att(new ChannelAction(new Frost()));
+                att(new ChannelAction(new Lightning()));
                 break;
             case 3:
                 applyToSelf(new AfterImagePower(adp(), 1));
@@ -94,20 +95,19 @@ public class ChaosFormAction extends AbstractGameAction {
                 AbstractMonster mon = list.get(y);
                 AbstractCard card = new Strike();
                 card.calculateCardDamage(mon);
-                atb(new PepperSprayAction(mon, new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL)));
+                att(new PepperSprayAction(mon, new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL)));
                 break;
             case 9:
                 if (getDebuffCount(adp()) > 1)
-                    atb(new RemoveDebuffsAction(adp()));
+                    att(new RemoveDebuffsAction(adp()));
                 else
                     doAction(true);
                 break;
             case 10:
                 ArrayList<AbstractPotion> potionList = adp().potions;
                 for (AbstractPotion pot : potionList)
-                    if (Objects.equals(pot.ID, PotionSlot.POTION_ID)) {
+                    if (pot instanceof PotionSlot && !adp().hasRelic(Sozu.ID))
                         adp().obtainPotion(AbstractDungeon.returnTotallyRandomPotion());
-                    }
                 else
                     doAction(true);
                 break;
@@ -120,8 +120,8 @@ public class ChaosFormAction extends AbstractGameAction {
                         count++;
                 if (count > 1) {
                     for (AbstractCard card2 : list2)
-                        atb(new DiscardSpecificCardAction(card2, adp().hand));
-                    atb(new DrawCardAction(count));
+                        att(new DiscardSpecificCardAction(card2, adp().hand));
+                    att(new DrawCardAction(count));
                 }
                 else
                     doAction(true);
@@ -134,8 +134,8 @@ public class ChaosFormAction extends AbstractGameAction {
                         count2++;
                 if (count2 > 1) {
                     for (AbstractCard card2 : list3)
-                        atb(new DiscardSpecificCardAction(card2, adp().hand));
-                    atb(new DrawCardAction(count2));
+                        att(new DiscardSpecificCardAction(card2, adp().hand));
+                    att(new DrawCardAction(count2));
                 }
                 else
                     doAction(true);

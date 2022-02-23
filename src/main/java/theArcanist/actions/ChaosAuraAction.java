@@ -47,30 +47,30 @@ public class ChaosAuraAction extends AbstractGameAction {
 
         switch(x) {
             case 0:
-                applyToEnemy(m, new FrostbitePower(m, 6));
+                applyToEnemyTop(m, new FrostbitePower(m, 6));
                 break;
             case 1:
-                applyToEnemy(m, new CrushedPower(m, 3));
+                applyToEnemyTop(m, new CrushedPower(m, 3));
                 break;
             case 2:
-                applyToEnemy(m, new JinxPower(m, 1));
+                applyToEnemyTop(m, new JinxPower(m, 1));
                 break;
             case 3:
-                applyToEnemy(m, new WeakPower(m, 3, false));
+                applyToEnemyTop(m, new WeakPower(m, 3, false));
                 break;
             case 4:
-                applyToEnemy(m, new VulnerablePower(m, 3, false));
+                applyToEnemyTop(m, new VulnerablePower(m, 3, false));
                 break;
             case 5:
-                applyToEnemy(m, new StrengthPower(m, -2));
+                applyToEnemyTop(m, new StrengthPower(m, -2));
                 break;
             case 6:
-                atb(new PewcumberAction(m, 12));
+                att(new PewcumberAction(m, 12));
                 break;
             case 7:
                 if (m.currentHealth <= EXPLODE_THRESHOLD)
                     // 1 is duration, not damage
-                    applyToEnemy(m, new ExplosivePower(m, 1));
+                    applyToEnemyTop(m, new ExplosivePower(m, 1));
                 else
                     doAction(true);
                 break;

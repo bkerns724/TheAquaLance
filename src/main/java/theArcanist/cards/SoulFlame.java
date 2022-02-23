@@ -1,5 +1,6 @@
 package theArcanist.cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -25,7 +26,7 @@ public class SoulFlame extends AbstractArcanistCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, Enums.SOUL_FIRE);
+        dmg(m, Enums.SOUL_FIRE, Color.PURPLE.cpy());
         atb(new DiscardAction(p, p, magicNumber, false));
     }
 
