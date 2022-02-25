@@ -1,5 +1,6 @@
 package theArcanist.cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -21,7 +22,7 @@ public class TinglingSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        allDmg(AbstractGameAction.AttackEffect.NONE);
+        allDmg(AbstractGameAction.AttackEffect.NONE, Color.YELLOW);
 
         forAllMonstersLiving(monster ->
                 att(new VFXAction(new LightningEffect(monster.drawX, monster.drawY), 0.0f)));

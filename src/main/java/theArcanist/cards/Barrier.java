@@ -10,8 +10,8 @@ import static theArcanist.util.Wiz.*;
 public class Barrier extends AbstractArcanistCard {
     public final static String ID = makeID("Barrier");
     private final static int BLOCK = 8;
-    private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 1;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
     public Barrier() {
@@ -26,6 +26,6 @@ public class Barrier extends AbstractArcanistCard {
     }
 
     public void upp() {
-        upgradeBlock(UPGRADE_BLOCK);
+        upMagic(UPGRADE_MAGIC);
     }
 }

@@ -35,7 +35,8 @@ public class HeavySigil extends AbstractSigilCard {
     public void onManualDiscard() {
         forAllMonstersLiving(monster -> {
             int amount = getJinxAmount(monster);
-            applyToEnemy(monster, new CrushedPower(monster, amount * magicNumber));
+            if (amount > 0)
+                applyToEnemy(monster, new CrushedPower(monster, amount * magicNumber));
         });
     }
 

@@ -14,7 +14,7 @@
   "${ModID}:Resonating": {
     "NAME": "Resonating",
     "DESCRIPTIONS": [
-      "Adds a #yResonant card to your hand next turn."
+      "Adds a #yResonant card to the top of your deck at end of turn turn."
     ]
   },
   "${ModID}:Frostbite": {

@@ -6,6 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
+import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.DamageActionColorField;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -19,8 +21,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.TheArcanist;
-import theArcanist.patches.ColoredDamagePatch;
-import theArcanist.patches.ColoredDamagePatch.DamageActionColorField;
 import theArcanist.util.CardArtRoller;
 
 import java.util.ArrayList;
@@ -42,9 +42,20 @@ public abstract class AbstractArcanistCard extends CustomCard {
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
 
     private boolean needsArtRefresh = false;
+/*
+    private static Texture CUSTOM_TOP;
+    private static Texture CUSTOM_MID;
+    private static Texture CUSTOM_BOT;
 
-    private static final Color FLAVOR_BOX_COLOR = new Color(90/255f, 0f, 140/255f, 1f);
+    private static void LoadTextures() {
+        CUSTOM_TOP = TexLoader.getTexture("arcanistmodResources/images/ui/tipTopCustom.png");
+        CUSTOM_MID = TexLoader.getTexture("arcanistmodResources/images/ui/tipMidCustom.png");
+        CUSTOM_BOT = TexLoader.getTexture("arcanistmodResources/images/ui/tipBotCustom.png");
+    }
+*/
+    private static final Color FLAVOR_BOX_COLOR = Color.PURPLE;
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
+
 
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
@@ -59,7 +70,15 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
         FlavorText.AbstractCardFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
+        FlavorText.AbstractCardFlavorFields.flavorBoxType.set(this, FlavorText.boxType.CUSTOM);
+/*
+        if (CUSTOM_TOP == null)
+            LoadTextures();
 
+        FlavorText.AbstractCardFlavorFields.boxTop.set(this, CUSTOM_TOP);
+        FlavorText.AbstractCardFlavorFields.boxMid.set(this, CUSTOM_MID);
+        FlavorText.AbstractCardFlavorFields.boxBot.set(this, CUSTOM_BOT);
+*/
         initializeTitle();
         initializeDescription();
 
@@ -176,7 +195,7 @@ public abstract class AbstractArcanistCard extends CustomCard {
         DamageAction damageAction = new DamageAction(m,
                 new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
         DamageActionColorField.damageColor.set(damageAction, color);
-        DamageActionColorField.fadeSpeed.set(damageAction, ColoredDamagePatch.FadeSpeed.MODERATE);
+        DamageActionColorField.fadeSpeed.set(damageAction, FadeSpeed.SLOWISH);
         atb(damageAction);
     }
 
@@ -186,6 +205,14 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
     public void allDmg(AbstractGameAction.AttackEffect fx) {
         atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, DamageInfo.DamageType.NORMAL, fx));
+    }
+
+    public void allDmg(AbstractGameAction.AttackEffect fx, Color color) {
+        DamageAllEnemiesAction action = new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage,
+                DamageInfo.DamageType.NORMAL, fx);
+        DamageActionColorField.damageColor.set(action, color);
+        DamageActionColorField.fadeSpeed.set(action, FadeSpeed.SLOWISH);
+        atb(action);
     }
 
     protected void blck() {

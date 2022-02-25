@@ -42,7 +42,7 @@ public class ChaosMagicAction extends AbstractGameAction {
                 applyToSelfTop(new MetallicizePower(p, 2));
                 break;
             case 3:
-                applyToSelfTop(new HundredCutsPower(p, 2));
+                applyToSelfTop(new HundredCutsPower(p, 1));
                 break;
             case 4:
                 att(new ChannelAction(new Lightning()));

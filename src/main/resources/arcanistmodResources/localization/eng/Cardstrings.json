@@ -253,7 +253,7 @@
   },
   "${ModID}:SuddenChill": {
     "NAME": "Sudden Chill",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Apply [${ModID}:ScourgeIcon] ${ModID}:Frostbite."
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL ${ModID}:Frostbite applied is equal to [${ModID}:ScourgeIcon] ."
   },
   "${ModID}:BoulderShot": {
     "NAME": "Boulder Shot",
@@ -421,5 +421,10 @@
   "${ModID}:Write": {
     "NAME": "Write",
     "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."
+  },
+  "${ModID}:TestFour": {
+    "NAME": "Test Four",
+    "DESCRIPTION": "Lightning. NL Frost. NL Exhaust. NL Ethereal.",
+    "FLAVOR": "It's Peanut Butter Jelly Time!"
   }
 }

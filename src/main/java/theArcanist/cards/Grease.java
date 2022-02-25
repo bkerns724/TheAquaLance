@@ -16,6 +16,7 @@ public class Grease extends AbstractArcanistCard {
     public Grease() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

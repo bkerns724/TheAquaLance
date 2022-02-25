@@ -35,7 +35,7 @@ public class ShadowcloakPower extends AbstractArcanistPower {
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.ATTACK) {
+        if (card.type == AbstractCard.CardType.ATTACK && !triggered) {
             flash();
             triggered = true;
         }

@@ -21,7 +21,8 @@ public class SonicReverberation extends AbstractArcanistCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new VulnerablePower(m, getJinxAmount(m), false));
+        if (getJinxAmount(m) > 0)
+            applyToEnemy(m, new VulnerablePower(m, getJinxAmount(m), false));
         atb(new DrawCardAction(magicNumber));
         discard(DISCARD_AMOUNT);
     }

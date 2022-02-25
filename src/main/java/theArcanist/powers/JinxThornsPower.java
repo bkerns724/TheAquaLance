@@ -1,6 +1,5 @@
 package theArcanist.powers;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,7 +23,8 @@ public class JinxThornsPower extends AbstractArcanistPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         flash();
         int damAmount = amount*getJinxAmount(info.owner);
-        thornDmg(info.owner, damAmount);
+        if (damAmount > 0)
+            thornDmg(info.owner, damAmount);
         return damageAmount;
     }
 
