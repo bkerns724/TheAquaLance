@@ -1,6 +1,5 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theArcanist.powers.ExplosiveSigilPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -18,7 +17,7 @@ public class JaggedSigil extends AbstractSigilCard {
 
     @Override
     public void onManualDiscard() {
-        applyToSelf(new ExplosiveSigilPower(AbstractDungeon.player, magicNumber));
+        applyToSelf(new ExplosiveSigilPower(adp(), magicNumber));
     }
 
     public void upp() {

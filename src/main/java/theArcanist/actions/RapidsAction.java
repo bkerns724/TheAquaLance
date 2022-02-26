@@ -24,6 +24,7 @@ public class RapidsAction extends AbstractGameAction {
                 att(new DrawCardAction(amount));
                 att(new DiscardAction(adp(), adp(), amount, true));
             }
+            isDone = true;
         }
 
         tickDuration();

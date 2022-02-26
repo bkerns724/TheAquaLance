@@ -21,6 +21,7 @@ public class DarkEmbrace extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new DarkDamage());
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -29,5 +30,6 @@ public class DarkEmbrace extends AbstractArcanistCard {
     }
 
     public void upp() {
+        exhaust = false;
     }
 }

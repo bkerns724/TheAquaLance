@@ -19,7 +19,8 @@ public class ColdSigil extends AbstractSigilCard {
     public void onManualDiscard() {
         forAllMonstersLiving(monster -> {
             int deb = getDebuffCount(monster);
-            applyToEnemy(monster, new FrostbitePower(monster, deb*magicNumber));
+            if (deb > 0)
+                applyToEnemy(monster, new FrostbitePower(monster, deb*magicNumber));
         });
     }
 

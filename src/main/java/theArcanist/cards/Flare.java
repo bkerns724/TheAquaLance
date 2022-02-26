@@ -20,15 +20,17 @@ public class Flare extends AbstractArcanistCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        blck();
+        if (block > 0)
+            blck();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseBlock = magicNumber*getDebuffCount(mo);
-        applyPowersToBlock();
         super.calculateCardDamage(mo);
         baseBlock = BLOCK;
+        if (block > 0)
+            isBlockModified = true;
     }
 
     public void upp() {

@@ -26,11 +26,13 @@ public class Bane extends AbstractArcanistCard {
 
     @Override
     public void applyPowers() {
+        super.applyPowers();
         magicNumber = baseMagicNumber;
         if (adp().hasRelic(ChemicalX.ID))
             magicNumber += 2;
         magicNumber += EnergyPanel.totalCount;
-        super.applyPowers();
+        isMagicNumberModified = true;
+        initializeDescription();
     }
 
     public void upp() {

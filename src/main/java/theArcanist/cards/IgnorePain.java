@@ -1,0 +1,42 @@
+package theArcanist.cards;
+
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theArcanist.powers.IgnorePainPower;
+
+import static theArcanist.ArcanistMod.makeID;
+import static theArcanist.util.Wiz.*;
+
+public class IgnorePain extends AbstractArcanistCard {
+    public final static String ID = makeID("IgnorePain");
+    private final static int MAGIC = 1;
+    private final static int COST = 1;
+
+    public IgnorePain() {
+        super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseMagicNumber = magicNumber = MAGIC;
+    }
+
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        applyToSelf(new IgnorePainPower(p, magicNumber));
+        if (upgraded) {
+            for (AbstractCard card : adp().drawPile.group) {
+                if (card.type == AbstractCard.CardType.STATUS) {
+                    atb(new ExhaustSpecificCardAction(card, adp().drawPile, true));
+                    return;
+                }
+            }
+            for (AbstractCard card : adp().discardPile.group) {
+                if (card.type == AbstractCard.CardType.STATUS) {
+                    atb(new ExhaustSpecificCardAction(card, adp().discardPile, true));
+                    return;
+                }
+            }
+        }
+    }
+
+    public void upp() {
+    }
+}

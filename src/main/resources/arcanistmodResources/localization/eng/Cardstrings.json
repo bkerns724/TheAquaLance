@@ -76,7 +76,8 @@
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
-    "DESCRIPTION": "{@@}Whenever you play a card this turn, discard !M! random card to draw !M! card.{!Upgrades!|<1= NL Exhaust.}"
+    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
@@ -129,7 +130,7 @@
   },
   "${ModID}:ChameleonSigil": {
     "NAME": "Chameleon Sigil",
-    "DESCRIPTION": "{@@}${ModID}:Sigil. NL Gain !M! ${ModID}:Shadowcloak.{!Upgrades!|<1= NL Draw 1 less card next turn.}",
+    "DESCRIPTION": "${ModID}:Sigil. NL Gain !M! ${ModID}:Shadowcloak.",
     "FLAVOR": "A subtle but useful spell."
   },
   "${ModID}:ColdSigil": {
@@ -221,11 +222,6 @@
     "DESCRIPTION": "The first time you play an attack each turn, draw !M! card.",
     "FLAVOR": "If you can cast spells and run at the same time, that is much better than being a sitting duck.  Don't neglect your physical training."
   },
-  "${ModID}:Spray": {
-    "NAME": "Spray",
-    "DESCRIPTION": "Retain. NL Discard your entire hand and gain !M! Block for each card discarded.",
-    "FLAVOR": "A simple propulsion spell is so much more deadly when you carry a lot of small sharp metal objects."
-  },
   "${ModID}:Run": {
     "NAME": "Run",
     "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards.",
@@ -233,7 +229,7 @@
   },
   "${ModID}:ManaBlood": {
     "NAME": "Mana Blood",
-    "DESCRIPTION": "{@@}At the start of your turn, gain [E] and draw !M! {!M!|1=card|@=cards}."
+    "DESCRIPTION": "At the start of your turn, gain [E] and draw !M! card."
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
@@ -253,7 +249,7 @@
   },
   "${ModID}:SuddenChill": {
     "NAME": "Sudden Chill",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL ${ModID}:Frostbite applied is equal to [${ModID}:ScourgeIcon] ."
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL ${ModID}:Frostbite applied is equal to !M! [${ModID}:ScourgeIcon] ."
   },
   "${ModID}:BoulderShot": {
     "NAME": "Boulder Shot",
@@ -306,6 +302,7 @@
   },
   "${ModID}:DarkEmbrace": {
     "NAME": "Dark Embrace",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP. NL Exhaust.",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:IceDaggers": {
@@ -317,7 +314,7 @@
     "DESCRIPTION": "Deal !D! damage times. NL Apply !M! ${ModID}:Jinx."
   },
   "${ModID}:SackOfDebris": {
-    "NAME": "SackOfDebris",
+    "NAME": "Sack Of Debris",
     "DESCRIPTION": "Retain. NL Discard your hand. NL Deal !D! damage to a random enemy for each discarded card."
   },
   "${ModID}:DreadfulFinale": {
@@ -330,7 +327,8 @@
   },
   "${ModID}:IgnorePain": {
     "NAME": "Ignore Pain",
-    "DESCRIPTION": "At the start of your turn, exhaust the first status card in your draw pile (checked first) or discard pile."
+    "DESCRIPTION": "At the start of your turn, exhaust the first status card in your draw pile (checked first) or discard pile.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, exhaust the first status card in your draw pile (checked first) or discard pile. NL Exhaust one now."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
@@ -355,7 +353,8 @@
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
-    "DESCRIPTION": "{@@}${ModID}:Jinx is {!Upgrades!|0=X|@=X+1} times more effective on the enemy. NL !M! {!M!|1=time|@=times} more effective."
+    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy. NL !M! times more effective.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy. NL !M! times more effective."
   },
   "${ModID}:SonicReverberation": {
     "NAME": "Sonic Reverberation",
@@ -395,19 +394,21 @@
   },
   "${ModID}:EldritchStaff": {
     "NAME": "Eldritch Staff",
-    "DESCRIPTION": "[${ModID}:DarkIcon] attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
+    "DESCRIPTION": "{@@} [${ModID}:DarkIcon] attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
   },
   "${ModID}:SadisticGlee": {
     "NAME": "Sadistic Glee",
-    "DESCRIPTION": "Gain !M! #yBlock whenever you apply a debuff to an enemy."
+    "DESCRIPTION": "Gain !M! Block whenever you apply a debuff to an enemy."
   },
   "${ModID}:ChaosForm": {
     "NAME": "Chaos Form",
-    "DESCRIPTION": "At the start of your turn, benefit from a powerful effect."
+    "DESCRIPTION": "At the start of your turn, benefit from a powerful effect.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, benefit from a powerful effect. NL 1 out of 3 chance of a bonus effect."
   },
   "${ModID}:Madness": {
     "NAME": "Madness",
-    "DESCRIPTION": "Enemy enters Wrath."
+    "DESCRIPTION": "Enemy enters Wrath.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Enemy enters Wrath."
   },
   "${ModID}:Vanish": {
     "NAME": "Vanish",
@@ -421,10 +422,5 @@
   "${ModID}:Write": {
     "NAME": "Write",
     "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."
-  },
-  "${ModID}:TestFour": {
-    "NAME": "Test Four",
-    "DESCRIPTION": "Lightning. NL Frost. NL Exhaust. NL Ethereal.",
-    "FLAVOR": "It's Peanut Butter Jelly Time!"
   }
 }

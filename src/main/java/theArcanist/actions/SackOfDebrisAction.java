@@ -24,8 +24,9 @@ public class SackOfDebrisAction extends AbstractGameAction {
         if (duration == startingDuration) {
             int count = adp().hand.size();
             if (count != 0) {
-                att(new DamageRandomEnemyAction(new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL),
-                        AttackEffect.SLASH_DIAGONAL));
+                for (int i = 0; i < count; i++)
+                    att(new DamageRandomEnemyAction(new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL),
+                            AttackEffect.SLASH_DIAGONAL));
                 discardTop(count, true);
             }
 
