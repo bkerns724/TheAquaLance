@@ -1,9 +1,9 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theArcanist.actions.IgnorePainAction;
 import theArcanist.powers.IgnorePainPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -24,13 +24,13 @@ public class IgnorePain extends AbstractArcanistCard {
         if (upgraded) {
             for (AbstractCard card : adp().drawPile.group) {
                 if (card.type == AbstractCard.CardType.STATUS) {
-                    atb(new ExhaustSpecificCardAction(card, adp().drawPile, true));
+                    atb(new IgnorePainAction(card));
                     return;
                 }
             }
             for (AbstractCard card : adp().discardPile.group) {
                 if (card.type == AbstractCard.CardType.STATUS) {
-                    atb(new ExhaustSpecificCardAction(card, adp().discardPile, true));
+                    atb(new IgnorePainAction(card));
                     return;
                 }
             }

@@ -1,11 +1,11 @@
 package theArcanist.powers;
 
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.actions.IgnorePainAction;
 
 import static theArcanist.util.Wiz.*;
 
@@ -25,7 +25,7 @@ public class IgnorePainPower extends AbstractArcanistPower {
         int count = amount;
         for (AbstractCard card : adp().drawPile.group) {
             if (card.type == AbstractCard.CardType.STATUS) {
-                atb(new ExhaustSpecificCardAction(card, adp().drawPile, true));
+                atb(new IgnorePainAction(card));
                 --count;
             }
             if (count == 0)
@@ -33,7 +33,7 @@ public class IgnorePainPower extends AbstractArcanistPower {
         }
         for (AbstractCard card : adp().discardPile.group) {
             if (card.type == AbstractCard.CardType.STATUS) {
-                atb(new ExhaustSpecificCardAction(card, adp().discardPile, true));
+                atb(new IgnorePainAction(card));
                 --count;
             }
             if (count == 0)

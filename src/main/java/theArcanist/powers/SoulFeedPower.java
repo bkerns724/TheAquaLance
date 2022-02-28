@@ -22,7 +22,7 @@ public class SoulFeedPower extends AbstractArcanistPower implements OnFatalPower
 
     @Override
     public void onFatal(AbstractMonster monster) {
-        att(new IncreaseMaxHPAction(amount));
+        adp().increaseMaxHp(1, true);
     }
 
     @Override

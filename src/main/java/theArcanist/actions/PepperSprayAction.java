@@ -19,13 +19,13 @@ public class PepperSprayAction extends AbstractGameAction {
     private AbstractMonster m;
     private static final float DURATION = 2F;
     private static final Texture PEPPER_IMAGE_RED =
-            new Texture("arcanistmodResources/img/vfx/BellPepperRed.png");
+            new Texture("arcanistmodResources/images/vfx/BellPepperRed.png");
     private static final Texture PEPPER_IMAGE_ORANGE =
-            new Texture("arcanistmodResources/img/vfx/BellPepperOrange.png");
+            new Texture("arcanistmodResources/images/vfx/BellPepperOrange.png");
     private static final Texture PEPPER_IMAGE_YELLOW =
-            new Texture("arcanistmodResources/img/vfx/BellPepperYellow.png");
+            new Texture("arcanistmodResources/images/vfx/BellPepperYellow.png");
     private static final Texture PEPPER_IMAGE_GREEN =
-            new Texture("arcanistmodResources/img/vfx/BellPepperGreen.png");
+            new Texture("arcanistmodResources/images/vfx/BellPepperGreen.png");
     private static final Texture[] PEPPERS = {PEPPER_IMAGE_RED, PEPPER_IMAGE_ORANGE,
             PEPPER_IMAGE_YELLOW, PEPPER_IMAGE_GREEN};
     private AbstractPlayer p = AbstractDungeon.player;
@@ -56,8 +56,8 @@ public class PepperSprayAction extends AbstractGameAction {
         ArrayList<Float> targetY = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
-            float x = p.hb.cX + AbstractDungeon.miscRng.random(-50.0f*Settings.xScale, 50.0f*Settings.xScale);
-            float y = p.hb.cY + AbstractDungeon.miscRng.random(-50.0f*Settings.yScale, 50.0f*Settings.yScale);
+            float x = m.hb.cX + AbstractDungeon.miscRng.random(-50.0f*Settings.xScale, 50.0f*Settings.xScale);
+            float y = m.hb.cY + AbstractDungeon.miscRng.random(-50.0f*Settings.yScale, 50.0f*Settings.yScale);
 
             targetX.add(x);
             targetY.add(y);
@@ -71,8 +71,8 @@ public class PepperSprayAction extends AbstractGameAction {
         if (duration <= DURATION - 0.5f - 0.1f*peppersLanded && peppersLanded < 5) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetX.get(peppersLanded), targetY.get(peppersLanded),
                     AttackEffect.BLUNT_LIGHT));
-            if (p != null && p.currentHealth > 0) {
-                p.damage(info);
+            if (p != null && m.currentHealth > 0 && m!= null) {
+                m.damage(info);
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                     AbstractDungeon.actionManager.clearPostCombatActions();
                 }
@@ -89,14 +89,14 @@ public class PepperSprayAction extends AbstractGameAction {
         float targetX2 = targetX + AbstractDungeon.miscRng.random(-400.0f*Settings.xScale, 400.0f*Settings.xScale);
         float targetY2 = targetY + AbstractDungeon.miscRng.random(-400.0f*Settings.yScale, 400.0f*Settings.yScale);
 
-        AbstractGameEffect pepperEffect = new VfxBuilder(pepperImage, m.hb.cX, m.hb.cY, 0.5f)
-                .moveX(m.hb.cX, targetX, VfxBuilder.Interpolations.LINEAR)
-                .moveY(m.hb.cY, targetY, VfxBuilder.Interpolations.LINEAR)
+        AbstractGameEffect pepperEffect = new VfxBuilder(pepperImage, p.hb.cX, p.hb.cY, 0.5f)
+                .moveX(p.hb.cX, targetX, VfxBuilder.Interpolations.LINEAR)
+                .moveY(p.hb.cY, targetY, VfxBuilder.Interpolations.LINEAR)
                 .rotate(720.0f)
                 .andThen(0.5f)
                 .moveX(targetX, targetX2, VfxBuilder.Interpolations.LINEAR)
                 .moveY(targetY, targetY2, VfxBuilder.Interpolations.LINEAR)
-                .rotate(360.0f)
+                .rotate(720.0f)
                 .fadeOut(0.5f)
                 .build();
 

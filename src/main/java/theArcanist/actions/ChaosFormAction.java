@@ -20,12 +20,14 @@ import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.DevotionPower;
 import com.megacrit.cardcrawl.relics.CultistMask;
 import com.megacrit.cardcrawl.relics.Sozu;
+import theArcanist.ArcanistMod;
 import theArcanist.cards.AbstractSigilCard;
 import theArcanist.cards.Strike;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static com.megacrit.cardcrawl.events.AbstractEvent.logMetricGainGoldAndRelic;
 import static com.megacrit.cardcrawl.events.AbstractEvent.logMetricObtainRelic;
 import static theArcanist.util.Wiz.*;
 
@@ -44,10 +46,16 @@ public class ChaosFormAction extends AbstractGameAction {
             return;
         }
 
-        for (int x = amount; x > 0; x = x - 3)
-            if (x > 2 || x <= AbstractDungeon.miscRng.random(1, 3))
-                doAction(false);
+        ArcanistMod.logger.info(amount);
 
+        for (int x = amount; x > 0; x = x - 3) {
+            if (x > 2 || x <= AbstractDungeon.miscRng.random(1, 3)) {
+                doAction(false);
+                ArcanistMod.logger.info("x is " + x);
+            }
+        }
+
+        isDone = true;
         tickDuration();
     }
 
@@ -64,35 +72,39 @@ public class ChaosFormAction extends AbstractGameAction {
                 att(new GainEnergyAction(2));
                 break;
             case 1:
-                applyToSelf(new MayhemPower(adp(), 1));
+                applyToSelfTop(new MayhemPower(adp(), 1));
                 break;
             case 2:
-                att(new IncreaseMaxOrbAction(3));
-                applyToSelf(new FocusPower(adp(), 2));
                 att(new ChannelAction(new Lightning()));
                 att(new ChannelAction(new Frost()));
                 att(new ChannelAction(new Lightning()));
+                att(new IncreaseMaxOrbAction(3));
+                applyToSelfTop(new FocusPower(adp(), 2));
                 break;
             case 3:
-                applyToSelf(new AfterImagePower(adp(), 1));
-                applyToSelf(new ThousandCutsPower(adp(), 1));
+                applyToSelfTop(new AfterImagePower(adp(), 1));
+                applyToSelfTop(new ThousandCutsPower(adp(), 1));
                 break;
             case 4:
-                applyToSelf(new MetallicizePower(adp(), 6));
+                applyToSelfTop(new MetallicizePower(adp(), 6));
                 break;
             case 5:
-                applyToSelf(new DevotionPower(adp(), 4));
+                applyToSelfTop(new DevotionPower(adp(), 4));
                 break;
             case 6:
-                applyToSelf(new StrengthPower(adp(), 3));
+                applyToSelfTop(new StrengthPower(adp(), 3));
                 break;
             case 7:
-                applyToSelf(new DexterityPower(adp(), 3));
+                applyToSelfTop(new DexterityPower(adp(), 3));
                 break;
             case 8:
                 ArrayList<AbstractMonster> list = getEnemies();
                 int y = AbstractDungeon.miscRng.random(0, list.size() - 1);
+                if (list.size() == 0)
+                    break;
                 AbstractMonster mon = list.get(y);
+                if (mon == null)
+                    break;
                 AbstractCard card = new Strike();
                 card.calculateCardDamage(mon);
                 att(new PepperSprayAction(mon, new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL)));
@@ -106,8 +118,10 @@ public class ChaosFormAction extends AbstractGameAction {
             case 10:
                 ArrayList<AbstractPotion> potionList = adp().potions;
                 for (AbstractPotion pot : potionList)
-                    if (pot instanceof PotionSlot && !adp().hasRelic(Sozu.ID))
+                    if (pot instanceof PotionSlot && !adp().hasRelic(Sozu.ID)) {
                         adp().obtainPotion(AbstractDungeon.returnTotallyRandomPotion());
+                        break;
+                    }
                 else
                     doAction(true);
                 break;
@@ -145,7 +159,7 @@ public class ChaosFormAction extends AbstractGameAction {
                     CultistMask r = new CultistMask();
                     logMetricObtainRelic("FaceTrader", "Trade", r);
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F, r);
-                    applyToSelf(new RitualPower(adp(), 1, true));
+                    applyToSelfTop(new RitualPower(adp(), 1, true));
                 }
                 else
                     doAction(true);

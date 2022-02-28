@@ -10,8 +10,8 @@ import static theArcanist.util.Wiz.*;
 
 public class ChaoticFlurry extends AbstractArcanistCard {
     public final static String ID = makeID("ChaoticFlurry");
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int MAGIC = 4;
+    private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
     public ChaoticFlurry() {

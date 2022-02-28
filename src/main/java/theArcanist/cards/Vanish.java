@@ -2,6 +2,7 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theArcanist.actions.ShadowCloakBlockAction;
 import theArcanist.powers.ShadowcloakPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -24,7 +25,7 @@ public class Vanish extends AbstractArcanistCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ShadowcloakPower(p, magicNumber));
-        blck();
+        atb(new ShadowCloakBlockAction(this));
     }
 
     @Override

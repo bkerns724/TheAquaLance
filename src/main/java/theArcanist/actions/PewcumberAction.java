@@ -19,7 +19,7 @@ public class PewcumberAction extends AbstractGameAction {
     private AbstractMonster m;
     private static final float DURATION = 1F;
     private static final Texture CUCUMBER_IMAGE =
-            new Texture("arcanistmodResources/imgage/vfx/Cucumber.png");
+            new Texture("arcanistmodResources/images/vfx/Cucumber.png");
     private AbstractPlayer p = AbstractDungeon.player;
     private boolean thunkEffect;
 
@@ -49,9 +49,9 @@ public class PewcumberAction extends AbstractGameAction {
                     .moveY(adp().hb.cY, targetY, VfxBuilder.Interpolations.LINEAR)
                     .rotate(720.0f)
                     .andThen(0.5f)
-                    .moveX(targetX, targetX2, VfxBuilder.Interpolations.BOUNCE)
-                    .moveY(targetY, targetY2, VfxBuilder.Interpolations.BOUNCE)
-                    .rotate(360.0f)
+                    .moveX(targetX, targetX2, VfxBuilder.Interpolations.LINEAR)
+                    .moveY(targetY, targetY2, VfxBuilder.Interpolations.LINEAR)
+                    .rotate(720.0f)
                     .fadeOut(0.5f)
                     .build();
 
@@ -62,7 +62,7 @@ public class PewcumberAction extends AbstractGameAction {
         if (duration <= DURATION - 0.5f && !thunkEffect) {
             thunkEffect = true;
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetX, targetY, AttackEffect.BLUNT_HEAVY));
-            if (p != null && p.currentHealth > 0) {
+            if (m != null && m.currentHealth > 0 && p != null) {
                 m.damage(new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS));
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                     AbstractDungeon.actionManager.clearPostCombatActions();

@@ -11,8 +11,9 @@ import static theArcanist.util.Wiz.*;
 
 public class ChaosMagic extends AbstractArcanistCard {
     public final static String ID = makeID("ChaosMagic");
-    private final static int COST = 0;
-    private final static int MAGIC = 1;
+    private final static int COST = 1;
+    private final static int MAGIC = 2;
+
 
     public ChaosMagic() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
@@ -24,7 +25,7 @@ public class ChaosMagic extends AbstractArcanistCard {
         if (upgraded && AbstractDungeon.cardRandomRng.random(0, 2) == 0)
             atb(new ChaosMagicAction());
         atb(new DrawCardAction(magicNumber));
-        discard(magicNumber);
+        discard(1);
     }
 
     public void upp() {

@@ -28,7 +28,7 @@ public class ChanneledChaos extends AbstractArcanistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.FIRE);
         atb(new ChaosMagicAction());
-        applyToSelf(new ResonatingPower(p, baseDamage, false, false, false, true, 0, 1));
+        applyToSelf(new ResonatingPower(p, baseDamage, false, false, false, false, 0, 1));
     }
 
     public void upp() {

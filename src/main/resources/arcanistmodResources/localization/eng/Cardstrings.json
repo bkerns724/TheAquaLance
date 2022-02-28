@@ -194,6 +194,7 @@
       "Deal !D! ",
       "damage. NL ",
       "Apply !M! ${ModID}:Jinx. NL ",
+      "Gain !${ModID}:M2! buffs NL ",
       "${ModID}:Resonate."
     ],
     "FLAVOR": "You can use this over and over."
@@ -277,8 +278,8 @@
   },
   "${ModID}:ChaosMagic": {
     "NAME": "Chaos Magic",
-    "DESCRIPTION": "Gain a buff.",
-    "UPGRADE_DESCRIPTION": "Gain a buff. NL 1 out of 3 chance for an additional buff."
+    "DESCRIPTION": "Gain a buff. NL Draw a card and discard a card.",
+    "UPGRADE_DESCRIPTION": "Gain a buff. NL 1 out of 3 chance for an additional buff. NL Draw a card and Discard a card."
   },
   "${ModID}:Concentrate": {
     "NAME": "Concentrate",
@@ -349,12 +350,12 @@
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
-    "DESCRIPTION": "Gain !M! Block per debuff on the enemy. NL !B! Block."
+    "DESCRIPTION": "Gain !M! Block per debuff on the enemy."
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
-    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy. NL !M! times more effective.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy. NL !M! times more effective."
+    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy."
   },
   "${ModID}:SonicReverberation": {
     "NAME": "Sonic Reverberation",
@@ -412,7 +413,7 @@
   },
   "${ModID}:Vanish": {
     "NAME": "Vanish",
-    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Gain !${ModID}:M2! Block per ${ModID}:Shadowcloak. NL !B! Block."
+    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Gain !${ModID}:M2! Block per ${ModID}:Shadowcloak."
   },
   "${ModID}:SoulCurse": {
     "NAME": "Soul Curse",

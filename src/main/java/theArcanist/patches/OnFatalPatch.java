@@ -10,6 +10,7 @@ import theArcanist.powers.OnFatalPower;
 
 import static theArcanist.util.Wiz.*;
 
+// Can't do things with actions if you use this hook, have to directly do them since death clears the queue.
 public class OnFatalPatch {
     @SpirePatch2(
             clz = AbstractMonster.class,

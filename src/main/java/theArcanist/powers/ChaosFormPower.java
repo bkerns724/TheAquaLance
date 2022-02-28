@@ -30,7 +30,7 @@ public class ChaosFormPower extends AbstractArcanistPower implements OnReceivePo
 
     @Override
     public boolean onReceivePower(AbstractPower pow, AbstractCreature target, AbstractCreature source) {
-        if (pow instanceof ChaosFormPower) {
+        if (pow instanceof ChaosFormPower && target == owner) {
             trueAmount += ((ChaosFormPower) pow).trueAmount;
             amount = trueAmount / 3;
             amount2 = trueAmount % 3;

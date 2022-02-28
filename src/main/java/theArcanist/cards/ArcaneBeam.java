@@ -26,10 +26,10 @@ public class ArcaneBeam extends AbstractArcanistCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.NONE);
         MindblastEffect effect = new MindblastEffect(p.dialogX, p.dialogY, p.flipHorizontal);
         ReflectionHacks.setPrivate(effect, AbstractGameEffect.class, "color", Color.MAGENTA.cpy());
         vfx(effect, 0.1F);
+        dmg(m, AbstractGameAction.AttackEffect.NONE);
     }
 
     public void upp() {

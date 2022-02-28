@@ -17,7 +17,7 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final int DEDUCTION = 6;
+    public static final int DEDUCTION = 4;
     public static final int TYPE_BONUS = 4;
 
     public boolean cold = false;

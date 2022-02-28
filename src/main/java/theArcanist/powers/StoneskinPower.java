@@ -20,11 +20,11 @@ public class StoneskinPower extends AbstractArcanistPower {
     }
 
     @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.HP_LOSS)
-            return damageAmount - 2;
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
+        if (type != DamageInfo.DamageType.HP_LOSS)
+            return damage - 2;
         else
-            return damageAmount;
+            return damage;
     }
 
     @Override

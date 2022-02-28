@@ -28,7 +28,7 @@ public class AcidRain extends AbstractArcanistCard {
         forAllMonstersLiving(mon -> {
             applyToEnemy(mon, new CorrodedPower(mon, secondMagic));
             applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false));
-            vfx(new FlashAtkImgEffect(m.hb.cX, m.hb.cY, ArcanistMod.Enums.ACID));
+            vfx(new FlashAtkImgEffect(mon.hb.cX, mon.hb.cY, ArcanistMod.Enums.ACID));
         });
     }
 

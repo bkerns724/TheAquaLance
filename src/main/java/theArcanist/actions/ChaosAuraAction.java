@@ -26,6 +26,8 @@ public class ChaosAuraAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        if (m == null)
+            return;
         if (duration != DEFAULT_DURATION) {
             isDone = true;
             return;
@@ -33,17 +35,16 @@ public class ChaosAuraAction extends AbstractGameAction {
 
         for (int x = amount; x > 0; x = x - 3)
             if (x > 2 || x <= AbstractDungeon.miscRng.random(1, 3))
-                doAction(false);
+                doAction();
 
         tickDuration();
     }
 
-    private void doAction(boolean simple) {
+    private void doAction() {
+        if (m == null)
+            return;
         int x;
-        if (!simple)
-            x = AbstractDungeon.miscRng.random(0, 7);
-        else
-            x = AbstractDungeon.miscRng.random(0, 6);
+        x = AbstractDungeon.miscRng.random(0, 6);
 
         switch(x) {
             case 0:
@@ -66,13 +67,6 @@ public class ChaosAuraAction extends AbstractGameAction {
                 break;
             case 6:
                 att(new PewcumberAction(m, 12));
-                break;
-            case 7:
-                if (m.currentHealth <= EXPLODE_THRESHOLD)
-                    // 1 is duration, not damage
-                    applyToEnemyTop(m, new ExplosivePower(m, 1));
-                else
-                    doAction(true);
                 break;
         }
     }
