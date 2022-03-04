@@ -10,7 +10,7 @@ import static theArcanist.util.Wiz.*;
 public class SpiritPressure extends AbstractArcanistCard {
     public final static String ID = makeID("SpiritPressure");
     private final static int MAGIC = 1;
-    private final static int UPGRADED_COST = 1;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 2;
 
     public SpiritPressure() {
@@ -23,6 +23,6 @@ public class SpiritPressure extends AbstractArcanistCard {
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        upMagic(UPGRADE_MAGIC);
     }
 }

@@ -47,10 +47,10 @@ public class ResonantPowerPatch {
                 return SpireReturn.Continue();
             }
             if (pow instanceof ResonatingPower && p instanceof ResonatingPower) {
+                p.flash();
                 AbstractDungeon.effectList.add(new PowerBuffEffect(__instance.target.hb.cX - __instance.target.animX,
                         __instance.target.hb.cY + __instance.target.hb.height / 2.0F, pow.name + RESONATING_MSG));
 
-                p.updateDescription();
                 hasBuffAlready = true;
                 AbstractDungeon.onModifyPower();
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractGameAction.class, "tickDuration");

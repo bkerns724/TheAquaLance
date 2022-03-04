@@ -10,6 +10,15 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "A shield isn't as good as a spell but at least you can learn to use it faster."
   },
+  "${ModID}:BasicCurse": {
+    "NAME": "Basic Curse",
+    "DESCRIPTION": "Apply !M! ${ModID}:Jinx.",
+    "FLAVOR": "The Voodoo that you do."
+  },
+  "${ModID}:BasicChannel": {
+    "NAME": "Basic Channel",
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
+  },
   "${ModID}:IceDamage": {
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",

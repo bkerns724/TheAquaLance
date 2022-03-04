@@ -93,6 +93,7 @@ public class GenericResonantCard extends AbstractArcanistCard {
         sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[1]);
         if (magicNumber > 0)
             sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[2]);
+        if (secondMagic > 0)
         sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
         rawDescription = sBuilder.toString();
 
@@ -117,9 +118,8 @@ public class GenericResonantCard extends AbstractArcanistCard {
                 attackEffect = AttackEffect.NONE;
             }
         }
-        // Should not happen
         else if (count == 0) {
-            attackEffect = AttackEffect.BLUNT_HEAVY;
+            attackEffect = AttackEffect.BLUNT_LIGHT;
             name = "Basic Channel";
         }
         else {

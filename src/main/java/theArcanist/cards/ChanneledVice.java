@@ -14,7 +14,7 @@ import static theArcanist.util.Wiz.*;
 public class ChanneledVice extends AbstractArcanistCard {
     public final static String ID = makeID("ChanneledVice");
     private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 2;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
 
     public ChanneledVice() {

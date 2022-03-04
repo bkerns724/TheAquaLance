@@ -31,13 +31,13 @@ import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.*;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractEasyRelic;
-import theArcanist.relics.UnmeltingIce;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import static theArcanist.TheArcanist.Enums.THE_ARCANIST;
+import static theArcanist.util.Wiz.*;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -184,8 +184,6 @@ public class ArcanistMod implements
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                     }
                 });
-
-        BaseMod.addRelicToCustomPool(new UnmeltingIce(), TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
     }
 
     @Override

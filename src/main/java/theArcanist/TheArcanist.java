@@ -27,7 +27,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theArcanist.VFX.ArcanistVictoryEffect;
 import theArcanist.cards.*;
 import theArcanist.patches.CutsceneMultiScreenPatch;
-import theArcanist.relics.UnmeltingIce;
+import theArcanist.relics.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,6 +35,7 @@ import java.util.List;
 
 import static theArcanist.TheArcanist.Enums.ARCANIST_BLARPLE_COLOR;
 import static theArcanist.ArcanistMod.*;
+import static theArcanist.util.Wiz.*;
 
 public class TheArcanist extends CustomPlayer {
     private static final String[] ORB_TEXTURES = {
@@ -75,18 +76,26 @@ public class TheArcanist extends CustomPlayer {
     static final String[] TEXT = characterStrings.TEXT;
     private static final int NUM_STRIKES = 4;
     private static final int NUM_DEFENDS = 4;
-    private static final AbstractCard STARTER_CARD1 = new PhantomFist();
-    private static final AbstractCard STARTER_CARD2 = new SoulFlame();
-    private static final AbstractCard STARTER_CARD3 = new FrozenLance();
-    private static final AbstractCard STARTER_CARD4 = new VoidTendrils();
-    private static final String STARTER_RELIC = UnmeltingIce.ID;
+    private static final ArrayList<String> randomStarterList = new ArrayList<>();
+    private static final ArrayList<String> randomRelicList = new ArrayList<>();
     private static final int STARTING_HP = 70;
 
     public TheArcanist(String name, PlayerClass setClass) {
         super(name, setClass,
                 new CustomEnergyOrb(ORB_TEXTURES, modID + "Resources/images/char/mainChar/orb/vfx.png",
-                        null),
-                null,null);
+                        null), null, null);
+
+        randomStarterList.clear();
+        randomStarterList.add(PhantomFist.ID);
+        randomStarterList.add(SoulFlame.ID);
+        randomStarterList.add(VoidTendrils.ID);
+        randomStarterList.add(FrozenLance.ID);
+
+        randomRelicList.clear();
+        randomRelicList.add(SparkingWand.ID);
+        randomRelicList.add(DarkClover.ID);
+        randomRelicList.add(VestOfManyPockets.ID);
+        randomRelicList.add(GlowingNecklace.ID);
 
         initializeClass(null,
                 SHOULDER1, SHOULDER2, CORPSE,
@@ -104,8 +113,10 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public CharSelectInfo getLoadout() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add(RandomRelic.ID);
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                STARTING_HP, STARTING_HP, 0, 99, 5, this, getStartingRelics(),
+                STARTING_HP, STARTING_HP, 0, 99, 5, this, list,
                 getStartingDeck(), false);
     }
 
@@ -116,19 +127,28 @@ public class TheArcanist extends CustomPlayer {
             retVal.add(Strike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
-        ArrayList<String> starters = new ArrayList<>();
-        starters.add(STARTER_CARD1.cardID);
-        starters.add(STARTER_CARD2.cardID);
-        starters.add(STARTER_CARD3.cardID);
-        starters.add(STARTER_CARD4.cardID);
 
-        if (AbstractDungeon.miscRng != null) {
-            int x = AbstractDungeon.miscRng.random(0, starters.size() - 1);
-            int y = AbstractDungeon.miscRng.random(0, starters.size() - 2);
+        try {
+            ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
 
-            retVal.add(starters.get(x));
-            starters.remove(x);
-            retVal.add(starters.get(y));
+            if (AbstractDungeon.miscRng != null && adp() != null) {
+
+                int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                retVal.add(listCopy.get(x));
+                if (adp().hasRelic(SparkingWand.ID))
+                    retVal.add(BasicChannel.ID);
+                else if (adp().hasRelic(DarkClover.ID))
+                    retVal.add(BasicCurse.ID);
+                else {
+                    listCopy.remove(x);
+                    int y = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                    retVal.add(listCopy.get(y));
+                }
+            }
+        }
+        catch (Exception e) {
+            retVal.add(Gale.ID);
+            retVal.add(CurseWeapon.ID);
         }
 
         return retVal;
@@ -136,13 +156,20 @@ public class TheArcanist extends CustomPlayer {
 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(STARTER_RELIC);
+        if (AbstractDungeon.miscRng != null) {
+            int x = AbstractDungeon.miscRng.random(0, randomRelicList.size() - 1);
+            retVal.add(randomRelicList.get(x));
+        }
+        else
+            retVal.add(UnmeltingIce.ID);
         return retVal;
     }
 
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
+        // I HATE SCREEN SHAKE.
+        // Even if the other characters do it, mine won't
         // CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
         Collection<AbstractCustomIcon> icons = CustomIconHelper.getAllIcons();
         for (AbstractCustomIcon x : icons) {

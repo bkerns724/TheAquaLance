@@ -16,7 +16,7 @@ public class Concentrate extends AbstractArcanistCard {
     private final static int ENERGY_AMOUNT = 1;
 
     public Concentrate() {
-        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF);
+        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
     }
 

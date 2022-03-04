@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.GenericResonantCard;
+import theArcanist.relics.TuningFork;
 
 import static java.lang.Math.max;
 import static theArcanist.util.Wiz.*;
@@ -43,12 +44,15 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
     public boolean onReceivePower(AbstractPower pow, AbstractCreature target, AbstractCreature source) {
         if (target == owner && pow instanceof ResonatingPower)
             stackPower((ResonatingPower) pow);
+        updateDescription();
         return true;
     }
 
     public void stackPower(ResonatingPower pow) {
         ArcanistMod.logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         amount += max(0, pow.amount - DEDUCTION);
+        if (adp().hasRelic(TuningFork.ID))
+            amount += 2;
         jinx += pow.jinx;
         chaos += pow.chaos;
         if (pow.force) {
