@@ -4,9 +4,7 @@ import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
 
-import static theArcanist.util.Wiz.*;
-
-public class RandomRelic extends AbstractEasyRelic {
+public class RandomRelic extends AbstractArcanistRelic {
     public static final String ID = makeID("RandomRelic");
 
     public RandomRelic() {

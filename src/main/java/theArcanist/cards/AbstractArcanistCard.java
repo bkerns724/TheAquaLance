@@ -15,13 +15,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.TheArcanist;
 import theArcanist.util.CardArtRoller;
 
@@ -55,9 +53,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
         CUSTOM_BOT = TexLoader.getTexture("arcanistmodResources/images/ui/tipBotCustom.png");
     }
 */
-    private static final Color FLAVOR_BOX_COLOR = Color.PURPLE;
+    private static final Color FLAVOR_BOX_COLOR = Color.PURPLE.cpy();
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
-
 
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
@@ -72,8 +69,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
         FlavorText.AbstractCardFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
+        /*
         FlavorText.AbstractCardFlavorFields.flavorBoxType.set(this, FlavorText.boxType.CUSTOM);
-/*
         if (CUSTOM_TOP == null)
             LoadTextures();
 

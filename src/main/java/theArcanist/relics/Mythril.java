@@ -7,7 +7,7 @@ import static theArcanist.ArcanistMod.makeID;
 
 import static theArcanist.util.Wiz.*;
 
-public class Mythril extends AbstractEasyRelic {
+public class Mythril extends AbstractArcanistRelic {
     public static final String ID = makeID("Mythril");
     private static final int BLOCK_AMT = 5;
 

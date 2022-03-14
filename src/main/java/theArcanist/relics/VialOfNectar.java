@@ -7,7 +7,7 @@ import static theArcanist.ArcanistMod.makeID;
 
 import static theArcanist.util.Wiz.*;
 
-public class VialOfNectar extends AbstractEasyRelic {
+public class VialOfNectar extends AbstractArcanistRelic {
     public static final String ID = makeID("VialOfNectar");
     private static final int TEMP_HP_AMOUNT = 3;
 

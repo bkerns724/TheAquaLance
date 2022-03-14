@@ -11,7 +11,7 @@ import theArcanist.util.TexLoader;
 
 import static theArcanist.util.Wiz.*;
 
-public abstract class AbstractClickRelic extends AbstractEasyRelic {
+public abstract class AbstractClickRelic extends AbstractArcanistRelic {
     private RelicClickable element;
 
     // Constructor of ClickableUIElement scales its inputs with Settings.scale

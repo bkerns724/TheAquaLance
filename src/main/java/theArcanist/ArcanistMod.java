@@ -30,14 +30,13 @@ import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.*;
 import theArcanist.potions.*;
-import theArcanist.relics.AbstractEasyRelic;
+import theArcanist.relics.AbstractArcanistRelic;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import static theArcanist.TheArcanist.Enums.THE_ARCANIST;
-import static theArcanist.util.Wiz.*;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -173,8 +172,8 @@ public class ArcanistMod implements
     @Override
     public void receiveEditRelics() {
         new AutoAdd(modID)
-                .packageFilter(AbstractEasyRelic.class)
-                .any(AbstractEasyRelic.class, (info, relic) -> {
+                .packageFilter(AbstractArcanistRelic.class)
+                .any(AbstractArcanistRelic.class, (info, relic) -> {
                     if (relic.color == null) {
                         BaseMod.addRelic(relic, RelicType.SHARED);
                     } else {

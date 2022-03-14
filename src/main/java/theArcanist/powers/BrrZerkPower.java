@@ -1,5 +1,7 @@
 package theArcanist.powers;
 
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,9 +22,8 @@ public class BrrZerkPower extends AbstractArcanistPower {
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (target != owner && info.type == DamageInfo.DamageType.NORMAL)
-        applyToEnemyTop(target, new FrostbitePower(target, amount));
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        return super.onAttacked(info, damageAmount);
     }
 
     @Override

@@ -6,7 +6,7 @@ import theArcanist.TheArcanist;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class CeremonialRobe extends AbstractEasyRelic {
+public class CeremonialRobe extends AbstractArcanistRelic {
     public static final String ID = makeID("CeremonialRobe");
     private static final int DEX_LOSS = 1;
     private static final int DRAW_AMOUNT = 1;

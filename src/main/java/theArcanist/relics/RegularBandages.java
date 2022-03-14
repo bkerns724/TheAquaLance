@@ -7,7 +7,7 @@ import static theArcanist.ArcanistMod.makeID;
 
 import static theArcanist.util.Wiz.*;
 
-public class RegularBandages extends AbstractEasyRelic {
+public class RegularBandages extends AbstractArcanistRelic {
     public static final String ID = makeID("RegularBandages");
     private static final int BLOCK_AMT = 2;
 

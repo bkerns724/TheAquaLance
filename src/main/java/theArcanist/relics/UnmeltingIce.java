@@ -4,7 +4,7 @@ import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
 
-public class UnmeltingIce extends AbstractEasyRelic {
+public class UnmeltingIce extends AbstractArcanistRelic {
     public static final String ID = makeID("UnmeltingIce");
     private static final int FROST_BOOST = 1;
 

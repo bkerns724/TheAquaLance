@@ -6,7 +6,7 @@ import theArcanist.TheArcanist;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class TormentorsMask extends AbstractEasyRelic {
+public class TormentorsMask extends AbstractArcanistRelic {
     public static final String ID = makeID("TormentorsMask");
     private static final int SADISTIC_AMOUNT = 2;
 

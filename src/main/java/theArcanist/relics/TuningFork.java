@@ -4,10 +4,8 @@ import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
 
-import static theArcanist.util.Wiz.*;
-
 // Code in ResonatingPower
-public class TuningFork extends AbstractEasyRelic {
+public class TuningFork extends AbstractArcanistRelic {
     public static final String ID = makeID("TuningFork");
 
     public TuningFork() {
