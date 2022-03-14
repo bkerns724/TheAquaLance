@@ -21,13 +21,11 @@ import com.megacrit.cardcrawl.powers.watcher.DevotionPower;
 import com.megacrit.cardcrawl.relics.CultistMask;
 import com.megacrit.cardcrawl.relics.Sozu;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.AbstractSigilCard;
+import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.Strike;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import static com.megacrit.cardcrawl.events.AbstractEvent.logMetricGainGoldAndRelic;
 import static com.megacrit.cardcrawl.events.AbstractEvent.logMetricObtainRelic;
 import static theArcanist.util.Wiz.*;
 
@@ -144,7 +142,8 @@ public class ChaosFormAction extends AbstractGameAction {
                 ArrayList<AbstractCard> list3 = adp().hand.group;
                 int count2 = 0;
                 for (AbstractCard card2 : list3)
-                    if (card2 instanceof AbstractSigilCard)
+                    if (card2 instanceof AbstractArcanistCard &&
+                            ((AbstractArcanistCard) card2).sigil)
                         count2++;
                 if (count2 > 1) {
                     for (AbstractCard card2 : list3)
