@@ -20,7 +20,7 @@ public class ChaosMagic extends AbstractArcanistCard {
         magicNumber = baseMagicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new ChaosMagicAction());
         if (upgraded && AbstractDungeon.cardRandomRng.random(0, 2) == 0)
             atb(new ChaosMagicAction());

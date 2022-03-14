@@ -25,7 +25,7 @@ public class SoulFlame extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new SoulFireDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, Enums.SOUL_FIRE, Color.PURPLE.cpy());
         atb(new DiscardAction(p, p, magicNumber, false));
     }

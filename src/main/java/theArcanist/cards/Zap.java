@@ -21,7 +21,7 @@ public class Zap extends AbstractArcanistCard {
         baseDamage = DAMAGE;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         vfx(new LightningEffect(m.drawX, m.drawY));
         dmg(m, AbstractGameAction.AttackEffect.NONE, Color.YELLOW.cpy());
         if (getJinxAmount(m) > 0)

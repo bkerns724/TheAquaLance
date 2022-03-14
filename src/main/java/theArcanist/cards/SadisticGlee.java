@@ -18,7 +18,7 @@ public class SadisticGlee extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new SadisticGleePower(p, magicNumber));
     }
 

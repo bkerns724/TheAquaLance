@@ -21,34 +21,34 @@ public class HideInSleeve extends AbstractArcanistCard {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<AbstractSigilCard> list = new ArrayList<>();
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
+        ArrayList<AbstractArcanistCard> list = new ArrayList<>();
         AbstractCard c;
 
         Iterator<AbstractCard> var2 = srcCommonCardPool.group.iterator();
         while(var2.hasNext()) {
             c = var2.next();
-            if (c instanceof AbstractSigilCard && !c.hasTag(CardTags.HEALING))
-                list.add((AbstractSigilCard) c);
+            if (c instanceof AbstractArcanistCard && !c.hasTag(CardTags.HEALING) && ((AbstractArcanistCard) c).sigil)
+                list.add((AbstractArcanistCard) c);
         }
 
         var2 = srcUncommonCardPool.group.iterator();
         while(var2.hasNext()) {
             c = var2.next();
-            if (c instanceof AbstractSigilCard && !c.hasTag(CardTags.HEALING))
-                list.add((AbstractSigilCard) c);
+            if (c instanceof AbstractArcanistCard && !c.hasTag(CardTags.HEALING) && ((AbstractArcanistCard) c).sigil)
+                list.add((AbstractArcanistCard) c);
         }
 
         var2 = srcRareCardPool.group.iterator();
         while(var2.hasNext()) {
             c = var2.next();
-            if (c instanceof AbstractSigilCard && !c.hasTag(CardTags.HEALING))
-                list.add((AbstractSigilCard) c);
+            if (c instanceof AbstractArcanistCard && !c.hasTag(CardTags.HEALING) && ((AbstractArcanistCard) c).sigil)
+                list.add((AbstractArcanistCard) c);
         }
 
         c = list.get(cardRandomRng.random(list.size() - 1));
 
-        atb(new MakeAndDiscardSigilAction((AbstractSigilCard) c));
+        atb(new MakeAndDiscardSigilAction((AbstractArcanistCard) c));
     }
 
     public void upp() {

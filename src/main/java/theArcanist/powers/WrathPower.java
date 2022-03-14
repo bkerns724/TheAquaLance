@@ -16,7 +16,6 @@ import theArcanist.VFX.WrathStanceEffectMonster;
 
 import static theArcanist.ArcanistMod.makeID;
 
-
 public class WrathPower extends AbstractArcanistPower
         implements CloneablePowerInterface, InvisiblePower {
     public AbstractCreature source;
@@ -61,11 +60,6 @@ public class WrathPower extends AbstractArcanistPower
             this.particleTimer2 = MathUtils.random(0.3F, 0.4F);
             AbstractDungeon.effectsQueue.add(new WrathStanceEffectMonster("Wrath", this.owner));
         }
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 
     @Override

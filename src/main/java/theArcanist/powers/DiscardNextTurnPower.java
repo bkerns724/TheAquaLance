@@ -28,9 +28,4 @@ public class DiscardNextTurnPower extends AbstractArcanistPower {
             atb(new DiscardAction(adp(), adp(), amount, false));
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

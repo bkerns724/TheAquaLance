@@ -18,7 +18,7 @@ public class BoulderShot extends AbstractArcanistCard {
         baseDamage = DAMAGE;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         int n = getDebuffCount(m);
         for (int i = 0; i<n; i++)
             dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);

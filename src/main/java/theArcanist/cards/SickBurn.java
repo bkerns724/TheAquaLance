@@ -24,9 +24,10 @@ public class SickBurn extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new SoulFireDamage());
         exhaust = true;
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.SOUL_FIRE);
         applyToEnemy(m, new PoisonPower(m, p, magicNumber));
     }

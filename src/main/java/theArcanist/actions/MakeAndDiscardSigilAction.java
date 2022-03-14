@@ -11,16 +11,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
-import theArcanist.cards.AbstractSigilCard;
+import theArcanist.cards.AbstractArcanistCard;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.att;
 
 public class MakeAndDiscardSigilAction extends AbstractGameAction {
-    private AbstractSigilCard c;
+    private final AbstractArcanistCard c;
     private static final float PADDING;
-    private boolean sameUUID;
+    private final boolean sameUUID;
 
-    public MakeAndDiscardSigilAction(AbstractSigilCard card) {
+    public MakeAndDiscardSigilAction(AbstractArcanistCard card) {
         sameUUID = false;
         UnlockTracker.markCardAsSeen(card.cardID);
         amount = 1;
@@ -43,7 +44,7 @@ public class MakeAndDiscardSigilAction extends AbstractGameAction {
                 handAmount -= discardAmount;
             }
 
-            AbstractSigilCard newCard = addToHand(handAmount);
+            AbstractArcanistCard newCard = addToHand(handAmount);
             addToDiscard(discardAmount);
 
             if (newCard != null)
@@ -55,9 +56,9 @@ public class MakeAndDiscardSigilAction extends AbstractGameAction {
         }
     }
 
-    private AbstractSigilCard addToHand(int handAmt) {
+    private AbstractArcanistCard addToHand(int handAmt) {
         if (handAmt == 1) {
-            AbstractSigilCard newCard = makeNewCard();
+            AbstractArcanistCard newCard = makeNewCard();
             AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(newCard,
                     (float) Settings.WIDTH / 2.0F - (PADDING + AbstractCard.IMG_WIDTH),
                     (float) Settings.HEIGHT / 2.0F));
@@ -72,8 +73,8 @@ public class MakeAndDiscardSigilAction extends AbstractGameAction {
                     (float) Settings.WIDTH / 2.0F + PADDING + AbstractCard.IMG_WIDTH, (float) Settings.HEIGHT / 2.0F));
     }
 
-    private AbstractSigilCard makeNewCard() {
-        return (AbstractSigilCard) (sameUUID ? c.makeSameInstanceOf() : c.makeStatEquivalentCopy());
+    private AbstractArcanistCard makeNewCard() {
+        return (AbstractArcanistCard) (sameUUID ? c.makeSameInstanceOf() : c.makeStatEquivalentCopy());
     }
 
     static {

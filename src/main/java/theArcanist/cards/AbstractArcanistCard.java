@@ -6,26 +6,43 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.DamageActionColorField;
+import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
+import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
+import theArcanist.cards.damageMods.DarkDamage;
+import theArcanist.cards.damageMods.ForceDamage;
+import theArcanist.cards.damageMods.IceDamage;
+import theArcanist.cards.damageMods.SoulFireDamage;
+import theArcanist.powers.AbstractArcanistPower;
+import theArcanist.powers.ResonatingPower;
 import theArcanist.util.CardArtRoller;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static theArcanist.ArcanistMod.*;
+import static theArcanist.ArcanistMod.makeImagePath;
+import static theArcanist.ArcanistMod.modID;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
@@ -42,17 +59,19 @@ public abstract class AbstractArcanistCard extends CustomCard {
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
 
     private boolean needsArtRefresh = false;
-/*
-    private static Texture CUSTOM_TOP;
-    private static Texture CUSTOM_MID;
-    private static Texture CUSTOM_BOT;
+    protected boolean magicOneIsDebuff = false;
+    protected boolean magicTwoIsDebuff = false;
 
-    private static void LoadTextures() {
-        CUSTOM_TOP = TexLoader.getTexture("arcanistmodResources/images/ui/tipTopCustom.png");
-        CUSTOM_MID = TexLoader.getTexture("arcanistmodResources/images/ui/tipMidCustom.png");
-        CUSTOM_BOT = TexLoader.getTexture("arcanistmodResources/images/ui/tipBotCustom.png");
-    }
-*/
+    public boolean beingDiscarded = false;
+    public static final String MESSAGE_KEY = "SigilMessage";
+    public static final String CAN_NOT_PLAY_MESSAGE = CardCrawlGame.languagePack.getUIString(
+            ArcanistMod.makeID(MESSAGE_KEY)).TEXT[0];
+    public boolean sigil = false;
+    public boolean resonant = false;
+
+    private int cardDraw = 0;
+    private int energy = 0;
+
     private static final Color FLAVOR_BOX_COLOR = Color.PURPLE.cpy();
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
@@ -69,15 +88,7 @@ public abstract class AbstractArcanistCard extends CustomCard {
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
         FlavorText.AbstractCardFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
-        /*
-        FlavorText.AbstractCardFlavorFields.flavorBoxType.set(this, FlavorText.boxType.CUSTOM);
-        if (CUSTOM_TOP == null)
-            LoadTextures();
 
-        FlavorText.AbstractCardFlavorFields.boxTop.set(this, CUSTOM_TOP);
-        FlavorText.AbstractCardFlavorFields.boxMid.set(this, CUSTOM_MID);
-        FlavorText.AbstractCardFlavorFields.boxBot.set(this, CUSTOM_BOT);
-*/
         initializeTitle();
         initializeDescription();
 
@@ -87,6 +98,98 @@ public abstract class AbstractArcanistCard extends CustomCard {
             } else
                 needsArtRefresh = true;
         }
+    }
+
+    public boolean checkMagicOneIsDebuff() {return magicOneIsDebuff;}
+
+    public boolean checkMagicTwoIsDebuff() {return magicTwoIsDebuff;}
+
+    public void onManualDiscard() {}
+
+    @Override
+    public List<String> getCardDescriptors() {
+        ArrayList<String> retVal = new ArrayList<>();
+        if (sigil)
+            retVal.add("Sigil");
+        return retVal;
+    }
+
+    @Override
+    public void triggerOnManualDiscard() {
+        if (!sigil)
+            return;
+        beingDiscarded = true;
+        autoPlayWhenDiscarded();
+        // Powers that trigger on discard
+        forAllMonstersLiving(m -> {
+            for (AbstractPower pow : m.powers)
+                if (pow instanceof AbstractArcanistPower)
+                    ((AbstractArcanistPower) pow).onDiscardSigil();
+        });
+        for (AbstractPower pow : adp().powers) {
+            if (pow instanceof AbstractArcanistPower)
+                ((AbstractArcanistPower) pow).onDiscardSigil();
+        }
+    }
+
+    protected void autoPlayWhenDiscarded() {
+        AbstractDungeon.player.discardPile.removeCard(this);
+        AbstractDungeon.getCurrRoom().souls.remove(this);
+        AbstractDungeon.player.limbo.group.add(this);
+        target_y = Settings.HEIGHT / 2.0f;
+        target_x = Settings.WIDTH / 2.0f;
+        targetAngle = 0;
+        targetDrawScale = 0.8f;
+        lighten(true);
+        att(new NewQueueCardAction(this, true, false, true));
+        att(new UnlimboAction(this));
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (!sigil)
+            return true;
+
+        boolean superBool = super.canUse(p, m);
+        if (!superBool) {
+            beingDiscarded = false;
+            return false;
+        }
+        if (!beingDiscarded) {
+            cantUseMessage = CAN_NOT_PLAY_MESSAGE;
+            return false;
+        }
+
+        return true;
+    }
+
+    public final void use(AbstractPlayer p, AbstractMonster m) {
+        if (sigil)
+            beingDiscarded = false;
+        onUse(p, m);
+        if (resonant)
+            resonate();
+    }
+
+    protected abstract void onUse(AbstractPlayer p, AbstractMonster m);
+
+    private void resonate() {
+        List<AbstractDamageModifier> eleList = DamageModifierManager.modifiers(this);
+        boolean cold = false;
+        boolean dark = false;
+        boolean force = false;
+        boolean fire = false;
+        for (AbstractDamageModifier x : eleList) {
+            if (x instanceof IceDamage)
+                cold = true;
+            else if (x instanceof DarkDamage)
+                dark = true;
+            else if (x instanceof ForceDamage)
+                force = true;
+            else if (x instanceof SoulFireDamage)
+                fire = true;
+        }
+
+        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, magicNumber, secondMagic, cardDraw, energy));
     }
 
     @Override
@@ -233,6 +336,12 @@ public abstract class AbstractArcanistCard extends CustomCard {
         card.baseSecondMagic = baseSecondMagic;
         card.upgradedSecondMagic = upgradedSecondMagic;
         card.isSecondMagicModified = isSecondMagicModified;
+        card.sigil = sigil;
+        card.magicOneIsDebuff = magicOneIsDebuff;
+        card.magicTwoIsDebuff = magicTwoIsDebuff;
+        card.resonant = resonant;
+        card.cardDraw = cardDraw;
+        card.energy = energy;
         return card;
     }
 }

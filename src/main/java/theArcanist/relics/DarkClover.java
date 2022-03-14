@@ -14,6 +14,7 @@ public class DarkClover extends AbstractClickRelic {
 
     public DarkClover() {
         super(ID, RelicTier.STARTER, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        amount = JINX_THORNS_AMOUNT;
     }
 
     @Override

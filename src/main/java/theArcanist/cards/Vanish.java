@@ -23,7 +23,7 @@ public class Vanish extends AbstractArcanistCard {
         secondMagic = baseSecondMagic = SECOND_MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ShadowcloakPower(p, magicNumber));
         atb(new ShadowCloakBlockAction(this));
     }

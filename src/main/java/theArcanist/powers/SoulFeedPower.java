@@ -24,9 +24,4 @@ public class SoulFeedPower extends AbstractArcanistPower implements OnFatalPower
     public void onFatal(AbstractMonster monster) {
         adp().increaseMaxHp(1, true);
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

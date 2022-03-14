@@ -20,7 +20,7 @@ public class ChaoticFlurry extends AbstractArcanistCard {
         exhaust = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             atb(new MyPlayTopCardAction(false));
         }

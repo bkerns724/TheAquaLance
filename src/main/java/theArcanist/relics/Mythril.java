@@ -13,6 +13,7 @@ public class Mythril extends AbstractArcanistRelic {
 
     public Mythril() {
         super(ID, RelicTier.COMMON, LandingSound.HEAVY, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = BLOCK_AMT;
     }
 
     @Override

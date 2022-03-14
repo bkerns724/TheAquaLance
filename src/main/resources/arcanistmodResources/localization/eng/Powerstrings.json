@@ -2,13 +2,15 @@
   "${ModID}:DiscardNextTurn": {
     "NAME": "Discard Next Turn",
     "DESCRIPTIONS": [
-      "Discard !A! card next turn."
+      "Discard !A! card next turn.",
+      "Discard !A! cards next turn."
     ]
   },
   "${ModID}:DrawNextTurn": {
     "NAME": "Draw Next Turn",
     "DESCRIPTIONS": [
-      "Draw !A! card next turn."
+      "Draw !A! card next turn.",
+      "Draw !A! cards next turn."
     ]
   },
   "${ModID}:Resonating": {
@@ -26,7 +28,8 @@
   "${ModID}:Momentum": {
     "NAME": "Momentum",
     "DESCRIPTIONS": [
-      "The first !A! time you attack each turn, draw a card."
+      "The first !A! time you attack each turn, draw a card.",
+      "The first !A! times you attack each turn, draw a card."
     ]
   },
   "${ModID}:EnergizedTurquoise": {
@@ -62,24 +65,28 @@
   "${ModID}:ChaosAura": {
     "NAME": "Chaos Aura",
     "DESCRIPTIONS": [
+      "At the start of your turn, apply !A! negative effect to ALL enemies.  !A2! out of 3 chance of an addition effect.",
       "At the start of your turn, apply !A! negative effects to ALL enemies.  !A2! out of 3 chance of an addition effect."
     ]
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
     "DESCRIPTIONS": [
-      "Whenever you play a card this turn, discard !A! random card to draw !A! random card."
+      "Whenever you play a card this turn, discard !A! random card to draw !A! random card.",
+      "Whenever you play a card this turn, discard !A! random cards to draw !A! random cards."
     ]
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
     "DESCRIPTIONS": [
+      "#yJinx is !A! time more effective on the enemy.",
       "#yJinx is !A! times more effective on the enemy."
     ]
   },
   "${ModID}:Corroded": {
     "NAME": "Corroded",
     "DESCRIPTIONS": [
+      "Vulnerable increases damage by an additional 50% for !A! turn.",
       "Vulnerable increases damage by an additional 50% for !A! turns."
     ]
   },
@@ -92,13 +99,8 @@
   "${ModID}:Nauseous": {
     "NAME": "Nauseous",
     "DESCRIPTIONS": [
+      "Weak reduces damage by an additional 25% for !A! turn.",
       "Weak reduces damage by an additional 25% for !A! turns."
-    ]
-  },
-  "${ModID}:InvisibleSpray": {
-    "NAME": "Not Here",
-    "DESCRIPTIONS": [
-      "Bug with Spray card, I should not be seen."
     ]
   },
   "${ModID}:Decaying": {
@@ -129,7 +131,8 @@
   "${ModID}:Speed": {
     "NAME": "Speed",
     "DESCRIPTIONS": [
-      "At the start of your turn, draw !A! card and discard card."
+      "At the start of your turn, draw !A! card and discard card.",
+      "At the start of your turn, draw !A! cards and discard cards."
     ]
   },
   "${ModID}:SoulFeed": {
@@ -172,12 +175,14 @@
   "${ModID}:IgnorePain": {
     "NAME": "Ignore Pain",
     "DESCRIPTIONS": [
+      "At the start of your turn, exhaust the first !A! status card in your draw pile (checked first) or discard pile.",
       "At the start of your turn, exhaust the first !A! status cards in your draw pile (checked first) or discard pile."
     ]
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
     "DESCRIPTIONS": [
+      "The first !A! time you discard a #ySigil each turn, gain [E].",
       "The first !A! times you discard a #ySigil each turn, gain [E]."
     ]
   },
@@ -196,7 +201,8 @@
   "${ModID}:EldritchStaff": {
     "NAME": "Eldritch Staff",
     "DESCRIPTIONS": [
-      "[${ModID}:DarkIcon] attacks grant !A! times as much #yTemporary #yHP."
+      "[${ModID}:DarkIcon] attacks grant twice as much #yTemporary #yHP.",
+      "[${ModID}:DarkIcon] attacks grant !A! times extra #yTemporary #yHP."
     ]
   },
   "${ModID}:SadisticGlee": {

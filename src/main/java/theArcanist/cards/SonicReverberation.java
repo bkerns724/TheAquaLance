@@ -20,7 +20,7 @@ public class SonicReverberation extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (getJinxAmount(m) > 0)
             applyToEnemy(m, new VulnerablePower(m, getJinxAmount(m), false));
         atb(new DrawCardAction(magicNumber));

@@ -105,7 +105,7 @@
   },
   "${ModID}:AcidRain": {
     "NAME": "Acid Rain",
-    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies. NL For !${ModID}:M2! turns Vulnerable increases damage taken by an additional 50%."
+    "DESCRIPTION": "Apply !${ModID}:M2! Vulnerable to ALL enemies. NL For !M! turns Vulnerable increases damage taken by an additional 50%."
   },
   "${ModID}:TinglingSigil": {
     "NAME": "Tingling Sigil",
@@ -194,7 +194,7 @@
   },
   "${ModID}:ChanneledChaos": {
     "NAME": "Channeled Chaos",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! random buff. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !${ModID}:M2! random buff. NL ${ModID}:Resonate."
   },
   "${ModID}:GenericResonantCard": {
     "NAME": "Resonate",
@@ -203,7 +203,12 @@
       "Deal !D! ",
       "damage. NL ",
       "Apply !M! ${ModID}:Jinx. NL ",
-      "Gain !${ModID}:M2! buffs NL ",
+      "Gain !${ModID}:M2! buffs. NL ",
+      "Draw ",
+      " card. NL ",
+      " cards. NL ",
+      "Gain ",
+      " [E]. NL ",
       "${ModID}:Resonate."
     ],
     "FLAVOR": "You can use this over and over."
@@ -396,7 +401,7 @@
   },
   "${ModID}:ShadowLance": {
     "NAME": "ShadowLance",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Enemy loses !M! Strength. NL Gain !M! Strength."
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Steal !M! Strength."
   },
   "${ModID}:ShockwaveSigils": {
     "NAME": "Shockwave Sigils",

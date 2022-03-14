@@ -18,9 +18,11 @@ public class CursedSteam extends AbstractArcanistCard {
     public CursedSteam() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
+        magicOneIsDebuff = true;
+        magicTwoIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToEnemy(m, new WeakPower(m, magicNumber, false));
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
         applyToEnemy(m, new JinxPower(m, 1));

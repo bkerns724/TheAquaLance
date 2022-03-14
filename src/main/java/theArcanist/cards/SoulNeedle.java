@@ -1,7 +1,6 @@
 package theArcanist.cards;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
@@ -9,7 +8,7 @@ import theArcanist.cards.damageMods.SoulFireDamage;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
 
 public class SoulNeedle extends AbstractArcanistCard {
     public final static String ID = makeID("SoulNeedle");
@@ -23,9 +22,10 @@ public class SoulNeedle extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new SoulFireDamage());
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.SOUL_FIRE);
         applyToEnemy(m, new JinxPower(m, magicNumber));
     }

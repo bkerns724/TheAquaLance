@@ -10,10 +10,11 @@ import static theArcanist.util.Wiz.*;
 public class SparkingWand extends AbstractClickRelic {
     public static final String ID = makeID("SparkingWand");
     public static final String textureString = "arcanistmodResources/images/ui/WandButton.png";
-    private static final float BOOST_AMOUNT = 0.25f;
+    private static final int BOOST_PERCENT = 25;
 
     public SparkingWand() {
         super(ID, RelicTier.STARTER, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        amount = BOOST_PERCENT;
     }
 
     @Override
@@ -32,9 +33,9 @@ public class SparkingWand extends AbstractClickRelic {
             CardCrawlGame.sound.play("UI_CLICK_1");
             flash();
             ResonatingPower power = (ResonatingPower) adp().getPower(ResonatingPower.POWER_ID);
-            int boost = (int)(BOOST_AMOUNT * power.amount);
-            applyToSelf(new ResonatingPower(adp(), boost+ResonatingPower.DEDUCTION,
-                    false, false, false, false, 0, 0));
+            int boost = (int)(BOOST_PERCENT/100.0f * power.amount);
+            applyToSelf(new ResonatingPower(boost+ResonatingPower.DEDUCTION,
+                    false, false, false, false, 0, 0, 0, 0));
             grayscale = true;
         }
     }

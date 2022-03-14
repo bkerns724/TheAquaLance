@@ -38,9 +38,4 @@ public class FrostbitePower extends AbstractArcanistPower {
             AbstractDungeon.onModifyPower();
         }
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

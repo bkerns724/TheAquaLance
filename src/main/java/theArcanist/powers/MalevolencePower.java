@@ -36,9 +36,4 @@ public class MalevolencePower extends AbstractArcanistPower {
             amount += amount2;
         }
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

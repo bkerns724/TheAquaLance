@@ -1,7 +1,5 @@
 package theArcanist.powers;
 
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,10 +22,5 @@ public class BrrZerkPower extends AbstractArcanistPower {
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         return super.onAttacked(info, damageAmount);
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 }

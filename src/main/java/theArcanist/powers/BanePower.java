@@ -19,9 +19,4 @@ public class BanePower extends AbstractArcanistPower {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

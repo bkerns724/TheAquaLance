@@ -18,7 +18,7 @@ public class Strike extends AbstractArcanistCard {
         tags.add(CardTags.STARTER_STRIKE);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (damage < 15)
             dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         else

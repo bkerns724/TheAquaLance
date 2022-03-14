@@ -1,24 +1,25 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToSelf;
 
-public class AdrenalineSigil extends AbstractSigilCard {
+public class AdrenalineSigil extends AbstractArcanistCard {
     public final static String ID = makeID("AdrenalineSigil");
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 
     public AdrenalineSigil() {
-        super(ID, CardRarity.RARE, CardType.SKILL, CardTarget.SELF);
+        super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
+        sigil = true;
     }
 
-    @Override
-    public void onManualDiscard() {
-        applyToSelf(new ArtifactPower(AbstractDungeon.player, magicNumber));
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
+        applyToSelf(new ArtifactPower(p, magicNumber));
     }
 
     public void upp() {

@@ -22,9 +22,4 @@ public class SpiritPressurePower extends AbstractArcanistPower {
     public void atStartOfTurn() {
         forAllMonstersLiving(m -> applyToEnemy(m, new JinxPower(m, amount)));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

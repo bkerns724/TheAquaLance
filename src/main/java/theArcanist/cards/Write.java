@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class Write extends AbstractArcanistCard {
@@ -24,7 +23,7 @@ public class Write extends AbstractArcanistCard {
         color = CardColor.COLORLESS;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         crack("C:\\Users\\15024\\Desktop\\Mods\\OtherMod\\STS\\powers\\powers.atlas",
                 "C:\\Users\\15024\\Desktop\\Mods\\Arcanist\\src\\main\\resources\\arcanistmodResources\\images\\powerImages\\");
     }
@@ -49,7 +48,7 @@ public class Write extends AbstractArcanistCard {
                 int height = region.height;
                 int x = region.left;
                 int y = region.top;
-                BufferedImage canvas = null;
+                BufferedImage canvas;
                 canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                 canvas.getGraphics().drawImage(root, 0, 0, width, height, x, y, x + width, y + height, null);
                 ImageIO.write(canvas, "png", new File(dstDir + fileName + ".png"));

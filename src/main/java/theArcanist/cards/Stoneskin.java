@@ -21,7 +21,7 @@ public class Stoneskin extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
         applyToSelf(new StoneskinPower(p, magicNumber));
     }

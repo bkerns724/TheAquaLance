@@ -22,9 +22,4 @@ public class ShockwaveSigilsPower extends AbstractArcanistPower {
     public void onDiscardSigil() {
         forAllMonstersLiving(m -> applyToEnemy(m, new CrushedPower(m, amount)));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

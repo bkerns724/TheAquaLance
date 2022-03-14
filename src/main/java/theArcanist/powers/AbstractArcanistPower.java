@@ -41,6 +41,15 @@ public abstract class AbstractArcanistPower extends AbstractPower {
         updateDescription();
     }
 
+    @Override
+    public void updateDescription() {
+        if (amount != 1 && DESCRIPTIONS[1] != null)
+            description = DESCRIPTIONS[1];
+        else
+            description = DESCRIPTIONS[0];
+        description = description.replace("!A!", "#b" + amount).replace("!A2!", "#b" + amount2);
+    }
+
     public void onManualDiscard() {}
 
     public void onDiscardSigil() {}

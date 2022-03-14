@@ -19,7 +19,7 @@ public class ManaBlood extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new DrawPower(p, magicNumber));
         applyToSelf(new BerserkPower(p, magicNumber));
     }

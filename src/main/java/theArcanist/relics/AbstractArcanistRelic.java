@@ -26,6 +26,8 @@ public abstract class AbstractArcanistRelic extends CustomRelic {
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0];
+        String descString = DESCRIPTIONS[0];
+        descString = descString.replace("!R!", "#b" + amount).replace("!R2!", "#b" + amount2);
+        return descString;
     }
 }

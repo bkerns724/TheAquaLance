@@ -8,7 +8,6 @@ import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.DarkDamage;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
 public class VoidBall extends AbstractArcanistCard {
     public final static String ID = makeID("VoidBall");
@@ -23,7 +22,7 @@ public class VoidBall extends AbstractArcanistCard {
         isMultiDamage = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         allDmg(ArcanistMod.Enums.DARK_COIL, Color.BLACK);
     }
 

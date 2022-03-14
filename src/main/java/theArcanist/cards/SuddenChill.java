@@ -19,9 +19,10 @@ public class SuddenChill extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.ICE);
         if (getJinxAmount(m) > 0)
             applyToEnemy(m, new FrostbitePower(m, getJinxAmount(m) * magicNumber));

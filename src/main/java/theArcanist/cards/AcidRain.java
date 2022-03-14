@@ -12,27 +12,29 @@ import static theArcanist.util.Wiz.*;
 
 public class AcidRain extends AbstractArcanistCard {
     public final static String ID = makeID("AcidRain");
-    private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_MAGIC = 1;
+    private final static int UPGRADE_SECOND = 1;
     private final static int COST = 1;
-    private final static int SECOND_MAGIC = 2;
+    private final static int MAGIC = 2;
 
     public AcidRain() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
         isMultiDamage = true;
+        magicOneIsDebuff = true;
+        magicTwoIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         forAllMonstersLiving(mon -> {
-            applyToEnemy(mon, new CorrodedPower(mon, secondMagic));
-            applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false));
+            applyToEnemy(mon, new CorrodedPower(mon, magicNumber));
+            applyToEnemy(mon, new VulnerablePower(mon, secondMagic, false));
             vfx(new FlashAtkImgEffect(mon.hb.cX, mon.hb.cY, ArcanistMod.Enums.ACID));
         });
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic2(UPGRADE_SECOND);
     }
 }

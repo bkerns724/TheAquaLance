@@ -17,9 +17,4 @@ public class EldritchStaffPower extends AbstractArcanistPower {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

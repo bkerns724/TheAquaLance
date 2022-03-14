@@ -9,10 +9,8 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 import theArcanist.ArcanistMod;
 
-import java.awt.*;
-
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.vfx;
 
 public class ArcaneBeam extends AbstractArcanistCard {
     public final static String ID = makeID("ArcaneBeam");
@@ -25,7 +23,7 @@ public class ArcaneBeam extends AbstractArcanistCard {
         baseDamage = DAMAGE;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         MindblastEffect effect = new MindblastEffect(p.dialogX, p.dialogY, p.flipHorizontal);
         ReflectionHacks.setPrivate(effect, AbstractGameEffect.class, "color", Color.MAGENTA.cpy());
         vfx(effect, 0.1F);

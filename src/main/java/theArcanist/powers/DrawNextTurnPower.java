@@ -2,7 +2,6 @@ package theArcanist.powers;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
@@ -26,10 +25,5 @@ public class DrawNextTurnPower extends AbstractArcanistPower {
         if (!adp().hasPower(SpeedPower.POWER_ID))
             atb(new DrawCardAction(amount));
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 }

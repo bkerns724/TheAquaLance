@@ -40,9 +40,4 @@ public class ManaBurstPower extends AbstractArcanistPower {
             atb(new GainEnergyAction(1));
         }
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

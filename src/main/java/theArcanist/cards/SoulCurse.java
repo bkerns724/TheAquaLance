@@ -16,7 +16,7 @@ public class SoulCurse extends AbstractArcanistCard {
         exhaust = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         int count = getJinxAmount(m);
         if (count > 0)
             applyToEnemy(m, new JinxPower(m, count));

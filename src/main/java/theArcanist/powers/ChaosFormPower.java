@@ -7,9 +7,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 import theArcanist.actions.ChaosFormAction;
-import theArcanist.cards.ChaosForm;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.atb;
 
 public class ChaosFormPower extends AbstractArcanistPower implements OnReceivePowerPower {
     public static String POWER_ID = ArcanistMod.makeID("ChaosForm");
@@ -17,7 +16,7 @@ public class ChaosFormPower extends AbstractArcanistPower implements OnReceivePo
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private int trueAmount = 0;
+    private int trueAmount;
 
     public ChaosFormPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
@@ -45,10 +44,5 @@ public class ChaosFormPower extends AbstractArcanistPower implements OnReceivePo
     @Override
     public void atStartOfTurn() {
         atb(new ChaosFormAction(trueAmount));
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 }

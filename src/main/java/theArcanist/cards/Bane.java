@@ -7,7 +7,8 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theArcanist.actions.ApplyBaneAction;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.atb;
 
 public class Bane extends AbstractArcanistCard {
     public final static String ID = makeID("Bane");
@@ -18,9 +19,10 @@ public class Bane extends AbstractArcanistCard {
     public Bane() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new ApplyBaneAction(m, freeToPlayOnce, energyOnUse, upgraded));
     }
 

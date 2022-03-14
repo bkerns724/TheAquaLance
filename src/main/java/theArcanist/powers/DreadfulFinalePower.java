@@ -23,9 +23,4 @@ public class DreadfulFinalePower extends AbstractArcanistPower {
         if (isPlayer && adp().hand.isEmpty())
             forAllMonstersLiving(m -> applyToEnemy(m, new TempNegStrengthPower(m, amount)));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

@@ -13,6 +13,8 @@ public class CeremonialRobe extends AbstractArcanistRelic {
 
     public CeremonialRobe() {
         super(ID, RelicTier.SHOP, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = DRAW_AMOUNT;
+        amount2 = DEX_LOSS;
     }
 
     public void onEquip() {
@@ -30,9 +32,5 @@ public class CeremonialRobe extends AbstractArcanistRelic {
     @Override
     public void atBattleStart() {
         applyToSelf(new DexterityPower(adp(), -DEX_LOSS));
-    }
-
-    public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + DRAW_AMOUNT + DESCRIPTIONS[1] + DEX_LOSS + DESCRIPTIONS[2];
     }
 }

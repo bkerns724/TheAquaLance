@@ -18,7 +18,7 @@ public class Madness extends AbstractArcanistCard {
         exhaust = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToEnemy(m, new WrathPower(m));
         AbstractDungeon.actionManager.addToBottom(new SFXAction("STANCE_ENTER_WRATH"));
     }

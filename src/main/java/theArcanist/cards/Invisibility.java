@@ -19,7 +19,7 @@ public class Invisibility extends AbstractArcanistCard {
         exhaust = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ShadowcloakPower(p, magicNumber));
     }
 

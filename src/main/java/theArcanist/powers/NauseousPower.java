@@ -30,9 +30,4 @@ public class NauseousPower extends AbstractArcanistPower {
         else
             atb(new ReducePowerAction(owner, owner, POWER_ID, 1));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

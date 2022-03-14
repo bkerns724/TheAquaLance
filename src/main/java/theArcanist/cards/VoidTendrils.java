@@ -25,7 +25,7 @@ public class VoidTendrils extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new DarkDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.DARK_COIL, Color.BLACK.cpy());
         atb(new DiscardAction(p, p, magicNumber, false));
     }

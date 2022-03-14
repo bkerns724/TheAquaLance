@@ -3,80 +3,77 @@
     "NAME": "Ceremonial Robe",
     "FLAVOR": "Elegant, but difficult to fight in.",
     "DESCRIPTIONS": [
-      "Draw #b",
-      " additional card each turn.  At the start of each combat, lose #b",
-      " #yDexterity."
+      "Draw !R! additional card each turn.  At the start of each combat, lose !R2! #yDexterity."
     ]
   },
   "${ModID}:VestOfManyPockets": {
     "NAME": "Vest Of Many Pockets",
     "FLAVOR": "It's got pockets for days.",
     "DESCRIPTIONS": [
-      "Once per combat you may draw a card then discard a card."
+      "Once per combat you may draw !R! card then discard !R! card."
     ]
   },
   "${ModID}:GlowingNecklace": {
     "NAME": "Glowing Necklace",
     "FLAVOR": "It slowly pulls in mana from its surroundings.",
     "DESCRIPTIONS": [
-      "Once per combat you may draw a card then discard a card."
+      "At end of combat, gain !R! charge.  Click to spend all charges, gaining !R! random buff per charge."
     ]
   },
   "${ModID}:DarkClover": {
     "NAME": "Dark Clover",
     "FLAVOR": "The unlucky version of the four leaf clover.",
     "DESCRIPTIONS": [
-      "Once per combat, for one turn, you deal #b2 [${ModID}:ScourgeIcon] damage back when attacked."
+      "Once per combat, for one turn, you deal !R! [${ModID}:ScourgeIcon] damage back when attacked."
     ]
   },
   "${ModID}:SparkingWand": {
     "NAME": "Sparking Wand",
     "FLAVOR": "Powerful, but unstable.",
     "DESCRIPTIONS": [
-      "Once per combat you may increase your #yResonance by #b25%."
+      "Once per combat you may increase your #yResonance by !R!%."
     ]
   },
   "${ModID}:TormentorsMask": {
     "NAME": "Tormentor's Mask",
     "FLAVOR": "It's scary.",
     "DESCRIPTIONS": [
-      "Whenever you apply a debuff to an enemy, they take #b2 damage."
+      "Whenever you apply a debuff to an enemy, they take !R! damage."
     ]
   },
   "${ModID}:TuningFork": {
     "NAME": "Tuning Fork",
     "FLAVOR": "It constantly makes a quiet hum.  It never ends.",
     "DESCRIPTIONS": [
-      "Whenever you merge a #yResonant card into another, #yResonance increases by an additional #b2."
+      "Whenever you merge a #yResonant card into another, #yResonance increases by an additional !R!."
     ]
   },
   "${ModID}:VialOfNectar": {
     "NAME": "Vial of Nectar",
     "FLAVOR": "It's very thick, but tastes sweet.",
     "DESCRIPTIONS": [
-      "Gain #b3 #yTemporary #yHP at the beginning of combat."
+      "Gain !R! #yTemporary #yHP at the beginning of combat."
     ]
   },
   "${ModID}:Mythril": {
     "NAME": "Mythril",
     "FLAVOR": "It's extremely hard for something so light.",
     "DESCRIPTIONS": [
-      "If you have no cards in hand at end of turn, gain #b5 block."
+      "If you have no cards in hand at end of turn, gain !R! #yBlock."
     ]
   },
   "${ModID}:RegularBandages": {
     "NAME": "Regular Bandages",
     "FLAVOR": "They're the generic store bought version.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, gain #b2 #yBlock."
+      "Whenever you discard a card, gain !R! #yBlock."
     ]
   },
   "${ModID}:UnmeltingIce": {
     "NAME": "Unmelting Ice",
     "FLAVOR": "It never melts.",
     "DESCRIPTIONS": [
-      "Whenever you apply #yFrostbite, apply #b",
-      " more."
+      "Whenever you apply #yFrostbite, apply !R! more."
     ]
   },
   "${ModID}:RandomRelic": {

@@ -16,7 +16,7 @@ public class ChaosAuraPower extends AbstractArcanistPower implements OnReceivePo
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private int trueAmount = 0;
+    private int trueAmount;
 
     public ChaosAuraPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
@@ -44,10 +44,5 @@ public class ChaosAuraPower extends AbstractArcanistPower implements OnReceivePo
     @Override
     public void atStartOfTurn() {
         forAllMonstersLiving(m -> atb(new ChaosAuraAction(m, trueAmount)));
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 }

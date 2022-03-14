@@ -20,7 +20,7 @@ public class Run extends AbstractArcanistCard {
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(adp(), adp(), magicNumber, false));
     }

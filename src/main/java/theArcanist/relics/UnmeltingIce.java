@@ -10,6 +10,7 @@ public class UnmeltingIce extends AbstractArcanistRelic {
 
     public UnmeltingIce() {
         super(ID, RelicTier.COMMON, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = FROST_BOOST;
     }
 
     public String getUpdatedDescription() {

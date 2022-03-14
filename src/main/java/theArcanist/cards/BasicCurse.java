@@ -5,7 +5,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
+import static theArcanist.util.Wiz.discard;
 
 public class BasicCurse extends AbstractArcanistCard {
     public final static String ID = makeID("BasicCurse");
@@ -17,9 +18,10 @@ public class BasicCurse extends AbstractArcanistCard {
     public BasicCurse() {
         super(ID, COST, CardType.SKILL, CardRarity.BASIC, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToEnemy(m, new JinxPower(m, magicNumber));
         discard(DISCARD_AMT);
     }

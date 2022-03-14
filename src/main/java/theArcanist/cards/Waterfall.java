@@ -19,7 +19,7 @@ public class Waterfall extends AbstractArcanistCard {
         baseDamage = DAMAGE;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new WaterfallAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
     }
 

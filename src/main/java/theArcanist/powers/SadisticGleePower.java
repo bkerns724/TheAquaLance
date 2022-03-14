@@ -28,9 +28,4 @@ public class SadisticGleePower extends AbstractArcanistPower {
                 && !power.ID.equals(GainStrengthPower.POWER_ID))
             att(new GainBlockAction(owner, amount, true));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

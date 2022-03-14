@@ -12,6 +12,7 @@ public class TormentorsMask extends AbstractArcanistRelic {
 
     public TormentorsMask() {
         super(ID, RelicTier.COMMON, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = SADISTIC_AMOUNT;
     }
 
     @Override

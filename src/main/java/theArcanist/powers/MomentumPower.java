@@ -41,9 +41,4 @@ public class MomentumPower extends AbstractArcanistPower {
             atb(new DrawCardAction(1));
         }
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

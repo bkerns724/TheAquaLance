@@ -25,7 +25,7 @@ public class PhantomFist extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new ForceDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.FIST, Color.PINK.cpy());
         atb(new DiscardAction(p, p, magicNumber, false));
     }

@@ -34,9 +34,4 @@ public class JinxPower extends AbstractArcanistPower implements OnReceivePowerPo
         }
         return true;
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

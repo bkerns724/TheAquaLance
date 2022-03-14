@@ -19,7 +19,7 @@ public class SackOfDebris extends AbstractArcanistCard {
         selfRetain = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new SackOfDebrisAction(this));
     }
 

@@ -31,9 +31,4 @@ public class StoneskinPower extends AbstractArcanistPower {
     public void atStartOfTurn() {
         removePower(this);
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

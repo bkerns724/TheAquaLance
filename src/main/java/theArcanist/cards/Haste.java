@@ -16,7 +16,7 @@ public class Haste extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new SpeedPower(p, magicNumber));
     }
 

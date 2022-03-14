@@ -16,7 +16,7 @@ public class Defend extends AbstractArcanistCard {
         tags.add(CardTags.STARTER_DEFEND);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
     }
 

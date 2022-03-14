@@ -21,9 +21,11 @@ public class Miasma extends AbstractArcanistCard {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
+        magicOneIsDebuff = true;
+        magicTwoIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         vfx(new MiasmaEffect(m.hb.cX, m.hb.cY));
         applyToEnemy(m, new WeakPower(m, secondMagic, false));
         applyToEnemy(m, new TempNegStrengthPower(m, magicNumber));

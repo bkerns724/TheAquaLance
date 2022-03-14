@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import theArcanist.actions.MyAddTempHPAction;
 
 import static theArcanist.util.Wiz.*;
@@ -27,10 +26,5 @@ public class DarkerEmbracePower extends AbstractArcanistPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         att(new MyAddTempHPAction(adp(), adp(), amount));
         return damageAmount;
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 }

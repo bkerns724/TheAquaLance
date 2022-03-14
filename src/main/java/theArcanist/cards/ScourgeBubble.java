@@ -21,7 +21,7 @@ public class ScourgeBubble extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
         applyToSelf(new JinxThornsPower(p, magicNumber));
     }

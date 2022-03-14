@@ -45,9 +45,4 @@ public class ShadowcloakPower extends AbstractArcanistPower {
     public void atStartOfTurn() {
         triggered = false;
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount*DAMAGE_MULT_DESC + DESCRIPTIONS[1];
-    }
 }

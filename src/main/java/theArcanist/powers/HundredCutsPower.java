@@ -27,9 +27,4 @@ public class HundredCutsPower extends AbstractArcanistPower {
         atb(new DamageRandomEnemyAction(new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

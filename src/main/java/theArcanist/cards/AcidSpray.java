@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-import static theArcanist.ArcanistMod.*;
+import static theArcanist.ArcanistMod.Enums;
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
 
 public class AcidSpray extends AbstractArcanistCard {
     public final static String ID = makeID("AcidSpray");
@@ -19,9 +19,10 @@ public class AcidSpray extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, Enums.UNIQUE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, Enums.ACID);
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
     }

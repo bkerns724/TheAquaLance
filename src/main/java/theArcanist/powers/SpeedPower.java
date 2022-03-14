@@ -35,10 +35,4 @@ public class SpeedPower extends AbstractArcanistPower {
         addToBot(new DrawCardAction(owner, drawAmount));
         addToBot(new DiscardAction(owner, owner, discardAmount, false));
     }
-
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

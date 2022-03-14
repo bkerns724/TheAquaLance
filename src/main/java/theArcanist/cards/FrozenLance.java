@@ -25,7 +25,7 @@ public class FrozenLance extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new IceDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.ICE, Color.BLUE.cpy());
         atb(new DiscardAction(p, p, magicNumber, false));
     }

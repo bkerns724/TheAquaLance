@@ -13,6 +13,7 @@ public class RegularBandages extends AbstractArcanistRelic {
 
     public RegularBandages() {
         super(ID, RelicTier.COMMON, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = BLOCK_AMT;
     }
 
     @Override

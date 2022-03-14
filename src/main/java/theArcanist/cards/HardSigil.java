@@ -1,20 +1,23 @@
 package theArcanist.cards;
 
-import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class HardSigil extends AbstractSigilCard {
+import static theArcanist.ArcanistMod.makeID;
+
+public class HardSigil extends AbstractArcanistCard {
     public final static String ID = makeID("HardSigil");
     private final static int BLOCK = 10;
     private final static int UPGRADE_BLOCK = 3;
 
     public HardSigil() {
-        super(ID, CardRarity.COMMON, CardType.SKILL, CardTarget.SELF);
+        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = BLOCK;
+        sigil = true;
     }
 
     @Override
-    public void onManualDiscard() {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
     }
 

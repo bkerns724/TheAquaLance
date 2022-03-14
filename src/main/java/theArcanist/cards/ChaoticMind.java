@@ -18,7 +18,7 @@ public class ChaoticMind extends AbstractArcanistCard {
         exhaust = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ChaoticMindPower(adp(), magicNumber));
     }
 

@@ -32,9 +32,4 @@ public class TempNegStrengthPower extends AbstractArcanistPower {
     public void atEndOfRound() {
         atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

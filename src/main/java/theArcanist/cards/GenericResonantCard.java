@@ -10,9 +10,7 @@ import theArcanist.ArcanistMod;
 import theArcanist.VFX.DarkWaveEffect;
 import theArcanist.actions.ChaosMagicAction;
 import theArcanist.cards.damageMods.*;
-import theArcanist.patches.ResonantPowerPatch;
 import theArcanist.powers.JinxPower;
-import theArcanist.powers.ResonatingPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -21,13 +19,16 @@ import static theArcanist.util.Wiz.*;
 public class GenericResonantCard extends AbstractArcanistCard {
     public final static String ID = makeID("GenericResonantCard");
     private final static int COST = 1;
-    private boolean cold;
-    private boolean dark;
-    private boolean force;
-    private boolean fire;
+    private final boolean cold;
+    private final boolean dark;
+    private final boolean force;
+    private final boolean fire;
+    private final int draw;
+    private final int energy;
     private AttackEffect attackEffect = AttackEffect.NONE;
 
-    public GenericResonantCard(int damage, boolean cold, boolean dark, boolean force, boolean fire, int jinx, int chaos) {
+    public GenericResonantCard(int damage, boolean cold, boolean dark, boolean force, boolean fire, int jinx, int chaos,
+                               int draw, int energy) {
         super(ID, COST, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.cold = cold;
         this.dark = dark;
@@ -36,8 +37,10 @@ public class GenericResonantCard extends AbstractArcanistCard {
         baseDamage = damage;
         magicNumber = baseMagicNumber = jinx;
         secondMagic = baseSecondMagic = chaos;
+        this.draw = draw;
+        this.energy = energy;
 
-        ResonantPowerPatch.AbstractCardField.resonance.set(this, true);
+        resonant = true;
 
         if (cold)
             DamageModifierManager.addModifier(this, new IceDamage(false));
@@ -51,11 +54,13 @@ public class GenericResonantCard extends AbstractArcanistCard {
         customizeCardAttributes();
     }
 
+    // Should not be used
     public GenericResonantCard() {
-        this(8, false, false, false, false, 0, 0);
+        this(8, false, false, false, false,
+                0, 0, 0, 0);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (attackEffect == AttackEffect.NONE)
             vfx(new DarkWaveEffect(p.hb.cX, p.hb.cY, m.hb.cX), 0.5F);
         dmg(m, attackEffect);
@@ -63,7 +68,6 @@ public class GenericResonantCard extends AbstractArcanistCard {
             applyToEnemy(m, new JinxPower(m, magicNumber));
         for (int i = 0; i < secondMagic; i++)
             atb(new ChaosMagicAction());
-        applyToSelf(new ResonatingPower(p, baseDamage, cold, dark, force, fire, magicNumber, secondMagic));
     }
 
     public void upp() {
@@ -94,7 +98,21 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (magicNumber > 0)
             sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[2]);
         if (secondMagic > 0)
-        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
+        if (draw > 0) {
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[4]);
+            sBuilder.append(draw);
+            if (draw == 1)
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[5]);
+            else
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[6]);
+        }
+        if (energy > 0) {
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[7]);
+            sBuilder.append(energy);
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[8]);
+        }
+        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[9]);
         rawDescription = sBuilder.toString();
 
         if (count == 1) {
@@ -133,6 +151,7 @@ public class GenericResonantCard extends AbstractArcanistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new GenericResonantCard(baseDamage, cold, dark, force, fire, magicNumber, secondMagic);
+        return new GenericResonantCard(baseDamage, cold, dark, force, fire, magicNumber, secondMagic,
+                draw, energy);
     }
 }

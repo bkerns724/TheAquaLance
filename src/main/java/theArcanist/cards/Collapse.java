@@ -9,7 +9,6 @@ import theArcanist.cards.damageMods.ForceDamage;
 import theArcanist.powers.CrushedPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
 public class Collapse extends AbstractArcanistCard {
     public final static String ID = makeID("Collapse");
@@ -25,7 +24,7 @@ public class Collapse extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new ForceDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.FIST);
     }
 

@@ -21,16 +21,18 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
     public static final int DEDUCTION = 4;
     public static final int TYPE_BONUS = 4;
 
-    public boolean cold = false;
-    public boolean force = false;
-    public boolean dark = false;
-    public boolean fire = false;
-    public int jinx = 0;
-    public int chaos = 0;
+    public boolean cold;
+    public boolean force;
+    public boolean dark;
+    public boolean fire;
+    public int jinx;
+    public int chaos;
+    public int cardDraw;
+    public int energy;
 
-    public ResonatingPower(AbstractCreature owner, int amount, boolean cold, boolean dark, boolean force, boolean fire,
-                           int jinx, int chaos) {
-        super(POWER_ID, PowerType.BUFF, false, owner, amount);
+    public ResonatingPower(int amount, boolean cold, boolean dark, boolean force, boolean fire,
+                           int jinx, int chaos, int draw, int energy) {
+        super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
         this.dark = dark;
         this.cold = cold;
@@ -38,6 +40,8 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
         this.fire = fire;
         this.jinx = jinx;
         this.chaos = chaos;
+        cardDraw = draw;
+        this.energy = energy;
     }
 
     @Override
@@ -49,12 +53,13 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
     }
 
     public void stackPower(ResonatingPower pow) {
-        ArcanistMod.logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         amount += max(0, pow.amount - DEDUCTION);
         if (adp().hasRelic(TuningFork.ID))
-            amount += 2;
+            amount += TuningFork.BOOST_AMOUNT;
         jinx += pow.jinx;
         chaos += pow.chaos;
+        cardDraw = pow.cardDraw;
+        energy = pow.energy;
         if (pow.force) {
             if (!force)
                 force = true;
@@ -86,17 +91,12 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        GenericResonantCard card = new GenericResonantCard(amount, cold, dark, force, fire, jinx, chaos);
+        GenericResonantCard card = new GenericResonantCard(amount, cold, dark, force, fire, jinx, chaos, cardDraw, energy);
         topDeck(card);
         atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override
     public void atEndOfRound() {
-    }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
     }
 }

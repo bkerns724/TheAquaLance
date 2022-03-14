@@ -36,8 +36,4 @@ public class CrushedPower extends AbstractArcanistPower {
         else
             return damage;
     }
-
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

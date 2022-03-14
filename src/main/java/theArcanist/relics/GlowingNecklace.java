@@ -10,11 +10,13 @@ import static theArcanist.util.Wiz.*;
 public class GlowingNecklace extends AbstractClickRelic {
     public static final String ID = makeID("GlowingNecklace");
     private static final String textureString = "arcanistmodResources/images/ui/ChaosButton.png";
+    private static final int BUFF_AMOUNT = 1;
 
     public GlowingNecklace() {
         super(ID, RelicTier.STARTER, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
         counter = 0;
         grayscale = true;
+        amount = 1;
     }
 
     @Override
@@ -32,6 +34,4 @@ public class GlowingNecklace extends AbstractClickRelic {
         counter++;
         grayscale = false;
     }
-
-
 }

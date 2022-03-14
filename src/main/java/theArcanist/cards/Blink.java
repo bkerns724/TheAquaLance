@@ -20,7 +20,7 @@ public class Blink extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
         atb(new DiscardAction(p, p, magicNumber, false));
     }

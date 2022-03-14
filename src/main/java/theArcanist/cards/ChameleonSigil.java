@@ -1,23 +1,26 @@
 package theArcanist.cards;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.powers.ShadowcloakPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToSelf;
 
-public class ChameleonSigil extends AbstractSigilCard {
+public class ChameleonSigil extends AbstractArcanistCard {
     public final static String ID = makeID("ChameleonSigil");
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 
     public ChameleonSigil() {
-        super(ID, CardRarity.UNCOMMON, CardType.SKILL, CardTarget.SELF);
+        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
+        sigil = true;
     }
 
     @Override
-    public void onManualDiscard() {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ShadowcloakPower(AbstractDungeon.player, magicNumber));
     }
 

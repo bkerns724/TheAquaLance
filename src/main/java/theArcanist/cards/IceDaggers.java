@@ -7,7 +7,6 @@ import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.IceDamage;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
 
 public class IceDaggers extends AbstractArcanistCard {
     public final static String ID = makeID("IceDaggers");
@@ -23,7 +22,7 @@ public class IceDaggers extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new IceDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++)
             dmg(m, ArcanistMod.Enums.ICE);
     }

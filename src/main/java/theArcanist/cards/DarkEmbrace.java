@@ -24,7 +24,7 @@ public class DarkEmbrace extends AbstractArcanistCard {
         exhaust = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.DARK_COIL);
         applyToEnemy(m, new DarkerEmbracePower(m, magicNumber));
     }

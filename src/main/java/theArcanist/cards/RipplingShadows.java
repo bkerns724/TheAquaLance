@@ -17,14 +17,13 @@ public class RipplingShadows extends AbstractArcanistCard {
     private final static int UPGRADE_MAGIC = 1;
     private final static int DISCARD_AMOUNT = 1;
 
-    // skill, common, self
     public RipplingShadows() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ShadowcloakPower(p, secondMagic));
         atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(p, p, DISCARD_AMOUNT, false));

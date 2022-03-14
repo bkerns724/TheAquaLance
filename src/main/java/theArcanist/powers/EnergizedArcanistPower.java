@@ -25,8 +25,4 @@ public class EnergizedArcanistPower extends AbstractArcanistPower {
         adp().gainEnergy(amount);
         atb(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
     }
-
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

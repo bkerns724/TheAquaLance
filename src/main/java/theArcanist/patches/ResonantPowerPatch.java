@@ -14,18 +14,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.PowerBuffEffect;
 import javassist.CtBehavior;
 import theArcanist.ArcanistMod;
+import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.powers.ResonatingPower;
 
 public class ResonantPowerPatch {
     private static final String RESONATING_MSG = " Intensifies";
-
-    @SpirePatch(
-            clz = AbstractCard.class,
-            method = SpirePatch.CLASS
-    )
-    public static class AbstractCardField {
-        public static SpireField<Boolean> resonance = new SpireField<>(() -> false);
-    }
 
     @SpirePatch2(
             clz = ApplyPowerAction.class,
@@ -34,9 +27,9 @@ public class ResonantPowerPatch {
     public static class StackResonantPower {
         @SpireInsertPatch(
                 locator = Locator.class,
-                localvars = {"p", "hasBuffAlready"}
+                localvars = {"p"}
         )
-        public static SpireReturn InsertPatch(ApplyPowerAction __instance, AbstractPower p, boolean hasBuffAlready) {
+        public static SpireReturn InsertPatch(ApplyPowerAction __instance, AbstractPower p) {
             AbstractPower pow = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class,"powerToApply");
             if (pow == null) {
                 ArcanistMod.logger.info("Null power to apply");
@@ -51,7 +44,6 @@ public class ResonantPowerPatch {
                 AbstractDungeon.effectList.add(new PowerBuffEffect(__instance.target.hb.cX - __instance.target.animX,
                         __instance.target.hb.cY + __instance.target.hb.height / 2.0F, pow.name + RESONATING_MSG));
 
-                hasBuffAlready = true;
                 AbstractDungeon.onModifyPower();
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractGameAction.class, "tickDuration");
                 method.invoke(__instance);
@@ -78,8 +70,8 @@ public class ResonantPowerPatch {
                 locator = Locator.class
         )
         public static SpireReturn InsertPatch (UseCardAction __instance) {
-            AbstractCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
-            if (AbstractCardField.resonance.get(targetCard))
+            AbstractArcanistCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
+            if (targetCard.resonant)
             {
                 AbstractDungeon.actionManager.addToTop(new ShowCardAction(targetCard));
                 if (Settings.FAST_MODE)

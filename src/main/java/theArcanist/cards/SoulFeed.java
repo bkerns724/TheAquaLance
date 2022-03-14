@@ -19,7 +19,7 @@ public class SoulFeed extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new SoulFeedPower(p, magicNumber));
     }
 

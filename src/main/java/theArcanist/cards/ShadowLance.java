@@ -3,6 +3,7 @@ package theArcanist.cards;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.damageMods.DarkDamage;
@@ -23,12 +24,14 @@ public class ShadowLance extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new DarkDamage());
+        magicOneIsDebuff = true;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.DARK_COIL);
         applyToEnemy(m, new StrengthPower(m, -magicNumber));
-        applyToSelf(new StrengthPower(p, magicNumber));
+        if (!m.hasPower(ArtifactPower.POWER_ID))
+            applyToSelf(new StrengthPower(p, magicNumber));
     }
 
     public void upp() {

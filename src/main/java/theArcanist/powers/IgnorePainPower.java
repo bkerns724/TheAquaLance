@@ -40,9 +40,4 @@ public class IgnorePainPower extends AbstractArcanistPower {
                 return;
         }
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

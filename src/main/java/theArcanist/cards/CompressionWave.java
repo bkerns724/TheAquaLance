@@ -21,7 +21,7 @@ public class CompressionWave extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new ForceDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         allDmg(ArcanistMod.Enums.FIST);
     }
 

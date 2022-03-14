@@ -24,7 +24,7 @@ public class PhantomMace extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new ForceDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m, ArcanistMod.Enums.FIST);
         applyToEnemy(m, new TempNegStrengthPower(m, magicNumber));
     }

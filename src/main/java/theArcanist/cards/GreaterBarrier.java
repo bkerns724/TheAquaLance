@@ -16,7 +16,7 @@ public class GreaterBarrier extends AbstractArcanistCard {
         baseBlock = BLOCK;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
     }
 

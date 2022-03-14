@@ -25,9 +25,4 @@ public class TempHPOnHitPower extends AbstractArcanistPower {
         if (info.type == DamageInfo.DamageType.NORMAL)
             att(new AddTemporaryHPAction(owner, owner, amount));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

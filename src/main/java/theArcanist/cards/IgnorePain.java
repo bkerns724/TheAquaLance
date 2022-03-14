@@ -19,7 +19,7 @@ public class IgnorePain extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new IgnorePainPower(p, magicNumber));
         if (upgraded) {
             for (AbstractCard card : adp().drawPile.group) {

@@ -22,7 +22,7 @@ public class Eruption extends AbstractArcanistCard {
         DamageModifierManager.addModifier(this, new SoulFireDamage());
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         allDmg(ArcanistMod.Enums.SOUL_FIRE);
     }
 

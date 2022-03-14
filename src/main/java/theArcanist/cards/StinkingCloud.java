@@ -22,10 +22,12 @@ public class StinkingCloud extends AbstractArcanistCard {
         super(ID, COST, AbstractCard.CardType.SKILL, ArcanistMod.Enums.UNIQUE, AbstractCard.CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
+        magicOneIsDebuff = true;
+        magicTwoIsDebuff = true;
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+    public void onUse(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         forAllMonstersLiving(mon -> {
             vfx(new MiasmaEffect(mon.hb.cX, mon.hb.cY));
             applyToEnemy(mon, new WeakPower(mon, magicNumber, false));

@@ -32,12 +32,4 @@ public class JinxThornsPower extends AbstractArcanistPower {
     public void atStartOfTurn() {
         removePower(this);
     }
-
-    @Override
-    public void updateDescription() {
-        if (amount == 1)
-            description = DESCRIPTIONS[0];
-        else
-            description = DESCRIPTIONS[1];
-    }
 }

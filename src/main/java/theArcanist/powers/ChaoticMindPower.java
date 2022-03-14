@@ -31,9 +31,4 @@ public class ChaoticMindPower extends AbstractArcanistPower {
     public void atEndOfTurn(boolean isPlayer) {
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

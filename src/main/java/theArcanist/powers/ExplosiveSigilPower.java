@@ -24,9 +24,4 @@ public class ExplosiveSigilPower extends AbstractArcanistPower {
     public void onDiscardSigil() {
         forAllMonstersLiving(m -> att(new LoseHPAction(m, owner, amount, AbstractGameAction.AttackEffect.FIRE)));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }

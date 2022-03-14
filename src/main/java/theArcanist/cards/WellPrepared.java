@@ -16,7 +16,6 @@ public class WellPrepared extends AbstractArcanistCard {
     private final static int SECOND_MAGIC = 3;
     private final static int COST = 0;
 
-    // skill, rare, self
     public WellPrepared() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
@@ -25,7 +24,7 @@ public class WellPrepared extends AbstractArcanistCard {
         ExhaustiveField.ExhaustiveFields.exhaustive.set(this, secondMagic);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new DrawCardAction(magicNumber));
         atb(new DiscardAction(p, p, 1, false));
     }

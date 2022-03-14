@@ -18,7 +18,7 @@ public class EldritchStaff extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new EldritchStaffPower(p, magicNumber));
     }
 

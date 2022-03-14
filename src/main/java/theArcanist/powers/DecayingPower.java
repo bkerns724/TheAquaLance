@@ -25,9 +25,4 @@ public class DecayingPower extends AbstractArcanistPower {
         flash();
         atb(new LoseHPAction(owner, AbstractDungeon.player, amount));
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0];
-    }
 }
