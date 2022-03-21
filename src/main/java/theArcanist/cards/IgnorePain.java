@@ -10,7 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class IgnorePain extends AbstractArcanistCard {
-    public final static String ID = makeID("IgnorePain");
+    public final static String ID = makeID(IgnorePain.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int COST = 1;
 

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 
 public class BasicChannel extends AbstractArcanistCard {
-    public final static String ID = makeID("BasicChannel");
+    public final static String ID = makeID(BasicChannel.class.getSimpleName());
     private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;

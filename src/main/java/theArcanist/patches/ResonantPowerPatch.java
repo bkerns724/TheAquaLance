@@ -70,8 +70,8 @@ public class ResonantPowerPatch {
                 locator = Locator.class
         )
         public static SpireReturn InsertPatch (UseCardAction __instance) {
-            AbstractArcanistCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
-            if (targetCard.resonant)
+            AbstractCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
+            if (targetCard instanceof AbstractArcanistCard && ((AbstractArcanistCard)targetCard).resonant)
             {
                 AbstractDungeon.actionManager.addToTop(new ShowCardAction(targetCard));
                 if (Settings.FAST_MODE)

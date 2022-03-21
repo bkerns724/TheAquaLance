@@ -13,7 +13,7 @@ import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
 
 public class BurningSigil extends AbstractArcanistCard {
-    public final static String ID = makeID("BurningSigil");
+    public final static String ID = makeID(BurningSigil.class.getSimpleName());
     private final static int DAMAGE = 15;
     private final static int UPGRADE_DAMAGE = 5;
     private final static int MAGIC = 3;

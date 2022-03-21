@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
 
 public class CurseWeapon extends AbstractArcanistCard {
-    public final static String ID = makeID("CurseWeapon");
+    public final static String ID = makeID(CurseWeapon.class.getSimpleName());
     private final static int BLOCK = 10;
     private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 2;

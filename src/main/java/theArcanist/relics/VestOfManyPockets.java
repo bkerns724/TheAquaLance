@@ -8,13 +8,14 @@ import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
 
 public class VestOfManyPockets extends AbstractClickRelic {
-    public static final String ID = makeID("VestOfManyPockets");
+    public static final String ID = makeID(VestOfManyPockets.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/CycleButton.png";
     private static final int CYCLE_AMOUNT = 1;
 
     public VestOfManyPockets() {
         super(ID, RelicTier.STARTER, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
         amount = CYCLE_AMOUNT;
+        setUpdatedDescription();
     }
 
     @Override

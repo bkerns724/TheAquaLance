@@ -10,7 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class RipplingShadows extends AbstractArcanistCard {
-    public final static String ID = makeID("RipplingShadows");
+    public final static String ID = makeID(RipplingShadows.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int COST = 1;
     private final static int SECOND_MAGIC = 1;

@@ -6,11 +6,26 @@
       "Draw !R! additional card each turn.  At the start of each combat, lose !R2! #yDexterity."
     ]
   },
+  "${ModID}:DetailedContract": {
+    "NAME": "Detailed Contract",
+    "FLAVOR": "Every loophole closed.",
+    "DESCRIPTIONS": [
+      "Lose !R! Max HP. NL Chaos cards cause an extra effect."
+    ]
+  },
+  "${ModID}:AncientSpellTome": {
+    "NAME": "Ancient Spell Tome",
+    "FLAVOR": "The ink is fading and the pages are crumbling.",
+    "DESCRIPTIONS": [
+      "Upon pickup, choose #bone of #bthree powerful cards.",
+      "Choose a spell to study..."
+    ]
+  },
   "${ModID}:VestOfManyPockets": {
     "NAME": "Vest Of Many Pockets",
     "FLAVOR": "It's got pockets for days.",
     "DESCRIPTIONS": [
-      "Once per combat you may draw !R! card then discard !R! card."
+      "Once per combat you can click to draw !R! card then discard !R! card."
     ]
   },
   "${ModID}:GlowingNecklace": {
@@ -24,14 +39,14 @@
     "NAME": "Dark Clover",
     "FLAVOR": "The unlucky version of the four leaf clover.",
     "DESCRIPTIONS": [
-      "Once per combat, for one turn, you deal !R! [${ModID}:ScourgeIcon] damage back when attacked."
+      "You deal [${ModID}:ScourgeIcon] damage back when attacked."
     ]
   },
   "${ModID}:SparkingWand": {
     "NAME": "Sparking Wand",
     "FLAVOR": "Powerful, but unstable.",
     "DESCRIPTIONS": [
-      "Once per combat you may increase your #yResonance by !R!%."
+      "The first time each combat you gain #y${ModID}:Resonance, gain !R! more."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -45,35 +60,134 @@
     "NAME": "Tuning Fork",
     "FLAVOR": "It constantly makes a quiet hum.  It never ends.",
     "DESCRIPTIONS": [
-      "Whenever you merge a #yResonant card into another, #yResonance increases by an additional !R!."
+      "Whenever you merge a #y${ModID}:Resonant card into another, #yResonance increases by an additional !R!."
+    ]
+  },
+  "${ModID}:ClownNose": {
+    "NAME": "Clown Nose",
+    "FLAVOR": "Honk Honk.",
+    "DESCRIPTIONS": [
+      "When you cause an enemy to reach !R! unique debuffs for the first time, deal !R2! damage to it."
+    ]
+  },
+  "${ModID}:StoneScales": {
+    "NAME": "Stone Scales",
+    "FLAVOR": "You wonder what turned these scales to stone.",
+    "DESCRIPTIONS": [
+      "Once per combat you can click to reduce the attack damage you take by !R! this turn."
+    ]
+  },
+  "${ModID}:EtherealConverter": {
+    "NAME": "Ethereal Converter",
+    "FLAVOR": "You have no idea how this works.",
+    "DESCRIPTIONS": [
+      "Once per combat you can click to turn your block into #yTemporary_HP."
+    ]
+  },
+  "${ModID}:DiscardedCloak": {
+    "NAME": "DiscardedCloak",
+    "FLAVOR": "It's worn and tattered.",
+    "DESCRIPTIONS": [
+      "#y${ModID}:Shadowcloak is now a !R!% bonus instead of !R2!% ."
+    ]
+  },
+  "${ModID}:EyeballStaff": {
+    "NAME": "Eyeball Staff",
+    "FLAVOR": "The eye is attracted to movement.",
+    "DESCRIPTIONS": [
+      "Once per combat you can click to Scry !R!.  Play any #y${ModID}:Sigils you discard."
+    ]
+  },
+  "${ModID}:ManaPurifier": {
+    "NAME": "Mana Purifier",
+    "FLAVOR": "Purified mana is stronger, but less flexible.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. NL Arcanist damage types have no effect."
+    ]
+  },
+  "${ModID}:BlueMarbles": {
+    "NAME": "BlueMarbles",
+    "FLAVOR": "What an odd set of marbles, all different sizes.",
+    "DESCRIPTIONS": [
+      "Damage thresholds for damage type effects halved."
+    ]
+  },
+  "${ModID}:BootsOfSpeed": {
+    "NAME": "Boots Of Speed",
+    "FLAVOR": "WHEEEEEEE.",
+    "DESCRIPTIONS": [
+      "Click to spend [E] to draw !R! cards."
+    ]
+  },
+  "${ModID}:VialOfBlackBlood": {
+    "NAME": "Vial of Black Blood",
+    "FLAVOR": "It is hot enough to almost burn you.",
+    "DESCRIPTIONS": [
+      "On pickup, replace all of your Strikes and Defends with #ySoul #yBursts.",
+      "You drink the vial..."
+    ]
+  },
+  "${ModID}:ReverseOmamori": {
+    "NAME": "Reverse Omamori",
+    "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
+    "DESCRIPTIONS": [
+      "Apply !R! #y${ModID}:Jinx to ALL enemies at the start of combat per curse in your deck. NL Add !R2! Clumsy to your deck."
     ]
   },
   "${ModID}:VialOfNectar": {
     "NAME": "Vial of Nectar",
     "FLAVOR": "It's very thick, but tastes sweet.",
     "DESCRIPTIONS": [
-      "Gain !R! #yTemporary #yHP at the beginning of combat."
+      "Gain !R! #yTemporary_HP at the beginning of combat."
     ]
   },
   "${ModID}:Mythril": {
     "NAME": "Mythril",
     "FLAVOR": "It's extremely hard for something so light.",
     "DESCRIPTIONS": [
-      "If you have no cards in hand at end of turn, gain !R! #yBlock."
+      "If you have no cards in hand at end of turn, gain !R! Block."
     ]
   },
   "${ModID}:RegularBandages": {
     "NAME": "Regular Bandages",
     "FLAVOR": "They're the generic store bought version.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, gain !R! #yBlock."
+      "Whenever you discard a card, gain !R! Block."
     ]
   },
   "${ModID}:UnmeltingIce": {
     "NAME": "Unmelting Ice",
     "FLAVOR": "It never melts.",
     "DESCRIPTIONS": [
-      "Whenever you apply #yFrostbite, apply !R! more."
+      "Whenever you apply #y${ModID}:Frostbite, apply !R! more."
+    ]
+  },
+  "${ModID}:TwistedShuriken": {
+    "NAME": "Twisted Shuriken",
+    "FLAVOR": "You aren't sure how to throw this, but it looks brutal.",
+    "DESCRIPTIONS": [
+      "Whenever you play !R2! attacks in one turn, the enemy with the highest HP loses !R! Strength."
+    ]
+  },
+  "${ModID}:Pliers": {
+    "NAME": "Pliers",
+    "FLAVOR": "The jaws have flecks of dried blood on them.",
+    "DESCRIPTIONS": [
+      "Whenever you apply #y${ModID}:Crushed, your next attack deals !R! additional damage."
+    ]
+  },
+  "${ModID}:PaperKat": {
+    "NAME": "Paper Kat",
+    "FLAVOR": "You think you occasionally hear it purr, but only when you aren't paying attention.",
+    "DESCRIPTIONS": [
+      "HP loss from #y${ModID}:Jinx is twice as effective."
+    ]
+  },
+  "${ModID}:DarkFunnel": {
+    "NAME": "Dark Funnel",
+    "FLAVOR": "I wouldn't drink out of this one either.",
+    "DESCRIPTIONS": [
+      "Whenever you gain #yTemporary_HP from [${ModID}:DarkIcon] attacks, gain !R! more."
     ]
   },
   "${ModID}:RandomRelic": {

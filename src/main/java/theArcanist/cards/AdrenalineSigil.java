@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToSelf;
 
 public class AdrenalineSigil extends AbstractArcanistCard {
-    public final static String ID = makeID("AdrenalineSigil");
+    public final static String ID = makeID(AdrenalineSigil.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 

@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class SonicReverberation extends AbstractArcanistCard {
-    public final static String ID = makeID("SonicReverberation");
+    public final static String ID = makeID(SonicReverberation.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;

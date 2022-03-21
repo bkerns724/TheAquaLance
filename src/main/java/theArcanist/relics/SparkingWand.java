@@ -1,20 +1,22 @@
 package theArcanist.relics;
 
-import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.evacipated.cardcrawl.mod.stslib.relics.OnReceivePowerRelic;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.TheArcanist;
 import theArcanist.powers.ResonatingPower;
 
-import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
+import static theArcanist.ArcanistMod.makeID;
 
-public class SparkingWand extends AbstractClickRelic {
-    public static final String ID = makeID("SparkingWand");
-    public static final String textureString = "arcanistmodResources/images/ui/WandButton.png";
-    private static final int BOOST_PERCENT = 25;
+public class SparkingWand extends AbstractArcanistRelic implements OnReceivePowerRelic {
+    public static final String ID = makeID(SparkingWand.class.getSimpleName());
+    private static final int BOOST_AMOUNT = 3;
 
     public SparkingWand() {
-        super(ID, RelicTier.STARTER, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
-        amount = BOOST_PERCENT;
+        super(ID, RelicTier.STARTER, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = BOOST_AMOUNT;
+        setUpdatedDescription();
     }
 
     @Override
@@ -23,20 +25,17 @@ public class SparkingWand extends AbstractClickRelic {
     }
 
     @Override
-    public void onVictory() {
-        grayscale = false;
+    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature) {
+        return true;
     }
 
     @Override
-    public void buttonPress() {
-        if (adp().hasPower(ResonatingPower.POWER_ID)) {
-            CardCrawlGame.sound.play("UI_CLICK_1");
-            flash();
-            ResonatingPower power = (ResonatingPower) adp().getPower(ResonatingPower.POWER_ID);
-            int boost = (int)(BOOST_PERCENT/100.0f * power.amount);
-            applyToSelf(new ResonatingPower(boost+ResonatingPower.DEDUCTION,
-                    false, false, false, false, 0, 0, 0, 0));
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature source, int stackAmount) {
+        if (grayscale || !power.ID.equals(ResonatingPower.POWER_ID))
+            return stackAmount;
+        else {
             grayscale = true;
+            return stackAmount + BOOST_AMOUNT;
         }
     }
 }

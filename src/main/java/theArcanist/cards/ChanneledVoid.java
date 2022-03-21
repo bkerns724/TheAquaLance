@@ -9,7 +9,7 @@ import theArcanist.cards.damageMods.DarkDamage;
 import static theArcanist.ArcanistMod.makeID;
 
 public class ChanneledVoid extends AbstractArcanistCard {
-    public final static String ID = makeID("ChanneledVoid");
+    public final static String ID = makeID(ChanneledVoid.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;

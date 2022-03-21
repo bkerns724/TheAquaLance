@@ -14,7 +14,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class HeavySigil extends AbstractArcanistCard {
-    public final static String ID = makeID("HeavySigil");
+    public final static String ID = makeID(HeavySigil.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 

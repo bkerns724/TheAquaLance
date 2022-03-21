@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class ManaBurst extends AbstractArcanistCard {
-    public final static String ID = makeID("ManaBurst");
+    public final static String ID = makeID(ManaBurst.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADED_COST = 0;
     private final static int COST = 1;

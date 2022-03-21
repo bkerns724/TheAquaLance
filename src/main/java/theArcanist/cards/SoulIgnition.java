@@ -10,7 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class SoulIgnition extends AbstractArcanistCard {
-    public final static String ID = makeID("SoulIgnition");
+    public final static String ID = makeID(SoulIgnition.class.getSimpleName());
     private final static int DAMAGE = 30;
     private final static int UPGRADE_DAMAGE = 10;
     private final static int MAGIC = 5;

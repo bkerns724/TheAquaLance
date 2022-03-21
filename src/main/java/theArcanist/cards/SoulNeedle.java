@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
 
 public class SoulNeedle extends AbstractArcanistCard {
-    public final static String ID = makeID("SoulNeedle");
+    public final static String ID = makeID(SoulNeedle.class.getSimpleName());
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;

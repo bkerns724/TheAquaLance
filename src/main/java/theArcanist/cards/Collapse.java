@@ -11,7 +11,7 @@ import theArcanist.powers.CrushedPower;
 import static theArcanist.ArcanistMod.makeID;
 
 public class Collapse extends AbstractArcanistCard {
-    public final static String ID = makeID("Collapse");
+    public final static String ID = makeID(Collapse.class.getSimpleName());
     private final static int DAMAGE = 24;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 2;

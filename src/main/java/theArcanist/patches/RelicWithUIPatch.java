@@ -1,7 +1,6 @@
 package theArcanist.patches;
 
 import basemod.abstracts.CustomEnergyOrb;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
@@ -22,10 +21,7 @@ public class RelicWithUIPatch {
             for (AbstractRelic relic : adp().relics) {
                 if (relic instanceof AbstractClickRelic) {
                     AbstractClickRelic cRelic = (AbstractClickRelic) relic;
-                    if (cRelic.grayscale)
-                        cRelic.getElement().render(sb, Color.GRAY);
-                    else
-                        cRelic.getElement().render(sb, Color.WHITE);
+                    cRelic.doRender(sb);
                 }
             }
         }

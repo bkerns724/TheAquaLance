@@ -10,7 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.atb;
 
 public class ChanneledChaos extends AbstractArcanistCard {
-    public final static String ID = makeID("ChanneledChaos");
+    public final static String ID = makeID(ChanneledChaos.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int SECOND_MAGIC = 1;
@@ -20,6 +20,7 @@ public class ChanneledChaos extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         secondMagic = baseSecondMagic = SECOND_MAGIC;
+        chaos = baseSecondMagic;
         resonant = true;
     }
 

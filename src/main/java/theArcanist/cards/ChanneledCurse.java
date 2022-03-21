@@ -11,7 +11,7 @@ import static theArcanist.util.Wiz.applyToEnemy;
 import static theArcanist.util.Wiz.vfx;
 
 public class ChanneledCurse extends AbstractArcanistCard {
-    public final static String ID = makeID("ChanneledCurse");
+    public final static String ID = makeID(ChanneledCurse.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
@@ -23,6 +23,7 @@ public class ChanneledCurse extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
         resonant = true;
         magicOneIsDebuff = true;
+        jinx = baseMagicNumber;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

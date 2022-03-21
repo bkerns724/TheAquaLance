@@ -10,13 +10,16 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.powers.FrostbitePower;
+import theArcanist.relics.BlueMarbles;
+import theArcanist.relics.ManaPurifier;
+
 import java.util.ArrayList;
 
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
-    public static final String ID = ArcanistMod.makeID("IceDamage");
+    public static final String ID = ArcanistMod.makeID(IceDamage.class.getSimpleName());
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo iceTooltip;
     public TooltipInfo iceTooltip2;
@@ -35,7 +38,11 @@ public class IceDamage extends AbstractDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount,
                                         AbstractCreature target) {
+        if (adp() == null || adp().hasRelic(ManaPurifier.ID))
+            return;;
         int totalDamage = unblockedAmount + blockedAmount;
+        if (adp().hasRelic(BlueMarbles.ID))
+            totalDamage *= 2;
         int frostbite = totalDamage/3;
         if (frostbite > 0) {
             applyToEnemyTop(target, new FrostbitePower(target, frostbite));

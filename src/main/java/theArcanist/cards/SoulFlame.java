@@ -12,7 +12,7 @@ import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
 
 public class SoulFlame extends AbstractArcanistCard {
-    public final static String ID = makeID("SoulFlame");
+    public final static String ID = makeID(SoulFlame.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 1;

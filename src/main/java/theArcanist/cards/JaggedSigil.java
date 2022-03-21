@@ -2,13 +2,13 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.powers.ExplosiveSigilPower;
+import theArcanist.powers.ExplosiveSigilsPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class JaggedSigil extends AbstractArcanistCard {
-    public final static String ID = makeID("JaggedSigil");
+    public final static String ID = makeID(JaggedSigil.class.getSimpleName());
     private final static int MAGIC = 5;
     private final static int UPGRADE_MAGIC = 2;
 
@@ -20,7 +20,7 @@ public class JaggedSigil extends AbstractArcanistCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new ExplosiveSigilPower(adp(), magicNumber));
+        applyToSelf(new ExplosiveSigilsPower(adp(), magicNumber));
     }
 
     public void upp() {

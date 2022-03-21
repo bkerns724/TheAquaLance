@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Concentrate extends AbstractArcanistCard {
-    public final static String ID = makeID("Concentrate");
+    public final static String ID = makeID(Concentrate.class.getSimpleName());
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;

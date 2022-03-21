@@ -34,7 +34,7 @@ public class ChaosAuraAction extends AbstractGameAction {
         }
 
         for (int x = amount; x > 0; x = x - 3)
-            if (x > 2 || x <= AbstractDungeon.miscRng.random(1, 3))
+            if (x > 2 || x < AbstractDungeon.miscRng.random(0, 2))
                 doAction();
 
         tickDuration();

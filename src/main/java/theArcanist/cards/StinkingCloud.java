@@ -12,7 +12,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class StinkingCloud extends AbstractArcanistCard {
-    public final static String ID = makeID("StinkingCloud");
+    public final static String ID = makeID(StinkingCloud.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 2;

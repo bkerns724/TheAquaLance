@@ -12,7 +12,7 @@
   },
   "${ModID}:BasicCurse": {
     "NAME": "Basic Curse",
-    "DESCRIPTION": "Apply !M! ${ModID}:Jinx.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Jinx. NL Discard a card.",
     "FLAVOR": "The Voodoo that you do."
   },
   "${ModID}:BasicChannel": {
@@ -52,6 +52,11 @@
     "EXTENDED_DESCRIPTION": [
       "Ignores Block."
     ]
+  },
+  "${ModID}:SoulBurst": {
+    "NAME": "Soul Burst",
+    "DESCRIPTION": "Deal !D! damage.",
+    "FLAVOR": "Powerful.  Efficient.  It's a bargain."
   },
   "${ModID}:AcidSpray": {
     "NAME": "Acid Spray",
@@ -203,6 +208,7 @@
       "Deal !D! ",
       "damage. NL ",
       "Apply !M! ${ModID}:Jinx. NL ",
+      "Gain !${ModID}:M2! buff. NL ",
       "Gain !${ModID}:M2! buffs. NL ",
       "Draw ",
       " card. NL ",
@@ -317,8 +323,8 @@
   },
   "${ModID}:DarkEmbrace": {
     "NAME": "Dark Embrace",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP. NL Exhaust.",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
+    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Whenever you attack this enemy, gain 1 Temporary_HP. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:IceDaggers": {
     "NAME": "Ice Daggers",
@@ -368,8 +374,8 @@
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
-    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy."
+    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy. NL Exhaust."
   },
   "${ModID}:SonicReverberation": {
     "NAME": "Sonic Reverberation",
@@ -433,6 +439,18 @@
     "NAME": "Soul Curse",
     "DESCRIPTION": "Apply [${ModID}:ScourgeIcon] ${ModID}:Jinx. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Apply [${ModID}:ScourgeIcon] ${ModID}:Jinx."
+  },
+  "${ModID}:Fear": {
+    "NAME": "Fear",
+    "DESCRIPTION": "Apply !M! debuffs that don't do anything but don't wear off. NL Exhaust."
+  },
+  "${ModID}:Shatter": {
+    "NAME": "Shatter",
+    "DESCRIPTION": "Vulnerable is 50% more effective and Weak is 25% more effective for [${ModID}:ScourgeIcon] turns. NL Exhaust."
+  },
+  "${ModID}:SummonMonster": {
+    "NAME": "Summon Monsters",
+    "DESCRIPTION": "At the end of your turn, Channel a !M! damage Panda."
   },
   "${ModID}:Write": {
     "NAME": "Write",

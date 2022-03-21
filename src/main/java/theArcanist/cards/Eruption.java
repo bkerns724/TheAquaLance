@@ -9,7 +9,7 @@ import theArcanist.cards.damageMods.SoulFireDamage;
 import static theArcanist.ArcanistMod.makeID;
 
 public class Eruption extends AbstractArcanistCard {
-    public final static String ID = makeID("Eruption");
+    public final static String ID = makeID(Eruption.class.getSimpleName());
     private final static int DAMAGE = 32;
     private final static int UPGRADE_DAMAGE = 8;
     private final static int COST = 3;

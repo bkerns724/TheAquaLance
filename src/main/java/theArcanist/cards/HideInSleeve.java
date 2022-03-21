@@ -13,7 +13,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class HideInSleeve extends AbstractArcanistCard {
-    public final static String ID = makeID("HideInSleeve");
+    public final static String ID = makeID(HideInSleeve.class.getSimpleName());
     private final static int UPGRADED_COST = 0;
     private final static int COST = 1;
 

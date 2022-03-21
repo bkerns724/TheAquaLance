@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Momentum extends AbstractArcanistCard {
-    public final static String ID = makeID("Momentum");
+    public final static String ID = makeID(Momentum.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADED_COST = 0;
     private final static int COST = 1;

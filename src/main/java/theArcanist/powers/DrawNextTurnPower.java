@@ -2,21 +2,16 @@ package theArcanist.powers;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.atb;
 
 public class DrawNextTurnPower extends AbstractArcanistPower {
-    public static final String POWER_ID = ArcanistMod.makeID("DrawNextTurn");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static final String POWER_ID = ArcanistMod.makeID(DrawNextTurnPower.class.getSimpleName());
 
     public DrawNextTurnPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
-        this.name = NAME;
         priority = 6;
     }
 

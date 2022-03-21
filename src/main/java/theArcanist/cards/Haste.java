@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Haste extends AbstractArcanistCard {
-    public final static String ID = makeID("Haste");
+    public final static String ID = makeID(Haste.class.getSimpleName());
     private final static int MAGIC = 1;
 
     public Haste() {

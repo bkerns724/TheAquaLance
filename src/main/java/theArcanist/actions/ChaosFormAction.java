@@ -44,14 +44,9 @@ public class ChaosFormAction extends AbstractGameAction {
             return;
         }
 
-        ArcanistMod.logger.info(amount);
-
-        for (int x = amount; x > 0; x = x - 3) {
-            if (x > 2 || x <= AbstractDungeon.miscRng.random(1, 3)) {
+        for (int x = amount; x > 0; x = x - 3)
+            if (x > 2 || x < AbstractDungeon.miscRng.random(0, 2))
                 doAction(false);
-                ArcanistMod.logger.info("x is " + x);
-            }
-        }
 
         isDone = true;
         tickDuration();

@@ -15,7 +15,7 @@ import static theArcanist.ArcanistMod.makeID;
 
 @AutoAdd.Ignore
 public class Write extends AbstractArcanistCard {
-    public final static String ID = makeID("Write");
+    public final static String ID = makeID(Write.class.getSimpleName());
     private final static int COST = 0;
 
     public Write() {

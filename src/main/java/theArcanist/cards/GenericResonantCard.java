@@ -17,7 +17,7 @@ import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class GenericResonantCard extends AbstractArcanistCard {
-    public final static String ID = makeID("GenericResonantCard");
+    public final static String ID = makeID(GenericResonantCard.class.getSimpleName());
     private final static int COST = 1;
     private final boolean cold;
     private final boolean dark;
@@ -35,8 +35,8 @@ public class GenericResonantCard extends AbstractArcanistCard {
         this.force = force;
         this.fire = fire;
         baseDamage = damage;
-        magicNumber = baseMagicNumber = jinx;
-        secondMagic = baseSecondMagic = chaos;
+        this.jinx = jinx;
+        this.chaos = chaos;
         this.draw = draw;
         this.energy = energy;
 
@@ -51,6 +51,9 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (fire)
             DamageModifierManager.addModifier(this, new SoulFireDamage(false));
 
+        baseMagicNumber = magicNumber = jinx;
+        baseSecondMagic = secondMagic = chaos;
+
         customizeCardAttributes();
     }
 
@@ -64,9 +67,9 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (attackEffect == AttackEffect.NONE)
             vfx(new DarkWaveEffect(p.hb.cX, p.hb.cY, m.hb.cX), 0.5F);
         dmg(m, attackEffect);
-        if (magicNumber > 0)
-            applyToEnemy(m, new JinxPower(m, magicNumber));
-        for (int i = 0; i < secondMagic; i++)
+        if (jinx > 0)
+            applyToEnemy(m, new JinxPower(m, jinx));
+        for (int i = 0; i < chaos; i++)
             atb(new ChaosMagicAction());
     }
 
@@ -80,7 +83,9 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (fire) count++;
         if (force) count++;
         if (dark) count++;
-        if (magicNumber > 0) count++;
+
+        baseMagicNumber = magicNumber = jinx;
+        baseSecondMagic = secondMagic = chaos;
 
         StringBuilder sBuilder = new StringBuilder(cardStrings.EXTENDED_DESCRIPTION[0]);
         if (cold)
@@ -95,24 +100,28 @@ public class GenericResonantCard extends AbstractArcanistCard {
             sBuilder.append("  ");
         if (count >= 2) sBuilder.append("NL ");
         sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[1]);
-        if (magicNumber > 0)
+        if (jinx > 0)
             sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[2]);
-        if (secondMagic > 0)
-            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
+        if (chaos > 0) {
+            if (chaos == 1)
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
+            else
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[4]);
+        }
         if (draw > 0) {
-            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[4]);
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[5]);
             sBuilder.append(draw);
             if (draw == 1)
-                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[5]);
-            else
                 sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[6]);
+            else
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[7]);
         }
         if (energy > 0) {
-            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[7]);
-            sBuilder.append(energy);
             sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[8]);
+            sBuilder.append(energy);
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[9]);
         }
-        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[9]);
+        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[10]);
         rawDescription = sBuilder.toString();
 
         if (count == 1) {
@@ -151,7 +160,7 @@ public class GenericResonantCard extends AbstractArcanistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new GenericResonantCard(baseDamage, cold, dark, force, fire, magicNumber, secondMagic,
+        return new GenericResonantCard(baseDamage, cold, dark, force, fire, jinx, chaos,
                 draw, energy);
     }
 }

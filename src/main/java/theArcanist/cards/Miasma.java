@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Miasma extends AbstractArcanistCard {
-    public final static String ID = makeID("Miasma");
+    public final static String ID = makeID(Miasma.class.getSimpleName());
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 2;
     private final static int SECOND_MAGIC = 1;

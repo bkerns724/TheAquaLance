@@ -1,22 +1,16 @@
 package theArcanist.powers;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.atb;
 
 public class EnergizedArcanistPower extends AbstractArcanistPower {
-    public static final String POWER_ID = ArcanistMod.makeID("EnergizedArcanist");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static final String POWER_ID = ArcanistMod.makeID(EnergizedArcanistPower.class.getSimpleName());
 
     public EnergizedArcanistPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
-        this.name = NAME;
     }
 
     @Override

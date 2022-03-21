@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class PhantomMace extends AbstractArcanistCard {
-    public final static String ID = makeID("PhantomMace");
+    public final static String ID = makeID(PhantomMace.class.getSimpleName());
     private final static int DAMAGE = 15;
     private final static int UPGRADE_DAMAGE = 5;
     private final static int MAGIC = 2;

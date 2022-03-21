@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
 
 public class Enfeeble extends AbstractArcanistCard {
-    public final static String ID = makeID("Enfeeble");
+    public final static String ID = makeID(Enfeeble.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 0;

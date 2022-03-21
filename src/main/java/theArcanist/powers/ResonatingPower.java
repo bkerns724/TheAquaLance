@@ -3,8 +3,6 @@ package theArcanist.powers;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.GenericResonantCard;
@@ -14,10 +12,7 @@ import static java.lang.Math.max;
 import static theArcanist.util.Wiz.*;
 
 public class ResonatingPower extends AbstractArcanistPower implements OnReceivePowerPower {
-    public static String POWER_ID = ArcanistMod.makeID("Resonating");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static String POWER_ID = ArcanistMod.makeID(ResonatingPower.class.getSimpleName());
     public static final int DEDUCTION = 4;
     public static final int TYPE_BONUS = 4;
 
@@ -33,7 +28,6 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
     public ResonatingPower(int amount, boolean cold, boolean dark, boolean force, boolean fire,
                            int jinx, int chaos, int draw, int energy) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
-        this.name = NAME;
         this.dark = dark;
         this.cold = cold;
         this.force = force;

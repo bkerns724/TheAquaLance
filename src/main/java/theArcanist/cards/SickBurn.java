@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class SickBurn extends AbstractArcanistCard {
-    public final static String ID = makeID("SickBurn");
+    public final static String ID = makeID(SickBurn.class.getSimpleName());
     private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 8;

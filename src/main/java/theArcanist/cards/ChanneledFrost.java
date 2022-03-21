@@ -9,7 +9,7 @@ import theArcanist.cards.damageMods.IceDamage;
 import static theArcanist.ArcanistMod.makeID;
 
 public class ChanneledFrost extends AbstractArcanistCard {
-    public final static String ID = makeID("ChanneledFrost");
+    public final static String ID = makeID(ChanneledFrost.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;

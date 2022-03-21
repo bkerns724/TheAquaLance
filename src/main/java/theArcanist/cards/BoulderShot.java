@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class BoulderShot extends AbstractArcanistCard {
-    public final static String ID = makeID("BoulderShot");
+    public final static String ID = makeID(BoulderShot.class.getSimpleName());
     private final static int DAMAGE = 4;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int COST = 1;

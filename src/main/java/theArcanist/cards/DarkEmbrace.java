@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class DarkEmbrace extends AbstractArcanistCard {
-    public final static String ID = makeID("DarkEmbrace");
+    public final static String ID = makeID(DarkEmbrace.class.getSimpleName());
     private final static int DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int COST = 0;

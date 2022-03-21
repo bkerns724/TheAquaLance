@@ -8,12 +8,13 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class VialOfNectar extends AbstractArcanistRelic {
-    public static final String ID = makeID("VialOfNectar");
+    public static final String ID = makeID(VialOfNectar.class.getSimpleName());
     public static final int TEMP_HP_AMOUNT = 3;
 
     public VialOfNectar() {
         super(ID, RelicTier.COMMON, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         amount = TEMP_HP_AMOUNT;
+        setUpdatedDescription();
     }
 
     @Override

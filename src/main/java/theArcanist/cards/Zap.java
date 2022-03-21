@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Zap extends AbstractArcanistCard {
-    public final static String ID = makeID("Zap");
+    public final static String ID = makeID(Zap.class.getSimpleName());
     private final static int DAMAGE = 5;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;

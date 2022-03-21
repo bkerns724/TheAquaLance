@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Vanish extends AbstractArcanistCard {
-    public final static String ID = makeID("Vanish");
+    public final static String ID = makeID(Vanish.class.getSimpleName());
     private final static int BLOCK = 0;
     private final static int MAGIC = 2;
     private final static int COST = 2;

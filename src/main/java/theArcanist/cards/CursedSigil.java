@@ -9,7 +9,7 @@ import static theArcanist.util.Wiz.applyToEnemy;
 import static theArcanist.util.Wiz.forAllMonstersLiving;
 
 public class CursedSigil extends AbstractArcanistCard {
-    public final static String ID = makeID("CursedSigil");
+    public final static String ID = makeID(CursedSigil.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 

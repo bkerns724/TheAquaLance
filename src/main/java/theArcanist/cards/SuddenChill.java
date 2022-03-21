@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class SuddenChill extends AbstractArcanistCard {
-    public final static String ID = makeID("SuddenChill");
+    public final static String ID = makeID(SuddenChill.class.getSimpleName());
     private final static int DAMAGE = 9;
     private final static int COST = 1;
     private final static int MAGIC = 2;

@@ -13,16 +13,35 @@
     "PROPER_NAME": "Scourge [${ModID}:ScourgeIcon]",
     "NAMES": [
       "Scourge",
-      "scourge",
-      "scourgeDontTranslateThisLine"
+      "scourge"
     ],
     "DESCRIPTION": "[${ModID}:ScourgeIcon] is equal to the amount of #yJinx on the target."
+  },
+  {
+    "PROPER_NAME": "Dark [${ModID}:DarkIcon] Bloop",
+    "NAMES": [
+      "Dark",
+      "dark"
+    ],
+    "DESCRIPTION": "Gain #yTemporary #yHP based on unblocked damage dealt.  Has diminishing returns. [${ModID}:DarkIcon] "
+  },
+  {
+    "PROPER_NAME": "Panda",
+    "NAMES": [
+      "Panda",
+      "panda"
+    ],
+    "DESCRIPTION": "At the start of your turn it deals damage to a random enemy and applies either Weak or Vulnerable."
   },
   {
     "PROPER_NAME": "Resonate",
     "NAMES": [
       "Resonate",
-      "resonate"
+      "resonate",
+      "Resonance",
+      "resonance",
+      "Resonant",
+      "resonant"
     ],
     "DESCRIPTION": "When played, combines with other resonant cards played that turn and is added to the top of your draw pile next turn."
   },

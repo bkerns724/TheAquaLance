@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
 
 public class AcidSpray extends AbstractArcanistCard {
-    public final static String ID = makeID("AcidSpray");
+    public final static String ID = makeID(AcidSpray.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;

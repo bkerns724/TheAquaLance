@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Waterfall extends AbstractArcanistCard {
-    public final static String ID = makeID("Waterfall");
+    public final static String ID = makeID(Waterfall.class.getSimpleName());
     private final static int DAMAGE = 3;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int COST = 1;

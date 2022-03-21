@@ -6,10 +6,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.VFX.WrathParticleEffect2;
 import theArcanist.VFX.WrathStanceEffectMonster;
@@ -22,14 +20,10 @@ public class WrathPower extends AbstractArcanistPower
     public float particleTimer;
     public float particleTimer2;
 
-    public static final String POWER_ID = makeID("WrathPower");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static final String POWER_ID = makeID(WrathPower.class.getSimpleName());
 
     public WrathPower(AbstractCreature owner) {
         super(POWER_ID, PowerType.BUFF, false, owner, -1);
-        name = NAME;
         ID = POWER_ID;
 
         updateDescription();

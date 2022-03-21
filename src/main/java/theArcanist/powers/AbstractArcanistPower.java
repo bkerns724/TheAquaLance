@@ -5,11 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
+
+import static theArcanist.util.Wiz.replaceLast;
 
 public abstract class AbstractArcanistPower extends AbstractPower {
     public int amount2 = -1;
@@ -17,6 +21,7 @@ public abstract class AbstractArcanistPower extends AbstractPower {
     public static Color redColor2 = Color.RED.cpy();
     public static Color greenColor2 = Color.GREEN.cpy();
     public boolean canGoNegative2 = false;
+    public String[] descriptionArray;
 
     public AbstractArcanistPower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
         this.ID = id;
@@ -25,10 +30,18 @@ public abstract class AbstractArcanistPower extends AbstractPower {
         this.amount = amount;
         this.type = powerType;
 
-        String textureString = ArcanistMod.modID + "Resources/images/powers/" + ID.replaceAll(ArcanistMod.modID +":",  "") + "32.png";
+        PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(id);
+        this.name = powerStrings.NAME;
+        descriptionArray = powerStrings.DESCRIPTIONS;
 
-        Texture normalTexture = TexLoader.getTexture(textureString);
-        Texture hiDefImage = TexLoader.getTexture(ArcanistMod.modID + "Resources/images/powers/" + ID.replaceAll(ArcanistMod.modID +":", "") + "84.png");
+        String textureStringBase = ArcanistMod.modID + "Resources/images/powers/" +
+                ID.replaceAll(ArcanistMod.modID +":",  "");
+        textureStringBase = replaceLast(textureStringBase, "Power", "");
+        String textureString32 = textureStringBase + "32.png";
+        String textureString84 = textureStringBase + "84.png";
+
+        Texture normalTexture = TexLoader.getTexture(textureString32);
+        Texture hiDefImage = TexLoader.getTexture(textureString84);
         if (hiDefImage != null) {
             region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
             if (normalTexture != null)
@@ -43,10 +56,10 @@ public abstract class AbstractArcanistPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        if (amount != 1 && DESCRIPTIONS[1] != null)
-            description = DESCRIPTIONS[1];
+        if (amount != 1 && descriptionArray.length > 1)
+            description = descriptionArray[1];
         else
-            description = DESCRIPTIONS[0];
+            description = descriptionArray[0];
         description = description.replace("!A!", "#b" + amount).replace("!A2!", "#b" + amount2);
     }
 

@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Blink extends AbstractArcanistCard {
-    public final static String ID = makeID("Blink");
+    public final static String ID = makeID(Blink.class.getSimpleName());
     private final static int BLOCK = 10;
     private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 1;

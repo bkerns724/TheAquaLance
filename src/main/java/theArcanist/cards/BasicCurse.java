@@ -9,7 +9,7 @@ import static theArcanist.util.Wiz.applyToEnemy;
 import static theArcanist.util.Wiz.discard;
 
 public class BasicCurse extends AbstractArcanistCard {
-    public final static String ID = makeID("BasicCurse");
+    public final static String ID = makeID(BasicCurse.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 0;

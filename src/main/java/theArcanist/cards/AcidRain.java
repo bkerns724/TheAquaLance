@@ -11,7 +11,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class AcidRain extends AbstractArcanistCard {
-    public final static String ID = makeID("AcidRain");
+    public final static String ID = makeID(AcidRain.class.getSimpleName());
     private final static int SECOND_MAGIC = 1;
     private final static int UPGRADE_SECOND = 1;
     private final static int COST = 1;

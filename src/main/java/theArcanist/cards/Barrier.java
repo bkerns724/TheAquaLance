@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Barrier extends AbstractArcanistCard {
-    public final static String ID = makeID("Barrier");
+    public final static String ID = makeID(Barrier.class.getSimpleName());
     private final static int BLOCK = 8;
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;

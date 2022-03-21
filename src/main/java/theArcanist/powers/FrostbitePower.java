@@ -5,22 +5,20 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.relics.UnmeltingIce;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.att;
 
 public class FrostbitePower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("Frostbite");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static String POWER_ID = ArcanistMod.makeID(FrostbitePower.class.getSimpleName());
 
     public FrostbitePower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
-        this.name = NAME;
+        if ( adp().hasRelic(UnmeltingIce.ID) )
+            this.amount += UnmeltingIce.FROST_BOOST;
     }
 
     @Override

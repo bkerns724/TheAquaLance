@@ -9,7 +9,7 @@ import theArcanist.cards.damageMods.IceDamage;
 import static theArcanist.ArcanistMod.makeID;
 
 public class IceDaggers extends AbstractArcanistCard {
-    public final static String ID = makeID("IceDaggers");
+    public final static String ID = makeID(IceDaggers.class.getSimpleName());
     private final static int DAMAGE = 2;
     private final static int UPGRADE_DAMAGE = 1;
     private final static int MAGIC = 3;

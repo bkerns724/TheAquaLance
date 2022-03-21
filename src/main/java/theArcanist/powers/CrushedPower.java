@@ -4,20 +4,13 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-
 import theArcanist.ArcanistMod;
 
 public class CrushedPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("Crushed");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static String POWER_ID = ArcanistMod.makeID(CrushedPower.class.getSimpleName());
 
     public CrushedPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
-        this.name = NAME;
         priority = 4;
     }
 

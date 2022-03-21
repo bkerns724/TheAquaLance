@@ -9,7 +9,7 @@ import theArcanist.cards.damageMods.SoulFireDamage;
 import static theArcanist.ArcanistMod.makeID;
 
 public class ChanneledFlame extends AbstractArcanistCard {
-    public final static String ID = makeID("ChanneledFlame");
+    public final static String ID = makeID(ChanneledFlame.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;

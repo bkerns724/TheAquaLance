@@ -12,7 +12,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class VoidTendrils extends AbstractArcanistCard {
-    public final static String ID = makeID("VoidTendrils");
+    public final static String ID = makeID(VoidTendrils.class.getSimpleName());
     private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;

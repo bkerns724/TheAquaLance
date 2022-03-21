@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class BlackSigil extends AbstractArcanistCard {
-    public final static String ID = makeID("BlackSigil");
+    public final static String ID = makeID(BlackSigil.class.getSimpleName());
     private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
 

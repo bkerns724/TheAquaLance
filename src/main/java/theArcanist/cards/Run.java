@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class Run extends AbstractArcanistCard {
-    public final static String ID = makeID("Run");
+    public final static String ID = makeID(Run.class.getSimpleName());
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 3;

@@ -13,7 +13,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.vfx;
 
 public class ArcaneBeam extends AbstractArcanistCard {
-    public final static String ID = makeID("ArcaneBeam");
+    public final static String ID = makeID(ArcaneBeam.class.getSimpleName());
     private final static int DAMAGE = 22;
     private final static int UPGRADE_DAMAGE = 6;
     private final static int COST = 2;

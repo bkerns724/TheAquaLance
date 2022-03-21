@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class ScourgeBubble extends AbstractArcanistCard {
-    public final static String ID = makeID("ScourgeBubble");
+    public final static String ID = makeID(ScourgeBubble.class.getSimpleName());
     private final static int BLOCK = 8;
     private final static int UPGRADE_BLOCK = 4;
     private final static int MAGIC = 1;

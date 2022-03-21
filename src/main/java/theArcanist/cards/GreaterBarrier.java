@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 
 public class GreaterBarrier extends AbstractArcanistCard {
-    public final static String ID = makeID("GreaterBarrier");
+    public final static String ID = makeID(GreaterBarrier.class.getSimpleName());
     private final static int BLOCK = 16;
     private final static int UPGRADE_BLOCK = 4;
     private final static int COST = 2;

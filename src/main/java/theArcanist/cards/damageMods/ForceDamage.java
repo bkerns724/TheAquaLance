@@ -10,13 +10,16 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.powers.CrushedPower;
+import theArcanist.relics.BlueMarbles;
+import theArcanist.relics.ManaPurifier;
+
 import java.util.ArrayList;
 
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class ForceDamage extends AbstractDamageModifier {
-    public static final String ID = ArcanistMod.makeID("ForceDamage");
+    public static final String ID = ArcanistMod.makeID(ForceDamage.class.getSimpleName());
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo forceTooltip;
     public TooltipInfo forceTooltip2;
@@ -35,7 +38,11 @@ public class ForceDamage extends AbstractDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount,
                                         AbstractCreature target) {
+        if (adp() == null || adp().hasRelic(ManaPurifier.ID))
+            return;
         int totalDamage = unblockedAmount + blockedAmount;
+        if (adp().hasRelic(BlueMarbles.ID))
+            totalDamage *= 2;
         int crushed = totalDamage/6;
         if (crushed > 0) {
             applyToEnemyTop(target, new CrushedPower(target, crushed));

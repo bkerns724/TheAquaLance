@@ -7,7 +7,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class CeremonialRobe extends AbstractArcanistRelic {
-    public static final String ID = makeID("CeremonialRobe");
+    public static final String ID = makeID(CeremonialRobe.class.getSimpleName());
     private static final int DEX_LOSS = 1;
     private static final int DRAW_AMOUNT = 1;
 
@@ -15,6 +15,7 @@ public class CeremonialRobe extends AbstractArcanistRelic {
         super(ID, RelicTier.SHOP, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         amount = DRAW_AMOUNT;
         amount2 = DEX_LOSS;
+        setUpdatedDescription();
     }
 
     public void onEquip() {

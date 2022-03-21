@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 
 public class HardSigil extends AbstractArcanistCard {
-    public final static String ID = makeID("HardSigil");
+    public final static String ID = makeID(HardSigil.class.getSimpleName());
     private final static int BLOCK = 10;
     private final static int UPGRADE_BLOCK = 3;
 

@@ -3,21 +3,15 @@ package theArcanist.powers;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.att;
 
 public class TempHPOnHitPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("TempHPOnHit");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static String POWER_ID = ArcanistMod.makeID(TempHPOnHitPower.class.getSimpleName());
 
     public TempHPOnHitPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
-        this.name = NAME;
     }
 
     @Override

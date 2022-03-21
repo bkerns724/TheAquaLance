@@ -11,7 +11,7 @@ import static theArcanist.util.Wiz.adp;
 import static theArcanist.util.Wiz.atb;
 
 public class Bane extends AbstractArcanistCard {
-    public final static String ID = makeID("Bane");
+    public final static String ID = makeID(Bane.class.getSimpleName());
     private final static int MAGIC = 0;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = -1;
@@ -20,6 +20,7 @@ public class Bane extends AbstractArcanistCard {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

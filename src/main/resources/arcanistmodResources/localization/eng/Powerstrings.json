@@ -1,217 +1,236 @@
 {
-  "${ModID}:DiscardNextTurn": {
+  "${ModID}:DiscardNextTurnPower": {
     "NAME": "Discard Next Turn",
     "DESCRIPTIONS": [
       "Discard !A! card next turn.",
       "Discard !A! cards next turn."
     ]
   },
-  "${ModID}:DrawNextTurn": {
+  "${ModID}:DrawNextTurnPower": {
     "NAME": "Draw Next Turn",
     "DESCRIPTIONS": [
       "Draw !A! card next turn.",
       "Draw !A! cards next turn."
     ]
   },
-  "${ModID}:Resonating": {
+  "${ModID}:ResonatingPower": {
     "NAME": "Resonating",
     "DESCRIPTIONS": [
       "Adds a #yResonant card to the top of your deck at end of turn turn."
     ]
   },
-  "${ModID}:Frostbite": {
+  "${ModID}:FrostbitePower": {
     "NAME": "Frostbite",
     "DESCRIPTIONS": [
       "Whenever this enemy attacks, it suffers !A! damage then reduces Frostbite by 1."
     ]
   },
-  "${ModID}:Momentum": {
+  "${ModID}:FearPower": {
+    "NAME": "Fear",
+    "DESCRIPTIONS": [
+      "This is a debuff with no benefit."
+    ]
+  },
+  "${ModID}:SummonMonsterPower": {
+    "NAME": "Summon Monster",
+    "DESCRIPTIONS": [
+      "At the end of your turn Channel !A! panda that deals !A2! damage.",
+      "At the end of your turn Channel !A! pandas that deals !A2! damage."
+    ]
+  },
+  "${ModID}:MomentumPower": {
     "NAME": "Momentum",
     "DESCRIPTIONS": [
       "The first !A! time you attack each turn, draw a card.",
       "The first !A! times you attack each turn, draw a card."
     ]
   },
-  "${ModID}:EnergizedTurquoise": {
+  "${ModID}:EnergizedArcanistPower": {
     "NAME": "Energized",
     "DESCRIPTIONS": [
       "Gain #b !A! additional [E] next turn."
     ]
   },
-  "${ModID}:BrrZerk": {
+  "${ModID}:BrrZerkPower": {
     "NAME": "Brr Zerk",
     "DESCRIPTIONS": [
       "Whenever you attack, apply !A! #yFrostbite."
     ]
   },
-  "${ModID}:TempNegStrength": {
+  "${ModID}:TempNegStrengthPower": {
     "NAME": "Damage Down",
     "DESCRIPTIONS": [
       "Does !A! less damage with attacks this turn."
     ]
   },
-  "${ModID}:Crushed": {
+  "${ModID}:CrushedPower": {
     "NAME": "Crushed",
     "DESCRIPTIONS": [
       "Takes !A! more damage from attacks."
     ]
   },
-  "${ModID}:SpiritPressure": {
+  "${ModID}:SpiritPressurePower": {
     "NAME": "Spirit Pressure",
     "DESCRIPTIONS": [
       "At the start of your turn, apply !A! #yJinx to ALL enemies."
     ]
   },
-  "${ModID}:ChaosAura": {
+  "${ModID}:ChaosAuraPower": {
     "NAME": "Chaos Aura",
     "DESCRIPTIONS": [
       "At the start of your turn, apply !A! negative effect to ALL enemies.  !A2! out of 3 chance of an addition effect.",
       "At the start of your turn, apply !A! negative effects to ALL enemies.  !A2! out of 3 chance of an addition effect."
     ]
   },
-  "${ModID}:ChaoticMind": {
+  "${ModID}:ChaoticMindPower": {
     "NAME": "Chaotic Mind",
     "DESCRIPTIONS": [
       "Whenever you play a card this turn, discard !A! random card to draw !A! random card.",
       "Whenever you play a card this turn, discard !A! random cards to draw !A! random cards."
     ]
   },
-  "${ModID}:Bane": {
+  "${ModID}:BanePower": {
     "NAME": "Bane",
     "DESCRIPTIONS": [
       "#yJinx is !A! time more effective on the enemy.",
       "#yJinx is !A! times more effective on the enemy."
     ]
   },
-  "${ModID}:Corroded": {
+  "${ModID}:CorrodedPower": {
     "NAME": "Corroded",
     "DESCRIPTIONS": [
       "Vulnerable increases damage by an additional 50% for !A! turn.",
       "Vulnerable increases damage by an additional 50% for !A! turns."
     ]
   },
-  "${ModID}:ExplosiveSigil": {
+  "${ModID}:ExplosiveSigilsPower": {
     "NAME": "Explosive Sigils",
     "DESCRIPTIONS": [
       "Whenever you discard a #ySigil, ALL enemies lose !A! HP."
     ]
   },
-  "${ModID}:Nauseous": {
+  "${ModID}:NauseousPower": {
     "NAME": "Nauseous",
     "DESCRIPTIONS": [
       "Weak reduces damage by an additional 25% for !A! turn.",
       "Weak reduces damage by an additional 25% for !A! turns."
     ]
   },
-  "${ModID}:Decaying": {
+  "${ModID}:DecayingPower": {
     "NAME": "Decaying",
     "DESCRIPTIONS": [
       "Loses !A! HP at the start of its turn."
     ]
   },
-  "${ModID}:Shadowcloak": {
+  "${ModID}:ShadowcloakPower": {
     "NAME": "Shadowcloak",
     "DESCRIPTIONS": [
       "The first attack you play each turn does #b",
       "% more damage."
     ]
   },
-  "${ModID}:TempHPOnHit": {
+  "${ModID}:TempHPOnHitPower": {
     "NAME": "Life Leech",
     "DESCRIPTIONS": [
       "Gain !A! #yTemporary #yHP whenever you strike a target."
     ]
   },
-  "${ModID}:Jinx": {
+  "${ModID}:JinxPower": {
     "NAME": "Jinx",
     "DESCRIPTIONS": [
       "When debuffed, this creature will lose !A! HP."
     ]
   },
-  "${ModID}:Speed": {
+  "${ModID}:ClownNosePower": {
+    "NAME": "Clown Nose Problem",
+    "DESCRIPTIONS": [
+      "Should Not Be Seen."
+    ]
+  },
+  "${ModID}:SpeedPower": {
     "NAME": "Speed",
     "DESCRIPTIONS": [
       "At the start of your turn, draw !A! card and discard card.",
       "At the start of your turn, draw !A! cards and discard cards."
     ]
   },
-  "${ModID}:SoulFeed": {
+  "${ModID}:SoulFeedPower": {
     "NAME": "Soul Feed",
     "DESCRIPTIONS": [
       "Whenever a non-minion enemy dies, gain 1 Max HP."
     ]
   },
-  "${ModID}:HundredCuts": {
+  "${ModID}:HundredCutsPower": {
     "NAME": "Hundred Cuts",
     "DESCRIPTIONS": [
       "Whenever you play a card, deal !A! damage to a random enemy."
     ]
   },
-  "${ModID}:StoneSkin": {
+  "${ModID}:StoneskinPower": {
     "NAME": "Stoneskin",
     "DESCRIPTIONS": [
       "Whenever you would take damage, take !A! less."
     ]
   },
-  "${ModID}:JinxThorns": {
+  "${ModID}:JinxThornsPower": {
     "NAME": "Scourging Bubble",
     "DESCRIPTIONS": [
       "Whenever your are attacked, deal [${ModID}:ScourgeIcon] damage back.",
       "Whenever your are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
     ]
   },
-  "${ModID}:DarkerEmbrace": {
+  "${ModID}:DarkerEmbracePower": {
     "NAME": "Dark Embrace",
     "DESCRIPTIONS": [
       "Gain !A! #yTemporary #yHP whenever you attack this enemy."
     ]
   },
-  "${ModID}:Malevolence": {
+  "${ModID}:MalevolencePower": {
     "NAME": "Malevolence",
     "DESCRIPTIONS": [
       "Whenever you apply a debuff to an enemy, deal !A! damage, then increase this amount by !A2!."
     ]
   },
-  "${ModID}:IgnorePain": {
+  "${ModID}:IgnorePainPower": {
     "NAME": "Ignore Pain",
     "DESCRIPTIONS": [
       "At the start of your turn, exhaust the first !A! status card in your draw pile (checked first) or discard pile.",
       "At the start of your turn, exhaust the first !A! status cards in your draw pile (checked first) or discard pile."
     ]
   },
-  "${ModID}:ManaBurst": {
+  "${ModID}:ManaBurstPower": {
     "NAME": "Mana Burst",
     "DESCRIPTIONS": [
       "The first !A! time you discard a #ySigil each turn, gain [E].",
       "The first !A! times you discard a #ySigil each turn, gain [E]."
     ]
   },
-  "${ModID}:DreadfulFinale": {
+  "${ModID}:DreadfulFinalePower": {
     "NAME": "Dreadful Finale",
     "DESCRIPTIONS": [
       "Whenever you end your turn with no cards in hand, ALL enemies lose !A! #yStrength that turn."
     ]
   },
-  "${ModID}:ShockwaveSigils": {
+  "${ModID}:ShockwaveSigilsPower": {
     "NAME": "Shockwave Sigils",
     "DESCRIPTIONS": [
       "Whenever you discard a #ySigil, apply !A! crushed to ALL enemies."
     ]
   },
-  "${ModID}:EldritchStaff": {
+  "${ModID}:EldritchStaffPower": {
     "NAME": "Eldritch Staff",
     "DESCRIPTIONS": [
       "[${ModID}:DarkIcon] attacks grant twice as much #yTemporary #yHP.",
       "[${ModID}:DarkIcon] attacks grant !A! times extra #yTemporary #yHP."
     ]
   },
-  "${ModID}:SadisticGlee": {
+  "${ModID}:SadisticGleePower": {
     "NAME": "Sadistic Glee",
     "DESCRIPTIONS": [
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
     ]
   },
-  "${ModID}:ChaosForm": {
+  "${ModID}:ChaosFormPower": {
     "NAME": "Chaos Form",
     "DESCRIPTIONS": [
       "This was definitely a good idea."

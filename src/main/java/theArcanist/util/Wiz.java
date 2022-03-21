@@ -45,6 +45,14 @@ public class Wiz {
         thornDmg(m, amount, AbstractGameAction.AttackEffect.NONE);
     }
 
+    public static void thornDmgTop(AbstractCreature m, int amount, AbstractGameAction.AttackEffect AtkFX) {
+        att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AtkFX));
+    }
+
+    public static void thornDmgTop(AbstractCreature m, int amount) {
+        thornDmgTop(m, amount, AbstractGameAction.AttackEffect.NONE);
+    }
+
     public static void discard(int amount, boolean isRandom) {
         atb(new DiscardAction(adp(), adp(), amount, isRandom));
     }
@@ -235,5 +243,13 @@ public class Wiz {
         if (m == null || !m.hasPower(JinxPower.POWER_ID))
             return 0;
         return m.getPower(JinxPower.POWER_ID).amount;
+    }
+
+    public static String replaceLast(String string, String from, String to) {
+        int lastIndex = string.lastIndexOf(from);
+        if (lastIndex < 0)
+            return string;
+        String tail = string.substring(lastIndex).replaceFirst(from, to);
+        return string.substring(0, lastIndex) + tail;
     }
 }

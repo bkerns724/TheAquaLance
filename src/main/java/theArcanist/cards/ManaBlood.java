@@ -10,7 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class ManaBlood extends AbstractArcanistCard {
-    public final static String ID = makeID("ManaBlood");
+    public final static String ID = makeID(ManaBlood.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int COST = 2;
 

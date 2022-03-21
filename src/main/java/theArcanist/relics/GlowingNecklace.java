@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class GlowingNecklace extends AbstractClickRelic {
-    public static final String ID = makeID("GlowingNecklace");
+    public static final String ID = makeID(GlowingNecklace.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/ChaosButton.png";
     private static final int BUFF_AMOUNT = 1;
 
@@ -17,6 +17,7 @@ public class GlowingNecklace extends AbstractClickRelic {
         counter = 0;
         grayscale = true;
         amount = 1;
+        setUpdatedDescription();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package theArcanist.powers;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -9,19 +8,20 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.*;
 
-public class ExplosiveSigilPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("ExplosiveSigil");
+public class ClownNosePower extends AbstractArcanistPower implements InvisiblePower {
+    public static String POWER_ID = ArcanistMod.makeID(ClownNosePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public ExplosiveSigilPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, PowerType.BUFF, false, owner, amount);
+    public ClownNosePower(AbstractCreature owner) {
+        super(POWER_ID, PowerType.BUFF, false, owner,1);
         this.name = NAME;
     }
 
+
     @Override
-    public void onDiscardSigil() {
-        forAllMonstersLiving(m -> att(new LoseHPAction(m, owner, amount, AbstractGameAction.AttackEffect.FIRE)));
+    public void updateDescription() {
+        description = DESCRIPTIONS[0];
     }
 }

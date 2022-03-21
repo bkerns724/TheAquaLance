@@ -10,6 +10,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.actions.MyAddTempHPAction;
 import theArcanist.powers.EldritchStaffPower;
+import theArcanist.relics.BlueMarbles;
+import theArcanist.relics.ManaPurifier;
+import theArcanist.relics.DarkFunnel;
 
 import java.util.ArrayList;
 
@@ -19,8 +22,8 @@ import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class DarkDamage extends AbstractDamageModifier {
-    public static final String ID = ArcanistMod.makeID("DarkDamage");
-    public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String ID = ArcanistMod.makeID(DarkDamage.class.getSimpleName());
+    public CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo darkTooltip;
     public TooltipInfo darkTooltip2;
     private boolean visibleTips = true;
@@ -37,8 +40,16 @@ public class DarkDamage extends AbstractDamageModifier {
 
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
-        int tempHP = GetTriangleNumberRootFloor(unblockedAmount);
+        if (adp() == null || adp().hasRelic(ManaPurifier.ID))
+            return;
+        int tempHP;
+        if (adp().hasRelic(BlueMarbles.ID))
+            tempHP = GetTriangleNumberRootFloor(unblockedAmount*2);
+        else
+            tempHP = GetTriangleNumberRootFloor(unblockedAmount);
         if (tempHP > 0) {
+            if (adp().hasRelic(DarkFunnel.ID))
+                tempHP += 2;
             if (adp().hasPower(EldritchStaffPower.POWER_ID)) {
                 int mult = adp().getPower(EldritchStaffPower.POWER_ID).amount + 1;
                 att(new MyAddTempHPAction(adp(), adp(), tempHP*mult));

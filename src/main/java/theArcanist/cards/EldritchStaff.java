@@ -8,7 +8,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
 public class EldritchStaff extends AbstractArcanistCard {
-    public final static String ID = makeID("EldritchStaff");
+    public final static String ID = makeID(EldritchStaff.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADED_COST = 0;
     private final static int COST = 1;

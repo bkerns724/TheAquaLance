@@ -7,11 +7,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.relics.ManaPurifier;
+
 import java.util.ArrayList;
+
+import static theArcanist.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class SoulFireDamage extends AbstractDamageModifier {
-    public static final String ID = ArcanistMod.makeID("SoulFireDamage");
+    public static final String ID = ArcanistMod.makeID(SoulFireDamage.class.getSimpleName());
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo soulFireTooltip;
     private boolean visibleTips = true;
@@ -27,7 +31,7 @@ public class SoulFireDamage extends AbstractDamageModifier {
 
     @Override
     public boolean ignoresBlock(AbstractCreature dummy) {
-        return true;
+        return adp() == null || !adp().hasRelic(ManaPurifier.ID);
     }
 
     @Override

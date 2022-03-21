@@ -69,8 +69,10 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public boolean sigil = false;
     public boolean resonant = false;
 
-    private int cardDraw = 0;
-    private int energy = 0;
+    protected int cardDraw = 0;
+    protected int energy = 0;
+    protected int jinx = 0;
+    protected int chaos = 0;
 
     private static final Color FLAVOR_BOX_COLOR = Color.PURPLE.cpy();
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
@@ -103,8 +105,6 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public boolean checkMagicOneIsDebuff() {return magicOneIsDebuff;}
 
     public boolean checkMagicTwoIsDebuff() {return magicTwoIsDebuff;}
-
-    public void onManualDiscard() {}
 
     @Override
     public List<String> getCardDescriptors() {
@@ -188,8 +188,7 @@ public abstract class AbstractArcanistCard extends CustomCard {
             else if (x instanceof SoulFireDamage)
                 fire = true;
         }
-
-        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, magicNumber, secondMagic, cardDraw, energy));
+        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, jinx, chaos, cardDraw, energy));
     }
 
     @Override
