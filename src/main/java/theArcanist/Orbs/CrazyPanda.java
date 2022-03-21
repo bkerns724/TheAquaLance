@@ -1,5 +1,6 @@
 package theArcanist.Orbs;
 
+import basemod.abstracts.CustomOrb;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,9 +19,10 @@ import static java.lang.Math.pow;
 import static theArcanist.util.Wiz.atb;
 import static theArcanist.util.Wiz.att;
 
-public class CrazyPanda extends AbstractOrb {
+public class CrazyPanda extends CustomOrb {
     public static final String ORB_ID = ArcanistMod.makeID(CrazyPanda.class.getSimpleName());
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
+    public static final String NAME = orbString.NAME;
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
     private static final String IMG_PATH = "arcanistmodResources/images/vfx/CrazyPanda.png";
 
@@ -40,7 +42,7 @@ public class CrazyPanda extends AbstractOrb {
 
     public CrazyPanda(int passive)
     {
-        super();
+        super(ORB_ID, NAME, passive, 0, "", "", IMG_PATH);
         showEvokeValue = false;
         rotation = 0.0f;
         updateDescription();
@@ -53,11 +55,10 @@ public class CrazyPanda extends AbstractOrb {
 
     @Override
     public void playChannelSFX() {
-        CardCrawlGame.sound.play("BLUNT_HEAVY");
     }
 
     @Override
-    public void onEndOfTurn() {
+    public void onStartOfTurn() {
         atb(new PandaSmackAction(this));
     }
 

@@ -26,6 +26,7 @@ import com.megacrit.cardcrawl.neow.NeowReward;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.Strings;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.*;
@@ -210,6 +211,7 @@ public class ArcanistMod implements
         BaseMod.loadCustomStringsFile(PotionStrings.class, RESOURCES_PRE + "localization/eng/Powerstrings.json");
         BaseMod.loadCustomStringsFile(UIStrings.class, RESOURCES_PRE + "localization/eng/UIstrings.json");
         BaseMod.loadCustomStringsFile(PotionStrings.class, RESOURCES_PRE + "localization/eng/Potionstrings.json");
+        BaseMod.loadCustomStringsFile(OrbStrings.class, RESOURCES_PRE + "localization/eng/Orbstrings.json");
     }
 
     @Override

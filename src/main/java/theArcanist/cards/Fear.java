@@ -18,6 +18,7 @@ public class Fear extends AbstractArcanistCard {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

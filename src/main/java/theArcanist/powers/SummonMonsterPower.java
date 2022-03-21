@@ -12,7 +12,7 @@ import theArcanist.cards.SummonMonster;
 import static theArcanist.util.Wiz.*;
 
 public class SummonMonsterPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID(SummonMonster.class.getSimpleName());
+    public static String POWER_ID = ArcanistMod.makeID(SummonMonsterPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -27,7 +27,7 @@ public class SummonMonsterPower extends AbstractArcanistPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         for (int i = 0; i < amount; i++) {
-            atb(new IncreaseMaxOrbAction(amount));
+            atb(new IncreaseMaxOrbAction(1));
             atb(new ChannelAction(new CrazyPanda(amount2)));
         }
     }

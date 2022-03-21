@@ -14,10 +14,13 @@ public class Shatter extends AbstractArcanistCard {
     private final static int COST = 1;
     public Shatter() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int x = getJinxAmount(m);
+        if (x <= 0)
+            return;
         applyToEnemy(m, new CorrodedPower(m, x));
         applyToEnemy(m, new NauseousPower(m, x));
     }

@@ -1,0 +1,9 @@
+{
+  "${ModID}:CrazyPanda": {
+    "NAME": "Crazy Panda",
+    "DESCRIPTION": [
+      "At the end of your turn will deal #b",
+      " damage to a random enemy and inflict #yWeak or #yVulnerable."
+    ]
+  }
+}

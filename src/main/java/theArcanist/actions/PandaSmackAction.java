@@ -67,10 +67,9 @@ public class PandaSmackAction extends AbstractGameAction {
             if (target != null && target.currentHealth > 0 && adp() != null) {
                 int x = AbstractDungeon.miscRng.random(0, 1);
                 AbstractPower pow;
-                if (x == 0) {
+                if (x == 0)
                     pow = new VulnerablePower(target, 1, false);
-                    ReflectionHacks.setPrivate(pow, VulnerablePower.class, "justApplied", true);
-                } else
+                else
                     pow = new WeakPower(target, 1, false);
                 ApplyPowerAction action =  new ApplyPowerAction(target, adp(), pow);
                 ReflectionHacks.setPrivate(action, AbstractGameAction.class, "duration", 0);
