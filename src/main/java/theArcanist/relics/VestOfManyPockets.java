@@ -19,7 +19,7 @@ public class VestOfManyPockets extends AbstractClickRelic {
     }
 
     @Override
-    public void atBattleStartPreDraw() {
+    public void atPreBattle() {
         grayscale = false;
     }
 

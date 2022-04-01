@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.relics.ManaPurifier;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class SoulFireDamage extends AbstractDamageModifier {
 
     public SoulFireDamage() {
         soulFireTooltip = null;
+        DamageModsIDPatch.ID.set(this, ID);
     }
 
     public SoulFireDamage(boolean visTips) {

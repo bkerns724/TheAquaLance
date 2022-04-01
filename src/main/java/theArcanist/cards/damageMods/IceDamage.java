@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.FrostbitePower;
 import theArcanist.relics.BlueMarbles;
 import theArcanist.relics.ManaPurifier;
@@ -28,6 +29,7 @@ public class IceDamage extends AbstractDamageModifier {
     public IceDamage() {
         iceTooltip = null;
         iceTooltip2 = null;
+        DamageModsIDPatch.ID.set(this, ID);
     }
 
     public IceDamage(boolean visibleTips) {

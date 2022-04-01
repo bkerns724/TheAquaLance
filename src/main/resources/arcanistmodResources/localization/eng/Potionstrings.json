@@ -1,9 +1,80 @@
 {
-  "${ModID}:IntPotion": {
-    "NAME": "Intelligence Potion",
+  "${ModID}:CursedBrew": {
+    "NAME": "Cursed Brew",
     "DESCRIPTIONS": [
-      "Gain #b",
-      " #yIntelligence."
+      "Apply !P! #yJinx."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:DarkElixir": {
+    "NAME": "Dark Elixir",
+    "DESCRIPTIONS": [
+      "Gain !P! #yShadowcloak."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:SigilPotion": {
+    "NAME": "Sigil Potion",
+    "DESCRIPTIONS": [
+      "Add 1 of 3 random #ySigils to your hand and discard it.",
+      "Add !P! copies of 1 of 3 random #ySigils to your hand and discard them."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:StoneskinPotion": {
+    "NAME": "Stoneskin Potion",
+    "DESCRIPTIONS": [
+      "Reduce incoming attack damage by !P! this turn."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:LiquidCalamity": {
+    "NAME": "Liquid Calamity",
+    "DESCRIPTIONS": [
+      "Apply !P1! #yFrostbite, !P2! #yCrushed, and !P3! #yJinxed."
     ]
+  },
+  "${ModID}:ForbiddenFlask": {
+    "NAME": "Forbidden Flask",
+    "DESCRIPTIONS": [
+      "Add 1 of 3 random #yResonant cards to your hand.",
+      "Add !P! copies of 1 of 3 random #yResonant cards to your hand."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:WhirlpoolPotion": {
+    "NAME": "Whirlpool Potion",
+    "DESCRIPTIONS": [
+      "Draw !P! cards and discard !P! cards."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:ElixirOfFalseHealth": {
+    "NAME": "Elixir of False Health",
+    "DESCRIPTIONS": [
+      "Gain #yTemporary #yHP equal to !P!% of your max HP."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:NumbingPotion": {
+    "NAME": "Numbing Potion",
+    "DESCRIPTIONS": [
+      "Exhaust !P! status cards.  Priority is draw pile, discard pile, hand."
+    ],
+    "FLAVOR": "BEEP BOOP SHOOWHEE"
+  },
+  "${ModID}:SteelhidePotion": {
+    "NAME": "Steelhide Potion",
+    "DESCRIPTIONS": [
+      "Whenever you would take damage this combat, take !P! less."
+    ]
+  },
+  "${ModID}:PoisonousSmokeBomb": {
+    "NAME": "Poisonous Smoke Bomb",
+    "DESCRIPTIONS": [
+      "Flee from a normal combat.  Still gain rewards.",
+      "Flee from a non-boss combat.  Still gain rewards."
+    ],
+    "FLAVOR": "DO NOT DROP IT!"
   }
 }

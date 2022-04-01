@@ -6,8 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
-import theArcanist.Orbs.CrazyPanda;
-import theArcanist.cards.SummonMonster;
+import theArcanist.orbs.CrazyPanda;
 
 import static theArcanist.util.Wiz.*;
 

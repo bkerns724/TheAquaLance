@@ -1,7 +1,9 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import theArcanist.TheArcanist;
-import theArcanist.powers.JinxThornsPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -17,7 +19,16 @@ public class DarkClover extends AbstractArcanistRelic {
     }
 
     @Override
-    public void atBattleStart() {
-        applyToSelf(new JinxThornsPower(adp(), JINX_THORNS_AMOUNT));
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        AbstractCreature target = info.owner;
+        if (target != adp()) {
+            int count = getJinxAmount(target);
+            if (count > 0) {
+                flash();
+                att(new RelicAboveCreatureAction(target, this));
+                thornDmgTop(target, count);
+            }
+        }
+        return super.onAttacked(info, damageAmount);
     }
 }

@@ -1,0 +1,38 @@
+{
+  "${ModID}:MarketActOne": {
+    "NAME": "Small Market",
+    "DESCRIPTIONS": [
+      "You come across a small market amongst the slums.  You only see one thing that interests you amongst the stalls, a weaponsmith who is selling a set of oils to enchant weapons with magic effects.  You can sense that their magic is genuine.  On your way over, an alchemist sees a potion on your belt and offers you a good price for it.",
+      "You decide having a better fallback option for when you can't cast spells is a good investment.  You pay the price for the oil, and immediately rub some on your staff.  You prod the ground with your staff and it makes more of a dent than you expected.  Pleased, you carry on your way.",
+      "You decide that gold is always useful.  You sell one of your less useful potions to an alchemist and receive a bag of gold in return.  You're not convinced the potion was worth as much as he was offering, but that's not your problem.  You carry on your way.",
+      "You see nothing that interests you here.  You carry on your way."
+    ],
+    "OPTIONS": [
+      "[LOCKED] Requires: !E! Gold",
+      "[Buy Oil] #y!E! #yGold: #gGain #gEnchantment #gOils.",
+      "[LOCKED] Requires: Potion",
+      "[Sell Potion] #rLose #r!PotionString! Gain #y!E2! #yGold",
+      "[Keep Moving]",
+      "[Leave]"
+    ]
+  },
+  "${ModID}:FightingPit": {
+    "NAME": "Fighting Pit",
+    "DESCRIPTIONS": [
+      "You come across a building that looks like a colosseum, except smaller.  And painted to look like stone instead of actually made of stone.  A gremlin in oversized armor clanks his way up to you.  \"Are you here to fight?  We have great prizes!  Especially if you take on our toughest fight!\"",
+      "You easily dispatch your opponents.  The gremlins overseeing the fight seem displeased that you undersold your fighting capabilities, but they don't seem eager to confront you either.  The clanky gremlin hands brings you a moderate amount of gold without saying anything.",
+      "It wasn't easy but you prevail.  The crowd erupts into cheers.  The clanky gremlin comes up to you and hands you a flask filled with dark green swirling smoke.  \"Here is your prize!  Don't drop it!  Seriously, DO NOT DROP IT!\"",
+      "You see no reason to risk your neck here.  The clanky gremlin suggests you could buy a ticket to spectate, but you aren't interested.",
+      "You take your winnings and leave.",
+      "Great Rewards",
+      "Standard elite rewards and a #yPoisonous #ySmoke #yBomb."
+    ],
+    "OPTIONS": [
+      "[Regular Fight] Fight an easy fight.  Normal Combat Rewards.",
+      "[Tough Fight] Fight a tough Elite.  Gain Great Rewards.",
+      "[Refuse]",
+      "[Collect Winnings]",
+      "[Leave]"
+    ]
+  }
+}

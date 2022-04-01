@@ -9,6 +9,7 @@ import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 
+// Got this from Jorb's Wanderer mod
 public class CutsceneMultiScreenPatch {
     @SpirePatch(
             clz = CutscenePanel.class,

@@ -23,5 +23,11 @@
     "TEXT": [
       "#gObtain #gan #gunique #gArcanist #gcard."
     ]
+  },
+  "${ModID}:PotionPatch": {
+    "TEXT": [
+      "Event:",
+      "Potions that can only be obtained through events."
+    ]
   }
 }

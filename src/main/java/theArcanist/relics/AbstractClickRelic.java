@@ -3,23 +3,33 @@ package theArcanist.relics;
 import basemod.AutoAdd;
 import basemod.ClickableUIElement;
 import basemod.ReflectionHacks;
+import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.github.tommyettinger.colorful.Shaders;
+import com.google.gson.reflect.TypeToken;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theArcanist.ArcanistMod;
+import theArcanist.VFX.FlashClickRelicEffect;
 import theArcanist.util.TexLoader;
+
+import java.lang.reflect.Type;
 
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
-public abstract class AbstractClickRelic extends AbstractArcanistRelic {
+public abstract class AbstractClickRelic extends AbstractArcanistRelic implements CustomSavable<Boolean> {
     private RelicClickable element;
 
     // Constructor of ClickableUIElement scales its inputs with Settings.scale
@@ -32,6 +42,8 @@ public abstract class AbstractClickRelic extends AbstractArcanistRelic {
     protected static final ShaderProgram shade = new ShaderProgram(Shaders.vertexShaderHSLC, Shaders.fragmentShaderHSLC);
     protected static final Color HSLC = new Color(0.5f, 0.5f, 0.7f, 0.5f);
 
+    protected boolean firstBattle = true;
+
     public AbstractClickRelic(String ID, RelicTier tier, LandingSound sound, AbstractCard.CardColor color,
                               String textureString) {
         super(ID, tier, sound, color);
@@ -42,7 +54,37 @@ public abstract class AbstractClickRelic extends AbstractArcanistRelic {
             }
         }
         element = new RelicClickable(textureString);
-        ArcanistMod.logger.info(this.getClass().getName());
+    }
+
+    @Override
+    public void atTurnStartPostDraw() {
+        if (firstBattle)
+            element.firstBattleFlash();
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        element.update();
+    }
+
+    @Override
+    public Boolean onSave() {
+        return firstBattle;
+    }
+
+    @Override
+    public void onLoad(Boolean foo) {
+        if (foo != null)
+            firstBattle = foo;
+        else
+            ArcanistMod.logger.info("Loaded a null value");
+    }
+
+    @Override
+    public Type savedType()
+    {
+        return new TypeToken<Boolean>(){}.getType();
     }
 
     public RelicClickable getElement() {return element;}
@@ -58,6 +100,10 @@ public abstract class AbstractClickRelic extends AbstractArcanistRelic {
 
         @Override
         protected void onHover() {
+            if (firstBattle)
+                return;
+            float y = TipHelper.calculateToAvoidOffscreen(tips, InputHelper.mY);
+            TipHelper.queuePowerTips((float)InputHelper.mX + 60.0F * Settings.scale, InputHelper.mY + y, tips);
         }
 
         @Override
@@ -67,6 +113,20 @@ public abstract class AbstractClickRelic extends AbstractArcanistRelic {
                     !AbstractDungeon.actionManager.usingCard && !grayscale) {
                 buttonPress();
             }
+        }
+
+        public void firstBattleFlash() {
+            AbstractGameEffect effect = new FlashClickRelicEffect(AbstractClickRelic.this);
+            atb(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    if (duration == startDuration) {
+                        isDone = true;
+                        firstBattle = false;
+                    }
+                }
+            });
+            atb(new VFXAction(effect, 0.5f));
         }
 
         @Override
@@ -87,6 +147,8 @@ public abstract class AbstractClickRelic extends AbstractArcanistRelic {
     }
 
     public void doRender(SpriteBatch sb) {
+        if (firstBattle)
+            return;
         if (grayscale || element.elementGrayscale)
             element.render(sb, Color.GRAY.cpy());
         else {

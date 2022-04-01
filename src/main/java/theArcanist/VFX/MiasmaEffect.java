@@ -20,9 +20,8 @@ public class MiasmaEffect extends AbstractGameEffect {
         if (duration == 0.2F) {
             CardCrawlGame.sound.play("ATTACK_WHIFF_2");
 
-            for(int i = 0; i < 90; ++i) {
+            for(int i = 0; i < 90; ++i)
                 AbstractDungeon.effectsQueue.add(new MiasmaBlurEffect(x, y));
-            }
         }
 
         duration -= Gdx.graphics.getDeltaTime();

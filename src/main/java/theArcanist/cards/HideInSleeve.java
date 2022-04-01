@@ -3,7 +3,7 @@ package theArcanist.cards;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.actions.MakeAndDiscardSigilAction;
+import theArcanist.actions.MakeAndDiscardAction;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -48,7 +48,7 @@ public class HideInSleeve extends AbstractArcanistCard {
 
         c = list.get(cardRandomRng.random(list.size() - 1));
 
-        atb(new MakeAndDiscardSigilAction((AbstractArcanistCard) c));
+        atb(new MakeAndDiscardAction((AbstractArcanistCard) c));
     }
 
     public void upp() {

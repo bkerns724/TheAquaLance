@@ -13,6 +13,12 @@
       "Draw !A! cards next turn."
     ]
   },
+  "${ModID}:SteelhidePower": {
+    "NAME": "Steelhide",
+    "DESCRIPTIONS": [
+      "Whenever you would take damage, take !A! less."
+    ]
+  },
   "${ModID}:ResonatingPower": {
     "NAME": "Resonating",
     "DESCRIPTIONS": [
@@ -73,6 +79,12 @@
     "NAME": "Spirit Pressure",
     "DESCRIPTIONS": [
       "At the start of your turn, apply !A! #yJinx to ALL enemies."
+    ]
+  },
+  "${ModID}:MiniWrathPower": {
+    "NAME": "Rage",
+    "DESCRIPTIONS": [
+      "Deal an extra !A!% damage this turn."
     ]
   },
   "${ModID}:ChaosAuraPower": {

@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.random.Random;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theArcanist.actions.TimedVFXAction;
@@ -71,6 +72,14 @@ public class Wiz {
 
     public static void removePower(AbstractPower pow) {
         atb(new RemoveSpecificPowerAction(pow.owner, pow.owner, pow));
+    }
+
+    public static AbstractRelic randRelic() {
+        return AbstractDungeon.returnRandomRelic(AbstractDungeon.returnRandomRelicTier());
+    }
+
+    public static AbstractRoom adRoom() {
+        return AbstractDungeon.getCurrRoom();
     }
 
     public static ArrayList<AbstractCard> getAllCardsInCardGroups(boolean includeHand, boolean includeExhaust) {

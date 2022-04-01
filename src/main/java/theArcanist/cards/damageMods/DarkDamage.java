@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.actions.MyAddTempHPAction;
+import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.EldritchStaffPower;
 import theArcanist.relics.BlueMarbles;
 import theArcanist.relics.ManaPurifier;
@@ -31,6 +32,7 @@ public class DarkDamage extends AbstractDamageModifier {
     public DarkDamage() {
         darkTooltip = null;
         darkTooltip2 = null;
+        DamageModsIDPatch.ID.set(this, ID);
     }
 
     public DarkDamage(boolean visTips) {

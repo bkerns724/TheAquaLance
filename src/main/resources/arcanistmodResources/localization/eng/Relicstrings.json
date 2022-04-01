@@ -25,14 +25,14 @@
     "NAME": "Vest Of Many Pockets",
     "FLAVOR": "It's got pockets for days.",
     "DESCRIPTIONS": [
-      "Once per combat you can click to draw !R! card then discard !R! card."
+      "#y${ModID}:Activated.  Once per combat you can draw !R! card then discard !R! card."
     ]
   },
   "${ModID}:GlowingNecklace": {
     "NAME": "Glowing Necklace",
     "FLAVOR": "It slowly pulls in mana from its surroundings.",
     "DESCRIPTIONS": [
-      "At end of combat, gain !R! charge.  Click to spend all charges, gaining !R! random buff per charge."
+      "#y${ModID}:Activated.  At end of combat, gain !R! charge.  You can spend all charges to gain !R! random buff per charge."
     ]
   },
   "${ModID}:DarkClover": {
@@ -74,14 +74,14 @@
     "NAME": "Stone Scales",
     "FLAVOR": "You wonder what turned these scales to stone.",
     "DESCRIPTIONS": [
-      "Once per combat you can click to reduce the attack damage you take by !R! this turn."
+      "#y${ModID}:Activated.  Once per combat you can reduce the attack damage you take by !R! for one turn."
     ]
   },
   "${ModID}:EtherealConverter": {
     "NAME": "Ethereal Converter",
     "FLAVOR": "You have no idea how this works.",
     "DESCRIPTIONS": [
-      "Once per combat you can click to turn your block into #yTemporary_HP."
+      "#y${ModID}:Activated.  Once per combat you can turn your block into #yTemporary_HP."
     ]
   },
   "${ModID}:DiscardedCloak": {
@@ -95,7 +95,7 @@
     "NAME": "Eyeball Staff",
     "FLAVOR": "The eye is attracted to movement.",
     "DESCRIPTIONS": [
-      "Once per combat you can click to Scry !R!.  Play any #y${ModID}:Sigils you discard."
+      "#y${ModID}:Activated.  Once per combat you can Scry !R!.  Play any #y${ModID}:Sigils you discard."
     ]
   },
   "${ModID}:ManaPurifier": {
@@ -116,7 +116,7 @@
     "NAME": "Boots Of Speed",
     "FLAVOR": "WHEEEEEEE.",
     "DESCRIPTIONS": [
-      "Click to spend [E] to draw !R! cards."
+      "#y{ModID}.  You can spend [E] to draw !R! cards."
     ]
   },
   "${ModID}:VialOfBlackBlood": {
@@ -131,7 +131,7 @@
     "NAME": "Reverse Omamori",
     "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
     "DESCRIPTIONS": [
-      "Apply !R! #y${ModID}:Jinx to ALL enemies at the start of combat per curse in your deck. NL Add !R2! Clumsy to your deck."
+      "Apply !R! #y${ModID}:Jinx to ALL enemies at the start of combat per curse in your deck. NL Upon pickup, add !R2! #yClumsy to your deck."
     ]
   },
   "${ModID}:VialOfNectar": {
@@ -188,6 +188,20 @@
     "FLAVOR": "I wouldn't drink out of this one either.",
     "DESCRIPTIONS": [
       "Whenever you gain #yTemporary_HP from [${ModID}:DarkIcon] attacks, gain !R! more."
+    ]
+  },
+  "${ModID}:EnchantmentOils": {
+    "NAME": "Enchantment Oils",
+    "FLAVOR": "Makes your sword magic, just rub it on.",
+    "DESCRIPTIONS": [
+      "All of your basic strikes gain a random damage type and deal !R! additional damage."
+    ]
+  },
+  "${ModID}:HexedStaff": {
+    "NAME": "Hexed Staff",
+    "FLAVOR": ".",
+    "DESCRIPTIONS": [
+      "For each curse in your deck, apply !R! extra stack of #y${ModID}:Jinx whenever you apply #y${ModID}:Jinx.  Upon pickup, add #yWrath to your deck."
     ]
   },
   "${ModID}:RandomRelic": {

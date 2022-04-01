@@ -16,6 +16,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -23,13 +24,16 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.neow.NeowReward;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.util.Strings;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.*;
+import theArcanist.events.FightingPit;
+import theArcanist.events.MarketActOne;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractArcanistRelic;
 
@@ -38,6 +42,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import static theArcanist.TheArcanist.Enums.THE_ARCANIST;
+import static theArcanist.util.Wiz.*;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -48,6 +53,7 @@ public class ArcanistMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         AddAudioSubscriber,
+        OnStartBattleSubscriber,
         PostInitializeSubscriber {
 
     public static final String SETTINGS_FILE = "ArcanistModSettings";
@@ -146,6 +152,8 @@ public class ArcanistMod implements
         public static AbstractCard.CardRarity UNIQUE;
         @SpireEnum
         public static NeowReward.NeowRewardType UNIQUE_REWARD;
+        @SpireEnum
+        public static AbstractPotion.PotionRarity EVENT;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -208,10 +216,10 @@ public class ArcanistMod implements
         BaseMod.loadCustomStringsFile(RelicStrings.class, RESOURCES_PRE + "localization/eng/Relicstrings.json");
         BaseMod.loadCustomStringsFile(CharacterStrings.class, RESOURCES_PRE + "localization/eng/Charstrings.json");
         BaseMod.loadCustomStringsFile(PowerStrings.class, RESOURCES_PRE + "localization/eng/Powerstrings.json");
-        BaseMod.loadCustomStringsFile(PotionStrings.class, RESOURCES_PRE + "localization/eng/Powerstrings.json");
-        BaseMod.loadCustomStringsFile(UIStrings.class, RESOURCES_PRE + "localization/eng/UIstrings.json");
         BaseMod.loadCustomStringsFile(PotionStrings.class, RESOURCES_PRE + "localization/eng/Potionstrings.json");
+        BaseMod.loadCustomStringsFile(UIStrings.class, RESOURCES_PRE + "localization/eng/UIstrings.json");
         BaseMod.loadCustomStringsFile(OrbStrings.class, RESOURCES_PRE + "localization/eng/Orbstrings.json");
+        BaseMod.loadCustomStringsFile(EventStrings.class, RESOURCES_PRE + "localization/eng/Eventstrings.json");
     }
 
     @Override
@@ -229,17 +237,14 @@ public class ArcanistMod implements
 
     @Override
     public void receivePostInitialize() {
-        BaseMod.addPotion(IntPotion.class, Color.YELLOW.cpy(), null, null, IntPotion.POTION_ID, THE_ARCANIST);
+        addPotions();
+        addEvents();
     }
 
     private void setupSettings () {
         ModPanel settingsPanel = new ModPanel();
 
         float currentYposition = 740f;
-
-        logger.info(makeID(EXTENDED_CUT_UISTRING));
-        logger.info(CardCrawlGame.languagePack.getUIString(makeID(EXTENDED_CUT_UISTRING)));
-        logger.info(CardCrawlGame.languagePack.getUIString(makeID(EXTENDED_CUT_UISTRING)).TEXT[0]);
 
         ModLabeledToggleButton extendedCutButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
                 makeID(EXTENDED_CUT_UISTRING)).TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR,
@@ -253,13 +258,9 @@ public class ArcanistMod implements
 
         settingsPanel.addUIElement(extendedCutButton);
 
-        logger.info("Load Badge Image and make settings panel");
         Texture badgeTexture = new Texture(BADGE_IMG);
         BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
                 settingsPanel);
-
-        logger.info("Done loading badge Image");
-        logger.info("Done loading badge Image and mod options");
     }
 
     private void saveConfig() {
@@ -271,9 +272,8 @@ public class ArcanistMod implements
     }
 
     public static boolean isExtendedCut() {
-        if (modConfig == null) {
+        if (modConfig == null)
             return false;
-        }
         return modConfig.getBool(EXTENDED_CUT_SETTING);
     }
 
@@ -281,5 +281,30 @@ public class ArcanistMod implements
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
         BaseMod.addAudio(PEW_KEY, PEW_OGG);
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom room) {
+        if (room.event instanceof FightingPit && room.eliteTrigger)
+            forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, FightingPit.HEALTH_BUFF, true)));
+    }
+
+    private static void addEvents() {
+        BaseMod.addEvent(MarketActOne.getParams());
+        BaseMod.addEvent(FightingPit.getParams());
+    }
+
+    private static void addPotions() {
+        BaseMod.addPotion(CursedBrew.class, Color.PURPLE.cpy(), Color.BLACK.cpy(), null, CursedBrew.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(DarkElixir.class, Color.DARK_GRAY.cpy(), Color.BLACK.cpy(), null, DarkElixir.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(SigilPotion.class, Color.GOLD.cpy(), Color.GOLDENROD.cpy(), null, SigilPotion.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(LiquidCalamity.class, Color.BLUE.cpy(), Color.PINK.cpy(), Color.PURPLE.cpy(), LiquidCalamity.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(ForbiddenFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, ForbiddenFlask.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(NumbingPotion.class, Color.ORANGE.cpy(), Color.GOLD, null, NumbingPotion.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(SteelhidePotion.class, Color.LIGHT_GRAY.cpy(), Color.GRAY.cpy(), null, SteelhidePotion.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(PoisonousSmokeBomb.class, Color.DARK_GRAY.cpy(), null, Color.GREEN, PoisonousSmokeBomb.POTION_ID, THE_ARCANIST);
     }
 }

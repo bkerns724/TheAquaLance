@@ -1,4 +1,4 @@
-package theArcanist.Orbs;
+package theArcanist.orbs;
 
 import basemod.abstracts.CustomOrb;
 import com.badlogic.gdx.Gdx;

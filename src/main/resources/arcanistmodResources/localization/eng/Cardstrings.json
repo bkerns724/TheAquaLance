@@ -1,7 +1,7 @@
 {
   "${ModID}:Strike": {
-    "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage.",
+    "NAME": "~PREFIX~Strike",
+    "DESCRIPTION": "Deal !D! ~ICON~damage.",
     "FLAVOR": 
       "We've lost so many wizards we have to send our apprentices to the battle field.  Some of them are only good at hitting the monsters with a stick."
   },
@@ -348,8 +348,8 @@
   },
   "${ModID}:IgnorePain": {
     "NAME": "Ignore Pain",
-    "DESCRIPTION": "At the start of your turn, exhaust the first status card in your draw pile (checked first) or discard pile.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, exhaust the first status card in your draw pile (checked first) or discard pile. NL Exhaust one now."
+    "DESCRIPTION": "At the start of your turn, exhaust a status card. NL Priority is draw pile, discard pile, hand.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, exhaust a status card. NL Priority is draw pile, discard pile, hand. NL Exhaust one now."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
@@ -451,6 +451,10 @@
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",
     "DESCRIPTION": "At the end of your turn, Channel a !M! damage Panda."
+  },
+  "${ModID}:Wrath": {
+    "NAME": "Wrath",
+    "DESCRIPTION": "Gain !M! Vulnerable and deal 50% more damage for one turn when drawn."
   },
   "${ModID}:Write": {
     "NAME": "Write",

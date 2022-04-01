@@ -47,7 +47,7 @@ import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public abstract class AbstractArcanistCard extends CustomCard {
-    protected final CardStrings cardStrings;
+    protected CardStrings cardStrings;
 
     public int secondMagic;
     public int baseSecondMagic;
@@ -84,15 +84,9 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
-        cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
-        rawDescription = cardStrings.DESCRIPTION;
-        name = originalName = cardStrings.NAME;
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
         FlavorText.AbstractCardFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
-
-        initializeTitle();
-        initializeDescription();
 
         if (textureImg.contains("ui/missing.png")) {
             if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
@@ -146,15 +140,13 @@ public abstract class AbstractArcanistCard extends CustomCard {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        if (!sigil)
-            return true;
-
         boolean superBool = super.canUse(p, m);
+
         if (!superBool) {
             beingDiscarded = false;
             return false;
         }
-        if (!beingDiscarded) {
+        else if (!beingDiscarded && sigil) {
             cantUseMessage = CAN_NOT_PLAY_MESSAGE;
             return false;
         }
@@ -247,6 +239,8 @@ public abstract class AbstractArcanistCard extends CustomCard {
         }
     }
 
+    public abstract void upp();
+
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
@@ -257,7 +251,16 @@ public abstract class AbstractArcanistCard extends CustomCard {
         }
     }
 
-    public abstract void upp();
+    public void additionalParsing() {};
+
+    @Override
+    public void initializeDescription() {
+        cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
+        rawDescription = cardStrings.DESCRIPTION;
+        name = originalName = cardStrings.NAME;
+        additionalParsing();
+        super.initializeDescription();
+    }
 
     public void update() {
         super.update();

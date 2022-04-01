@@ -21,20 +21,8 @@ public class IgnorePain extends AbstractArcanistCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new IgnorePainPower(p, magicNumber));
-        if (upgraded) {
-            for (AbstractCard card : adp().drawPile.group) {
-                if (card.type == AbstractCard.CardType.STATUS) {
-                    atb(new IgnorePainAction(card));
-                    return;
-                }
-            }
-            for (AbstractCard card : adp().discardPile.group) {
-                if (card.type == AbstractCard.CardType.STATUS) {
-                    atb(new IgnorePainAction(card));
-                    return;
-                }
-            }
-        }
+        if (upgraded)
+            atb(new IgnorePainAction());
     }
 
     public void upp() {

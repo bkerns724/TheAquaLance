@@ -4,6 +4,7 @@ import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
 
+// Code in FrostbitePower
 public class UnmeltingIce extends AbstractArcanistRelic {
     public static final String ID = makeID(UnmeltingIce.class.getSimpleName());
     public static final int FROST_BOOST = 2;

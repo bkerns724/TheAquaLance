@@ -99,7 +99,6 @@ public class SensoryStonePatch {
             newCards.add(new ScourgeBubble());
             newCards.add(new ChanneledChaos());
             newCards.add(new ManaBlood());
-            ArcanistMod.logger.info(newCards.size());
             AbstractArcanistCard newCard = newCards.get(y);
             rewardItem.cards.add(x, newCard);
 

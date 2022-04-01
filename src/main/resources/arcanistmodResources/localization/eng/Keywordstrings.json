@@ -10,6 +10,14 @@
     "DESCRIPTION": "Sigils are unplayable cards whose effects trigger when they are discarded from your hand."
   },
   {
+    "PROPER_NAME": "Activated",
+    "NAMES": [
+      "Activated",
+      "activated"
+    ],
+    "DESCRIPTION": "Activated relics do not have a passive effect.  They have an instant effect when their button is clicked."
+  },
+  {
     "PROPER_NAME": "Scourge [${ModID}:ScourgeIcon]",
     "NAMES": [
       "Scourge",

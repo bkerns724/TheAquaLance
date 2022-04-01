@@ -17,8 +17,6 @@ public class LagavulinFixPatch {
         return SpireReturn.Continue();
     }
     private static class Locator extends SpireInsertLocator {
-        private Locator() {
-        }
         public int[] Locate(CtBehavior ctBehavior) throws Exception {
             Matcher matcher = new Matcher.MethodCallMatcher(AnimationState.class, "setAnimation");
             return LineFinder.findInOrder(ctBehavior, matcher);

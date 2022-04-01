@@ -11,6 +11,7 @@ import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,10 +23,12 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theArcanist.VFX.ArcanistVictoryEffect;
 import theArcanist.cards.*;
+import theArcanist.events.FightingPit;
 import theArcanist.patches.CutsceneMultiScreenPatch;
 import theArcanist.relics.*;
 
@@ -101,7 +104,6 @@ public class TheArcanist extends CustomPlayer {
                 SHOULDER1, SHOULDER2, CORPSE,
                 getLoadout(), -20.0F, -24.0F, 240.0F, 240.0F, new EnergyManager(3));
 
-        logger.info("Start Arcanist animation");
         loadAnimation(SKELETON_ATLAS, SKELETON_JSON, 1.0F);
         AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
         stateData.setMix("Hit", "Idle", 0.1F);
@@ -172,10 +174,6 @@ public class TheArcanist extends CustomPlayer {
         // Even if the other characters do it, mine won't
         // CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
         Collection<AbstractCustomIcon> icons = CustomIconHelper.getAllIcons();
-        for (AbstractCustomIcon x : icons) {
-            logger.info(x.name);
-            logger.info(x.cardCode());
-        }
     }
 
     @Override

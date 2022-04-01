@@ -5,7 +5,9 @@ import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theArcanist.ArcanistMod;
+import theArcanist.relics.HexedStaff;
 import theArcanist.relics.PaperKat;
 
 import static theArcanist.util.Wiz.adp;
@@ -16,6 +18,13 @@ public class JinxPower extends AbstractArcanistPower implements OnReceivePowerPo
 
     public JinxPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
+        if (adp().hasRelic(HexedStaff.ID)) {
+            AbstractRelic staff = adp().getRelic(HexedStaff.ID);
+            if (staff.counter == 0)
+                return;
+            staff.flash();
+            this.amount += staff.counter;
+        }
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import theArcanist.Orbs.CrazyPanda;
+import theArcanist.orbs.CrazyPanda;
 
 import static theArcanist.util.Wiz.adp;
 import static theArcanist.util.Wiz.att;
