@@ -55,7 +55,7 @@ public class MarketActOne extends AbstractArcanistEvent {
         params.eventClass = MarketActOne.class;
         params.eventID = ID;
         params.eventType = TYPE;
-        params.dungeonIDs = new ArrayList<String>();
+        params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(Exordium.ID);
         params.playerClass = TheArcanist.Enums.THE_ARCANIST;
         params.bonusCondition = () -> (adp().gold >= GOLD_FOR_OIL || adp().hasAnyPotions());

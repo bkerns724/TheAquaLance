@@ -32,6 +32,7 @@ import org.apache.logging.log4j.Logger;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.*;
+import theArcanist.events.ClericsRequest;
 import theArcanist.events.FightingPit;
 import theArcanist.events.MarketActOne;
 import theArcanist.potions.*;
@@ -292,6 +293,7 @@ public class ArcanistMod implements
     private static void addEvents() {
         BaseMod.addEvent(MarketActOne.getParams());
         BaseMod.addEvent(FightingPit.getParams());
+        BaseMod.addEvent(ClericsRequest.getParams());
     }
 
     private static void addPotions() {

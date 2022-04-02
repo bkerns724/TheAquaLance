@@ -3,7 +3,6 @@ package theArcanist.relics;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theArcanist.TheArcanist;
 import theArcanist.cards.Wrath;
@@ -16,6 +15,8 @@ public class HexedStaff extends AbstractArcanistRelic {
     public HexedStaff() {
         super(ID, RelicTier.SPECIAL, LandingSound.HEAVY, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         cardToPreview = new Wrath();
+        amount = 1;
+        setUpdatedDescription();
     }
 
     @Override

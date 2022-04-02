@@ -199,9 +199,9 @@
   },
   "${ModID}:HexedStaff": {
     "NAME": "Hexed Staff",
-    "FLAVOR": ".",
+    "FLAVOR": "Whenever you hold it, you immediately feel angrier.",
     "DESCRIPTIONS": [
-      "For each curse in your deck, apply !R! extra stack of #y${ModID}:Jinx whenever you apply #y${ModID}:Jinx.  Upon pickup, add #yWrath to your deck."
+      "For each curse in your deck, apply !R! extra stack of #y${ModID}:Jinx whenever you apply #yJinx.  Upon pickup, add [#EFC851]Wrath to your deck."
     ]
   },
   "${ModID}:RandomRelic": {
