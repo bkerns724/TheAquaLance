@@ -76,5 +76,12 @@
       "Flee from a non-boss combat.  Still gain rewards."
     ],
     "FLAVOR": "DO NOT DROP IT!"
+  },
+  "${ModID}:ToxicOil": {
+    "NAME": "Toxic Oil",
+    "DESCRIPTIONS": [
+      "Whenever your attacks deal unblocked damage, the target takes !P! damage at the start of their turn, every turn."
+    ],
+    "FLAVOR": "Some mysterious green cloaked stranger has been selling these for a lot of money."
   }
 }

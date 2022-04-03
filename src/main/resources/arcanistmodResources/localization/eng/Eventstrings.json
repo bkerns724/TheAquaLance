@@ -38,7 +38,7 @@
   "${ModID}:ClericsRequest": {
     "NAME": "Cleric's Request",
     "DESCRIPTIONS": [
-      "You jump in surprise as a voice behind you screams.  @\"Friend!@  @I@ @have@ @a@ @deal@ @for@ @you!@  @You@ @can@ @have@ @this@ @powerful@ @staff@ @for@ @free@ @if@ @you@ @take@ @its@ @curse@ @away@ @from@ @here!\"@  After he sees you hesitate at the mention of a curse, he screams again.  @\"Or@ @you@ @can@ @buy@ @a@ @+1@ @increase@ @to@ @your@ @constition!\"@  You don't know who this blue guy with the weird gold jewelry is, but you wish you had spent time to learn the silence spell.",
+      "You jump in surprise as a voice behind you screams.  @\"Friend!@  @I@ @have@ @a@ @deal@ @for@ @you!@  @You@ @can@ @have@ @this@ @powerful@ @staff@ @for@ @free@ @if@ @you@ @take@ @its@ @curse@ @away@ @from@ @here!\"@  After he sees you hesitate at the mention of a curse, he screams again.  @\"Or@ @you@ @can@ @buy@ @a@ @+1@ @increase@ @to@ @your@ @constitution!\"@  You don't know who this blue guy with the weird gold jewelry is, but you wish you had spent time to learn the silence spell.",
       "You can sense the power of the staff, and also its malice.  You decide that harnessing its power is worth the risk.",
       "You give him the gold, along with a suggestion that he use it to buy an indoor voice.  He casts his magic on you in return and the effect is subtle, but your bruises and cuts bother you a little less.",
       "You don't think people that scream a lot for no reason are sane, so you leave without making a deal."
@@ -47,6 +47,23 @@
       "[Staff] Gain #gHexed #gStaff.  It comes with #rWrath.",
       "[Max HP] #y!E! #yGold:  Gain #g!E2! #gMax #gHP.",
       "[Max HP] Requires: !E! Gold.",
+      "[Refuse]",
+      "[Leave]"
+    ]
+  },
+  "${ModID}:MarketActTwo": {
+    "NAME": "Bustling Market",
+    "DESCRIPTIONS": [
+      "You come across a busy market in the middle of the city.  You don't see anything that could aid you in the battles ahead; most of the stalls are selling things like food, clothing, and other household goods.  However, eventually you come across a potion shop.  They're almost sold out after a busy day but they do have one interesting (and expensive) item left: a potent magical poison that can soak into the wood of a wand or staff, empowering the spells cast with it for the next several minutes with a toxic effect.",
+      "This poison was expensive, but you're satisfied with your purchase.",
+      "You're giving up a valuable potion, to be sure, but you think this poison is even more useful to you.",
+      "You don't think this poison is worth the price, so you leave."
+    ],
+    "OPTIONS": [
+      "[Buy] #y!E! #yGold: Gain #gToxic #gOil",
+      "[Buy] Requires: !E! Gold",
+      "[Trade] #rLose #r!PotionString!. Gain #gToxic #gOil",
+      "[Trade] Requires: Rare Potion",
       "[Refuse]",
       "[Leave]"
     ]

@@ -35,6 +35,7 @@ import theArcanist.cards.damageMods.*;
 import theArcanist.events.ClericsRequest;
 import theArcanist.events.FightingPit;
 import theArcanist.events.MarketActOne;
+import theArcanist.events.MarketActTwo;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractArcanistRelic;
 
@@ -294,6 +295,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(MarketActOne.getParams());
         BaseMod.addEvent(FightingPit.getParams());
         BaseMod.addEvent(ClericsRequest.getParams());
+        BaseMod.addEvent(MarketActTwo.getParams());
     }
 
     private static void addPotions() {
@@ -301,12 +303,16 @@ public class ArcanistMod implements
         BaseMod.addPotion(DarkElixir.class, Color.DARK_GRAY.cpy(), Color.BLACK.cpy(), null, DarkElixir.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(SigilPotion.class, Color.GOLD.cpy(), Color.GOLDENROD.cpy(), null, SigilPotion.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_ARCANIST);
+
         BaseMod.addPotion(LiquidCalamity.class, Color.BLUE.cpy(), Color.PINK.cpy(), Color.PURPLE.cpy(), LiquidCalamity.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(ForbiddenFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, ForbiddenFlask.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_ARCANIST);
+
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(NumbingPotion.class, Color.ORANGE.cpy(), Color.GOLD, null, NumbingPotion.POTION_ID, THE_ARCANIST);
+
         BaseMod.addPotion(SteelhidePotion.class, Color.LIGHT_GRAY.cpy(), Color.GRAY.cpy(), null, SteelhidePotion.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(PoisonousSmokeBomb.class, Color.DARK_GRAY.cpy(), null, Color.GREEN, PoisonousSmokeBomb.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(ToxicOil.class, Color.LIME, null, null, ToxicOil.POTION_ID, THE_ARCANIST);
     }
 }

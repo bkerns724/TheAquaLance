@@ -134,7 +134,7 @@ public class FightingPit extends AbstractArcanistEvent {
         LEAVE;
     }
 
-    private String getEasyMonster() {
+    private static String getEasyMonster() {
         ArrayList<String> list = new ArrayList<>();
         list.add("Cultist");
         list.add("Jaw Worm");
@@ -144,7 +144,7 @@ public class FightingPit extends AbstractArcanistEvent {
         return list.get(x);
     }
 
-    private String getToughMonster() {
+    private static String getToughMonster() {
         ArrayList<String> list = new ArrayList<>();
         list.add("Gremlin Nob");
         list.add("Lagavulin");
@@ -153,7 +153,7 @@ public class FightingPit extends AbstractArcanistEvent {
         return list.get(x);
     }
 
-    private ArrayList<PowerTip> getTips() {
+    private static ArrayList<PowerTip> getTips() {
         ArrayList<PowerTip> tips = new ArrayList<>();
         tips.add(new PowerTip(eventStrings.DESCRIPTIONS[5], eventStrings.DESCRIPTIONS[6]));
         PoisonousSmokeBomb bomb = new PoisonousSmokeBomb();

@@ -247,5 +247,11 @@
     "DESCRIPTIONS": [
       "This was definitely a good idea."
     ]
+  },
+  "${ModID}:ToxicOilPower": {
+    "NAME": "Toxic Oil",
+    "DESCRIPTIONS": [
+      "Whenever an attack deals unblocked damage, the enemy takes !A! damage at the start of their turn every round."
+    ]
   }
 }

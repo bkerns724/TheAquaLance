@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
+import theArcanist.patches.NoDiscardPotionPatch;
 import theArcanist.relics.EnchantmentOils;
 
 import java.util.ArrayList;
@@ -75,8 +76,10 @@ public class MarketActOne extends AbstractArcanistEvent {
         potion = adp().getRandomPotion();
         if (potion == null)
             imageEventText.setDialogOption(options[2], true);
-        else
+        else {
             imageEventText.setDialogOption(options[3].replace("!PotionString!", potion.name));
+            NoDiscardPotionPatch.PotionDiscardField.eventReserved.set(potion, true);
+        }
 
         // leave
         imageEventText.setDialogOption(options[4]);
@@ -107,11 +110,14 @@ public class MarketActOne extends AbstractArcanistEvent {
             imageEventText.clearAllDialogs();
             imageEventText.setDialogOption(options[5]);
         }
-    else
+    else {
+        if (potion != null)
+            NoDiscardPotionPatch.PotionDiscardField.eventReserved.set(potion, false);
         openMap();
+        }
     }
 
-    private static enum CUR_SCREEN {
+    private enum CUR_SCREEN {
         INTRO,
         COMPLETE;
     }

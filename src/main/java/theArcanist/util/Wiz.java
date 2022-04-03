@@ -229,6 +229,10 @@ public class Wiz {
         att(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
     }
 
+    public static void applyToEnemyTopFast(AbstractCreature m, AbstractPower po) {
+        att(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount, true));
+    }
+
     public static void applyToSelf(AbstractPower po) {
         atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount));
     }
