@@ -29,8 +29,9 @@ public class ClericsRequest extends AbstractArcanistEvent {
 
     private final static int PRICE_A0 = 150;
     private final static int PRICE_A15 = 200;
-
     private final static float MAX_HP_GAIN = 0.1f;
+
+    private int maxHpGain = 0;
 
     private CUR_SCREEN screen = CUR_SCREEN.INTRO;
 
@@ -51,9 +52,8 @@ public class ClericsRequest extends AbstractArcanistEvent {
     }
 
     public ClericsRequest() {
-        super(eventStrings, IMAGE_PATH, getMaxHpPrice(), (int)(MAX_HP_GAIN*adp().maxHealth));
-
-        amount2 = (int)(MAX_HP_GAIN*adp().maxHealth);
+        super(eventStrings, IMAGE_PATH, getMaxHpPrice(), getMaxHpAmount());
+        maxHpGain = amount2;
 
         imageEventText.updateBodyText(descriptions[0]);
         imageEventText.setDialogOption(options[0], new Wrath());
@@ -78,7 +78,7 @@ public class ClericsRequest extends AbstractArcanistEvent {
                     break;
                 case 1:
                     adp().loseGold(getMaxHpPrice());
-                    AbstractDungeon.player.increaseMaxHp((int)(MAX_HP_GAIN*adp().maxHealth), true);
+                    AbstractDungeon.player.increaseMaxHp(maxHpGain, true);
                     imageEventText.updateBodyText(descriptions[2]);
                     break;
                 case 2:
@@ -105,5 +105,9 @@ public class ClericsRequest extends AbstractArcanistEvent {
             return PRICE_A0;
         else
             return PRICE_A15;
+    }
+
+    private static int getMaxHpAmount() {
+        return Math.max(1, (int)(MAX_HP_GAIN*adp().maxHealth));
     }
 }

@@ -15,6 +15,8 @@ public abstract class AbstractArcanistEvent extends AbstractImageEvent {
 
     public AbstractArcanistEvent(EventStrings eventStrings, String imagePath, int amount, int amount2) {
         super(eventStrings.NAME, eventStrings.DESCRIPTIONS[0], imagePath);
+        this.amount = amount;
+        this.amount2 = amount2;
         name = eventStrings.NAME;
         descriptions = eventStrings.DESCRIPTIONS;
         options = eventStrings.OPTIONS;

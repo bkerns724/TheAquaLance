@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theArcanist.ArcanistMod;
@@ -77,7 +78,8 @@ public class MarketActOne extends AbstractArcanistEvent {
         if (potion == null)
             imageEventText.setDialogOption(options[2], true);
         else {
-            imageEventText.setDialogOption(options[3].replace("!PotionString!", potion.name));
+            imageEventText.setDialogOption(options[3].replace("!PotionString!",
+                    FontHelper.colorString(potion.name, "r")));
             NoDiscardPotionPatch.PotionDiscardField.eventReserved.set(potion, true);
         }
 

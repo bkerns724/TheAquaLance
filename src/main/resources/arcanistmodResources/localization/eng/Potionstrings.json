@@ -82,6 +82,14 @@
     "DESCRIPTIONS": [
       "Whenever your attacks deal unblocked damage, the target takes !P! damage at the start of their turn, every turn."
     ],
+    "FLAVOR": "Brutally efficient."
+  },
+  "${ModID}:SlipperyPotion": {
+    "NAME": "Slippery Potion",
+    "DESCRIPTIONS": [
+      "Draw !P! card each turn.",
+      "Draw !P! cards each turn."
+    ],
     "FLAVOR": "Some mysterious green cloaked stranger has been selling these for a lot of money."
   }
 }

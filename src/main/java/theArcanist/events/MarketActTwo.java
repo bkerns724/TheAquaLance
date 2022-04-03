@@ -5,9 +5,11 @@ import basemod.eventUtil.EventUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.relics.Sozu;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
@@ -45,7 +47,7 @@ public class MarketActTwo extends AbstractArcanistEvent {
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheCity.ID);
         params.playerClass = TheArcanist.Enums.THE_ARCANIST;
-        params.bonusCondition = () -> (adp().gold >= getGoldAmount() || haveRarePot());
+        params.bonusCondition = () -> ((adp().gold >= getGoldAmount() || haveRarePot()) && !adp().hasRelic(Sozu.ID));
         return params;
     }
 
@@ -65,7 +67,8 @@ public class MarketActTwo extends AbstractArcanistEvent {
                     potion = p;
             }
             if (potion != null) {
-                imageEventText.setDialogOption(options[2].replace("!PotionString!", potion.name));
+                imageEventText.setDialogOption(options[2].replace("!PotionString!",
+                        FontHelper.colorString(potion.name, "r")));
                 LargeDialogOptionButton but = imageEventText.optionList.get(1);
                 TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getPowerTips());
                 NoDiscardPotionPatch.PotionDiscardField.eventReserved.set(potion, true);

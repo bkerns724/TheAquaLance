@@ -32,10 +32,7 @@ import org.apache.logging.log4j.Logger;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.cards.damageMods.*;
-import theArcanist.events.ClericsRequest;
-import theArcanist.events.FightingPit;
-import theArcanist.events.MarketActOne;
-import theArcanist.events.MarketActTwo;
+import theArcanist.events.*;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractArcanistRelic;
 
@@ -296,6 +293,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(FightingPit.getParams());
         BaseMod.addEvent(ClericsRequest.getParams());
         BaseMod.addEvent(MarketActTwo.getParams());
+        BaseMod.addEvent(StrangeGarden.getParams());
     }
 
     private static void addPotions() {
@@ -314,5 +312,6 @@ public class ArcanistMod implements
         BaseMod.addPotion(SteelhidePotion.class, Color.LIGHT_GRAY.cpy(), Color.GRAY.cpy(), null, SteelhidePotion.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(PoisonousSmokeBomb.class, Color.DARK_GRAY.cpy(), null, Color.GREEN, PoisonousSmokeBomb.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(ToxicOil.class, Color.LIME, null, null, ToxicOil.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(SlipperyPotion.class, Color.CYAN, null, null, SlipperyPotion.POTION_ID, THE_ARCANIST);
     }
 }

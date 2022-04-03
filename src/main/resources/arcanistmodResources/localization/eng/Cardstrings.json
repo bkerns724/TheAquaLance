@@ -366,7 +366,7 @@
   },
   "${ModID}:CursedSteam": {
     "NAME": "Cursed Steam",
-    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and 1 Jinx."
+    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and 1 ${ModID}:Jinx."
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
