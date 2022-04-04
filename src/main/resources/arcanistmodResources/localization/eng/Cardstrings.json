@@ -53,6 +53,13 @@
       "Ignores Block."
     ]
   },
+  "${ModID}:ScourgeType": {
+    "NAME": "Scourge",
+    "DESCRIPTION": "Scourge [${ModID}:ScourgeIcon]",
+    "EXTENDED_DESCRIPTION": [
+      "Scourge is equal to the amount of #yJinx on the target."
+    ]
+  },
   "${ModID}:SoulBurst": {
     "NAME": "Soul Burst",
     "DESCRIPTION": "Deal !D! damage.",

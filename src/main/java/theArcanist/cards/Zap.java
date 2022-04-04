@@ -1,11 +1,13 @@
 package theArcanist.cards;
 
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import theArcanist.damageMods.ScourgeType;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -19,6 +21,7 @@ public class Zap extends AbstractArcanistCard {
     public Zap() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
+        DamageModifierManager.addModifier(this, new ScourgeType());
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

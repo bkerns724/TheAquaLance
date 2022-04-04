@@ -8,10 +8,10 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theArcanist.TheArcanist;
 import theArcanist.cards.Strike;
-import theArcanist.cards.damageMods.DarkDamage;
-import theArcanist.cards.damageMods.ForceDamage;
-import theArcanist.cards.damageMods.IceDamage;
-import theArcanist.cards.damageMods.SoulFireDamage;
+import theArcanist.damageMods.DarkDamage;
+import theArcanist.damageMods.ForceDamage;
+import theArcanist.damageMods.IceDamage;
+import theArcanist.damageMods.SoulFireDamage;
 import theArcanist.patches.DamageModsIDPatch;
 
 import java.util.ArrayList;

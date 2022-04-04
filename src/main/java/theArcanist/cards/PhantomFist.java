@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.damageMods.ForceDamage;
+import theArcanist.damageMods.ForceDamage;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;

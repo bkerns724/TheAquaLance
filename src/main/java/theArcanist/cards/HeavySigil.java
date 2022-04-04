@@ -1,14 +1,10 @@
 package theArcanist.cards;
 
-import basemod.BaseMod;
-import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
+import theArcanist.damageMods.ScourgeType;
 import theArcanist.powers.CrushedPower;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -22,15 +18,7 @@ public class HeavySigil extends AbstractArcanistCard {
         super(ID, -2, CardType.SKILL,CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
-    }
-
-    @Override
-    public List<TooltipInfo> getCustomTooltipsTop() {
-        ArrayList<TooltipInfo> list = new ArrayList<>();
-        TooltipInfo info = new TooltipInfo(BaseMod.getKeywordTitle(ArcanistMod.SCOURGE_NAME),
-                BaseMod.getKeywordDescription(ArcanistMod.SCOURGE_NAME));
-        list.add(info);
-        return list;
+        DamageModifierManager.addModifier(this, new ScourgeType());
     }
 
     @Override

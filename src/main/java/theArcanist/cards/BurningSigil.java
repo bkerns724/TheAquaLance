@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.damageMods.SoulFireDamage;
+import theArcanist.damageMods.SoulFireDamage;
 
 import static theArcanist.util.Wiz.*;
 

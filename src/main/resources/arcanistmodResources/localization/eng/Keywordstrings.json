@@ -18,22 +18,6 @@
     "DESCRIPTION": "Activated relics do not have a passive effect.  They have an instant effect when their button is clicked."
   },
   {
-    "PROPER_NAME": "Scourge [${ModID}:ScourgeIcon]",
-    "NAMES": [
-      "Scourge",
-      "scourge"
-    ],
-    "DESCRIPTION": "[${ModID}:ScourgeIcon] is equal to the amount of #yJinx on the target."
-  },
-  {
-    "PROPER_NAME": "Dark [${ModID}:DarkIcon] Bloop",
-    "NAMES": [
-      "Dark",
-      "dark"
-    ],
-    "DESCRIPTION": "Gain #yTemporary #yHP based on unblocked damage dealt.  Has diminishing returns. [${ModID}:DarkIcon] "
-  },
-  {
     "PROPER_NAME": "Panda",
     "NAMES": [
       "Panda",

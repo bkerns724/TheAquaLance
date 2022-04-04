@@ -1,9 +1,11 @@
 package theArcanist.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import theArcanist.damageMods.ScourgeType;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -18,6 +20,7 @@ public class SonicReverberation extends AbstractArcanistCard {
     public SonicReverberation() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = MAGIC;
+        DamageModifierManager.addModifier(this, new ScourgeType());
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

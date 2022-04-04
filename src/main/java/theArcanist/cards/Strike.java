@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.damageMods.DarkDamage;
-import theArcanist.cards.damageMods.ForceDamage;
-import theArcanist.cards.damageMods.IceDamage;
-import theArcanist.cards.damageMods.SoulFireDamage;
+import theArcanist.Icons.Dark;
+import theArcanist.Icons.Force;
+import theArcanist.Icons.Ice;
+import theArcanist.Icons.SoulFire;
+import theArcanist.damageMods.*;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.relics.EnchantmentOils;
 
@@ -47,19 +48,19 @@ public class Strike extends AbstractArcanistCard implements CustomSavable<String
         String titleString = "";
         if (modifierID != null) {
             if (modifierID.equals(DarkDamage.ID)) {
-                iconString = "[" + makeID("DarkIcon") + "] ";
+                iconString = "[" + makeID(Dark.class.getSimpleName()) + "] ";
                 titleString = "Dark ";
             }
             else if (modifierID.equals(IceDamage.ID)) {
-                iconString = "[" + makeID("IceIcon") + "] ";
+                iconString = "[" + makeID(Ice.class.getSimpleName()) + "] ";
                 titleString = "Ice ";
             }
             else if (modifierID.equals(SoulFireDamage.ID)) {
-                iconString = "[" + makeID("SoulFireIcon") + "] ";
+                iconString = "[" + makeID(SoulFire.class.getSimpleName()) + "] ";
                 titleString = "Soul ";
             }
             else if (modifierID.equals(ForceDamage.ID)) {
-                iconString = "[" + makeID("ForceIcon") + "] ";
+                iconString = "[" + makeID(Force.class.getSimpleName()) + "] ";
                 titleString = "Force ";
             }
         }
@@ -92,7 +93,6 @@ public class Strike extends AbstractArcanistCard implements CustomSavable<String
 
     @Override
     public void onLoad(String modifierID) {
-        // Not the most elegant solution but I can't make AbstractDamageModifier serializable because it isn't my code.
         this.modifierID = modifierID;
         if (modifierID == null) {
             modifier = null;

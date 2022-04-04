@@ -29,9 +29,9 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theArcanist.Icons.*;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
-import theArcanist.cards.damageMods.*;
 import theArcanist.events.*;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractArcanistRelic;
@@ -54,12 +54,10 @@ public class ArcanistMod implements
         AddAudioSubscriber,
         OnStartBattleSubscriber,
         PostInitializeSubscriber {
-
     public static final String SETTINGS_FILE = "ArcanistModSettings";
 
     public static final String modID = "arcanistmod";
     public static final String RESOURCES_PRE = "arcanistmodResources/";
-    public static final String SCOURGE_NAME = makeID("scourgeDontTranslateThisLine");
 
     public static Logger logger = LogManager.getLogger(ArcanistMod.class.getName());
 
@@ -197,11 +195,11 @@ public class ArcanistMod implements
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new SecondMagicNumber());
 
-        CustomIconHelper.addCustomIcon(ForceIcon.get());
-        CustomIconHelper.addCustomIcon(IceIcon.get());
-        CustomIconHelper.addCustomIcon(DarkIcon.get());
-        CustomIconHelper.addCustomIcon(ScourgeIcon.get());
-        CustomIconHelper.addCustomIcon(SoulFireIcon.get());
+        CustomIconHelper.addCustomIcon(Force.get());
+        CustomIconHelper.addCustomIcon(Ice.get());
+        CustomIconHelper.addCustomIcon(Dark.get());
+        CustomIconHelper.addCustomIcon(Scourge.get());
+        CustomIconHelper.addCustomIcon(SoulFire.get());
 
         new AutoAdd(modID)
                 .packageFilter(AbstractArcanistCard.class)

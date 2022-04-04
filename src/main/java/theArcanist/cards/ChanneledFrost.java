@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.damageMods.IceDamage;
+import theArcanist.damageMods.IceDamage;
 
 import static theArcanist.ArcanistMod.makeID;
 

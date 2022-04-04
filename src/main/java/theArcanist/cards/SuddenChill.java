@@ -1,8 +1,10 @@
 package theArcanist.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
+import theArcanist.damageMods.ScourgeType;
 import theArcanist.powers.FrostbitePower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -20,6 +22,7 @@ public class SuddenChill extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
         magicOneIsDebuff = true;
+        DamageModifierManager.addModifier(this, new ScourgeType());
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

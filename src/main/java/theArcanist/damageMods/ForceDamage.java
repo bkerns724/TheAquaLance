@@ -1,4 +1,4 @@
-package theArcanist.cards.damageMods;
+package theArcanist.damageMods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -75,6 +75,6 @@ public class ForceDamage extends AbstractDamageModifier {
         ForceDamage output = new ForceDamage();
         output.forceTooltip = this.forceTooltip;
         output.forceTooltip2 = this.forceTooltip2;
-        return new ForceDamage();
+        return output;
     }
 }

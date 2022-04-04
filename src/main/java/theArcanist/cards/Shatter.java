@@ -1,8 +1,10 @@
 package theArcanist.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
+import theArcanist.damageMods.ScourgeType;
 import theArcanist.powers.CorrodedPower;
 import theArcanist.powers.NauseousPower;
 
@@ -15,6 +17,7 @@ public class Shatter extends AbstractArcanistCard {
     public Shatter() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
         exhaust = true;
+        DamageModifierManager.addModifier(this, new ScourgeType());
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod.Enums;
-import theArcanist.cards.damageMods.SoulFireDamage;
+import theArcanist.damageMods.SoulFireDamage;
 
 import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;

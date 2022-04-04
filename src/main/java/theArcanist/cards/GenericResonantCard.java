@@ -7,9 +7,13 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.Dark;
+import theArcanist.Icons.Force;
+import theArcanist.Icons.Ice;
+import theArcanist.Icons.SoulFire;
 import theArcanist.VFX.DarkWaveEffect;
 import theArcanist.actions.ChaosMagicAction;
-import theArcanist.cards.damageMods.*;
+import theArcanist.damageMods.*;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -89,13 +93,13 @@ public class GenericResonantCard extends AbstractArcanistCard {
 
         StringBuilder sBuilder = new StringBuilder(cardStrings.EXTENDED_DESCRIPTION[0]);
         if (cold)
-            sBuilder.append(IceIcon.CODE).append(" ");
+            sBuilder.append(Ice.CODE).append(" ");
         if (force)
-            sBuilder.append(ForceIcon.CODE).append(" ");
+            sBuilder.append(Force.CODE).append(" ");
         if (fire)
-            sBuilder.append(SoulFireIcon.CODE).append(" ");
+            sBuilder.append(SoulFire.CODE).append(" ");
         if (dark)
-            sBuilder.append(DarkIcon.CODE).append(" ");
+            sBuilder.append(Dark.CODE).append(" ");
         for (int i = 0; i < count; i++)
             sBuilder.append("  ");
         if (count >= 2) sBuilder.append("NL ");

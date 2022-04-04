@@ -1,4 +1,4 @@
-package theArcanist.cards.damageMods;
+package theArcanist.damageMods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -88,6 +88,6 @@ public class DarkDamage extends AbstractDamageModifier {
         DarkDamage output = new DarkDamage();
         output.darkTooltip = this.darkTooltip;
         output.darkTooltip2 = this.darkTooltip2;
-        return new DarkDamage();
+        return output;
     }
 }

@@ -1,4 +1,4 @@
-package theArcanist.cards.damageMods;
+package theArcanist.damageMods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -56,6 +56,6 @@ public class SoulFireDamage extends AbstractDamageModifier {
     public AbstractDamageModifier makeCopy() {
         SoulFireDamage output = new SoulFireDamage();
         output.soulFireTooltip = this.soulFireTooltip;
-        return new SoulFireDamage();
+        return output;
     }
 }

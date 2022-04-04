@@ -1,4 +1,4 @@
-package theArcanist.cards.damageMods;
+package theArcanist.damageMods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -74,6 +74,6 @@ public class IceDamage extends AbstractDamageModifier {
         IceDamage output = new IceDamage();
         output.iceTooltip = this.iceTooltip;
         output.iceTooltip2 = this.iceTooltip2;
-        return new IceDamage();
+        return output;
     }
 }

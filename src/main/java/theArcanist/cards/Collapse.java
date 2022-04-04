@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.damageMods.ForceDamage;
+import theArcanist.damageMods.ForceDamage;
 import theArcanist.powers.CrushedPower;
 
 import static theArcanist.ArcanistMod.makeID;
