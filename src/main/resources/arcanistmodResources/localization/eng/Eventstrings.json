@@ -84,5 +84,20 @@
       "[Keep Moving]",
       "[Leave]"
     ]
+  },
+  "${ModID}:MysteriousHoard": {
+    "NAME": "Mysterious Hoard",
+    "DESCRIPTIONS": [
+      "Before you lies a pedestal with a lamp resting on top.  It burns with a purple flame.  Piled up against the pedestal is a moderately large sum of #ygold.  When you try to pick some up, the flame from the lamp swats your hand away.  Rubbing your stinging hand, you muse on what to do.",
+      "A powerful relic is worth more than #ygold, so you pick up the lamp instead.  Hot, burning agony shoots through your entire body, but before you can think to drop the lamp it starts to quickly subside.",
+      "You conjure a strong wind to blow out the lamp.  You pick up all the #ygold, but it isn't enough.  ~You~ ~need~ ~more~.  ~You~ ~need~ ~more~.",
+      "This whole thing seems more trouble than it is worth."
+    ],
+    "OPTIONS": [
+      "[Take Lamp] #gGain #gSoul #gLamp. #rGain #rPain.",
+      "[Blow It Out] #gGain #y!E! #yGold. #rGain #rGreed.",
+      "[Cautiously Back Away]",
+      "[Leave]"
+    ]
   }
 }

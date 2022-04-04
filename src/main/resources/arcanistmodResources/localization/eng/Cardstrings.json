@@ -463,6 +463,11 @@
     "NAME": "Wrath",
     "DESCRIPTION": "Gain !M! Vulnerable and deal 50% more damage for one turn when drawn."
   },
+  "${ModID}:Greed": {
+    "NAME": "Greed",
+    "DESCRIPTION": "Autoplay. NL Gain 5 Gold. NL Exhaust.",
+    "FLAVOR": "Hunting for treasure in the middle of battle is one of the most foolish things I have ever seen."
+  },
   "${ModID}:Write": {
     "NAME": "Write",
     "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."

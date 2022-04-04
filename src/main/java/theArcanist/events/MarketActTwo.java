@@ -44,8 +44,6 @@ public class MarketActTwo extends AbstractArcanistEvent {
         params.eventClass = MarketActTwo.class;
         params.eventID = ID;
         params.eventType = TYPE;
-        params.dungeonIDs = new ArrayList<>();
-        params.dungeonIDs.add(TheCity.ID);
         params.playerClass = TheArcanist.Enums.THE_ARCANIST;
         params.bonusCondition = () -> ((adp().gold >= getGoldAmount() || haveRarePot()) && !adp().hasRelic(Sozu.ID));
         return params;

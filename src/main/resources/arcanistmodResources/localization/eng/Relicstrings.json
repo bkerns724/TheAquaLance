@@ -204,6 +204,13 @@
       "For each curse in your deck, apply !R! extra stack of #y${ModID}:Jinx whenever you apply #yJinx.  Upon pickup, add [#EFC851]Wrath to your deck."
     ]
   },
+  "${ModID}:SoulLamp": {
+    "NAME": "Soul Lamp",
+    "FLAVOR": "It never runs out of fuel.",
+    "DESCRIPTIONS": [
+      "At the end of your turn, gain 1 revenge flame this turn for every !R! Block you have. NL Revenge flame deals damage back whenever you are attacked."
+    ]
+  },
   "${ModID}:RandomRelic": {
     "NAME": "Random Relic",
     "FLAVOR": "It could be anything.  It could even be a boat.",

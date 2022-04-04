@@ -253,5 +253,11 @@
     "DESCRIPTIONS": [
       "Whenever an attack deals unblocked damage, the enemy takes !A! damage at the start of their turn every round."
     ]
+  },
+  "${ModID}:SoulFlameBarrierPower": {
+    "NAME": "Revenge Flame",
+    "DESCRIPTIONS": [
+      "Whenever you take attack damage, deal !A! damage back."
+    ]
   }
 }
