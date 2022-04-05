@@ -99,5 +99,22 @@
       "[Cautiously Back Away]",
       "[Leave]"
     ]
+  },
+  "${ModID}:MarketActThree": {
+    "NAME": "Bizarre Market",
+    "DESCRIPTIONS": [
+      "You come across a strange market.  Most of the merchants appear to be mutated in some form or another, or completely inhuman.  You spot a stall manned by a pair of darklings, of all things.  One of the more human merchants catches your attention.  \"I have an extremely powerful potion for trade, it'll make your flesh as hard as steel.  I'm not taking #ygold though, you have to give me something equally rare in return.\"",
+      "You hand over one of your most powerful relics, and she hands over the potion in return.  In a sudden but small burst of fire, she disappears.",
+      "You indicate that you don't have anything valuable enough to trade.  While she is trying to barter with someone else, you quickly snatch the potion and walk away.",
+      "You indicate that you don't have anything valuable enough to trade.  While she is trying to barter with someone else, you quickly snatch the potion.  Her arm suddenly shifts into a large, clawed arm and slashes you across your back.  The injury is excruciating, but you toss the potion back at her and flee as she tries to catch it.",
+      "You don't think you can negotiate a deal in your favor, so you leave."
+    ],
+    "OPTIONS": [
+      "[Trade Relic] #rLose !RelicString!.  #gGain !PotionString!.",
+      "[Trade Relic] Requires Suitable Relic.",
+      "[Try To Steal] #g50% #gChance !PotionString!.  #r50% #rChance #rLose #r!E! #rHP.",
+      "[Refuse]",
+      "[Leave]"
+    ]
   }
 }

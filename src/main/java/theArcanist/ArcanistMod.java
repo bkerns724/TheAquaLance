@@ -293,6 +293,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(MarketActTwo.getParams());
         BaseMod.addEvent(StrangeGarden.getParams());
         BaseMod.addEvent(MysteriousHoard.getParams());
+        BaseMod.addEvent(MarketActThree.getParams());
     }
 
     private static void addPotions() {

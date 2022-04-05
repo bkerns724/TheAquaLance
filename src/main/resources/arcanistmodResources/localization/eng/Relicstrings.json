@@ -81,7 +81,7 @@
     "NAME": "Ethereal Converter",
     "FLAVOR": "You have no idea how this works.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can turn your block into #yTemporary_HP."
+      "#y${ModID}:Activated.  Once per combat you can turn your Block into #yTemporary_HP."
     ]
   },
   "${ModID}:DiscardedCloak": {
@@ -116,7 +116,7 @@
     "NAME": "Boots Of Speed",
     "FLAVOR": "WHEEEEEEE.",
     "DESCRIPTIONS": [
-      "#y{ModID}.  You can spend [E] to draw !R! cards."
+      "#y{ModID}:Activated.  You can spend [E] to draw !R! cards."
     ]
   },
   "${ModID}:VialOfBlackBlood": {
