@@ -284,6 +284,8 @@ public class ArcanistMod implements
     public void receiveOnBattleStart(AbstractRoom room) {
         if (room.event instanceof FightingPit && room.eliteTrigger)
             forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, FightingPit.HEALTH_BUFF, true)));
+        if (room.event instanceof VoidSpirits)
+            forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF, true)));
     }
 
     private static void addEvents() {
@@ -293,7 +295,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(MarketActTwo.getParams());
         BaseMod.addEvent(StrangeGarden.getParams());
         BaseMod.addEvent(MysteriousHoard.getParams());
-        BaseMod.addEvent(MarketActThree.getParams());
+        BaseMod.addEvent(VoidSpirits.getParams());
     }
 
     private static void addPotions() {

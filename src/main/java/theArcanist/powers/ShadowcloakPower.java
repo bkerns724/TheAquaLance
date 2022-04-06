@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import static theArcanist.util.Wiz.*;
 import theArcanist.ArcanistMod;
 import theArcanist.relics.DiscardedCloak;
+import theArcanist.relics.TransparentRing;
 
 public class ShadowcloakPower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID(ShadowcloakPower.class.getSimpleName());
@@ -38,6 +39,16 @@ public class ShadowcloakPower extends AbstractArcanistPower {
             flash();
             triggered = true;
         }
+        else if (adp().hasRelic(TransparentRing.ID) && card.baseBlock > 0) {
+            flash();
+            triggered = true;
+        }
+    }
+
+    public float modifyBlock(float blockAmount) {
+        if (!adp().hasRelic(TransparentRing.ID) || blockAmount <= 0)
+            return blockAmount;
+        return (blockAmount * (1+DAMAGE_MULT));
     }
 
     @Override

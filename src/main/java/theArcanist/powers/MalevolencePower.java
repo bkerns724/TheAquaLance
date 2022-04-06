@@ -15,6 +15,12 @@ public class MalevolencePower extends AbstractArcanistPower {
         amount2 = 1;
     }
 
+    public MalevolencePower(AbstractCreature owner, int amount, int amount2) {
+        super(POWER_ID, PowerType.BUFF, false, owner, amount);
+        isTwoAmount = true;
+        this.amount2 = amount2;
+    }
+
     @Override
     public void stackPower(int stackAmount) {
         amount2 += 1;

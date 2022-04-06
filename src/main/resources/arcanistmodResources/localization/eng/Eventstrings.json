@@ -116,5 +116,26 @@
       "[Refuse]",
       "[Leave]"
     ]
+  },
+  "${ModID}:VoidSpirits": {
+    "NAME": "Void Spirits",
+    "DESCRIPTIONS": [
+      "You happen upon a group of what looks like void spirits dancing around a large well.  The inside of the well contains a whirlpool of pitch black water.  One of the spirits tosses in a stone and it disappears without making a sound.  The spirits then turn to you, and you know enough about void spirits to know they won't let you leave without an offering.  However, those who make offerings always receive something in return.",
+      "You use a knife to slice open your palm, and let some of your blood flow into the well.  You immediately feel weaker than you would expect from minor blood loss.  The void spirits bounce up and down and you feel something on one of your fingers.  Looking closely, you can just barely make out a ring.",
+      "You decide to offer up some of your mana.  You concentrate and pour some into the well.  Unexpectedly, the connection is two way.  You feel something reach out and latch onto your mind and your magic.  It offers to take away any unwanted memories, fears, or desires.",
+      "Your thoughts seem sharper, more focused.  However, you can feel your mana slowly trickling out into the well, although not as fast as you can generate it.  It seems some of the connection is permanent.",
+      "It was a tough fight but you prevail.  As you go to collect the spoils, the spirits evaporate into nothing.",
+      "Select a card to remove.",
+      "Select cards to remove."
+    ],
+    "OPTIONS": [
+      "[Offer Flesh] #rLose #r!E! #rMax #rHP.  #gGain !RelicString!.",
+      "[Offer Mana] #rGain !RelicString!.  #gRemove #g!E2! #gCard.",
+      "[Offer Mana] #rGain !RelicString!.  #gRemove #gup #gto #g!E2! #gCards.",
+      "[Offer Mana] Requires a removable card.",
+      "[Fight Through]",
+      "[Continue]",
+      "[Leave]"
+    ]
   }
 }
