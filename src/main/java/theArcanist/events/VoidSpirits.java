@@ -101,12 +101,14 @@ public class VoidSpirits extends AbstractArcanistEvent {
                 count++;
                 AbstractDungeon.effectList.add(new PurgeCardEffect(c, xOffset*Settings.WIDTH, Settings.HEIGHT/2.0f));
                 AbstractDungeon.player.masterDeck.removeCard(c);
-                AbstractDungeon.gridSelectScreen.selectedCards.remove(c);
             }
+            AbstractDungeon.gridSelectScreen.selectedCards.clear();
             screen = CUR_SCREEN.COMPLETE;
             imageEventText.updateBodyText(descriptions[3]);
             imageEventText.clearAllDialogs();
             imageEventText.setDialogOption(options[6]);
+            adRoom().spawnRelicAndObtain((float) Settings.WIDTH * 0.28F,
+                    (float) Settings.HEIGHT / 2.0F, new MarkOfTheVoid());
         }
     }
 
@@ -148,8 +150,6 @@ public class VoidSpirits extends AbstractArcanistEvent {
             else if (amount2 > 1)
                 AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(adp().masterDeck.getPurgeableCards()),
                         amount2, descriptions[6], false);
-            adRoom().spawnRelicAndObtain((float) Settings.WIDTH * 0.28F,
-                    (float) Settings.HEIGHT / 2.0F, new MarkOfTheVoid());
         }
     }
 

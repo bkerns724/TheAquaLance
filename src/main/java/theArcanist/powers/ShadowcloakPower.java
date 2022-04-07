@@ -27,9 +27,9 @@ public class ShadowcloakPower extends AbstractArcanistPower {
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL && !triggered) {
             if (adp().hasRelic(DiscardedCloak.ID))
-                damage *= (1 + DiscardedCloak.CLOAK_MULT * amount);
+                damage *= (1.0f + DiscardedCloak.CLOAK_MULT * amount);
             else
-                damage *= (1 + DAMAGE_MULT * amount);
+                damage *= (1.0f + DAMAGE_MULT * amount);
         }
         return damage;
     }
@@ -48,7 +48,7 @@ public class ShadowcloakPower extends AbstractArcanistPower {
     public float modifyBlock(float blockAmount) {
         if (!adp().hasRelic(TransparentRing.ID) || blockAmount <= 0)
             return blockAmount;
-        return (blockAmount * (1+DAMAGE_MULT));
+        return (blockAmount * (1.0f + DAMAGE_MULT*amount));
     }
 
     @Override

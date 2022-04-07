@@ -222,7 +222,7 @@
     "NAME": "Mark of the Void",
     "FLAVOR": "A strange symbol marks your forehead.  It nibbles at your mana on a regular basis.",
     "DESCRIPTIONS": [
-      "Every !R! turns, lose [E]."
+      "Every !R! turns, lose [E] ."
     ]
   },
   "${ModID}:RandomRelic": {
