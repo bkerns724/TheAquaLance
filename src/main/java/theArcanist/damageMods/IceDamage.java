@@ -3,12 +3,14 @@ package theArcanist.damageMods;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.Ice;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.FrostbitePower;
 import theArcanist.relics.BlueMarbles;
@@ -63,8 +65,6 @@ public class IceDamage extends AbstractDamageModifier {
         return new ArrayList<TooltipInfo>() { { add(iceTooltip); add(iceTooltip2); } };
     }
 
-    //Overriding this to true tells us that this damage mod is considered part of the card and not just something added on to the card later.
-    //If you ever add a damage modifier during the initialization of a card, it should be inherent.
     public boolean isInherent() {
         return true;
     }
@@ -75,5 +75,10 @@ public class IceDamage extends AbstractDamageModifier {
         output.iceTooltip = this.iceTooltip;
         output.iceTooltip2 = this.iceTooltip2;
         return output;
+    }
+
+    @Override
+    public AbstractCustomIcon getAccompanyingIcon() {
+        return new Ice();
     }
 }

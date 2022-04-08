@@ -13,7 +13,7 @@ public class Force extends AbstractCustomIcon {
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "]";
 
-    private Force() {
+    public Force() {
         super(ID, TEXTURE);
     }
 

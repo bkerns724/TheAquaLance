@@ -16,7 +16,7 @@ import theArcanist.util.TexLoader;
 import static theArcanist.util.Wiz.replaceLast;
 
 public abstract class AbstractArcanistPower extends AbstractPower {
-    public int amount2 = -1;
+    public int amount2;
     public boolean isTwoAmount = false;
     public static Color redColor2 = Color.RED.cpy();
     public static Color greenColor2 = Color.GREEN.cpy();
@@ -29,6 +29,7 @@ public abstract class AbstractArcanistPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.type = powerType;
+        amount2 = -1;
 
         PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(id);
         this.name = powerStrings.NAME;
@@ -60,7 +61,8 @@ public abstract class AbstractArcanistPower extends AbstractPower {
             description = descriptionArray[1];
         else
             description = descriptionArray[0];
-        description = description.replace("!A!", "#b" + amount).replace("!A2!", "#b" + amount2);
+        description = description.replace("!A!", "#b" + amount);
+        description = description.replace("!A2!", "#b" + amount2);
     }
 
     public void onManualDiscard() {}

@@ -25,12 +25,8 @@ public class ReverseOmamori extends AbstractArcanistRelic {
 
     @Override
     public void atBattleStart() {
-        int count = 0;
-        for (AbstractCard card : adp().masterDeck.group)
-            if (card.type == AbstractCard.CardType.CURSE)
-                count++;
-        if (count > 0)
-            applyToSelf(new MalevolencePower(adp(), 1, count));
+        if (counter > 0)
+            applyToSelf(new MalevolencePower(adp(), 1, counter));
     }
 
     @Override
@@ -40,5 +36,17 @@ public class ReverseOmamori extends AbstractArcanistRelic {
             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, (float) Settings.WIDTH / 2.0F,
                     (float) Settings.HEIGHT / 2.0F));
         }
+    }
+
+    @Override
+    public void onMasterDeckChange() {
+        countCurse();
+    }
+
+    private void countCurse() {
+        counter = 0;
+        for (AbstractCard card : adp().masterDeck.group)
+            if (card.type == AbstractCard.CardType.CURSE)
+                counter++;
     }
 }

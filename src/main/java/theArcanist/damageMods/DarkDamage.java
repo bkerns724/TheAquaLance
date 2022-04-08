@@ -3,11 +3,13 @@ package theArcanist.damageMods;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.Dark;
 import theArcanist.actions.MyAddTempHPAction;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.EldritchStaffPower;
@@ -89,5 +91,10 @@ public class DarkDamage extends AbstractDamageModifier {
         output.darkTooltip = this.darkTooltip;
         output.darkTooltip2 = this.darkTooltip2;
         return output;
+    }
+
+    @Override
+    public AbstractCustomIcon getAccompanyingIcon() {
+        return new Dark();
     }
 }

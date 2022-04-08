@@ -13,7 +13,7 @@ public class SoulFire extends AbstractCustomIcon {
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "]";
 
-    private SoulFire() {
+    public SoulFire() {
         super(ID, TEXTURE);
     }
 

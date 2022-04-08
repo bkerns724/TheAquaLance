@@ -3,12 +3,14 @@ package theArcanist.damageMods;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.Force;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.CrushedPower;
 import theArcanist.relics.BlueMarbles;
@@ -76,5 +78,10 @@ public class ForceDamage extends AbstractDamageModifier {
         output.forceTooltip = this.forceTooltip;
         output.forceTooltip2 = this.forceTooltip2;
         return output;
+    }
+
+    @Override
+    public AbstractCustomIcon getAccompanyingIcon() {
+        return new Force();
     }
 }

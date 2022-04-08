@@ -3,10 +3,12 @@ package theArcanist.damageMods;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.SoulFire;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.relics.ManaPurifier;
 
@@ -57,5 +59,10 @@ public class SoulFireDamage extends AbstractDamageModifier {
         SoulFireDamage output = new SoulFireDamage();
         output.soulFireTooltip = this.soulFireTooltip;
         return output;
+    }
+
+    @Override
+    public AbstractCustomIcon getAccompanyingIcon() {
+        return new SoulFire();
     }
 }

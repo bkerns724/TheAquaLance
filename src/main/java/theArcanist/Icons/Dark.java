@@ -13,7 +13,7 @@ public class Dark extends AbstractCustomIcon {
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "]";
 
-    private Dark() {
+    public Dark() {
         super(ID, TEXTURE);
     }
 

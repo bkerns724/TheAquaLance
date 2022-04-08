@@ -3,9 +3,11 @@ package theArcanist.damageMods;
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.Scourge;
 import theArcanist.patches.DamageModsIDPatch;
 
 import java.util.ArrayList;
@@ -49,5 +51,10 @@ public class ScourgeType extends AbstractDamageModifier {
         ScourgeType output = new ScourgeType();
         output.scourgeTooltip = this.scourgeTooltip;
         return output;
+    }
+
+    @Override
+    public AbstractCustomIcon getAccompanyingIcon() {
+        return new Scourge();
     }
 }

@@ -13,7 +13,7 @@ public class Ice extends AbstractCustomIcon {
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "]";
 
-    private Ice() {
+    public Ice() {
         super(ID, TEXTURE);
     }
 

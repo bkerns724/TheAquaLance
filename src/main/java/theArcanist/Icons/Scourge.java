@@ -13,7 +13,7 @@ public class Scourge extends AbstractCustomIcon {
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "]";
 
-    private Scourge() {
+    public Scourge() {
         super(ID, TEXTURE);
     }
 
