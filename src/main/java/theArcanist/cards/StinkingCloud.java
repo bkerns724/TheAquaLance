@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theArcanist.ArcanistMod;
-import theArcanist.VFX.MiasmaEffect;
+import theArcanist.vfx.MiasmaEffect;
 import theArcanist.powers.NauseousPower;
 
 import static theArcanist.ArcanistMod.makeID;

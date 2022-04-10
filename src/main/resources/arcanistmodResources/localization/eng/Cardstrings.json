@@ -279,7 +279,7 @@
   },
   "${ModID}:SuddenChill": {
     "NAME": "Sudden Chill",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Frostbite applied is equal to !M! [${ModID}:ScourgeIcon] ."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !M! [${ModID}:ScourgeIcon] extra damage."
   },
   "${ModID}:BoulderShot": {
     "NAME": "Boulder Shot",
@@ -408,7 +408,7 @@
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
-    "DESCRIPTION": "Deal !D! damage. NL Applied ${ModID}:Frostbite is equal to damage done."
+    "DESCRIPTION": "Deal !D! damage. NL Enemy takes double damage from ${ModID}:Frostbite."
   },
   "${ModID}:Collapse": {
     "NAME": "Collapse",
@@ -469,6 +469,11 @@
     "NAME": "Greed",
     "DESCRIPTION": "Autoplay. NL Gain 5 Gold. NL Exhaust.",
     "FLAVOR": "Hunting for treasure in the middle of battle is one of the most foolish things I have ever seen."
+  },
+  "${ModID}:VoidCurse": {
+    "NAME": "Void",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever this card is drawn, lose [E] .",
+    "FLAVOR": "This sucks."
   },
   "${ModID}:Write": {
     "NAME": "Write",

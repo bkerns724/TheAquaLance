@@ -1,27 +1,30 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.actions.WaterfallAction;
+import theArcanist.ArcanistMod;
+import theArcanist.powers.WaterfallPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
 
 public class Waterfall extends AbstractArcanistCard {
     public final static String ID = makeID(Waterfall.class.getSimpleName());
-    private final static int DAMAGE = 3;
-    private final static int UPGRADE_DAMAGE = 2;
+    private final static int DAMAGE = 10;
+    private final static int UPGRADE_DAMAGE = 5;
+    private final static int MAGIC = 1;
     private final static int COST = 1;
 
     public Waterfall() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
-        addModifier(elenum.FAKE_ICE);
+        baseMagicNumber = magicNumber = MAGIC;
+        addModifier(elenum.ICE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        atb(new WaterfallAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
+        dmg(m, ArcanistMod.Enums.ICE);
+        applyToEnemy(m, new WaterfallPower(m, magicNumber));
     }
 
     public void upp() {

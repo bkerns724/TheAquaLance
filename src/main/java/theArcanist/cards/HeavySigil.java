@@ -3,7 +3,7 @@ package theArcanist.cards;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.damageMods.ScourgeType;
+import theArcanist.damagemods.ScourgeType;
 import theArcanist.powers.CrushedPower;
 
 import static theArcanist.ArcanistMod.makeID;

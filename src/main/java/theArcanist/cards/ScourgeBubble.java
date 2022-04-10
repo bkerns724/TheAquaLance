@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.ScourgeType;
+import theArcanist.damagemods.ScourgeType;
 import theArcanist.powers.JinxThornsPower;
 
 import static theArcanist.ArcanistMod.makeID;

@@ -1,4 +1,4 @@
-package theArcanist.damageMods;
+package theArcanist.damagemods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
-import theArcanist.Icons.Ice;
+import theArcanist.icons.Ice;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.FrostbitePower;
 import theArcanist.relics.BlueMarbles;
-import theArcanist.relics.ManaPurifier;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ import static theArcanist.util.Wiz.*;
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
     public static final String ID = ArcanistMod.makeID(IceDamage.class.getSimpleName());
-    public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo iceTooltip;
     public TooltipInfo iceTooltip2;
     private boolean visibleTips = true;
@@ -48,8 +48,6 @@ public class IceDamage extends AbstractDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount,
                                         AbstractCreature target) {
-        if (adp() == null || adp().hasRelic(ManaPurifier.ID))
-            return;;
         int totalDamage = unblockedAmount + blockedAmount;
         if (adp().hasRelic(BlueMarbles.ID))
             totalDamage *= 2;
@@ -69,6 +67,13 @@ public class IceDamage extends AbstractDamageModifier {
         if (iceTooltip2 == null)
             iceTooltip2 = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]);
         return new ArrayList<TooltipInfo>() { { add(iceTooltip); add(iceTooltip2); } };
+    }
+
+    public static ArrayList<PowerTip> getPowerTips() {
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]));
+        list.add(new PowerTip(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]));
+        return list;
     }
 
     public boolean isInherent() {

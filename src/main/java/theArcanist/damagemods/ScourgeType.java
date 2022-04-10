@@ -1,4 +1,4 @@
-package theArcanist.damageMods;
+package theArcanist.damagemods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -7,7 +7,7 @@ import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
-import theArcanist.Icons.Scourge;
+import theArcanist.icons.Scourge;
 import theArcanist.patches.DamageModsIDPatch;
 
 import java.util.ArrayList;

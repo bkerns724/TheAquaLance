@@ -1,4 +1,4 @@
-package theArcanist.damageMods;
+package theArcanist.damagemods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -8,26 +8,27 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
-import theArcanist.Icons.Dark;
 import theArcanist.actions.MyAddTempHPAction;
+import theArcanist.icons.Dark;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.EldritchStaffPower;
 import theArcanist.relics.BlueMarbles;
-import theArcanist.relics.ManaPurifier;
 import theArcanist.relics.DarkFunnel;
 
 import java.util.ArrayList;
 
 import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.att;
 
 @AutoAdd.Ignore
 public class DarkDamage extends AbstractDamageModifier {
     public static final String ID = ArcanistMod.makeID(DarkDamage.class.getSimpleName());
-    public CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo darkTooltip;
     public TooltipInfo darkTooltip2;
     private boolean visibleTips = true;
@@ -50,8 +51,6 @@ public class DarkDamage extends AbstractDamageModifier {
 
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
-        if (adp() == null || adp().hasRelic(ManaPurifier.ID))
-            return;
         int tempHP;
         if (adp().hasRelic(BlueMarbles.ID))
             tempHP = GetTriangleNumberRootFloor(unblockedAmount*2);
@@ -83,6 +82,13 @@ public class DarkDamage extends AbstractDamageModifier {
         if (darkTooltip2 == null)
             darkTooltip2 = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]);
         return new ArrayList<TooltipInfo>() { { add(darkTooltip); add(darkTooltip2);} };
+    }
+
+    public static ArrayList<PowerTip> getPowerTips() {
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]));
+        list.add(new PowerTip(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]));
+        return list;
     }
 
     //Overriding this to true tells us that this damage mod is considered part of the card and not just something added on to the card later.

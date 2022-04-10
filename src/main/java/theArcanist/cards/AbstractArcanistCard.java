@@ -30,13 +30,13 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
-import theArcanist.Icons.Dark;
-import theArcanist.Icons.Force;
-import theArcanist.Icons.Ice;
-import theArcanist.Icons.SoulFire;
+import theArcanist.icons.Dark;
+import theArcanist.icons.Force;
+import theArcanist.icons.Ice;
+import theArcanist.icons.SoulFire;
 import theArcanist.TheArcanist;
 import theArcanist.cards.cardvars.CardSaveObject;
-import theArcanist.damageMods.*;
+import theArcanist.damagemods.*;
 import theArcanist.powers.AbstractArcanistPower;
 import theArcanist.powers.ResonatingPower;
 import theArcanist.util.CardArtRoller;
@@ -276,7 +276,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         rawDescription = cardStrings.DESCRIPTION;
 
         if (damageModList != null) {
-            if (damageModList.contains(FAKE_ICE) || damageModList.contains(ICE))
+            if (damageModList.contains(ICE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
             if (damageModList.contains(FIRE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + SOULFIRE_STRING + " ");
@@ -328,8 +328,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.DARK)
             DamageModifierManager.addModifier(this, new DarkDamage(tips));
-        if (element == elenum.FAKE_ICE)
-            DamageModifierManager.addModifier(this, new FakeIceDamage(tips));
         initializeDescription();
     }
 
@@ -342,7 +340,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         if (damageModList.size() == 1) {
             elenum ele = damageModList.get(0);
             Color color = Color.WHITE;
-            if (ele == ICE || ele == FAKE_ICE)
+            if (ele == ICE)
                 color = Color.BLUE.cpy();
             else if (ele == FORCE)
                 color = Color.PINK.cpy();
@@ -457,7 +455,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         ICE,
         FIRE,
         FORCE,
-        DARK,
-        FAKE_ICE
+        DARK
     }
 }

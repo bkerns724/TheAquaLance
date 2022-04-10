@@ -1,4 +1,4 @@
-package theArcanist.damageMods;
+package theArcanist.damagemods;
 
 import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
@@ -7,20 +7,18 @@ import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
-import theArcanist.Icons.SoulFire;
+import theArcanist.icons.SoulFire;
 import theArcanist.patches.DamageModsIDPatch;
-import theArcanist.relics.ManaPurifier;
 
 import java.util.ArrayList;
-
-import static theArcanist.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class SoulFireDamage extends AbstractDamageModifier {
     public static final String ID = ArcanistMod.makeID(SoulFireDamage.class.getSimpleName());
-    public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo soulFireTooltip;
     private boolean visibleTips = true;
 
@@ -41,7 +39,7 @@ public class SoulFireDamage extends AbstractDamageModifier {
 
     @Override
     public boolean ignoresBlock(AbstractCreature dummy) {
-        return adp() == null || !adp().hasRelic(ManaPurifier.ID);
+        return true;
     }
 
     @Override
@@ -52,6 +50,12 @@ public class SoulFireDamage extends AbstractDamageModifier {
             soulFireTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
 
         return new ArrayList<TooltipInfo>() { { add(soulFireTooltip); } };
+    }
+
+    public static ArrayList<PowerTip> getPowerTips() {
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]));
+        return list;
     }
 
     //Overriding this to true tells us that this damage mod is considered part of the card and not just something added on to the card later.

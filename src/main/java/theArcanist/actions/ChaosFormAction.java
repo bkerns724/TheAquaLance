@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveDebuffsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Frost;
@@ -18,15 +17,12 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.DevotionPower;
-import com.megacrit.cardcrawl.relics.CultistMask;
 import com.megacrit.cardcrawl.relics.Sozu;
-import theArcanist.ArcanistMod;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.Strike;
 
 import java.util.ArrayList;
 
-import static com.megacrit.cardcrawl.events.AbstractEvent.logMetricObtainRelic;
 import static theArcanist.util.Wiz.*;
 
 public class ChaosFormAction extends AbstractGameAction {
@@ -55,7 +51,7 @@ public class ChaosFormAction extends AbstractGameAction {
     private void doAction(boolean simple) {
         int x;
         if (!simple)
-            x = AbstractDungeon.miscRng.random(0, 13);
+            x = AbstractDungeon.miscRng.random(0, 12);
         else
             x = AbstractDungeon.miscRng.random(0, 8);
 
@@ -144,16 +140,6 @@ public class ChaosFormAction extends AbstractGameAction {
                     for (AbstractCard card2 : list3)
                         att(new DiscardSpecificCardAction(card2, adp().hand));
                     att(new DrawCardAction(count2));
-                }
-                else
-                    doAction(true);
-                break;
-            case 13:
-                if (!adp().hasRelic(CultistMask.ID)) {
-                    CultistMask r = new CultistMask();
-                    logMetricObtainRelic("FaceTrader", "Trade", r);
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F, r);
-                    applyToSelfTop(new RitualPower(adp(), 1, true));
                 }
                 else
                     doAction(true);

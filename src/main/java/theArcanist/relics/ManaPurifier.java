@@ -1,12 +1,13 @@
 package theArcanist.relics;
 
-import basemod.AutoAdd;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theArcanist.TheArcanist;
+import theArcanist.cards.AbstractArcanistCard;
 
 import static theArcanist.ArcanistMod.makeID;
-
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
 
 public class ManaPurifier extends AbstractArcanistRelic {
     public static final String ID = makeID(ManaPurifier.class.getSimpleName());
@@ -18,10 +19,27 @@ public class ManaPurifier extends AbstractArcanistRelic {
 
     public void onEquip() {
         ++AbstractDungeon.player.energy.energyMaster;
+        removeModifiers();
     }
 
     public void onUnequip() {
         --AbstractDungeon.player.energy.energyMaster;
+    }
+
+    @Override
+    public void onMasterDeckChange() {
+        removeModifiers();
+    }
+
+    public void removeModifiers() {
+        for (AbstractCard card : adp().masterDeck.group) {
+            if (card instanceof AbstractArcanistCard) {
+                AbstractArcanistCard card2 = (AbstractArcanistCard) card;
+                DamageModifierManager.clearModifiers(card2);
+                card2.damageModList.clear();
+                card2.initializeDescription();
+            }
+        }
     }
 
     @Override

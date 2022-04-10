@@ -29,7 +29,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theArcanist.Icons.*;
+import theArcanist.icons.*;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.events.*;
@@ -296,6 +296,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(StrangeGarden.getParams());
         BaseMod.addEvent(MysteriousHoard.getParams());
         BaseMod.addEvent(VoidSpirits.getParams());
+        BaseMod.addEvent(SpellForge.getParams());
     }
 
     private static void addPotions() {

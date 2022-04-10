@@ -1,4 +1,4 @@
-package theArcanist.VFX;
+package theArcanist.vfx;
 
 import basemod.ClickableUIElement;
 import basemod.ReflectionHacks;

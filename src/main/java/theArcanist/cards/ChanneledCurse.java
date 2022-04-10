@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.VFX.DarkWaveEffect;
+import theArcanist.vfx.DarkWaveEffect;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;

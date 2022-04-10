@@ -1,15 +1,12 @@
-package theArcanist.VFX;
+package theArcanist.vfx;
 
 
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import com.megacrit.cardcrawl.vfx.combat.IronWaveParticle;
 
 public class DarkWaveEffect extends AbstractGameEffect {
     private float waveTimer = 0.0F;

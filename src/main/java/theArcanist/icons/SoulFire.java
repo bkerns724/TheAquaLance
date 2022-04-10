@@ -1,4 +1,4 @@
-package theArcanist.Icons;
+package theArcanist.icons;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;

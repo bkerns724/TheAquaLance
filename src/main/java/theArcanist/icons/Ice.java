@@ -1,26 +1,26 @@
-package theArcanist.Icons;
+package theArcanist.icons;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
 
-public class Force extends AbstractCustomIcon {
-    private static Force singleton;
-    public static final String ID = ArcanistMod.makeID(Force.class.getSimpleName());
-    private static final String TEXTURE_STRING = "arcanistmodResources/images/damageIcons/Force.png";
+public class Ice extends AbstractCustomIcon {
+    private static Ice singleton;
+    public static final String ID = ArcanistMod.makeID(Ice.class.getSimpleName());
+    private static final String TEXTURE_STRING = "arcanistmodResources/images/damageIcons/Ice.png";
     private static final Texture TEXTURE =
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "Icon]";
 
-    public Force() {
+    public Ice() {
         super(ID, TEXTURE);
     }
 
-    public static Force get()
+    public static Ice get()
     {
         if (singleton == null) {
-            singleton = new Force();
+            singleton = new Ice();
         }
         return singleton;
     }

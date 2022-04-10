@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theArcanist.VFX.WrathParticleEffect2;
-import theArcanist.VFX.WrathStanceEffectMonster;
+import theArcanist.vfx.WrathParticleEffect2;
+import theArcanist.vfx.WrathStanceEffectMonster;
 
 import static theArcanist.ArcanistMod.makeID;
 

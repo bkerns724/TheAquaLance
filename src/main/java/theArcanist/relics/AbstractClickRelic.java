@@ -21,7 +21,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theArcanist.ArcanistMod;
-import theArcanist.VFX.FlashClickRelicEffect;
+import theArcanist.vfx.FlashClickRelicEffect;
 import theArcanist.util.TexLoader;
 
 import java.lang.reflect.Type;
