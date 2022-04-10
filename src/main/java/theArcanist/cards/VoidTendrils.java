@@ -1,15 +1,12 @@
 package theArcanist.cards;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.DarkDamage;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.atb;
 
 public class VoidTendrils extends AbstractArcanistCard {
     public final static String ID = makeID(VoidTendrils.class.getSimpleName());
@@ -22,11 +19,11 @@ public class VoidTendrils extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new DarkDamage());
+        addModifier(elenum.DARK);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.DARK_COIL, Color.BLACK.cpy());
+        dmg(m, ArcanistMod.Enums.DARK_COIL);
         atb(new DiscardAction(p, p, magicNumber, false));
     }
 

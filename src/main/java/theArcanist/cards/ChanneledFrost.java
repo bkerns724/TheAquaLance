@@ -1,15 +1,16 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.IceDamage;
 
 import static theArcanist.ArcanistMod.makeID;
+import static theArcanist.cards.AbstractArcanistCard.elenum.ICE;
 
 public class ChanneledFrost extends AbstractArcanistCard {
     public final static String ID = makeID(ChanneledFrost.class.getSimpleName());
+    public final static String LOC_NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
@@ -17,7 +18,7 @@ public class ChanneledFrost extends AbstractArcanistCard {
     public ChanneledFrost() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
-        DamageModifierManager.addModifier(this, new IceDamage());
+        addModifier(ICE);
         resonant = true;
     }
 

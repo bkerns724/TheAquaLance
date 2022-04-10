@@ -1,12 +1,10 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.SoulFireDamage;
 
 import static theArcanist.util.Wiz.*;
 
@@ -24,7 +22,7 @@ public class BurningSigil extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         isMultiDamage = true;
-        DamageModifierManager.addModifier(this, new SoulFireDamage());
+        addModifier(elenum.FIRE);
         sigil = true;
     }
 

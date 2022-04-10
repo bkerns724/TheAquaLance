@@ -14,7 +14,7 @@ public class Greed extends AbstractArcanistCard {
     private final static int COST = 1;
 
     public Greed() {
-        super(ID, COST, CardType.CURSE, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, COST, CardType.CURSE, CardRarity.SPECIAL, CardTarget.SELF, CardColor.CURSE);
         baseMagicNumber = magicNumber = MAGIC;
         AutoplayField.autoplay.set(this, true);
         exhaust = true;

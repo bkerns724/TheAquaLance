@@ -1,7 +1,7 @@
 {
   "${ModID}:Strike": {
-    "NAME": "~PREFIX~Strike",
-    "DESCRIPTION": "Deal !D! ~ICON~damage.",
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": 
       "We've lost so many wizards we have to send our apprentices to the battle field.  Some of them are only good at hitting the monsters with a stick."
   },
@@ -77,22 +77,22 @@
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
     "FLAVOR": "This spell was invented by the Aqualance?  What kind of stupid name is that?"
   },
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
-    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
     "FLAVOR":  "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:VoidTendrils": {
     "NAME": "Void Tendrils",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
     "FLAVOR": "It is a fantastic spell for offense and defense but it looks evil so NOOOOOO, we shouldn't use it."
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
     "FLAVOR": "With soul flame, it isn't the body that's burning, so your ice spells still work."
   },
   "${ModID}:ChaoticMind": {
@@ -136,7 +136,7 @@
   },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! [${ModID}:SoulFireIcon] damage to ALL enemies. NL Lose !M! HP.",
+    "DESCRIPTION": "${ModID}:Sigil. NL Deal !D! damage to ALL enemies. NL Lose !M! HP.",
     "FLAVOR": "Our country is being overrun by these spire monsters.  Yes, I paid a price for this power, but it is a lesser price than losing this war."
   },
   "${ModID}:IronSigil": {
@@ -161,7 +161,7 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "${ModID}:Sigil. NL Apply [${ModID}:ScourgeIcon] ${ModID}:Crushed to ALL enemies."
+    "DESCRIPTION": "${ModID}:Sigil. NL Apply ${ModID}:Crushed to ALL enemies."
   },
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
@@ -186,19 +186,19 @@
   },
   "${ModID}:ChanneledFlame": {
     "NAME": "Channeled Flame",
-    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
   },
   "${ModID}:ChanneledFrost": {
     "NAME": "Channeled Frost",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
   },
   "${ModID}:ChanneledVoid": {
     "NAME": "Channeled Void",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
   },
   "${ModID}:ChanneledVice": {
     "NAME": "Channeled Vice",
-    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
   },
   "${ModID}:ChanneledCurse": {
     "NAME": "Channeled Curse",
@@ -212,8 +212,7 @@
     "NAME": "Resonate",
     "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate.",
     "EXTENDED_DESCRIPTION":[
-      "Deal !D! ",
-      "damage. NL ",
+      "Deal !D! damage. NL ",
       "Apply !M! ${ModID}:Jinx. NL ",
       "Gain !${ModID}:M2! buff. NL ",
       "Gain !${ModID}:M2! buffs. NL ",
@@ -222,7 +221,10 @@
       " cards. NL ",
       "Gain ",
       " [E]. NL ",
-      "${ModID}:Resonate."
+      "${ModID}:Resonate.",
+      "Blended Channel",
+      "Swift Channel",
+      "Energetic Channel"
     ],
     "FLAVOR": "You can use this over and over."
   },
@@ -238,7 +240,7 @@
   },
   "${ModID}:Eruption": {
     "NAME": "Eruption",
-    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage to ALL enemies. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Exhaust.",
     "FLAVOR": "All right, shit like this is why I studied magic!"
   },
   "${ModID}:WellPrepared": {
@@ -277,7 +279,7 @@
   },
   "${ModID}:SuddenChill": {
     "NAME": "Sudden Chill",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL ${ModID}:Frostbite applied is equal to !M! [${ModID}:ScourgeIcon] ."
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Frostbite applied is equal to !M! [${ModID}:ScourgeIcon] ."
   },
   "${ModID}:BoulderShot": {
     "NAME": "Boulder Shot",
@@ -285,11 +287,11 @@
   },
   "${ModID}:PhantomMace": {
     "NAME": "Phantom Mace",
-    "DESCRIPTION": "Deal [${ModID}:ForceIcon] !D! damage. NL Enemy loses !M! Strength this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! Strength this turn."
   },
   "${ModID}:VoidBall": {
     "NAME": "Void Ball",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
   "${ModID}:Enfeeble": {
     "NAME": "Enfeeble",
@@ -326,16 +328,16 @@
   },
   "${ModID}:CompressionWave": {
     "NAME": "Compression Wave",
-    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
   "${ModID}:DarkEmbrace": {
     "NAME": "Dark Embrace",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Whenever you attack this enemy, gain 1 Temporary_HP. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:IceDaggers": {
     "NAME": "Ice Daggers",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage !M! times."
+    "DESCRIPTION": "Deal !D! damage !M! times."
   },
   "${ModID}:SoulNeedle": {
     "NAME": "Soul Needle",
@@ -402,19 +404,19 @@
   },
   "${ModID}:SoulIgnition": {
     "NAME": "Soul Ignition",
-    "DESCRIPTION": "Deal !D! [${ModID}:SoulFireIcon] damage. NL Can only target an enemy with at least !M! debuffs."
+    "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs."
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Applied ${ModID}:Frostbite is equal to damage done."
+    "DESCRIPTION": "Deal !D! damage. NL Applied ${ModID}:Frostbite is equal to damage done."
   },
   "${ModID}:Collapse": {
     "NAME": "Collapse",
-    "DESCRIPTION": "Deal !D! [${ModID}:ForceIcon] damage. NL ${ModID}:Crushed affects this card !M! times."
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Crushed affects this card !M! times."
   },
   "${ModID}:ShadowLance": {
     "NAME": "ShadowLance",
-    "DESCRIPTION": "Deal !D! [${ModID}:DarkIcon] damage. NL Steal !M! Strength."
+    "DESCRIPTION": "Deal !D! damage. NL Steal !M! Strength."
   },
   "${ModID}:ShockwaveSigils": {
     "NAME": "Shockwave Sigils",

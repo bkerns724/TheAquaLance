@@ -1,59 +1,44 @@
 package theArcanist.cards;
 
 import basemod.AutoAdd;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.Icons.Dark;
-import theArcanist.Icons.Force;
-import theArcanist.Icons.Ice;
-import theArcanist.Icons.SoulFire;
 import theArcanist.VFX.DarkWaveEffect;
 import theArcanist.actions.ChaosMagicAction;
-import theArcanist.damageMods.*;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
+import static theArcanist.cards.AbstractArcanistCard.elenum.*;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class GenericResonantCard extends AbstractArcanistCard {
     public final static String ID = makeID(GenericResonantCard.class.getSimpleName());
     private final static int COST = 1;
-    private final boolean cold;
-    private final boolean dark;
-    private final boolean force;
-    private final boolean fire;
-    private final int draw;
-    private final int energy;
     private AttackEffect attackEffect = AttackEffect.NONE;
 
     public GenericResonantCard(int damage, boolean cold, boolean dark, boolean force, boolean fire, int jinx, int chaos,
                                int draw, int energy) {
         super(ID, COST, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
-        this.cold = cold;
-        this.dark = dark;
-        this.force = force;
-        this.fire = fire;
         baseDamage = damage;
         this.jinx = jinx;
         this.chaos = chaos;
-        this.draw = draw;
-        this.energy = energy;
+        this.extraDraw = draw;
+        this.extraEnergy = energy;
 
         resonant = true;
 
         if (cold)
-            DamageModifierManager.addModifier(this, new IceDamage(false));
+            addModifier(ICE);
         if (dark)
-            DamageModifierManager.addModifier(this, new DarkDamage(false));
+            addModifier(elenum.DARK);
         if (force)
-            DamageModifierManager.addModifier(this, new ForceDamage(false));
+            addModifier(elenum.FORCE);
         if (fire)
-            DamageModifierManager.addModifier(this, new SoulFireDamage(false));
+            addModifier(elenum.FIRE);
 
         baseMagicNumber = magicNumber = jinx;
         baseSecondMagic = secondMagic = chaos;
@@ -82,80 +67,91 @@ public class GenericResonantCard extends AbstractArcanistCard {
     }
 
     public void customizeCardAttributes() {
-        int count = 0;
-        if (cold) count++;
-        if (fire) count++;
-        if (force) count++;
-        if (dark) count++;
-
         baseMagicNumber = magicNumber = jinx;
         baseSecondMagic = secondMagic = chaos;
 
         StringBuilder sBuilder = new StringBuilder(cardStrings.EXTENDED_DESCRIPTION[0]);
-        if (cold)
-            sBuilder.append(Ice.CODE).append(" ");
-        if (force)
-            sBuilder.append(Force.CODE).append(" ");
-        if (fire)
-            sBuilder.append(SoulFire.CODE).append(" ");
-        if (dark)
-            sBuilder.append(Dark.CODE).append(" ");
-        for (int i = 0; i < count; i++)
-            sBuilder.append("  ");
-        if (count >= 2) sBuilder.append("NL ");
-        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[1]);
         if (jinx > 0)
-            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[2]);
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[1]);
         if (chaos > 0) {
             if (chaos == 1)
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[2]);
+            else
                 sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[3]);
-            else
-                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[4]);
         }
-        if (draw > 0) {
-            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[5]);
-            sBuilder.append(draw);
-            if (draw == 1)
+        if (extraDraw > 0) {
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[4]);
+            sBuilder.append(extraDraw);
+            if (extraDraw == 1)
+                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[5]);
+            else
                 sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[6]);
-            else
-                sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[7]);
         }
-        if (energy > 0) {
+        if (extraEnergy > 0) {
+            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[7]);
+            sBuilder.append(extraEnergy);
             sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[8]);
-            sBuilder.append(energy);
-            sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[9]);
         }
-        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[10]);
+        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[9]);
         rawDescription = sBuilder.toString();
 
-        if (count == 1) {
-            if (cold) {
+        int effectCount = 0;
+        if (jinx > 0)
+            effectCount++;
+        if (chaos > 0)
+            effectCount++;
+        if (extraEnergy > 0)
+            effectCount++;
+        if (extraDraw > 0)
+            effectCount++;
+
+        if (damageModList.size() == 1) {
+            elenum ele = damageModList.get(0);
+            if (ele == ICE) {
                 attackEffect = ArcanistMod.Enums.ICE;
-                name = "Channeled Frost";
+                name = ChanneledFrost.LOC_NAME;
             }
-            else if (force) {
+            else if (ele == elenum.FORCE) {
                 attackEffect = ArcanistMod.Enums.FIST;
-                name = "Channeled Vice";
+                name = ChanneledVice.LOC_NAME;
             }
-            else if (fire) {
+            else if (ele == elenum.FIRE) {
                 attackEffect = ArcanistMod.Enums.SOUL_FIRE;
-                name = "Channeled Flame";
+                name = ChanneledFlame.LOC_NAME;
             }
-            else if (dark){
+            else if (ele == elenum.DARK){
                 attackEffect = ArcanistMod.Enums.DARK_COIL;
-                name = "Channeled Void";
+                name = ChanneledVoid.LOC_NAME;
             }
             else {
-                attackEffect = AttackEffect.NONE;
+                attackEffect = AttackEffect.BLUNT_LIGHT;
+                name = BasicChannel.LOC_NAME;
             }
-        }
-        else if (count == 0) {
+        } else if (effectCount == 1 && damageModList.isEmpty()) {
+            if (jinx > 0) {
+                attackEffect = ArcanistMod.Enums.BLOOD;
+                name = ChanneledCurse.LOC_NAME;
+            } else if (chaos > 0) {
+                attackEffect = AttackEffect.FIRE;
+                name = ChanneledChaos.LOC_NAME;
+            } else if (extraDraw > 0) {
+                attackEffect = AttackEffect.SLASH_DIAGONAL;
+                name = cardStrings.EXTENDED_DESCRIPTION[11];
+            } else if (extraEnergy > 0) {
+                attackEffect = AttackEffect.SLASH_DIAGONAL;
+                name = cardStrings.EXTENDED_DESCRIPTION[12];
+            }
+            else {
+                attackEffect = AttackEffect.BLUNT_LIGHT;
+                name = BasicChannel.LOC_NAME;
+            }
+        } else if (effectCount == 0 && damageModList.isEmpty()) {
             attackEffect = AttackEffect.BLUNT_LIGHT;
-            name = "Basic Channel";
+            name = BasicChannel.LOC_NAME;
         }
         else {
-            attackEffect = ArcanistMod.Enums.BLOOD;
-            name = "Blended Channel";
+            attackEffect = AttackEffect.NONE;
+            name = cardStrings.EXTENDED_DESCRIPTION[10];
         }
 
         initializeTitle();
@@ -164,7 +160,10 @@ public class GenericResonantCard extends AbstractArcanistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new GenericResonantCard(baseDamage, cold, dark, force, fire, jinx, chaos,
-                draw, energy);
+        return new GenericResonantCard(baseDamage, damageModList.contains(ICE),
+                damageModList.contains(DARK),
+                damageModList.contains(FORCE),
+                damageModList.contains(FIRE),
+                jinx, chaos, extraDraw, extraEnergy);
     }
 }

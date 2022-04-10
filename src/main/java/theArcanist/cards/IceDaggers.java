@@ -1,10 +1,8 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.IceDamage;
 
 import static theArcanist.ArcanistMod.makeID;
 
@@ -19,7 +17,7 @@ public class IceDaggers extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new IceDamage());
+        addModifier(elenum.ICE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

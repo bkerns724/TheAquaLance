@@ -1,18 +1,13 @@
 package theArcanist.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theArcanist.TheArcanist;
+import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.Strike;
-import theArcanist.damageMods.DarkDamage;
-import theArcanist.damageMods.ForceDamage;
-import theArcanist.damageMods.IceDamage;
-import theArcanist.damageMods.SoulFireDamage;
-import theArcanist.patches.DamageModsIDPatch;
 
 import java.util.ArrayList;
 
@@ -36,25 +31,24 @@ public class EnchantmentOils extends AbstractArcanistRelic {
         float xOffset = xOffsetBase;
         int total = 0;
         for (AbstractCard card : adp().masterDeck.group)
-            if (card instanceof Strike && ((Strike)card).modifier == null)
+            if (card instanceof Strike && ((Strike)card).damageModList.isEmpty())
                 total++;
         if (total > 5)
             total = 5;
         if (total % 2 == 0)
             xOffsetBase += 0.09f;
         for (AbstractCard card : adp().masterDeck.group) {
-            if (card instanceof Strike && ((Strike)card).modifier == null) {
-                ArrayList<AbstractDamageModifier> list = new ArrayList<>();
-                list.add(new DarkDamage());
-                list.add(new IceDamage());
-                list.add(new SoulFireDamage());
-                list.add(new ForceDamage());
+            if (card instanceof Strike && ((Strike)card).damageModList.isEmpty()) {
+                ArrayList<AbstractArcanistCard.elenum> list = new ArrayList<>();
+                list.add(AbstractArcanistCard.elenum.ICE);
+                list.add(AbstractArcanistCard.elenum.FIRE);
+                list.add(AbstractArcanistCard.elenum.FORCE);
+                list.add(AbstractArcanistCard.elenum.DARK);
                 int x = AbstractDungeon.miscRng.random(0, list.size()-1);
-                AbstractDamageModifier mod = list.get(x);
-                ((Strike) card).modifier = mod;
-                ((Strike) card).modifierID = DamageModsIDPatch.ID.get(mod);
+                AbstractArcanistCard.elenum mod = list.get(x);
                 card.baseDamage += 2;
-                card.initializeDescription();
+                ((Strike) card).damageBonus += 2;
+                ((Strike) card).addModifier(mod);
                 if (count == 0)
                     xOffset = xOffsetBase;
                 else if (count == 1)

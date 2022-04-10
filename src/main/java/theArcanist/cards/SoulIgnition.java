@@ -23,6 +23,7 @@ public class SoulIgnition extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        addModifier(elenum.FIRE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

@@ -1,13 +1,12 @@
 package theArcanist.cards;
 
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.DarkDamage;
 
 import static theArcanist.ArcanistMod.makeID;
+import static theArcanist.cards.AbstractArcanistCard.elenum.DARK;
 
 public class VoidBall extends AbstractArcanistCard {
     public final static String ID = makeID(VoidBall.class.getSimpleName());
@@ -18,7 +17,7 @@ public class VoidBall extends AbstractArcanistCard {
     public VoidBall() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseDamage = DAMAGE;
-        DamageModifierManager.addModifier(this, new DarkDamage());
+        addModifier(DARK);
         isMultiDamage = true;
     }
 

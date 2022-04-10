@@ -1,11 +1,9 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.ForceDamage;
 import theArcanist.powers.CrushedPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -21,7 +19,7 @@ public class Collapse extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new ForceDamage());
+        addModifier(elenum.FORCE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

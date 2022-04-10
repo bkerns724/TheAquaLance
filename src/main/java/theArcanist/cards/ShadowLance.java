@@ -1,15 +1,14 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.DarkDamage;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
+import static theArcanist.util.Wiz.applyToSelf;
 
 public class ShadowLance extends AbstractArcanistCard {
     public final static String ID = makeID(ShadowLance.class.getSimpleName());
@@ -23,7 +22,7 @@ public class ShadowLance extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new DarkDamage());
+        addModifier(elenum.DARK);
         magicOneIsDebuff = true;
     }
 

@@ -17,6 +17,7 @@ public class Waterfall extends AbstractArcanistCard {
     public Waterfall() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
+        addModifier(elenum.FAKE_ICE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

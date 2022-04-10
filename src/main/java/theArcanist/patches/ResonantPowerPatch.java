@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.PowerBuffEffect;
 import javassist.CtBehavior;
-import theArcanist.ArcanistMod;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.powers.ResonatingPower;
 
@@ -31,14 +30,10 @@ public class ResonantPowerPatch {
         )
         public static SpireReturn InsertPatch(ApplyPowerAction __instance, AbstractPower p) {
             AbstractPower pow = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class,"powerToApply");
-            if (pow == null) {
-                ArcanistMod.logger.info("Null power to apply");
+            if (pow == null)
                 return SpireReturn.Continue();
-            }
-            if (p == null) {
-                ArcanistMod.logger.info("Null local var p");
+            if (p == null)
                 return SpireReturn.Continue();
-            }
             if (pow instanceof ResonatingPower && p instanceof ResonatingPower) {
                 p.flash();
                 AbstractDungeon.effectList.add(new PowerBuffEffect(__instance.target.hb.cX - __instance.target.animX,

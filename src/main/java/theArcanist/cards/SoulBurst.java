@@ -1,10 +1,8 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.SoulFireDamage;
 
 import static theArcanist.ArcanistMod.makeID;
 
@@ -17,7 +15,7 @@ public class SoulBurst extends AbstractArcanistCard {
     public SoulBurst() {
         super(ID, COST, CardType.ATTACK, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
         baseDamage = DAMAGE;
-        DamageModifierManager.addModifier(this, new SoulFireDamage());
+        addModifier(elenum.FIRE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

@@ -2,15 +2,16 @@ package theArcanist.cards;
 
 import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
+import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.DamageActionColorField;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -29,24 +30,28 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
+import theArcanist.Icons.Dark;
+import theArcanist.Icons.Force;
+import theArcanist.Icons.Ice;
+import theArcanist.Icons.SoulFire;
 import theArcanist.TheArcanist;
-import theArcanist.damageMods.DarkDamage;
-import theArcanist.damageMods.ForceDamage;
-import theArcanist.damageMods.IceDamage;
-import theArcanist.damageMods.SoulFireDamage;
+import theArcanist.cards.cardvars.CardSaveObject;
+import theArcanist.damageMods.*;
 import theArcanist.powers.AbstractArcanistPower;
 import theArcanist.powers.ResonatingPower;
 import theArcanist.util.CardArtRoller;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import static theArcanist.ArcanistMod.makeImagePath;
 import static theArcanist.ArcanistMod.modID;
+import static theArcanist.cards.AbstractArcanistCard.elenum.*;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
-public abstract class AbstractArcanistCard extends CustomCard {
+public abstract class AbstractArcanistCard extends CustomCard implements CustomSavable<CardSaveObject> {
     protected CardStrings cardStrings;
 
     public int secondMagic;
@@ -66,16 +71,26 @@ public abstract class AbstractArcanistCard extends CustomCard {
     public static final String MESSAGE_KEY = "SigilMessage";
     public static final String CAN_NOT_PLAY_MESSAGE = CardCrawlGame.languagePack.getUIString(
             ArcanistMod.makeID(MESSAGE_KEY)).TEXT[0];
-    public boolean sigil = false;
     public boolean resonant = false;
 
-    protected int cardDraw = 0;
-    protected int energy = 0;
     protected int jinx = 0;
     protected int chaos = 0;
 
+    public ArrayList<elenum> damageModList = new ArrayList<>();
+    public boolean sigil = false;
+    public int extraDraw = 0;
+    public int extraEnergy = 0;
+    public boolean debuffIncrease = false;
+    public boolean scourgeIncrease = false;
+    public int damageBonus = 0;
+
     private static final Color FLAVOR_BOX_COLOR = Color.PURPLE.cpy();
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
+
+    public static final String COLD_STRING = Ice.CODE;
+    public static final String FORCE_STRING = Force.CODE;
+    public static final String SOULFIRE_STRING = SoulFire.CODE;
+    public static final String DARK_STRING = Dark.CODE;
 
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
@@ -165,22 +180,21 @@ public abstract class AbstractArcanistCard extends CustomCard {
     protected abstract void onUse(AbstractPlayer p, AbstractMonster m);
 
     private void resonate() {
-        List<AbstractDamageModifier> eleList = DamageModifierManager.modifiers(this);
         boolean cold = false;
         boolean dark = false;
         boolean force = false;
         boolean fire = false;
-        for (AbstractDamageModifier x : eleList) {
-            if (x instanceof IceDamage)
+        for (elenum x : damageModList) {
+            if (x == ICE)
                 cold = true;
-            else if (x instanceof DarkDamage)
+            else if (x == DARK)
                 dark = true;
-            else if (x instanceof ForceDamage)
+            else if (x == FORCE)
                 force = true;
-            else if (x instanceof SoulFireDamage)
+            else if (x == FIRE)
                 fire = true;
         }
-        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, jinx, chaos, cardDraw, energy));
+        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, jinx, chaos, extraDraw, extraEnergy));
     }
 
     @Override
@@ -251,14 +265,20 @@ public abstract class AbstractArcanistCard extends CustomCard {
         }
     }
 
-    public void additionalParsing() {};
-
     @Override
     public void initializeDescription() {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
-        name = originalName = cardStrings.NAME;
-        additionalParsing();
+        if (damageModList != null) {
+            if (damageModList.contains(FAKE_ICE) || damageModList.contains(ICE))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
+            if (damageModList.contains(FIRE))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + SOULFIRE_STRING + " ");
+            if (damageModList.contains(DARK))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + DARK_STRING + " ");
+            if (damageModList.contains(FORCE))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
+        }
         super.initializeDescription();
     }
 
@@ -290,9 +310,48 @@ public abstract class AbstractArcanistCard extends CustomCard {
         return 1f;
     }
 
+    public void addModifier(elenum element) {
+        if (damageModList.contains(element))
+            return;
+        damageModList.add(element);
+        if (element == ICE)
+            DamageModifierManager.addModifier(this, new IceDamage());
+        if (element == elenum.FIRE)
+            DamageModifierManager.addModifier(this, new SoulFireDamage());
+        if (element == elenum.FORCE)
+            DamageModifierManager.addModifier(this, new ForceDamage());
+        if (element == elenum.DARK)
+            DamageModifierManager.addModifier(this, new DarkDamage());
+        if (element == elenum.FAKE_ICE)
+            DamageModifierManager.addModifier(this, new FakeIceDamage());
+        initializeDescription();
+    }
+
     // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
     public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
-        atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
+        if (damageModList.size() == 1) {
+            elenum ele = damageModList.get(0);
+            Color color = Color.WHITE;
+            if (ele == ICE || ele == FAKE_ICE)
+                color = Color.BLUE.cpy();
+            else if (ele == FORCE)
+                color = Color.PINK.cpy();
+            else if (ele == FIRE)
+                color = Color.PURPLE.cpy();
+            else if (ele == DARK)
+                color = Color.BLACK.cpy();
+            else
+                atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
+            dmg(m, fx, color);
+        }
+        else if (damageModList.size() > 1) {
+            DamageAction damageAction = new DamageAction(m,
+                    new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
+            DamageActionColorField.rainbow.set(damageAction, true);
+            atb(damageAction);
+        }
+        else
+            atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
     }
 
     public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx, Color color) {
@@ -342,8 +401,53 @@ public abstract class AbstractArcanistCard extends CustomCard {
         card.magicOneIsDebuff = magicOneIsDebuff;
         card.magicTwoIsDebuff = magicTwoIsDebuff;
         card.resonant = resonant;
-        card.cardDraw = cardDraw;
-        card.energy = energy;
+        card.extraDraw = extraDraw;
+        card.extraEnergy = extraEnergy;
+        card.debuffIncrease = debuffIncrease;
+        card.scourgeIncrease = scourgeIncrease;
+        for (elenum ele : damageModList)
+            card.addModifier(ele);
+        card.initializeDescription();
         return card;
+    }
+
+    @Override
+    public CardSaveObject onSave() {
+        CardSaveObject obj = new CardSaveObject();
+        obj.elements = damageModList;
+        obj.sigil = sigil;
+        obj.retain = selfRetain;
+        obj.debuffIncrease = this.debuffIncrease;
+        obj.scourgeIncrease = this.scourgeIncrease;
+        obj.extraDraw = extraDraw;
+        obj.extraEnergy = extraEnergy;
+        obj.damageBonus = damageBonus;
+        return obj;
+    }
+
+    @Override
+    public void onLoad(CardSaveObject cardSaveObject) {
+        for (elenum ele : cardSaveObject.elements)
+            addModifier(ele);
+        sigil = cardSaveObject.sigil;
+        selfRetain = cardSaveObject.retain;
+        debuffIncrease = cardSaveObject.debuffIncrease;
+        scourgeIncrease = cardSaveObject.scourgeIncrease;
+        extraDraw = cardSaveObject.extraDraw;
+        extraEnergy = cardSaveObject.extraEnergy;
+        baseDamage += cardSaveObject.damageBonus;
+    }
+
+    @Override
+    public Type savedType() {
+        return new TypeToken<CardSaveObject>(){}.getType();
+    }
+
+    public enum elenum {
+        ICE,
+        FIRE,
+        FORCE,
+        DARK,
+        FAKE_ICE
     }
 }

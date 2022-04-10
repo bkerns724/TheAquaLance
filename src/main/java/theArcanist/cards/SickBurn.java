@@ -1,14 +1,12 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import theArcanist.ArcanistMod;
-import theArcanist.damageMods.SoulFireDamage;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
 
 public class SickBurn extends AbstractArcanistCard {
     public final static String ID = makeID(SickBurn.class.getSimpleName());
@@ -22,7 +20,7 @@ public class SickBurn extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new SoulFireDamage());
+        addModifier(elenum.FIRE);
         exhaust = true;
         magicOneIsDebuff = true;
     }
