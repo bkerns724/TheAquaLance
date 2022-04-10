@@ -17,8 +17,6 @@ import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.powers.ResonatingPower;
 
 public class ResonantPowerPatch {
-    private static final String RESONATING_MSG = " Intensifies";
-
     @SpirePatch2(
             clz = ApplyPowerAction.class,
             method = "update"
@@ -37,7 +35,7 @@ public class ResonantPowerPatch {
             if (pow instanceof ResonatingPower && p instanceof ResonatingPower) {
                 p.flash();
                 AbstractDungeon.effectList.add(new PowerBuffEffect(__instance.target.hb.cX - __instance.target.animX,
-                        __instance.target.hb.cY + __instance.target.hb.height / 2.0F, pow.name + RESONATING_MSG));
+                        __instance.target.hb.cY + __instance.target.hb.height / 2.0F, ResonatingPower.POWER_MESSAGE));
 
                 AbstractDungeon.onModifyPower();
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractGameAction.class, "tickDuration");

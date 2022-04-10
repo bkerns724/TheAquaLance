@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
@@ -29,6 +30,11 @@ public class FakeIceDamage extends AbstractDamageModifier {
     public FakeIceDamage(boolean visibleTips) {
         this();
         this.visibleTips = visibleTips;
+    }
+
+    @Override
+    public boolean shouldPushIconToCard(AbstractCard card) {
+        return true;
     }
 
     @Override

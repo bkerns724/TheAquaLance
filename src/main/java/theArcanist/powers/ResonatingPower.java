@@ -3,6 +3,7 @@ package theArcanist.powers;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.GenericResonantCard;
@@ -13,6 +14,7 @@ import static theArcanist.util.Wiz.*;
 
 public class ResonatingPower extends AbstractArcanistPower implements OnReceivePowerPower {
     public static String POWER_ID = ArcanistMod.makeID(ResonatingPower.class.getSimpleName());
+    public final static String POWER_MESSAGE = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).DESCRIPTIONS[1];
     public static final int DEDUCTION = 4;
     public static final int TYPE_BONUS = 4;
 
@@ -36,6 +38,12 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
         this.chaos = chaos;
         cardDraw = draw;
         this.energy = energy;
+    }
+
+    @Override
+    public void updateDescription() {
+        description = descriptionArray[0];
+        description = description.replace("!A!", "#b" + amount);
     }
 
     @Override

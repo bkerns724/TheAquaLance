@@ -5,6 +5,7 @@ import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -37,6 +38,11 @@ public class ForceDamage extends AbstractDamageModifier {
     public ForceDamage(boolean visTips) {
         this();
         visibleTips = visTips;
+    }
+
+    @Override
+    public boolean shouldPushIconToCard(AbstractCard card) {
+        return true;
     }
 
     @Override

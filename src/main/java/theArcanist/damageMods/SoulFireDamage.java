@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -31,6 +32,11 @@ public class SoulFireDamage extends AbstractDamageModifier {
     public SoulFireDamage(boolean visTips) {
         this();
         visibleTips = visTips;
+    }
+
+    @Override
+    public boolean shouldPushIconToCard(AbstractCard card) {
+        return true;
     }
 
     @Override

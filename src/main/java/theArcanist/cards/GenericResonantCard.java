@@ -32,13 +32,13 @@ public class GenericResonantCard extends AbstractArcanistCard {
         resonant = true;
 
         if (cold)
-            addModifier(ICE);
+            addModifier(ICE, false);
         if (dark)
-            addModifier(elenum.DARK);
+            addModifier(elenum.DARK, false);
         if (force)
-            addModifier(elenum.FORCE);
+            addModifier(elenum.FORCE, false);
         if (fire)
-            addModifier(elenum.FIRE);
+            addModifier(elenum.FIRE, false);
 
         baseMagicNumber = magicNumber = jinx;
         baseSecondMagic = secondMagic = chaos;

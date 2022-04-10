@@ -100,6 +100,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
 
+        if (cardStrings == null)
+            cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
+        name = cardStrings.NAME;
+
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
         FlavorText.AbstractCardFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
 
@@ -267,8 +271,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
 
     @Override
     public void initializeDescription() {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
+        if (cardStrings == null)
+            cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
+
         if (damageModList != null) {
             if (damageModList.contains(FAKE_ICE) || damageModList.contains(ICE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
@@ -310,21 +316,25 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         return 1f;
     }
 
-    public void addModifier(elenum element) {
+    public void addModifier(elenum element, boolean tips) {
         if (damageModList.contains(element))
             return;
         damageModList.add(element);
         if (element == ICE)
-            DamageModifierManager.addModifier(this, new IceDamage());
+            DamageModifierManager.addModifier(this, new IceDamage(tips));
         if (element == elenum.FIRE)
-            DamageModifierManager.addModifier(this, new SoulFireDamage());
+            DamageModifierManager.addModifier(this, new SoulFireDamage(tips));
         if (element == elenum.FORCE)
-            DamageModifierManager.addModifier(this, new ForceDamage());
+            DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.DARK)
-            DamageModifierManager.addModifier(this, new DarkDamage());
+            DamageModifierManager.addModifier(this, new DarkDamage(tips));
         if (element == elenum.FAKE_ICE)
-            DamageModifierManager.addModifier(this, new FakeIceDamage());
+            DamageModifierManager.addModifier(this, new FakeIceDamage(tips));
         initializeDescription();
+    }
+
+    public void addModifier(elenum element) {
+        addModifier(element, true);
     }
 
     // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
