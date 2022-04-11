@@ -16,6 +16,10 @@ public class ChaosForm extends AbstractArcanistCard {
 
     public ChaosForm() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

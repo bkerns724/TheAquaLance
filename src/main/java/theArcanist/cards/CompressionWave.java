@@ -14,6 +14,10 @@ public class CompressionWave extends AbstractArcanistCard {
 
     public CompressionWave() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         isMultiDamage = true;
         addModifier(elenum.FORCE);

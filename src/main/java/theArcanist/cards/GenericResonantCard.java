@@ -46,6 +46,10 @@ public class GenericResonantCard extends AbstractArcanistCard {
         customizeCardAttributes();
     }
 
+    @Override
+    protected void applyAttributes() {
+    }
+
     // Should not be used
     public GenericResonantCard() {
         this(8, false, false, false, false,

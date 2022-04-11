@@ -13,6 +13,10 @@ public class Haste extends AbstractArcanistCard {
 
     public Haste() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

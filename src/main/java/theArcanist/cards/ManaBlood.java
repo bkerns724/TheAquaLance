@@ -16,6 +16,10 @@ public class ManaBlood extends AbstractArcanistCard {
 
     public ManaBlood() {
         super(ID, COST, CardType.POWER, ArcanistMod.Enums.UNIQUE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

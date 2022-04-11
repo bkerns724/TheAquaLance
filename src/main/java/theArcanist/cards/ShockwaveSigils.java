@@ -15,8 +15,11 @@ public class ShockwaveSigils extends AbstractArcanistCard {
 
     public ShockwaveSigils() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        initializeDescription();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

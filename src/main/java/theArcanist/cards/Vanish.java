@@ -18,6 +18,10 @@ public class Vanish extends AbstractArcanistCard {
 
     public Vanish() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
         secondMagic = baseSecondMagic = SECOND_MAGIC;

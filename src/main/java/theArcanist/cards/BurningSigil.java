@@ -19,12 +19,15 @@ public class BurningSigil extends AbstractArcanistCard {
 
     public BurningSigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         isMultiDamage = true;
         addModifier(elenum.FIRE);
         sigil = true;
-        initializeDescription();
     }
 
     @Override

@@ -17,6 +17,10 @@ public class SoulNeedle extends AbstractArcanistCard {
 
     public SoulNeedle() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FIRE);

@@ -15,6 +15,10 @@ public class Malevolence extends AbstractArcanistCard {
 
     public Malevolence() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

@@ -17,6 +17,10 @@ public class ChanneledFrost extends AbstractArcanistCard {
 
     public ChanneledFrost() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(ICE);
         resonant = true;

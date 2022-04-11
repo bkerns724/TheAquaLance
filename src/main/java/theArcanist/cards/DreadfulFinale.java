@@ -15,6 +15,10 @@ public class DreadfulFinale extends AbstractArcanistCard {
 
     public DreadfulFinale() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

@@ -16,6 +16,10 @@ public class ChanneledFlame extends AbstractArcanistCard {
 
     public ChanneledFlame() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(elenum.FIRE);
         resonant = true;

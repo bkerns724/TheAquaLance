@@ -16,12 +16,17 @@ public class Shatter extends AbstractArcanistCard {
     private final static int COST = 1;
     public Shatter() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         exhaust = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
+        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int x = getJinxAmount(m);
+        int x = getJinxAmountCard(m);
         if (x <= 0)
             return;
         applyToEnemy(m, new CorrodedPower(m, x));

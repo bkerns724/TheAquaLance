@@ -18,6 +18,10 @@ public class SickBurn extends AbstractArcanistCard {
 
     public SickBurn() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FIRE);

@@ -190,7 +190,7 @@
   },
   "${ModID}:ScourgeBubble": {
     "NAME": "Scourge Bubble",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal [${ModID}:ScourgeIcon] damage back."
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !ScourgeString! damage back."
   },
   "${ModID}:ChanneledFlame": {
     "NAME": "Channeled Flame",
@@ -328,7 +328,7 @@
   },
   "${ModID}:Zap": {
     "NAME": "Zap",
-    "DESCRIPTION": "Deal !D! damage. NL Apply [${ModID}:ScourgeIcon] Weak."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !ScourgeString! Weak."
   },
   "${ModID}:SickBurn": {
     "NAME": "Sick Burn",
@@ -383,7 +383,7 @@
   },
   "${ModID}:CursedSteam": {
     "NAME": "Cursed Steam",
-    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and 1 ${ModID}:Jinx."
+    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !${ModID}:M2! ${ModID}:Jinx."
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
@@ -396,7 +396,7 @@
   },
   "${ModID}:SonicReverberation": {
     "NAME": "Sonic Reverberation",
-    "DESCRIPTION": "Apply [${ModID}:ScourgeIcon] Vulnerable. NL Draw !M! card. NL Discard 1 card."
+    "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! card. NL Discard 1 card."
   },
   "${ModID}:Invisibility": {
     "NAME": "Invisibility",
@@ -453,8 +453,8 @@
   },
   "${ModID}:SoulCurse": {
     "NAME": "Soul Curse",
-    "DESCRIPTION": "Apply [${ModID}:ScourgeIcon] ${ModID}:Jinx. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply [${ModID}:ScourgeIcon] ${ModID}:Jinx."
+    "DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx."
   },
   "${ModID}:Fear": {
     "NAME": "Fear",
@@ -462,7 +462,7 @@
   },
   "${ModID}:Shatter": {
     "NAME": "Shatter",
-    "DESCRIPTION": "Vulnerable is 50% more effective and Weak is 25% more effective for [${ModID}:ScourgeIcon] turns. NL Exhaust."
+    "DESCRIPTION": "Vulnerable is 50% more effective and Weak is 25% more effective for !ScourgeString! turns. NL Exhaust."
   },
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",
@@ -474,7 +474,7 @@
   },
   "${ModID}:Greed": {
     "NAME": "Greed",
-    "DESCRIPTION": "Autoplay. NL Gain 5 Gold. NL Exhaust.",
+    "DESCRIPTION": "Autoplay. NL Gain !M! Gold. NL Exhaust.",
     "FLAVOR": "Hunting for treasure in the middle of battle is one of the most foolish things I have ever seen."
   },
   "${ModID}:VoidCurse": {

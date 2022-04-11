@@ -16,6 +16,10 @@ public class ChaosAura extends AbstractArcanistCard {
 
     public ChaosAura() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

@@ -12,6 +12,10 @@ public class Defend extends AbstractArcanistCard {
 
     public Defend() {
         super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseBlock = BLOCK;
         tags.add(CardTags.STARTER_DEFEND);
     }

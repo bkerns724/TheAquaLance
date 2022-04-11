@@ -18,10 +18,13 @@ public class TinglingSigil extends AbstractArcanistCard {
 
     public TinglingSigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         isMultiDamage = true;
         sigil = true;
-        initializeDescription();
     }
 
     @Override

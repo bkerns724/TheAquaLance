@@ -16,6 +16,10 @@ public class ChanneledVoid extends AbstractArcanistCard {
 
     public ChanneledVoid() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(elenum.DARK);
         resonant = true;

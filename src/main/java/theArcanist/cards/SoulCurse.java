@@ -15,12 +15,17 @@ public class SoulCurse extends AbstractArcanistCard {
 
     public SoulCurse() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         exhaust = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
+        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int count = getJinxAmount(m);
+        int count = getJinxAmountCard(m);
         if (count > 0)
             applyToEnemy(m, new JinxPower(m, count));
     }

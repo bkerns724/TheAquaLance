@@ -18,6 +18,10 @@ public class FrozenLance extends AbstractArcanistCard {
 
     public FrozenLance() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
         addModifier(ICE);

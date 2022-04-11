@@ -20,6 +20,10 @@ public class ShadowLance extends AbstractArcanistCard {
 
     public ShadowLance() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.DARK);

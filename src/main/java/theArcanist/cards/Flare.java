@@ -15,6 +15,10 @@ public class Flare extends AbstractArcanistCard {
 
     public Flare() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
     }

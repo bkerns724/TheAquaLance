@@ -18,6 +18,10 @@ public class Bane extends AbstractArcanistCard {
 
     public Bane() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
         exhaust = true;
@@ -29,8 +33,8 @@ public class Bane extends AbstractArcanistCard {
 
     @Override
     public void applyPowers() {
-        super.applyPowers();
         magicNumber = baseMagicNumber;
+        super.applyPowers();
         if (adp().hasRelic(ChemicalX.ID))
             magicNumber += 2;
         magicNumber += EnergyPanel.totalCount;

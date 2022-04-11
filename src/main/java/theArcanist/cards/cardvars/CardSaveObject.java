@@ -13,5 +13,7 @@ public class CardSaveObject implements Serializable {
     public boolean debuffIncrease = false;
     public int extraEnergy = 0;
     public int extraDraw = 0;
-    public int damageBonus = 0;
+    public int baseDamage = 0;
+    public int baseMagic = 0;
+    public int baseSecondMagic = 0;
 }

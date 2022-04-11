@@ -15,6 +15,10 @@ public class Madness extends AbstractArcanistCard {
 
     public Madness() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         exhaust = true;
     }
 

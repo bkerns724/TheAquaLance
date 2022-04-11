@@ -19,13 +19,18 @@ public class SonicReverberation extends AbstractArcanistCard {
 
     public SonicReverberation() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new ScourgeType());
+        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (getJinxAmount(m) > 0)
-            applyToEnemy(m, new VulnerablePower(m, getJinxAmount(m), false));
+        if (getJinxAmountCard(m) > 0)
+            applyToEnemy(m, new VulnerablePower(m, getJinxAmountCard(m), false));
         atb(new DrawCardAction(magicNumber));
         discard(DISCARD_AMOUNT);
     }

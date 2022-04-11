@@ -18,11 +18,16 @@ public class SuddenChill extends AbstractArcanistCard {
 
     public SuddenChill() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
         magicOneIsDebuff = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
         addModifier(elenum.ICE);
+        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -32,9 +37,28 @@ public class SuddenChill extends AbstractArcanistCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int temp = baseDamage;
+        // NOT getJinxAmountCard
         baseDamage += magicNumber*getJinxAmount(mo);
         super.calculateCardDamage(mo);
         baseDamage = temp;
+        isDamageModified = damage != baseDamage;
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+    }
+
+    @Override
+    public void initializeDescription() {
+        if (scourgeIncrease && upgraded)
+            baseMagicNumber = (MAGIC + UPGRADE_MAGIC)*2;
+        else if (scourgeIncrease)
+            baseMagicNumber = MAGIC*2;
+        else
+            baseMagicNumber = MAGIC;
+        magicNumber = baseMagicNumber;
+        super.initializeDescription();
     }
 
     public void upp() {

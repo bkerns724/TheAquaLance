@@ -16,6 +16,10 @@ public class Barrier extends AbstractArcanistCard {
 
     public Barrier() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
     }

@@ -15,9 +15,12 @@ public class SackOfDebris extends AbstractArcanistCard {
 
     public SackOfDebris() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         selfRetain = true;
-        initializeDescription();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

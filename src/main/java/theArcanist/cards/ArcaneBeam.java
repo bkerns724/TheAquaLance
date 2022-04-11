@@ -20,6 +20,10 @@ public class ArcaneBeam extends AbstractArcanistCard {
 
     public ArcaneBeam() {
         super(ID, COST, CardType.ATTACK, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
     }
 

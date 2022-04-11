@@ -16,6 +16,10 @@ public class ChanneledVice extends AbstractArcanistCard {
 
     public ChanneledVice() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(elenum.FORCE);
         resonant = true;

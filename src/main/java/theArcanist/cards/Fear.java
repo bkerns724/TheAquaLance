@@ -16,6 +16,10 @@ public class Fear extends AbstractArcanistCard {
 
     public Fear() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
         exhaust = true;

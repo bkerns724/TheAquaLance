@@ -15,6 +15,10 @@ public class Invisibility extends AbstractArcanistCard {
 
     public Invisibility() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
     }

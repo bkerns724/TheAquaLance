@@ -18,6 +18,10 @@ public class WellPrepared extends AbstractArcanistCard {
 
     public WellPrepared() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         secondMagic = baseSecondMagic = SECOND_MAGIC;
         ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, secondMagic);

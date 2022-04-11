@@ -170,7 +170,7 @@ public class ResearchCenter extends AbstractArcanistEvent {
         if (x == 0)
             return;
         if (x == 1) {
-            AbstractDungeon.player.damage(new DamageInfo(adp(), amount2));
+            AbstractDungeon.player.damage(new DamageInfo(adp(), amount2, DamageInfo.DamageType.HP_LOSS));
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(adp().hb.cX, adp().hb.cY, AbstractGameAction.AttackEffect.POISON));
             return;
         }

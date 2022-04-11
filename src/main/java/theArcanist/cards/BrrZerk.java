@@ -15,6 +15,10 @@ public class BrrZerk extends AbstractArcanistCard {
 
     public BrrZerk() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

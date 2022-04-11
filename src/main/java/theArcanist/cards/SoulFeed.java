@@ -16,6 +16,10 @@ public class SoulFeed extends AbstractArcanistCard {
 
     public SoulFeed() {
         super(ID, COST, CardType.POWER, ArcanistMod.Enums.UNIQUE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

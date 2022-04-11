@@ -15,10 +15,13 @@ public class CursedSigil extends AbstractArcanistCard {
 
     public CursedSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
         sigil = true;
-        initializeDescription();
     }
 
     @Override

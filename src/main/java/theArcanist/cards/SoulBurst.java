@@ -14,6 +14,10 @@ public class SoulBurst extends AbstractArcanistCard {
 
     public SoulBurst() {
         super(ID, COST, CardType.ATTACK, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(elenum.FIRE);
     }

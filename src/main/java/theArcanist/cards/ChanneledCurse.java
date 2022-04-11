@@ -21,6 +21,10 @@ public class ChanneledCurse extends AbstractArcanistCard {
 
     public ChanneledCurse() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         resonant = true;

@@ -15,9 +15,12 @@ public class ChameleonSigil extends AbstractArcanistCard {
 
     public ChameleonSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
-        initializeDescription();
     }
 
     @Override

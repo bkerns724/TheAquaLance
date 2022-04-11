@@ -17,6 +17,10 @@ public class PhantomFist extends AbstractArcanistCard {
 
     public PhantomFist() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);

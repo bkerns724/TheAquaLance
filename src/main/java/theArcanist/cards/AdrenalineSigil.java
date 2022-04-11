@@ -14,9 +14,12 @@ public class AdrenalineSigil extends AbstractArcanistCard {
 
     public AdrenalineSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
-        initializeDescription();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

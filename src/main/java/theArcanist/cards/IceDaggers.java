@@ -15,6 +15,10 @@ public class IceDaggers extends AbstractArcanistCard {
 
     public IceDaggers() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.ICE);

@@ -299,6 +299,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(VoidSpirits.getParams());
         BaseMod.addEvent(SpellForge.getParams());
         BaseMod.addEvent(ResearchCenter.getParams());
+        BaseMod.addEvent(LadyInRed.getParams());
     }
 
     private static void addPotions() {

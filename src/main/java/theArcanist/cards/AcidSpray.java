@@ -17,6 +17,10 @@ public class AcidSpray extends AbstractArcanistCard {
 
     public AcidSpray() {
         super(ID, COST, CardType.ATTACK, Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;

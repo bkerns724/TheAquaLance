@@ -19,6 +19,10 @@ public class RipplingShadows extends AbstractArcanistCard {
 
     public RipplingShadows() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }

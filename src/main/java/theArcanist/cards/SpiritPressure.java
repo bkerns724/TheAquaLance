@@ -15,6 +15,10 @@ public class SpiritPressure extends AbstractArcanistCard {
 
     public SpiritPressure() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

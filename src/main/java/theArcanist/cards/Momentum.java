@@ -15,6 +15,10 @@ public class Momentum extends AbstractArcanistCard {
 
     public Momentum() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

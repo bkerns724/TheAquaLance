@@ -16,16 +16,20 @@ public class HeavySigil extends AbstractArcanistCard {
 
     public HeavySigil() {
         super(ID, -2, CardType.SKILL,CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
-        initializeDescription();
+        hasScourge = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         forAllMonstersLiving(monster -> {
-            int amount = getJinxAmount(monster);
+            int amount = getJinxAmountCard(monster);
             if (amount > 0)
                 applyToEnemy(monster, new CrushedPower(monster, amount * magicNumber));
         });

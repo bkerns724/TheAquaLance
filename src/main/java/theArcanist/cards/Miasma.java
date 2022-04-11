@@ -19,6 +19,10 @@ public class Miasma extends AbstractArcanistCard {
 
     public Miasma() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
         magicOneIsDebuff = true;

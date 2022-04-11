@@ -20,6 +20,10 @@ public class StinkingCloud extends AbstractArcanistCard {
 
     public StinkingCloud() {
         super(ID, COST, AbstractCard.CardType.SKILL, ArcanistMod.Enums.UNIQUE, AbstractCard.CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
         magicOneIsDebuff = true;

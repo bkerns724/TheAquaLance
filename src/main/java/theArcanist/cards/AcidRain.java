@@ -19,6 +19,10 @@ public class AcidRain extends AbstractArcanistCard {
 
     public AcidRain() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
         isMultiDamage = true;

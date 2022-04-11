@@ -14,9 +14,12 @@ public class JaggedSigil extends AbstractArcanistCard {
 
     public JaggedSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
-        initializeDescription();
     }
 
     @Override

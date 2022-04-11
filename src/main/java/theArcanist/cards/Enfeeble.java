@@ -15,6 +15,10 @@ public class Enfeeble extends AbstractArcanistCard {
 
     public Enfeeble() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
         magicOneIsDebuff = true;

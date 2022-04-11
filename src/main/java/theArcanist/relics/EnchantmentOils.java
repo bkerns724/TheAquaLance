@@ -47,7 +47,6 @@ public class EnchantmentOils extends AbstractArcanistRelic {
                 int x = AbstractDungeon.miscRng.random(0, list.size()-1);
                 AbstractArcanistCard.elenum mod = list.get(x);
                 card.baseDamage += 2;
-                ((Strike) card).damageBonus += 2;
                 ((Strike) card).addModifier(mod);
                 if (count == 0)
                     xOffset = xOffsetBase;

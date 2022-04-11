@@ -14,6 +14,10 @@ public class ChaoticMind extends AbstractArcanistCard {
 
     public ChaoticMind() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
     }

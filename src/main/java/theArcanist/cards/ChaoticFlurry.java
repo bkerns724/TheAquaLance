@@ -16,6 +16,10 @@ public class ChaoticFlurry extends AbstractArcanistCard {
 
     public ChaoticFlurry() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
     }

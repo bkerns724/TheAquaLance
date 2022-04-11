@@ -15,6 +15,10 @@ public class EldritchStaff extends AbstractArcanistCard {
 
     public EldritchStaff() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

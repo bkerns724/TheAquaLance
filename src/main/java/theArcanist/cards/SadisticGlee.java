@@ -15,6 +15,10 @@ public class SadisticGlee extends AbstractArcanistCard {
 
     public SadisticGlee() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

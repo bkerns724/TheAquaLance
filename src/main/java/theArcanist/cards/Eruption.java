@@ -14,6 +14,10 @@ public class Eruption extends AbstractArcanistCard {
 
     public Eruption() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         isMultiDamage = true;
         exhaust = true;

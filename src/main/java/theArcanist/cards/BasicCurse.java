@@ -17,6 +17,10 @@ public class BasicCurse extends AbstractArcanistCard {
 
     public BasicCurse() {
         super(ID, COST, CardType.SKILL, CardRarity.BASIC, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
     }

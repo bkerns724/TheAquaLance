@@ -3,11 +3,11 @@ package theArcanist.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.powers.SummonMonsterPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.applyToSelf;
 
 public class SummonMonster extends AbstractArcanistCard {
     public final static String ID = makeID("SummonMonster");
@@ -17,6 +17,10 @@ public class SummonMonster extends AbstractArcanistCard {
 
     public SummonMonster() {
         super(ID, COST, CardType.POWER, ArcanistMod.Enums.UNIQUE, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

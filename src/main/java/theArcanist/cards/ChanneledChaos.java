@@ -20,6 +20,10 @@ public class ChanneledChaos extends AbstractArcanistCard {
 
     public ChanneledChaos() {
         super(ID, COST, CardType.ATTACK, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         secondMagic = baseSecondMagic = SECOND_MAGIC;
         chaos = baseSecondMagic;

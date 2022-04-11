@@ -17,6 +17,10 @@ public class CurseWeapon extends AbstractArcanistCard {
 
     public CurseWeapon() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;

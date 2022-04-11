@@ -21,6 +21,10 @@ public class HideInSleeve extends AbstractArcanistCard {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
+    @Override
+    protected void applyAttributes() {
+    }
+
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ArrayList<AbstractArcanistCard> list = new ArrayList<>();
         AbstractCard c;

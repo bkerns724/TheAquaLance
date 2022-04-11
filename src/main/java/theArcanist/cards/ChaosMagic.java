@@ -18,6 +18,10 @@ public class ChaosMagic extends AbstractArcanistCard {
 
     public ChaosMagic() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         magicNumber = baseMagicNumber = MAGIC;
     }
 

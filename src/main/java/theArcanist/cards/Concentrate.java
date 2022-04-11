@@ -17,6 +17,10 @@ public class Concentrate extends AbstractArcanistCard {
 
     public Concentrate() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
     }
 

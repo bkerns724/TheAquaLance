@@ -16,6 +16,10 @@ public class BasicChannel extends AbstractArcanistCard {
 
     public BasicChannel() {
         super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         resonant = true;
     }

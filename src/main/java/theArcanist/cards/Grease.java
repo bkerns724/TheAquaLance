@@ -15,6 +15,10 @@ public class Grease extends AbstractArcanistCard {
 
     public Grease() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
         magicOneIsDebuff = true;

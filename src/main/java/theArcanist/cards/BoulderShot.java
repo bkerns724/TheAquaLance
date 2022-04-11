@@ -15,6 +15,10 @@ public class BoulderShot extends AbstractArcanistCard {
 
     public BoulderShot() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
     }
 

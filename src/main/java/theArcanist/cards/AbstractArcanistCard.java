@@ -65,8 +65,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
 
     private boolean needsArtRefresh = false;
-    protected boolean magicOneIsDebuff = false;
-    protected boolean magicTwoIsDebuff = false;
+
+    public boolean magicOneIsDebuff = false;
+    public boolean magicTwoIsDebuff = false;
+    public boolean hasScourge = false;
 
     public boolean beingDiscarded = false;
     public static final String MESSAGE_KEY = "SigilMessage";
@@ -81,9 +83,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public boolean sigil = false;
     public int extraDraw = 0;
     public int extraEnergy = 0;
-    public boolean debuffIncrease = false;
     public boolean scourgeIncrease = false;
-    public int damageBonus = 0;
 
     private static final Color FLAVOR_BOX_COLOR = Color.PURPLE.cpy();
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
@@ -114,11 +114,12 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             } else
                 needsArtRefresh = true;
         }
+
+        applyAttributes();
+        initializeDescription();
     }
 
-    public boolean checkMagicOneIsDebuff() {return magicOneIsDebuff;}
-
-    public boolean checkMagicTwoIsDebuff() {return magicTwoIsDebuff;}
+    protected abstract void applyAttributes();
 
     @Override
     public List<String> getCardDescriptors() {
@@ -134,7 +135,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             return;
         beingDiscarded = true;
         autoPlayWhenDiscarded();
-        // Powers that trigger on discard
         forAllMonstersLiving(m -> {
             for (AbstractPower pow : m.powers)
                 if (pow instanceof AbstractArcanistPower)
@@ -157,6 +157,13 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         lighten(true);
         att(new NewQueueCardAction(this, true, false, true));
         att(new UnlimboAction(this));
+    }
+
+    protected int getJinxAmountCard(AbstractMonster m) {
+        int x = getJinxAmount(m);
+        if (scourgeIncrease)
+            x *= 2;
+        return x;
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
@@ -199,7 +206,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             else if (x == FIRE)
                 fire = true;
         }
-        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, jinx, chaos, extraDraw, extraEnergy));
+        int jinxAmount = jinx;
+        if (scourgeIncrease)
+            jinxAmount *= 2;
+        applyToSelf(new ResonatingPower(baseDamage, cold, dark, force, fire, jinxAmount, chaos, extraDraw, extraEnergy));
     }
 
     @Override
@@ -289,6 +299,11 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
         }
+
+        if (hasScourge && !scourgeIncrease)
+            rawDescription = rawDescription.replace("!ScourgeString!", "[arcanistmod:ScourgeIcon]");
+        else if (hasScourge)
+            rawDescription = rawDescription.replace("!ScourgeString!", "2 [arcanistmod:ScourgeIcon]");
 
         if (selfRetain)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
@@ -414,7 +429,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         card.secondMagic = secondMagic;
         card.baseSecondMagic = baseSecondMagic;
         card.upgradedSecondMagic = upgradedSecondMagic;
-        card.isSecondMagicModified = isSecondMagicModified;
         card.sigil = sigil;
         card.selfRetain = selfRetain;
         card.magicOneIsDebuff = magicOneIsDebuff;
@@ -422,7 +436,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         card.resonant = resonant;
         card.extraDraw = extraDraw;
         card.extraEnergy = extraEnergy;
-        card.debuffIncrease = debuffIncrease;
         card.scourgeIncrease = scourgeIncrease;
         for (elenum ele : damageModList)
             card.addModifier(ele);
@@ -436,11 +449,12 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         obj.elements = damageModList;
         obj.sigil = sigil;
         obj.retain = selfRetain;
-        obj.debuffIncrease = debuffIncrease;
         obj.scourgeIncrease = scourgeIncrease;
         obj.extraDraw = extraDraw;
         obj.extraEnergy = extraEnergy;
-        obj.damageBonus = damageBonus;
+        obj.baseDamage = baseDamage;
+        obj.baseSecondMagic = baseSecondMagic;
+        obj.baseMagic = baseMagicNumber;
         return obj;
     }
 
@@ -452,11 +466,12 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         if (sigil)
             cost = -2;
         selfRetain = obj.retain;
-        debuffIncrease = obj.debuffIncrease;
         scourgeIncrease = obj.scourgeIncrease;
         extraDraw = obj.extraDraw;
         extraEnergy = obj.extraEnergy;
-        baseDamage += obj.damageBonus;
+        baseDamage = obj.baseDamage;
+        baseSecondMagic = obj.baseSecondMagic;
+        baseMagicNumber = obj.baseMagic;
     }
 
     @Override

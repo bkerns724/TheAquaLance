@@ -13,6 +13,10 @@ public class GreaterBarrier extends AbstractArcanistCard {
 
     public GreaterBarrier() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseBlock = BLOCK;
     }
 

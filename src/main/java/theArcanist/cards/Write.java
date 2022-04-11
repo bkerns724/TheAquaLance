@@ -13,6 +13,7 @@ import java.io.File;
 
 import static theArcanist.ArcanistMod.makeID;
 
+// I just use this when I want to crack an atlas
 @AutoAdd.Ignore
 public class Write extends AbstractArcanistCard {
     public final static String ID = makeID(Write.class.getSimpleName());
@@ -21,6 +22,10 @@ public class Write extends AbstractArcanistCard {
     public Write() {
         super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
         color = CardColor.COLORLESS;
+    }
+
+    @Override
+    protected void applyAttributes() {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

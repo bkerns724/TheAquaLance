@@ -184,5 +184,23 @@
       "[Drink Potion] #rBottoms #rUp!",
       "[Leave]"
     ]
+  },
+  "${ModID}:LadyInRed": {
+    "NAME": "The Lady In Red",
+    "DESCRIPTIONS": [
+      "You come across a small stone building, with oddly colored smoke billowing out of its chimney.  A sign above the door declares it to be \"The Malice Shop.\"  Curious as to how you buy malice, you enter the door.  A Lady dressed completely in red greets you, and offers you potions to enhance the cruelty of your spells.  The cost she proposes is not in coin, however.",
+      "You decide to give up some blood, since you can always heal later.  You drink the offered potion and can feel the increase in your power.",
+      "You decide to give up a little vitality, to deny your enemies a lot of theirs.  You drink the offered potion and can feel the increase in your power.",
+      "You are really suspicious of the costs of these options.  You leave the shop.",
+      "Choose cards to boost.",
+      "Choose cards to boost."
+    ],
+    "OPTIONS": [
+      "[Scourge] #rLose #r!E! #rHP.  #gBoost #g!sCount! #gScourge #gCards.",
+      "[Scourge] Requires a scourge card and more than !E! HP.",
+      "[Debuff] #rLose #r!E2! #rMax #rHP. #gBoost #g!dCount! #gDebuffing #gCards.",
+      "[Debuff] Requires a card that applies a debuff.",
+      "[Leave]"
+    ]
   }
 }

@@ -16,6 +16,10 @@ public class VoidBall extends AbstractArcanistCard {
 
     public VoidBall() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(DARK);
         isMultiDamage = true;

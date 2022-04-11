@@ -14,10 +14,13 @@ public class CrumblingSigil extends AbstractArcanistCard {
 
     public CrumblingSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.ALL_ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
         sigil = true;
-        initializeDescription();
     }
 
     @Override

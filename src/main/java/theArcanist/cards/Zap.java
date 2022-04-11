@@ -20,15 +20,20 @@ public class Zap extends AbstractArcanistCard {
 
     public Zap() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void applyAttributes() {
         baseDamage = DAMAGE;
         DamageModifierManager.addModifier(this, new ScourgeType());
+        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         vfx(new LightningEffect(m.drawX, m.drawY));
         dmg(m, AbstractGameAction.AttackEffect.NONE, Color.YELLOW.cpy());
-        if (getJinxAmount(m) > 0)
-            applyToEnemy(m, new WeakPower(m, getJinxAmount(m), false));
+        if (getJinxAmountCard(m) > 0)
+            applyToEnemy(m, new WeakPower(m, getJinxAmountCard(m), false));
     }
 
     public void upp() {
