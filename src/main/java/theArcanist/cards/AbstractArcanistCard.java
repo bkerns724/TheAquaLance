@@ -45,14 +45,15 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theArcanist.ArcanistMod.makeImagePath;
-import static theArcanist.ArcanistMod.modID;
+import static theArcanist.ArcanistMod.*;
 import static theArcanist.cards.AbstractArcanistCard.elenum.*;
 import static theArcanist.util.Wiz.*;
 
 @AutoAdd.Ignore
 public abstract class AbstractArcanistCard extends CustomCard implements CustomSavable<CardSaveObject> {
     protected CardStrings cardStrings;
+    private static final CardStrings thisCardStrings =
+            CardCrawlGame.languagePack.getCardStrings(makeID(AbstractArcanistCard.class.getSimpleName()));
 
     public int secondMagic;
     public int baseSecondMagic;
@@ -273,7 +274,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public void initializeDescription() {
         if (cardStrings == null)
             cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
-        rawDescription = cardStrings.DESCRIPTION;
+        if (upgraded && cardStrings.UPGRADE_DESCRIPTION != null)
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+        else
+            rawDescription = cardStrings.DESCRIPTION;
 
         if (damageModList != null) {
             if (damageModList.contains(ICE))
@@ -285,6 +289,12 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
         }
+
+        if (selfRetain)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
+        if (sigil)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
+
         super.initializeDescription();
     }
 
@@ -406,6 +416,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         card.upgradedSecondMagic = upgradedSecondMagic;
         card.isSecondMagicModified = isSecondMagicModified;
         card.sigil = sigil;
+        card.selfRetain = selfRetain;
         card.magicOneIsDebuff = magicOneIsDebuff;
         card.magicTwoIsDebuff = magicTwoIsDebuff;
         card.resonant = resonant;
@@ -425,8 +436,8 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         obj.elements = damageModList;
         obj.sigil = sigil;
         obj.retain = selfRetain;
-        obj.debuffIncrease = this.debuffIncrease;
-        obj.scourgeIncrease = this.scourgeIncrease;
+        obj.debuffIncrease = debuffIncrease;
+        obj.scourgeIncrease = scourgeIncrease;
         obj.extraDraw = extraDraw;
         obj.extraEnergy = extraEnergy;
         obj.damageBonus = damageBonus;
@@ -434,16 +445,18 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     }
 
     @Override
-    public void onLoad(CardSaveObject cardSaveObject) {
-        for (elenum ele : cardSaveObject.elements)
+    public void onLoad(CardSaveObject obj) {
+        for (elenum ele : obj.elements)
             addModifier(ele);
-        sigil = cardSaveObject.sigil;
-        selfRetain = cardSaveObject.retain;
-        debuffIncrease = cardSaveObject.debuffIncrease;
-        scourgeIncrease = cardSaveObject.scourgeIncrease;
-        extraDraw = cardSaveObject.extraDraw;
-        extraEnergy = cardSaveObject.extraEnergy;
-        baseDamage += cardSaveObject.damageBonus;
+        sigil = obj.sigil;
+        if (sigil)
+            cost = -2;
+        selfRetain = obj.retain;
+        debuffIncrease = obj.debuffIncrease;
+        scourgeIncrease = obj.scourgeIncrease;
+        extraDraw = obj.extraDraw;
+        extraEnergy = obj.extraEnergy;
+        baseDamage += obj.damageBonus;
     }
 
     @Override

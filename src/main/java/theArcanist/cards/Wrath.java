@@ -28,5 +28,6 @@ public class Wrath extends AbstractArcanistCard {
     }
 
     public void upp() {
+        selfRetain = true;
     }
 }

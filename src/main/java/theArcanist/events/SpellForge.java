@@ -32,7 +32,7 @@ public class SpellForge extends AbstractArcanistEvent {
     public static final String ID = makeID(SpellForge.class.getSimpleName());
     private static final EventStrings eventStrings;
     private static final String IMAGE_PATH;
-    private static final EventUtils.EventType TYPE = EventUtils.EventType.NORMAL;
+    private static final EventUtils.EventType TYPE = EventUtils.EventType.SHRINE;
     private static final int GOLD_COST_A0 = 50;
     private static final int GOLD_COST_A15 = 65;
     private static final int GOLD_GAIN_A0 = 250;
@@ -131,7 +131,7 @@ public class SpellForge extends AbstractArcanistEvent {
                     break;
             }
         } else if (screen == CUR_SCREEN.ELE_CHOICE) {
-            CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            CardGroup eleGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             if (buttonPressed == 0)
                 element = AbstractArcanistCard.elenum.ICE;
             else if (buttonPressed == 1)
@@ -145,8 +145,8 @@ public class SpellForge extends AbstractArcanistEvent {
             for (AbstractCard c :  CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
                 if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).damageModList.isEmpty()
                         && c.type == AbstractCard.CardType.ATTACK)
-                    group.addToTop(c);
-            AbstractDungeon.gridSelectScreen.open(group, 1, descriptions[2], false);
+                    eleGroup.addToTop(c);
+            AbstractDungeon.gridSelectScreen.open(eleGroup, 1, descriptions[2], false);
         }
     }
 

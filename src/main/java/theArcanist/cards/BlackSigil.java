@@ -17,6 +17,7 @@ public class BlackSigil extends AbstractArcanistCard {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
+        initializeDescription();
     }
 
     @Override

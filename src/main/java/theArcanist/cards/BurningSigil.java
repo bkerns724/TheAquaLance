@@ -24,6 +24,7 @@ public class BurningSigil extends AbstractArcanistCard {
         isMultiDamage = true;
         addModifier(elenum.FIRE);
         sigil = true;
+        initializeDescription();
     }
 
     @Override

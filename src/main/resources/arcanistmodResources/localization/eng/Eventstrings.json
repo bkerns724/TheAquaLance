@@ -159,5 +159,30 @@
       "[Dark]",
       "[Soul Fire]"
     ]
+  },
+  "${ModID}:ResearchCenter": {
+    "NAME": "Research Center",
+    "DESCRIPTIONS": [
+      "You come across a large building that advertises itself as a research center.  Walking inside, there's several wizards bustling about.  You're familiar with most of what they do but they do have a few services they can provide.  For a price, of course.",
+      "They sprinkle a fine powder of some sort on your sigil and then cast a spell on it.  When they hand it back to you, it floats near your hand until you will it to stop.",
+      "Choose a sigil to enhance",
+      "With their assistance, you manage to figure out the pattern to etch a difficult spell into the hard clay of a blank sigil.  As payment, you take an uneasy look at the potion they bring forth, then bring it to your lips.",
+      "Choose a card to modify",
+      "It's ~disgusting.~",
+      "None of these options are worth the cost.",
+      "Suitable Card",
+      "An Arcanist card that costs less than 3.",
+      "Possible Effects",
+      "Gain Clumsy, Lose #b!HealthString! Health, or No Effect."
+    ],
+    "OPTIONS": [
+      "[Retain] #y!E! #yGold:  #gChoose #ga #gSigil #gto #gGain #gRetain.",
+      "[Retain] Requires !E! Gold and a Sigil.",
+      "[Sigil] #gMake #ga #gSuitable #gCard #ga #gSigil.  #rDrink #ra #rStrange #rConcoction.",
+      "[Sigil] Requires a Suitable Card.",
+      "[Refuse]",
+      "[Drink Potion] #rBottoms #rUp!",
+      "[Leave]"
+    ]
   }
 }

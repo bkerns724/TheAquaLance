@@ -29,10 +29,10 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theArcanist.icons.*;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.events.*;
+import theArcanist.icons.*;
 import theArcanist.potions.*;
 import theArcanist.relics.AbstractArcanistRelic;
 
@@ -41,7 +41,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import static theArcanist.TheArcanist.Enums.THE_ARCANIST;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.atb;
+import static theArcanist.util.Wiz.forAllMonstersLiving;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -297,6 +298,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(MysteriousHoard.getParams());
         BaseMod.addEvent(VoidSpirits.getParams());
         BaseMod.addEvent(SpellForge.getParams());
+        BaseMod.addEvent(ResearchCenter.getParams());
     }
 
     private static void addPotions() {

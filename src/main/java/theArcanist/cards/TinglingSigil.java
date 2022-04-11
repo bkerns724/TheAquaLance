@@ -21,6 +21,7 @@ public class TinglingSigil extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         isMultiDamage = true;
         sigil = true;
+        initializeDescription();
     }
 
     @Override

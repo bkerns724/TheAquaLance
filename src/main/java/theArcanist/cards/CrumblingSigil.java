@@ -17,6 +17,7 @@ public class CrumblingSigil extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
         sigil = true;
+        initializeDescription();
     }
 
     @Override

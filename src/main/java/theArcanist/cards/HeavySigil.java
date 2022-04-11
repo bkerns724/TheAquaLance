@@ -19,6 +19,7 @@ public class HeavySigil extends AbstractArcanistCard {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
+        initializeDescription();
     }
 
     @Override

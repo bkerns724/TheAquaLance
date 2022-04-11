@@ -17,7 +17,7 @@ public class MyAddTempHPAction extends AbstractGameAction {
 
     public void update() {
         if (duration == DURATION) {
-            TempHPField.tempHp.set(target, (Integer)TempHPField.tempHp.get(target) + amount);
+            TempHPField.tempHp.set(target, TempHPField.tempHp.get(target) + amount);
             if (amount > 0) {
                 AbstractDungeon.effectsQueue.add(new HealEffect(target.hb.cX - target.animX, target.hb.cY, amount));
                 target.healthBarUpdatedEvent();

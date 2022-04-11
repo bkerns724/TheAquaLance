@@ -17,6 +17,7 @@ public class SackOfDebris extends AbstractArcanistCard {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseDamage = DAMAGE;
         selfRetain = true;
+        initializeDescription();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
