@@ -1,7 +1,6 @@
 package theArcanist.cards;
 
 import basemod.abstracts.CustomCard;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
@@ -29,8 +28,6 @@ public class Greed extends CustomCard {
         super(ID, NAME, getCardTextureString(Greed.class.getSimpleName(), CardType.CURSE), COST, DESCRIPTION,
                 CardType.CURSE, CardColor.CURSE, CardRarity.SPECIAL, NONE);
         baseMagicNumber = magicNumber = MAGIC;
-        AutoplayField.autoplay.set(this, true);
-        exhaust = true;
 
         if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
             CardArtRoller.computeCard(this);

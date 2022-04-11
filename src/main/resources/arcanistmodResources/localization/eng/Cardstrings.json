@@ -474,7 +474,7 @@
   },
   "${ModID}:Greed": {
     "NAME": "Greed",
-    "DESCRIPTION": "Autoplay. NL Gain !M! Gold. NL Exhaust.",
+    "DESCRIPTION": "Whenever this card is drawn, gain !M! Gold and 1 Weak.",
     "FLAVOR": "Hunting for treasure in the middle of battle is one of the most foolish things I have ever seen."
   },
   "${ModID}:VoidCurse": {
