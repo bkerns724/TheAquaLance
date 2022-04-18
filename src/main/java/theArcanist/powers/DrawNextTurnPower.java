@@ -17,7 +17,7 @@ public class DrawNextTurnPower extends AbstractArcanistPower {
 
     @Override
     public void atStartOfTurnPostDraw() {
-        if (!adp().hasPower(SpeedPower.POWER_ID))
+        if (!adp().hasPower(HastePower.POWER_ID))
             atb(new DrawCardAction(amount));
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }

@@ -11,9 +11,9 @@ import static theArcanist.util.Wiz.getJinxAmount;
 
 public class SuddenChill extends AbstractArcanistCard {
     public final static String ID = makeID(SuddenChill.class.getSimpleName());
-    private final static int DAMAGE = 9;
+    private final static int DAMAGE = 6;
     private final static int COST = 1;
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 
     public SuddenChill() {
@@ -55,6 +55,8 @@ public class SuddenChill extends AbstractArcanistCard {
             baseMagicNumber = (MAGIC + UPGRADE_MAGIC)*2;
         else if (scourgeIncrease)
             baseMagicNumber = MAGIC*2;
+        else if (upgraded)
+            baseMagicNumber = MAGIC + UPGRADE_MAGIC;
         else
             baseMagicNumber = MAGIC;
         magicNumber = baseMagicNumber;

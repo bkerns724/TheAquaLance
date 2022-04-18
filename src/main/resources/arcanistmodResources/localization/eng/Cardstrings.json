@@ -4,7 +4,15 @@
     "DESCRIPTION": "Use this to store strings.",
     "EXTENDED_DESCRIPTION": [
       "Retain. NL ",
-      "${ModID}:Sigil. NL "
+      "${ModID}:Sigil. NL ",
+      " NL Draw a card.",
+      " NL Draw !X! cards.",
+      " NL Gain [E] .",
+      " NL Gain !X! [E] .",
+      " NL ${ModID}:Resonate.",
+      " NL Exhaust.",
+      "Sigil",
+      "Sigils can only be played via discard."
     ]
   },
   "${ModID}:Strike": {
@@ -25,7 +33,7 @@
   },
   "${ModID}:BasicChannel": {
     "NAME": "Basic Channel",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "${ModID}:IceDamage": {
     "NAME": "Cold",
@@ -105,12 +113,12 @@
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
-    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
+    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
     "DESCRIPTION": "Gain !B! Block. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards.",
     "FLAVOR": "A great spell for when you need to defend yourself but stay mobile."
   },
   "${ModID}:Blink": {
@@ -169,7 +177,7 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Apply ${ModID}:Crushed to ALL enemies."
+    "DESCRIPTION": "Apply !ScourgeString! ${ModID}:Crushed to ALL enemies."
   },
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
@@ -194,31 +202,31 @@
   },
   "${ModID}:ChanneledFlame": {
     "NAME": "Channeled Flame",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "${ModID}:ChanneledFrost": {
     "NAME": "Channeled Frost",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "${ModID}:ChanneledVoid": {
     "NAME": "Channeled Void",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "${ModID}:ChanneledVice": {
     "NAME": "Channeled Vice",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "${ModID}:ChanneledCurse": {
     "NAME": "Channeled Curse",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx."
   },
   "${ModID}:ChanneledChaos": {
     "NAME": "Channeled Chaos",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !${ModID}:M2! random buff. NL ${ModID}:Resonate."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !${ModID}:M2! random buff."
   },
   "${ModID}:GenericResonantCard": {
     "NAME": "Resonate",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Resonate.",
+    "DESCRIPTION": "Deal !D! damage.",
     "EXTENDED_DESCRIPTION":[
       "Deal !D! damage. NL ",
       "Apply !M! ${ModID}:Jinx. NL ",
@@ -229,7 +237,6 @@
       " cards. NL ",
       "Gain ",
       " [E]. NL ",
-      "${ModID}:Resonate.",
       "Blended Channel",
       "Swift Channel",
       "Energetic Channel"
@@ -248,7 +255,7 @@
   },
   "${ModID}:Eruption": {
     "NAME": "Eruption",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
     "FLAVOR": "All right, shit like this is why I studied magic!"
   },
   "${ModID}:WellPrepared": {
@@ -279,7 +286,7 @@
   },
   "${ModID}:ChaoticFlurry": {
     "NAME": "Chaotic Flurry",
-    "DESCRIPTION": "{@@}Play the top !M! {!M!|1=card|@=cards} of your draw pile. NL Exhaust."
+    "DESCRIPTION": "{@@}Play the top !M! {!M!|1=card|@=cards} of your draw pile."
   },
   "${ModID}:SoulFeed": {
     "NAME": "Soul Feed",
@@ -303,11 +310,11 @@
   },
   "${ModID}:Enfeeble": {
     "NAME": "Enfeeble",
-    "DESCRIPTION": "Apply !M! Weak. NL Exhaust."
+    "DESCRIPTION": "Apply !M! Weak."
   },
   "${ModID}:Grease": {
     "NAME": "Grease",
-    "DESCRIPTION": "Apply !M! Vulnerable. NL Exhaust."
+    "DESCRIPTION": "Apply !M! Vulnerable."
   },
   "${ModID}:RipplingShadows": {
     "NAME": "Rippling Shadows",
@@ -315,8 +322,7 @@
   },
   "${ModID}:ChaosMagic": {
     "NAME": "Chaos Magic",
-    "DESCRIPTION": "Gain a buff. NL Draw a card and discard a card.",
-    "UPGRADE_DESCRIPTION": "Gain a buff. NL 1 out of 3 chance for an additional buff. NL Draw a card and Discard a card."
+    "DESCRIPTION": "Gain a buff. NL Draw !M! cards and discard a card."
   },
   "${ModID}:Concentrate": {
     "NAME": "Concentrate",
@@ -340,8 +346,7 @@
   },
   "${ModID}:DarkEmbrace": {
     "NAME": "Dark Embrace",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:IceDaggers": {
     "NAME": "Ice Daggers",
@@ -349,7 +354,7 @@
   },
   "${ModID}:SoulNeedle": {
     "NAME": "Soul Needle",
-    "DESCRIPTION": "Deal !D! damage times. NL Apply !M! ${ModID}:Jinx."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx."
   },
   "${ModID}:SackOfDebris": {
     "NAME": "Sack Of Debris",
@@ -379,7 +384,7 @@
   "${ModID}:ChaosAura": {
     "NAME": "Chaos Aura",
     "DESCRIPTION": "At the start of your turn, apply a negative effect to ALL enemies.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, apply a negative effect to ALL enemies. NL 1 out of 3 chance for an additional effect."
+    "UPGRADE_DESCRIPTION": "At the start of your turn, apply !M! negative effects to ALL enemies."
   },
   "${ModID}:CursedSteam": {
     "NAME": "Cursed Steam",
@@ -391,16 +396,17 @@
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
-    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy. NL Exhaust."
+    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy."
   },
   "${ModID}:SonicReverberation": {
     "NAME": "Sonic Reverberation",
-    "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! card. NL Discard 1 card."
+    "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! card. NL Discard 1 card.",
+    "UPGRADE_DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! cards. NL Discard 1 card."
   },
   "${ModID}:Invisibility": {
     "NAME": "Invisibility",
-    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Exhaust."
+    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak."
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
@@ -412,7 +418,10 @@
   },
   "${ModID}:SoulIgnition": {
     "NAME": "Soul Ignition",
-    "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs."
+    "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs.",
+    "EXTENDED_DESCRIPTION" : [
+      "Enemy does not have enough debuffs."
+    ]
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
@@ -428,7 +437,7 @@
   },
   "${ModID}:ShockwaveSigils": {
     "NAME": "Shockwave Sigils",
-    "DESCRIPTION": "Discard a ${ModID}:Sigil applies !M! ${ModID}:Crushed to ALL enemies."
+    "DESCRIPTION": "Discarding a ${ModID}:Sigil applies !M! ${ModID}:Crushed to ALL enemies."
   },
   "${ModID}:EldritchStaff": {
     "NAME": "Eldritch Staff",
@@ -441,7 +450,7 @@
   "${ModID}:ChaosForm": {
     "NAME": "Chaos Form",
     "DESCRIPTION": "At the start of your turn, benefit from a powerful effect.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, benefit from a powerful effect. NL 1 out of 3 chance of a bonus effect."
+    "UPGRADE_DESCRIPTION": "At the start of your turn, draw a card and benefit from a powerful effect. NL Become Confused."
   },
   "${ModID}:Madness": {
     "NAME": "Madness",
@@ -453,16 +462,16 @@
   },
   "${ModID}:SoulCurse": {
     "NAME": "Soul Curse",
-    "DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx. NL Exhaust.",
+    "DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx.",
     "UPGRADE_DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx."
   },
   "${ModID}:Fear": {
     "NAME": "Fear",
-    "DESCRIPTION": "Apply !M! debuffs that don't do anything but don't wear off. NL Exhaust."
+    "DESCRIPTION": "Apply !M! debuffs that don't do anything but don't wear off."
   },
   "${ModID}:Shatter": {
     "NAME": "Shatter",
-    "DESCRIPTION": "Vulnerable is 50% more effective and Weak is 25% more effective for !ScourgeString! turns. NL Exhaust."
+    "DESCRIPTION": "Vulnerable is 50% more effective and Weak is 25% more effective for !ScourgeString! turns."
   },
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",

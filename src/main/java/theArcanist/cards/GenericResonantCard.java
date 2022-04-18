@@ -34,11 +34,11 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (cold)
             addModifier(ICE, false);
         if (dark)
-            addModifier(elenum.DARK, false);
+            addModifier(DARK, false);
         if (force)
-            addModifier(elenum.FORCE, false);
+            addModifier(FORCE, false);
         if (fire)
-            addModifier(elenum.FIRE, false);
+            addModifier(FIRE, false);
 
         baseMagicNumber = magicNumber = jinx;
         baseSecondMagic = secondMagic = chaos;
@@ -96,7 +96,6 @@ public class GenericResonantCard extends AbstractArcanistCard {
             sBuilder.append(extraEnergy);
             sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[8]);
         }
-        sBuilder.append(cardStrings.EXTENDED_DESCRIPTION[9]);
         rawDescription = sBuilder.toString();
 
         int effectCount = 0;
@@ -140,10 +139,10 @@ public class GenericResonantCard extends AbstractArcanistCard {
                 name = ChanneledChaos.LOC_NAME;
             } else if (extraDraw > 0) {
                 attackEffect = AttackEffect.SLASH_DIAGONAL;
-                name = cardStrings.EXTENDED_DESCRIPTION[11];
+                name = cardStrings.EXTENDED_DESCRIPTION[10];
             } else if (extraEnergy > 0) {
                 attackEffect = AttackEffect.SLASH_DIAGONAL;
-                name = cardStrings.EXTENDED_DESCRIPTION[12];
+                name = cardStrings.EXTENDED_DESCRIPTION[11];
             }
             else {
                 attackEffect = AttackEffect.BLUNT_LIGHT;
@@ -155,7 +154,7 @@ public class GenericResonantCard extends AbstractArcanistCard {
         }
         else {
             attackEffect = AttackEffect.NONE;
-            name = cardStrings.EXTENDED_DESCRIPTION[10];
+            name = cardStrings.EXTENDED_DESCRIPTION[9];
         }
 
         initializeTitle();

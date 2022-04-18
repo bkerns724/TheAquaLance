@@ -25,9 +25,10 @@ public class FrostbitePower extends AbstractArcanistPower {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner == owner) {
             flash();
-            if (target.hasPower(WaterfallPower.POWER_ID))
+            if (owner.hasPower(WaterfallPower.POWER_ID))
                 att(new DamageAction(owner,
-                        new DamageInfo(owner, (int)(amount*WaterfallPower.MULT), DamageInfo.DamageType.THORNS),
+                        new DamageInfo(owner, amount*(1 + owner.getPower(WaterfallPower.POWER_ID).amount),
+                                DamageInfo.DamageType.THORNS),
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             else
                 att(new DamageAction(owner,

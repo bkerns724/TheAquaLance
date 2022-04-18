@@ -8,10 +8,10 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.adp;
 
-public class SpeedPower extends AbstractArcanistPower {
-    public static final String POWER_ID = ArcanistMod.makeID(SpeedPower.class.getSimpleName());
+public class HastePower extends AbstractArcanistPower {
+    public static final String POWER_ID = ArcanistMod.makeID(HastePower.class.getSimpleName());
 
-    public SpeedPower(AbstractCreature owner, int amount) {
+    public HastePower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         priority = 25;  // Same as Tools of the Trade
     }

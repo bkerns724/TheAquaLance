@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
-import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theArcanist.ArcanistMod;
@@ -56,9 +56,14 @@ public class ClericsRequest extends AbstractArcanistEvent {
         maxHpGain = amount2;
 
         imageEventText.updateBodyText(descriptions[0]);
-        imageEventText.setDialogOption(options[0], new Wrath());
+        String opt = options[0];
+        Wrath wrath = new Wrath();
+        HexedStaff staff = new HexedStaff();
+        opt = opt.replace("!RelicString!", FontHelper.colorString(staff.name, "g"));
+        opt = opt.replace("!CardString!", FontHelper.colorString(wrath.name, "r"));
+        imageEventText.setDialogOption(opt, wrath);
         LargeDialogOptionButton but = imageEventText.optionList.get(0);
-        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTips());
+        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, staff.tips);
 
         if (adp().gold >= getMaxHpPrice())
             imageEventText.setDialogOption(options[1]);
@@ -94,10 +99,6 @@ public class ClericsRequest extends AbstractArcanistEvent {
     private enum CUR_SCREEN {
         INTRO,
         COMPLETE;
-    }
-
-    private ArrayList<PowerTip> getTips() {
-        return new HexedStaff().tips;
     }
 
     private static int getMaxHpPrice() {

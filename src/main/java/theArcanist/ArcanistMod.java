@@ -20,7 +20,6 @@ import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.neow.NeowReward;
@@ -54,6 +53,7 @@ public class ArcanistMod implements
         EditCharactersSubscriber,
         AddAudioSubscriber,
         OnStartBattleSubscriber,
+        PostUpdateSubscriber,
         PostInitializeSubscriber {
     public static final String SETTINGS_FILE = "ArcanistModSettings";
 
@@ -67,11 +67,11 @@ public class ArcanistMod implements
     }
 
     public static final String EXTENDED_CUT_SETTING = "ExtendedCutSetting";
-    public static final String EXTENDED_CUT_UISTRING = "ExtendedCutConfig";
+    public static final String BANNER_SETTING = "BannerSetting";
+    public static final String EVENT_SETTING = "EventSetting";
+    public static final String SETTINGS_STRINGS = "Settings";
 
     private static SpireConfig modConfig = null;
-
-    public static final Color ARCANIST_EYE_COLOR = CardHelper.getColor(64, 224, 208);
 
     public static final String SHOULDER1 = RESOURCES_PRE + "images/char/mainChar/shoulder.png";
     public static final String SHOULDER2 = RESOURCES_PRE + "images/char/mainChar/shoulder2.png";
@@ -106,6 +106,11 @@ public class ArcanistMod implements
     private static final String[] REGISTRATION_STRINGS = {
             "The Arcanist", "Bryan", "This mod adds a new character, the Arcanist."
     };
+
+    public static float time = 0.0f;
+    public static final Color purpleColor = new Color(0.45f, 0f, 0.6f, 1.0f);
+    public static final Color darkColor = new Color(0.25f, 0.25f, 0.25f, 1.0f);
+    public static final Color ARCANIST_EYE_COLOR = purpleColor.cpy();
 
     public ArcanistMod() {
         BaseMod.addColor(TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, ARCANIST_EYE_COLOR, ARCANIST_EYE_COLOR, ARCANIST_EYE_COLOR,
@@ -164,6 +169,8 @@ public class ArcanistMod implements
         try {
             Properties defaults = new Properties();
             defaults.put(EXTENDED_CUT_SETTING, Boolean.toString(true));
+            defaults.put(BANNER_SETTING, Boolean.toString(false));
+            defaults.put(EVENT_SETTING, Boolean.toString(false));
             modConfig = new SpireConfig(modID, "Config", defaults);
         } catch (Exception e) {
             e.printStackTrace();
@@ -235,6 +242,7 @@ public class ArcanistMod implements
 
     @Override
     public void receivePostInitialize() {
+        setupSettings();
         addPotions();
         addEvents();
     }
@@ -245,7 +253,7 @@ public class ArcanistMod implements
         float currentYposition = 740f;
 
         ModLabeledToggleButton extendedCutButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
-                makeID(EXTENDED_CUT_UISTRING)).TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR,
+                makeID(SETTINGS_STRINGS)).TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR,
                 FontHelper.charDescFont, isExtendedCut(), settingsPanel, label -> {},
                 button -> {
                     if (modConfig != null) {
@@ -255,6 +263,32 @@ public class ArcanistMod implements
                 });
 
         settingsPanel.addUIElement(extendedCutButton);
+        currentYposition -= 60.0f;
+
+        ModLabeledToggleButton bannerButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
+                makeID(SETTINGS_STRINGS)).TEXT[1], 350.0f, currentYposition, Settings.CREAM_COLOR,
+                FontHelper.charDescFont, isUniversalBanners(), settingsPanel, label -> {},
+                button2 -> {
+                    if (modConfig != null) {
+                        modConfig.setBool(BANNER_SETTING, button2.enabled);
+                        saveConfig();
+                    }
+                });
+
+        settingsPanel.addUIElement(bannerButton);
+        currentYposition -= 60.0f;
+
+        ModLabeledToggleButton eventButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
+                makeID(SETTINGS_STRINGS)).TEXT[2], 350.0f, currentYposition, Settings.CREAM_COLOR,
+                FontHelper.charDescFont, isUniversalEvents(), settingsPanel, label -> {},
+                button3 -> {
+                    if (modConfig != null) {
+                        modConfig.setBool(EVENT_SETTING, button3.enabled);
+                        saveConfig();
+                    }
+                });
+
+        settingsPanel.addUIElement(eventButton);
 
         Texture badgeTexture = new Texture(BADGE_IMG);
         BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
@@ -275,6 +309,18 @@ public class ArcanistMod implements
         return modConfig.getBool(EXTENDED_CUT_SETTING);
     }
 
+    public static boolean isUniversalBanners() {
+        if (modConfig == null)
+            return false;
+        return modConfig.getBool(BANNER_SETTING);
+    }
+
+    public static boolean isUniversalEvents() {
+        if (modConfig == null)
+            return false;
+        return modConfig.getBool(EVENT_SETTING);
+    }
+
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
@@ -289,6 +335,20 @@ public class ArcanistMod implements
             forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF, true)));
     }
 
+    public static Color getColor() {
+        Color blendedColor = new Color();
+        blendedColor.r = (float) ((purpleColor.r + darkColor.r)/2.0f + Math.sin(ArcanistMod.time/20) *(purpleColor.r - darkColor.r)/2.0f);
+        blendedColor.g = (float) ((purpleColor.g + darkColor.g)/2.0f + Math.sin(ArcanistMod.time/20) *(purpleColor.g - darkColor.g)/2.0f);
+        blendedColor.b = (float) ((purpleColor.b + darkColor.b)/2.0f + Math.sin(ArcanistMod.time/20) *(purpleColor.b - darkColor.b)/2.0f);
+        blendedColor.a = 1.0f;
+        return blendedColor;
+    }
+
+    @Override
+    public void receivePostUpdate() {
+        time += Gdx.graphics.getDeltaTime();
+    }
+
     private static void addEvents() {
         BaseMod.addEvent(MarketActOne.getParams());
         BaseMod.addEvent(FightingPit.getParams());
@@ -300,6 +360,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(SpellForge.getParams());
         BaseMod.addEvent(ResearchCenter.getParams());
         BaseMod.addEvent(LadyInRed.getParams());
+        BaseMod.addEvent(SpellShootingRange.getParams());
     }
 
     private static void addPotions() {

@@ -29,7 +29,7 @@ public class JinxPower extends AbstractArcanistPower implements OnReceivePowerPo
 
     @Override
     public boolean onReceivePower(AbstractPower pow, AbstractCreature target, AbstractCreature source) {
-        if (pow.ID.equals(GainStrengthPower.POWER_ID) || pow.type != PowerType.DEBUFF)
+        if (pow.ID.equals(GainStrengthPower.POWER_ID) || pow.type != PowerType.DEBUFF || pow.owner == source)
             return true;
         int lossMultiplier = 1;
         if (target.hasPower(BanePower.POWER_ID))

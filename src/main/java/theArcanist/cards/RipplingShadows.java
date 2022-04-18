@@ -14,7 +14,7 @@ public class RipplingShadows extends AbstractArcanistCard {
     private final static int MAGIC = 1;
     private final static int COST = 1;
     private final static int SECOND_MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int UPGRADE_SECOND_MAGIC = 1;
     private final static int DISCARD_AMOUNT = 1;
 
     public RipplingShadows() {
@@ -34,6 +34,6 @@ public class RipplingShadows extends AbstractArcanistCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic2(UPGRADE_SECOND_MAGIC);
     }
 }

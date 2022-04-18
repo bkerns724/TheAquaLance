@@ -9,7 +9,7 @@ import theArcanist.ArcanistMod;
 import static theArcanist.util.Wiz.*;
 
 public class ManaBurstPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID("ManaBurst");
+    public static String POWER_ID = ArcanistMod.makeID(ManaBurstPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

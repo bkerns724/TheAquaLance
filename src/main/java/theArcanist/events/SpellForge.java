@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
@@ -184,12 +185,14 @@ public class SpellForge extends AbstractArcanistEvent {
 
     private void setChoices() {
         imageEventText.clearAllDialogs();
+        VoidCurse curse = new VoidCurse();
         if (adp().gold >= amount && checkForNonElementalCard())
             imageEventText.setDialogOption(options[0]);
         else
             imageEventText.setDialogOption(options[1], true);
         if (checkForElementalCard())
-            imageEventText.setDialogOption(options[2], new VoidCurse());
+            imageEventText.setDialogOption(options[2].replace("!CardString!",
+                    FontHelper.colorString(curse.name, "r")), curse);
         else
             imageEventText.setDialogOption(options[3], true);
         imageEventText.setDialogOption(options[4]);

@@ -29,14 +29,10 @@ public class ManaBlood extends AbstractArcanistCard {
     }
 
     @Override
-    public boolean canUpgrade() {
-        return false;
-    }
-
-    @Override
     public void upgrade() {
     }
 
     public void upp() {
+        selfRetain = true;
     }
 }

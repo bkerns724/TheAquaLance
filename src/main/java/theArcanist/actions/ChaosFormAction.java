@@ -13,19 +13,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.orbs.Lightning;
-import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.DevotionPower;
-import com.megacrit.cardcrawl.relics.Sozu;
 import theArcanist.cards.AbstractArcanistCard;
-import theArcanist.cards.Strike;
 
 import java.util.ArrayList;
 
 import static theArcanist.util.Wiz.*;
 
 public class ChaosFormAction extends AbstractGameAction {
+    public static final int PEPPER_SPRAY_DAMAGE = 8;
 
     public ChaosFormAction(int amount)
     {
@@ -40,20 +37,18 @@ public class ChaosFormAction extends AbstractGameAction {
             return;
         }
 
-        for (int x = amount; x > 0; x = x - 3)
-            if (x > 2 || x < AbstractDungeon.miscRng.random(0, 2))
-                doAction(false);
+        for (int x = 0; x < amount; x++)
+            doAction(false);
 
         isDone = true;
-        tickDuration();
     }
 
     private void doAction(boolean simple) {
         int x;
         if (!simple)
-            x = AbstractDungeon.miscRng.random(0, 12);
+            x = AbstractDungeon.miscRng.random(0, 10);
         else
-            x = AbstractDungeon.miscRng.random(0, 8);
+            x = AbstractDungeon.miscRng.random(0, 6);
 
         switch(x) {
             case 0:
@@ -61,32 +56,29 @@ public class ChaosFormAction extends AbstractGameAction {
                 att(new GainEnergyAction(2));
                 break;
             case 1:
-                applyToSelfTop(new MayhemPower(adp(), 1));
-                break;
-            case 2:
                 att(new ChannelAction(new Lightning()));
                 att(new ChannelAction(new Frost()));
                 att(new ChannelAction(new Lightning()));
                 att(new IncreaseMaxOrbAction(3));
                 applyToSelfTop(new FocusPower(adp(), 2));
                 break;
-            case 3:
+            case 2:
                 applyToSelfTop(new AfterImagePower(adp(), 1));
                 applyToSelfTop(new ThousandCutsPower(adp(), 1));
                 break;
-            case 4:
+            case 3:
                 applyToSelfTop(new MetallicizePower(adp(), 6));
                 break;
-            case 5:
+            case 4:
                 applyToSelfTop(new DevotionPower(adp(), 4));
                 break;
-            case 6:
+            case 5:
                 applyToSelfTop(new StrengthPower(adp(), 3));
                 break;
-            case 7:
+            case 6:
                 applyToSelfTop(new DexterityPower(adp(), 3));
                 break;
-            case 8:
+            case 7:
                 ArrayList<AbstractMonster> list = getEnemies();
                 int y = AbstractDungeon.miscRng.random(0, list.size() - 1);
                 if (list.size() == 0)
@@ -94,27 +86,15 @@ public class ChaosFormAction extends AbstractGameAction {
                 AbstractMonster mon = list.get(y);
                 if (mon == null)
                     break;
-                AbstractCard card = new Strike();
-                card.calculateCardDamage(mon);
-                att(new PepperSprayAction(mon, new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL)));
+                att(new PepperSprayAction(mon, new DamageInfo(adp(), PEPPER_SPRAY_DAMAGE, DamageInfo.DamageType.THORNS)));
                 break;
-            case 9:
+            case 8:
                 if (getDebuffCount(adp()) > 1)
                     att(new RemoveDebuffsAction(adp()));
                 else
                     doAction(true);
                 break;
-            case 10:
-                ArrayList<AbstractPotion> potionList = adp().potions;
-                for (AbstractPotion pot : potionList)
-                    if (pot instanceof PotionSlot && !adp().hasRelic(Sozu.ID)) {
-                        adp().obtainPotion(AbstractDungeon.returnTotallyRandomPotion());
-                        break;
-                    }
-                else
-                    doAction(true);
-                break;
-            case 11:
+            case 9:
                 ArrayList<AbstractCard> list2 = adp().hand.group;
                 int count = 0;
                 for (AbstractCard card2 : list2)
@@ -129,7 +109,7 @@ public class ChaosFormAction extends AbstractGameAction {
                 else
                     doAction(true);
                 break;
-            case 12:
+            case 10:
                 ArrayList<AbstractCard> list3 = adp().hand.group;
                 int count2 = 0;
                 for (AbstractCard card2 : list3)

@@ -9,7 +9,7 @@ import static theArcanist.util.Wiz.*;
 
 public class SackOfDebris extends AbstractArcanistCard {
     public final static String ID = makeID(SackOfDebris.class.getSimpleName());
-    private final static int DAMAGE = 6;
+    private final static int DAMAGE = 4;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int COST = 1;
 

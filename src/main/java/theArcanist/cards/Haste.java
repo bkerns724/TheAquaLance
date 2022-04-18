@@ -2,7 +2,7 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.powers.SpeedPower;
+import theArcanist.powers.HastePower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
@@ -21,7 +21,7 @@ public class Haste extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new SpeedPower(p, magicNumber));
+        applyToSelf(new HastePower(p, magicNumber));
     }
 
     public void upp() {

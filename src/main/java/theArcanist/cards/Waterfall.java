@@ -24,6 +24,7 @@ public class Waterfall extends AbstractArcanistCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.ICE);
+        exhaust = true;
         magicOneIsDebuff = true;
     }
 

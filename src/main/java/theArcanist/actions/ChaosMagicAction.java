@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.watcher.ForesightPower;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 import theArcanist.powers.HundredCutsPower;
 import theArcanist.powers.StoneskinPower;
@@ -62,7 +62,7 @@ public class ChaosMagicAction extends AbstractGameAction {
                 applyToSelfTop(new StoneskinPower(p, 2));
                 break;
             case 9:
-                applyToSelf(new ForesightPower(p, 1));
+                applyToSelf(new EquilibriumPower(p, 1));
                 break;
         }
         isDone = true;

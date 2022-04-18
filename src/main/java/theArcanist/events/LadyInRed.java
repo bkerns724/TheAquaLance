@@ -58,7 +58,6 @@ public class LadyInRed extends AbstractArcanistEvent {
     public LadyInRed() {
         super(eventStrings, IMAGE_PATH, getHpLoss(), getMaxHpLoss());
 
-        ArcanistMod.logger.info("Constructor");
         if (hasScourgeCard())
             imageEventText.setDialogOption(options[0].replace("!sCount!", SCOURGE_COUNT + ""));
         else

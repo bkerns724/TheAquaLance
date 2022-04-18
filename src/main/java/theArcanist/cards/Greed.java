@@ -20,7 +20,7 @@ public class Greed extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private final static int MAGIC = 3;
-    private final static int COST = 1;
+    private final static int COST = -2;
 
     private boolean needsArtRefresh = false;
 

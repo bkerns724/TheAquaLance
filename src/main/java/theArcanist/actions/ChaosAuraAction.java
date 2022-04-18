@@ -3,7 +3,6 @@ package theArcanist.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ExplosivePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -11,11 +10,11 @@ import theArcanist.powers.CrushedPower;
 import theArcanist.powers.FrostbitePower;
 import theArcanist.powers.JinxPower;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemyTop;
+import static theArcanist.util.Wiz.att;
 
 public class ChaosAuraAction extends AbstractGameAction {
     private AbstractMonster m;
-    private static int EXPLODE_THRESHOLD = 30;
 
     public ChaosAuraAction(AbstractMonster m, int amount)
     {
@@ -33,9 +32,8 @@ public class ChaosAuraAction extends AbstractGameAction {
             return;
         }
 
-        for (int x = amount; x > 0; x = x - 3)
-            if (x > 2 || x < AbstractDungeon.miscRng.random(0, 2))
-                doAction();
+        for (int x = 0; x < amount; x++)
+            doAction();
 
         tickDuration();
     }

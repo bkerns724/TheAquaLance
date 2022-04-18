@@ -11,7 +11,7 @@ import static theArcanist.util.Wiz.applyToSelf;
 
 public class DarkElixir extends AbstractArcanistPotion {
     public static final String POTION_ID = makeID(DarkElixir.class.getSimpleName());
-    public static final int DEFAULT_POTENCY = 1;
+    public static final int DEFAULT_POTENCY = 2;
     public static final PotionRarity RARITY = PotionRarity.COMMON;
     public static final PotionSize SIZE = PotionSize.M;
     public static final boolean IS_THROWN = false;

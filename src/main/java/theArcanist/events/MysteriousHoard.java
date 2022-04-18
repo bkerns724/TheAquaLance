@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theArcanist.ArcanistMod;
@@ -49,8 +50,16 @@ public class MysteriousHoard extends AbstractArcanistEvent {
     public MysteriousHoard() {
         super(eventStrings, IMAGE_PATH, getGold());
 
-        imageEventText.setDialogOption(options[0], new Pain(), new SoulLamp());
-        imageEventText.setDialogOption(options[1], new Greed());
+        Pain pain = new Pain();
+        SoulLamp lamp = new SoulLamp();
+        Greed greed = new Greed();
+
+        String opt = options[0].replace("!CardString!", FontHelper.colorString(pain.name, "r"));
+        opt = opt.replace("!RelicString!", FontHelper.colorString(lamp.name, "g"));
+
+        imageEventText.setDialogOption(opt, pain, lamp);
+        imageEventText.setDialogOption(options[1].replace("!CardString!",
+                FontHelper.colorString(greed.name, "r")), greed);
         imageEventText.setDialogOption(options[2]);
     }
 

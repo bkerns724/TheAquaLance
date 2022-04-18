@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.Sozu;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import theArcanist.ArcanistMod;
@@ -31,7 +31,7 @@ public class StrangeGarden extends AbstractArcanistEvent {
 
     private AbstractCard commonCard = null;
     private AbstractCard uncommonCard = null;
-    private int healAmount = 0;
+    private int healAmount;
 
     private CUR_SCREEN screen = CUR_SCREEN.INTRO;
 
@@ -45,7 +45,7 @@ public class StrangeGarden extends AbstractArcanistEvent {
         params.eventClass = StrangeGarden.class;
         params.eventID = ID;
         params.eventType = TYPE;
-        params.playerClass = TheArcanist.Enums.THE_ARCANIST;
+        params.spawnCondition = () -> (adp().chosenClass == TheArcanist.Enums.THE_ARCANIST || ArcanistMod.isUniversalEvents());
         params.bonusCondition = () -> (hasCardOfRarity(AbstractCard.CardRarity.COMMON) ||
                 (hasCardOfRarity(AbstractCard.CardRarity.UNCOMMON) && !adp().hasRelic(Sozu.ID)));
         return params;
@@ -55,14 +55,18 @@ public class StrangeGarden extends AbstractArcanistEvent {
         super(eventStrings, IMAGE_PATH, getHealAmount());
         healAmount = amount;
 
+        SlipperyPotion pot = new SlipperyPotion();
+
         if (hasCardOfRarity(AbstractCard.CardRarity.UNCOMMON)) {
             AbstractCard card = getCardOfRarity(AbstractCard.CardRarity.UNCOMMON);
             if (card != null && !adp().hasRelic(Sozu.ID)) {
                 uncommonCard = card;
-                imageEventText.setDialogOption(options[2].replace("!Card!",
-                        FontHelper.colorString(card.name, "r")), card.makeStatEquivalentCopy());
+                String opt = options[0].replace("!Card!",
+                        FontHelper.colorString(card.name, "r"));
+                opt = opt.replace("!PotionString!", FontHelper.colorString(pot.name, "g"));
+                imageEventText.setDialogOption(opt, card.makeStatEquivalentCopy());
                 LargeDialogOptionButton but = imageEventText.optionList.get(0);
-                TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTips());
+                TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, pot.tips);
             }
         }
         else
@@ -89,7 +93,9 @@ public class StrangeGarden extends AbstractArcanistEvent {
                 case 0:
                     AbstractDungeon.effectList.add(new PurgeCardEffect(uncommonCard));
                     AbstractDungeon.player.masterDeck.removeCard(uncommonCard);
-                    adp().obtainPotion(new SlipperyPotion());
+                    AbstractDungeon.getCurrRoom().rewards.clear();
+                    AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new SlipperyPotion()));
+                    AbstractDungeon.combatRewardScreen.open();
                     imageEventText.updateBodyText(descriptions[1]);
                     break;
                 case 1:
@@ -131,10 +137,6 @@ public class StrangeGarden extends AbstractArcanistEvent {
             return null;
         int x = AbstractDungeon.eventRng.random(0, list.size() - 1);
         return list.get(x);
-    }
-
-    private ArrayList<PowerTip> getTips() {
-        return new SlipperyPotion().tips;
     }
 
     private static int getHealAmount() {

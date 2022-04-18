@@ -10,7 +10,7 @@ import static theArcanist.util.Wiz.*;
 public class Malevolence extends AbstractArcanistCard {
     public final static String ID = makeID(Malevolence.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int UPGRADED_COST = 0;
+    private final static int UPGRADE_MAGIC = 3;
     private final static int COST = 1;
 
     public Malevolence() {
@@ -27,6 +27,6 @@ public class Malevolence extends AbstractArcanistCard {
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        upMagic(UPGRADE_MAGIC);
     }
 }

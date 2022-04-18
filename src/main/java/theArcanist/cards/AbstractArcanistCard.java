@@ -8,14 +8,13 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.DamageActionColorField;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -29,16 +28,19 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theArcanist.ArcanistMod;
+import theArcanist.TheArcanist;
+import theArcanist.cards.cardvars.CardSaveObject;
+import theArcanist.damagemods.DarkDamage;
+import theArcanist.damagemods.ForceDamage;
+import theArcanist.damagemods.IceDamage;
+import theArcanist.damagemods.SoulFireDamage;
 import theArcanist.icons.Dark;
 import theArcanist.icons.Force;
 import theArcanist.icons.Ice;
 import theArcanist.icons.SoulFire;
-import theArcanist.TheArcanist;
-import theArcanist.cards.cardvars.CardSaveObject;
-import theArcanist.damagemods.*;
 import theArcanist.powers.AbstractArcanistPower;
 import theArcanist.powers.ResonatingPower;
+import theArcanist.relics.ManaPurifier;
 import theArcanist.util.CardArtRoller;
 
 import java.lang.reflect.Type;
@@ -71,9 +73,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public boolean hasScourge = false;
 
     public boolean beingDiscarded = false;
-    public static final String MESSAGE_KEY = "SigilMessage";
-    public static final String CAN_NOT_PLAY_MESSAGE = CardCrawlGame.languagePack.getUIString(
-            ArcanistMod.makeID(MESSAGE_KEY)).TEXT[0];
     public boolean resonant = false;
 
     protected int jinx = 0;
@@ -85,7 +84,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public int extraEnergy = 0;
     public boolean scourgeIncrease = false;
 
-    private static final Color FLAVOR_BOX_COLOR = Color.PURPLE.cpy();
+    private static final Color FLAVOR_BOX_COLOR = new Color(0.45f, 0, 0.65f, 1.0f);
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
     public static final String COLD_STRING = Ice.CODE;
@@ -116,6 +115,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         }
 
         applyAttributes();
+        if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
+            DamageModifierManager.clearModifiers(this);
+            damageModList.clear();
+        }
         initializeDescription();
     }
 
@@ -125,7 +128,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public List<String> getCardDescriptors() {
         ArrayList<String> retVal = new ArrayList<>();
         if (sigil)
-            retVal.add("Sigil");
+            retVal.add(thisCardStrings.EXTENDED_DESCRIPTION[8]);
         return retVal;
     }
 
@@ -135,6 +138,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             return;
         beingDiscarded = true;
         autoPlayWhenDiscarded();
+        BindingPatches.DisableReactionaryActionBinding.disableBefore(null);
         forAllMonstersLiving(m -> {
             for (AbstractPower pow : m.powers)
                 if (pow instanceof AbstractArcanistPower)
@@ -144,6 +148,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             if (pow instanceof AbstractArcanistPower)
                 ((AbstractArcanistPower) pow).onDiscardSigil();
         }
+        BindingPatches.DisableReactionaryActionBinding.enableAfter(null);
     }
 
     protected void autoPlayWhenDiscarded() {
@@ -174,7 +179,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             return false;
         }
         else if (!beingDiscarded && sigil) {
-            cantUseMessage = CAN_NOT_PLAY_MESSAGE;
+            cantUseMessage = thisCardStrings.EXTENDED_DESCRIPTION[9];
             return false;
         }
 
@@ -185,6 +190,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         if (sigil)
             beingDiscarded = false;
         onUse(p, m);
+        if (extraDraw > 0)
+            atb(new DrawCardAction(extraDraw));
+        if (extraEnergy > 0)
+            atb(new GainEnergyAction(extraEnergy));
         if (resonant)
             resonate();
     }
@@ -309,6 +318,21 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
         if (sigil)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
+        if (extraDraw == 1)
+            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[2];
+        else if (extraDraw > 1)
+            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[3].replace("!X!", extraDraw + "");
+        if (extraEnergy == 1)
+            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[4];
+        else if (extraEnergy > 1)
+            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[5].replace("!X!", extraEnergy + "");
+
+        if (resonant)
+            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
+
+        if (exhaust)
+            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
+
 
         super.initializeDescription();
     }
@@ -437,8 +461,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         card.extraDraw = extraDraw;
         card.extraEnergy = extraEnergy;
         card.scourgeIncrease = scourgeIncrease;
-        for (elenum ele : damageModList)
-            card.addModifier(ele);
+        if (adp() == null || !adp().hasRelic(ManaPurifier.ID)) {
+            for (elenum ele : damageModList)
+                card.addModifier(ele);
+        }
         card.initializeDescription();
         return card;
     }
@@ -462,6 +488,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public void onLoad(CardSaveObject obj) {
         for (elenum ele : obj.elements)
             addModifier(ele);
+        if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
+            damageModList.clear();
+            DamageModifierManager.clearModifiers(this);
+        }
         sigil = obj.sigil;
         if (sigil)
             cost = -2;

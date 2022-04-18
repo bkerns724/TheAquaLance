@@ -11,7 +11,7 @@ import static theArcanist.util.Wiz.atb;
 
 public class FrozenLance extends AbstractArcanistCard {
     public final static String ID = makeID(FrozenLance.class.getSimpleName());
-    private final static int DAMAGE = 5;
+    private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int COST = 0;
     private final static int MAGIC = 1;

@@ -60,8 +60,8 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
             amount += TuningFork.BOOST_AMOUNT;
         jinx += pow.jinx;
         chaos += pow.chaos;
-        cardDraw = pow.cardDraw;
-        energy = pow.energy;
+        cardDraw += pow.cardDraw;
+        energy += pow.energy;
         if (pow.force) {
             if (!force)
                 force = true;

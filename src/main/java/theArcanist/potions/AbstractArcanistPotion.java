@@ -6,7 +6,8 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import theArcanist.ArcanistMod;
 
-public abstract class AbstractArcanistPotion extends CustomPotion {
+public abstract class
+AbstractArcanistPotion extends CustomPotion {
     protected PotionStrings potionStrings;
     protected int defaultPotency;
 

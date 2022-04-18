@@ -9,7 +9,7 @@
     ],
     "OPTIONS": [
       "[LOCKED] Requires: !E! Gold",
-      "[Buy Oil] #y!E! #yGold: #gGain #gEnchantment #gOils.",
+      "[Buy Oil] #y!E! #yGold: #gGain !RelicString!.",
       "[LOCKED] Requires: Potion",
       "[Sell Potion] #rLose !PotionString!. #gGain #y!E2! #yGold",
       "[Keep Moving]",
@@ -44,7 +44,7 @@
       "You don't think people that scream a lot for no reason are sane, so you leave without making a deal."
     ],
     "OPTIONS": [
-      "[Staff] #gGain #gHexed #gStaff.  It comes with #rWrath.",
+      "[Staff] #gGain !RelicString!.  It comes with !CardString!.",
       "[Max HP] #y!E! #yGold:  #gGain #g!E2! #gMax #gHP.",
       "[Max HP] Requires: !E! Gold.",
       "[Refuse]",
@@ -60,9 +60,9 @@
       "You don't think this poison is worth the price, so you leave."
     ],
     "OPTIONS": [
-      "[Buy] #y!E! #yGold: #gGain #gToxic #gOil",
+      "[Buy] #y!E! #yGold: #gGain !PotionString2!",
       "[Buy] Requires: !E! Gold",
-      "[Trade] #rLose !PotionString!. #gGain #gToxic #gOil",
+      "[Trade] #rLose !PotionString!. #gGain !PotionString2!",
       "[Trade] Requires: Rare Potion",
       "[Refuse]",
       "[Leave]"
@@ -77,7 +77,7 @@
       "You can feel the enchantment over the garden, even if you can't tell what it does.  You decide it is wisest to leave it alone."
     ],
     "OPTIONS": [
-      "[Pick Blue Bulbs] #rLose !Card!. #gGain #gSlippery #gPotion",
+      "[Pick Blue Bulbs] #rLose !Card!. #gGain !PotionString!",
       "[Pick Blue Bulbs] Requires: Uncommon card",
       "[Pick Berries] #rLose !Card!. #gHeal #g!E! #gHP",
       "[Pick Berries] Requires: Common card",
@@ -94,8 +94,8 @@
       "This whole thing seems more trouble than it is worth."
     ],
     "OPTIONS": [
-      "[Take Lamp] #gGain #gSoul #gLamp. #rGain #rPain.",
-      "[Blow It Out] #gGain #y!E! #yGold. #rGain #rGreed.",
+      "[Take Lamp] #gGain !RelicString!. #rGain !CardString!.",
+      "[Blow It Out] #gGain #y!E! #yGold. #rGain !CardString!.",
       "[Cautiously Back Away]",
       "[Leave]"
     ]
@@ -151,7 +151,7 @@
     "OPTIONS": [
       "[Enhance] #y!E! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",
       "[Add Element] Requires !E! Gold and a suitable card.",
-      "[Extract Element] Remove Elemental Card. #rGain #rVoid. #yGain #y!E2! #yGold.",
+      "[Extract Element] Remove Elemental Card. #rGain !CardString!. #yGain #y!E2! #yGold.",
       "[Extract Element] Requires a suitable card.",
       "[Leave]",
       "[Cold]",
@@ -200,6 +200,24 @@
       "[Scourge] Requires a scourge card and more than !E! HP.",
       "[Debuff] #rLose #r!E2! #rMax #rHP. #gBoost #g!dCount! #gDebuffing #gCards.",
       "[Debuff] Requires a card that applies a debuff.",
+      "[Leave]"
+    ]
+  },
+  "${ModID}:SpellShootingRange": {
+    "NAME": "Spell Shooting Range",
+    "DESCRIPTIONS": [
+      "You come across a field, training dummies set up on one side, a group of people casting spells on the other.  The spells are basic resonant spells, nothing interesting.  What is interesting, however, is the speed at which the instructor can sling a spell without spending much of her mana at all.  You decide you could pick up some pointers, but she says she is more interested in unique trinkets than gold.",
+      "You practice being faster with your spell.  After some practice, it barely takes any time at all to cast it.",
+      "You practice being more efficient with your spell.  After some practice, it barely takes any effort at all to cast it.",
+      "The price she is asking is way too high.  You leave.",
+      "Choose a card to enhance."
+    ],
+    "OPTIONS": [
+      "[Speed] #gA #gResonant #gCard #gGains #gDraw.  #rLose !RelicString!.",
+      "[Speed] Requires a tradable relic and a resonant card",
+      "[Efficiency] #gA #gResonant #gCard #gGains #gEnergy.  #rLose !RelicString!.",
+      "[Efficiency] Requires a tradable relic and a resonant card",
+      "[Refuse]",
       "[Leave]"
     ]
   }

@@ -70,7 +70,8 @@ public class MarketActOne extends AbstractArcanistEvent {
         if (adp().gold < getRelicPrice()) {
             imageEventText.setDialogOption(options[0], true);
         } else {
-            imageEventText.setDialogOption(options[1], new EnchantmentOils());
+            EnchantmentOils oils = new EnchantmentOils();
+            imageEventText.setDialogOption(options[1].replace("!RelicString!", FontHelper.colorString(oils.name, "g")), oils);
         }
 
         // sell potion

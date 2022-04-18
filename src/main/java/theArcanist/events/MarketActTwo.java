@@ -4,20 +4,18 @@ import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.Sozu;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
 import theArcanist.patches.NoDiscardPotionPatch;
 import theArcanist.patches.TipsInDialogPatch;
 import theArcanist.potions.ToxicOil;
-
-import java.util.ArrayList;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.adp;
@@ -52,10 +50,13 @@ public class MarketActTwo extends AbstractArcanistEvent {
     public MarketActTwo() {
         super(eventStrings, IMAGE_PATH, getGoldAmount());
 
+        ToxicOil oil = new ToxicOil();
+
         if (adp().gold >= getGoldAmount()) {
-            imageEventText.setDialogOption(options[0]);
+            imageEventText.setDialogOption(options[0].replace("!PotionString2!",
+                    FontHelper.colorString(oil.name, "g")));
             LargeDialogOptionButton but = imageEventText.optionList.get(0);
-            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getPowerTips());
+            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, oil.tips);
         } else
             imageEventText.setDialogOption(options[1], true);
 
@@ -65,10 +66,11 @@ public class MarketActTwo extends AbstractArcanistEvent {
                     potion = p;
             }
             if (potion != null) {
-                imageEventText.setDialogOption(options[2].replace("!PotionString!",
-                        FontHelper.colorString(potion.name, "r")));
+                String opt = options[2].replace("!PotionString!", FontHelper.colorString(potion.name, "r"));
+                opt = opt.replace("!PotionString2!", FontHelper.colorString(oil.name, "g"));
+                imageEventText.setDialogOption(opt);
                 LargeDialogOptionButton but = imageEventText.optionList.get(1);
-                TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getPowerTips());
+                TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, oil.tips);
                 NoDiscardPotionPatch.PotionDiscardField.eventReserved.set(potion, true);
             } else {
                 imageEventText.setDialogOption(options[3], true);
@@ -84,12 +86,17 @@ public class MarketActTwo extends AbstractArcanistEvent {
             switch (buttonPressed) {
                 case 0:
                     adp().loseGold(getGoldAmount());
-                    adp().obtainPotion(new ToxicOil());
+                    AbstractDungeon.getCurrRoom().rewards.clear();
+                    AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ToxicOil()));
+                    AbstractDungeon.combatRewardScreen.open();
                     imageEventText.updateBodyText(descriptions[1]);
                     break;
                 case 1:
                     adp().removePotion(potion);
-                    adp().obtainPotion(new ToxicOil());
+                    AbstractDungeon.getCurrRoom().rewards.clear();
+                    AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ToxicOil()));
+                    AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+                    AbstractDungeon.combatRewardScreen.open();
                     imageEventText.updateBodyText(descriptions[2]);
                     break;
                 case 2:
@@ -122,9 +129,5 @@ public class MarketActTwo extends AbstractArcanistEvent {
             if (potion.rarity == AbstractPotion.PotionRarity.RARE)
                 return true;
         return false;
-    }
-
-    private static ArrayList<PowerTip> getPowerTips() {
-        return new ToxicOil().tips;
     }
 }

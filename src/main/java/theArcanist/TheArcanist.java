@@ -190,7 +190,7 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public Color getCardTrailColor() {
-        return ARCANIST_EYE_COLOR.cpy();
+        return ArcanistMod.getColor();
     }
 
     @Override
@@ -238,12 +238,12 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public Color getCardRenderColor() {
-        return ARCANIST_EYE_COLOR.cpy();
+        return getColor();
     }
 
     @Override
     public Color getSlashAttackColor() {
-        return ARCANIST_EYE_COLOR.cpy();
+        return getColor();
     }
 
     @Override

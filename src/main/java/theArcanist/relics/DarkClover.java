@@ -20,15 +20,16 @@ public class DarkClover extends AbstractArcanistRelic {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.owner == adp() || info.type != DamageInfo.DamageType.NORMAL)
+            return damageAmount;
         AbstractCreature target = info.owner;
-        if (target != adp()) {
-            int count = getJinxAmount(target);
-            if (count > 0) {
-                flash();
-                att(new RelicAboveCreatureAction(target, this));
-                thornDmgTop(target, count);
-            }
+
+        int count = getJinxAmount(target);
+        if (count > 0) {
+            flash();
+            att(new RelicAboveCreatureAction(target, this));
+            thornDmgTop(target, count);
         }
-        return super.onAttacked(info, damageAmount);
+        return damageAmount;
     }
 }

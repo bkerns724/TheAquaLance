@@ -3,8 +3,6 @@ package theArcanist.events;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 
-import static theArcanist.ArcanistMod.makeID;
-
 public abstract class AbstractArcanistEvent extends AbstractImageEvent {
     public String name;
     public String[] descriptions;

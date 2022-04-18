@@ -53,7 +53,7 @@
     "NAME": "Tormentor's Mask",
     "FLAVOR": "It's scary.",
     "DESCRIPTIONS": [
-      "Whenever you apply a debuff to an enemy, they take !R! damage."
+      "Apply !R! #y${ModID}:Jinx to ALL enemies at the start of combat."
     ]
   },
   "${ModID}:TuningFork": {
@@ -116,7 +116,7 @@
     "NAME": "Boots Of Speed",
     "FLAVOR": "WHEEEEEEE.",
     "DESCRIPTIONS": [
-      "#y{ModID}:Activated.  You can spend [E] to draw !R! cards."
+      "#y${ModID}:Activated.  You can spend [E] to draw !R! cards."
     ]
   },
   "${ModID}:VialOfBlackBlood": {
@@ -131,7 +131,7 @@
     "NAME": "Reverse Omamori",
     "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
     "DESCRIPTIONS": [
-      "For each Curse in your deck, gain 1 #y{ModID}:Malevolence at the start of combat.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
+      "For each Curse in your deck, gain 1 #y${ModID}:Malevolence at the start of combat.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
     ]
   },
   "${ModID}:VialOfNectar": {

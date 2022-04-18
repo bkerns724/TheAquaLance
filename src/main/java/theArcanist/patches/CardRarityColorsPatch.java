@@ -12,7 +12,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import theArcanist.ArcanistMod;
+import theArcanist.TheArcanist;
 import theArcanist.util.TexLoader;
+
+import static theArcanist.util.Wiz.adp;
 
 public class CardRarityColorsPatch {
     private static Texture BASIC_BANNER_512;
@@ -180,6 +183,10 @@ public class CardRarityColorsPatch {
         @SpirePrefixPatch
         public static SpireReturn bannerPrefix512(AbstractCard __instance, @ByRef SpriteBatch[] sb,
                                               float drawX, float drawY) {
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && __instance.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
             ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper",
@@ -227,6 +234,10 @@ public class CardRarityColorsPatch {
     public static class AttackFramePatch {
         @SpirePrefixPatch
         public static SpireReturn attackFramePrefix512(AbstractCard __instance, @ByRef SpriteBatch[] sb, float x, float y) {
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && __instance.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
             ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper",
@@ -267,6 +278,10 @@ public class CardRarityColorsPatch {
     public static class PowerFramePatch {
         @SpirePrefixPatch
         public static SpireReturn powerFramePrefix512(AbstractCard __instance, @ByRef SpriteBatch[] sb, float x, float y) {
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && __instance.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
             ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper",
@@ -307,6 +322,10 @@ public class CardRarityColorsPatch {
     public static class SkillFramePatch {
         @SpirePrefixPatch
         public static SpireReturn skillFramePrefix512(AbstractCard __instance, @ByRef SpriteBatch[] sb, float x, float y) {
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && __instance.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
             ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper",
@@ -352,6 +371,10 @@ public class CardRarityColorsPatch {
         @SpirePrefixPatch
         public static SpireReturn dynamicFramePrefix512(AbstractCard __instance, @ByRef SpriteBatch[] sb, float x, float y,
                                          float typeOffset, float typeWidth) {
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && __instance.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (typeWidth <= 1.1f)
                 return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
@@ -428,12 +451,16 @@ public class CardRarityColorsPatch {
     public static class LargeBannerPatch {
         @SpirePrefixPatch
         public static SpireReturn bannerPrefix1024(SingleCardViewPopup __instance, @ByRef SpriteBatch[] sb) {
+            AbstractCard card = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "card");
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && card.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
             ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(SingleCardViewPopup.class,
                     "renderHelper",
                     SpriteBatch.class, float.class, float.class, TextureAtlas.AtlasRegion.class);
-            AbstractCard card = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "card");
 
             Texture texture = CardRarityColorsPatch.BASIC_BANNER_1024;
             switch (card.rarity) {
@@ -474,6 +501,11 @@ public class CardRarityColorsPatch {
     public static class LargeFramePatch {
         @SpirePrefixPatch
         public static SpireReturn framePrefix1024(SingleCardViewPopup __instance, @ByRef SpriteBatch[] sb) {
+            AbstractCard card = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "card");
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && card.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
 
@@ -484,8 +516,6 @@ public class CardRarityColorsPatch {
             ReflectionHacks.RMethod method2 = ReflectionHacks.privateMethod(SingleCardViewPopup.class,
                     "renderDynamicFrame",
                     SpriteBatch.class, float.class, float.class, float.class, float.class);
-
-            AbstractCard card = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "card");
 
             TextureAtlas.AtlasRegion img = null;
             float tOffset = 0.0f;
@@ -625,6 +655,12 @@ public class CardRarityColorsPatch {
         @SpirePrefixPatch
         public static SpireReturn dynamicFramePrefix1024(SingleCardViewPopup __instance, @ByRef SpriteBatch[] sb, float x, float y,
                                               float typeOffset, float typeWidth) {
+            AbstractCard card = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "card");
+            if (adp() != null && adp().chosenClass != TheArcanist.Enums.THE_ARCANIST && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+            if (adp() == null && card.color != TheArcanist.Enums.ARCANIST_BLARPLE_COLOR && !ArcanistMod.isUniversalBanners())
+                return SpireReturn.Continue();
+
             if (CardRarityColorsPatch.BASIC_BANNER_512 == null)
                 initialize();
             if (typeWidth <= 1.1f)
@@ -633,7 +669,6 @@ public class CardRarityColorsPatch {
             ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(SingleCardViewPopup.class,
                     "dynamicFrameRenderHelper",
                     SpriteBatch.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
-            AbstractCard card = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "card");
 
             TextureAtlas.AtlasRegion imgC = null;
             TextureAtlas.AtlasRegion imgL = null;

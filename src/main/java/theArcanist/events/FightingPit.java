@@ -52,8 +52,7 @@ public class FightingPit extends AbstractArcanistEvent {
         params.eventType = TYPE;
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(Exordium.ID);
-        params.playerClass = TheArcanist.Enums.THE_ARCANIST;
-        params.bonusCondition = () -> (true);
+        params.spawnCondition = () -> (adp().chosenClass == TheArcanist.Enums.THE_ARCANIST || ArcanistMod.isUniversalEvents());
         return params;
     }
 

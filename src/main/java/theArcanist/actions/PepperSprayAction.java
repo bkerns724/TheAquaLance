@@ -71,7 +71,7 @@ public class PepperSprayAction extends AbstractGameAction {
         if (duration <= DURATION - 0.5f - 0.1f*peppersLanded && peppersLanded < 5) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetX.get(peppersLanded), targetY.get(peppersLanded),
                     AttackEffect.BLUNT_LIGHT));
-            if (p != null && m.currentHealth > 0 && m!= null) {
+            if (p != null && m.currentHealth > 0) {
                 m.damage(info);
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                     AbstractDungeon.actionManager.clearPostCombatActions();

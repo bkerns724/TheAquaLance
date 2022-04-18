@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import javassist.CtBehavior;
 import theArcanist.cards.AbstractArcanistCard;
 
-import static theArcanist.util.Wiz.*;
-
 public class ScryPatch {
     @SpirePatch2(
             clz = ScryAction.class,
@@ -20,7 +18,7 @@ public class ScryPatch {
                 localvars = "c"
         )
         public static void Insert(ScryAction __instance, AbstractCard c) {
-            if (c instanceof AbstractArcanistCard)
+            if (c instanceof AbstractArcanistCard && DiscardTriggerField.triggerDiscard.get(__instance))
                 ((AbstractArcanistCard)c).triggerOnManualDiscard();
         }
         public static class Locator extends SpireInsertLocator {

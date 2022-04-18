@@ -8,8 +8,8 @@ import static theArcanist.ArcanistMod.makeID;
 
 public class Eruption extends AbstractArcanistCard {
     public final static String ID = makeID(Eruption.class.getSimpleName());
-    private final static int DAMAGE = 32;
-    private final static int UPGRADE_DAMAGE = 8;
+    private final static int DAMAGE = 26;
+    private final static int UPGRADE_DAMAGE = 7;
     private final static int COST = 3;
 
     public Eruption() {
@@ -20,7 +20,6 @@ public class Eruption extends AbstractArcanistCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         isMultiDamage = true;
-        exhaust = true;
         addModifier(elenum.FIRE);
     }
 

@@ -9,7 +9,7 @@ import static theArcanist.ArcanistMod.makeID;
 public class CompressionWave extends AbstractArcanistCard {
     public final static String ID = makeID(CompressionWave.class.getSimpleName());
     private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 4;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 2;
 
     public CompressionWave() {

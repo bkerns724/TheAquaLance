@@ -10,8 +10,9 @@ import static theArcanist.util.Wiz.*;
 
 public class ChaosAura extends AbstractArcanistCard {
     public final static String ID = makeID(ChaosAura.class.getSimpleName());
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int UPGRADED_COST = 2;
     private final static int COST = 1;
 
     public ChaosAura() {
@@ -26,11 +27,12 @@ public class ChaosAura extends AbstractArcanistCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int amount = magicNumber;
         if (adp().hasRelic(DetailedContract.ID))
-            amount += 3;
+            amount += 1;
         applyToSelf(new ChaosAuraPower(p, amount));
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic(UPGRADE_MAGIC);
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

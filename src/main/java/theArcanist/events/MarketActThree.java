@@ -3,7 +3,6 @@ package theArcanist.events;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
@@ -11,7 +10,10 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.DuVuDoll;
 import com.megacrit.cardcrawl.relics.IncenseBurner;
+import com.megacrit.cardcrawl.relics.Sozu;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
@@ -46,7 +48,9 @@ public class MarketActThree extends AbstractArcanistEvent {
         params.eventType = TYPE;
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheBeyond.ID);
-        params.playerClass = TheArcanist.Enums.THE_ARCANIST;
+        params.spawnCondition = () -> (adp().chosenClass == TheArcanist.Enums.THE_ARCANIST || ArcanistMod.isUniversalEvents());
+        params.bonusCondition = () -> (!adp().hasRelic(Sozu.ID));
+
         return params;
     }
 
@@ -77,13 +81,17 @@ public class MarketActThree extends AbstractArcanistEvent {
             switch (buttonPressed) {
                 case 0:
                     adp().loseRelic(relicForTrade.relicId);
-                    adp().obtainPotion(new SteelhidePotion());
+                    AbstractDungeon.getCurrRoom().rewards.clear();
+                    AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new SteelhidePotion()));
+                    AbstractDungeon.combatRewardScreen.open();
                     imageEventText.updateBodyText(descriptions[1]);
                     break;
                 case 1:
                     int x = AbstractDungeon.miscRng.random(0, 1);
                     if (x == 0) {
-                        adp().obtainPotion(new SteelhidePotion());
+                        AbstractDungeon.getCurrRoom().rewards.clear();
+                        AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new SteelhidePotion()));
+                        AbstractDungeon.combatRewardScreen.open();
                         imageEventText.updateBodyText(descriptions[2]);
                     }
                     else {
@@ -130,7 +138,7 @@ public class MarketActThree extends AbstractArcanistEvent {
                 Class methodClass = relic.getClass().getMethod("onEquip").getDeclaringClass();
                 if (methodClass == AbstractRelic.class)
                     list.add(relic);
-                else if (relic.relicId.equals(IncenseBurner.ID))
+                else if (relic.relicId.equals(IncenseBurner.ID) || relic.relicId.equals(DuVuDoll.ID))
                     list.add(relic);
             }
             catch (Exception e) {}

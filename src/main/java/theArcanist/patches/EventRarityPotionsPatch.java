@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PotionHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.screens.compendium.PotionViewScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuCancelButton;
 import javassist.CtBehavior;
@@ -21,6 +22,8 @@ public class EventRarityPotionsPatch {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("PotionPatch"));
     private static final String categoryTitle = uiStrings.TEXT[0];
     private static final String categoryDescription = uiStrings.TEXT[1];
+
+    private static ArrayList<String> tempList = new ArrayList<>();
 
     @SpirePatch2(
             clz = PotionViewScreen.class,
@@ -47,16 +50,30 @@ public class EventRarityPotionsPatch {
         }
     }
 
-    /*    This patch isn't happening because the controller input code is a buggy, hellish mess
     @SpirePatch2(
-            clz = PotionViewScreen.class,
-            method = "updateControllerInput"
+            clz = PotionHelper.class,
+            method = "getRandomPotion",
+            paramtypez = {}
     )
-    public static class PotionsPatchControllerInput {
+    @SpirePatch2(
+            clz = PotionHelper.class,
+            method = "getRandomPotion",
+            paramtypez = {Random.class}
+    )
+    public static class NoEventPotionsFromHelper {
+        @SpirePrefixPatch
+        public static void Prefix() {
+            tempList = new ArrayList<>();
+            tempList.addAll(PotionHelper.potions);
+            tempList.removeIf(str -> (PotionHelper.getPotion(str).rarity != ArcanistMod.Enums.EVENT));
+            PotionHelper.potions.removeIf(str -> (PotionHelper.getPotion(str).rarity == ArcanistMod.Enums.EVENT));
+        }
 
+        @SpirePostfixPatch
+        public static void Postfix() {
+            PotionHelper.potions.addAll(tempList);
+        }
     }
-    */
-
 
     @SpirePatch2(
             clz = PotionViewScreen.class,

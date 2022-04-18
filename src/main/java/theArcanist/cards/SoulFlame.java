@@ -10,7 +10,7 @@ import static theArcanist.util.Wiz.atb;
 
 public class SoulFlame extends AbstractArcanistCard {
     public final static String ID = makeID(SoulFlame.class.getSimpleName());
-    private final static int DAMAGE = 8;
+    private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 1;
     private final static int COST = 1;

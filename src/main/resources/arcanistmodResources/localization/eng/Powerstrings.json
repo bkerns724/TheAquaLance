@@ -91,8 +91,8 @@
   "${ModID}:ChaosAuraPower": {
     "NAME": "Chaos Aura",
     "DESCRIPTIONS": [
-      "At the start of your turn, apply !A! negative effect to ALL enemies.  !A2! out of 3 chance of an addition effect.",
-      "At the start of your turn, apply !A! negative effects to ALL enemies.  !A2! out of 3 chance of an addition effect."
+      "At the start of your turn, apply !A! negative effect to ALL enemies.",
+      "At the start of your turn, apply !A! negative effects to ALL enemies."
     ]
   },
   "${ModID}:ChaoticMindPower": {
@@ -138,8 +138,7 @@
   "${ModID}:ShadowcloakPower": {
     "NAME": "Shadowcloak",
     "DESCRIPTIONS": [
-      "The first attack you play each turn does #b",
-      "% more damage."
+      "The first attack you play each turn does !A!% more damage."
     ]
   },
   "${ModID}:TempHPOnHitPower": {
@@ -160,8 +159,8 @@
       "Should Not Be Seen."
     ]
   },
-  "${ModID}:SpeedPower": {
-    "NAME": "Speed",
+  "${ModID}:HastePower": {
+    "NAME": "Haste",
     "DESCRIPTIONS": [
       "At the start of your turn, draw !A! card and discard card.",
       "At the start of your turn, draw !A! cards and discard cards."
@@ -253,6 +252,13 @@
     "NAME": "Toxic Oil",
     "DESCRIPTIONS": [
       "Whenever an attack deals unblocked damage, the enemy takes !A! damage at the start of their turn every round."
+    ]
+  },
+  "${ModID}:WaterfallPower": {
+    "NAME": "Soaked",
+    "DESCRIPTIONS": [
+      "Frostbite is twice as effective.",
+      "Frostbite is !A! times as effective."
     ]
   },
   "${ModID}:SoulFlameBarrierPower": {

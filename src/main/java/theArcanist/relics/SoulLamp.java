@@ -10,7 +10,7 @@ import static theArcanist.util.Wiz.*;
 
 public class SoulLamp extends AbstractArcanistRelic {
     public static final String ID = makeID(SoulLamp.class.getSimpleName());
-    public static final int BLOCK_THRESHOLD = 8;
+    public static final int BLOCK_THRESHOLD = 6;
 
     public SoulLamp() {
         super(ID, RelicTier.SPECIAL, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);

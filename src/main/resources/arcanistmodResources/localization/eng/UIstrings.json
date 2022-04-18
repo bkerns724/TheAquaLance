@@ -4,19 +4,11 @@
       "~[#40E0D0]APPREHENSION.~ NL NL You wake up ~slowly~, rubbing grit out of your eyes.  As you enter your kitchen to make breakfast, you are #y@surprised@ to find it is a #r@mess,@ with dirty pots and utensils strewn about.  On the counter is a mostly eaten plate of stir fry. NL NL \"Oh no, not again,\" you murmur. \"I've been sleep wokking.\""
     ]
   },
-  "${ModID}:ExtendedCutConfig": {
+  "${ModID}:Settings": {
     "TEXT": [
-      "Enables the Arcanist extended cut."
-    ]
-  },
-  "${ModID}:SigilMessage": {
-    "TEXT": [
-      "Sigils can only be played via discard."
-    ]
-  },
-  "${ModID}:SoulIgnitionMessage": {
-    "TEXT": [
-      "Enemy does not have enough debuffs."
+      "Enables the Arcanist extended heart kill cutscene.",
+      "Recolor banners on other characters.",
+      "A few events can be seen by other characters."
     ]
   },
   "${ModID}:NeowPatch": {

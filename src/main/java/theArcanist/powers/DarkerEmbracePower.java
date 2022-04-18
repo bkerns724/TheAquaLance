@@ -17,7 +17,8 @@ public class DarkerEmbracePower extends AbstractArcanistPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        att(new MyAddTempHPAction(adp(), adp(), amount));
+        if (info.owner != owner && info.type == DamageInfo.DamageType.NORMAL)
+            att(new MyAddTempHPAction(adp(), adp(), amount));
         return damageAmount;
     }
 }

@@ -16,8 +16,14 @@ public class GlowingNecklace extends AbstractClickRelic {
         super(ID, RelicTier.STARTER, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
         counter = 0;
         grayscale = true;
-        amount = 1;
+        amount = BUFF_AMOUNT;
         setUpdatedDescription();
+    }
+
+    @Override
+    public void onLoad(Boolean foo) {
+        super.onLoad(foo);
+        grayscale = counter <= 0;
     }
 
     @Override
