@@ -38,15 +38,8 @@ public class SensoryStonePatch {
                 localvars={"memories"}
         )
         public static SpireReturn Insert(SensoryStone __instance, ArrayList<String> memories) {
-            if (adp().chosenClass == THE_ARCANIST) {
-                __instance.imageEventText.updateBodyText(TEXT[0]);
-                return SpireReturn.Return(null);
-            }
-            else
-            {
-                memories.add(TEXT[0]);
-                return SpireReturn.Continue();
-            }
+            memories.add(TEXT[0]);
+            return SpireReturn.Continue();
         }
 
         private static class Locator extends SpireInsertLocator {
@@ -70,8 +63,10 @@ public class SensoryStonePatch {
             if (adp().chosenClass != THE_ARCANIST)
                 return;
             ArrayList<RewardItem> rewards = AbstractDungeon.getCurrRoom().rewards;
-            rewards.remove(rewards.size()-1);
-            rewards.add(makeModifiedRewardItem());
+            if (rewards.size() == 3) {
+                rewards.remove(2);
+                rewards.add(makeModifiedRewardItem());
+            }
         }
         private static class Locator extends SpireInsertLocator {
             private Locator() {}

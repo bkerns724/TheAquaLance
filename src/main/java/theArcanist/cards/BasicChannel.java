@@ -10,8 +10,8 @@ import static theArcanist.ArcanistMod.makeID;
 public class BasicChannel extends AbstractArcanistCard {
     public final static String ID = makeID(BasicChannel.class.getSimpleName());
     public final static String LOC_NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
-    private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 2;
+    private final static int DAMAGE = 7;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
 
     public BasicChannel() {

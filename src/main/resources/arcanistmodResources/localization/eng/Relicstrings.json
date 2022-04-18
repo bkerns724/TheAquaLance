@@ -46,7 +46,7 @@
     "NAME": "Sparking Wand",
     "FLAVOR": "Powerful, but unstable.",
     "DESCRIPTIONS": [
-      "The first time each combat you gain #y${ModID}:Resonance, gain !R! more."
+      "The first !R2! times each combat you gain #y${ModID}:Resonance, gain !R! more and discard a card."
     ]
   },
   "${ModID}:TormentorsMask": {

@@ -128,20 +128,22 @@ public class TheArcanist extends CustomPlayer {
             retVal.add(Defend.ID);
 
         try {
-            ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
-
             if (AbstractDungeon.miscRng != null && adp() != null) {
-
-                int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                retVal.add(listCopy.get(x));
-                if (adp().hasRelic(SparkingWand.ID))
+                if (adp().hasRelic(SparkingWand.ID)) {
                     retVal.add(BasicChannel.ID);
-                else if (adp().hasRelic(DarkClover.ID))
-                    retVal.add(BasicCurse.ID);
+                    retVal.add(BasicChannel.ID);
+                }
                 else {
-                    listCopy.remove(x);
-                    int y = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                    retVal.add(listCopy.get(y));
+                    ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
+                    int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                    retVal.add(listCopy.get(x));
+                    if (adp().hasRelic(DarkClover.ID))
+                        retVal.add(BasicCurse.ID);
+                    else {
+                        listCopy.remove(x);
+                        int y = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                        retVal.add(listCopy.get(y));
+                    }
                 }
             }
         }
