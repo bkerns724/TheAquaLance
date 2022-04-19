@@ -12,17 +12,18 @@ import theArcanist.util.CardArtRoller;
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardTarget.NONE;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.cards.AbstractArcanistCard.getCardTextureString;
+import static theArcanist.util.Wiz.atb;
 
-public class VoidCurse extends CustomCard {
-    public final static String ID = makeID(VoidCurse.class.getSimpleName());
+public class NullElement extends CustomCard {
+    public final static String ID = makeID(NullElement.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private final static int COST = -2;
     private boolean needsArtRefresh = false;
 
-    public VoidCurse() {
-        super(ID, NAME, getCardTextureString(VoidCurse.class.getSimpleName(), CardType.CURSE), COST, DESCRIPTION,
+    public NullElement() {
+        super(ID, NAME, getCardTextureString(NullElement.class.getSimpleName(), CardType.CURSE), COST, DESCRIPTION,
                 CardType.CURSE, CardColor.CURSE, CardRarity.SPECIAL, NONE);
         isEthereal = true;
 
@@ -44,7 +45,7 @@ public class VoidCurse extends CustomCard {
     }
 
     public void triggerWhenDrawn() {
-        this.addToBot(new LoseEnergyAction(1));
+        atb(new LoseEnergyAction(1));
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -58,7 +58,7 @@ public abstract class AbstractClickRelic extends AbstractArcanistRelic implement
 
     @Override
     public void atTurnStartPostDraw() {
-        if (firstBattle)
+        if (firstBattle && !grayscale)
             element.firstBattleFlash();
     }
 

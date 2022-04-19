@@ -2,18 +2,18 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.powers.MalevolencePower;
+import theArcanist.powers.ChargePower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class Malevolence extends AbstractArcanistCard {
-    public final static String ID = makeID(Malevolence.class.getSimpleName());
-    private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 3;
+public class Charge extends AbstractArcanistCard {
+    public final static String ID = makeID(Charge.class.getSimpleName());
+    private final static int MAGIC = 3;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
-    public Malevolence() {
+    public Charge() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
@@ -23,7 +23,7 @@ public class Malevolence extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new MalevolencePower(p, magicNumber));
+        applyToSelf(new ChargePower(p, magicNumber));
     }
 
     public void upp() {

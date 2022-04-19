@@ -26,14 +26,18 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "A shield isn't as good as a spell but at least you can learn to use it faster."
   },
-  "${ModID}:BasicCurse": {
-    "NAME": "Basic Curse",
+  "${ModID}:SimpleCurse": {
+    "NAME": "Simple Curse",
     "DESCRIPTION": "Apply !M! ${ModID}:Jinx. NL Discard a card.",
     "FLAVOR": "The Voodoo that you do."
   },
-  "${ModID}:BasicChannel": {
-    "NAME": "Basic Channel",
+  "${ModID}:ElectricChannel": {
+    "NAME": "Electric Channel",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "${ModID}:AcidSigil": {
+    "NAME": "Acid Sigil",
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Apply !M! Vulnerable."
   },
   "${ModID}:IceDamage": {
     "NAME": "Cold",
@@ -160,10 +164,9 @@
     "DESCRIPTION": "At the end of your turn, gain !M! Block.",
     "FLAVOR": "This spell isn't particularly powerful but lasts quite a while, so use it in longer combats."
   },
-  "${ModID}:JaggedSigil": {
-    "NAME": "Jagged Sigil",
-    "DESCRIPTION": "Whenever you discard a sigil, ALL enemies lose !M! HP.",
-    "FLAVOR": "It can be a little uncomfortable to carry this one around."
+  "${ModID}:SpiralingSigil": {
+    "NAME": "Spiraling Sigil",
+    "DESCRIPTION": "All enemies gain 1 ${ModID}:Jinx for each debuff they have."
   },
   "${ModID}:ChameleonSigil": {
     "NAME": "Chameleon Sigil",
@@ -184,13 +187,13 @@
     "DESCRIPTION": "Whenever you attack this turn, gain !M! Temporary_HP.",
     "FLAVOR": "It's not really black, its void.  The absence of light, dark, color, anything like that.  But of course our eyes can't see that.  This scares a lot of people away but its fine, really.  Everything's fine."
   },
-  "${ModID}:AdrenalineSigil": {
-    "NAME": "Adrenaline Sigil",
-    "DESCRIPTION": "Gain !M! artifact."
+  "${ModID}:SmokingSigil": {
+    "NAME": "Smoking Sigil",
+    "DESCRIPTION": "Enemies take !M! % extra [${ModID}:SoulFireIcon] damage."
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
-    "DESCRIPTION": "ALL enemies take !M! damage at the start of their turn."
+    "DESCRIPTION": "ALL enemies take !M! ${ModID}:Scourge damage at the start of their turn."
   },
   "${ModID}:StinkingCloud": {
     "NAME": "Stinking Cloud",
@@ -364,9 +367,9 @@
     "NAME": "Dreadful Finale",
     "DESCRIPTION": "If you end your turn with no cards in your hand, ALL enemies lose !M! Strength that turn."
   },
-  "${ModID}:Malevolence": {
-    "NAME": "Malevolence",
-    "DESCRIPTION": "Whenever you apply a debuff to an enemy, deal !M! damage, then increase this amount by 1."
+  "${ModID}:Charge": {
+    "NAME": "Charge",
+    "DESCRIPTION": "If you end your turn with at least one [E] , your next attack deals !M! additional damage."
   },
   "${ModID}:IgnorePain": {
     "NAME": "Ignore Pain",
@@ -486,8 +489,8 @@
     "DESCRIPTION": "Whenever this card is drawn, gain !M! Gold and 1 Weak.",
     "FLAVOR": "Hunting for treasure in the middle of battle is one of the most foolish things I have ever seen."
   },
-  "${ModID}:VoidCurse": {
-    "NAME": "Void",
+  "${ModID}:NullElement": {
+    "NAME": "Null Element",
     "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever this card is drawn, lose [E] .",
     "FLAVOR": "This sucks."
   },

@@ -54,14 +54,6 @@
     "DESCRIPTION": "Crushed creatures take more damage from attacks."
   },
   {
-    "PROPER_NAME": "Malevolence",
-    "NAMES": [
-      "Malevolence",
-      "malevolence"
-    ],
-    "DESCRIPTION": "Deals damage when you apply a debuff to an enemy, then increases the damage amount by Malevolence."
-  },
-  {
     "PROPER_NAME": "Jinx",
     "NAMES": [
       "Jinx",

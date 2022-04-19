@@ -146,7 +146,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
     }
 
     private static boolean hasResonantCard() {
-        for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+        for (AbstractCard c : adp().masterDeck.group)
             if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).resonant)
                 return true;
         return false;
@@ -193,7 +193,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
 
     private static CardGroup getResonantCards() {
         CardGroup resonantGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        for (AbstractCard c :  CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+        for (AbstractCard c :  adp().masterDeck.group)
             if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).resonant)
                 resonantGroup.addToTop(c);
 

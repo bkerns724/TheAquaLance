@@ -130,20 +130,25 @@ public class TheArcanist extends CustomPlayer {
         try {
             if (AbstractDungeon.miscRng != null && adp() != null) {
                 if (adp().hasRelic(SparkingWand.ID)) {
-                    retVal.add(BasicChannel.ID);
-                    retVal.add(BasicChannel.ID);
-                }
-                else {
+                    retVal.add(ElectricChannel.ID);
+                    retVal.add(ElectricChannel.ID);
+                } else if (adp().hasRelic(VestOfManyPockets.ID)) {
                     ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
                     int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
                     retVal.add(listCopy.get(x));
-                    if (adp().hasRelic(DarkClover.ID))
-                        retVal.add(BasicCurse.ID);
-                    else {
-                        listCopy.remove(x);
-                        int y = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                        retVal.add(listCopy.get(y));
-                    }
+                    retVal.add(AcidSigil.ID);
+                } else if (adp().hasRelic(DarkClover.ID)) {
+                    ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
+                    int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                    retVal.add(listCopy.get(x));
+                    retVal.add(SimpleCurse.ID);
+                } else {
+                    ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
+                    int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                    retVal.add(listCopy.get(x));
+                    listCopy.remove(x);
+                    int y = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
+                    retVal.add(listCopy.get(y));
                 }
             }
         }

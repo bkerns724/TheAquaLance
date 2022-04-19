@@ -116,7 +116,7 @@ public class ResearchCenter extends AbstractArcanistEvent {
                     pickedRetain = true;
                     adp().loseGold(amount);
                     CardGroup retainGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                    for (AbstractCard c :  CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group) {
+                    for (AbstractCard c :  adp().masterDeck.group) {
                         if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).sigil)
                             retainGroup.addToTop(c);
                     }
@@ -126,7 +126,7 @@ public class ResearchCenter extends AbstractArcanistEvent {
                 case 1:
                     pickedRetain = false;
                     CardGroup sigilGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                    for (AbstractCard c :  CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group) {
+                    for (AbstractCard c :  adp().masterDeck.group) {
                         if (c instanceof AbstractArcanistCard && c.cost < 3 && c.cost >= 0)
                             sigilGroup.addToTop(c);
                     }
@@ -192,14 +192,14 @@ public class ResearchCenter extends AbstractArcanistEvent {
     }
 
     private static boolean hasSigil() {
-        for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+        for (AbstractCard c : adp().masterDeck.group)
             if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).sigil)
                 return true;
         return false;
     }
 
     private static boolean hasCardForSigil() {
-        for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+        for (AbstractCard c : adp().masterDeck.group)
             if (c instanceof AbstractArcanistCard && c.cost < 3 && c.cost >= 0)
                 return true;
         return false;

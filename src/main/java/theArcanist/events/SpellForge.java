@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
 import theArcanist.cards.AbstractArcanistCard;
-import theArcanist.cards.VoidCurse;
+import theArcanist.cards.NullElement;
 import theArcanist.damagemods.DarkDamage;
 import theArcanist.damagemods.ForceDamage;
 import theArcanist.damagemods.IceDamage;
@@ -34,10 +34,10 @@ public class SpellForge extends AbstractArcanistEvent {
     private static final EventStrings eventStrings;
     private static final String IMAGE_PATH;
     private static final EventUtils.EventType TYPE = EventUtils.EventType.SHRINE;
-    private static final int GOLD_COST_A0 = 50;
-    private static final int GOLD_COST_A15 = 65;
-    private static final int GOLD_GAIN_A0 = 250;
-    private static final int GOLD_GAIN_A15 = 200;
+    private static final int GOLD_COST_A0 = 75;
+    private static final int GOLD_COST_A15 = 100;
+    private static final int GOLD_GAIN_A0 = 300;
+    private static final int GOLD_GAIN_A15 = 250;
     private static final int GOLD_INCREASE = 25;
     private boolean isRemoving = false;
     private AbstractArcanistCard.elenum element;
@@ -57,7 +57,7 @@ public class SpellForge extends AbstractArcanistEvent {
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheCity.ID);
         params.playerClass = TheArcanist.Enums.THE_ARCANIST;
-        params.bonusCondition = () -> ((adp().gold >= getGoldCost() && checkForNonElementalCard())
+        params.bonusCondition = () -> ((adp().gold >= getGoldCost() && checkForUpgradableCard())
                 || checkForElementalCard());
         return params;
     }
@@ -74,7 +74,7 @@ public class SpellForge extends AbstractArcanistEvent {
             if (isRemoving) {
                 AbstractCard c = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 AbstractDungeon.player.masterDeck.removeCard(c);
-                AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new VoidCurse(), c.current_x, c.current_y));
+                AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new NullElement(), c.current_x, c.current_y));
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
                 adp().gainGold(getGoldGain());
                 imageEventText.updateBodyText(descriptions[5]);
@@ -104,18 +104,31 @@ public class SpellForge extends AbstractArcanistEvent {
                     imageEventText.updateBodyText(descriptions[1]);
                     imageEventText.clearAllDialogs();
 
-                    imageEventText.setDialogOption(options[5]);
-                    LargeDialogOptionButton but = imageEventText.optionList.get(0);
-                    TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, IceDamage.getPowerTips());
-                    imageEventText.setDialogOption(options[6]);
-                    but = imageEventText.optionList.get(1);
-                    TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, ForceDamage.getPowerTips());
-                    imageEventText.setDialogOption(options[7]);
-                    but = imageEventText.optionList.get(2);
-                    TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DarkDamage.getPowerTips());
-                    imageEventText.setDialogOption(options[8]);
-                    but = imageEventText.optionList.get(3);
-                    TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
+                    if (checkForUpgradableCard(AbstractArcanistCard.elenum.ICE)) {
+                        imageEventText.setDialogOption(options[5]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(0);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, IceDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[5], true);
+                    if (checkForUpgradableCard(AbstractArcanistCard.elenum.FORCE)) {
+                        imageEventText.setDialogOption(options[6]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(1);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, ForceDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[6], true);
+                    if (checkForUpgradableCard(AbstractArcanistCard.elenum.DARK)) {
+                        imageEventText.setDialogOption(options[7]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(2);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DarkDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[7], true);
+                    if (checkForUpgradableCard(AbstractArcanistCard.elenum.FIRE)) {
+                        imageEventText.setDialogOption(options[8]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(3);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[8], true);
+                    imageEventText.setDialogOption(options[10]);
                     break;
                 case 1:
                     isRemoving = true;
@@ -132,6 +145,10 @@ public class SpellForge extends AbstractArcanistEvent {
                     break;
             }
         } else if (screen == CUR_SCREEN.ELE_CHOICE) {
+            if (buttonPressed == 4) {
+                screen = CUR_SCREEN.INTRO;
+                setChoices();
+            }
             CardGroup eleGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             if (buttonPressed == 0)
                 element = AbstractArcanistCard.elenum.ICE;
@@ -139,13 +156,13 @@ public class SpellForge extends AbstractArcanistEvent {
                 element = AbstractArcanistCard.elenum.FORCE;
             else if (buttonPressed == 2)
                 element = AbstractArcanistCard.elenum.DARK;
-            else
+            else if (buttonPressed == 3)
                 element = AbstractArcanistCard.elenum.FIRE;
             for (LargeDialogOptionButton x : imageEventText.optionList)
                 TipsInDialogPatch.ButtonPreviewField.previewTips.set(x, null);
-            for (AbstractCard c :  CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+            for (AbstractCard c :  adp().masterDeck.group)
                 if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).damageModList.isEmpty()
-                        && c.type == AbstractCard.CardType.ATTACK)
+                        && c.type == AbstractCard.CardType.ATTACK && !((AbstractArcanistCard) c).damageModList.contains(element))
                     eleGroup.addToTop(c);
             AbstractDungeon.gridSelectScreen.open(eleGroup, 1, descriptions[2], false);
         }
@@ -175,18 +192,40 @@ public class SpellForge extends AbstractArcanistEvent {
         return false;
     }
 
-    private static boolean checkForNonElementalCard() {
-        for (AbstractCard card : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
-            if (card instanceof AbstractArcanistCard && ((AbstractArcanistCard) card).damageModList.isEmpty()
-                    && card.type == AbstractCard.CardType.ATTACK)
+    private static boolean checkForUpgradableCard() {
+        for (AbstractCard card : adp().masterDeck.group)
+            if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
+                    card.rarity != AbstractCard.CardRarity.BASIC && !((AbstractArcanistCard) card).resonant
+                    && !hasAllElements((AbstractArcanistCard) card))
                 return true;
         return false;
     }
 
+    private static boolean checkForUpgradableCard(AbstractArcanistCard.elenum ele) {
+        for (AbstractCard card : adp().masterDeck.group)
+            if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
+                    card.rarity != AbstractCard.CardRarity.BASIC && !((AbstractArcanistCard) card).resonant &&
+                    !((AbstractArcanistCard) card).damageModList.contains(ele))
+                return true;
+        return false;
+    }
+
+    private static boolean hasAllElements(AbstractArcanistCard card) {
+        if (!card.damageModList.contains(AbstractArcanistCard.elenum.ICE))
+            return false;
+        if (!card.damageModList.contains(AbstractArcanistCard.elenum.FORCE))
+            return false;
+        if (!card.damageModList.contains(AbstractArcanistCard.elenum.FIRE))
+            return false;
+        if (!card.damageModList.contains(AbstractArcanistCard.elenum.DARK))
+            return false;
+        return true;
+    }
+
     private void setChoices() {
         imageEventText.clearAllDialogs();
-        VoidCurse curse = new VoidCurse();
-        if (adp().gold >= amount && checkForNonElementalCard())
+        NullElement curse = new NullElement();
+        if (adp().gold >= amount && checkForUpgradableCard())
             imageEventText.setDialogOption(options[0]);
         else
             imageEventText.setDialogOption(options[1], true);

@@ -13,6 +13,12 @@
       "Draw !A! cards next turn."
     ]
   },
+  "${ModID}:Vitality": {
+    "NAME": "Vitality",
+    "DESCRIPTIONS": [
+      "Your next Block card blocks for !A! more."
+    ]
+  },
   "${ModID}:SteelhidePower": {
     "NAME": "Steelhide",
     "DESCRIPTIONS": [
@@ -116,12 +122,6 @@
       "Vulnerable increases damage by an additional 50% for !A! turns."
     ]
   },
-  "${ModID}:ExplosiveSigilsPower": {
-    "NAME": "Explosive Sigils",
-    "DESCRIPTIONS": [
-      "Whenever you discard a #ySigil, ALL enemies lose !A! HP."
-    ]
-  },
   "${ModID}:NauseousPower": {
     "NAME": "Nauseous",
     "DESCRIPTIONS": [
@@ -184,6 +184,12 @@
       "Whenever you would take damage, take !A! less."
     ]
   },
+  "${ModID}:KindlingPower": {
+    "NAME": "Kindling",
+    "DESCRIPTIONS": [
+      "Takes !A!% more [${ModID}:SoulFireIcon] damage."
+    ]
+  },
   "${ModID}:JinxThornsPower": {
     "NAME": "Scourging Bubble",
     "DESCRIPTIONS": [
@@ -197,10 +203,10 @@
       "Gain !A! #yTemporary #yHP whenever you attack this enemy."
     ]
   },
-  "${ModID}:MalevolencePower": {
-    "NAME": "Malevolence",
+  "${ModID}:ChargePower": {
+    "NAME": "Charge",
     "DESCRIPTIONS": [
-      "Whenever you apply a debuff to an enemy, deal !A! damage, then increase this amount by !A2!."
+      "Whenever you end your turn with at least one [E] , your next attack deals !A! additional damage."
     ]
   },
   "${ModID}:IgnorePainPower": {

@@ -2,32 +2,33 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.powers.ExplosiveSigilsPower;
+import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class JaggedSigil extends AbstractArcanistCard {
-    public final static String ID = makeID(JaggedSigil.class.getSimpleName());
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 2;
+public class SpiralingSigil extends AbstractArcanistCard {
+    public final static String ID = makeID(SpiralingSigil.class.getSimpleName());
 
-    public JaggedSigil() {
+    public SpiralingSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     @Override
     protected void applyAttributes() {
-        baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
         sigil = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new ExplosiveSigilsPower(adp(), magicNumber));
+        forAllMonstersLiving(mon -> {
+            if (getDebuffCount(mon) > 0)
+                applyToEnemy(mon, new JinxPower(mon, getDebuffCount(mon)));
+        });
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        exhaust = false;
     }
 }

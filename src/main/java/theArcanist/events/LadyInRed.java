@@ -153,7 +153,7 @@ public class LadyInRed extends AbstractArcanistEvent {
                     pickedDebuff = false;
                     adp().damage(new DamageInfo(adp(), amount, DamageInfo.DamageType.HP_LOSS));
                     CardGroup scourgeGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                    for (AbstractCard c :  CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group) {
+                    for (AbstractCard c :  adp().masterDeck.group) {
                         if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).hasScourge)
                             scourgeGroup.addToTop(c);
                     }
@@ -165,7 +165,7 @@ public class LadyInRed extends AbstractArcanistEvent {
                     pickedDebuff = true;
                     adp().decreaseMaxHealth(amount2);
                     CardGroup debuffGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                    for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+                    for (AbstractCard c : adp().masterDeck.group)
                         if (c instanceof AbstractArcanistCard &&
                                 (((AbstractArcanistCard) c).magicOneIsDebuff || ((AbstractArcanistCard)c).magicTwoIsDebuff ))
                             debuffGroup.addToTop(c);
@@ -201,7 +201,7 @@ public class LadyInRed extends AbstractArcanistEvent {
     }
 
     private static boolean hasDebuffCard() {
-        for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+        for (AbstractCard c : adp().masterDeck.group)
             if (c instanceof AbstractArcanistCard &&
                     (((AbstractArcanistCard) c).magicOneIsDebuff || ((AbstractArcanistCard)c).magicTwoIsDebuff ))
                 return true;
@@ -209,7 +209,7 @@ public class LadyInRed extends AbstractArcanistEvent {
     }
 
     private static boolean hasScourgeCard() {
-        for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(adp().masterDeck).group)
+        for (AbstractCard c : adp().masterDeck.group)
             if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).hasScourge )
                 return true;
         return false;

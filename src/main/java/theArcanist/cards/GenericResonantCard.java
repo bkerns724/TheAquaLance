@@ -2,13 +2,16 @@ package theArcanist.cards;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theArcanist.ArcanistMod;
-import theArcanist.vfx.DarkWaveEffect;
 import theArcanist.actions.ChaosMagicAction;
 import theArcanist.powers.JinxPower;
+import theArcanist.vfx.DarkWaveEffect;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.cards.AbstractArcanistCard.elenum.*;
@@ -59,7 +62,12 @@ public class GenericResonantCard extends AbstractArcanistCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (attackEffect == AttackEffect.NONE)
             vfx(new DarkWaveEffect(p.hb.cX, p.hb.cY, m.hb.cX), 0.5F);
-        dmg(m, attackEffect);
+        else if (attackEffect == AttackEffect.LIGHTNING) {
+            atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
+            atb(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0));
+            dmg(m, AttackEffect.NONE);
+        } else
+            dmg(m, attackEffect);
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
         for (int i = 0; i < chaos; i++)
@@ -128,7 +136,7 @@ public class GenericResonantCard extends AbstractArcanistCard {
             }
             else {
                 attackEffect = AttackEffect.BLUNT_LIGHT;
-                name = BasicChannel.LOC_NAME;
+                name = ElectricChannel.LOC_NAME;
             }
         } else if (effectCount == 1 && damageModList.isEmpty()) {
             if (jinx > 0) {
@@ -146,11 +154,11 @@ public class GenericResonantCard extends AbstractArcanistCard {
             }
             else {
                 attackEffect = AttackEffect.BLUNT_LIGHT;
-                name = BasicChannel.LOC_NAME;
+                name = ElectricChannel.LOC_NAME;
             }
         } else if (effectCount == 0 && damageModList.isEmpty()) {
-            attackEffect = AttackEffect.BLUNT_LIGHT;
-            name = BasicChannel.LOC_NAME;
+            attackEffect = AttackEffect.LIGHTNING;
+            name = ElectricChannel.LOC_NAME;
         }
         else {
             attackEffect = AttackEffect.NONE;
