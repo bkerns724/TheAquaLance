@@ -2,7 +2,6 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 
@@ -26,7 +25,7 @@ public class IceDaggers extends AbstractArcanistCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++)
-            dmg(m, ArcanistMod.Enums.ICE);
+            dmg(m);
     }
 
     public void upp() {

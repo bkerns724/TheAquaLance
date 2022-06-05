@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
@@ -31,7 +30,7 @@ public class ShadowLance extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.DARK_COIL);
+        dmg(m);
         applyToEnemy(m, new StrengthPower(m, -magicNumber));
         if (!m.hasPower(ArtifactPower.POWER_ID))
             applyToSelf(new StrengthPower(p, magicNumber));

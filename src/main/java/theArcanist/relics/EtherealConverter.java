@@ -8,7 +8,7 @@ import theArcanist.actions.MyAddTempHPAction;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class EtherealConverter extends AbstractClickRelic {
+public class EtherealConverter extends AbstractArcanistClickRelic {
     public static final String ID = makeID("EtherealConverter");
     private static final String textureString = "arcanistmodResources/images/ui/ConverterButton.png";
 

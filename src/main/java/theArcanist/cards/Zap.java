@@ -3,15 +3,13 @@ package theArcanist.cards;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theArcanist.damagemods.ScourgeType;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
 
 public class Zap extends AbstractArcanistCard {
     public final static String ID = makeID(Zap.class.getSimpleName());
@@ -31,9 +29,7 @@ public class Zap extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        vfx(new LightningEffect(m.drawX, m.drawY));
-        atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
-        dmg(m, AbstractGameAction.AttackEffect.NONE, Color.YELLOW.cpy());
+        dmg(m, AbstractGameAction.AttackEffect.LIGHTNING, Color.YELLOW.cpy());
         if (getJinxAmountCard(m) > 0)
             applyToEnemy(m, new WeakPower(m, getJinxAmountCard(m), false));
     }

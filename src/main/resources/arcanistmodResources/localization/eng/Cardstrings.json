@@ -399,8 +399,9 @@
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
-    "DESCRIPTION": "${ModID}:Jinx is X times more effective on the enemy.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is X+1 times more effective on the enemy."
+    "DESCRIPTION": "${ModID}:Jinx is !C!X times more effective on the enemy.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Jinx is !C!X + !M! times more effective on the enemy.",
+    "EXTENDED_DESCRIPTION": ["2"]
   },
   "${ModID}:SonicReverberation": {
     "NAME": "Sonic Reverberation",
@@ -493,9 +494,5 @@
     "NAME": "Null Element",
     "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever this card is drawn, lose [E] .",
     "FLAVOR": "This sucks."
-  },
-  "${ModID}:Write": {
-    "NAME": "Write",
-    "DESCRIPTION": "Outputs some files. NL Should only be seen if you use dev console."
   }
 }

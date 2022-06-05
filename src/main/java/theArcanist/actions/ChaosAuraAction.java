@@ -3,15 +3,17 @@ package theArcanist.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theArcanist.powers.CrushedPower;
 import theArcanist.powers.FrostbitePower;
 import theArcanist.powers.JinxPower;
+import theArcanist.powers.TempNegStrengthPower;
 
+import static theArcanist.util.Wiz.adp;
 import static theArcanist.util.Wiz.applyToEnemyTop;
-import static theArcanist.util.Wiz.att;
 
 public class ChaosAuraAction extends AbstractGameAction {
     private AbstractMonster m;
@@ -42,7 +44,7 @@ public class ChaosAuraAction extends AbstractGameAction {
         if (m == null)
             return;
         int x;
-        x = AbstractDungeon.miscRng.random(0, 6);
+        x = AbstractDungeon.miscRng.random(0, 7);
 
         switch(x) {
             case 0:
@@ -64,7 +66,10 @@ public class ChaosAuraAction extends AbstractGameAction {
                 applyToEnemyTop(m, new StrengthPower(m, -2));
                 break;
             case 6:
-                att(new PewcumberAction(m, 12));
+                applyToEnemyTop(m, new PoisonPower(m, adp(), 7));
+                break;
+            case 7:
+                applyToEnemyTop(m, new TempNegStrengthPower(m, 4));
                 break;
         }
     }

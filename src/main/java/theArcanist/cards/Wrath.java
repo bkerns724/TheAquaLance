@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theArcanist.powers.MiniWrathPower;
 import theArcanist.util.CardArtRoller;
 
@@ -53,7 +52,6 @@ public class Wrath extends CustomCard {
 
     @Override
     public void triggerWhenDrawn() {
-        applyToSelf(new VulnerablePower(adp(), magicNumber, false));
         applyToSelf(new MiniWrathPower(adp(), magicNumber));
     }
 

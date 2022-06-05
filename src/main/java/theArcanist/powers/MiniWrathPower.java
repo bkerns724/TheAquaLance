@@ -32,4 +32,9 @@ public class MiniWrathPower extends AbstractArcanistPower {
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         return damage *= DAMAGE_MULTIPLIER;
     }
+
+    @Override
+    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+        return damage *= DAMAGE_MULTIPLIER;
+    }
 }

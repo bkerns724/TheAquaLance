@@ -4,11 +4,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theArcanist.ArcanistMod;
-import theArcanist.vfx.MiasmaEffect;
 import theArcanist.powers.TempNegStrengthPower;
+import theArcanist.vfx.MiasmaEffect;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
+import static theArcanist.util.Wiz.vfx;
 
 public class Miasma extends AbstractArcanistCard {
     public final static String ID = makeID(Miasma.class.getSimpleName());

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
@@ -64,7 +65,6 @@ public class SpellForge extends AbstractArcanistEvent {
 
     public SpellForge() {
         super(eventStrings, IMAGE_PATH, getGoldCost(), getGoldGain());
-
         setChoices();
     }
 
@@ -161,8 +161,9 @@ public class SpellForge extends AbstractArcanistEvent {
             for (LargeDialogOptionButton x : imageEventText.optionList)
                 TipsInDialogPatch.ButtonPreviewField.previewTips.set(x, null);
             for (AbstractCard c :  adp().masterDeck.group)
-                if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).damageModList.isEmpty()
-                        && c.type == AbstractCard.CardType.ATTACK && !((AbstractArcanistCard) c).damageModList.contains(element))
+                if (c instanceof AbstractArcanistCard && c.type == AbstractCard.CardType.ATTACK
+                        && !((AbstractArcanistCard) c).damageModList.contains(element)
+                        && ((AbstractArcanistCard)c).damageModList.size() < 2)
                     eleGroup.addToTop(c);
             AbstractDungeon.gridSelectScreen.open(eleGroup, 1, descriptions[2], false);
         }
@@ -196,7 +197,7 @@ public class SpellForge extends AbstractArcanistEvent {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
                     card.rarity != AbstractCard.CardRarity.BASIC && !((AbstractArcanistCard) card).resonant
-                    && !hasAllElements((AbstractArcanistCard) card))
+                    && ((AbstractArcanistCard) card).damageModList.size() < 2)
                 return true;
         return false;
     }
@@ -205,21 +206,10 @@ public class SpellForge extends AbstractArcanistEvent {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
                     card.rarity != AbstractCard.CardRarity.BASIC && !((AbstractArcanistCard) card).resonant &&
-                    !((AbstractArcanistCard) card).damageModList.contains(ele))
+                    !((AbstractArcanistCard) card).damageModList.contains(ele) &&
+                    ((AbstractArcanistCard) card).damageModList.size() < 2)
                 return true;
         return false;
-    }
-
-    private static boolean hasAllElements(AbstractArcanistCard card) {
-        if (!card.damageModList.contains(AbstractArcanistCard.elenum.ICE))
-            return false;
-        if (!card.damageModList.contains(AbstractArcanistCard.elenum.FORCE))
-            return false;
-        if (!card.damageModList.contains(AbstractArcanistCard.elenum.FIRE))
-            return false;
-        if (!card.damageModList.contains(AbstractArcanistCard.elenum.DARK))
-            return false;
-        return true;
     }
 
     private void setChoices() {
@@ -234,6 +224,16 @@ public class SpellForge extends AbstractArcanistEvent {
                     FontHelper.colorString(curse.name, "r")), curse);
         else
             imageEventText.setDialogOption(options[3], true);
+
+        LargeDialogOptionButton but = imageEventText.optionList.get(0);
+        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsElements());
+
         imageEventText.setDialogOption(options[4]);
+    }
+
+    private ArrayList<PowerTip> getTipsElements() {
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(descriptions[6], descriptions[7]));
+        return list;
     }
 }

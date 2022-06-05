@@ -9,6 +9,7 @@ import theArcanist.actions.ChaosMagicAction;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.atb;
+import static theArcanist.util.Wiz.getRandomSlash;
 
 public class ChanneledChaos extends AbstractArcanistCard {
     public final static String ID = makeID(ChanneledChaos.class.getSimpleName());
@@ -31,8 +32,16 @@ public class ChanneledChaos extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.FIRE);
+        dmg(m);
         atb(new ChaosMagicAction());
+    }
+
+    @Override
+    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
+        if (damage > 15)
+            return AbstractGameAction.AttackEffect.SLASH_HEAVY;
+        else
+            return getRandomSlash();
     }
 
     public void upp() {

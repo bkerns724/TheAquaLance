@@ -37,9 +37,19 @@ public class Bane extends AbstractArcanistCard {
         super.applyPowers();
         if (adp().hasRelic(ChemicalX.ID))
             magicNumber += 2;
-        magicNumber += EnergyPanel.totalCount;
+        if (debuffIncrease)
+            magicNumber += EnergyPanel.totalCount*2;
+        else
+            magicNumber += EnergyPanel.totalCount;
         isMagicNumberModified = true;
         initializeDescription();
+    }
+
+    @Override
+    protected String getCustomString() {
+        if (debuffIncrease)
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        return "";
     }
 
     public void upp() {

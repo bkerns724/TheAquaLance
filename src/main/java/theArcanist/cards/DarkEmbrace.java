@@ -2,11 +2,10 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 import theArcanist.powers.DarkerEmbracePower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
 
 public class DarkEmbrace extends AbstractArcanistCard {
     public final static String ID = makeID(DarkEmbrace.class.getSimpleName());
@@ -28,7 +27,7 @@ public class DarkEmbrace extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.DARK_COIL);
+        dmg(m);
         applyToEnemy(m, new DarkerEmbracePower(m, magicNumber));
     }
 

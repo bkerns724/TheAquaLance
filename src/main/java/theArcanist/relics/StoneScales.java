@@ -7,7 +7,7 @@ import theArcanist.powers.StoneskinPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class StoneScales extends AbstractClickRelic {
+public class StoneScales extends AbstractArcanistClickRelic {
     public static final String ID = makeID("StoneScales");
     public static final String textureString = "arcanistmodResources/images/ui/StoneSkinButton.png";
     public static final int STONESKIN_AMOUNT = 3;

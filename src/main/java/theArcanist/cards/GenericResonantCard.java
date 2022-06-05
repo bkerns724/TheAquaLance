@@ -1,17 +1,13 @@
 package theArcanist.cards;
 
 import basemod.AutoAdd;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-import theArcanist.ArcanistMod;
 import theArcanist.actions.ChaosMagicAction;
 import theArcanist.powers.JinxPower;
-import theArcanist.vfx.DarkWaveEffect;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.cards.AbstractArcanistCard.elenum.*;
@@ -21,7 +17,6 @@ import static theArcanist.util.Wiz.*;
 public class GenericResonantCard extends AbstractArcanistCard {
     public final static String ID = makeID(GenericResonantCard.class.getSimpleName());
     private final static int COST = 1;
-    private AttackEffect attackEffect = AttackEffect.NONE;
 
     public GenericResonantCard(int damage, boolean cold, boolean dark, boolean force, boolean fire, int jinx, int chaos,
                                int draw, int energy) {
@@ -60,14 +55,10 @@ public class GenericResonantCard extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (attackEffect == AttackEffect.NONE)
-            vfx(new DarkWaveEffect(p.hb.cX, p.hb.cY, m.hb.cX), 0.5F);
-        else if (attackEffect == AttackEffect.LIGHTNING) {
-            atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
-            atb(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0));
-            dmg(m, AttackEffect.NONE);
+        if (name.equals(ElectricChannel.LOC_NAME)) {
+            dmg(m, AttackEffect.LIGHTNING);
         } else
-            dmg(m, attackEffect);
+            dmg(m);
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
         for (int i = 0; i < chaos; i++)
@@ -116,57 +107,41 @@ public class GenericResonantCard extends AbstractArcanistCard {
         if (extraDraw > 0)
             effectCount++;
 
+        name = ElectricChannel.LOC_NAME;
         if (damageModList.size() == 1) {
             elenum ele = damageModList.get(0);
-            if (ele == ICE) {
-                attackEffect = ArcanistMod.Enums.ICE;
+            if (ele == ICE)
                 name = ChanneledFrost.LOC_NAME;
-            }
-            else if (ele == elenum.FORCE) {
-                attackEffect = ArcanistMod.Enums.FIST;
+            else if (ele == elenum.FORCE)
                 name = ChanneledVice.LOC_NAME;
-            }
-            else if (ele == elenum.FIRE) {
-                attackEffect = ArcanistMod.Enums.SOUL_FIRE;
+            else if (ele == elenum.FIRE)
                 name = ChanneledFlame.LOC_NAME;
-            }
-            else if (ele == elenum.DARK){
-                attackEffect = ArcanistMod.Enums.DARK_COIL;
+            else if (ele == elenum.DARK)
                 name = ChanneledVoid.LOC_NAME;
-            }
-            else {
-                attackEffect = AttackEffect.BLUNT_LIGHT;
-                name = ElectricChannel.LOC_NAME;
-            }
         } else if (effectCount == 1 && damageModList.isEmpty()) {
-            if (jinx > 0) {
-                attackEffect = ArcanistMod.Enums.BLOOD;
+            if (jinx > 0)
                 name = ChanneledCurse.LOC_NAME;
-            } else if (chaos > 0) {
-                attackEffect = AttackEffect.FIRE;
+            else if (chaos > 0)
                 name = ChanneledChaos.LOC_NAME;
-            } else if (extraDraw > 0) {
-                attackEffect = AttackEffect.SLASH_DIAGONAL;
+            else if (extraDraw > 0)
                 name = cardStrings.EXTENDED_DESCRIPTION[10];
-            } else if (extraEnergy > 0) {
-                attackEffect = AttackEffect.SLASH_DIAGONAL;
+            else if (extraEnergy > 0)
                 name = cardStrings.EXTENDED_DESCRIPTION[11];
-            }
-            else {
-                attackEffect = AttackEffect.BLUNT_LIGHT;
-                name = ElectricChannel.LOC_NAME;
-            }
-        } else if (effectCount == 0 && damageModList.isEmpty()) {
-            attackEffect = AttackEffect.LIGHTNING;
+        } else if (effectCount == 0 && damageModList.isEmpty())
             name = ElectricChannel.LOC_NAME;
-        }
-        else {
-            attackEffect = AttackEffect.NONE;
+        else
             name = cardStrings.EXTENDED_DESCRIPTION[9];
-        }
 
         initializeTitle();
         initializeDescription();
+    }
+
+    @Override
+    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
+        if (damage > 15)
+            return AbstractGameAction.AttackEffect.SLASH_HEAVY;
+        else
+            return getRandomSlash();
     }
 
     @Override

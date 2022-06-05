@@ -3,7 +3,6 @@ package theArcanist.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.cards.AbstractArcanistCard.elenum.ICE;
@@ -27,7 +26,7 @@ public class ChanneledFrost extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.ICE);
+        dmg(m);
     }
 
     public void upp() {

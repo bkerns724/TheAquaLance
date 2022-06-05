@@ -256,9 +256,10 @@ public class TheArcanist extends CustomPlayer {
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{
-                ArcanistMod.Enums.WATER,
-                AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                ArcanistMod.Enums.BLOOD
+                ArcanistMod.Enums.FIST,
+                ArcanistMod.Enums.ICE,
+                ArcanistMod.Enums.DARK_COIL,
+                ArcanistMod.Enums.SOUL_FIRE
         };
     }
 

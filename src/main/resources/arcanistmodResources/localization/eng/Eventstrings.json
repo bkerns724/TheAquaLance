@@ -141,12 +141,14 @@
   "${ModID}:SpellForge": {
     "NAME": "Spell Forge",
     "DESCRIPTIONS": [
-      "You come across a shop with a sign that reads \"The Spell Forge\", sandwiched between two pictures of a spellbook and an anvil.  Curious, you enter.  A man unfashionably dressed in a robe AND an apron offers you two possible services.  You can pay money to enhance one of your non-elemental spells with an element, or you can receive gold if he extracts the essence from one of your spells.",
+      "You come across a shop with a sign that reads \"The Spell Forge\", sandwiched between two pictures of a spellbook and an anvil.  Curious, you enter.  A man unfashionably dressed in a robe AND an apron offers you two possible services.  You can pay money to enhance one of your spells with an element, or you can receive gold if he extracts the essence from one of your spells.",
       "All right, which element would you like to enhance it with.",
       "Select a card to enhance.",
       "Select a card to remove.",
       "The spell smith finishes his work, and the quality is top notch.  Do you want another service?",
-      "The spell smith finishes his work, and hands you a large bag of gold.  Do you want another service?"
+      "The spell smith finishes his work, and hands you a large bag of gold.  Do you want another service?",
+      "Suitable Card",
+      "An Arcanist card that costs less than 3."
     ],
     "OPTIONS": [
       "[Enhance] #y!E! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",

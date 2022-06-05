@@ -1,9 +1,7 @@
 package theArcanist.cards;
 
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.cards.AbstractArcanistCard.elenum.DARK;
@@ -26,7 +24,7 @@ public class VoidBall extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        allDmg(ArcanistMod.Enums.DARK_COIL, Color.BLACK);
+        allDmg();
     }
 
     public void upp() {

@@ -118,6 +118,7 @@ public class LadyInRed extends AbstractArcanistEvent {
                         arCard.baseMagicNumber *= 2;
                     if (arCard.magicTwoIsDebuff)
                         arCard.baseSecondMagic *= 2;
+                    arCard.debuffIncrease = true;
                     card.initializeDescription();
                     if (count == 0)
                         xOffset = xOffsetBase;

@@ -33,6 +33,7 @@ import theArcanist.cards.cardvars.SecondMagicNumber;
 import theArcanist.events.*;
 import theArcanist.icons.*;
 import theArcanist.potions.*;
+import theArcanist.relics.AbstractArcanistClickRelic;
 import theArcanist.relics.AbstractArcanistRelic;
 
 import java.io.IOException;
@@ -152,6 +153,8 @@ public class ArcanistMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_COIL;
         @SpireEnum
+        public static AbstractGameAction.AttackEffect DARK_WAVE;
+        @SpireEnum
         public static AbstractCard.CardRarity UNIQUE;
         @SpireEnum
         public static NeowReward.NeowRewardType UNIQUE_REWARD;
@@ -188,6 +191,19 @@ public class ArcanistMod implements
         new AutoAdd(modID)
                 .packageFilter(AbstractArcanistRelic.class)
                 .any(AbstractArcanistRelic.class, (info, relic) -> {
+                    if (relic.color == null) {
+                        BaseMod.addRelic(relic, RelicType.SHARED);
+                    } else {
+                        BaseMod.addRelicToCustomPool(relic, relic.color);
+                    }
+                    if (!info.seen) {
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                    }
+                });
+
+        new AutoAdd(modID)
+                .packageFilter(AbstractArcanistClickRelic.class)
+                .any(AbstractArcanistClickRelic.class, (info, relic) -> {
                     if (relic.color == null) {
                         BaseMod.addRelic(relic, RelicType.SHARED);
                     } else {

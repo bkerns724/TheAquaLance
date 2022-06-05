@@ -2,7 +2,6 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 
@@ -24,7 +23,7 @@ public class CompressionWave extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        allDmg(ArcanistMod.Enums.FIST);
+        allDmg();
     }
 
     public void upp() {

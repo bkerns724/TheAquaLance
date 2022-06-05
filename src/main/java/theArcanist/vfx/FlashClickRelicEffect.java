@@ -10,17 +10,17 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import theArcanist.relics.AbstractClickRelic;
+import theArcanist.relics.AbstractArcanistClickRelic;
 
 
 public class FlashClickRelicEffect extends AbstractGameEffect {
     private Texture img;
     private TextureAtlas.AtlasRegion region;
     private float scale;
-    private AbstractClickRelic relic;
+    private AbstractArcanistClickRelic relic;
     private static final float DURATION = 2.5f;
 
-    public FlashClickRelicEffect(AbstractClickRelic relic) {
+    public FlashClickRelicEffect(AbstractArcanistClickRelic relic) {
         img = ReflectionHacks.getPrivate(relic.getElement(), ClickableUIElement.class, "image");
         region = ReflectionHacks.getPrivate(relic.getElement(), ClickableUIElement.class, "region");
 

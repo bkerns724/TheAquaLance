@@ -32,7 +32,8 @@
     "NAME": "Liquid Calamity",
     "DESCRIPTIONS": [
       "Apply !P1! #yFrostbite, !P2! #yCrushed, and !P3! #yJinxed."
-    ]
+    ],
+    "FLAVOR": "Wololooooooooooo"
   },
   "${ModID}:ForbiddenFlask": {
     "NAME": "Forbidden Flask",

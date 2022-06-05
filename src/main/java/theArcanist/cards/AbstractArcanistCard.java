@@ -14,8 +14,10 @@ import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -28,6 +30,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theArcanist.TheArcanist;
 import theArcanist.cards.cardvars.CardSaveObject;
 import theArcanist.damagemods.DarkDamage;
@@ -42,6 +45,7 @@ import theArcanist.powers.AbstractArcanistPower;
 import theArcanist.powers.ResonatingPower;
 import theArcanist.relics.ManaPurifier;
 import theArcanist.util.CardArtRoller;
+import theArcanist.vfx.DarkWaveEffect;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +87,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public int extraDraw = 0;
     public int extraEnergy = 0;
     public boolean scourgeIncrease = false;
+    public boolean debuffIncrease = false;
 
     private static final Color FLAVOR_BOX_COLOR = new Color(0.45f, 0, 0.65f, 1.0f);
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
@@ -91,6 +96,13 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public static final String FORCE_STRING = Force.CODE;
     public static final String SOULFIRE_STRING = SoulFire.CODE;
     public static final String DARK_STRING = Dark.CODE;
+
+    public enum elenum {
+        ICE,
+        FIRE,
+        FORCE,
+        DARK
+    }
 
     public AbstractArcanistCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
@@ -272,9 +284,8 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     }
 
     protected void upgradeCardToPreview() {
-        for (AbstractCard q : cardToPreview) {
+        for (AbstractCard q : cardToPreview)
             q.upgrade();
-        }
     }
 
     public abstract void upp();
@@ -287,6 +298,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
                 rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    protected String getCustomString() {
+        return "";
     }
 
     @Override
@@ -308,6 +323,8 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
         }
+
+        rawDescription = rawDescription.replace("!C!", getCustomString());
 
         if (hasScourge && !scourgeIncrease)
             rawDescription = rawDescription.replace("!ScourgeString!", "[arcanistmod:ScourgeIcon]");
@@ -386,36 +403,96 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
 
     // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
     public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
+        atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
+    }
+
+    protected AbstractGameAction.AttackEffect getAttackEffect() {
+        /*
+        int amount = damage;
+        if (isMultiDamage && multiDamage.length > 0) {
+            amount = multiDamage[0];
+            for (int x : multiDamage)
+                if (x < amount)
+                    amount = x;
+        }*/
         if (damageModList.size() == 1) {
             elenum ele = damageModList.get(0);
-            Color color = Color.WHITE;
             if (ele == ICE)
-                color = Color.BLUE.cpy();
+                return Enums.ICE;
             else if (ele == FORCE)
-                color = Color.PINK.cpy();
+                return Enums.FIST;
             else if (ele == FIRE)
-                color = Color.PURPLE.cpy();
+                return Enums.SOUL_FIRE;
             else if (ele == DARK)
-                color = Color.BLACK.cpy();
+                return Enums.DARK_COIL;
             else
-                atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
-            dmg(m, fx, color);
+                return AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
+        } else if (damageModList.size() > 1)
+            return Enums.DARK_WAVE;
+        return getDefaultAttackEffect();
+    }
+
+    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
+        return AbstractGameAction.AttackEffect.NONE;
+    }
+
+    protected Color getAttackColor() {
+        if (damageModList.size() == 1) {
+            elenum ele = damageModList.get(0);
+            if (ele == ICE)
+                return Color.BLUE.cpy();
+            else if (ele == FORCE)
+                return Color.PINK.cpy();
+            else if (ele == FIRE)
+                return Color.PURPLE.cpy();
+            else if (ele == DARK)
+                return Color.BLACK.cpy();
+            return null;
         }
-        else if (damageModList.size() > 1) {
-            DamageAction damageAction = new DamageAction(m,
-                    new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
-            DamageActionColorField.rainbow.set(damageAction, true);
-            atb(damageAction);
-        }
-        else
-            atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
+        else if (damageModList.size() > 1)
+            return new Color(1, 1, 1, 0);
+        return getDefaultColor();
+    }
+
+    protected Color getDefaultColor() {return null;}
+
+    public void dmg(AbstractMonster m) {
+        dmg(m, getAttackEffect(), getAttackColor());
     }
 
     public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx, Color color) {
+        if (color != null && color.a == 0) {
+            dmg(m, fx, true);
+            return;
+        }
+
         DamageAction damageAction = new DamageAction(m,
                 new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
+        if (fx == Enums.DARK_WAVE)
+            vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
+        if (fx == AbstractGameAction.AttackEffect.LIGHTNING) {
+            atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
+            atb(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0));
+        }
+        if (color == null) {
+            atb(damageAction);
+            return;
+        }
         DamageActionColorField.damageColor.set(damageAction, color);
         DamageActionColorField.fadeSpeed.set(damageAction, FadeSpeed.SLOWISH);
+        atb(damageAction);
+    }
+
+    public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx, boolean rainbow) {
+        DamageAction damageAction = new DamageAction(m,
+                new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
+        DamageActionColorField.rainbow.set(damageAction, rainbow);
+        if (fx == Enums.DARK_WAVE)
+            vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
+        if (fx == AbstractGameAction.AttackEffect.LIGHTNING) {
+            atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
+            atb(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0));
+        }
         atb(damageAction);
     }
 
@@ -423,15 +500,65 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
     }
 
+    public void allDmg() {
+        allDmg(getAttackEffect(), getAttackColor());
+    }
+
     public void allDmg(AbstractGameAction.AttackEffect fx) {
+        if (fx == Enums.DARK_WAVE)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (!m.isDeadOrEscaped() && !m.halfDead)
+                    vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
+
+        if (fx == AbstractGameAction.AttackEffect.LIGHTNING)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (!m.isDeadOrEscaped() && !m.halfDead)
+                    vfx(new LightningEffect(m.drawX, m.drawY), 0);
+
         atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, DamageInfo.DamageType.NORMAL, fx));
     }
 
     public void allDmg(AbstractGameAction.AttackEffect fx, Color color) {
+        if (color != null && color.a == 0) {
+            allDmg(fx, true);
+            return;
+        }
         DamageAllEnemiesAction action = new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage,
                 DamageInfo.DamageType.NORMAL, fx);
+
+        if (fx == Enums.DARK_WAVE)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (!m.isDeadOrEscaped() && !m.halfDead)
+                    vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
+
+        if (fx == AbstractGameAction.AttackEffect.LIGHTNING)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (!m.isDeadOrEscaped() && !m.halfDead)
+                    vfx(new LightningEffect(m.drawX, m.drawY), 0);
+
+        if (color == null) {
+            atb(action);
+            return;
+        }
         DamageActionColorField.damageColor.set(action, color);
         DamageActionColorField.fadeSpeed.set(action, FadeSpeed.SLOWISH);
+        atb(action);
+    }
+
+    public void allDmg(AbstractGameAction.AttackEffect fx, boolean rainbow) {
+        if (fx == Enums.DARK_WAVE)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (!m.isDeadOrEscaped() && !m.halfDead)
+                    vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
+
+        if (fx == AbstractGameAction.AttackEffect.LIGHTNING)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (!m.isDeadOrEscaped() && !m.halfDead)
+                    vfx(new LightningEffect(m.drawX, m.drawY), 0);
+
+        DamageAllEnemiesAction action = new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage,
+                DamageInfo.DamageType.NORMAL, fx);
+        DamageActionColorField.rainbow.set(action, rainbow);
         atb(action);
     }
 
@@ -476,6 +603,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         obj.sigil = sigil;
         obj.retain = selfRetain;
         obj.scourgeIncrease = scourgeIncrease;
+        obj.debuffIncrease = debuffIncrease;
         obj.extraDraw = extraDraw;
         obj.extraEnergy = extraEnergy;
         obj.baseDamage = baseDamage;
@@ -497,6 +625,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             cost = -2;
         selfRetain = obj.retain;
         scourgeIncrease = obj.scourgeIncrease;
+        debuffIncrease = obj.debuffIncrease;
         extraDraw = obj.extraDraw;
         extraEnergy = obj.extraEnergy;
         baseDamage = obj.baseDamage;
@@ -507,12 +636,5 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     @Override
     public Type savedType() {
         return new TypeToken<CardSaveObject>(){}.getType();
-    }
-
-    public enum elenum {
-        ICE,
-        FIRE,
-        FORCE,
-        DARK
     }
 }

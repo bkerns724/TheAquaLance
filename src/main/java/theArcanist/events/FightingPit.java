@@ -108,6 +108,7 @@ public class FightingPit extends AbstractArcanistEvent {
                 adRoom().addGoldToRewards(AbstractDungeon.miscRng.random(GOLD_MIN_E, GOLD_MAX_E));
                 adRoom().addPotionToRewards(new PoisonousSmokeBomb());
                 adRoom().addRelicToRewards(randRelic());
+                adRoom().addCardToRewards();
             }
             imageEventText.clearAllDialogs();
             imageEventText.setDialogOption(options[4]);

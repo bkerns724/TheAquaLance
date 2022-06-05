@@ -10,7 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 
 import static theArcanist.util.Wiz.*;
 
-public class BootsOfSpeed extends AbstractClickRelic implements EnergyChangeSubscriber {
+public class BootsOfSpeed extends AbstractArcanistClickRelic implements EnergyChangeSubscriber {
     public static final String ID = makeID(BootsOfSpeed.class.getSimpleName());
     private static final String TEXTURE_STRING = "arcanistmodResources/images/ui/DrawButton.png";
     public static final int DRAW_AMOUNT = 2;
@@ -29,7 +29,7 @@ public class BootsOfSpeed extends AbstractClickRelic implements EnergyChangeSubs
 
     @Override
     public void buttonPress() {
-        // Shouldn't happen
+        // Button shouldn't be pressable at 0 energy, but lets make it robust
         if (EnergyPanel.getCurrentEnergy() == 0)
             return;
         CardCrawlGame.sound.play("UI_CLICK_1");

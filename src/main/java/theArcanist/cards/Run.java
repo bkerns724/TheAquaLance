@@ -1,12 +1,12 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.atb;
+import static theArcanist.util.Wiz.discard;
 
 public class Run extends AbstractArcanistCard {
     public final static String ID = makeID(Run.class.getSimpleName());
@@ -26,7 +26,7 @@ public class Run extends AbstractArcanistCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new DrawCardAction(magicNumber));
-        atb(new DiscardAction(adp(), adp(), magicNumber, false));
+        discard(magicNumber);
     }
 
     public void upp() {

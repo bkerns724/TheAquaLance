@@ -1,15 +1,12 @@
 package theArcanist.util;
 
 import basemod.patches.whatmod.WhatMod;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.github.tommyettinger.colorful.Shaders;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.random.Random;
@@ -17,12 +14,9 @@ import com.megacrit.cardcrawl.random.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// Todo.  When finished mod should have art for everything, so remove this at that point.
-
 public class CardArtRoller {
     private static HashMap<String, TextureAtlas.AtlasRegion> doneCards = new HashMap<>();
     public static HashMap<String, ReskinInfo> infos = new HashMap<String, ReskinInfo>();
-    private static ShaderProgram shade = new ShaderProgram(Shaders.vertexShaderHSLC, Shaders.fragmentShaderHSLC);
 
     public static void computeCard(AbstractCard c) {
         c.portrait = doneCards.computeIfAbsent(c.cardID, key -> {
@@ -32,7 +26,6 @@ public class CardArtRoller {
                 String q = Wiz.getRandomItem(cardsList, rng).cardID;
                 return new ReskinInfo(q, rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.randomBoolean());
             });
-            Color HSLC = new Color(r.H, r.S, r.L, r.C);
             TextureAtlas.AtlasRegion t = CardLibrary.getCard(r.origCardID).portrait;
             t.flip(false, true);
             FrameBuffer fb = ImageHelper.createBuffer(250, 190);
@@ -40,8 +33,6 @@ public class CardArtRoller {
             SpriteBatch sb = new SpriteBatch();
             sb.setProjectionMatrix(og.combined);
             ImageHelper.beginBuffer(fb);
-            sb.setShader(shade);
-            sb.setColor(HSLC);
             sb.begin();
             sb.draw(t, -125, -95);
             sb.end();
@@ -54,7 +45,6 @@ public class CardArtRoller {
 
     public static Texture getPortraitTexture(AbstractCard c) {
         ReskinInfo r = infos.get(c.cardID);
-        Color HSLC = new Color(r.H, r.S, r.L, r.C);
         TextureAtlas.AtlasRegion t = new TextureAtlas.AtlasRegion(TexLoader.getTexture("images/1024Portraits/" + CardLibrary.getCard(r.origCardID).assetUrl + ".png"), 0, 0, 500, 380);
         t.flip(false, true);
         FrameBuffer fb = ImageHelper.createBuffer(500, 380);
@@ -62,8 +52,6 @@ public class CardArtRoller {
         SpriteBatch sb = new SpriteBatch();
         sb.setProjectionMatrix(og.combined);
         ImageHelper.beginBuffer(fb);
-        sb.setShader(shade);
-        sb.setColor(HSLC);
         sb.begin();
         sb.draw(t, -250, -190);
         sb.end();
@@ -71,8 +59,6 @@ public class CardArtRoller {
         t.flip(false, true);
         TextureRegion a = ImageHelper.getBufferTexture(fb);
         return a.getTexture();
-
-        //Actually, I think this can work. Because SingleCardViewPopup disposes of the texture, we can just make a new one every time.
     }
 
     public static class ReskinInfo {

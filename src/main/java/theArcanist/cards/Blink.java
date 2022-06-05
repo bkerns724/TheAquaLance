@@ -1,16 +1,15 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.discard;
 
 public class Blink extends AbstractArcanistCard {
     public final static String ID = makeID(Blink.class.getSimpleName());
-    private final static int BLOCK = 10;
-    private final static int UPGRADE_BLOCK = 3;
+    private final static int BLOCK = 11;
+    private final static int UPGRADE_BLOCK = 4;
     private final static int MAGIC = 1;
     private final static int COST = 1;
 
@@ -26,7 +25,7 @@ public class Blink extends AbstractArcanistCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
-        atb(new DiscardAction(p, p, magicNumber, false));
+        discard(magicNumber);
     }
 
     public void upp() {

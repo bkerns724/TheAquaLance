@@ -4,10 +4,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.cards.AbstractArcanistCard.elenum.*;
 
 public class Strike extends AbstractArcanistCard {
     public final static String ID = makeID(Strike.class.getSimpleName());
@@ -26,26 +24,18 @@ public class Strike extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, getAttackEffect());
-    }
-
-    private AbstractGameAction.AttackEffect getAttackEffect() {
-        if (damageModList.isEmpty())
-            return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
-        else if (damageModList.contains(ICE))
-            return ArcanistMod.Enums.ICE;
-        else if (damageModList.contains(FORCE))
-            return ArcanistMod.Enums.FIST;
-        else if (damageModList.contains(FIRE))
-            return ArcanistMod.Enums.SOUL_FIRE;
-        else if (damageModList.contains(DARK))
-            return ArcanistMod.Enums.DARK_COIL;
-        else
-            return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
+        dmg(m);
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
+    }
+
+    @Override
+    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
+        if (damage > 12)
+            return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
+        return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
     }
 
     @Override

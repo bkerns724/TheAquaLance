@@ -4,7 +4,7 @@ import theArcanist.TheArcanist;
 import static theArcanist.ArcanistMod.makeID;
 
 public class DarkFunnel extends AbstractArcanistRelic {
-    public static final String ID = makeID("DarkFunnel");
+    public static final String ID = makeID(DarkFunnel.class.getSimpleName());
     public static final int TEMP_HP_AMOUNT = 2;
 
     // code in DarkDamage

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
+import com.megacrit.cardcrawl.cards.purple.Wish;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -28,7 +29,7 @@ public class VitalityPower extends AbstractArcanistPower {
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.baseBlock > 0 && !card.cardID.equals(RitualDagger.ID)) {
+        if (card.baseBlock > 0 && !card.cardID.equals(RitualDagger.ID) && !card.cardID.equals(Wish.ID)) {
             flash();
             addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
         }

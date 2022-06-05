@@ -3,7 +3,6 @@ package theArcanist.cards;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 import theArcanist.damagemods.ScourgeType;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -31,7 +30,7 @@ public class SuddenChill extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.ICE);
+        dmg(m);
     }
 
     @Override

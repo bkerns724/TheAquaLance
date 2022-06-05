@@ -2,7 +2,6 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.ArcanistMod;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -28,7 +27,7 @@ public class SoulNeedle extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.SOUL_FIRE);
+        dmg(m);
         applyToEnemy(m, new JinxPower(m, magicNumber));
     }
 

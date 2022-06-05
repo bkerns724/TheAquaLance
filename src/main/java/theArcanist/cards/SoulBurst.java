@@ -23,7 +23,7 @@ public class SoulBurst extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.SOUL_FIRE);
+        dmg(m);
     }
 
     public void upp() {

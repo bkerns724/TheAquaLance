@@ -4,10 +4,11 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import theArcanist.TheArcanist;
 
-import static theArcanist.util.Wiz.*;
 import static theArcanist.ArcanistMod.makeID;
+import static theArcanist.util.Wiz.atb;
+import static theArcanist.util.Wiz.discard;
 
-public class VestOfManyPockets extends AbstractClickRelic {
+public class VestOfManyPockets extends AbstractArcanistClickRelic {
     public static final String ID = makeID(VestOfManyPockets.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/CycleButton.png";
     private static final int CYCLE_AMOUNT = 1;

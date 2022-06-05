@@ -3,7 +3,6 @@ package theArcanist.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
@@ -30,7 +29,7 @@ public class SickBurn extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.SOUL_FIRE);
+        dmg(m);
         applyToEnemy(m, new PoisonPower(m, p, magicNumber));
     }
 

@@ -1,11 +1,15 @@
 package theArcanist.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 
 import static theArcanist.ArcanistMod.makeID;
+import static theArcanist.util.Wiz.atb;
+import static theArcanist.util.Wiz.vfx;
 
 public class ElectricChannel extends AbstractArcanistCard {
     public final static String ID = makeID(ElectricChannel.class.getSimpleName());
@@ -25,7 +29,9 @@ public class ElectricChannel extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
+        atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
+        vfx(new LightningEffect(m.drawX, m.drawY), 0f);
+        dmg(m, AbstractGameAction.AttackEffect.NONE);
     }
 
     public void upp() {

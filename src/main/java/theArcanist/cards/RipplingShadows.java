@@ -1,6 +1,5 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -30,7 +29,7 @@ public class RipplingShadows extends AbstractArcanistCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new ShadowcloakPower(p, secondMagic));
         atb(new DrawCardAction(magicNumber));
-        atb(new DiscardAction(p, p, DISCARD_AMOUNT, false));
+        discard(DISCARD_AMOUNT);
     }
 
     public void upp() {

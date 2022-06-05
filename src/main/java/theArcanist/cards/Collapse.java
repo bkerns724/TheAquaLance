@@ -3,7 +3,6 @@ package theArcanist.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theArcanist.ArcanistMod;
 import theArcanist.powers.CrushedPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -27,7 +26,7 @@ public class Collapse extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, ArcanistMod.Enums.FIST);
+        dmg(m);
     }
 
     public void calculateCardDamage(AbstractMonster mo) {

@@ -1,13 +1,13 @@
 package theArcanist.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.atb;
+import static theArcanist.util.Wiz.discard;
 
 public class WellPrepared extends AbstractArcanistCard {
     public final static String ID = makeID(WellPrepared.class.getSimpleName());
@@ -15,6 +15,7 @@ public class WellPrepared extends AbstractArcanistCard {
     private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 3;
     private final static int COST = 0;
+    private final static int DISCARD_AMOUNT = 1;
 
     public WellPrepared() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
@@ -24,13 +25,12 @@ public class WellPrepared extends AbstractArcanistCard {
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         secondMagic = baseSecondMagic = SECOND_MAGIC;
-        ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, secondMagic);
-        ExhaustiveField.ExhaustiveFields.exhaustive.set(this, secondMagic);
+        ExhaustiveVariable.setBaseValue(this, secondMagic);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new DrawCardAction(magicNumber));
-        atb(new DiscardAction(p, p, 1, false));
+        discard(DISCARD_AMOUNT);
     }
 
     public void upp() {

@@ -69,10 +69,13 @@ public class ResearchCenter extends AbstractArcanistEvent {
         if (hasCardForSigil()) {
             imageEventText.setDialogOption(options[2], new Clumsy());
             LargeDialogOptionButton but = imageEventText.optionList.get(1);
-            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTips());
+            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsFull());
         }
-        else
+        else {
             imageEventText.setDialogOption(options[3], true);
+            LargeDialogOptionButton but = imageEventText.optionList.get(1);
+            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsShort());
+        }
         imageEventText.setDialogOption(options[4]);
     }
 
@@ -158,10 +161,16 @@ public class ResearchCenter extends AbstractArcanistEvent {
         COMPLETE;
     }
 
-    private ArrayList<PowerTip> getTips() {
+    private ArrayList<PowerTip> getTipsFull() {
         ArrayList<PowerTip> list = new ArrayList<>();
         list.add(new PowerTip(descriptions[7], descriptions[8]));
         list.add(new PowerTip(descriptions[9], descriptions[10].replace("!HealthString!", "" + amount2)));
+        return list;
+    }
+
+    private ArrayList<PowerTip> getTipsShort() {
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(descriptions[7], descriptions[8]));
         return list;
     }
 

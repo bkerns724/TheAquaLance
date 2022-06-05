@@ -32,6 +32,15 @@ public class Wiz {
         return AbstractDungeon.player;
     }
 
+    public static AbstractGameAction.AttackEffect getRandomSlash() {
+        int x = AbstractDungeon.miscRng.random(0, 2);
+        if (x == 0)
+            return AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
+        if (x == 1)
+            return AbstractGameAction.AttackEffect.SLASH_HORIZONTAL;
+        return AbstractGameAction.AttackEffect.SLASH_VERTICAL;
+    }
+
     public static void forAllCardsInList(ArrayList<AbstractCard> cardsList, Consumer<AbstractCard> consumer) {
         for (AbstractCard c : cardsList) {
             consumer.accept(c);

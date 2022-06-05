@@ -29,11 +29,10 @@ public class TinglingSigil extends AbstractArcanistCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        allDmg(AbstractGameAction.AttackEffect.NONE, Color.YELLOW);
-
+        atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
         forAllMonstersLiving(monster ->
-                att(new VFXAction(new LightningEffect(monster.drawX, monster.drawY), 0.0f)));
-        att(new SFXAction("ORB_LIGHTNING_EVOKE"));
+                atb(new VFXAction(new LightningEffect(monster.drawX, monster.drawY), 0.02f)));
+        allDmg(AbstractGameAction.AttackEffect.NONE, Color.YELLOW);
     }
 
     public void upp() {
