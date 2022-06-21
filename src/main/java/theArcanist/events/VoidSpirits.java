@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
 import theArcanist.relics.MarkOfTheVoid;
-import theArcanist.relics.TransparentRing;
+import theArcanist.relics.TransparentBracelet;
 
 import java.util.ArrayList;
 
@@ -58,7 +58,7 @@ public class VoidSpirits extends AbstractArcanistEvent {
         super(eventStrings, IMAGE_PATH, getHealthLoss(), getCardsRemoved());
         imageEventText.updateBodyText(descriptions[0]);
 
-        AbstractRelic ring = new TransparentRing();
+        AbstractRelic ring = new TransparentBracelet();
         imageEventText.setDialogOption(options[0].replace("!RelicString!",
                 FontHelper.colorString(ring.name, "g")), ring);
 
@@ -118,7 +118,7 @@ public class VoidSpirits extends AbstractArcanistEvent {
                 case 0:
                     adp().decreaseMaxHealth(amount);
                     adRoom().spawnRelicAndObtain((float) Settings.WIDTH * 0.28F,
-                            (float) Settings.HEIGHT / 2.0F, new TransparentRing());
+                            (float) Settings.HEIGHT / 2.0F, new TransparentBracelet());
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[1]);
                     imageEventText.clearAllDialogs();

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import static theArcanist.util.Wiz.*;
 import theArcanist.ArcanistMod;
 import theArcanist.relics.TatteredCloak;
-import theArcanist.relics.TransparentRing;
+import theArcanist.relics.TransparentBracelet;
 
 public class ShadowcloakPower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID(ShadowcloakPower.class.getSimpleName());
@@ -40,14 +40,14 @@ public class ShadowcloakPower extends AbstractArcanistPower {
             flash();
             triggered = true;
         }
-        else if (adp().hasRelic(TransparentRing.ID) && card.baseBlock > 0 && !card.cardID.equals(RitualDagger.ID)) {
+        else if (adp().hasRelic(TransparentBracelet.ID) && card.baseBlock > 0 && !card.cardID.equals(RitualDagger.ID)) {
             flash();
             triggered = true;
         }
     }
 
     public float modifyBlock(float blockAmount) {
-        if (!adp().hasRelic(TransparentRing.ID) || blockAmount <= 0)
+        if (!adp().hasRelic(TransparentBracelet.ID) || blockAmount <= 0)
             return blockAmount;
         return (blockAmount * (1.0f + DAMAGE_MULT*amount));
     }

@@ -465,6 +465,10 @@
     "NAME": "Fade",
     "DESCRIPTION": "Gain !M! X ${ModID}:Shadowcloak. NL Exhaust."
   },
+  "${ModID}:MaliciousDagger": {
+    "NAME": "Malicious Dagger",
+    "DESCRIPTION": "Deal !D! damage for each curse in your deck."
+  },
   "${ModID}:ElementalConflux": {
     "NAME": "Elemental Conflux",
     "DESCRIPTION": "Deal !D! damage.     "

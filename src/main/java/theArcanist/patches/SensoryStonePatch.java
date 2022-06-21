@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CtBehavior;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.AbstractArcanistCard;
+import theArcanist.cards.MaliciousDagger;
 import theArcanist.cards.ManaBlood;
 import theArcanist.cards.ScourgeBubble;
 
@@ -91,7 +92,7 @@ public class SensoryStonePatch {
             rewardItem.cards.remove(x);
             ArrayList<AbstractArcanistCard> newCards = new ArrayList<>();
             newCards.add(new ScourgeBubble());
-            //newCards.add(new ElementalResonance());
+            newCards.add(new MaliciousDagger());
             newCards.add(new ManaBlood());
             AbstractArcanistCard newCard = newCards.get(y);
             rewardItem.cards.add(x, newCard);

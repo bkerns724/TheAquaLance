@@ -49,9 +49,9 @@
       "The first !R! times each combat that you draw a #yCurse, draw a card."
     ]
   },
-  "${ModID}:RingOfFading": {
-    "NAME": "Ring of Fading",
-    "FLAVOR": "Sometimes you feel like your sanity is fading too.",
+  "${ModID}:RingOfShadows": {
+    "NAME": "Ring of Shadows",
+    "FLAVOR": "The bearers of this ring all slowly went mad.",
     "DESCRIPTIONS": [
       "On pickup, gain #yHallucination. Whenever you draw a #yCurse, gain !R! #y${ModID}:Shadowcloak."
     ]
@@ -225,8 +225,8 @@
       "At the end of your turn, gain 1 revenge flame this turn for every !R! Block you have. NL Revenge flame deals damage back whenever you are attacked."
     ]
   },
-  "${ModID}:TransparentRing": {
-    "NAME": "Transparent Ring",
+  "${ModID}:TransparentBracelet": {
+    "NAME": "Transparent Bracelet",
     "FLAVOR": "Takes forever to find it if you take it off.",
     "DESCRIPTIONS": [
       "#y${ModID}:Shadowcloak can also be used to boost the first block card each turn by 25% per stack."
