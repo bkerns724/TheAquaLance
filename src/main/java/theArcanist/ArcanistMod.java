@@ -381,7 +381,7 @@ public class ArcanistMod implements
 
     private static void addPotions() {
         BaseMod.addPotion(CursedBrew.class, Color.PURPLE.cpy(), Color.BLACK.cpy(), null, CursedBrew.POTION_ID, THE_ARCANIST);
-        BaseMod.addPotion(DarkElixir.class, Color.DARK_GRAY.cpy(), Color.BLACK.cpy(), null, DarkElixir.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(MurkyElixir.class, Color.DARK_GRAY.cpy(), Color.BLACK.cpy(), null, MurkyElixir.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(SigilPotion.class, Color.GOLD.cpy(), Color.GOLDENROD.cpy(), null, SigilPotion.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_ARCANIST);
 
@@ -390,7 +390,7 @@ public class ArcanistMod implements
         BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_ARCANIST);
 
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_ARCANIST);
-        BaseMod.addPotion(NumbingPotion.class, Color.ORANGE.cpy(), Color.GOLD, null, NumbingPotion.POTION_ID, THE_ARCANIST);
+        BaseMod.addPotion(UnicornBlood.class, Color.WHITE.cpy(), null, null, UnicornBlood.POTION_ID, THE_ARCANIST);
 
         BaseMod.addPotion(SteelhidePotion.class, Color.LIGHT_GRAY.cpy(), Color.GRAY.cpy(), null, SteelhidePotion.POTION_ID, THE_ARCANIST);
         BaseMod.addPotion(PoisonousSmokeBomb.class, Color.DARK_GRAY.cpy(), null, Color.GREEN, PoisonousSmokeBomb.POTION_ID, THE_ARCANIST);

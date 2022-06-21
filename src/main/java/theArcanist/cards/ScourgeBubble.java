@@ -12,10 +12,10 @@ import static theArcanist.util.Wiz.*;
 
 public class ScourgeBubble extends AbstractArcanistCard {
     public final static String ID = makeID(ScourgeBubble.class.getSimpleName());
-    private final static int BLOCK = 8;
-    private final static int UPGRADE_BLOCK = 4;
-    private final static int MAGIC = 1;
-    private final static int COST = 1;
+    private final static int BLOCK = 12;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
+    private final static int COST = 2;
 
     public ScourgeBubble() {
         super(ID, COST, CardType.SKILL, ArcanistMod.Enums.UNIQUE, CardTarget.SELF);
@@ -51,6 +51,6 @@ public class ScourgeBubble extends AbstractArcanistCard {
     }
 
     public void upp() {
-        upgradeBlock(UPGRADE_BLOCK);
+        upMagic(UPGRADE_MAGIC);
     }
 }

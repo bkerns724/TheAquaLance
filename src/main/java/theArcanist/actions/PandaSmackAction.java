@@ -1,15 +1,10 @@
 package theArcanist.actions;
 
-import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import theArcanist.orbs.CrazyPanda;
 
 import static theArcanist.util.Wiz.adp;
@@ -64,20 +59,9 @@ public class PandaSmackAction extends AbstractGameAction {
             thunkEffect = true;
             panda.cX = targetX;
             panda.cY = targetY;
-            if (target != null && target.currentHealth > 0 && adp() != null) {
-                int x = AbstractDungeon.miscRng.random(0, 1);
-                AbstractPower pow;
-                if (x == 0)
-                    pow = new VulnerablePower(target, 1, false);
-                else
-                    pow = new WeakPower(target, 1, false);
-                ApplyPowerAction action =  new ApplyPowerAction(target, adp(), pow);
-                ReflectionHacks.setPrivate(action, AbstractGameAction.class, "duration", 0);
-                ReflectionHacks.setPrivate(action, ApplyPowerAction.class, "startingDuration", 0);
-                att(action);
+            if (target != null && target.currentHealth > 0 && adp() != null)
                 att(new DamageAction(target, new DamageInfo(adp(), panda.passiveAmount, DamageInfo.DamageType.NORMAL),
                         AttackEffect.BLUNT_HEAVY, true));
-            }
             panda.startBounce(targetX, targetY);
             isDone = true;
         }

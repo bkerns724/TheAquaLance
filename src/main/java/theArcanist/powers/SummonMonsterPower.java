@@ -16,18 +16,15 @@ public class SummonMonsterPower extends AbstractArcanistPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public SummonMonsterPower(AbstractCreature owner, int amount, int amount2) {
+    public SummonMonsterPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
-        this.amount2 = amount2;
-        ID = POWER_ID + amount2;
-        isTwoAmount = true;
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         for (int i = 0; i < amount; i++) {
             atb(new IncreaseMaxOrbAction(1));
-            atb(new ChannelAction(new CrazyPanda(amount2)));
+            atb(new ChannelAction(new CrazyPanda(amount)));
         }
     }
 }

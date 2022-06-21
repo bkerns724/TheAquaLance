@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CtBehavior;
 import theArcanist.ArcanistMod;
 import theArcanist.cards.AbstractArcanistCard;
-import theArcanist.cards.ChanneledChaos;
 import theArcanist.cards.ManaBlood;
 import theArcanist.cards.ScourgeBubble;
 
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static theArcanist.TheArcanist.Enums.THE_ARCANIST;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
 
 public class SensoryStonePatch {
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ArcanistMod.makeID("SensoryStone"));
@@ -92,7 +91,7 @@ public class SensoryStonePatch {
             rewardItem.cards.remove(x);
             ArrayList<AbstractArcanistCard> newCards = new ArrayList<>();
             newCards.add(new ScourgeBubble());
-            newCards.add(new ChanneledChaos());
+            //newCards.add(new ElementalResonance());
             newCards.add(new ManaBlood());
             AbstractArcanistCard newCard = newCards.get(y);
             rewardItem.cards.add(x, newCard);

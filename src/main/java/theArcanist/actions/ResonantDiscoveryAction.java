@@ -8,13 +8,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
-import theArcanist.cards.AbstractArcanistCard;
+import theArcanist.cards.AbstractResonantCard;
 
 import java.util.ArrayList;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
 import static theArcanist.util.Wiz.adp;
-import static theArcanist.util.Wiz.att;
 
 public class ResonantDiscoveryAction extends AbstractGameAction {
     private boolean retrieveCard = false;
@@ -72,18 +71,15 @@ public class ResonantDiscoveryAction extends AbstractGameAction {
         ArrayList<AbstractCard> list = new ArrayList<>();
 
         for (AbstractCard card : srcCommonCardPool.group)
-            if (!card.hasTag(AbstractCard.CardTags.HEALING) && card instanceof AbstractArcanistCard &&
-                    ((AbstractArcanistCard) card).resonant)
+            if (!card.hasTag(AbstractCard.CardTags.HEALING) && card instanceof AbstractResonantCard)
                 list.add(card);
 
         for (AbstractCard card : srcUncommonCardPool.group)
-            if (!card.hasTag(AbstractCard.CardTags.HEALING) && card instanceof AbstractArcanistCard &&
-                    ((AbstractArcanistCard) card).resonant)
+            if (!card.hasTag(AbstractCard.CardTags.HEALING) && card instanceof AbstractResonantCard)
                 list.add(card);
 
         for (AbstractCard card : srcRareCardPool.group)
-            if (!card.hasTag(AbstractCard.CardTags.HEALING) && card instanceof AbstractArcanistCard &&
-                    ((AbstractArcanistCard) card).resonant)
+            if (!card.hasTag(AbstractCard.CardTags.HEALING) && card instanceof AbstractResonantCard)
                 list.add(card);
 
         if (list.size() <= CHOICE_AMOUNT)

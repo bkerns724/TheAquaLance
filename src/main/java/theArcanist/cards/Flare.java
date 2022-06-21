@@ -8,8 +8,9 @@ import static theArcanist.util.Wiz.*;
 
 public class Flare extends AbstractArcanistCard {
     public final static String ID = makeID(Flare.class.getSimpleName());
-    private final static int BLOCK = 0;
-    private final static int MAGIC = 3;
+    private final static int BLOCK = 6;
+    private final static int UPGRADE_BLOCK = 2;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
@@ -30,14 +31,33 @@ public class Flare extends AbstractArcanistCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        baseBlock = magicNumber*getDebuffCount(mo);
+        int temp = baseBlock;
+        baseBlock += magicNumber*debuffAllCount();
         super.calculateCardDamage(mo);
-        baseBlock = BLOCK;
-        if (block > 0)
+        baseBlock = temp;
+        if (block != baseBlock)
             isBlockModified = true;
+    }
+
+    @Override
+    public void applyPowers() {
+        int temp = baseBlock;
+        baseBlock += magicNumber*debuffAllCount();
+        super.applyPowers();
+        baseBlock = temp;
+        if (block != baseBlock)
+            isBlockModified = true;
+    }
+
+    public int debuffAllCount() {
+        int count = 0;
+        for (AbstractMonster m : getEnemies())
+            count += getDebuffCount(m);
+        return count;
     }
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeBlock(UPGRADE_BLOCK);
     }
 }

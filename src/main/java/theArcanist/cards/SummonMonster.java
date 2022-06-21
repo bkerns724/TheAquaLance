@@ -11,8 +11,8 @@ import static theArcanist.util.Wiz.applyToSelf;
 
 public class SummonMonster extends AbstractArcanistCard {
     public final static String ID = makeID("SummonMonster");
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 5;
+    private final static int MAGIC = 12;
+    private final static int UPGRADE_MAGIC = 4;
     private final static int COST = 2;
 
     public SummonMonster() {
@@ -25,7 +25,7 @@ public class SummonMonster extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new SummonMonsterPower(adp(), 1, magicNumber));
+        applyToSelf(new SummonMonsterPower(adp(), magicNumber));
     }
 
     public void upp() {

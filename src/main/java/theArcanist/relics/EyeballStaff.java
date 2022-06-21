@@ -12,7 +12,7 @@ import static theArcanist.util.Wiz.*;
 public class EyeballStaff extends AbstractArcanistClickRelic {
     public static final String ID = makeID("EyeballStaff");
     private static final String textureString = "arcanistmodResources/images/ui/ScryButton.png";
-    public static final int SCRY_AMOUNT = 4;
+    public static final int SCRY_AMOUNT = 3;
 
     public EyeballStaff() {
         super(ID, RelicTier.RARE, LandingSound.SOLID, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);

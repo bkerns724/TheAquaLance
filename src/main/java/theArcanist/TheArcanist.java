@@ -35,7 +35,6 @@ import java.util.List;
 
 import static theArcanist.TheArcanist.Enums.ARCANIST_BLARPLE_COLOR;
 import static theArcanist.ArcanistMod.*;
-import static theArcanist.util.Wiz.*;
 
 public class TheArcanist extends CustomPlayer {
     private static final String[] ORB_TEXTURES = {
@@ -74,28 +73,14 @@ public class TheArcanist extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
-    private static final int NUM_STRIKES = 4;
+    private static final int NUM_STRIKES = 5;
     private static final int NUM_DEFENDS = 4;
-    private static final ArrayList<String> randomStarterList = new ArrayList<>();
-    private static final ArrayList<String> randomRelicList = new ArrayList<>();
     private static final int STARTING_HP = 70;
 
     public TheArcanist(String name, PlayerClass setClass) {
         super(name, setClass,
                 new CustomEnergyOrb(ORB_TEXTURES, modID + "Resources/images/char/mainChar/orb/vfx.png",
                         null), null, null);
-
-        randomStarterList.clear();
-        randomStarterList.add(PhantomFist.ID);
-        randomStarterList.add(SoulFlame.ID);
-        randomStarterList.add(VoidTendrils.ID);
-        randomStarterList.add(FrozenLance.ID);
-
-        randomRelicList.clear();
-        randomRelicList.add(SparkingWand.ID);
-        randomRelicList.add(DarkClover.ID);
-        randomRelicList.add(VestOfManyPockets.ID);
-        randomRelicList.add(GlowingNecklace.ID);
 
         initializeClass(null,
                 SHOULDER1, SHOULDER2, CORPSE,
@@ -113,7 +98,7 @@ public class TheArcanist extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         ArrayList<String> list = new ArrayList<>();
-        list.add(RandomRelic.ID);
+        list.add(NecklaceOfShielding.ID);
         return new CharSelectInfo(NAMES[0], TEXT[0],
                 STARTING_HP, STARTING_HP, 0, 99, 5, this, list,
                 getStartingDeck(), false);
@@ -127,47 +112,34 @@ public class TheArcanist extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
-        try {
-            if (AbstractDungeon.miscRng != null && adp() != null) {
-                if (adp().hasRelic(SparkingWand.ID)) {
-                    retVal.add(ElectricChannel.ID);
-                    retVal.add(ElectricChannel.ID);
-                } else if (adp().hasRelic(VestOfManyPockets.ID)) {
-                    ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
-                    int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                    retVal.add(listCopy.get(x));
-                    retVal.add(AcidSigil.ID);
-                } else if (adp().hasRelic(DarkClover.ID)) {
-                    ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
-                    int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                    retVal.add(listCopy.get(x));
-                    retVal.add(SimpleCurse.ID);
-                } else {
-                    ArrayList<String> listCopy = new ArrayList<>(randomStarterList);
-                    int x = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                    retVal.add(listCopy.get(x));
-                    listCopy.remove(x);
-                    int y = AbstractDungeon.miscRng.random(0, listCopy.size() - 1);
-                    retVal.add(listCopy.get(y));
-                }
-            }
+        // Sorry Pasha if this causes problems, but this needs to be seeded
+        int x;
+        int y;
+        if (AbstractDungeon.cardRng != null) {
+            x = AbstractDungeon.cardRng.random(0, 1);
+            y = AbstractDungeon.cardRng.random(0, 1);
         }
-        catch (Exception e) {
-            retVal.add(Gale.ID);
-            retVal.add(CurseWeapon.ID);
+        else {
+            x = 0;
+            y = 0;
         }
+
+        if (x == 0)
+            retVal.add(FieryCurse.ID);
+        else
+            retVal.add(DarkCurse.ID);
+
+        if (y == 0)
+            retVal.add(FrostBolt.ID);
+        else
+            retVal.add(ForceBolt.ID);
 
         return retVal;
     }
 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        if (AbstractDungeon.miscRng != null) {
-            int x = AbstractDungeon.miscRng.random(0, randomRelicList.size() - 1);
-            retVal.add(randomRelicList.get(x));
-        }
-        else
-            retVal.add(UnmeltingIce.ID);
+        retVal.add(NecklaceOfShielding.ID);
         return retVal;
     }
 
@@ -212,6 +184,7 @@ public class TheArcanist extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
+        // Sorry Pasha if this causes problems, but this needs to be seeded
         if (AbstractDungeon.cardRng != null) {
             ArrayList<AbstractCard> cardList = new ArrayList<>();
             cardList.add(new AcidSpray());
@@ -223,10 +196,11 @@ public class TheArcanist extends CustomPlayer {
     }
 
     public static AbstractCard getCardForLibrary() {
+        // Sorry Pasha if this causes problems, but this needs to be seeded
         if (AbstractDungeon.cardRng != null) {
             ArrayList<AbstractCard> cardList = new ArrayList<>();
-            cardList.add(new StinkingCloud());
-            cardList.add(new AcidRain());
+            cardList.add(new Prepare());
+            cardList.add(new ClockSigil());
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }

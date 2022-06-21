@@ -10,12 +10,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.*;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.DuVuDoll;
+import com.megacrit.cardcrawl.relics.HappyFlower;
+import com.megacrit.cardcrawl.relics.IncenseBurner;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
-import theArcanist.cards.AbstractArcanistCard;
+import theArcanist.cards.AbstractResonantCard;
 
 import java.util.ArrayList;
 
@@ -78,7 +81,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
         if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             if (pickedDraw) {
                 adp().loseRelic(commonTradeRelic.relicId);
-                AbstractArcanistCard c = (AbstractArcanistCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+                AbstractResonantCard c = (AbstractResonantCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
 
                 c.extraDraw += 1;
@@ -95,7 +98,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
             }
             else {
                 adp().loseRelic(uncommonTradeRelic.relicId);
-                AbstractArcanistCard c = (AbstractArcanistCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+                AbstractResonantCard c = (AbstractResonantCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
 
                 c.extraEnergy += 1;
@@ -147,7 +150,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
 
     private static boolean hasResonantCard() {
         for (AbstractCard c : adp().masterDeck.group)
-            if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).resonant)
+            if (c instanceof AbstractResonantCard)
                 return true;
         return false;
     }
@@ -194,7 +197,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
     private static CardGroup getResonantCards() {
         CardGroup resonantGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for (AbstractCard c :  adp().masterDeck.group)
-            if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).resonant)
+            if (c instanceof AbstractResonantCard)
                 resonantGroup.addToTop(c);
 
         return resonantGroup;

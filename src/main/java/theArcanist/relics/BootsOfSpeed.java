@@ -13,7 +13,7 @@ import static theArcanist.util.Wiz.*;
 public class BootsOfSpeed extends AbstractArcanistClickRelic implements EnergyChangeSubscriber {
     public static final String ID = makeID(BootsOfSpeed.class.getSimpleName());
     private static final String TEXTURE_STRING = "arcanistmodResources/images/ui/DrawButton.png";
-    public static final int DRAW_AMOUNT = 2;
+    public static final int DRAW_AMOUNT = 3;
 
     public BootsOfSpeed() {
         super(ID, RelicTier.BOSS, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, TEXTURE_STRING);

@@ -16,7 +16,7 @@ import theArcanist.icons.Dark;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.EldritchStaffPower;
 import theArcanist.relics.BlueMarbles;
-import theArcanist.relics.DarkFunnel;
+import theArcanist.relics.PlasticFangs;
 
 import java.util.ArrayList;
 
@@ -57,7 +57,7 @@ public class DarkDamage extends AbstractDamageModifier {
         else
             tempHP = GetTriangleNumberRootFloor(unblockedAmount);
         if (tempHP > 0) {
-            if (adp().hasRelic(DarkFunnel.ID))
+            if (adp().hasRelic(PlasticFangs.ID))
                 tempHP += 2;
             if (adp().hasPower(EldritchStaffPower.POWER_ID)) {
                 int mult = adp().getPower(EldritchStaffPower.POWER_ID).amount + 1;

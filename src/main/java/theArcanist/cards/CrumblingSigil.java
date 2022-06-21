@@ -11,7 +11,7 @@ import static theArcanist.util.Wiz.*;
 
 public class CrumblingSigil extends AbstractArcanistCard {
     public final static String ID = makeID(CrumblingSigil.class.getSimpleName());
-    private final static int MAGIC = 5;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
 
     public CrumblingSigil() {

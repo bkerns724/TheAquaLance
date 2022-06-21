@@ -10,8 +10,7 @@ import com.megacrit.cardcrawl.relics.MoltenEgg2;
 import com.megacrit.cardcrawl.relics.ToxicEgg2;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theArcanist.TheArcanist;
-import theArcanist.cards.Fear;
-import theArcanist.cards.Shatter;
+import theArcanist.cards.ElementalConflux;
 import theArcanist.cards.SummonMonster;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -29,8 +28,8 @@ public class AncientSpellTome extends AbstractArcanistRelic {
     public void onEquip() {
         cardsSelected = false;
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        tmp.addToTop(new Shatter());
-        tmp.addToTop(new Fear());
+        //tmp.addToTop(new Fade());
+        tmp.addToTop(new ElementalConflux());
         tmp.addToTop(new SummonMonster());
 
         for (int i = 0; i < tmp.size(); i++) {

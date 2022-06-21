@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.PowerBuffEffect;
 import javassist.CtBehavior;
-import theArcanist.cards.AbstractArcanistCard;
+import theArcanist.cards.AbstractResonantCard;
 import theArcanist.powers.ResonatingPower;
 
 public class ResonantPowerPatch {
@@ -64,7 +64,7 @@ public class ResonantPowerPatch {
         )
         public static SpireReturn InsertPatch (UseCardAction __instance) {
             AbstractCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
-            if (targetCard instanceof AbstractArcanistCard && ((AbstractArcanistCard)targetCard).resonant)
+            if (targetCard instanceof AbstractResonantCard)
             {
                 AbstractDungeon.actionManager.addToTop(new ShowCardAction(targetCard));
                 if (Settings.FAST_MODE)

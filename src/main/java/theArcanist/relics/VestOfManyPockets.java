@@ -14,7 +14,7 @@ public class VestOfManyPockets extends AbstractArcanistClickRelic {
     private static final int CYCLE_AMOUNT = 1;
 
     public VestOfManyPockets() {
-        super(ID, RelicTier.STARTER, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        super(ID, RelicTier.COMMON, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
         amount = CYCLE_AMOUNT;
         setUpdatedDescription();
     }

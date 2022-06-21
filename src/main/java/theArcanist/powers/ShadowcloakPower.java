@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import static theArcanist.util.Wiz.*;
 import theArcanist.ArcanistMod;
-import theArcanist.relics.DiscardedCloak;
+import theArcanist.relics.TatteredCloak;
 import theArcanist.relics.TransparentRing;
 
 public class ShadowcloakPower extends AbstractArcanistPower {
@@ -27,8 +27,8 @@ public class ShadowcloakPower extends AbstractArcanistPower {
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL && !triggered) {
-            if (adp().hasRelic(DiscardedCloak.ID))
-                damage *= (1.0f + DiscardedCloak.CLOAK_MULT * amount);
+            if (adp().hasRelic(TatteredCloak.ID))
+                damage *= (1.0f + TatteredCloak.CLOAK_MULT * amount);
             else
                 damage *= (1.0f + DAMAGE_MULT * amount);
         }

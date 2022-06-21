@@ -38,12 +38,6 @@
       "Whenever this enemy attacks, it suffers !A! damage then reduces Frostbite by 1."
     ]
   },
-  "${ModID}:FearPower": {
-    "NAME": "Fear",
-    "DESCRIPTIONS": [
-      "This is a debuff with no benefit."
-    ]
-  },
   "${ModID}:SummonMonsterPower": {
     "NAME": "Summon Monster",
     "DESCRIPTIONS": [
@@ -115,20 +109,6 @@
       "#yJinx is !A! times more effective on the enemy."
     ]
   },
-  "${ModID}:CorrodedPower": {
-    "NAME": "Corroded",
-    "DESCRIPTIONS": [
-      "Vulnerable increases damage by an additional 50% for !A! turn.",
-      "Vulnerable increases damage by an additional 50% for !A! turns."
-    ]
-  },
-  "${ModID}:NauseousPower": {
-    "NAME": "Nauseous",
-    "DESCRIPTIONS": [
-      "Weak reduces damage by an additional 25% for !A! turn.",
-      "Weak reduces damage by an additional 25% for !A! turns."
-    ]
-  },
   "${ModID}:DecayingPower": {
     "NAME": "Decaying",
     "DESCRIPTIONS": [
@@ -172,12 +152,6 @@
       "Whenever a non-minion enemy dies, gain 1 Max HP."
     ]
   },
-  "${ModID}:HundredCutsPower": {
-    "NAME": "Hundred Cuts",
-    "DESCRIPTIONS": [
-      "Whenever you play a card, deal !A! damage to a random enemy."
-    ]
-  },
   "${ModID}:StoneskinPower": {
     "NAME": "Stoneskin",
     "DESCRIPTIONS": [
@@ -207,13 +181,6 @@
     "NAME": "Charge",
     "DESCRIPTIONS": [
       "Whenever you end your turn with at least one [E] , your next attack deals !A! additional damage."
-    ]
-  },
-  "${ModID}:IgnorePainPower": {
-    "NAME": "Ignore Pain",
-    "DESCRIPTIONS": [
-      "At the start of your turn, exhaust the first !A! status card in your draw pile (checked first) or discard pile.",
-      "At the start of your turn, exhaust the first !A! status cards in your draw pile (checked first) or discard pile."
     ]
   },
   "${ModID}:ManaBurstPower": {

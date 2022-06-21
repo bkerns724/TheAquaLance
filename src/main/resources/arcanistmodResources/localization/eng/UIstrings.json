@@ -21,5 +21,27 @@
       "Event:",
       "Potions that can only be obtained through events."
     ]
+  },
+  "${ModID}:Resonance": {
+    "TEXT": [
+      "Deal !D! damage.",
+      "Deal !D! damage !X0! times.",
+      " NL Gain !B! block.",
+      " NL Gain !X1! ${ModID}:Resonance.",
+      " NL Enemy takes !X2! damage at the start of its turns.",
+      " NL Whenever you are attacked this turn, deal !X3! [${ModID}:FireIcon] damage back.",
+      " NL Apply !X4! ${ModID}:Jinx.",
+      " NL Draw a card.",
+      " NL Draw !X5! cards",
+      " NL Gain [E] .",
+      " NL Gain [E][E] .",
+      " NL Gain [E][E][E] .",
+      " NL Gain !X6! [E]. "
+    ]
+  },
+  "${ModID}:BlessedNecklaceAction": {
+    "TEXT": [
+      "Choose Any Number of Cards to Replace (Blessed Necklace)"
+    ]
   }
 }

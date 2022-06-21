@@ -1,6 +1,7 @@
 package theArcanist.potions;
 
 import basemod.abstracts.CustomPotion;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
@@ -10,6 +11,7 @@ public abstract class
 AbstractArcanistPotion extends CustomPotion {
     protected PotionStrings potionStrings;
     protected int defaultPotency;
+    public AbstractCard cardToPreview = null;
 
     public AbstractArcanistPotion(String potionID, PotionRarity rarity, PotionSize size, PotionColor color,
                                   boolean isThrown, boolean targetRequired, int defaultPotency) {

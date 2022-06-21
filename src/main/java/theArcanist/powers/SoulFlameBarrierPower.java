@@ -1,11 +1,15 @@
 package theArcanist.powers;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
+import theArcanist.damagemods.SoulFireDamage;
 
+import java.util.Arrays;
 
 import static theArcanist.util.Wiz.*;
 
@@ -24,7 +28,10 @@ public class SoulFlameBarrierPower extends AbstractArcanistPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.owner != null && info.type == DamageInfo.DamageType.NORMAL && info.owner != this.owner) {
             flash();
-            thornDmgTop(info.owner, amount, ArcanistMod.Enums.SOUL_FIRE);
+            DamageInfo thornInfo = new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS);
+            DamageModifierManager.bindDamageMods(info, Arrays.asList(new SoulFireDamage()));
+            DamageAction action = new DamageAction(info.owner, thornInfo, ArcanistMod.Enums.SOUL_FIRE);
+            att(action);
         }
         return damageAmount;
     }

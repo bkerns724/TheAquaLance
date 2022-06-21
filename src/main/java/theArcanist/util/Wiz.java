@@ -63,6 +63,8 @@ public class Wiz {
         thornDmgTop(m, amount, AbstractGameAction.AttackEffect.NONE);
     }
 
+    public static void cardDraw(int amount) { atb(new DrawCardAction(amount)); }
+
     public static void discard(int amount, boolean isRandom) {
         atb(new DiscardAction(adp(), adp(), amount, isRandom));
     }
@@ -114,6 +116,28 @@ public class Wiz {
         ArrayList<AbstractMonster> monsters = new ArrayList<>(AbstractDungeon.getMonsters().monsters);
         monsters.removeIf(m -> m.isDead || m.isDying || m.halfDead);
         return monsters;
+    }
+
+    public static AbstractMonster getLowestHealthEnemy() {
+        AbstractMonster weakest = null;
+        for (AbstractMonster m : getEnemies()) {
+            if (weakest == null)
+                weakest = m;
+            else if (weakest.currentHealth > m.currentHealth)
+                weakest = m;
+        }
+        return weakest;
+    }
+
+    public static AbstractMonster getHighestHealthEnemy() {
+        AbstractMonster strongest = null;
+        for (AbstractMonster m : getEnemies()) {
+            if (strongest == null)
+                strongest = m;
+            else if (strongest.currentHealth < m.currentHealth)
+                strongest = m;
+        }
+        return strongest;
     }
 
     public static ArrayList<AbstractCard> getCardsMatchingPredicate(Predicate<AbstractCard> pred) {

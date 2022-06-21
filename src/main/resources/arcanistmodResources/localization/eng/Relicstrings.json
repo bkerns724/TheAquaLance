@@ -6,13 +6,6 @@
       "Draw !R! additional card each turn.  At the start of each combat, lose !R2! #yDexterity."
     ]
   },
-  "${ModID}:DetailedContract": {
-    "NAME": "Detailed Contract",
-    "FLAVOR": "Every loophole closed.",
-    "DESCRIPTIONS": [
-      "Lose !R! Max HP. NL Chaos cards cause an extra effect."
-    ]
-  },
   "${ModID}:AncientSpellTome": {
     "NAME": "Ancient Spell Tome",
     "FLAVOR": "The ink is fading and the pages are crumbling.",
@@ -28,25 +21,18 @@
       "#y${ModID}:Activated.  Once per combat you can draw !R! card then discard !R! card."
     ]
   },
-  "${ModID}:GlowingNecklace": {
-    "NAME": "Glowing Necklace",
-    "FLAVOR": "It slowly pulls in mana from its surroundings.",
+  "${ModID}:NecklaceOfShielding": {
+    "NAME": "Necklace Of Shielding",
+    "FLAVOR": "It's a little unstable, but it works.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  At end of combat, gain !R! charge.  You can spend all charges to gain !R! random buff per charge."
+      "#y${ModID}:Activated.  Once per combat gain !R2! Block and discard a card."
     ]
   },
-  "${ModID}:DarkClover": {
-    "NAME": "Dark Clover",
-    "FLAVOR": "The unlucky version of the four leaf clover.",
+  "${ModID}:BlessedNecklace": {
+    "NAME": "Blessed Necklace",
+    "FLAVOR": "Cleric talented!  Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "You deal [${ModID}:ScourgeIcon] damage back when attacked."
-    ]
-  },
-  "${ModID}:SparkingWand": {
-    "NAME": "Sparking Wand",
-    "FLAVOR": "Powerful, but unstable.",
-    "DESCRIPTIONS": [
-      "The first !R2! times each combat you gain #y${ModID}:Resonance, gain !R! more and discard a card."
+      "Replaces [ROYAL]Necklace [ROYAL]of [ROYAL]Shielding.  #y${ModID}:Activated.  Once per combat gain !R2! Block and discard a card."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -54,6 +40,27 @@
     "FLAVOR": "It's scary.",
     "DESCRIPTIONS": [
       "Apply !R! #y${ModID}:Jinx to ALL enemies at the start of combat."
+    ]
+  },
+  "${ModID}:RingOfWarding": {
+    "NAME": "Ring of Warding",
+    "FLAVOR": "It protects against curses, but not completely.",
+    "DESCRIPTIONS": [
+      "The first !R! times each combat that you draw a #yCurse, draw a card."
+    ]
+  },
+  "${ModID}:RingOfFading": {
+    "NAME": "Ring of Fading",
+    "FLAVOR": "Sometimes you feel like your sanity is fading too.",
+    "DESCRIPTIONS": [
+      "On pickup, gain #yHallucination. Whenever you draw a #yCurse, gain !R! #y${ModID}:Shadowcloak."
+    ]
+  },
+  "${ModID}:BlackCandle": {
+    "NAME": "Black Candle",
+    "FLAVOR": "The candle isn't black, the flame is.",
+    "DESCRIPTIONS": [
+      "Gain !R! #yShadowcloak when you draw a #yCurse.  When you take this relic, become cursed with #yHallucination."
     ]
   },
   "${ModID}:TuningFork": {
@@ -84,9 +91,9 @@
       "#y${ModID}:Activated.  Once per combat you can turn your Block into #yTemporary_HP."
     ]
   },
-  "${ModID}:DiscardedCloak": {
-    "NAME": "DiscardedCloak",
-    "FLAVOR": "It's worn and tattered.",
+  "${ModID}:TatteredCloak": {
+    "NAME": "TatteredCloak",
+    "FLAVOR": "It's worn and has several holes in it.",
     "DESCRIPTIONS": [
       "#y${ModID}:Shadowcloak is now a !R!% bonus instead of !R2!% ."
     ]
@@ -141,6 +148,13 @@
       "Gain !R! #yTemporary_HP at the beginning of combat."
     ]
   },
+  "${ModID}:RockyEgg": {
+    "NAME": "RockyEgg",
+    "FLAVOR": "You're not sure what creature laid this, but it occasionally stirs.",
+    "DESCRIPTIONS": [
+      "Whenever you add a #ySigil card to your deck, it is Upgraded."
+    ]
+  },
   "${ModID}:Mythril": {
     "NAME": "Mythril",
     "FLAVOR": "It's extremely hard for something so light.",
@@ -183,9 +197,9 @@
       "HP loss from #y${ModID}:Jinx is twice as effective."
     ]
   },
-  "${ModID}:DarkFunnel": {
-    "NAME": "Dark Funnel",
-    "FLAVOR": "I wouldn't drink out of this one either.",
+  "${ModID}:PlasticFangs": {
+    "NAME": "PlasticFangs",
+    "FLAVOR": "This is an odd object to enchant with power.",
     "DESCRIPTIONS": [
       "Whenever you gain #yTemporary_HP from [${ModID}:DarkIcon] attacks, gain !R! more."
     ]

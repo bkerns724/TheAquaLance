@@ -196,8 +196,8 @@ public class SpellForge extends AbstractArcanistEvent {
     private static boolean checkForUpgradableCard() {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
-                    card.rarity != AbstractCard.CardRarity.BASIC && !((AbstractArcanistCard) card).resonant
-                    && ((AbstractArcanistCard) card).damageModList.size() < 2)
+                    card.rarity != AbstractCard.CardRarity.BASIC &&
+                    ((AbstractArcanistCard) card).damageModList.size() < 2)
                 return true;
         return false;
     }
@@ -205,7 +205,7 @@ public class SpellForge extends AbstractArcanistEvent {
     private static boolean checkForUpgradableCard(AbstractArcanistCard.elenum ele) {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
-                    card.rarity != AbstractCard.CardRarity.BASIC && !((AbstractArcanistCard) card).resonant &&
+                    card.rarity != AbstractCard.CardRarity.BASIC  &&
                     !((AbstractArcanistCard) card).damageModList.contains(ele) &&
                     ((AbstractArcanistCard) card).damageModList.size() < 2)
                 return true;

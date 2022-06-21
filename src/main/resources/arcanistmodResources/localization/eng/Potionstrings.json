@@ -6,8 +6,8 @@
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
-  "${ModID}:DarkElixir": {
-    "NAME": "Dark Elixir",
+  "${ModID}:MurkyElixir": {
+    "NAME": "Murky Elixir",
     "DESCRIPTIONS": [
       "Gain !P! #yShadowcloak."
     ],
@@ -57,10 +57,10 @@
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
-  "${ModID}:NumbingPotion": {
-    "NAME": "Numbing Potion",
+  "${ModID}:UnicornBlood": {
+    "NAME": "Unicorn Blood",
     "DESCRIPTIONS": [
-      "Exhaust !P! status cards.  Priority is draw pile, discard pile, hand."
+      "Gain !P! Max HP. Gain #yBad #yLuck."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },

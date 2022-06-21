@@ -12,9 +12,8 @@ import static theArcanist.ArcanistMod.makeID;
 
 import static theArcanist.util.Wiz.*;
 
-// Yes, this is a relic, not a power, but it works
 public class ClownNose extends AbstractArcanistRelic implements OnApplyPowerRelic {
-    public static final String ID = makeID("ClownNose");
+    public static final String ID = makeID(ClownNose.class.getSimpleName());
     public static final int DEBUFF_AMOUNT = 7;
     public static final int DAMAGE_AMOUNT = 66;
 
