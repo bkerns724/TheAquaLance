@@ -30,7 +30,7 @@ public class NeowPatch {
         public static ArrayList<NeowReward.NeowRewardDef> Postfix(ArrayList<NeowReward.NeowRewardDef> __result,
                                                                   NeowReward __instance, int category) {
             if (category == 2 && adp().chosenClass == TheArcanist.Enums.THE_ARCANIST)
-                __result.add(new NeowReward.NeowRewardDef(ArcanistMod.Enums.UNIQUE_REWARD, TEXT[0]) );
+                __result.add(new NeowReward.NeowRewardDef(ArcanistMod.Enums.UNIQUE_CARD_REWARD, TEXT[0]) );
             return __result;
         }
     }
@@ -42,7 +42,7 @@ public class NeowPatch {
     public static class activateUniqueNeow {
         @SpirePostfixPatch
         public static void Postfix(NeowReward __instance) {
-            if (__instance.type == ArcanistMod.Enums.UNIQUE_REWARD) {
+            if (__instance.type == ArcanistMod.Enums.UNIQUE_CARD_REWARD) {
                 ArrayList<AbstractArcanistCard> list = new ArrayList<>();
                 list.add(new ArcaneBeam());
                 list.add(new SoulFeed());

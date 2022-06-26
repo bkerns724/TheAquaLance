@@ -203,7 +203,7 @@
   },
   "${ModID}:FlamingSigil": {
     "NAME": "Flaming Sigil",
-    "DESCRIPTION": "Whenever you are attacked this turn, deal !M! [${ModID}:FireIcon] damage back."
+    "DESCRIPTION": "Whenever you are attacked this turn, deal !M! [${ModID}:SoulFireIcon] damage back."
   },
   "${ModID}:OverChargedSigil": {
     "NAME": "Over Charged Sigil",
@@ -221,12 +221,12 @@
     "NAME": "Defensive Channeling",
     "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
   },
-  "${ModID}:VengefulResonance": {
-    "NAME": "Vengeful Resonance",
-    "DESCRIPTION": "Whenever you are attacked this turn, deal !M! [${ModID}:FireIcon] damage back."
+  "${ModID}:VengefulChanneling": {
+    "NAME": "Vengeful Channeling",
+    "DESCRIPTION": "Whenever you are attacked this turn, deal !M! [${ModID}:SoulFireIcon] damage back."
   },
   "${ModID}:CorruptedChanneling": {
-    "NAME": "CorruptedChanneling",
+    "NAME": "Corrupted Channeling",
     "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! HP at the start of its turns."
   },
   "${ModID}:ChanneledCurse": {

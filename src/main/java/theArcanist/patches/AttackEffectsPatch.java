@@ -11,7 +11,11 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
 
+import java.util.ArrayList;
+
 public class AttackEffectsPatch {
+    private static ArrayList<AbstractGameAction.AttackEffect> emptyEffects;
+
     @SpirePatch2(
             clz = FlashAtkImgEffect.class,
             method = "loadImage"
@@ -19,45 +23,12 @@ public class AttackEffectsPatch {
     public static class VfxPatch {
         public static SpireReturn<TextureAtlas.AtlasRegion> Prefix(FlashAtkImgEffect __instance) {
             AbstractGameAction.AttackEffect effect = ReflectionHacks.getPrivate(__instance, FlashAtkImgEffect.class, "effect");
-            if (effect == ArcanistMod.Enums.WATER) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.WATER_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.BLOOD) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.BLOOD_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.ACID) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.ACID_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.ICE) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.ICE_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.SOUL_FIRE) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.SOUL_FIRE_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.FIST) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.PHANTOM_FIST_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.DARK_COIL) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.DARK_COIL_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.DARK_WAVE) {
+            if (emptyEffects.contains(effect))
                 return SpireReturn.Return(null);
-            }
-            return SpireReturn.Continue();
+            TextureAtlas.AtlasRegion output = getImage(effect);
+            if (output == null)
+                return SpireReturn.Continue();
+            return SpireReturn.Return(output);
         }
     }
 
@@ -68,46 +39,43 @@ public class AttackEffectsPatch {
     public static class OtherVfxPatch {
         public static SpireReturn<TextureAtlas.AtlasRegion> Prefix(DamageHeartEffect __instance) {
             AbstractGameAction.AttackEffect effect = ReflectionHacks.getPrivate(__instance, DamageHeartEffect.class, "effect");
-            if (effect == ArcanistMod.Enums.WATER) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.WATER_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.BLOOD) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.BLOOD_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.ACID) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.ACID_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.ICE) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.ICE_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.SOUL_FIRE) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.SOUL_FIRE_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.FIST) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.PHANTOM_FIST_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.DARK_COIL) {
-                Texture texture = TexLoader.getTexture(ArcanistMod.DARK_COIL_EFFECT_FILE);
-                TextureAtlas.AtlasRegion atReg = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-                return SpireReturn.Return(atReg);
-            }
-            if (effect == ArcanistMod.Enums.DARK_WAVE) {
+            if (emptyEffects.contains(effect))
                 return SpireReturn.Return(null);
-            }
-            return SpireReturn.Continue();
+            TextureAtlas.AtlasRegion output = getImage(effect);
+            if (output == null)
+                return SpireReturn.Continue();
+            return SpireReturn.Return(output);
         }
+    }
+
+    public static TextureAtlas.AtlasRegion getImage (AbstractGameAction.AttackEffect effect) {
+        if (emptyEffects.contains(effect))
+            return null;
+
+        Texture texture;
+
+        if (effect == ArcanistMod.Enums.WATER)
+            texture = TexLoader.getTexture(ArcanistMod.WATER_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.BLOOD)
+            texture = TexLoader.getTexture(ArcanistMod.BLOOD_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.ACID)
+            texture = TexLoader.getTexture(ArcanistMod.ACID_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.ICE)
+            texture = TexLoader.getTexture(ArcanistMod.ICE_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.ICE_M)
+            texture = TexLoader.getTexture(ArcanistMod.ICE_M_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.SOUL_FIRE)
+            texture = TexLoader.getTexture(ArcanistMod.SOUL_FIRE_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.FORCE)
+            texture = TexLoader.getTexture(ArcanistMod.PHANTOM_FIST_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.FORCE_M)
+            texture = TexLoader.getTexture(ArcanistMod.FORCE_M_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.DARK_COIL)
+            texture = TexLoader.getTexture(ArcanistMod.DARK_COIL_EFFECT_FILE);
+        else
+            return null;
+
+        return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
     }
 
     @SpirePatch2(
@@ -132,7 +100,11 @@ public class AttackEffectsPatch {
                 CardCrawlGame.sound.play("ATTACK_POISON");
                 return SpireReturn.Return();
             }
-            if (effect == ArcanistMod.Enums.FIST) {
+            if (effect == ArcanistMod.Enums.FORCE) {
+                CardCrawlGame.sound.play("BLUNT_FAST");
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.FORCE_M) {
                 CardCrawlGame.sound.play("BLUNT_HEAVY");
                 return SpireReturn.Return();
             }
@@ -140,11 +112,33 @@ public class AttackEffectsPatch {
                 CardCrawlGame.sound.play(ArcanistMod.COLD_KEY);
                 return SpireReturn.Return();
             }
+            if (effect == ArcanistMod.Enums.ICE_M) {
+                CardCrawlGame.sound.play(ArcanistMod.COLD_M_KEY);
+                return SpireReturn.Return();
+            }
             if (effect == ArcanistMod.Enums.SOUL_FIRE) {
                 CardCrawlGame.sound.play("ATTACK_FIRE");
                 return SpireReturn.Return();
             }
+            if (emptyEffects.contains(effect))
+                return SpireReturn.Return(null);
             return SpireReturn.Continue();
         }
+    }
+
+    static {
+        emptyEffects = new ArrayList<>();
+        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE);
+        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_M);
+        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_L);
+        emptyEffects.add(ArcanistMod.Enums.FORCE_L);
+        emptyEffects.add(ArcanistMod.Enums.ICE_L);
+        emptyEffects.add(ArcanistMod.Enums.DARK_COIL_M);
+        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_L);
+        emptyEffects.add(ArcanistMod.Enums.FORCE_L);
+        emptyEffects.add(ArcanistMod.Enums.SOUL_FIRE_M);
+        emptyEffects.add(ArcanistMod.Enums.SOUL_FIRE_L);
+        emptyEffects.add(ArcanistMod.Enums.BLUNT_MASSIVE);
+        emptyEffects.add(ArcanistMod.Enums.SLASH_MASSIVE);
     }
 }

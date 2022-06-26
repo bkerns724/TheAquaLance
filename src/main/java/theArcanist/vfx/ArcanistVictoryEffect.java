@@ -20,56 +20,52 @@ public class ArcanistVictoryEffect extends AbstractGameEffect {
     private TextureAtlas.AtlasRegion img;
 
     public ArcanistVictoryEffect() {
-        this.duration = 1.0F;
-        this.startingDuration = this.duration;
-        this.renderBehind = MathUtils.randomBoolean();
+        duration = 1.0F;
+        startingDuration = duration;
+        renderBehind = MathUtils.randomBoolean();
         switch(MathUtils.random(2)) {
             case 0:
-                this.img = ImageMaster.FLAME_1;
+                img = ImageMaster.FLAME_1;
                 break;
             case 1:
-                this.img = ImageMaster.FLAME_2;
+                img = ImageMaster.FLAME_2;
                 break;
             default:
-                this.img = ImageMaster.FLAME_3;
+                img = ImageMaster.FLAME_3;
         }
 
-        this.x = MathUtils.random(600.0F, 1320.0F) * Settings.xScale - (float)this.img.packedWidth / 2.0F;
-        this.y = -300.0F * Settings.scale - (float)this.img.packedHeight / 2.0F;
-        if (this.x > 960.0F * Settings.xScale) {
-            this.vX = MathUtils.random(0.0F, -120.0F) * Settings.xScale;
-        } else {
-            this.vX = MathUtils.random(120.0F, 0.0F) * Settings.xScale;
-        }
+        x = MathUtils.random(600.0F, 1320.0F) * Settings.xScale - (float)img.packedWidth / 2.0F;
+        y = -300.0F * Settings.scale - (float)img.packedHeight / 2.0F;
+        if (x > 960.0F * Settings.xScale)
+            vX = MathUtils.random(0.0F, -120.0F) * Settings.xScale;
+        else
+            vX = MathUtils.random(120.0F, 0.0F) * Settings.xScale;
 
-        this.vY = MathUtils.random(600.0F, 800.0F) * Settings.scale;
-        this.color = new Color(MathUtils.random(0.4F, 0.8F), MathUtils.random(0.1F, 0.4F), MathUtils.random(0.4F, 0.9F), 0.8F);
-        this.color = Color.ORANGE.cpy();
-        this.renderBehind = false;
-        this.scale = MathUtils.random(6.0F, 7.0F) * Settings.scale;
+        vY = MathUtils.random(600.0F, 800.0F) * Settings.scale;
+        // color = new Color(MathUtils.random(0.4F, 0.8F), MathUtils.random(0.1F, 0.4F), MathUtils.random(0.4F, 0.9F), 0.8F);
+        color = Color.ORANGE.cpy();
+        renderBehind = false;
+        scale = MathUtils.random(6.0F, 7.0F) * Settings.scale;
     }
 
     public void update() {
-        this.x += this.vX * Gdx.graphics.getDeltaTime();
-        this.y += this.vY * Gdx.graphics.getDeltaTime();
-        this.color.a = Interpolation.pow3Out.apply(0.0F, 0.8F, this.duration / this.startingDuration);
-        this.duration -= Gdx.graphics.getDeltaTime();
-        this.scale += Gdx.graphics.getDeltaTime();
-        if (this.duration < 0.0F) {
-            this.isDone = true;
-        }
-
+        x += vX * Gdx.graphics.getDeltaTime();
+        y += vY * Gdx.graphics.getDeltaTime();
+        color.a = Interpolation.pow3Out.apply(0.0F, 0.8F, duration / startingDuration);
+        duration -= Gdx.graphics.getDeltaTime();
+        scale += Gdx.graphics.getDeltaTime();
+        if (duration < 0.0F)
+            isDone = true;
     }
 
     public void render(SpriteBatch sb) {
-        sb.setColor(this.color);
-        if (this.flipX && !this.img.isFlipX()) {
-            this.img.flip(true, false);
-        } else if (!this.flipX && this.img.isFlipX()) {
-            this.img.flip(true, false);
-        }
+        sb.setColor(color);
+        if (flipX && !img.isFlipX())
+            img.flip(true, false);
+        else if (!flipX && img.isFlipX())
+            img.flip(true, false);
 
-        sb.draw(this.img, this.x, this.y, (float)this.img.packedWidth / 2.0F, (float)this.img.packedHeight / 2.0F, (float)this.img.packedWidth, (float)this.img.packedHeight, this.scale, this.scale, this.rotation);
+        sb.draw(img, x, y, (float)img.packedWidth / 2.0F, (float)img.packedHeight / 2.0F, (float)img.packedWidth, (float)img.packedHeight, scale, scale, rotation);
     }
 
     public void dispose() {

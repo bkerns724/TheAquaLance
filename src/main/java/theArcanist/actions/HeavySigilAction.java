@@ -32,7 +32,7 @@ public class HeavySigilAction extends AbstractGameAction {
         else {
             tickDuration();
             if (isDone) {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ArcanistMod.Enums.FIST, false));
+                AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ArcanistMod.Enums.FORCE, false));
                 target.damage(info);
                 if (target.lastDamageTaken >= threshold)
                     applyToEnemyTop(target, new StrengthPower(target, strengthLoss));

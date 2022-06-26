@@ -34,7 +34,6 @@ public class DarkWaveEffect extends AbstractGameEffect {
                 CardCrawlGame.sound.playA("ATTACK_DAGGER_6", -0.3F);
             }
         }
-
     }
 
     public void render(SpriteBatch sb) {

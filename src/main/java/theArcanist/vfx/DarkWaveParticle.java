@@ -22,21 +22,20 @@ public class DarkWaveParticle extends AbstractGameEffect {
     private boolean impactHook = false;
 
     public DarkWaveParticle(float x, float y) {
-        if (img == null) {
+        if (img == null)
             img = ImageMaster.vfxAtlas.findRegion("combat/weightyImpact");
-        }
 
         this.scale = Settings.scale;
         this.x = x - (float)img.packedWidth / 2.0F;
         this.y = (float)Settings.HEIGHT - (float)img.packedHeight / 2.0F;
-        duration = 0.5F;
+        duration = EFFECT_DUR;
         targetY = y - 180.0F * Settings.scale;
         rotation = 0.0F;
         color = new Color(0.5F, 0F, 0.5F, 0.0F);
     }
 
     public void update() {
-        y = Interpolation.fade.apply((float)Settings.HEIGHT, targetY, 1.0F - duration / 0.5F);
+        y = Interpolation.fade.apply((float)Settings.HEIGHT, targetY, 1.0F - duration / EFFECT_DUR);
         scale += Gdx.graphics.getDeltaTime();
         duration -= Gdx.graphics.getDeltaTime();
         if (duration < 0.0F) {
@@ -48,10 +47,8 @@ public class DarkWaveParticle extends AbstractGameEffect {
             }
 
             color.a = Interpolation.pow2Out.apply(0.0F, 1.0F, duration * 5.0F);
-        } else {
-            color.a = Interpolation.fade.apply(1.0F, 0.0F, duration / 0.5F);
-        }
-
+        } else
+            color.a = Interpolation.fade.apply(1.0F, 0.0F, duration / EFFECT_DUR);
     }
 
     public void render(SpriteBatch sb) {

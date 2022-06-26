@@ -1,6 +1,5 @@
 package theArcanist.cards;
 
-import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -29,7 +28,7 @@ public class Zap extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.LIGHTNING, Color.YELLOW.cpy());
+        dmg(m, AbstractGameAction.AttackEffect.LIGHTNING);
         if (getJinxAmountCard(m) > 0)
             applyToEnemy(m, new WeakPower(m, getJinxAmountCard(m), false));
     }

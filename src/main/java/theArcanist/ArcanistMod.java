@@ -93,13 +93,19 @@ public class ArcanistMod implements
     public static final String BLOOD_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Blood.png";
     public static final String ACID_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Acid.png";
     public static final String ICE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice.png";
+    public static final String ICE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice_M.png";
     public static final String SOUL_FIRE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/SoulFire.png";
     public static final String PHANTOM_FIST_EFFECT_FILE = RESOURCES_PRE + "images/vfx/PhantomFist.png";
+    public static final String FORCE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_M.png";
+    public static final String FORCE_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_L.png";
     public static final String DARK_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/DarkCoil.png";
+    public static final String DARK_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_M.png";
     public static final String LIGHT_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/LightCoil.png";
 
     public static final String COLD_KEY = makeID("Cold");
     private static final String COLD_OGG = RESOURCES_PRE + "audio/Cold.ogg";
+    public static final String COLD_M_KEY = makeID("Cold_M");
+    private static final String COLD_M_OGG = RESOURCES_PRE + "audio/Cold_M.ogg";
     public static final String PEW_KEY = makeID("Pew");
     private static final String PEW_OGG = RESOURCES_PRE + "audio/Pew.ogg";
 
@@ -145,19 +151,43 @@ public class ArcanistMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect ACID;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect FIST;
+        public static AbstractGameAction.AttackEffect FORCE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect FORCE_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect FORCE_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect ICE;
         @SpireEnum
+        public static AbstractGameAction.AttackEffect ICE_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect ICE_L;
+        @SpireEnum
         public static AbstractGameAction.AttackEffect SOUL_FIRE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect SOUL_FIRE_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect SOUL_FIRE_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_COIL;
         @SpireEnum
+        public static AbstractGameAction.AttackEffect DARK_COIL_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect DARK_COIL_L;
+        @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_WAVE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect DARK_WAVE_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect DARK_WAVE_L;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect BLUNT_MASSIVE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect SLASH_MASSIVE;
         @SpireEnum
         public static AbstractCard.CardRarity UNIQUE;
         @SpireEnum
-        public static NeowReward.NeowRewardType UNIQUE_REWARD;
+        public static NeowReward.NeowRewardType UNIQUE_CARD_REWARD;
         @SpireEnum
         public static AbstractPotion.PotionRarity EVENT;
     }
@@ -340,6 +370,7 @@ public class ArcanistMod implements
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
+        BaseMod.addAudio(COLD_M_KEY, COLD_M_OGG);
         BaseMod.addAudio(PEW_KEY, PEW_OGG);
     }
 

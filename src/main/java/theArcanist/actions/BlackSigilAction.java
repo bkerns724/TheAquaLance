@@ -31,9 +31,9 @@ public class BlackSigilAction extends AbstractGameAction {
         else {
             tickDuration();
             if (isDone) {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ArcanistMod.Enums.FIST, false));
+                AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ArcanistMod.Enums.FORCE, false));
                 target.damage(info);
-                if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead)
+                if (((target).isDying || target.currentHealth <= 0) && !target.halfDead)
                     applyToSelfTop(new StrengthPower(adp(), strengthGain));
 
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

@@ -9,23 +9,16 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
-import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.DamageActionColorField;
-import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch.FadeSpeed;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -33,8 +26,8 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theArcanist.TheArcanist;
+import theArcanist.actions.AttackAction;
 import theArcanist.cards.cardvars.CardSaveObject;
 import theArcanist.damagemods.DarkDamage;
 import theArcanist.damagemods.ForceDamage;
@@ -48,7 +41,6 @@ import theArcanist.powers.AbstractArcanistPower;
 import theArcanist.powers.BoostedSigilPower;
 import theArcanist.relics.ManaPurifier;
 import theArcanist.util.CardArtRoller;
-import theArcanist.vfx.DarkWaveEffect;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -94,6 +86,9 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public static final String FORCE_STRING = Force.CODE;
     public static final String SOULFIRE_STRING = SoulFire.CODE;
     public static final String DARK_STRING = Dark.CODE;
+
+    private static final int DAMAGE_THRESHOLD_M = 15;
+    private static final int DAMAGE_THRESHOLD_L = 50;
 
     public enum elenum {
         ICE,
@@ -391,165 +386,137 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         addModifier(element, true);
     }
 
-    // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
-    public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
-        atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
+    protected AbstractGameAction.AttackEffect getAttackEffect() {
+        int amount = getDamageForVFX();
+        if (damageModList.size() == 1) {
+            elenum ele = damageModList.get(0);
+            if (ele == ICE) {
+                if (amount < DAMAGE_THRESHOLD_M)
+                    return Enums.ICE;
+                else if (amount < DAMAGE_THRESHOLD_L)
+                    return Enums.ICE_M;
+                else
+                    return Enums.ICE_L;
+            }
+            else if (ele == FORCE) {
+                if (amount < DAMAGE_THRESHOLD_M)
+                    return Enums.FORCE;
+                else if (amount < DAMAGE_THRESHOLD_L)
+                    return Enums.FORCE_M;
+                else
+                    return Enums.FORCE_L;
+            }
+            else if (ele == FIRE) {
+                if (amount < DAMAGE_THRESHOLD_M)
+                    return Enums.SOUL_FIRE;
+                else if (amount < DAMAGE_THRESHOLD_L)
+                    return Enums.SOUL_FIRE_M;
+                else
+                    return Enums.SOUL_FIRE_L;
+            }
+            else if (ele == DARK) {
+                if (amount < DAMAGE_THRESHOLD_M)
+                    return Enums.DARK_COIL;
+                else if (amount < DAMAGE_THRESHOLD_L)
+                    return Enums.DARK_COIL_M;
+                else
+                    return Enums.DARK_COIL_L;
+            }
+            else {
+                return getBluntEffect();
+            }
+        } else if (damageModList.size() > 1) {
+            if (amount < DAMAGE_THRESHOLD_M)
+                return Enums.DARK_WAVE;
+            else if (amount < DAMAGE_THRESHOLD_L)
+                return Enums.DARK_WAVE_M;
+            else
+                return Enums.DARK_WAVE_L;
+        }
+        else
+            return getSlashEffect();
     }
 
-    protected AbstractGameAction.AttackEffect getAttackEffect() {
-        /*
+    protected int getDamageForVFX() {
         int amount = damage;
         if (isMultiDamage && multiDamage.length > 0) {
             amount = multiDamage[0];
             for (int x : multiDamage)
                 if (x < amount)
                     amount = x;
-        }*/
-        if (damageModList.size() == 1) {
-            elenum ele = damageModList.get(0);
-            if (ele == ICE)
-                return Enums.ICE;
-            else if (ele == FORCE)
-                return Enums.FIST;
-            else if (ele == FIRE)
-                return Enums.SOUL_FIRE;
-            else if (ele == DARK)
-                return Enums.DARK_COIL;
-            else
-                return AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
-        } else if (damageModList.size() > 1)
-            return Enums.DARK_WAVE;
-        return getDefaultAttackEffect();
+        }
+        return amount;
+    }
+
+    protected AbstractGameAction.AttackEffect getBluntEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
+        else
+            return Enums.BLUNT_MASSIVE;
+    }
+
+    protected AbstractGameAction.AttackEffect getSlashEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return getRandomSlash();
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return AbstractGameAction.AttackEffect.SLASH_HEAVY;
+        else
+            return Enums.SLASH_MASSIVE;
     }
 
     protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
         return AbstractGameAction.AttackEffect.NONE;
     }
 
-    protected Color getAttackColor() {
-        if (damageModList.size() == 1) {
-            elenum ele = damageModList.get(0);
-            if (ele == ICE)
-                return Color.BLUE.cpy();
-            else if (ele == FORCE)
-                return Color.PINK.cpy();
-            else if (ele == FIRE)
-                return Color.PURPLE.cpy();
-            else if (ele == DARK)
-                return Color.BLACK.cpy();
-            return null;
-        }
-        else if (damageModList.size() > 1)
-            return new Color(1, 1, 1, 0);
-        return getDefaultColor();
-    }
-
-    protected Color getDefaultColor() {return null;}
-
     public void dmg(AbstractMonster m) {
-        dmg(m, getAttackEffect(), getAttackColor());
+        dmg(m, getAttackEffect(), null, false, false);
     }
 
-    public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx, Color color) {
-        if (color != null && color.a == 0) {
-            dmg(m, fx, true);
-            return;
-        }
-
-        DamageAction damageAction = new DamageAction(m,
-                new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
-        if (fx == Enums.DARK_WAVE)
-            vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
-        if (fx == AbstractGameAction.AttackEffect.LIGHTNING) {
-            atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
-            atb(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0));
-        }
-        if (color == null) {
-            atb(damageAction);
-            return;
-        }
-        DamageActionColorField.damageColor.set(damageAction, color);
-        DamageActionColorField.fadeSpeed.set(damageAction, FadeSpeed.SLOWISH);
-        atb(damageAction);
+    public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
+        dmg(m, fx, null, false, false);
     }
 
-    public void dmg(AbstractCreature m, AbstractGameAction.AttackEffect fx, boolean rainbow) {
-        DamageAction damageAction = new DamageAction(m,
-                new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx);
-        DamageActionColorField.rainbow.set(damageAction, rainbow);
-        if (fx == Enums.DARK_WAVE)
-            vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
-        if (fx == AbstractGameAction.AttackEffect.LIGHTNING) {
-            atb(new SFXAction("ORB_LIGHTNING_EVOKE"));
-            atb(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0));
-        }
-        atb(damageAction);
+    public void dmgTop(AbstractMonster m) {
+        dmg(m, getDefaultAttackEffect(), null, false, true);
     }
 
-    public void dmgTop(AbstractCreature m, AbstractGameAction.AttackEffect fx) {
-        att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL), fx));
+    public void dmgTop(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
+        dmg(m, fx, null, false, true);
     }
 
     public void allDmg() {
-        allDmg(getAttackEffect(), getAttackColor());
+        dmg(null, getAttackEffect(), null, false, false);
     }
 
     public void allDmg(AbstractGameAction.AttackEffect fx) {
-        if (fx == Enums.DARK_WAVE)
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped() && !m.halfDead)
-                    vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
-
-        if (fx == AbstractGameAction.AttackEffect.LIGHTNING)
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped() && !m.halfDead)
-                    vfx(new LightningEffect(m.drawX, m.drawY), 0);
-
-        atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, DamageInfo.DamageType.NORMAL, fx));
+        dmg(null, fx, null, false, false);
     }
 
-    public void allDmg(AbstractGameAction.AttackEffect fx, Color color) {
-        if (color != null && color.a == 0) {
-            allDmg(fx, true);
-            return;
-        }
-        DamageAllEnemiesAction action = new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage,
-                DamageInfo.DamageType.NORMAL, fx);
-
-        if (fx == Enums.DARK_WAVE)
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped() && !m.halfDead)
-                    vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
-
-        if (fx == AbstractGameAction.AttackEffect.LIGHTNING)
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped() && !m.halfDead)
-                    vfx(new LightningEffect(m.drawX, m.drawY), 0);
-
-        if (color == null) {
-            atb(action);
-            return;
-        }
-        DamageActionColorField.damageColor.set(action, color);
-        DamageActionColorField.fadeSpeed.set(action, FadeSpeed.SLOWISH);
-        atb(action);
+    public void allDmgTop() {
+        dmg(null, getAttackEffect(), null, false, true);
     }
 
-    public void allDmg(AbstractGameAction.AttackEffect fx, boolean rainbow) {
-        if (fx == Enums.DARK_WAVE)
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped() && !m.halfDead)
-                    vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX), 0.5F);
+    public void allDmgTop(AbstractGameAction.AttackEffect fx) {
+        dmg(null, fx, null, false, true);
+    }
 
-        if (fx == AbstractGameAction.AttackEffect.LIGHTNING)
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped() && !m.halfDead)
-                    vfx(new LightningEffect(m.drawX, m.drawY), 0);
-
-        DamageAllEnemiesAction action = new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage,
-                DamageInfo.DamageType.NORMAL, fx);
-        DamageActionColorField.rainbow.set(action, rainbow);
-        atb(action);
+    public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx, Color color, boolean rainbow, boolean top) {
+        if (m == null) {
+            if (top)
+                att(new AttackAction(multiDamage, fx, color, rainbow));
+            else
+                atb(new AttackAction(multiDamage, fx, color, rainbow));
+            return;
+        }
+        DamageInfo info = new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL);
+        if (top)
+            att(new AttackAction(m, info, fx, color, rainbow));
+        else
+            atb(new AttackAction(m, info, fx, color, rainbow));
     }
 
     public void blck() {
@@ -576,12 +543,14 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         card.magicTwoIsDebuff = magicTwoIsDebuff;
         card.scourgeIncrease = scourgeIncrease;
         card.debuffIncrease = debuffIncrease;
+        /*
         card.damageModList.clear();
         DamageModifierManager.clearModifiers(card);
         if (adp() == null || !adp().hasRelic(ManaPurifier.ID)) {
             for (elenum ele : damageModList)
                 card.addModifier(ele);
         }
+        */
         card.initializeDescription();
         return card;
     }
@@ -605,9 +574,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public void onLoad(CardSaveObject obj) {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
-        if (adp() == null || adp().hasRelic(ManaPurifier.ID))
+        if (adp() == null || adp().hasRelic(ManaPurifier.ID)) {
             for (elenum ele : obj.elements)
                 addModifier(ele);
+        }
         sigil = obj.sigil;
         if (sigil)
             cost = -2;
