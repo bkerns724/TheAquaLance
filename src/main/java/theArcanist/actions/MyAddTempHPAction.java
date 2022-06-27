@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.HealEffect;
 
 public class MyAddTempHPAction extends AbstractGameAction {
-    private static final float DURATION = 0.5f;
+    private static final float DURATION = 0.1f;
 
     public MyAddTempHPAction(AbstractCreature target, AbstractCreature source, int amount) {
         setValues(target, source, amount);

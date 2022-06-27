@@ -232,7 +232,7 @@ public class TheArcanist extends CustomPlayer {
         return new AbstractGameAction.AttackEffect[]{
                 ArcanistMod.Enums.FORCE,
                 ArcanistMod.Enums.ICE,
-                ArcanistMod.Enums.DARK_COIL,
+                ArcanistMod.Enums.DARK,
                 ArcanistMod.Enums.SOUL_FIRE
         };
     }

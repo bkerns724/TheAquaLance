@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -55,18 +54,6 @@ public class AttackAction extends AbstractGameAction {
                 att(new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, effect));
             else
                 att(new DamageAction(m, info, effect));
-        }
-
-        if (effect == ArcanistMod.Enums.DARK_WAVE) {
-            if (m == null) {
-                att(new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.NONE));
-                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f), 0.5F);
-            }
-            else {
-                att(new DamageAction(m, info, AttackEffect.NONE));
-                vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f), 0.5F);
-            }
-            return;
         }
 
         if (effect == AttackEffect.LIGHTNING) {
@@ -120,19 +107,26 @@ public class AttackAction extends AbstractGameAction {
             }
         }
 
-        if (effect == ArcanistMod.Enums.DARK_COIL_M) {
+        if (effect == ArcanistMod.Enums.DARK_L) {
+            if (m == null) {
+                att(new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.SLASH_HEAVY));
+                vfxTop(new DarkLargeEffect(), DarkLargeEffect.DUR_BEFORE_IMPACT - 0.25f);
+            } else {
+                att(new DamageAction(m, info, AttackEffect.SLASH_HEAVY));
+                vfxTop(new DarkLargeEffect(), DarkLargeEffect.DUR_BEFORE_IMPACT - 0.25f);
+            }
+        }
+
+        if (effect == ArcanistMod.Enums.DARK_WAVE) {
             if (m == null) {
                 att(new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.NONE));
-                att(new WaitAction(0.1f));
-                att(new WaitAction(0.1f));
-                att(new WaitAction(0.1f));
-                att(new WaitAction(0.1f));
-                forAllMonstersLiving(m ->
-                        vfxTop(new DarkSphereEffect(m.hb.cX, m.hb.cY)));
-            } else {
-                att(new DamageAction(m, info, AttackEffect.NONE));
-                vfxTop(new DarkSphereEffect(m.hb.cX, m.hb.cY), 0.4f);
+                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f), 0.5F);
             }
+            else {
+                att(new DamageAction(m, info, AttackEffect.NONE));
+                vfx(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f), 0.5F);
+            }
+            return;
         }
 
         isDone = true;
@@ -145,7 +139,8 @@ public class AttackAction extends AbstractGameAction {
         simpleEffects.add(ArcanistMod.Enums.SOUL_FIRE);
         simpleEffects.add(ArcanistMod.Enums.FORCE);
         simpleEffects.add(ArcanistMod.Enums.FORCE_M);
-        simpleEffects.add(ArcanistMod.Enums.DARK_COIL);
+        simpleEffects.add(ArcanistMod.Enums.DARK);
+        simpleEffects.add(ArcanistMod.Enums.DARK_M);
         simpleEffects.add(AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         simpleEffects.add(AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         simpleEffects.add(AbstractGameAction.AttackEffect.SLASH_DIAGONAL);

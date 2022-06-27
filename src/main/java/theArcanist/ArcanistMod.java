@@ -95,12 +95,13 @@ public class ArcanistMod implements
     public static final String ICE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice.png";
     public static final String ICE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice_M.png";
     public static final String SOUL_FIRE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/SoulFire.png";
-    public static final String PHANTOM_FIST_EFFECT_FILE = RESOURCES_PRE + "images/vfx/PhantomFist.png";
+    public static final String FORCE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force.png";
     public static final String FORCE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_M.png";
     public static final String FORCE_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_L.png";
-    public static final String DARK_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/DarkCoil.png";
+    public static final String DARK_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark.png";
     public static final String DARK_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_M.png";
-    public static final String LIGHT_COIL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/LightCoil.png";
+    public static final String DARK_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_L.png";
+    public static final String DARK_L2_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_L2.png";
 
     public static final String COLD_KEY = makeID("Cold");
     private static final String COLD_OGG = RESOURCES_PRE + "audio/Cold.ogg";
@@ -169,11 +170,11 @@ public class ArcanistMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect SOUL_FIRE_L;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK_COIL;
+        public static AbstractGameAction.AttackEffect DARK;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK_COIL_M;
+        public static AbstractGameAction.AttackEffect DARK_M;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK_COIL_L;
+        public static AbstractGameAction.AttackEffect DARK_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_WAVE;
         @SpireEnum

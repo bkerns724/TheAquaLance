@@ -67,11 +67,13 @@ public class AttackEffectsPatch {
         else if (effect == ArcanistMod.Enums.SOUL_FIRE)
             texture = TexLoader.getTexture(ArcanistMod.SOUL_FIRE_EFFECT_FILE);
         else if (effect == ArcanistMod.Enums.FORCE)
-            texture = TexLoader.getTexture(ArcanistMod.PHANTOM_FIST_EFFECT_FILE);
+            texture = TexLoader.getTexture(ArcanistMod.FORCE_EFFECT_FILE);
         else if (effect == ArcanistMod.Enums.FORCE_M)
             texture = TexLoader.getTexture(ArcanistMod.FORCE_M_EFFECT_FILE);
-        else if (effect == ArcanistMod.Enums.DARK_COIL)
-            texture = TexLoader.getTexture(ArcanistMod.DARK_COIL_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.DARK)
+            texture = TexLoader.getTexture(ArcanistMod.DARK_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.DARK_M)
+            texture = TexLoader.getTexture(ArcanistMod.DARK_M_EFFECT_FILE);
         else
             return null;
 
@@ -97,7 +99,7 @@ public class AttackEffectsPatch {
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.ACID) {
-                CardCrawlGame.sound.play("ATTACK_POISON");
+                CardCrawlGame.sound.play("ATTACK_POISON2");
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.FORCE) {
@@ -114,6 +116,14 @@ public class AttackEffectsPatch {
             }
             if (effect == ArcanistMod.Enums.ICE_M) {
                 CardCrawlGame.sound.play(ArcanistMod.COLD_M_KEY);
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.DARK) {
+                CardCrawlGame.sound.play("SLIME_ATTACK_2");
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.DARK_M) {
+                CardCrawlGame.sound.play("POWER_CONSTRICTED");
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.SOUL_FIRE) {
@@ -133,11 +143,10 @@ public class AttackEffectsPatch {
         emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_L);
         emptyEffects.add(ArcanistMod.Enums.FORCE_L);
         emptyEffects.add(ArcanistMod.Enums.ICE_L);
-        emptyEffects.add(ArcanistMod.Enums.DARK_COIL_M);
-        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_L);
-        emptyEffects.add(ArcanistMod.Enums.FORCE_L);
+        emptyEffects.add(ArcanistMod.Enums.DARK_L);
         emptyEffects.add(ArcanistMod.Enums.SOUL_FIRE_M);
         emptyEffects.add(ArcanistMod.Enums.SOUL_FIRE_L);
+        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_L);
         emptyEffects.add(ArcanistMod.Enums.BLUNT_MASSIVE);
         emptyEffects.add(ArcanistMod.Enums.SLASH_MASSIVE);
     }

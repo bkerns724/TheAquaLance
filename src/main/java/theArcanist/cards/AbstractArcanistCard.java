@@ -416,11 +416,11 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             }
             else if (ele == DARK) {
                 if (amount < DAMAGE_THRESHOLD_M)
-                    return Enums.DARK_COIL;
+                    return Enums.DARK;
                 else if (amount < DAMAGE_THRESHOLD_L)
-                    return Enums.DARK_COIL_M;
+                    return Enums.DARK_M;
                 else
-                    return Enums.DARK_COIL_L;
+                    return Enums.DARK_L;
             }
             else {
                 return getBluntEffect();
