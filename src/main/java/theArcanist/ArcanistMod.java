@@ -102,6 +102,9 @@ public class ArcanistMod implements
     public static final String DARK_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_M.png";
     public static final String DARK_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_L.png";
     public static final String DARK_L2_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_L2.png";
+    public static final String RESONANT_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant.png";
+    public static final String RESONANT_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_M.png";
+    public static final String RESONANT_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_L.png";
 
     public static final String COLD_KEY = makeID("Cold");
     private static final String COLD_OGG = RESOURCES_PRE + "audio/Cold.ogg";
@@ -181,6 +184,12 @@ public class ArcanistMod implements
         public static AbstractGameAction.AttackEffect DARK_WAVE_M;
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_WAVE_L;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect RESONANT;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect RESONANT_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect RESONANT_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect BLUNT_MASSIVE;
         @SpireEnum

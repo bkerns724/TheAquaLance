@@ -1,13 +1,11 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.atb;
-import static theArcanist.util.Wiz.getRandomSlash;
 
 public class Gale extends AbstractArcanistCard {
     public final static String ID = makeID(Gale.class.getSimpleName());
@@ -26,15 +24,8 @@ public class Gale extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
+        dmg(m, getSlashEffect());
         atb(new DrawCardAction(magicNumber));
-    }
-
-    @Override
-    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
-        if (damage > 15)
-            return AbstractGameAction.AttackEffect.SLASH_HEAVY;
-        return getRandomSlash();
     }
 
     public void upp() {

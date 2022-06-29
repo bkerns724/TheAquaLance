@@ -388,6 +388,14 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
 
     protected AbstractGameAction.AttackEffect getAttackEffect() {
         int amount = getDamageForVFX();
+        if (this instanceof AbstractResonantCard) {
+            if (amount < DAMAGE_THRESHOLD_M)
+                return Enums.RESONANT;
+            else if (amount < DAMAGE_THRESHOLD_L)
+                return Enums.RESONANT_M;
+            else
+                return Enums.RESONANT_L;
+        }
         if (damageModList.size() == 1) {
             elenum ele = damageModList.get(0);
             if (ele == ICE) {
@@ -468,10 +476,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
             return Enums.SLASH_MASSIVE;
     }
 
-    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
-        return AbstractGameAction.AttackEffect.NONE;
-    }
-
     public void dmg(AbstractMonster m) {
         dmg(m, getAttackEffect(), null, false, false);
     }
@@ -481,7 +485,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     }
 
     public void dmgTop(AbstractMonster m) {
-        dmg(m, getDefaultAttackEffect(), null, false, true);
+        dmg(m, getAttackEffect(), null, false, true);
     }
 
     public void dmgTop(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
@@ -505,6 +509,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     }
 
     public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx, Color color, boolean rainbow, boolean top) {
+        logger.info(name);
         if (m == null) {
             if (top)
                 att(new AttackAction(multiDamage, fx, color, rainbow));

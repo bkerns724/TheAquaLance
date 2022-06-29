@@ -23,7 +23,7 @@ public class Resonance {
     public int jinx = 0;
     public int draw = 0;
     public int energy = 0;
-    public ArrayList<elenum> damageMods;
+    public ArrayList<elenum> damageMods = new ArrayList<>();
 
     private static final int MERGE_REDUCTION = 4;
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("Resonance"));

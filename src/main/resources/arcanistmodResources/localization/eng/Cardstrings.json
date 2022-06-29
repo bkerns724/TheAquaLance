@@ -191,7 +191,7 @@
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
-    "DESCRIPTION": "ALL enemies take !M! ${ModID}:Scourge damage at the start of their turns."
+    "DESCRIPTION": "ALL enemies take !M! !ScourgeString! damage at the start of their turns."
   },
   "${ModID}:RampingSigil": {
     "NAME": "Ramping Sigil",

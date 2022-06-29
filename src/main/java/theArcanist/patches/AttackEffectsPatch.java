@@ -74,6 +74,12 @@ public class AttackEffectsPatch {
             texture = TexLoader.getTexture(ArcanistMod.DARK_EFFECT_FILE);
         else if (effect == ArcanistMod.Enums.DARK_M)
             texture = TexLoader.getTexture(ArcanistMod.DARK_M_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.RESONANT)
+            texture = TexLoader.getTexture(ArcanistMod.RESONANT_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.RESONANT_M)
+            texture = TexLoader.getTexture(ArcanistMod.RESONANT_M_EFFECT_FILE);
+        else if (effect == ArcanistMod.Enums.RESONANT_L)
+            texture = TexLoader.getTexture(ArcanistMod.RESONANT_L_EFFECT_FILE);
         else
             return null;
 
@@ -130,6 +136,18 @@ public class AttackEffectsPatch {
                 CardCrawlGame.sound.play("ATTACK_FIRE");
                 return SpireReturn.Return();
             }
+            if (effect == ArcanistMod.Enums.RESONANT) {
+                CardCrawlGame.sound.playA("BELL", 0f);
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.RESONANT_M) {
+                CardCrawlGame.sound.playA("BELL", 0.6f);
+                return SpireReturn.Return();
+            }
+            if (effect == ArcanistMod.Enums.RESONANT_L) {
+                CardCrawlGame.sound.playA("BELL", 1.5f);
+                return SpireReturn.Return();
+            }
             if (emptyEffects.contains(effect))
                 return SpireReturn.Return(null);
             return SpireReturn.Continue();
@@ -146,7 +164,6 @@ public class AttackEffectsPatch {
         emptyEffects.add(ArcanistMod.Enums.DARK_L);
         emptyEffects.add(ArcanistMod.Enums.SOUL_FIRE_M);
         emptyEffects.add(ArcanistMod.Enums.SOUL_FIRE_L);
-        emptyEffects.add(ArcanistMod.Enums.DARK_WAVE_L);
         emptyEffects.add(ArcanistMod.Enums.BLUNT_MASSIVE);
         emptyEffects.add(ArcanistMod.Enums.SLASH_MASSIVE);
     }

@@ -19,6 +19,7 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
 
     public ResonatingPower(Resonance resonance) {
         super(POWER_ID, PowerType.BUFF, false, adp(), resonance.amount);
+        this.resonance = resonance;
     }
 
     @Override

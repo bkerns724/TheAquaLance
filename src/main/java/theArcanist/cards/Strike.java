@@ -1,6 +1,5 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -26,18 +25,11 @@ public class Strike extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
+        dmg(m, getBluntEffect());
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
-    }
-
-    @Override
-    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
-        if (damage > 12)
-            return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
-        return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
     }
 
     @Override

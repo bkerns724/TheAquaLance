@@ -1,11 +1,10 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.getDebuffCount;
 
 public class StoneDaggers extends AbstractArcanistCard {
     public final static String ID = makeID(StoneDaggers.class.getSimpleName());
@@ -25,15 +24,7 @@ public class StoneDaggers extends AbstractArcanistCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int n = getDebuffCount(m);
         for (int i = 0; i<n; i++)
-            dmg(m);
-    }
-
-    @Override
-    protected AbstractGameAction.AttackEffect getDefaultAttackEffect() {
-        if (damage > 12)
-            return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
-        else
-            return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
+            dmg(m, getSlashEffect());
     }
 
     public void upp() {

@@ -20,8 +20,10 @@ public class DarkWaveParticle extends AbstractGameEffect {
     private float targetY;
     private static AtlasRegion img;
     private boolean impactHook = false;
+    private float extraScale;
 
-    public DarkWaveParticle(float x, float y) {
+    public DarkWaveParticle(float x, float y, float extraScale) {
+        this.extraScale = extraScale;
         if (img == null)
             img = ImageMaster.vfxAtlas.findRegion("combat/weightyImpact");
 
@@ -58,22 +60,24 @@ public class DarkWaveParticle extends AbstractGameEffect {
         sb.setColor(color);
         sb.draw(img, x, y + 140.0F * Settings.scale, (float)img.packedWidth / 2.0F, (float)img.packedHeight / 2.0F,
                 (float)img.packedWidth / 2.0F, (float)img.packedHeight * (duration + 0.2F) * 3.0F,
-                scale * MathUtils.random(0.99F, 1.01F) * 0.5F,
-                scale * MathUtils.random(0.99F, 1.01F) * 2.0F * (duration + 0.8F), rotation);
+                scale * MathUtils.random(0.99F, 1.01F) * 0.5F * extraScale,
+                scale * MathUtils.random(0.99F, 1.01F) * 2.0F * extraScale * (duration + 0.8F), rotation);
         color.r = 0.35f;
         color.b = 0.35f;
         sb.setColor(color);
         sb.draw(img, x - 50.0F * Settings.scale, y + 140.0F * Settings.scale, (float)img.packedWidth / 2.0F,
                 (float)img.packedHeight / 2.0F, (float)img.packedWidth / 2.0F,
-                (float)img.packedHeight * (duration + 0.2F) * 2.0F, scale * MathUtils.random(0.99F, 1.01F) * 0.6F,
-                scale * MathUtils.random(0.99F, 1.01F) * 2.0F * (duration + 0.8F), rotation);
+                (float)img.packedHeight * (duration + 0.2F) * 2.0F,
+                extraScale * scale * MathUtils.random(0.99F, 1.01F) * 0.6F,
+                extraScale * scale * MathUtils.random(0.99F, 1.01F) * 2.0F * (duration + 0.8F), rotation);
         color.r = 0.25f;
         color.b = 0.25f;
         sb.setColor(color);
         sb.draw(img, x - 100.0F * Settings.scale, y + 140.0F * Settings.scale, (float)img.packedWidth / 2.0F,
                 (float)img.packedHeight / 2.0F, (float)img.packedWidth,
-                (float)img.packedHeight * (duration + 0.2F) * 1.0F, scale * MathUtils.random(0.99F, 1.01F) * 0.75F,
-                scale * MathUtils.random(0.99F, 1.01F) * 2.0F * (duration + 0.8F), rotation);
+                (float)img.packedHeight * (duration + 0.2F) * 1.0F,
+                extraScale * scale * MathUtils.random(0.99F, 1.01F) * 0.75F,
+                extraScale * scale * MathUtils.random(0.99F, 1.01F) * 2.0F * (duration + 0.8F), rotation);
         sb.setBlendFunction(770, 771);
     }
 
