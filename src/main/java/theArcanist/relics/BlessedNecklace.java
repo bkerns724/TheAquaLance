@@ -1,20 +1,25 @@
 package theArcanist.relics;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.TheArcanist;
 import theArcanist.actions.BlessedNecklaceAction;
+
+import java.util.ArrayList;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.adp;
 import static theArcanist.util.Wiz.atb;
 
-public class BlessedNecklace extends AbstractArcanistClickRelic {
+public class BlessedNecklace extends AbstractArcanistRelic implements ClickableRelicWithUI {
     public static final String ID = makeID(BlessedNecklace.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/BlessedButton.png";
     private static final int blockAmount = 6;
 
     public BlessedNecklace() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         setUpdatedDescription();
         amount = blockAmount;
     }
@@ -27,6 +32,21 @@ public class BlessedNecklace extends AbstractArcanistClickRelic {
     @Override
     public void onVictory() {
         grayscale = false;
+    }
+
+    @Override
+    public Texture getTexture() {
+        return new Texture(textureString);
+    }
+
+    @Override
+    public boolean buttonDisabled() {
+        return grayscale;
+    }
+
+    @Override
+    public ArrayList<PowerTip> getHoverTips() {
+        return tips;
     }
 
     @Override

@@ -1,20 +1,26 @@
 package theArcanist.relics;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theArcanist.TheArcanist;
+
+import java.util.ArrayList;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.atb;
 import static theArcanist.util.Wiz.discard;
 
-public class VestOfManyPockets extends AbstractArcanistClickRelic {
+public class VestOfManyPockets extends AbstractArcanistRelic implements ClickableRelicWithUI {
     public static final String ID = makeID(VestOfManyPockets.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/CycleButton.png";
     private static final int CYCLE_AMOUNT = 1;
 
     public VestOfManyPockets() {
-        super(ID, RelicTier.COMMON, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        super(ID, AbstractRelic.RelicTier.COMMON, AbstractRelic.LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         amount = CYCLE_AMOUNT;
         setUpdatedDescription();
     }
@@ -27,6 +33,21 @@ public class VestOfManyPockets extends AbstractArcanistClickRelic {
     @Override
     public void onVictory() {
         grayscale = false;
+    }
+
+    @Override
+    public Texture getTexture() {
+        return new Texture(textureString);
+    }
+
+    @Override
+    public boolean buttonDisabled() {
+        return grayscale;
+    }
+
+    @Override
+    public ArrayList<PowerTip> getHoverTips() {
+        return tips;
     }
 
     @Override

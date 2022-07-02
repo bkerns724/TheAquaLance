@@ -4,14 +4,16 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theArcanist.actions.ReturnToHandAction;
 import theArcanist.powers.WrathPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToEnemy;
+import static theArcanist.util.Wiz.atb;
 
 public class Madness extends AbstractArcanistCard {
     public final static String ID = makeID(Madness.class.getSimpleName());
-    private final static int COST = 1;
+    private final static int COST = 0;
 
     public Madness() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
@@ -19,7 +21,7 @@ public class Madness extends AbstractArcanistCard {
 
     @Override
     protected void applyAttributes() {
-        exhaust = true;
+        selfRetain = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -27,7 +29,12 @@ public class Madness extends AbstractArcanistCard {
         AbstractDungeon.actionManager.addToBottom(new SFXAction("STANCE_ENTER_WRATH"));
     }
 
-    public void upp() {
-        selfRetain = true;
+    @Override
+    public void triggerOnDeath() {
+        if (upgraded)
+            atb(new ReturnToHandAction(this));
     }
+
+    @Override
+    public void upp() { }
 }

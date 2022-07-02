@@ -1,19 +1,24 @@
 package theArcanist.relics;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.TheArcanist;
 import theArcanist.powers.StoneskinPower;
+
+import java.util.ArrayList;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class StoneScales extends AbstractArcanistClickRelic {
+public class StoneScales extends AbstractArcanistRelic implements ClickableRelicWithUI {
     public static final String ID = makeID("StoneScales");
     public static final String textureString = "arcanistmodResources/images/ui/StoneSkinButton.png";
     public static final int STONESKIN_AMOUNT = 3;
 
     public StoneScales() {
-        super(ID, RelicTier.RARE, LandingSound.HEAVY, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        super(ID, RelicTier.RARE, LandingSound.HEAVY, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         amount = STONESKIN_AMOUNT;
         setUpdatedDescription();
     }
@@ -26,6 +31,21 @@ public class StoneScales extends AbstractArcanistClickRelic {
     @Override
     public void onVictory() {
         grayscale = false;
+    }
+
+    @Override
+    public Texture getTexture() {
+        return new Texture(textureString);
+    }
+
+    @Override
+    public boolean buttonDisabled() {
+        return grayscale;
+    }
+
+    @Override
+    public ArrayList<PowerTip> getHoverTips() {
+        return tips;
     }
 
     @Override

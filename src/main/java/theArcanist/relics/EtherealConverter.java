@@ -1,19 +1,24 @@
 package theArcanist.relics;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.TheArcanist;
 import theArcanist.actions.MyAddTempHPAction;
+
+import java.util.ArrayList;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class EtherealConverter extends AbstractArcanistClickRelic {
+public class EtherealConverter extends AbstractArcanistRelic implements ClickableRelicWithUI {
     public static final String ID = makeID("EtherealConverter");
     private static final String textureString = "arcanistmodResources/images/ui/ConverterButton.png";
 
     public EtherealConverter() {
-        super(ID, RelicTier.RARE, LandingSound.MAGICAL, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR, textureString);
+        super(ID, RelicTier.RARE, LandingSound.MAGICAL, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         setUpdatedDescription();
     }
 
@@ -25,6 +30,21 @@ public class EtherealConverter extends AbstractArcanistClickRelic {
     @Override
     public void onVictory() {
         grayscale = false;
+    }
+
+    @Override
+    public Texture getTexture() {
+        return new Texture(textureString);
+    }
+
+    @Override
+    public boolean buttonDisabled() {
+        return grayscale;
+    }
+
+    @Override
+    public ArrayList<PowerTip> getHoverTips() {
+        return tips;
     }
 
     @Override

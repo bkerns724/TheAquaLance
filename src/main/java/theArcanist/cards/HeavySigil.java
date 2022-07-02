@@ -1,5 +1,6 @@
 package theArcanist.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -14,7 +15,6 @@ public class HeavySigil extends AbstractArcanistCard {
     private final static int DAMAGE = 10;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 20;
 
     public HeavySigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
@@ -24,7 +24,6 @@ public class HeavySigil extends AbstractArcanistCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        baseSecondMagic = secondMagic = SECOND_MAGIC;
         isMultiDamage = true;
         sigil = true;
         addModifier(elenum.FORCE);
@@ -36,8 +35,8 @@ public class HeavySigil extends AbstractArcanistCard {
         calculateCardDamage(strongestMonster);
 
         DamageInfo info = new DamageInfo(p, damage, damageTypeForTurn);
-
-        atb(new HeavySigilAction(strongestMonster, info, magicNumber, secondMagic));
+        AbstractGameAction.AttackEffect effect = this.getAttackEffect();
+        atb(new HeavySigilAction(strongestMonster, info, magicNumber, effect));
     }
 
     public void upp() {

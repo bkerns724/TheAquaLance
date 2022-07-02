@@ -7,21 +7,20 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import theArcanist.ArcanistMod;
 
 import static theArcanist.util.Wiz.applyToEnemyTop;
+import static theArcanist.util.Wiz.att;
 
 public class HeavySigilAction extends AbstractGameAction {
     private int strengthLoss;
-    private int threshold;
     private DamageInfo info;
+    private AttackEffect effect;
 
-    public HeavySigilAction(AbstractMonster monster, DamageInfo info, int strengthLoss, int threshold) {
+    public HeavySigilAction(AbstractMonster monster, DamageInfo info, int strengthLoss, AttackEffect effect) {
         target = monster;
         this.info = info;
         this.strengthLoss = strengthLoss;
-        this.threshold = threshold;
+        this.effect = effect;
         duration = startDuration = Settings.ACTION_DUR_FAST;
     }
 
@@ -32,16 +31,13 @@ public class HeavySigilAction extends AbstractGameAction {
         else {
             tickDuration();
             if (isDone) {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ArcanistMod.Enums.FORCE, false));
-                target.damage(info);
-                if (target.lastDamageTaken >= threshold)
-                    applyToEnemyTop(target, new StrengthPower(target, strengthLoss));
+                applyToEnemyTop(target, new StrengthPower(target, strengthLoss));
+                att(new AttackAction((AbstractMonster) target, info, effect, null, false));
 
-                if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
                     AbstractDungeon.actionManager.clearPostCombatActions();
-                } else {
+                else
                     addToTop(new WaitAction(0.1F));
-                }
             }
         }
     }

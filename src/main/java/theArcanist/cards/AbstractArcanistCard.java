@@ -536,6 +536,8 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
 
     protected void upMagic2(int x) {upgradeSecondMagic(x);}
 
+    public void triggerOnDeath() {}
+
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractArcanistCard card = (AbstractArcanistCard) super.makeStatEquivalentCopy();

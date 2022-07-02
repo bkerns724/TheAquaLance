@@ -183,11 +183,11 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Deal !D! damage to the enemy with the highest HP. NL If this does at least !{ModID}:M2! damage, enemy loses !M! strength."
+    "DESCRIPTION": "Deal !D! damage to the enemy with the highest HP. NL Enemy loses !M! strength."
   },
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
-    "DESCRIPTION": "Deal !D! damage to the enemy with the least HP. NL If this kills the enemy, gain !M! Strength."
+    "DESCRIPTION": "Deal !D! damage to the enemy with the least HP. NL If Fatal, heal !M! HP."
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
@@ -264,7 +264,8 @@
   },
   "${ModID}:ManaBlood": {
     "NAME": "Mana Blood",
-    "DESCRIPTION": "At the start of your turn, gain [E] and draw !M! card."
+    "DESCRIPTION": "At the start of your turn, gain [E] and draw !M! card.",
+    "UPGRADE)DESCRIPTION": "Retain. NL At the start of your turn, gain [E] and draw !M! card."
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
@@ -406,7 +407,8 @@
   },
   "${ModID}:SplitResonance": {
     "NAME": "Split Resonance",
-    "DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more time. NL Damage is split evenly between hits. NL No Upgrade."
+    "DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more time. NL Damage is split evenly between hits.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more time. NL Damage is split evenly between hits. NL Gain !${ModID}:M2! ${ModID}:Resonance."
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
@@ -438,7 +440,8 @@
   },
   "${ModID}:Madness": {
     "NAME": "Madness",
-    "DESCRIPTION": "Enemy enters Wrath."
+    "DESCRIPTION": "Enemy enters Wrath.",
+    "UPGRADE_DESCRIPTION": "Retain NL Enemy enters Wrath. NL Whenever an enemy dies, return this to your hand."
   },
   "${ModID}:Vanish": {
     "NAME": "Vanish",
@@ -451,7 +454,7 @@
   },
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",
-    "DESCRIPTION": "At the end of your turn, Channel a !M! damage Panda."
+    "DESCRIPTION": "At the end of your turn, Channel a !M! damage Panda. NL Pandas deal damage at the start of your turn."
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
@@ -467,11 +470,11 @@
   },
   "${ModID}:MaliciousDagger": {
     "NAME": "Malicious Dagger",
-    "DESCRIPTION": "Deal !D! damage for each curse in your deck."
+    "DESCRIPTION": "Deal !D! damage for each Curse in your deck."
   },
   "${ModID}:ElementalConflux": {
     "NAME": "Elemental Conflux",
-    "DESCRIPTION": "Deal !D! damage.     "
+    "DESCRIPTION": "Deal !D! \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 NL damage."
   },
   "${ModID}:Wrath": {
     "NAME": "Wrath",
