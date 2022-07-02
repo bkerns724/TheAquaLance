@@ -15,6 +15,7 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
             resonance.draw = extraDraw;
             resonance.energy = extraEnergy;
         }
+        initializeDescription();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -28,12 +29,30 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
     }
 
     @Override
+    public void applyPowers() {
+        baseDamage = resonance.getDamage();
+        baseBlock = resonance.block;
+        super.applyPowers();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        baseDamage = resonance.getDamage();
+        baseBlock = resonance.block;
+        super.calculateCardDamage(mo);
+    }
+
+    @Override
     public void initializeDescription() {
         if (resonance != null) {
+            baseDamage = resonance.getDamage();
+            baseBlock = resonance.block;
             rawDescription = resonance.getDescription();
             overrideRawDesc = true;
-        } else
+        } else {
+            rawDescription = "Error";
             overrideRawDesc = false;
+        }
         super.initializeDescription();
     }
 

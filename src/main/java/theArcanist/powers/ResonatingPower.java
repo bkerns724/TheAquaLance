@@ -47,6 +47,8 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
 
     public void atEndOfTurn(boolean isPlayer) {
         GenericResonantCard card = new GenericResonantCard(resonance.resClone());
+        card.applyPowers();
+        card.initializeDescription();
         topDeck(card);
         atb(new RemoveSpecificPowerAction(owner, owner, this));
     }

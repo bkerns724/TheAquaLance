@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.cards.AbstractArcanistCard.elenum;
 import theArcanist.cards.AbstractResonantCard;
 import theArcanist.powers.*;
@@ -35,9 +34,8 @@ public class Resonance {
 
     public void resonanceEffects(AbstractResonantCard card, AbstractMonster m) {
         int hitCount = 1;
-        AbstractPower pow = adp().getPower(SplitResonancePower.POWER_ID);
-        if (pow != null)
-            hitCount += pow.amount;
+        if (adp() != null && adp().hasPower(SplitResonancePower.POWER_ID))
+            hitCount += adp().getPower(SplitResonancePower.POWER_ID).amount;
 
         card.baseDamage = amount/hitCount;
         card.baseBlock = block;
@@ -85,9 +83,9 @@ public class Resonance {
         if (amplify > 0)
             count++;
         if (decay > 0)
-            count++;
+            count += 2;
         if (revenge > 0)
-            count++;
+            count += 3;
         if (jinx > 0)
             count++;
         if (draw > 0)
@@ -95,7 +93,7 @@ public class Resonance {
         if (energy > 0)
             count++;
 
-        if (count >= 4)
+        if (count >= 5)
             return getConciseDescription();
 
         int hitCount = 1;
@@ -132,6 +130,14 @@ public class Resonance {
             builder.append(uiStrings.TEXT[12].replace("!X6!", String.valueOf(energy)));
 
         return builder.toString();
+    }
+
+    public int getDamage() {
+        int hitCount = 1;
+        if (adp() != null && adp().hasPower(SplitResonancePower.POWER_ID))
+            hitCount += adp().getPower(SplitResonancePower.POWER_ID).amount;
+
+        return amount/hitCount;
     }
 
     private String getConciseDescription() {
@@ -181,7 +187,7 @@ public class Resonance {
 
     public Boolean addNewLine(boolean newLine, StringBuilder builder) {
         if (newLine) {
-            builder.append("NL");
+            builder.append(" NL");
             return false;
         } else
             return true;
@@ -191,6 +197,7 @@ public class Resonance {
     {
         Resonance copy = new Resonance(amount);
         copy.block = block;
+        copy.amplify = amplify;
         copy.decay = decay;
         copy.revenge = revenge;
         copy.jinx = jinx;

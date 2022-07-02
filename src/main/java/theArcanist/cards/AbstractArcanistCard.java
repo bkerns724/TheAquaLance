@@ -336,6 +336,9 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         if (exhaust)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
 
+        logger.info(damage);
+        logger.info(block);
+        logger.info(rawDescription);
         super.initializeDescription();
     }
 
