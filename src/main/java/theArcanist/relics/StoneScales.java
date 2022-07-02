@@ -39,7 +39,7 @@ public class StoneScales extends AbstractArcanistRelic implements ClickableRelic
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return grayscale;
     }
 
@@ -49,7 +49,7 @@ public class StoneScales extends AbstractArcanistRelic implements ClickableRelic
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         CardCrawlGame.sound.play("UI_CLICK_1");
         flash();
         applyToSelf(new StoneskinPower(adp(), STONESKIN_AMOUNT));

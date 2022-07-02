@@ -41,7 +41,7 @@ public class VestOfManyPockets extends AbstractArcanistRelic implements Clickabl
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return grayscale;
     }
 
@@ -51,7 +51,7 @@ public class VestOfManyPockets extends AbstractArcanistRelic implements Clickabl
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         CardCrawlGame.sound.play("UI_CLICK_1");
         flash();
         atb(new DrawCardAction(amount));

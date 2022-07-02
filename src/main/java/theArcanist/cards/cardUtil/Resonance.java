@@ -27,6 +27,7 @@ public class Resonance {
 
     private static final int MERGE_REDUCTION = 4;
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("Resonance"));
+    private static final UIStrings uiStringsConcise = CardCrawlGame.languagePack.getUIString(makeID("ResonanceConcise"));
 
     public Resonance(int damage) {
         amount = damage;
@@ -78,6 +79,25 @@ public class Resonance {
     }
 
     public String getDescription() {
+        int count = 0;
+        if (block > 0)
+            count++;
+        if (amplify > 0)
+            count++;
+        if (decay > 0)
+            count++;
+        if (revenge > 0)
+            count++;
+        if (jinx > 0)
+            count++;
+        if (draw > 0)
+            count++;
+        if (energy > 0)
+            count++;
+
+        if (count >= 4)
+            return getConciseDescription();
+
         int hitCount = 1;
         if (adp() != null && adp().hasPower(SplitResonancePower.POWER_ID))
             hitCount += adp().getPower(SplitResonancePower.POWER_ID).amount;
@@ -112,6 +132,59 @@ public class Resonance {
             builder.append(uiStrings.TEXT[12].replace("!X6!", String.valueOf(energy)));
 
         return builder.toString();
+    }
+
+    private String getConciseDescription() {
+        int hitCount = 1;
+        if (adp() != null && adp().hasPower(SplitResonancePower.POWER_ID))
+            hitCount += adp().getPower(SplitResonancePower.POWER_ID).amount;
+
+        StringBuilder builder;
+        if (hitCount == 1)
+            builder = new StringBuilder(uiStringsConcise.TEXT[0]);
+        else
+            builder = new StringBuilder(uiStringsConcise.TEXT[1].replace("!X0!", String.valueOf(hitCount)));
+
+        boolean newLine = true;
+
+        if (block > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[2]);
+        }
+        if (amplify > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(amplify)));
+        }
+        if (decay > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(decay)));
+        }
+        if (revenge > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(revenge)));
+        }
+        if (jinx > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(jinx)));
+        }
+        if (draw > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[7]);
+        }
+        else if (energy > 0) {
+            newLine = addNewLine(newLine, builder);
+            builder.append(uiStringsConcise.TEXT[8].replace("!X6!", String.valueOf(energy)));
+        }
+
+        return builder.toString();
+    }
+
+    public Boolean addNewLine(boolean newLine, StringBuilder builder) {
+        if (newLine) {
+            builder.append("NL");
+            return false;
+        } else
+            return true;
     }
 
     public Resonance resClone()

@@ -39,6 +39,19 @@
       " NL Gain !X6! [E]. "
     ]
   },
+  "${ModID}:ResonanceConcise": {
+    "TEXT": [
+      "Deal !D! damage.",
+      "Deal !D! damage !X0! times.",
+      " !B! block.",
+      " !X1! ${ModID}:Resonance.",
+      " !X2! Decay.",
+      " !X3! Retaliate.",
+      " !X4! ${ModID}:Jinx.",
+      " Draw !X5!.",
+      " !X6! [E]. "
+    ]
+  },
   "${ModID}:BlessedNecklaceAction": {
     "TEXT": [
       "Choose Any Number of Cards to Replace (Blessed Necklace)"

@@ -41,7 +41,7 @@ public class EyeballStaff extends AbstractArcanistRelic implements ClickableReli
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return grayscale;
     }
 
@@ -51,7 +51,7 @@ public class EyeballStaff extends AbstractArcanistRelic implements ClickableReli
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         CardCrawlGame.sound.play("UI_CLICK_1");
         flash();
         ScryAction scryAction = new ScryAction(SCRY_AMOUNT);

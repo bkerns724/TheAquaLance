@@ -38,7 +38,7 @@ public class EtherealConverter extends AbstractArcanistRelic implements Clickabl
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return grayscale;
     }
 
@@ -48,7 +48,7 @@ public class EtherealConverter extends AbstractArcanistRelic implements Clickabl
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         if (adp().currentBlock > 0) {
             CardCrawlGame.sound.play("UI_CLICK_1");
             flash();

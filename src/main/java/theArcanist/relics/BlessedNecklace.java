@@ -40,7 +40,7 @@ public class BlessedNecklace extends AbstractArcanistRelic implements ClickableR
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return grayscale;
     }
 
@@ -50,7 +50,7 @@ public class BlessedNecklace extends AbstractArcanistRelic implements ClickableR
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         CardCrawlGame.sound.play("UI_CLICK_1");
         flash();
         atb(new BlessedNecklaceAction(amount));

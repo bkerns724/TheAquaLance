@@ -39,7 +39,7 @@ public class BootsOfSpeed extends AbstractArcanistRelic implements EnergyChangeS
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return (energy <= 0);
     }
 
@@ -49,7 +49,7 @@ public class BootsOfSpeed extends AbstractArcanistRelic implements EnergyChangeS
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         // Button shouldn't be pressable at 0 energy, but lets make it robust
         if (EnergyPanel.getCurrentEnergy() == 0)
             return;

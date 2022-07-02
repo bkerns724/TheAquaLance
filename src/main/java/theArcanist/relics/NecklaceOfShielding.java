@@ -41,7 +41,7 @@ public class NecklaceOfShielding extends AbstractArcanistRelic implements Clicka
     }
 
     @Override
-    public boolean buttonDisabled() {
+    public boolean isButtonDisabled() {
         return grayscale;
     }
 
@@ -51,7 +51,7 @@ public class NecklaceOfShielding extends AbstractArcanistRelic implements Clicka
     }
 
     @Override
-    public void buttonPress() {
+    public void onButtonPress() {
         CardCrawlGame.sound.play("UI_CLICK_1");
         flash();
         atb(new GainBlockAction(adp(), amount2));
