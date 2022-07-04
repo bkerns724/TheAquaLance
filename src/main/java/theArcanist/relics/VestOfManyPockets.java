@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theArcanist.TheArcanist;
@@ -37,7 +38,7 @@ public class VestOfManyPockets extends AbstractArcanistRelic implements RelicWit
 
     @Override
     public Texture getTexture() {
-        return new Texture(textureString);
+        return ImageMaster.loadImage(textureString);
     }
 
     @Override

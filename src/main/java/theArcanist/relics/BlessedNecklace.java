@@ -3,6 +3,7 @@ package theArcanist.relics;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.TheArcanist;
 import theArcanist.actions.BlessedNecklaceAction;
@@ -36,7 +37,7 @@ public class BlessedNecklace extends AbstractArcanistRelic implements RelicWithB
 
     @Override
     public Texture getTexture() {
-        return new Texture(textureString);
+        return ImageMaster.loadImage(textureString);
     }
 
     @Override

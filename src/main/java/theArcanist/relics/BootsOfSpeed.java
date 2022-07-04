@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theArcanist.TheArcanist;
@@ -35,7 +36,7 @@ public class BootsOfSpeed extends AbstractArcanistRelic implements EnergyChangeS
 
     @Override
     public Texture getTexture() {
-        return new Texture(TEXTURE_STRING);
+        return ImageMaster.loadImage(TEXTURE_STRING);
     }
 
     @Override
