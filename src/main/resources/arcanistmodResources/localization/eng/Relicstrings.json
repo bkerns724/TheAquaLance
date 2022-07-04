@@ -197,8 +197,8 @@
       "HP loss from #y${ModID}:Jinx is twice as effective."
     ]
   },
-  "${ModID}:PlasticFangs": {
-    "NAME": "PlasticFangs",
+  "${ModID}:PointyDentures": {
+    "NAME": "Pointy Dentures",
     "FLAVOR": "This is an odd object to enchant with power.",
     "DESCRIPTIONS": [
       "Whenever you gain #yTemporary_HP from [${ModID}:DarkIcon] attacks, gain !R! more."

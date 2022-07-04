@@ -1,7 +1,7 @@
 package theArcanist.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
+import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class EtherealConverter extends AbstractArcanistRelic implements ClickableRelicWithUI {
+public class EtherealConverter extends AbstractArcanistRelic implements RelicWithButton {
     public static final String ID = makeID("EtherealConverter");
     private static final String textureString = "arcanistmodResources/images/ui/ConverterButton.png";
 

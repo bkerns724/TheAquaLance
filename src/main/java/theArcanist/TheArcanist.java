@@ -108,7 +108,7 @@ public class TheArcanist extends CustomPlayer {
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
         for (int i = 0; i < NUM_STRIKES; i++)
-            retVal.add(Strike.ID);
+            retVal.add(StaffStrike.ID);
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 

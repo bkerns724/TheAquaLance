@@ -7,12 +7,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theArcanist.ArcanistMod;
-import theArcanist.cards.Momentum;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.atb;
 
 public class MomentumPower extends AbstractArcanistPower {
-    public static String POWER_ID = ArcanistMod.makeID(Momentum.class.getSimpleName());
+    public static String POWER_ID = ArcanistMod.makeID(MomentumPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

@@ -1,7 +1,7 @@
 package theArcanist.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
+import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -15,7 +15,7 @@ import static theArcanist.ArcanistMod.makeID;
 
 import static theArcanist.util.Wiz.*;
 
-public class BootsOfSpeed extends AbstractArcanistRelic implements EnergyChangeSubscriber, ClickableRelicWithUI {
+public class BootsOfSpeed extends AbstractArcanistRelic implements EnergyChangeSubscriber, RelicWithButton {
     public static final String ID = makeID(BootsOfSpeed.class.getSimpleName());
     private static final String TEXTURE_STRING = "arcanistmodResources/images/ui/DrawButton.png";
     public static final int DRAW_AMOUNT = 3;
@@ -24,13 +24,13 @@ public class BootsOfSpeed extends AbstractArcanistRelic implements EnergyChangeS
     public BootsOfSpeed() {
         super(ID, RelicTier.BOSS, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
         amount = DRAW_AMOUNT;
-        int energy = EnergyPanel.getCurrentEnergy();
+        energy = EnergyPanel.getCurrentEnergy();
         setUpdatedDescription();
     }
 
     @Override
     public void onChangeEnergy() {
-        int energy = EnergyPanel.getCurrentEnergy();
+        energy = EnergyPanel.getCurrentEnergy();
     }
 
     @Override

@@ -23,5 +23,6 @@ public class BlackSigilFollowupAction extends AbstractGameAction {
         if (target == null || target.isDying || target.currentHealth < 0)
             if (!target.hasPower(MinionPower.POWER_ID) && !target.halfDead)
                 att(new HealAction(adp(), adp(), healAmount));
+        isDone =true;
     }
 }

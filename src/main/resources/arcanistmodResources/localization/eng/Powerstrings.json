@@ -82,6 +82,13 @@
       "At the start of your turn, apply !A! #yJinx to ALL enemies."
     ]
   },
+  "${ModID}:SplitResonancePower": {
+    "NAME": "Split Resonance",
+    "DESCRIPTIONS": [
+      "Your resonant cards deal !A! extra hit. NL The damage is split evenly between hits.",
+      "Your resonant cards deal !A! extra hits. NL The damage is split evenly between hits."
+    ]
+  },
   "${ModID}:MiniWrathPower": {
     "NAME": "Rage",
     "DESCRIPTIONS": [
@@ -158,12 +165,6 @@
       "Whenever you would take damage, take !A! less."
     ]
   },
-  "${ModID}:KindlingPower": {
-    "NAME": "Kindling",
-    "DESCRIPTIONS": [
-      "Takes !A!% more [${ModID}:SoulFireIcon] damage."
-    ]
-  },
   "${ModID}:JinxThornsPower": {
     "NAME": "Scourging Bubble",
     "DESCRIPTIONS": [
@@ -213,12 +214,6 @@
     "NAME": "Sadistic Glee",
     "DESCRIPTIONS": [
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
-    ]
-  },
-  "${ModID}:ChaosFormPower": {
-    "NAME": "Chaos Form",
-    "DESCRIPTIONS": [
-      "This was definitely a good idea."
     ]
   },
   "${ModID}:ToxicOilPower": {

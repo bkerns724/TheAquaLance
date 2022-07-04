@@ -34,5 +34,6 @@ public class CorruptedChanneling extends AbstractResonantCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
+        resonance.decay += UPGRADE_MAGIC;
     }
 }

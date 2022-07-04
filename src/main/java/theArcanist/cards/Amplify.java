@@ -25,5 +25,6 @@ public class Amplify extends AbstractResonantCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
+        resonance.amplify += UPGRADE_MAGIC;
     }
 }

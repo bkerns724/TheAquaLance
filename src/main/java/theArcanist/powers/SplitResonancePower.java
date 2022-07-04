@@ -11,7 +11,7 @@ public class SplitResonancePower extends AbstractArcanistPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    // Code in AbstractArcanistCard
+    // Code in Resonance
     public SplitResonancePower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;

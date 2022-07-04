@@ -26,5 +26,6 @@ public class ChanneledCurse extends AbstractResonantCard {
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
+        resonance.jinx += UPGRADE_MAGIC;
     }
 }

@@ -6,16 +6,16 @@ import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
+import static theArcanist.util.Wiz.getDebuffCount;
 
-public class Needle extends AbstractArcanistCard {
-    public final static String ID = makeID(Needle.class.getSimpleName());
-    private final static int DAMAGE = 3;
+public class CursedLance extends AbstractArcanistCard {
+    public final static String ID = makeID(CursedLance.class.getSimpleName());
+    private final static int DAMAGE = 12;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 1;
-    private final static int SECOND_MAGIC = 3;
-    private final static int UPGRADE_SECOND = -1;
-    private final static int COST = 0;
+    private final static int COST = 2;
 
-    public Needle() {
+    public CursedLance() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
@@ -23,16 +23,17 @@ public class Needle extends AbstractArcanistCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        baseSecondMagic = secondMagic = SECOND_MAGIC;
         magicOneIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        applyToEnemy(m, new JinxPower(m, magicNumber));
+        int count = getDebuffCount(m);
+        if (count > 0)
+            applyToEnemy(m, new JinxPower(m, magicNumber*count));
     }
 
     public void upp() {
-        upMagic2(UPGRADE_SECOND);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

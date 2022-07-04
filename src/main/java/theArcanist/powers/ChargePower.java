@@ -17,6 +17,6 @@ public class ChargePower extends AbstractArcanistPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         if (adp().energy.energy > 0)
-            applyToSelf(new VigorPower(adp(), amount));
+            applyToSelf(new VigorPower(adp(), amount*adp().energy.energy));
     }
 }

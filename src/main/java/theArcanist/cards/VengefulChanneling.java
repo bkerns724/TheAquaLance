@@ -25,5 +25,6 @@ public class VengefulChanneling extends AbstractResonantCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
+        resonance.revenge += UPGRADE_MAGIC;
     }
 }

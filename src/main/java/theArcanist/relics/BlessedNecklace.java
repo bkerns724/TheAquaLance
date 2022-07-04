@@ -1,7 +1,7 @@
 package theArcanist.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
+import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.TheArcanist;
@@ -13,7 +13,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.adp;
 import static theArcanist.util.Wiz.atb;
 
-public class BlessedNecklace extends AbstractArcanistRelic implements ClickableRelicWithUI {
+public class BlessedNecklace extends AbstractArcanistRelic implements RelicWithButton {
     public static final String ID = makeID(BlessedNecklace.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/BlessedButton.png";
     private static final int blockAmount = 6;

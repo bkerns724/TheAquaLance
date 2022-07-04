@@ -1,7 +1,7 @@
 package theArcanist.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
+import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.TheArcanist;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class StoneScales extends AbstractArcanistRelic implements ClickableRelicWithUI {
+public class StoneScales extends AbstractArcanistRelic implements RelicWithButton {
     public static final String ID = makeID("StoneScales");
     public static final String textureString = "arcanistmodResources/images/ui/StoneSkinButton.png";
     public static final int STONESKIN_AMOUNT = 3;

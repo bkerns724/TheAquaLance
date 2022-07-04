@@ -13,7 +13,7 @@ import static theArcanist.util.Wiz.getHighestHealthEnemy;
 public class HeavySigil extends AbstractArcanistCard {
     public final static String ID = makeID(HeavySigil.class.getSimpleName());
     private final static int DAMAGE = 10;
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
 
     public HeavySigil() {

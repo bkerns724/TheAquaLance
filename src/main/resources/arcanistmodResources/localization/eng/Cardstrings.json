@@ -20,8 +20,8 @@
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "It's like a magic boomerang, except it isn't a boomerang, it just boomerangs back to you like a boomerang."
   },
-  "${ModID}:Strike": {
-    "NAME": "Strike",
+  "${ModID}:StaffStrike": {
+    "NAME": "Staff Strike",
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR":
     "We've lost so many wizards we have to send our apprentices to the battle field.  Some of them are only good at hitting the monsters with a stick."
@@ -183,11 +183,11 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Deal !D! damage to the enemy with the highest HP. NL Enemy loses !M! strength."
+    "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL Enemy loses !M! strength."
   },
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
-    "DESCRIPTION": "Deal !D! damage to the enemy with the least HP. NL If Fatal, heal !M! HP."
+    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL If Fatal, heal !M! HP."
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
@@ -333,7 +333,7 @@
   },
   "${ModID}:CompressionWave": {
     "NAME": "Compression Wave",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Draw a card. NL Discard a card."
   },
   "${ModID}:DarkEmbrace": {
     "NAME": "Dark Embrace",
@@ -343,9 +343,9 @@
     "NAME": "Ice Needles",
     "DESCRIPTION": "Deal !D! damage !M! times."
   },
-  "${ModID}:Needle": {
-    "NAME": "Needle",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx. NL Apply 1 more for every !${ModID}:M2! debuffs."
+  "${ModID}:CursedLance": {
+    "NAME": "Cursed Lance",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx for every debuff."
   },
   "${ModID}:SackOfDebris": {
     "NAME": "Sack Of Debris",
@@ -357,7 +357,7 @@
   },
   "${ModID}:Charge": {
     "NAME": "Charge",
-    "DESCRIPTION": "If you end your turn with at least one [E] , your next attack deals !M! additional damage."
+    "DESCRIPTION": "At the end of your turn, your next attack deals !M! additional damage per unspent [E] ."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",

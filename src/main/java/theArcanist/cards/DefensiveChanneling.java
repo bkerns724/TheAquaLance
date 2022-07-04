@@ -29,5 +29,7 @@ public class DefensiveChanneling extends AbstractResonantCard {
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
         upgradeBlock(UPGRADE_BLOCK);
+        resonance.amount += UPGRADE_DAMAGE;
+        resonance.block += UPGRADE_BLOCK;
     }
 }

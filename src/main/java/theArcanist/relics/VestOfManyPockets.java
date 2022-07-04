@@ -1,7 +1,7 @@
 package theArcanist.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelicWithUI;
+import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -14,7 +14,7 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.atb;
 import static theArcanist.util.Wiz.discard;
 
-public class VestOfManyPockets extends AbstractArcanistRelic implements ClickableRelicWithUI {
+public class VestOfManyPockets extends AbstractArcanistRelic implements RelicWithButton {
     public static final String ID = makeID(VestOfManyPockets.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/CycleButton.png";
     private static final int CYCLE_AMOUNT = 1;

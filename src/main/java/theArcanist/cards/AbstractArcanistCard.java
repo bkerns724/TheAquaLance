@@ -13,7 +13,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -178,18 +178,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         pow.flash();
         AbstractCard tmp = makeSameInstanceOf();
         adp().limbo.addToBottom(tmp);
-        tmp.current_x = current_x;
-        tmp.current_y = current_y;
-        tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
-        tmp.target_y = (float) Settings.HEIGHT / 2.0F;
-
         tmp.purgeOnUse = true;
-        pow.amount--;
-        if (pow.amount == 0)
-            atb(new RemoveSpecificPowerAction(adp(), adp(), pow));
+        atb(new ReducePowerAction(adp(), adp(), pow, 1));
 
-        att(new NewQueueCardAction(tmp, true, false, true));
-        att(new UnlimboAction(tmp));
+        tmp.triggerOnManualDiscard();
 
         att(new NewQueueCardAction(this, true, false, true));
         att(new UnlimboAction(this));

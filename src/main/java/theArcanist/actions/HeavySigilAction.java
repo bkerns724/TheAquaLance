@@ -31,7 +31,7 @@ public class HeavySigilAction extends AbstractGameAction {
         else {
             tickDuration();
             if (isDone) {
-                applyToEnemyTop(target, new StrengthPower(target, strengthLoss));
+                applyToEnemyTop(target, new StrengthPower(target, -strengthLoss));
                 att(new AttackAction((AbstractMonster) target, info, effect, null, false));
 
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())

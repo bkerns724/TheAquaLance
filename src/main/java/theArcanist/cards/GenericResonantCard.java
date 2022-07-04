@@ -10,6 +10,7 @@ import static theArcanist.ArcanistMod.makeID;
 public class GenericResonantCard extends AbstractResonantCard {
     public final static String ID = makeID(GenericResonantCard.class.getSimpleName());
     private final static int COST = 1;
+    private final static int UPGRADE_DAMAGE = 4;
 
     public GenericResonantCard(Resonance resonance) {
         super(ID, COST, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
@@ -26,8 +27,14 @@ public class GenericResonantCard extends AbstractResonantCard {
         this(new Resonance(8));
     }
 
+    @Override
+    public boolean canUpgrade() {
+        return true;
+    }
+
     public void upp() {
-        baseDamage += 4;
+        baseDamage += UPGRADE_DAMAGE;
+        resonance.amount += UPGRADE_DAMAGE;
     }
 
     @Override
