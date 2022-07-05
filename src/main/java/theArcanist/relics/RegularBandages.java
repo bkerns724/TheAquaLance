@@ -1,6 +1,7 @@
 package theArcanist.relics;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -19,6 +20,8 @@ public class RegularBandages extends AbstractArcanistRelic {
 
     @Override
     public void onManualDiscard() {
+        flash();
+        atb(new RelicAboveCreatureAction(adp(), this));
         atb(new GainBlockAction(adp(), BLOCK_AMT));
     }
 }

@@ -30,8 +30,7 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
 
     @Override
     public void applyPowers() {
-        baseDamage = resonance.getDamage();
-        baseBlock = resonance.block;
+        initializeDescription();
         super.applyPowers();
     }
 

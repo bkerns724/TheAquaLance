@@ -137,14 +137,17 @@ public class AttackEffectsPatch {
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.RESONANT) {
-                CardCrawlGame.sound.playA("BELL", 0f);
+                CardCrawlGame.sound.playA("BELL", 0.2f);
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.RESONANT_M) {
-                CardCrawlGame.sound.playA("BELL", 0.6f);
+                CardCrawlGame.sound.playA("BELL", 0.7f);
+                CardCrawlGame.sound.playA("BELL", 0.7f);
                 return SpireReturn.Return();
             }
             if (effect == ArcanistMod.Enums.RESONANT_L) {
+                CardCrawlGame.sound.playA("BELL", 1.5f);
+                CardCrawlGame.sound.playA("BELL", 1.5f);
                 CardCrawlGame.sound.playA("BELL", 1.5f);
                 return SpireReturn.Return();
             }

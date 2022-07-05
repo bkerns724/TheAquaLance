@@ -24,17 +24,22 @@ public class MiniWrathPower extends AbstractArcanistPower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void atStartOfTurn() {
         atb(new ReducePowerAction(adp(), adp(), this, 1));
     }
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return damage *= DAMAGE_MULTIPLIER;
+        if (type == DamageInfo.DamageType.NORMAL)
+            return damage *= DAMAGE_MULTIPLIER;
+        else return damage;
     }
 
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        return damage *= DAMAGE_MULTIPLIER;
+        if (type == DamageInfo.DamageType.NORMAL)
+            return damage *= DAMAGE_MULTIPLIER;
+        else
+            return damage;
     }
 }

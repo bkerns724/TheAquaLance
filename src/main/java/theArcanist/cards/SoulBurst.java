@@ -8,8 +8,8 @@ import static theArcanist.ArcanistMod.makeID;
 
 public class SoulBurst extends AbstractArcanistCard {
     public final static String ID = makeID("SoulBurst");
-    private final static int DAMAGE = 15;
-    private final static int UPGRADE_DAMAGE = 5;
+    private final static int DAMAGE = 12;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 1;
 
     public SoulBurst() {

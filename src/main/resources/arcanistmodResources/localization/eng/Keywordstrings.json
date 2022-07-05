@@ -23,7 +23,17 @@
       "Panda",
       "panda"
     ],
-    "DESCRIPTION": "At the start of your turn it deals damage to a random enemy and applies either Weak or Vulnerable."
+    "DESCRIPTION": "At the start of your turn it deals damage to a random enemy."
+  },
+  {
+    "PROPER_NAME": "Plated\u00a0Armor",
+    "NAMES": [
+      "Plated\u00a0Armor",
+      "Plated\u00a0armor",
+      "plated\u00a0Armor",
+      "plated\u00a0armor"
+    ],
+    "DESCRIPTION": "At the end of your turn gain #yBlock. When receiving unblocked attack damage, reduce Plated Armor by 1."
   },
   {
     "PROPER_NAME": "Resonate",
@@ -67,6 +77,6 @@
       "Shadowcloak",
       "shadowcloak"
     ],
-    "DESCRIPTION": "Grants 25% extra damage on the first attack each turn."
+    "DESCRIPTION": "Grants 25% extra damage per stack on the first #yAttack each turn."
   }
 ]

@@ -8,7 +8,7 @@ import static theArcanist.util.Wiz.getDebuffCount;
 
 public class SoulIgnition extends AbstractArcanistCard {
     public final static String ID = makeID(SoulIgnition.class.getSimpleName());
-    private final static int DAMAGE = 30;
+    private final static int DAMAGE = 32;
     private final static int UPGRADE_DAMAGE = 10;
     private final static int MAGIC = 5;
     private final static int COST = 0;

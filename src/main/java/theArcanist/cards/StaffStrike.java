@@ -23,7 +23,10 @@ public class StaffStrike extends AbstractArcanistCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, getBluntEffect());
+        if (damageModList.isEmpty())
+            dmg(m, getBluntEffect());
+        else
+            dmg(m);
     }
 
     public void upp() {

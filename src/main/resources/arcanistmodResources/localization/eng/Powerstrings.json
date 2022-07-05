@@ -92,7 +92,7 @@
   "${ModID}:MiniWrathPower": {
     "NAME": "Rage",
     "DESCRIPTIONS": [
-      "Deal an extra !A!% damage this turn."
+      "Deal an extra 50% damage this turn."
     ]
   },
   "${ModID}:ChaosAuraPower": {
@@ -125,7 +125,7 @@
   "${ModID}:ShadowcloakPower": {
     "NAME": "Shadowcloak",
     "DESCRIPTIONS": [
-      "The first attack you play each turn does !A!% more damage."
+      "The first attack you play each turn does !A2!% more damage."
     ]
   },
   "${ModID}:TempHPOnHitPower": {
@@ -168,8 +168,8 @@
   "${ModID}:JinxThornsPower": {
     "NAME": "Scourging Bubble",
     "DESCRIPTIONS": [
-      "Whenever your are attacked, deal [${ModID}:ScourgeIcon] damage back.",
-      "Whenever your are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
+      "Whenever you are attacked, deal [${ModID}:ScourgeIcon] damage back.",
+      "Whenever you are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
     ]
   },
   "${ModID}:DarkerEmbracePower": {
@@ -227,12 +227,6 @@
     "DESCRIPTIONS": [
       "Frostbite is twice as effective.",
       "Frostbite is !A! times as effective."
-    ]
-  },
-  "${ModID}:SoulFlameBarrierPower": {
-    "NAME": "Revenge Flame",
-    "DESCRIPTIONS": [
-      "Whenever you take attack damage, deal !A! damage back."
     ]
   }
 }

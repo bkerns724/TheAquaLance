@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
-import com.megacrit.cardcrawl.actions.defect.DecreaseMaxOrbAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -17,7 +16,6 @@ import theArcanist.actions.PandaSmackAction;
 
 import static java.lang.Math.pow;
 import static theArcanist.util.Wiz.atb;
-import static theArcanist.util.Wiz.att;
 
 public class CrazyPanda extends CustomOrb {
     public static final String ORB_ID = ArcanistMod.makeID(CrazyPanda.class.getSimpleName());
@@ -49,9 +47,7 @@ public class CrazyPanda extends CustomOrb {
     }
 
     @Override
-    public void onEvoke() {
-        att(new DecreaseMaxOrbAction(1));
-    }
+    public void onEvoke() {}
 
     @Override
     public void playChannelSFX() {

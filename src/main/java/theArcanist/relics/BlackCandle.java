@@ -1,37 +1,27 @@
 package theArcanist.relics;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import theArcanist.TheArcanist;
-import theArcanist.cards.Hallucination;
-import theArcanist.powers.ShadowcloakPower;
+import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.adp;
-import static theArcanist.util.Wiz.applyToSelf;
+import static theArcanist.util.Wiz.*;
 
 public class BlackCandle extends AbstractArcanistRelic {
     public static final String ID = makeID(BlackCandle.class.getSimpleName());
-    private static final int shadowAmount = 1;
+    private static final int jinxAmount = 4;
 
     public BlackCandle() {
         super(ID, RelicTier.SHOP, LandingSound.FLAT, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
-        cardToPreview = new Hallucination();
-        amount = shadowAmount;
+        cardToPreview = new VoidCard();
+        amount = jinxAmount;
         setUpdatedDescription();
     }
 
     @Override
-    public void onEquip() {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Hallucination(), (float) Settings.WIDTH / 2.0F,
-                (float) Settings.HEIGHT / 2.0F));
-    }
-
-    @Override
-    public void onCardDraw(AbstractCard drawnCard) {
-        if (drawnCard.color == AbstractCard.CardColor.CURSE)
-            applyToSelf(new ShadowcloakPower(adp(), amount));
+    public void onPlayerEndTurn() {
+        atb(new MakeTempCardInDiscardAction(new VoidCard(), 1));
+        forAllMonstersLiving(m -> applyToEnemy(m, new JinxPower(m, amount)));
     }
 }

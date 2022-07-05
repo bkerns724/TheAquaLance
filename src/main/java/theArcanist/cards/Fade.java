@@ -20,6 +20,7 @@ public class Fade extends AbstractArcanistCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

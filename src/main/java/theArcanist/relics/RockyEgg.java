@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import theArcanist.TheArcanist;
+import theArcanist.cards.AbstractArcanistCard;
 
 import java.util.Iterator;
 
@@ -40,7 +41,7 @@ public class RockyEgg extends AbstractArcanistRelic {
     }
 
     public void onObtainCard(AbstractCard c) {
-        if (c.type == AbstractCard.CardType.ATTACK && c.canUpgrade() && !c.upgraded)
+        if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard)c).sigil && c.canUpgrade() && !c.upgraded)
             c.upgrade();
     }
 

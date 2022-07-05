@@ -41,7 +41,11 @@ public class Greed extends CustomCard {
             CardArtRoller.computeCard(this);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    @Override
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) { }
+
+    @Override
+    public void triggerWhenDrawn() {
         atb(new ArcanistGreedAction(magicNumber));
     }
 

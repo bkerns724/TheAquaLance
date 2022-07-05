@@ -2,7 +2,6 @@ package theArcanist.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.unique.RandomizeHandCostAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
@@ -21,7 +20,7 @@ public class Hallucination extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private final static int MAGIC = 3;
-    private final static int COST = 1;
+    private final static int COST = -2;
 
     private boolean needsArtRefresh = false;
 
@@ -30,7 +29,7 @@ public class Hallucination extends CustomCard {
                 CardType.CURSE, CardColor.CURSE, CardRarity.SPECIAL, NONE);
 
         baseMagicNumber = magicNumber = MAGIC;
-        exhaust = true;
+        isEthereal = true;
 
         if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
             CardArtRoller.computeCard(this);
@@ -49,13 +48,6 @@ public class Hallucination extends CustomCard {
     @Override
     public void triggerWhenDrawn() {
         atb(new RandomizeHandCostAction());
-    }
-
-    @Override
-    public boolean canPlay(AbstractCard card) {
-        if (card == null)
-            return false;
-        return (card.cardID.equals(Hallucination.ID));
     }
 
     @Override

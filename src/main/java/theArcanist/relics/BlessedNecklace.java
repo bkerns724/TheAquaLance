@@ -17,12 +17,17 @@ import static theArcanist.util.Wiz.atb;
 public class BlessedNecklace extends AbstractArcanistRelic implements RelicWithButton {
     public static final String ID = makeID(BlessedNecklace.class.getSimpleName());
     private static final String textureString = "arcanistmodResources/images/ui/BlessedButton.png";
-    private static final int blockAmount = 6;
+    public static final int BLOCK_AMOUNT = 6;
 
     public BlessedNecklace() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
+        amount = BLOCK_AMOUNT;
         setUpdatedDescription();
-        amount = blockAmount;
+    }
+
+    @Override
+    public void onEquip() {
+        adp().loseRelic(NecklaceOfShielding.ID);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class EnchantmentOils extends AbstractArcanistRelic {
         float xOffset = xOffsetBase;
         int total = 0;
         for (AbstractCard card : adp().masterDeck.group)
-            if (card instanceof StaffStrike && ((StaffStrike)card).damageModList.isEmpty())
+            if (card instanceof StaffStrike)
                 total++;
         if (total > 5)
             total = 5;
@@ -40,19 +40,20 @@ public class EnchantmentOils extends AbstractArcanistRelic {
         for (AbstractCard card : adp().masterDeck.group) {
             if (card instanceof StaffStrike) {
                 ArrayList<AbstractArcanistCard.elenum> list = new ArrayList<>();
-                if (((StaffStrike) card).damageModList.contains(AbstractArcanistCard.elenum.ICE))
+                card.baseDamage += DAMAGE_BONUS;
+                AbstractArcanistCard arcCard = (AbstractArcanistCard) card;
+                if (!arcCard.damageModList.contains(AbstractArcanistCard.elenum.ICE))
                     list.add(AbstractArcanistCard.elenum.ICE);
-                if (((StaffStrike) card).damageModList.contains(AbstractArcanistCard.elenum.FIRE))
+                if (!arcCard.damageModList.contains(AbstractArcanistCard.elenum.FIRE))
                     list.add(AbstractArcanistCard.elenum.FIRE);
-                if (((StaffStrike) card).damageModList.contains(AbstractArcanistCard.elenum.FORCE))
+                if (!arcCard.damageModList.contains(AbstractArcanistCard.elenum.FORCE))
                     list.add(AbstractArcanistCard.elenum.FORCE);
-                if (((StaffStrike) card).damageModList.contains(AbstractArcanistCard.elenum.DARK))
+                if (!arcCard.damageModList.contains(AbstractArcanistCard.elenum.DARK))
                     list.add(AbstractArcanistCard.elenum.DARK);
                 if (list.size() > 0) {
                     int x = AbstractDungeon.miscRng.random(0, list.size() - 1);
                     AbstractArcanistCard.elenum mod = list.get(x);
-                    card.baseDamage += DAMAGE_BONUS;
-                    ((StaffStrike) card).addModifier(mod);
+                    arcCard.addModifier(mod);
                     if (count == 0)
                         xOffset = xOffsetBase;
                     else if (count == 1)

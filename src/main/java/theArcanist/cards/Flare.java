@@ -15,7 +15,7 @@ public class Flare extends AbstractArcanistCard {
     private final static int COST = 1;
 
     public Flare() {
-        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override

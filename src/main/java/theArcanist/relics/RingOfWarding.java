@@ -17,8 +17,13 @@ public class RingOfWarding extends AbstractArcanistRelic {
     }
 
     @Override
-    public void atTurnStart() {
-        super.atTurnStart();
+    public void atBattleStartPreDraw() {
+        grayscale = false;
+        counter = amount;
+    }
+
+    @Override
+    public void onVictory() {
         grayscale = false;
         counter = amount;
     }
@@ -26,7 +31,7 @@ public class RingOfWarding extends AbstractArcanistRelic {
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
         if (drawnCard.color == AbstractCard.CardColor.CURSE && counter >= 1) {
-            cardDraw(amount);
+            cardDraw(1);
             counter--;
             if (counter <= 0)
                 grayscale = true;

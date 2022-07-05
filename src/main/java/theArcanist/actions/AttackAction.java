@@ -58,7 +58,17 @@ public class AttackAction extends AbstractGameAction {
             else
                 action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, effect);
 
+            if (effect == ArcanistMod.Enums.SOUL_FIRE)
+                color = Color.PURPLE.cpy();
+            if (effect == ArcanistMod.Enums.ICE || effect == ArcanistMod.Enums.ICE_M)
+                color = Color.BLUE.cpy();
+            if (effect == ArcanistMod.Enums.FORCE || effect == ArcanistMod.Enums.FORCE_M)
+                color = Color.PINK.cpy();
+            if (effect == ArcanistMod.Enums.DARK || effect == ArcanistMod.Enums.DARK_M)
+                color = Color.BLACK.cpy();
+
             ColoredDamagePatch.DamageActionColorField.damageColor.set(action, color);
+            ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(action, ColoredDamagePatch.FadeSpeed.SLOW);
             ColoredDamagePatch.DamageActionColorField.rainbow.set(action, rainbow);
             att(action);
             isDone = true;

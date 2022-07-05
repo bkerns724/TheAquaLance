@@ -12,7 +12,9 @@
       " NL ${ModID}:Resonate.",
       " NL Exhaust.",
       "Sigil",
-      "Sigils can only be played via discard."
+      "Sigils can only be played via discard.",
+      "Ethereal. NL ",
+      "Innate. NL "
     ]
   },
   "${ModID}:GenericResonantCard": {
@@ -126,7 +128,7 @@
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
-    "DESCRIPTION": "Whenever you play a card this turn, discard !M! random card to draw !M! card."
+    "DESCRIPTION": "Whenever you play a card this turn, discard a random card to draw a card."
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
@@ -166,7 +168,7 @@
   },
   "${ModID}:IronSigil": {
     "NAME": "Iron Sigil",
-    "DESCRIPTION": "Gain !M! Plated Armor."
+    "DESCRIPTION": "Gain !M! ${ModID}:Plated\u00a0Armor."
   },
   "${ModID}:SpiralingSigil": {
     "NAME": "Spiraling Sigil",
@@ -183,7 +185,7 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL Enemy loses !M! strength."
+    "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL Enemy loses !M! Strength."
   },
   "${ModID}:BlackSigil": {
     "NAME": "Black Sigil",
@@ -191,7 +193,7 @@
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
-    "DESCRIPTION": "ALL enemies take !M! !ScourgeString! damage at the start of their turns."
+    "DESCRIPTION": "ALL enemies take !M! !ScourgeString! damage at the start of their turn."
   },
   "${ModID}:RampingSigil": {
     "NAME": "Ramping Sigil",
@@ -207,11 +209,11 @@
   },
   "${ModID}:OverChargedSigil": {
     "NAME": "Over Charged Sigil",
-    "DESCRIPTION": "Lose !{ModID}:M2! HP. NL Gain [E][E]. NL Draw !M! cards."
+    "DESCRIPTION": "Lose !${ModID}:M2! HP. NL Gain [E][E]. NL Draw !M! cards."
   },
   "${ModID}:ScourgeBubble": {
     "NAME": "Scourge Bubble",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !ScourgeString! damage back."
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !M! !ScourgeString! damage back."
   },
   "${ModID}:Amplify": {
     "NAME": "Amplify",
@@ -249,7 +251,7 @@
     "FLAVOR": "All right, shit like this is why I studied magic!"
   },
   "${ModID}:WellPrepared": {
-    "NAME": "Prepared",
+    "NAME": "Well Prepared",
     "DESCRIPTION": "Draw !M! cards. NL Discard 1 card. NL Exhaustive !stslib:ex!."
   },
   "${ModID}:Momentum": {
@@ -269,7 +271,7 @@
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
-    "DESCRIPTION": "{@@}{!Upgrades!|1=Innate. NL }At the start of your turn, draw !M! card and discard !M! card."
+    "DESCRIPTION": "At the start of your turn, draw a card and discard a card."
   },
   "${ModID}:ArcaneBeam": {
     "NAME": "Arcane Beam",
@@ -357,7 +359,7 @@
   },
   "${ModID}:Charge": {
     "NAME": "Charge",
-    "DESCRIPTION": "At the end of your turn, your next attack deals !M! additional damage per unspent [E] ."
+    "DESCRIPTION": "At the end of your turn, your next attack deals !M! additional damage per unspent [E]."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
@@ -408,11 +410,11 @@
   "${ModID}:SplitResonance": {
     "NAME": "Split Resonance",
     "DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more time. NL Damage is split evenly between hits.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more time. NL Damage is split evenly between hits. NL Gain !${ModID}:M2! ${ModID}:Resonance."
+    "UPGRADE_DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more times. NL Damage is split evenly between hits."
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
-    "DESCRIPTION": "Deal !D! damage. NL Enemy takes double damage from ${ModID}:Frostbite."
+    "DESCRIPTION": "Deal !D! damage. NL Enemy takes double damage from *Frostbite."
   },
   "${ModID}:Shapeshift": {
     "NAME": "Shapeshift",
@@ -420,7 +422,7 @@
   },
   "${ModID}:Collapse": {
     "NAME": "Collapse",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Crushed affects this card !M! times."
+    "DESCRIPTION": "Deal !D! damage. NL *Crushed affects this card !M! times."
   },
   "${ModID}:ShadowLance": {
     "NAME": "ShadowLance",
@@ -441,7 +443,7 @@
   "${ModID}:Madness": {
     "NAME": "Madness",
     "DESCRIPTION": "Enemy enters Wrath.",
-    "UPGRADE_DESCRIPTION": "Retain NL Enemy enters Wrath. NL Whenever an enemy dies, return this to your hand."
+    "UPGRADE_DESCRIPTION": "Enemy enters Wrath. NL Whenever an enemy dies, return this to your hand."
   },
   "${ModID}:Vanish": {
     "NAME": "Vanish",
@@ -466,7 +468,7 @@
   },
   "${ModID}:Fade": {
     "NAME": "Fade",
-    "DESCRIPTION": "Gain !M! X ${ModID}:Shadowcloak. NL Exhaust."
+    "DESCRIPTION": "Gain !M! X ${ModID}:Shadowcloak."
   },
   "${ModID}:MaliciousDagger": {
     "NAME": "Malicious Dagger",
@@ -478,24 +480,24 @@
   },
   "${ModID}:Wrath": {
     "NAME": "Wrath",
-    "DESCRIPTION": "Unplayable. NL Whenever this card is drawn, gain !M! Vulnerable and deal 50% more damage for one turn."
+    "DESCRIPTION": "Unplayable. NL When drawn, deal and take 50% more damage for one turn."
   },
   "${ModID}:Greed": {
     "NAME": "Greed",
-    "DESCRIPTION": "Unplayable. NL Whenever this card is drawn, gain !M! Gold and 1 Weak.",
+    "DESCRIPTION": "Unplayable. NL When drawn, gain !M! Gold and 1 Weak.",
     "FLAVOR": "Hunting for treasure in the middle of battle is one of the most foolish things I have ever seen."
   },
   "${ModID}:Hallucination": {
     "NAME": "Hallucination",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever this card is drawn, randomize the cost of all cards in your hand for the rest of combat."
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When drawn, randomize the cost of cards in your hand."
   },
   "${ModID}:BadLuck": {
     "NAME": "Bad Luck",
-    "DESCRIPTION": "Unplayable. NL Whenever this card is drawn, discard the highest cost card in your hand."
+    "DESCRIPTION": "Unplayable. NL When drawn, discard the highest cost card in your hand."
   },
   "${ModID}:NullElement": {
     "NAME": "Null Element",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever this card is drawn, lose [E] .",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When drawn, lose [E].",
     "FLAVOR": "This sucks."
   }
 }

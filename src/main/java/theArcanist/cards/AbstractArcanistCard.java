@@ -319,6 +319,10 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
 
         if (selfRetain)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
+        if (isInnate)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[11] + rawDescription;
+        if (isEthereal)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[10] + rawDescription;
         if (sigil)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
 
@@ -328,9 +332,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         if (exhaust)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
 
-        logger.info(damage);
-        logger.info(block);
-        logger.info(rawDescription);
         super.initializeDescription();
     }
 
@@ -504,7 +505,6 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     }
 
     public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx, Color color, boolean rainbow, boolean top) {
-        logger.info(name);
         if (m == null) {
             if (top)
                 att(new AttackAction(multiDamage, fx, color, rainbow));
@@ -545,14 +545,14 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         card.magicTwoIsDebuff = magicTwoIsDebuff;
         card.scourgeIncrease = scourgeIncrease;
         card.debuffIncrease = debuffIncrease;
-        /*
+
         card.damageModList.clear();
         DamageModifierManager.clearModifiers(card);
         if (adp() == null || !adp().hasRelic(ManaPurifier.ID)) {
             for (elenum ele : damageModList)
                 card.addModifier(ele);
         }
-        */
+
         card.initializeDescription();
         return card;
     }
@@ -560,7 +560,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     @Override
     public CardSaveObject onSave() {
         CardSaveObject obj = new CardSaveObject();
-        obj.elements = damageModList;
+        obj.elements.addAll(damageModList);
         obj.sigil = sigil;
         obj.retain = selfRetain;
         obj.debuffIncrease = debuffIncrease;
@@ -576,7 +576,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public void onLoad(CardSaveObject obj) {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
-        if (adp() == null || adp().hasRelic(ManaPurifier.ID)) {
+        if (adp() == null || !adp().hasRelic(ManaPurifier.ID)) {
             for (elenum ele : obj.elements)
                 addModifier(ele);
         }

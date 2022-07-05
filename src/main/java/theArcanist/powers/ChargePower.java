@@ -2,10 +2,10 @@ package theArcanist.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theArcanist.ArcanistMod;
 
-import static theArcanist.util.Wiz.adp;
-import static theArcanist.util.Wiz.applyToSelf;
+import static theArcanist.util.Wiz.*;
 
 public class ChargePower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID(ChargePower.class.getSimpleName());
@@ -16,7 +16,7 @@ public class ChargePower extends AbstractArcanistPower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (adp().energy.energy > 0)
-            applyToSelf(new VigorPower(adp(), amount*adp().energy.energy));
+        if (EnergyPanel.getCurrentEnergy() > 0)
+            applyToSelf(new VigorPower(adp(), amount*EnergyPanel.getCurrentEnergy()));
     }
 }

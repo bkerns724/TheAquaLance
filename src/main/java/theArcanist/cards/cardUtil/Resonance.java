@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.cards.AbstractArcanistCard.elenum;
 import theArcanist.cards.AbstractResonantCard;
 import theArcanist.powers.*;
+import theArcanist.relics.TuningFork;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,8 @@ public class Resonance {
 
     public void merge(Resonance inRes) {
         amount += inRes.amount - MERGE_REDUCTION;
+        if (adp().hasRelic(TuningFork.ID))
+            amount += TuningFork.BOOST_AMOUNT;
         block += inRes.block;
         amplify += inRes.amplify;
         decay += inRes.decay;

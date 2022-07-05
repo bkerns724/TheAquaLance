@@ -1,9 +1,9 @@
 package theArcanist.powers;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.ArcanistMod;
 import theArcanist.actions.RapidsAction;
 
@@ -18,7 +18,7 @@ public class ChaoticMindPower extends AbstractArcanistPower {
     }
 
     @Override
-    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         atb(new RapidsAction(amount));
     }
 

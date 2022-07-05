@@ -26,7 +26,7 @@ public class BlessedNecklaceAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (this.duration == 0.5F) {
+        if (duration == startDuration) {
             AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
 
             atb(new WaitAction(0.25F));
@@ -34,10 +34,9 @@ public class BlessedNecklaceAction extends AbstractGameAction {
         } else {
             if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
                 if (!AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
-                    att(new GainBlockAction(adp(),
-                            blockAmount*AbstractDungeon.handCardSelectScreen.selectedCards.group.size()));
 
                     for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
+                        att(new GainBlockAction(adp(), blockAmount));
                         adp().hand.moveToDiscardPile(c);
                         GameActionManager.incrementDiscard(false);
                         c.triggerOnManualDiscard();

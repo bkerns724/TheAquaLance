@@ -10,8 +10,8 @@ import static theArcanist.util.Wiz.applyToSelf;
 
 public class FlamingSigil extends AbstractArcanistCard {
     public final static String ID = makeID(FlamingSigil.class.getSimpleName());
-    private final static int MAGIC = 7;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int MAGIC = 10;
+    private final static int UPGRADE_MAGIC = 3;
     private final static int COST = -2;
 
     public FlamingSigil() {

@@ -1,12 +1,10 @@
 package theArcanist.powers;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
 
-import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.*;
 
 public class HastePower extends AbstractArcanistPower {
     public static final String POWER_ID = ArcanistMod.makeID(HastePower.class.getSimpleName());
@@ -26,7 +24,7 @@ public class HastePower extends AbstractArcanistPower {
         AbstractPower discardPow = adp().getPower(DiscardNextTurnPower.POWER_ID);
         if (discardPow != null)
             discardAmount += discardPow.amount;
-        addToBot(new DrawCardAction(owner, drawAmount));
-        addToBot(new DiscardAction(owner, owner, discardAmount, false));
+        cardDraw(drawAmount);
+        discard(discardAmount);
     }
 }

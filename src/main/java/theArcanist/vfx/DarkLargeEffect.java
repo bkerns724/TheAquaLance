@@ -57,6 +57,12 @@ public class DarkLargeEffect extends AbstractGameEffect {
 
     @Override
     public void update() {
+        if (duration == EFFECT_DUR) {
+            CardCrawlGame.sound.play("NECRONOMICON");
+            CardCrawlGame.sound.play("NECRONOMICON");
+            CardCrawlGame.sound.play("NECRONOMICON");
+        }
+
         if (duration - DUR_DIFFERENCE < 0.3f && !biteHook) {
             biteHook = true;
             if (m != null) {

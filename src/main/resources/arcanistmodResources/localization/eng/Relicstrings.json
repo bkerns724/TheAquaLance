@@ -3,14 +3,14 @@
     "NAME": "Ceremonial Robe",
     "FLAVOR": "Elegant, but difficult to fight in.",
     "DESCRIPTIONS": [
-      "Draw !R! additional card each turn.  At the start of each combat, lose !R2! #yDexterity."
+      "At the start of your turn, draw !R! additional card.  At the start of each combat, lose !R2! #yDexterity."
     ]
   },
   "${ModID}:AncientSpellTome": {
     "NAME": "Ancient Spell Tome",
     "FLAVOR": "The ink is fading and the pages are crumbling.",
     "DESCRIPTIONS": [
-      "Upon pickup, choose #bone of #bthree powerful cards.",
+      "Upon pickup, add #bone of #bthree powerful cards to your deck.",
       "Choose a spell to study..."
     ]
   },
@@ -25,14 +25,14 @@
     "NAME": "Necklace Of Shielding",
     "FLAVOR": "It's a little unstable, but it works.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat gain !R2! Block and discard a card."
+      "#y${ModID}:Activated.  Once per combat gain !R2! #yBlock and discard a card."
     ]
   },
   "${ModID}:BlessedNecklace": {
     "NAME": "Blessed Necklace",
     "FLAVOR": "Cleric talented!  Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [ROYAL]Necklace [ROYAL]of [ROYAL]Shielding.  #y${ModID}:Activated.  Once per combat gain !R2! Block and discard a card."
+      "Replaces [VIOLET]Necklace [VIOLET]of [VIOLET]Shielding.  #y${ModID}:Activated.  Once per combat you can discard any number of cards to gain !R! #yBlock per card."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -60,7 +60,7 @@
     "NAME": "Black Candle",
     "FLAVOR": "The candle isn't black, the flame is.",
     "DESCRIPTIONS": [
-      "Gain !R! #yShadowcloak when you draw a #yCurse.  When you take this relic, become cursed with #yHallucination."
+      "At the end of your turn, apply !R! #y${ModID}:Jinx to ALL enemies and add a #yVoid to your discard pile."
     ]
   },
   "${ModID}:TuningFork": {
@@ -81,14 +81,14 @@
     "NAME": "Stone Scales",
     "FLAVOR": "You wonder what turned these scales to stone.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can reduce the attack damage you take by !R! for one turn."
+      "#y${ModID}:Activated.  Once per combat you can take !R! less damage for one turn."
     ]
   },
   "${ModID}:EtherealConverter": {
     "NAME": "Ethereal Converter",
     "FLAVOR": "You have no idea how this works.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can turn your Block into #yTemporary_HP."
+      "#y${ModID}:Activated.  Once per combat you can turn your #yBlock into #yTemporary_HP."
     ]
   },
   "${ModID}:TatteredCloak": {
@@ -109,14 +109,14 @@
     "NAME": "Mana Purifier",
     "FLAVOR": "Purified mana is stronger, but less flexible.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. NL Arcanist damage types have no effect."
+      "Gain [E] at the start of your turn. All cards are non-elemental."
     ]
   },
   "${ModID}:BlueMarbles": {
     "NAME": "BlueMarbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "Damage thresholds for damage type effects halved."
+      "Halve damage thresholds for #yCold, #yForce, and #yDark damage seconday effects."
     ]
   },
   "${ModID}:BootsOfSpeed": {
@@ -138,7 +138,7 @@
     "NAME": "Reverse Omamori",
     "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
     "DESCRIPTIONS": [
-      "For each Curse in your deck, gain 1 Dexterity the start of combat.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
+      "For each #yCurse in your deck, gain 1 #yDexterity the start of combat.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
     ]
   },
   "${ModID}:VialOfNectar": {
@@ -152,21 +152,21 @@
     "NAME": "RockyEgg",
     "FLAVOR": "You're not sure what creature laid this, but it occasionally stirs.",
     "DESCRIPTIONS": [
-      "Whenever you add a #ySigil card to your deck, it is Upgraded."
+      "Whenever you add a #ySigil card to your deck, #yUpgrade it."
     ]
   },
   "${ModID}:Mythril": {
     "NAME": "Mythril",
     "FLAVOR": "It's extremely hard for something so light.",
     "DESCRIPTIONS": [
-      "If you have no cards in hand at end of turn, gain !R! Block."
+      "If you have no cards in hand at end of turn, gain !R! #yBlock."
     ]
   },
   "${ModID}:RegularBandages": {
     "NAME": "Regular Bandages",
     "FLAVOR": "They're the generic store bought version.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, gain !R! Block."
+      "Whenever you discard a card, gain !R! #yBlock."
     ]
   },
   "${ModID}:UnmeltingIce": {
@@ -180,7 +180,7 @@
     "NAME": "Twisted Shuriken",
     "FLAVOR": "You aren't sure how to throw this, but it looks brutal.",
     "DESCRIPTIONS": [
-      "Whenever you play !R2! attacks in one turn, the enemy with the highest HP loses !R! Strength."
+      "Whenever you play !R2! attacks in one turn, ALL enemies lose !R! #yStrength."
     ]
   },
   "${ModID}:Pliers": {
@@ -208,7 +208,7 @@
     "NAME": "Enchantment Oils",
     "FLAVOR": "Makes your sword magic, just rub it on.",
     "DESCRIPTIONS": [
-      "All of your basic strikes gain a random damage type and deal !R! additional damage."
+      "All of your Strike cards gain a random element and deal !R! additional damage."
     ]
   },
   "${ModID}:HexedStaff": {
@@ -220,16 +220,16 @@
   },
   "${ModID}:SoulLamp": {
     "NAME": "Soul Lamp",
-    "FLAVOR": "It never runs out of fuel.",
+    "FLAVOR": "The flame never goes out.",
     "DESCRIPTIONS": [
-      "At the end of your turn, gain 1 revenge flame this turn for every !R! Block you have. NL Revenge flame deals damage back whenever you are attacked."
+      "The first time you are attacked each turn, deal !R! #y[${ModID}:SoulFireIcon] back."
     ]
   },
   "${ModID}:TransparentBracelet": {
     "NAME": "Transparent Bracelet",
     "FLAVOR": "Takes forever to find it if you take it off.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Shadowcloak can also be used to boost the first block card each turn by 25% per stack."
+      "#y${ModID}:Shadowcloak can also be used to boost the first #yBlock card each turn by 25% per stack."
     ]
   },
   "${ModID}:MarkOfTheVoid": {

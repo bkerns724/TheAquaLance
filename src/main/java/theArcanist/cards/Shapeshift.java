@@ -35,7 +35,7 @@ public class Shapeshift extends AbstractArcanistCard {
 
     @Override
     public void onPickup() {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(cardsToPreview.makeStatEquivalentCopy(),
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Injury(),
                 (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
     }
 

@@ -28,10 +28,6 @@ public class ManaBlood extends AbstractArcanistCard {
         applyToSelf(new BerserkPower(p, magicNumber));
     }
 
-    @Override
-    public void upgrade() {
-    }
-
     public void upp() {
         selfRetain = true;
     }

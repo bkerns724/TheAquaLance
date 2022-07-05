@@ -6,11 +6,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-
-import static theArcanist.util.Wiz.*;
 import theArcanist.ArcanistMod;
 import theArcanist.relics.TatteredCloak;
 import theArcanist.relics.TransparentBracelet;
+
+import static theArcanist.util.Wiz.adp;
 
 public class ShadowcloakPower extends AbstractArcanistPower {
     public static String POWER_ID = ArcanistMod.makeID(ShadowcloakPower.class.getSimpleName());
@@ -22,6 +22,15 @@ public class ShadowcloakPower extends AbstractArcanistPower {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         priority = 98;
         triggered = AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().anyMatch(c -> c.type == AbstractCard.CardType.ATTACK);
+    }
+
+    @Override
+    public void updateDescription() {
+        if (adp().hasRelic(TatteredCloak.ID))
+            amount2 = TatteredCloak.CLOAK_PERCENT * amount;
+        else
+            amount2 = DAMAGE_MULT_DESC*amount;
+        super.updateDescription();
     }
 
     @Override

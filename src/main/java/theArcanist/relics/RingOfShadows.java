@@ -1,5 +1,6 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,8 +10,7 @@ import theArcanist.cards.Hallucination;
 import theArcanist.powers.ShadowcloakPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.adp;
-import static theArcanist.util.Wiz.applyToSelf;
+import static theArcanist.util.Wiz.*;
 
 public class RingOfShadows extends AbstractArcanistRelic {
     public static final String ID = makeID(RingOfShadows.class.getSimpleName());
@@ -25,8 +25,11 @@ public class RingOfShadows extends AbstractArcanistRelic {
 
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
-        if (drawnCard.color == AbstractCard.CardColor.CURSE)
+        if (drawnCard.color == AbstractCard.CardColor.CURSE) {
+            flash();
+            atb(new RelicAboveCreatureAction(adp(), this));
             applyToSelf(new ShadowcloakPower(adp(), amount));
+        }
     }
 
     @Override

@@ -23,6 +23,7 @@ public class OverChargedSigil extends AbstractArcanistCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         secondMagic = baseSecondMagic = SECOND_MAGIC;
+        sigil = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

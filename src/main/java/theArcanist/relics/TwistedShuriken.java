@@ -3,7 +3,6 @@ package theArcanist.relics;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theArcanist.TheArcanist;
@@ -36,19 +35,10 @@ public class TwistedShuriken extends AbstractArcanistRelic {
                 counter = 0;
                 flash();
 
-                AbstractMonster strongestMonster = null;
-
-                for (AbstractMonster m : getEnemies()) {
-                    if (strongestMonster == null)
-                        strongestMonster = m;
-                    else if (m.currentHealth > strongestMonster.currentHealth)
-                        strongestMonster = m;
-                }
-                if (strongestMonster == null)
-                    return;
-
-                atb(new RelicAboveCreatureAction(strongestMonster, this));
-                applyToEnemy(strongestMonster, new StrengthPower(strongestMonster, -1));
+                forAllMonstersLiving(m -> {
+                    atb(new RelicAboveCreatureAction(m, this));
+                    applyToEnemy(m, new StrengthPower(m, -LOSE_STR_AMT));
+                });
             }
         }
     }

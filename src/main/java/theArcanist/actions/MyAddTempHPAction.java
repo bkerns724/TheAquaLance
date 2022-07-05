@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPF
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.combat.HealEffect;
+import theArcanist.vfx.MyTempHPEffect;
 
 public class MyAddTempHPAction extends AbstractGameAction {
     private static final float DURATION = 0.1f;
@@ -19,7 +19,7 @@ public class MyAddTempHPAction extends AbstractGameAction {
         if (duration == DURATION) {
             TempHPField.tempHp.set(target, TempHPField.tempHp.get(target) + amount);
             if (amount > 0) {
-                AbstractDungeon.effectsQueue.add(new HealEffect(target.hb.cX - target.animX, target.hb.cY, amount));
+                AbstractDungeon.effectsQueue.add(new MyTempHPEffect(target.hb.cX - target.animX, target.hb.cY, amount));
                 target.healthBarUpdatedEvent();
             }
         }
