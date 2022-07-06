@@ -28,7 +28,7 @@
       "Deal !D! damage !X0! times.",
       " NL Gain !B! block.",
       " NL Gain !X1! ${ModID}:Resonance.",
-      " NL Enemy takes !X2! damage at the start of its turns.",
+      " NL Apply !X2! ${ModID}:Decay.",
       " NL Whenever you are attacked this turn, deal !X3! [${ModID}:SoulFireIcon] damage back.",
       " NL Apply !X4! ${ModID}:Jinx.",
       " NL Draw a card.",

@@ -1,7 +1,6 @@
 package theArcanist.potions;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.SacredBark;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -24,10 +23,14 @@ public class PoisonousSmokeBomb extends AbstractArcanistPotion {
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
     }
 
+    @Override
+    public void setKeywordStrings() { }
+
     public void use(AbstractCreature target) {
         if (adRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             atb(new PoisonBombAction());
     }
+
 
     public boolean canUse() {
         if (super.canUse()) {
@@ -42,15 +45,5 @@ public class PoisonousSmokeBomb extends AbstractArcanistPotion {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void setDescription() {
-        if (potency == 2)
-            description = potionStrings.DESCRIPTIONS[1];
-        else
-            description = potionStrings.DESCRIPTIONS[0];
-        tips.clear();
-        tips.add(new PowerTip(name, description));
     }
 }

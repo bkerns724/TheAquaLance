@@ -78,5 +78,13 @@
       "shadowcloak"
     ],
     "DESCRIPTION": "Grants 25% extra damage per stack on the first #yAttack each turn."
+  },
+  {
+    "PROPER_NAME": "Decay",
+    "NAMES": [
+      "Decay",
+      "decay"
+    ],
+    "DESCRIPTION": "Decaying creatures lose health at the start of their turn."
   }
 ]

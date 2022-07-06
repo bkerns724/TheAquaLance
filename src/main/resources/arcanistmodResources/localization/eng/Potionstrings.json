@@ -38,8 +38,8 @@
   "${ModID}:ForbiddenFlask": {
     "NAME": "Forbidden Flask",
     "DESCRIPTIONS": [
-      "Add 1 of 3 random #yResonant cards to your hand.",
-      "Add !P! copies of 1 of 3 random #yResonant cards to your hand."
+      "Add 1 of 3 random #yResonant cards to your hand, it costs 0 this turn.",
+      "Add !P! copies of 1 of 3 random #yResonant cards to your hand, they cost 0 this turn."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
@@ -60,7 +60,8 @@
   "${ModID}:UnicornBlood": {
     "NAME": "Unicorn Blood",
     "DESCRIPTIONS": [
-      "Gain !P! Max HP. Gain #yBad #yLuck."
+      "Obtain a unique #yCurse and Gain !P! Max HP.",
+      "Obtain two unique #yCurses and Gain !P! Max HP."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
@@ -81,7 +82,7 @@
   "${ModID}:ToxicOil": {
     "NAME": "Toxic Oil",
     "DESCRIPTIONS": [
-      "Whenever your attacks deal unblocked damage, the target takes !P! damage at the start of their turn, every turn."
+      "Whenever your attacks deal unblocked damage, apply !P! #yDecay to the target."
     ],
     "FLAVOR": "Brutally efficient."
   },

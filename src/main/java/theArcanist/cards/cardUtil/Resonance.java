@@ -86,7 +86,7 @@ public class Resonance {
         if (amplify > 0)
             count++;
         if (decay > 0)
-            count += 2;
+            count ++;
         if (revenge > 0)
             count += 3;
         if (jinx > 0)

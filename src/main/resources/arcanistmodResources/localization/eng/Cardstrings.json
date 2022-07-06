@@ -193,7 +193,7 @@
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
-    "DESCRIPTION": "ALL enemies take !M! !ScourgeString! damage at the start of their turn."
+    "DESCRIPTION": "Apply !M! !ScourgeString! ${ModID}:Decay to ALL enemies."
   },
   "${ModID}:RampingSigil": {
     "NAME": "Ramping Sigil",
@@ -229,7 +229,7 @@
   },
   "${ModID}:CorruptedChanneling": {
     "NAME": "Corrupted Channeling",
-    "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! HP at the start of its turns."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Decay."
   },
   "${ModID}:ChanneledCurse": {
     "NAME": "Channeled Curse",

@@ -1,8 +1,6 @@
 package theArcanist.potions;
 
-import basemod.BaseMod;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import theArcanist.powers.ShadowcloakPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -16,13 +14,15 @@ public class MurkyElixir extends AbstractArcanistPotion {
     public static final PotionSize SIZE = PotionSize.M;
     public static final boolean IS_THROWN = false;
     public static final boolean TARGET_REQUIRED = false;
-    private static final String KEYWORD_NAME = makeID("Shadowcloak");
 
     public MurkyElixir() {
         super(POTION_ID, RARITY, SIZE, PotionColor.ENERGY,
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
-        tips.add(new PowerTip(BaseMod.getKeywordTitle(KEYWORD_NAME),
-                BaseMod.getKeywordDescription(KEYWORD_NAME)));
+    }
+
+    @Override
+    public void setKeywordStrings() {
+        keywordStrings.add(makeID("Shadowcloak"));
     }
 
     public void use(AbstractCreature target) {

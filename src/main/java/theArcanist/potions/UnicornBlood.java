@@ -1,19 +1,19 @@
 package theArcanist.potions;
 
-import basemod.BaseMod;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.relics.SacredBark;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theArcanist.cards.BadLuck;
+
+import java.util.ArrayList;
 
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.adp;
 
 public class UnicornBlood extends AbstractArcanistPotion {
     public static final String POTION_ID = makeID(UnicornBlood.class.getSimpleName());
-    private static final String KEYWORD_NAME = "status";
     public static final int DEFAULT_POTENCY = 15;
     public static final PotionRarity RARITY = PotionRarity.RARE;
     public static final PotionSize SIZE = PotionSize.BOTTLE;
@@ -23,14 +23,25 @@ public class UnicornBlood extends AbstractArcanistPotion {
     public UnicornBlood() {
         super(POTION_ID, RARITY, SIZE, PotionColor.WHITE,
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
-        cardToPreview = new BadLuck();
-        tips.add(new PowerTip(BaseMod.getKeywordTitle(KEYWORD_NAME),
-                BaseMod.getKeywordDescription(KEYWORD_NAME)));
+    }
+
+    @Override
+    public void setKeywordStrings() {
+        if (keywordStrings == null)
+            keywordStrings = new ArrayList<>();
+        keywordStrings.add("curse");
     }
 
     public void use(AbstractCreature target) {
         adp().increaseMaxHp(potency, true);
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new BadLuck(),
-                Settings.WIDTH*0.5f, Settings.HEIGHT*0.5f));
+        if (!adp().hasRelic(SacredBark.ID)) {
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new BadLuck(),
+                    Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.5f));
+        } else {
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new BadLuck(),
+                    Settings.WIDTH * 0.32f, Settings.HEIGHT * 0.5f));
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new BadLuck(),
+                    Settings.WIDTH * 0.68f, Settings.HEIGHT * 0.5f));
+        }
     }
 }

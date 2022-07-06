@@ -6,19 +6,17 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
-import com.megacrit.cardcrawl.vfx.combat.IronWaveParticle;
 import com.megacrit.cardcrawl.vfx.combat.SmokeBombEffect;
-import theArcanist.ArcanistMod;
-import theArcanist.potions.PoisonousSmokeBomb;
 
 import java.lang.reflect.Method;
 
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.adp;
+import static theArcanist.util.Wiz.getEnemies;
 
 public class PoisonBombAction extends AbstractGameAction {
     public boolean startedDying = false;
     public boolean startedClear = false;
-    private static final float DURATION = 2.6f;
+    private static final float DURATION = 3.0f;
 
     public PoisonBombAction() {
         duration = DURATION;
@@ -41,7 +39,7 @@ public class PoisonBombAction extends AbstractGameAction {
             startedDying = true;
             for (AbstractMonster m : getEnemies()) {
                 m.isDying = true;
-                m.deathTimer = 1.0f;
+                m.deathTimer = 2.5f;
                 m.hideHealthBar();
                 try {
                     Class<? extends AbstractMonster> monClass = m.getClass();

@@ -5,7 +5,7 @@ import theArcanist.ArcanistMod;
 import theArcanist.powers.ToxicOilPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.*;
+import static theArcanist.util.Wiz.applyToSelf;
 
 public class ToxicOil extends AbstractArcanistPotion {
     public static final String POTION_ID = makeID(ToxicOil.class.getSimpleName());
@@ -18,6 +18,11 @@ public class ToxicOil extends AbstractArcanistPotion {
     public ToxicOil() {
         super(POTION_ID, RARITY, SIZE, PotionColor.ENERGY,
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
+    }
+
+    @Override
+    public void setKeywordStrings() {
+        keywordStrings.add(makeID("Decay"));
     }
 
     public void use(AbstractCreature target) {

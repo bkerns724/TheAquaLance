@@ -21,6 +21,9 @@ public class SteelhidePotion extends AbstractArcanistPotion {
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
     }
 
+    @Override
+    public void setKeywordStrings() { }
+
     public void use(AbstractCreature target) {
         applyToSelf(new SteelhidePower(adp(), potency));
     }
