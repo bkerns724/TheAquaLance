@@ -1,7 +1,5 @@
 package theArcanist.cards;
 
-import theArcanist.cards.cardUtil.Resonance;
-
 import static theArcanist.ArcanistMod.makeID;
 
 public class ChanneledCurse extends AbstractResonantCard {
@@ -13,6 +11,7 @@ public class ChanneledCurse extends AbstractResonantCard {
 
     public ChanneledCurse() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        resonance.jinx = baseMagicNumber;
     }
 
     @Override
@@ -20,8 +19,6 @@ public class ChanneledCurse extends AbstractResonantCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
-        resonance = new Resonance(baseDamage);
-        resonance.jinx = baseMagicNumber;
     }
 
     public void upp() {

@@ -493,7 +493,7 @@
   },
   "${ModID}:BadLuck": {
     "NAME": "Bad Luck",
-    "DESCRIPTION": "Unplayable. NL When drawn, discard the highest cost card in your hand."
+    "DESCRIPTION": "Unplayable. NL Soulbound. NL When drawn, discard the highest cost card in your hand."
   },
   "${ModID}:NullElement": {
     "NAME": "Null Element",

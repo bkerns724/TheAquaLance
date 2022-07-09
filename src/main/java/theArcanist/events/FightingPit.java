@@ -59,6 +59,7 @@ public class FightingPit extends AbstractArcanistEvent {
     public FightingPit() {
         super(eventStrings, IMAGE_PATH);
 
+        noCardsInRewards = false;
         imageEventText.setDialogOption(options[0]);
         imageEventText.setDialogOption(options[1]);
         LargeDialogOptionButton but = imageEventText.optionList.get(1);
@@ -71,10 +72,10 @@ public class FightingPit extends AbstractArcanistEvent {
             switch (buttonPressed) {
                 case 0:
                     adRoom().monsters = MonsterHelper.getEncounter(getEasyMonster());
+                    adRoom().rewardAllowed = false;
                     imageEventText.clearAllDialogs();
                     imageEventText.setDialogOption(options[3]);
                     imageEventText.updateBodyText(descriptions[1]);
-                    adRoom().rewardAllowed = false;
                     screen = CUR_SCREEN.POST_BATTLE;
                     foughtEasy = true;
                     enterCombatFromImage();
@@ -108,7 +109,6 @@ public class FightingPit extends AbstractArcanistEvent {
                 adRoom().addGoldToRewards(AbstractDungeon.miscRng.random(GOLD_MIN_E, GOLD_MAX_E));
                 adRoom().addPotionToRewards(new PoisonousSmokeBomb());
                 adRoom().addRelicToRewards(randRelic());
-                adRoom().addCardToRewards();
             }
             imageEventText.clearAllDialogs();
             imageEventText.setDialogOption(options[4]);

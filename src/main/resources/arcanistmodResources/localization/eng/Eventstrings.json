@@ -3,7 +3,7 @@
     "NAME": "Small Market",
     "DESCRIPTIONS": [
       "You come across a small market amongst the slums.  You only see one thing that interests you amongst the stalls, a weaponsmith who is selling a set of oils to enchant weapons with magic effects.  You can sense that their magic is genuine.  On your way over, an alchemist sees a potion on your belt and offers you a good price for it.",
-      "You decide having a better fallback option for when you can't cast spells is a good investment.  You pay the price for the oil, and immediately rub some on your staff.  You prod the ground with your staff and it makes more of a dent than you expected.  Pleased, you carry on your way.",
+      "You decide having a better fallback option for when you can't cast spells is a good investment.  You pay the price for the oil and immediately rub some on your staff.  You hit the ground with the butt of your staff and it makes more of a dent than you expected.  Pleased, you carry on your way.",
       "You decide that gold is always useful.  You sell one of your less useful potions to an alchemist and receive a bag of gold in return.  You're not convinced the potion was worth as much as he was offering, but that's not your problem.  You carry on your way.",
       "You see nothing that interests you here.  You carry on your way."
     ],
@@ -20,16 +20,14 @@
     "NAME": "Fighting Pit",
     "DESCRIPTIONS": [
       "You come across a building that looks like a colosseum, except smaller.  And painted to look like stone instead of actually made of stone.  A gremlin in oversized armor clanks his way up to you.  \"Are you here to fight?  We have great prizes!  Especially if you take on our toughest fight!\"",
-      "You easily dispatch your opponents.  The gremlins overseeing the fight seem displeased that you undersold your fighting capabilities, but they don't seem eager to confront you either.  The clanky gremlin hands brings you a moderate amount of gold without saying anything.",
+      "You easily dispatch your opponents.  The gremlins overseeing the fight seem displeased that you undersold your fighting capabilities, but they don't seem eager to confront you either.  The clanky gremlin brings you a moderate amount of gold without saying anything.",
       "It wasn't easy but you prevail.  The crowd erupts into cheers.  The clanky gremlin comes up to you and hands you a flask filled with dark green swirling smoke.  \"Here is your prize!  Don't drop it!  Seriously, DO NOT DROP IT!\"",
       "You see no reason to risk your neck here.  The clanky gremlin suggests you could buy a ticket to spectate, but you aren't interested.",
-      "You take your winnings and leave.",
-      "Great Rewards",
-      "Standard elite rewards and a #yPoisonous #ySmoke #yBomb."
+      "You take your winnings and leave."
     ],
     "OPTIONS": [
-      "[Regular Fight] Fight an easy fight.  Normal Combat Rewards.",
-      "[Tough Fight] Fight a tough Elite.  Gain Great Rewards.",
+      "[Regular Fight] #rFight #ran #reasy #rfight.  #gNormal #gCombat #gRewards.",
+      "[Tough Fight] #rFight #ra #rtough #rElite.  #gGain #gGreat #gRewards.",
       "[Refuse]",
       "[Collect Winnings]",
       "[Leave]"
@@ -72,7 +70,7 @@
     "NAME": "Strange Garden",
     "DESCRIPTIONS": [
       "You find a large garden plot, unattended.  A sign at the gate warns that \"Anyone who takes from here will lose something in return.\"  You can feel magic here, so the sign is likely not bluster.  However, you do spot some potential reagents for a potion, and some berries that could sate your hunger.",
-      "As you tug the blue bulbs out of the ground, you have a nagging feeling in the back of your head like you've just forgotten something important.  You push the thought aside and mash the blue bulbs into a paste, cast the incantation, and mix them with water to make it drinkable.",
+      "As you tug the blue bulbs out of the ground, you have a nagging feeling in the back of your head like you've just forgotten something important.  You push the thought aside and mash the blue bulbs into a paste, cast the incantation, then mix them with water to make it drinkable.",
       "The berries are delicious and you feel more energetic after eating them.  Hours later, as you practice your cantrips before bed, you realize you've completely forgotten one of them.",
       "You can feel the enchantment over the garden, even if you can't tell what it does.  You decide it is wisest to leave it alone."
     ],
@@ -148,11 +146,11 @@
       "The spell smith finishes his work, and the quality is top notch.  Do you want another service?",
       "The spell smith finishes his work, and hands you a large bag of gold.  Do you want another service?",
       "Suitable Card",
-      "An Arcanist card that costs less than 3."
+      "An Arcanist card with less than two elements."
     ],
     "OPTIONS": [
-      "[Enhance] #y!E! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",
-      "[Add Element] Requires !E! Gold and a suitable card.",
+      "[Enhance] #y!E3! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",
+      "[Add Element] Requires !E3! Gold and a suitable card.",
       "[Extract Element] Remove Elemental Card. #rGain !CardString!. #yGain #y!E2! #yGold.",
       "[Extract Element] Requires a suitable card.",
       "[Leave]",

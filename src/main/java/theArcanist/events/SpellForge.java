@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theArcanist.ArcanistMod;
 import theArcanist.TheArcanist;
 import theArcanist.cards.AbstractArcanistCard;
+import theArcanist.cards.AbstractResonantCard;
 import theArcanist.cards.NullElement;
 import theArcanist.damagemods.DarkDamage;
 import theArcanist.damagemods.ForceDamage;
@@ -82,6 +83,8 @@ public class SpellForge extends AbstractArcanistEvent {
             else if (element != null) {
                 AbstractArcanistCard c = (AbstractArcanistCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 c.addModifier(element);
+                if (c instanceof AbstractResonantCard)
+                    ((AbstractResonantCard) c).resonance.damageMods.add(element);
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH/2.0f, (float)Settings.HEIGHT/2.0F));
@@ -128,7 +131,7 @@ public class SpellForge extends AbstractArcanistEvent {
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[8], true);
-                    imageEventText.setDialogOption(options[10]);
+                    imageEventText.setDialogOption(options[9]);
                     break;
                 case 1:
                     isRemoving = true;
@@ -196,7 +199,6 @@ public class SpellForge extends AbstractArcanistEvent {
     private static boolean checkForUpgradableCard() {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
-                    card.rarity != AbstractCard.CardRarity.BASIC &&
                     ((AbstractArcanistCard) card).damageModList.size() < 2)
                 return true;
         return false;
@@ -205,7 +207,6 @@ public class SpellForge extends AbstractArcanistEvent {
     private static boolean checkForUpgradableCard(AbstractArcanistCard.elenum ele) {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractArcanistCard && card.type == AbstractCard.CardType.ATTACK &&
-                    card.rarity != AbstractCard.CardRarity.BASIC  &&
                     !((AbstractArcanistCard) card).damageModList.contains(ele) &&
                     ((AbstractArcanistCard) card).damageModList.size() < 2)
                 return true;
@@ -216,7 +217,7 @@ public class SpellForge extends AbstractArcanistEvent {
         imageEventText.clearAllDialogs();
         NullElement curse = new NullElement();
         if (adp().gold >= amount && checkForUpgradableCard())
-            imageEventText.setDialogOption(options[0]);
+            imageEventText.setDialogOption(options[0].replace("!E3!", String.valueOf(amount)));
         else
             imageEventText.setDialogOption(options[1], true);
         if (checkForElementalCard())

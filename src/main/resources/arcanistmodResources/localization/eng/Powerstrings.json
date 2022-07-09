@@ -153,6 +153,12 @@
       "At the start of your turn, draw !A! cards and discard cards."
     ]
   },
+  "${ModID}:SoulFlameBarrierPower": {
+    "NAME": "Soul Fire Barrier",
+    "DESCRIPTIONS": [
+      "Whenever you are attacked this turn, deal !A! [${ModID}:SoulFireIcon] back."
+    ]
+  },
   "${ModID}:SoulFeedPower": {
     "NAME": "Soul Feed",
     "DESCRIPTIONS": [

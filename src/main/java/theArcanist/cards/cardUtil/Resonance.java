@@ -178,10 +178,10 @@ public class Resonance {
         }
         if (draw > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[7]);
+            builder.append(uiStringsConcise.TEXT[7].replace("!X5!", String.valueOf(draw)));
         }
-        else if (energy > 0) {
-            newLine = addNewLine(newLine, builder);
+        if (energy > 0) {
+            addNewLine(newLine, builder);
             builder.append(uiStringsConcise.TEXT[8].replace("!X6!", String.valueOf(energy)));
         }
 
@@ -206,6 +206,7 @@ public class Resonance {
         copy.jinx = jinx;
         copy.draw = draw;
         copy.energy = energy;
+        copy.damageMods.addAll(damageMods);
         return copy;
     }
 }

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.ArcanistMod;
+import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.GenericResonantCard;
 import theArcanist.cards.cardUtil.Resonance;
 
@@ -47,6 +48,8 @@ public class ResonatingPower extends AbstractArcanistPower implements OnReceiveP
 
     public void atEndOfTurn(boolean isPlayer) {
         GenericResonantCard card = new GenericResonantCard(resonance.resClone());
+        for (AbstractArcanistCard.elenum e : resonance.damageMods)
+            card.addModifier(e);
         card.applyPowers();
         card.initializeDescription();
         topDeck(card);

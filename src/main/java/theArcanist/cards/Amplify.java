@@ -1,7 +1,5 @@
 package theArcanist.cards;
 
-import theArcanist.cards.cardUtil.Resonance;
-
 import static theArcanist.ArcanistMod.makeID;
 
 public class Amplify extends AbstractResonantCard {
@@ -13,14 +11,13 @@ public class Amplify extends AbstractResonantCard {
 
     public Amplify() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        resonance.amplify = baseMagicNumber;
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        resonance = new Resonance(baseDamage);
-        resonance.amplify = baseMagicNumber;
     }
 
     public void upp() {

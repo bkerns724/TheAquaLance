@@ -1,7 +1,5 @@
 package theArcanist.cards;
 
-import theArcanist.cards.cardUtil.Resonance;
-
 import static theArcanist.ArcanistMod.makeID;
 
 public class VengefulChanneling extends AbstractResonantCard {
@@ -13,14 +11,13 @@ public class VengefulChanneling extends AbstractResonantCard {
 
     public VengefulChanneling() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        resonance.revenge = baseMagicNumber;
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        resonance = new Resonance(baseDamage);
-        resonance.revenge = baseMagicNumber;
     }
 
     public void upp() {

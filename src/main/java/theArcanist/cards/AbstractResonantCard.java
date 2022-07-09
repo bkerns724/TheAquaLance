@@ -1,5 +1,6 @@
 package theArcanist.cards;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theArcanist.cards.cardUtil.Resonance;
@@ -11,10 +12,7 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
 
     public AbstractResonantCard(String id, int cost, CardType type, CardRarity rarity, CardTarget target) {
         super(id, cost, type, rarity, target);
-        if (resonance != null) {
-            resonance.draw = extraDraw;
-            resonance.energy = extraEnergy;
-        }
+        resonance = new Resonance(baseDamage);
         initializeDescription();
     }
 
@@ -53,6 +51,16 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
             overrideRawDesc = false;
         }
         super.initializeDescription();
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractResonantCard copy = (AbstractResonantCard) super.makeStatEquivalentCopy();
+        resonance.draw = extraDraw;
+        resonance.energy = extraEnergy;
+        resonance.damageMods.addAll(damageModList);
+        copy.resonance = resonance.resClone();
+        return copy;
     }
 
     public void upp() {

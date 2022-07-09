@@ -1,7 +1,6 @@
 package theArcanist.cards;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import theArcanist.cards.cardUtil.Resonance;
 
 import static theArcanist.ArcanistMod.makeID;
 
@@ -16,14 +15,13 @@ public class DefensiveChanneling extends AbstractResonantCard {
 
     public DefensiveChanneling() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        resonance.block = baseBlock;
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
-        resonance = new Resonance(baseDamage);
-        resonance.block = baseBlock;
     }
 
     public void upp() {

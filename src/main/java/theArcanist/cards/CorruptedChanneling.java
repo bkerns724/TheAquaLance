@@ -2,7 +2,6 @@ package theArcanist.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.cards.cardUtil.Resonance;
 import theArcanist.powers.DecayingPower;
 
 import static theArcanist.ArcanistMod.makeID;
@@ -17,14 +16,13 @@ public class CorruptedChanneling extends AbstractResonantCard {
 
     public CorruptedChanneling() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        resonance.decay = baseMagicNumber;
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        resonance = new Resonance(baseDamage);
-        resonance.decay = baseMagicNumber;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
