@@ -56,10 +56,9 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractResonantCard copy = (AbstractResonantCard) super.makeStatEquivalentCopy();
-        resonance.draw = extraDraw;
-        resonance.energy = extraEnergy;
-        resonance.damageMods.addAll(damageModList);
         copy.resonance = resonance.resClone();
+        copy.initializeDescription();
+        initializeDescription();
         return copy;
     }
 

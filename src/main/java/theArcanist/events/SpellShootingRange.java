@@ -85,6 +85,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
 
                 c.extraDraw += 1;
+                c.resonance.extraDraw += 1;
                 c.initializeDescription();
 
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
@@ -102,6 +103,7 @@ public class SpellShootingRange extends AbstractArcanistEvent {
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
 
                 c.extraEnergy += 1;
+                c.resonance.extraEnergy += 1;
                 c.initializeDescription();
 
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),

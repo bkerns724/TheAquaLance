@@ -1,5 +1,6 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import theArcanist.TheArcanist;
 import theArcanist.actions.MyAddTempHPAction;
 
@@ -19,6 +20,7 @@ public class VialOfNectar extends AbstractArcanistRelic {
 
     @Override
     public void atBattleStart() {
+        atb(new RelicAboveCreatureAction(adp(), this));
         atb(new MyAddTempHPAction(adp(), adp(), TEMP_HP_AMOUNT));
     }
 }

@@ -1,6 +1,7 @@
 package theArcanist.relics;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -28,8 +29,11 @@ public class ClownNose extends AbstractArcanistRelic implements OnApplyPowerReli
 
     @Override
     public boolean onApplyPower(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
-        if (target != adp() && !target.hasPower(ClownNosePower.POWER_ID))
+        if (target != adp() && !target.hasPower(ClownNosePower.POWER_ID)) {
+            flash();
+            atb(new RelicAboveCreatureAction(target, this));
             atb(new ClownNoseAction((AbstractMonster) target));
+        }
         return true;
     }
 }

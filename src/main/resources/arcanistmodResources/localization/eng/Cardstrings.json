@@ -33,8 +33,8 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "A shield isn't as good as a spell but at least you can learn to use it faster."
   },
-  "${ModID}:DarkCurse": {
-    "NAME": "Dark Curse",
+  "${ModID}:EldritchCurse": {
+    "NAME": "Eldritch Curse",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
     "FLAVOR": "The Voodoo that you do."
   },
@@ -91,8 +91,8 @@
       "Scourge is equal to the amount of #yJinx on the target."
     ]
   },
-  "${ModID}:SoulBurst": {
-    "NAME": "Soul Burst",
+  "${ModID}:DemonsCantrip": {
+    "NAME": "Demon's Cantrip",
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Powerful.  Efficient.  It's a bargain."
   },
@@ -187,8 +187,8 @@
     "NAME": "Heavy Sigil",
     "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL Enemy loses !M! Strength."
   },
-  "${ModID}:BlackSigil": {
-    "NAME": "Black Sigil",
+  "${ModID}:EldritchSigil": {
+    "NAME": "Eldritch Sigil",
     "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL If Fatal, heal !M! HP."
   },
   "${ModID}:CrumblingSigil": {
@@ -281,8 +281,8 @@
     "NAME": "Chaotic Flurry",
     "DESCRIPTION": "{@@}Play the top !M! {!M!|1=card|@=cards} of your draw pile."
   },
-  "${ModID}:SoulFeed": {
-    "NAME": "Soul Feed",
+  "${ModID}:ConsumeSouls": {
+    "NAME": "Consume Souls",
     "DESCRIPTION": "Whenever a non-minion enemy dies, gain !M! Max HP."
   },
   "${ModID}:SuddenChill": {
@@ -337,16 +337,16 @@
     "NAME": "Compression Wave",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Draw a card. NL Discard a card."
   },
-  "${ModID}:DarkEmbrace": {
-    "NAME": "Dark Embrace",
+  "${ModID}:SpiritLeech": {
+    "NAME": "Spirit Leech",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:IceNeedles": {
     "NAME": "Ice Needles",
     "DESCRIPTION": "Deal !D! damage !M! times."
   },
-  "${ModID}:CursedLance": {
-    "NAME": "Cursed Lance",
+  "${ModID}:ExploitWeakness": {
+    "NAME": "Exploit Weakness",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx for every debuff."
   },
   "${ModID}:SackOfDebris": {
@@ -365,12 +365,12 @@
     "NAME": "Mana Burst",
     "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E]."
   },
-  "${ModID}:SpiritPressure": {
-    "NAME": "Spirit Pressure",
+  "${ModID}:MenacingPresence": {
+    "NAME": "Menacing Presence",
     "DESCRIPTION": "At the start of your turn, apply !M! ${ModID}:Jinx to ALL enemies."
   },
-  "${ModID}:CursedSteam": {
-    "NAME": "Cursed Steam",
+  "${ModID}:HexingSteam": {
+    "NAME": "Hexing Steam",
     "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !${ModID}:M2! ${ModID}:Jinx."
   },
   "${ModID}:Flare": {
@@ -400,8 +400,8 @@
     "NAME": "Hide In Sleeve",
     "DESCRIPTION": "Add a random ${ModID}:Sigil to your hand. NL Discard it."
   },
-  "${ModID}:SoulIgnition": {
-    "NAME": "Soul Ignition",
+  "${ModID}:Ignition": {
+    "NAME": "Ignition",
     "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs.",
     "EXTENDED_DESCRIPTION" : [
       "Enemy does not have enough debuffs."

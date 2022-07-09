@@ -12,7 +12,7 @@ import theArcanist.TheArcanist;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.ArcaneBeam;
 import theArcanist.cards.ChaoticFlurry;
-import theArcanist.cards.SoulFeed;
+import theArcanist.cards.ConsumeSouls;
 
 import java.util.ArrayList;
 import static theArcanist.util.Wiz.*;
@@ -45,7 +45,7 @@ public class NeowPatch {
             if (__instance.type == ArcanistMod.Enums.UNIQUE_CARD_REWARD) {
                 ArrayList<AbstractArcanistCard> list = new ArrayList<>();
                 list.add(new ArcaneBeam());
-                list.add(new SoulFeed());
+                list.add(new ConsumeSouls());
                 list.add(new ChaoticFlurry());
                 int x = AbstractDungeon.cardRng.random(0, list.size() - 1);
                 AbstractArcanistCard card = list.get(x);

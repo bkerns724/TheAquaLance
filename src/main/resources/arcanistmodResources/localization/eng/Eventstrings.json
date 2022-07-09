@@ -53,9 +53,9 @@
     "NAME": "Bustling Market",
     "DESCRIPTIONS": [
       "You come across a busy market in the middle of the city.  You don't see anything that could aid you in the battles ahead; most of the stalls are selling things like food, clothing, and other household goods.  However, eventually you come across a potion shop.  They're almost sold out after a busy day but they do have one interesting (and expensive) item left: a potent magical poison that can soak into the wood of a wand or staff, empowering the spells cast with it for the next several minutes with a toxic effect.",
-      "This poison was expensive, but you're satisfied with your purchase.",
-      "You're giving up a valuable potion, to be sure, but you think this poison is even more useful to you.",
-      "You don't think this poison is worth the price, so you leave."
+      "The poison was expensive, but you're satisfied with your purchase.",
+      "You're giving up a valuable potion, but you think the poison is even more useful to you.",
+      "You don't think the poison is worth the price, so you leave."
     ],
     "OPTIONS": [
       "[Buy] #y!E! #yGold: #gGain !PotionString2!",
@@ -88,7 +88,7 @@
     "DESCRIPTIONS": [
       "Before you lies a pedestal with a lamp resting on top.  It burns with a purple flame.  Piled up against the pedestal is a moderately large sum of #ygold.  When you try to pick some up, the flame from the lamp swats your hand away.  Rubbing your stinging hand, you muse on what to do.",
       "A powerful relic is worth more than #ygold, so you pick up the lamp instead.  Hot, burning agony shoots through your entire body, but before you can think to drop the lamp it starts to quickly subside.",
-      "You conjure a strong wind to blow out the lamp.  You pick up all the #ygold, but it isn't enough.  ~You~ ~need~ ~more~.  ~You~ ~need~ ~more~.",
+      "You conjure a strong wind to blow out the lamp.  You pick up all the #ygold, but it isn't enough.  #r~You~ #r~need~ #r~more.~  #r~YOU~ #r~NEED~ #r~MORE!~",
       "This whole thing seems more trouble than it is worth."
     ],
     "OPTIONS": [
@@ -102,7 +102,7 @@
     "NAME": "Bizarre Market",
     "DESCRIPTIONS": [
       "You come across a strange market.  Most of the merchants appear to be mutated in some form or another, or completely inhuman.  You spot a stall manned by a pair of darklings, of all things.  One of the more human merchants catches your attention.  \"I have an extremely powerful potion for trade, it'll make your flesh as hard as steel.  I'm not taking #ygold though, you have to give me something equally rare in return.\"",
-      "You hand over one of your most powerful relics, and she hands over the potion in return.  In a sudden but small burst of fire, she disappears.",
+      "You hand over one of your most powerful relics, and she hands over the potion in return.  In a small but sudden burst of flame, she disappears.",
       "You indicate that you don't have anything valuable enough to trade.  While she is trying to barter with someone else, you quickly snatch the potion and walk away.",
       "You indicate that you don't have anything valuable enough to trade.  While she is trying to barter with someone else, you quickly snatch the potion.  Her arm suddenly shifts into a large, clawed arm and slashes you across your back.  The injury is excruciating, but you toss the potion back at her and flee as she tries to catch it.",
       "You don't think you can negotiate a deal in your favor, so you leave."
@@ -192,7 +192,7 @@
       "You come across a small stone building, with oddly colored smoke billowing out of its chimney.  A sign above the door declares it to be \"The Malice Shop.\"  Curious as to how you buy malice, you enter the door.  A Lady dressed completely in red greets you, and offers you potions to enhance the cruelty of your spells.  The cost she proposes is not in coin, however.",
       "You decide to give up some blood, since you can always heal later.  You drink the offered potion and can feel the increase in your power.",
       "You decide to give up a little vitality, to deny your enemies a lot of theirs.  You drink the offered potion and can feel the increase in your power.",
-      "You are really suspicious of the costs of these options.  You leave the shop.",
+      "You are really suspicious of the costs of these options.  Like, super suspicious, this lady isn't even being subtle.  You leave the shop.",
       "Choose cards to boost.",
       "Choose cards to boost."
     ],
@@ -205,7 +205,7 @@
     ]
   },
   "${ModID}:SpellShootingRange": {
-    "NAME": "Spell Shooting Range",
+    "NAME": "Shooting Range",
     "DESCRIPTIONS": [
       "You come across a field, training dummies set up on one side, a group of people casting spells on the other.  The spells are basic resonant spells, nothing interesting.  What is interesting, however, is the speed at which the instructor can sling a spell without spending much of her mana at all.  You decide you could pick up some pointers, but she says she is more interested in unique trinkets than gold.",
       "You practice being faster with your spell.  After some practice, it barely takes any time at all to cast it.",

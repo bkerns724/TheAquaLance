@@ -1,5 +1,6 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import theArcanist.TheArcanist;
 
@@ -32,6 +33,8 @@ public class CeremonialRobe extends AbstractArcanistRelic {
 
     @Override
     public void atBattleStart() {
+        flash();
+        atb(new RelicAboveCreatureAction(adp(), this));
         applyToSelf(new DexterityPower(adp(), -DEX_LOSS));
     }
 }

@@ -7,13 +7,13 @@ import theArcanist.powers.SpiritPressurePower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class SpiritPressure extends AbstractArcanistCard {
-    public final static String ID = makeID(SpiritPressure.class.getSimpleName());
+public class MenacingPresence extends AbstractArcanistCard {
+    public final static String ID = makeID(MenacingPresence.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 2;
 
-    public SpiritPressure() {
+    public MenacingPresence() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 

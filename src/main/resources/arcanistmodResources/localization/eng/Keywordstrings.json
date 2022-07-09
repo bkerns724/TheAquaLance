@@ -45,7 +45,7 @@
       "Resonant",
       "resonant"
     ],
-    "DESCRIPTION": "When played, combines with other resonant cards played that turn and is added to the top of your draw pile next turn."
+    "DESCRIPTION": "Resonant cards are returned to the top of your draw pile at the end of your turn.  If you play multiple resonant cards in one turn, they merge into a single stronger card."
   },
   {
     "PROPER_NAME": "Frostbite",

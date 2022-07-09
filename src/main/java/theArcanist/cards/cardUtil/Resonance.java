@@ -21,8 +21,8 @@ public class Resonance {
     public int decay = 0;
     public int revenge = 0;
     public int jinx = 0;
-    public int draw = 0;
-    public int energy = 0;
+    public int extraDraw = 0;
+    public int extraEnergy = 0;
     public ArrayList<elenum> damageMods = new ArrayList<>();
 
     private static final int MERGE_REDUCTION = 4;
@@ -51,10 +51,10 @@ public class Resonance {
             applyToSelf(new SoulFlameBarrierPower(adp(), revenge));
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
-        if (draw > 0)
-            cardDraw(draw);
-        if (energy > 0)
-            atb(new GainEnergyAction(energy));
+        if (extraDraw > 0)
+            cardDraw(extraDraw);
+        if (extraEnergy > 0)
+            atb(new GainEnergyAction(extraEnergy));
     }
 
     public void toPower() {
@@ -72,8 +72,8 @@ public class Resonance {
         decay += inRes.decay;
         revenge += inRes.revenge;
         jinx += inRes.jinx;
-        draw += inRes.draw;
-        energy += inRes.energy;
+        extraDraw += inRes.extraDraw;
+        extraEnergy += inRes.extraEnergy;
         for (elenum e : inRes.damageMods )
             if (!damageMods.contains(e))
                 damageMods.add(e);
@@ -91,9 +91,9 @@ public class Resonance {
             count += 3;
         if (jinx > 0)
             count++;
-        if (draw > 0)
+        if (extraDraw > 0)
             count++;
-        if (energy > 0)
+        if (extraEnergy > 0)
             count++;
 
         if (count >= 5)
@@ -119,18 +119,18 @@ public class Resonance {
             builder.append(uiStrings.TEXT[5].replace("!X3!", String.valueOf(revenge)));
         if (jinx > 0)
             builder.append(uiStrings.TEXT[6].replace("!X4!", String.valueOf(jinx)));
-        if (draw == 1)
+        if (extraDraw == 1)
             builder.append(uiStrings.TEXT[7]);
-        else if (draw > 1)
-            builder.append(uiStrings.TEXT[8].replace("!X5!", String.valueOf(draw)));
-        if (energy == 1)
+        else if (extraDraw > 1)
+            builder.append(uiStrings.TEXT[8].replace("!X5!", String.valueOf(extraDraw)));
+        if (extraEnergy == 1)
             builder.append(uiStrings.TEXT[9]);
-        else if (energy == 2)
+        else if (extraEnergy == 2)
             builder.append(uiStrings.TEXT[10]);
-        else if (energy == 3)
+        else if (extraEnergy == 3)
             builder.append(uiStrings.TEXT[11]);
-        else if (energy > 3)
-            builder.append(uiStrings.TEXT[12].replace("!X6!", String.valueOf(energy)));
+        else if (extraEnergy > 3)
+            builder.append(uiStrings.TEXT[12].replace("!X6!", String.valueOf(extraEnergy)));
 
         return builder.toString();
     }
@@ -176,13 +176,13 @@ public class Resonance {
             newLine = addNewLine(newLine, builder);
             builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(jinx)));
         }
-        if (draw > 0) {
+        if (extraDraw > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[7].replace("!X5!", String.valueOf(draw)));
+            builder.append(uiStringsConcise.TEXT[7].replace("!X5!", String.valueOf(extraDraw)));
         }
-        if (energy > 0) {
+        if (extraEnergy > 0) {
             addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[8].replace("!X6!", String.valueOf(energy)));
+            builder.append(uiStringsConcise.TEXT[8].replace("!X6!", String.valueOf(extraEnergy)));
         }
 
         return builder.toString();
@@ -204,8 +204,8 @@ public class Resonance {
         copy.decay = decay;
         copy.revenge = revenge;
         copy.jinx = jinx;
-        copy.draw = draw;
-        copy.energy = energy;
+        copy.extraDraw = extraDraw;
+        copy.extraEnergy = extraEnergy;
         copy.damageMods.addAll(damageMods);
         return copy;
     }

@@ -6,14 +6,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.getDebuffCount;
 
-public class SoulIgnition extends AbstractArcanistCard {
-    public final static String ID = makeID(SoulIgnition.class.getSimpleName());
+public class Ignition extends AbstractArcanistCard {
+    public final static String ID = makeID(Ignition.class.getSimpleName());
     private final static int DAMAGE = 32;
     private final static int UPGRADE_DAMAGE = 10;
     private final static int MAGIC = 5;
     private final static int COST = 0;
 
-    public SoulIgnition() {
+    public Ignition() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 

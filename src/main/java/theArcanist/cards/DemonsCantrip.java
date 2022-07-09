@@ -6,13 +6,13 @@ import theArcanist.ArcanistMod;
 
 import static theArcanist.ArcanistMod.makeID;
 
-public class SoulBurst extends AbstractArcanistCard {
-    public final static String ID = makeID("SoulBurst");
+public class DemonsCantrip extends AbstractArcanistCard {
+    public final static String ID = makeID("DemonsCantrip");
     private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 1;
 
-    public SoulBurst() {
+    public DemonsCantrip() {
         super(ID, COST, CardType.ATTACK, ArcanistMod.Enums.UNIQUE, CardTarget.ENEMY);
     }
 

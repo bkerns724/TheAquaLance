@@ -127,7 +127,7 @@ public class TheArcanist extends CustomPlayer {
         if (x == 0)
             retVal.add(FieryCurse.ID);
         else
-            retVal.add(DarkCurse.ID);
+            retVal.add(EldritchCurse.ID);
 
         if (y == 0)
             retVal.add(FrostBolt.ID);

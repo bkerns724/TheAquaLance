@@ -1,5 +1,6 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.Clumsy;
 import com.megacrit.cardcrawl.core.Settings;
@@ -9,8 +10,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.adp;
-import static theArcanist.util.Wiz.applyToSelf;
+import static theArcanist.util.Wiz.*;
 
 public class ReverseOmamori extends AbstractArcanistRelic {
     public static final String ID = makeID(ReverseOmamori.class.getSimpleName());
@@ -25,8 +25,11 @@ public class ReverseOmamori extends AbstractArcanistRelic {
 
     @Override
     public void atBattleStart() {
-        if (counter > 0)
+        if (counter > 0) {
+            flash();
+            atb(new RelicAboveCreatureAction(adp(), this));
             applyToSelf(new DexterityPower(adp(), counter));
+        }
     }
 
     @Override

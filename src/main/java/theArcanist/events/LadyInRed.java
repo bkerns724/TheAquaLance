@@ -114,10 +114,14 @@ public class LadyInRed extends AbstractArcanistEvent {
                     xOffsetBase += 0.09f;
                 for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
                     AbstractArcanistCard arCard = ((AbstractArcanistCard) card);
-                    if (arCard.magicOneIsDebuff)
+                    if (arCard.magicOneIsDebuff) {
                         arCard.baseMagicNumber *= 2;
-                    if (arCard.magicTwoIsDebuff)
+                        arCard.magicNumber *= 2;
+                    }
+                    if (arCard.magicTwoIsDebuff) {
                         arCard.baseSecondMagic *= 2;
+                        arCard.magicNumber *= 2;
+                    }
                     arCard.debuffIncrease = true;
                     card.initializeDescription();
                     if (count == 0)

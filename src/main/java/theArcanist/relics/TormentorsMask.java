@@ -1,11 +1,11 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import theArcanist.TheArcanist;
 import theArcanist.powers.JinxPower;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.applyToEnemy;
-import static theArcanist.util.Wiz.forAllMonstersLiving;
+import static theArcanist.util.Wiz.*;
 
 public class TormentorsMask extends AbstractArcanistRelic {
     public static final String ID = makeID(TormentorsMask.class.getSimpleName());
@@ -19,6 +19,9 @@ public class TormentorsMask extends AbstractArcanistRelic {
 
     @Override
     public void atBattleStart() {
-        forAllMonstersLiving(m -> applyToEnemy(m, new JinxPower(m, JINX_AMOUNT)));
+        forAllMonstersLiving(m -> {
+            atb(new RelicAboveCreatureAction(adp(), this));
+            applyToEnemy(m, new JinxPower(m, JINX_AMOUNT));
+        });
     }
 }

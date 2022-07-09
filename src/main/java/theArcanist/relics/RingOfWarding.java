@@ -1,10 +1,11 @@
 package theArcanist.relics;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theArcanist.TheArcanist;
 
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.cardDraw;
+import static theArcanist.util.Wiz.*;
 
 public class RingOfWarding extends AbstractArcanistRelic {
     public static final String ID = makeID(RingOfWarding.class.getSimpleName());
@@ -31,6 +32,8 @@ public class RingOfWarding extends AbstractArcanistRelic {
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
         if (drawnCard.color == AbstractCard.CardColor.CURSE && counter >= 1) {
+            flash();
+            atb(new RelicAboveCreatureAction(adp(), this));
             cardDraw(1);
             counter--;
             if (counter <= 0)

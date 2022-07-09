@@ -1,6 +1,7 @@
 package theArcanist.relics;
 
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import theArcanist.TheArcanist;
 import theArcanist.powers.JinxPower;
@@ -21,7 +22,11 @@ public class BlackCandle extends AbstractArcanistRelic {
 
     @Override
     public void onPlayerEndTurn() {
+        flash();
+        forAllMonstersLiving(m -> {
+            atb(new RelicAboveCreatureAction(m, this));
+            applyToEnemy(m, new JinxPower(m, amount));
+        });
         atb(new MakeTempCardInDiscardAction(new VoidCard(), 1));
-        forAllMonstersLiving(m -> applyToEnemy(m, new JinxPower(m, amount)));
     }
 }

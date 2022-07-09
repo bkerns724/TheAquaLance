@@ -23,7 +23,6 @@ public class SuddenChill extends AbstractArcanistCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
-        magicOneIsDebuff = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
         addModifier(elenum.ICE);
         hasScourge = true;

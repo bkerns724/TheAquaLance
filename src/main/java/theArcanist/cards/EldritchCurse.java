@@ -7,14 +7,14 @@ import theArcanist.powers.JinxPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.applyToEnemy;
 
-public class DarkCurse extends AbstractArcanistCard {
-    public final static String ID = makeID(DarkCurse.class.getSimpleName());
+public class EldritchCurse extends AbstractArcanistCard {
+    public final static String ID = makeID(EldritchCurse.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
     private final static int DAMAGE = 7;
 
-    public DarkCurse() {
+    public EldritchCurse() {
         super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
     }
 

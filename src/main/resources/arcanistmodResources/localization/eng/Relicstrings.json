@@ -222,7 +222,7 @@
     "NAME": "Soul Lamp",
     "FLAVOR": "The flame never goes out.",
     "DESCRIPTIONS": [
-      "The first time you are attacked each turn, deal !R! #y[${ModID}:SoulFireIcon] back."
+      "The first time you are attacked each turn, deal !R! [${ModID}:SoulFireIcon] back."
     ]
   },
   "${ModID}:TransparentBracelet": {

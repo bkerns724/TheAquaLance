@@ -9,14 +9,14 @@ import theArcanist.powers.JinxPower;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class CursedSteam extends AbstractArcanistCard {
-    public final static String ID = makeID(CursedSteam.class.getSimpleName());
+public class HexingSteam extends AbstractArcanistCard {
+    public final static String ID = makeID(HexingSteam.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int SECOND_MAGIC = 1;
     private final static int COST = 1;
 
-    public CursedSteam() {
+    public HexingSteam() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 

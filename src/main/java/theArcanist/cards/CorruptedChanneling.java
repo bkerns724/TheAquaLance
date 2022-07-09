@@ -1,11 +1,6 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theArcanist.powers.DecayingPower;
-
 import static theArcanist.ArcanistMod.makeID;
-import static theArcanist.util.Wiz.applyToEnemy;
 
 public class CorruptedChanneling extends AbstractResonantCard {
     public final static String ID = makeID(CorruptedChanneling.class.getSimpleName());
@@ -23,11 +18,6 @@ public class CorruptedChanneling extends AbstractResonantCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-    }
-
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
-        applyToEnemy(m, new DecayingPower(m, magicNumber));
     }
 
     public void upp() {

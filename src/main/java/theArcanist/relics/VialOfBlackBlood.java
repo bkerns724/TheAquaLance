@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theArcanist.TheArcanist;
-import theArcanist.cards.SoulBurst;
+import theArcanist.cards.DemonsCantrip;
 
 import java.util.Iterator;
 
@@ -19,7 +19,7 @@ public class VialOfBlackBlood extends AbstractArcanistRelic {
 
     public VialOfBlackBlood() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheArcanist.Enums.ARCANIST_BLARPLE_COLOR);
-        cardToPreview = new SoulBurst();
+        cardToPreview = new DemonsCantrip();
         setUpdatedDescription();
     }
 
@@ -36,7 +36,7 @@ public class VialOfBlackBlood extends AbstractArcanistRelic {
                         CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
                         for(int j = 0; j < count; ++j) {
-                            AbstractCard card = new SoulBurst();
+                            AbstractCard card = new DemonsCantrip();
 
                             for (AbstractRelic relic : adp().relics)
                                 relic.onPreviewObtainCard(card);

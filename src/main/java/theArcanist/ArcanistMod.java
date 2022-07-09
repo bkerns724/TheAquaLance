@@ -401,6 +401,7 @@ public class ArcanistMod implements
         BaseMod.addEvent(MysteriousHoard.getParams());
         BaseMod.addEvent(VoidSpirits.getParams());
         BaseMod.addEvent(SpellForge.getParams());
+        BaseMod.addEvent(MarketActThree.getParams());
         BaseMod.addEvent(ResearchCenter.getParams());
         BaseMod.addEvent(LadyInRed.getParams());
         BaseMod.addEvent(SpellShootingRange.getParams());

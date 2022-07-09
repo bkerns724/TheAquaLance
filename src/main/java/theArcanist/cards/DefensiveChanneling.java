@@ -1,12 +1,9 @@
 package theArcanist.cards;
 
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-
 import static theArcanist.ArcanistMod.makeID;
 
 public class DefensiveChanneling extends AbstractResonantCard {
     public final static String ID = makeID(DefensiveChanneling.class.getSimpleName());
-    public final static String LOC_NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int BLOCK = 3;

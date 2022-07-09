@@ -99,6 +99,8 @@ public class ResearchCenter extends AbstractArcanistEvent {
                 AbstractArcanistCard c = (AbstractArcanistCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 c.sigil = true;
                 c.cost = -2;
+                if (c.target == AbstractCard.CardTarget.ENEMY)
+                    c.target = AbstractCard.CardTarget.ALL_ENEMY;
                 c.initializeDescription();
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
@@ -122,6 +124,8 @@ public class ResearchCenter extends AbstractArcanistEvent {
                     for (AbstractCard c :  adp().masterDeck.group) {
                         if (c instanceof AbstractArcanistCard && ((AbstractArcanistCard) c).sigil)
                             retainGroup.addToTop(c);
+                        for (LargeDialogOptionButton but : imageEventText.optionList)
+                            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, new ArrayList<>());
                     }
                     AbstractDungeon.gridSelectScreen.open(retainGroup, 1, descriptions[2], false,
                             false, false, false);
@@ -135,6 +139,8 @@ public class ResearchCenter extends AbstractArcanistEvent {
                     }
                     AbstractDungeon.gridSelectScreen.open(sigilGroup, 1, descriptions[4], false,
                             false, false, false);
+                    for (LargeDialogOptionButton but : imageEventText.optionList)
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, new ArrayList<>());
                     break;
                 case 2:
                     screen = CUR_SCREEN.COMPLETE;
@@ -176,6 +182,8 @@ public class ResearchCenter extends AbstractArcanistEvent {
 
     private void drinkPotion() {
         int x = AbstractDungeon.miscRng.random(0, 2);
+        ArcanistMod.logger.info("potion");
+        ArcanistMod.logger.info(x);
         if (x == 0)
             return;
         if (x == 1) {

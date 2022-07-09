@@ -536,6 +536,8 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractArcanistCard card = (AbstractArcanistCard) super.makeStatEquivalentCopy();
+        card.baseMagicNumber = baseMagicNumber;
+        card.magicNumber = magicNumber;
         card.secondMagic = secondMagic;
         card.baseSecondMagic = baseSecondMagic;
         card.upgradedSecondMagic = upgradedSecondMagic;
@@ -589,7 +591,9 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         baseDamage = obj.baseDamage;
         baseBlock = obj.baseBlock;
         baseMagicNumber = obj.baseMagic;
+        magicNumber = baseMagicNumber;
         baseSecondMagic = obj.baseSecondMagic;
+        secondMagic = baseSecondMagic;
     }
 
     @Override

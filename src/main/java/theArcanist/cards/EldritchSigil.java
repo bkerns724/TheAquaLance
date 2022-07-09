@@ -10,14 +10,14 @@ import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.atb;
 import static theArcanist.util.Wiz.getLowestHealthEnemy;
 
-public class BlackSigil extends AbstractArcanistCard {
-    public final static String ID = makeID(BlackSigil.class.getSimpleName());
+public class EldritchSigil extends AbstractArcanistCard {
+    public final static String ID = makeID(EldritchSigil.class.getSimpleName());
     private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
-    public BlackSigil() {
+    public EldritchSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
     }
 
