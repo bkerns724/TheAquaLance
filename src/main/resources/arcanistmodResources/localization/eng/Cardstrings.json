@@ -108,31 +108,31 @@
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
     "FLAVOR": "This spell was invented by the Aqualance?  What kind of stupid name is that?"
   },
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
-    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
     "FLAVOR":  "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:VoidTendrils": {
     "NAME": "Void Tendrils",
-    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
     "FLAVOR": "It is a fantastic spell for offense and defense but it looks evil so NOOOOOO, we shouldn't use it."
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! damage. NL Discard !M! card.",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
     "FLAVOR": "With soul flame, it isn't the body that's burning, so your ice spells still work."
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
-    "DESCRIPTION": "Whenever you play a card this turn, discard a random card to draw a card."
+    "DESCRIPTION": "Whenever you play a card this turn, discard a card at random to draw a card."
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card.",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards.",
     "FLAVOR": "A great spell for when you need to defend yourself but stay mobile."
   },
@@ -197,7 +197,7 @@
   },
   "${ModID}:RampingSigil": {
     "NAME": "Ramping Sigil",
-    "DESCRIPTION": "The next !M! ${ModID}:Sigils you play are played an extra time."
+    "DESCRIPTION": "The next !M! ${ModID}:Sigils you play are played twice."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
@@ -209,7 +209,7 @@
   },
   "${ModID}:OverChargedSigil": {
     "NAME": "Over Charged Sigil",
-    "DESCRIPTION": "Lose !${ModID}:M2! HP. NL Gain [E][E]. NL Draw !M! cards."
+    "DESCRIPTION": "Lose !${ModID}:M2! HP. NL Gain [E] [E]. NL Draw !M! cards."
   },
   "${ModID}:ScourgeBubble": {
     "NAME": "Scourge Bubble",
@@ -237,7 +237,7 @@
   },
   "${ModID}:BrrZerk": {
     "NAME": "Brr Zerk",
-    "DESCRIPTION": "Whenever you deal unblocked damage, apply !M! ${ModID}:Frostbite.",
+    "DESCRIPTION": "Whenever an Attack deals unblocked damage, apply !M! ${ModID}:Frostbite.",
     "FLAVOR": "This difficult technique is not a spell, but a way to alter your spells to also freeze the target."
   },
   "${ModID}:Gale": {
@@ -252,7 +252,7 @@
   },
   "${ModID}:WellPrepared": {
     "NAME": "Well Prepared",
-    "DESCRIPTION": "Draw !M! cards. NL Discard 1 card. NL Exhaustive !stslib:ex!."
+    "DESCRIPTION": "Draw !M! cards. NL Discard a card. NL Exhaustive !stslib:ex!."
   },
   "${ModID}:Momentum": {
     "NAME": "Momentum",
@@ -266,8 +266,8 @@
   },
   "${ModID}:ManaBlood": {
     "NAME": "Mana Blood",
-    "DESCRIPTION": "At the start of your turn, gain [E] and draw !M! card.",
-    "UPGRADE)DESCRIPTION": "Retain. NL At the start of your turn, gain [E] and draw !M! card."
+    "DESCRIPTION": "At the start of your turn, gain [E] and draw a card.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, gain [E] and draw a card."
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
@@ -319,7 +319,7 @@
   },
   "${ModID}:Concentrate": {
     "NAME": "Concentrate",
-    "DESCRIPTION": "Next turn gain [E] and draw !M! cards."
+    "DESCRIPTION": "Next turn gain [E] and draw !M! additional cards."
   },
   "${ModID}:CurseWeapon": {
     "NAME": "Curse Weapon",
@@ -351,11 +351,11 @@
   },
   "${ModID}:SackOfDebris": {
     "NAME": "Sack Of Debris",
-    "DESCRIPTION": "Discard your hand. NL Deal !D! damage to a random enemy for each discarded card."
+    "DESCRIPTION": "Discard your hand. NL Deal !D! damage to a random enemy for each card discarded."
   },
   "${ModID}:DreadfulFinale": {
     "NAME": "Dreadful Finale",
-    "DESCRIPTION": "If you end your turn with no cards in your hand, ALL enemies lose !M! Strength that turn."
+    "DESCRIPTION": "If you end your turn with no cards in hand, ALL enemies lose !M! Strength that turn."
   },
   "${ModID}:Charge": {
     "NAME": "Charge",
@@ -385,8 +385,8 @@
   },
   "${ModID}:Terror": {
     "NAME": "Terror",
-    "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! card. NL Discard 1 card.",
-    "UPGRADE_DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! cards. NL Discard 1 card."
+    "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw a card. NL Discard a card.",
+    "UPGRADE_DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! cards. NL Discard a card."
   },
   "${ModID}:Invisibility": {
     "NAME": "Invisibility",
@@ -394,11 +394,11 @@
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
-    "DESCRIPTION": "Gain !B! Block. NL Take !M! less damage this turn."
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you would take damage this turn, take !M! less."
   },
   "${ModID}:HideInSleeve": {
     "NAME": "Hide In Sleeve",
-    "DESCRIPTION": "Add a random ${ModID}:Sigil to your hand. NL Discard it."
+    "DESCRIPTION": "Add a random ${ModID}:Sigil into your hand. NL Discard it."
   },
   "${ModID}:Ignition": {
     "NAME": "Ignition",
@@ -418,7 +418,7 @@
   },
   "${ModID}:Shapeshift": {
     "NAME": "Shapeshift",
-    "DESCRIPTION": "Upon pickup, gain *Injury. NL Gain !M! Strength and !M! Dexteriy."
+    "DESCRIPTION": "Upon pickup, gain *Injury. NL Gain !M! Strength and !M! Dexterity."
   },
   "${ModID}:Collapse": {
     "NAME": "Collapse",
@@ -434,7 +434,7 @@
   },
   "${ModID}:EldritchStaff": {
     "NAME": "Eldritch Staff",
-    "DESCRIPTION": "{@@} [${ModID}:EldritchIcon] attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
+    "DESCRIPTION": "{@@} [${ModID}:EldritchIcon] Attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
   },
   "${ModID}:SadisticGlee": {
     "NAME": "Sadistic Glee",
@@ -460,11 +460,11 @@
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Gain !${ModID}:M2! Block at the end of your turn. NL Take !M! less damage."
+    "DESCRIPTION": "Gain !${ModID}:M2! Block at the end of your turn. NL Whenever you would take damage, take !M! less."
   },
   "${ModID}:Prepare": {
     "NAME": "Prepare",
-    "DESCRIPTION": "Next turn, draw !M! cards and discard !M! cards."
+    "DESCRIPTION": "Next turn, draw !M! additional cards and discard !M! cards."
   },
   "${ModID}:Fade": {
     "NAME": "Fade",

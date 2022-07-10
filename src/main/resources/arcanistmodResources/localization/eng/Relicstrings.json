@@ -3,14 +3,14 @@
     "NAME": "Ceremonial Robe",
     "FLAVOR": "Elegant, but difficult to fight in.",
     "DESCRIPTIONS": [
-      "At the start of your turn, draw !R! additional card.  At the start of each combat, lose !R2! #yDexterity."
+      "At the start of your turn, draw an additional card.  At the start of each combat, lose !R2! #yDexterity."
     ]
   },
   "${ModID}:AncientSpellTome": {
     "NAME": "Ancient Spell Tome",
     "FLAVOR": "The ink is fading and the pages are crumbling.",
     "DESCRIPTIONS": [
-      "Upon pickup, add #bone of #bthree powerful cards to your deck.",
+      "Upon pickup, obtain #bone of #bthree powerful cards.",
       "Choose a spell to study..."
     ]
   },
@@ -32,14 +32,14 @@
     "NAME": "Blessed Necklace",
     "FLAVOR": "Cleric talented!  Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [VIOLET]Necklace [VIOLET]of [VIOLET]Shielding.  #y${ModID}:Activated.  Once per combat you can discard any number of cards to gain !R! #yBlock per card."
+      "Replaces [VIOLET]Necklace [VIOLET]of [VIOLET]Shielding.  #y${ModID}:Activated.  Once per combat you can discard any number of cards to gain !R! #yBlock per card discarded."
     ]
   },
   "${ModID}:TormentorsMask": {
     "NAME": "Tormentor's Mask",
     "FLAVOR": "It's scary.",
     "DESCRIPTIONS": [
-      "Apply !R! #y${ModID}:Jinx to ALL enemies at the start of combat."
+      "At the start of each combat, apply !R! #y${ModID}:Jinx to ALL enemies."
     ]
   },
   "${ModID}:RingOfWarding": {
@@ -53,7 +53,7 @@
     "NAME": "Ring of Shadows",
     "FLAVOR": "The bearers of this ring all slowly went mad.",
     "DESCRIPTIONS": [
-      "On pickup, gain #yHallucination. Whenever you draw a #yCurse, gain !R! #y${ModID}:Shadowcloak."
+      "Whenever you draw a #yCurse, gain !R! #y${ModID}:Shadowcloak. On pickup, obtain #yHallucination."
     ]
   },
   "${ModID}:BlackCandle": {
@@ -67,7 +67,7 @@
     "NAME": "Tuning Fork",
     "FLAVOR": "It constantly makes a quiet hum.  It never ends.",
     "DESCRIPTIONS": [
-      "Whenever you merge a #y${ModID}:Resonant card into another, #yResonance increases by an additional !R!."
+      "Whenever you merge one #y${ModID}:Resonant card into another, #yResonance increases by an additional !R!."
     ]
   },
   "${ModID}:ClownNose": {
@@ -81,7 +81,7 @@
     "NAME": "Stone Scales",
     "FLAVOR": "You wonder what turned these scales to stone.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can take !R! less damage for one turn."
+      "#y${ModID}:Activated.  Once per combat, for one turn, whenever you would take damage, take !R! less."
     ]
   },
   "${ModID}:EtherealConverter": {
@@ -95,7 +95,7 @@
     "NAME": "TatteredCloak",
     "FLAVOR": "It's worn and has several holes in it.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Shadowcloak is now a !R!% bonus instead of !R2!% ."
+      "#y${ModID}:Shadowcloak is a !R!% bonus rather than !R2!% ."
     ]
   },
   "${ModID}:EyeballStaff": {
@@ -130,43 +130,43 @@
     "NAME": "Vial of Black Blood",
     "FLAVOR": "It is hot enough to almost burn you.",
     "DESCRIPTIONS": [
-      "On pickup, replace all of your Strikes and Defends with #ySoul #yBursts.",
-      "You drink the vial..."
+      "On pickup, replace all of your Strikes and Defends with #yDemon's #yCantrip.",
+      "You drink the contents of the vial..."
     ]
   },
   "${ModID}:ReverseOmamori": {
     "NAME": "Reverse Omamori",
     "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
     "DESCRIPTIONS": [
-      "For each #yCurse in your deck, gain 1 #yDexterity the start of combat.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
+      "For each #yCurse in your deck, start each combat with 1 #yDexterity.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
     ]
   },
   "${ModID}:VialOfNectar": {
     "NAME": "Vial of Nectar",
     "FLAVOR": "It's very thick, but tastes sweet.",
     "DESCRIPTIONS": [
-      "Gain !R! #yTemporary_HP at the beginning of combat."
+      "At the start of each combat, gain !R! #yTemporary_HP."
     ]
   },
   "${ModID}:RockyEgg": {
     "NAME": "RockyEgg",
     "FLAVOR": "You're not sure what creature laid this, but it occasionally stirs.",
     "DESCRIPTIONS": [
-      "Whenever you add a #ySigil card to your deck, #yUpgrade it."
+      "Whenever you add a #ySigil card into your deck, #yUpgrade it."
     ]
   },
   "${ModID}:Mythril": {
     "NAME": "Mythril",
     "FLAVOR": "It's extremely hard for something so light.",
     "DESCRIPTIONS": [
-      "If you have no cards in hand at end of turn, gain !R! #yBlock."
+      "If you end your turn with no cards in hand, gain !R! #yBlock."
     ]
   },
   "${ModID}:RegularBandages": {
     "NAME": "Regular Bandages",
     "FLAVOR": "They're the generic store bought version.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, gain !R! #yBlock."
+      "Whenever you discard a card during your turn, gain !R! #yBlock."
     ]
   },
   "${ModID}:UnmeltingIce": {
@@ -180,7 +180,7 @@
     "NAME": "Twisted Shuriken",
     "FLAVOR": "You aren't sure how to throw this, but it looks brutal.",
     "DESCRIPTIONS": [
-      "Whenever you play !R2! attacks in one turn, ALL enemies lose !R! #yStrength."
+      "Every time you play !R2! attacks in a single turn, ALL enemies lose !R! #yStrength."
     ]
   },
   "${ModID}:Pliers": {
@@ -208,14 +208,14 @@
     "NAME": "Enchantment Oils",
     "FLAVOR": "Makes your sword magic, just rub it on.",
     "DESCRIPTIONS": [
-      "All of your Strike cards gain a random element and deal !R! additional damage."
+      "All of your #yStaff #yStrike cards gain a random element and deal !R! additional damage."
     ]
   },
   "${ModID}:HexedStaff": {
     "NAME": "Hexed Staff",
     "FLAVOR": "Whenever you hold it, you immediately feel angrier.",
     "DESCRIPTIONS": [
-      "For each curse in your deck, apply !R! extra stack of #y${ModID}:Jinx whenever you apply #yJinx.  Upon pickup, add [#EFC851]Wrath to your deck."
+      "Whenever you apply #y${ModID}:Jinx, for each #yCurse in your deck, apply 1 extra stack.  Upon pickup, obtain [#EFC851]Wrath."
     ]
   },
   "${ModID}:SoulLamp": {
@@ -229,7 +229,7 @@
     "NAME": "Transparent Bracelet",
     "FLAVOR": "Takes forever to find it if you take it off.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Shadowcloak can also be used to boost the first #yBlock card each turn by 25% per stack."
+      "#y${ModID}:Shadowcloak can be used to boost the first #yBlock card each turn instead of the first attack."
     ]
   },
   "${ModID}:MarkOfTheVoid": {

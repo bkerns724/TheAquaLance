@@ -15,7 +15,7 @@
       "Activated",
       "activated"
     ],
-    "DESCRIPTION": "Activated relics do not have a passive effect.  They have an instant effect when their button is clicked."
+    "DESCRIPTION": "Activated relics do not have a passive effect.  They have an effect when their button is clicked."
   },
   {
     "PROPER_NAME": "Panda",
@@ -23,7 +23,7 @@
       "Panda",
       "panda"
     ],
-    "DESCRIPTION": "At the start of your turn it deals damage to a random enemy."
+    "DESCRIPTION": "Orb: Deals damage to a random enemy.  Ignores #yFocus."
   },
   {
     "PROPER_NAME": "Plated\u00a0Armor",
@@ -53,7 +53,7 @@
       "Frostbite",
       "frostbite"
     ],
-    "DESCRIPTION": "When a creature with Frostbite attacks it takes damage equal to its Frostbite and reduces Frostbite by 1."
+    "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage and its Frostbite is reduced by 1."
   },
   {
     "PROPER_NAME": "Crushed",
@@ -69,7 +69,7 @@
       "Jinx",
       "jinx"
     ],
-    "DESCRIPTION": "Jinxed creatures lose HP when they are debuffed."
+    "DESCRIPTION": "Whenever a Jinxed creature receives a debuff, it loses HP."
   },
   {
     "PROPER_NAME": "Shadowcloak",
@@ -77,7 +77,7 @@
       "Shadowcloak",
       "shadowcloak"
     ],
-    "DESCRIPTION": "Grants 25% extra damage per stack on the first #yAttack each turn."
+    "DESCRIPTION": "The first #yAttack each turn deals 25% extra damage per stack."
   },
   {
     "PROPER_NAME": "Decay",
@@ -85,6 +85,6 @@
       "Decay",
       "decay"
     ],
-    "DESCRIPTION": "Decaying creatures lose health at the start of their turn."
+    "DESCRIPTION": "Decaying creatures lose HP at the start of their turn."
   }
 ]

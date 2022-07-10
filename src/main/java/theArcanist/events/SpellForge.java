@@ -224,12 +224,21 @@ public class SpellForge extends AbstractArcanistEvent {
         LargeDialogOptionButton but = imageEventText.optionList.get(0);
         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsElements());
 
+        but = imageEventText.optionList.get(1);
+        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsVoid());
+
         imageEventText.setDialogOption(options[4]);
     }
 
     private ArrayList<PowerTip> getTipsElements() {
         ArrayList<PowerTip> list = new ArrayList<>();
         list.add(new PowerTip(descriptions[6], descriptions[7]));
+        return list;
+    }
+
+    private ArrayList<PowerTip> getTipsVoid() {
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(descriptions[6], descriptions[8]));
         return list;
     }
 }

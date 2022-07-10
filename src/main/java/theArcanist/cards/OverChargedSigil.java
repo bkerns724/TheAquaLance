@@ -12,7 +12,7 @@ public class OverChargedSigil extends AbstractArcanistCard {
     public final static String ID = makeID(OverChargedSigil.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 3;
+    private final static int SECOND_MAGIC = 4;
     private final static int ENERGY_AMOUNT = 2;
     private final static int COST = -2;
 

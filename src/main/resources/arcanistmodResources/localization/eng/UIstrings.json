@@ -1,7 +1,7 @@
 {
   "${ModID}:SensoryStone": {
     "TEXT": [
-      "@[#FF8C00]FRUSTRATION@ NL NL You reread the situation report concerning the #ySpire #yBlight for the fifth time. Crop yields are down #r43%, #r17% of the kingdom's citizens are ill, and #r3% have died. NL NL The #pArchmage (you deserved that spot btw) has declared that no one is to get involved with the #ySpire, and refuses to give a reason why. NL NL You spend a few minutes looking out the window at the village you grew up in, then grab your backpack and head down the tower."
+      "~[#FF8C00]FRUSTRATION~ NL NL #r\"FOR #rYOUR #rCRIMES #rAGAINST #rTHE #rNATURAL #rORDER, #rYOU #rARE #rHEREBY #rBANISHED #rFROM #rTHE #rREALM!\" NL NL As the doors close, you still fail to understand why.  As it is, they are all going to die to the #ySpire and its #yBlight. Desperate times call for desperate measures. And not only did they refuse to help you, they #r@EXILED@ you! NL NL A few days later, you regain your resolve.  You're determined that the power from your deals will not be wasted, even if no one will ever appreciate you for it."
     ]
   },
   "${ModID}:Settings": {

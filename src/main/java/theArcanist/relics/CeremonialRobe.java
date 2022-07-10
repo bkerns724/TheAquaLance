@@ -27,10 +27,6 @@ public class CeremonialRobe extends AbstractArcanistRelic {
         adp().masterHandSize -= DRAW_AMOUNT;
     }
 
-    public void atTurnStart() {
-        flash();
-    }
-
     @Override
     public void atBattleStart() {
         flash();

@@ -16,15 +16,15 @@
   "${ModID}:SigilPotion": {
     "NAME": "Sigil Potion",
     "DESCRIPTIONS": [
-      "Add 1 of 3 random #ySigils to your hand and discard it.",
-      "Add !P! copies of 1 of 3 random #ySigils to your hand and discard them."
+      "Choose 1 of 3 random #ySigil cards to add to your hand, then discard it.",
+      "Choose 1 of 3 random #ySigil cards and add !P! copies to your hand, then discard them."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
   "${ModID}:StoneskinPotion": {
     "NAME": "Stoneskin Potion",
     "DESCRIPTIONS": [
-      "Reduce incoming attack damage by !P! this turn."
+      "Whenever you would take damage this turn, take !P! less."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
@@ -38,8 +38,8 @@
   "${ModID}:ForbiddenFlask": {
     "NAME": "Forbidden Flask",
     "DESCRIPTIONS": [
-      "Add 1 of 3 random #yResonant cards to your hand, it costs 0 this turn.",
-      "Add !P! copies of 1 of 3 random #yResonant cards to your hand, they cost 0 this turn."
+      "Choose 1 of 3 random #yResonant cards to add to your hand, it costs 0 this turn.",
+      "Choose 1 of 3 random #yResonant cards and add !P! copies to your hand, they cost 0 this turn."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
@@ -60,8 +60,8 @@
   "${ModID}:UnicornBlood": {
     "NAME": "Unicorn Blood",
     "DESCRIPTIONS": [
-      "Obtain a unique #yCurse and Gain !P! Max HP.",
-      "Obtain two unique #yCurses and Gain !P! Max HP."
+      "Gain !P! Max HP and obtain a unique #yCurse.",
+      "Gain !P! Max HP and obtain 2 unique #yCurses."
     ],
     "FLAVOR": "BEEP BOOP SHOOWHEE"
   },
@@ -82,15 +82,15 @@
   "${ModID}:ToxicOil": {
     "NAME": "Toxic Oil",
     "DESCRIPTIONS": [
-      "Whenever your attacks deal unblocked damage, apply !P! #yDecay to the target."
+      "Whenever an attack deals unblocked damage, apply !P! #yDecay to the target."
     ],
     "FLAVOR": "Brutally efficient."
   },
   "${ModID}:SlipperyPotion": {
     "NAME": "Slippery Potion",
     "DESCRIPTIONS": [
-      "Draw !P! card each turn.",
-      "Draw !P! cards each turn."
+      "Draw an additional card each turn.",
+      "Draw !P! additional cards each turn."
     ],
     "FLAVOR": "Some mysterious green cloaked stranger has been selling these for a lot of money."
   }

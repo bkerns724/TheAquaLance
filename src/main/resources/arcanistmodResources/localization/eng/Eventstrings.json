@@ -146,11 +146,12 @@
       "The spell smith finishes his work, and the quality is top notch.  Do you want another service?",
       "The spell smith finishes his work, and hands you a large bag of gold.  Do you want another service?",
       "Suitable Card",
-      "An Arcanist card with less than two elements."
+      "An Arcanist card with less than two elements.",
+      "An Arcanist card with at least one two element."
     ],
     "OPTIONS": [
       "[Enhance] #y!E3! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",
-      "[Add Element] Requires !E3! Gold and a suitable card.",
+      "[Enhance] Requires !E3! Gold and a suitable card.",
       "[Extract Element] Remove Elemental Card. #rGain !CardString!. #yGain #y!E2! #yGold.",
       "[Extract Element] Requires a suitable card.",
       "[Leave]",
