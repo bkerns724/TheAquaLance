@@ -1,12 +1,14 @@
 package theArcanist.cards;
 
 import basemod.AutoAdd;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
@@ -23,17 +25,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theArcanist.TheArcanist;
 import theArcanist.actions.AttackAction;
 import theArcanist.cards.cardvars.CardSaveObject;
-import theArcanist.damagemods.DarkDamage;
+import theArcanist.damagemods.EldritchDamage;
 import theArcanist.damagemods.ForceDamage;
 import theArcanist.damagemods.IceDamage;
 import theArcanist.damagemods.SoulFireDamage;
-import theArcanist.icons.Dark;
+import theArcanist.icons.Eldritch;
 import theArcanist.icons.Force;
 import theArcanist.icons.Ice;
 import theArcanist.icons.SoulFire;
@@ -85,7 +88,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     public static final String COLD_STRING = Ice.CODE;
     public static final String FORCE_STRING = Force.CODE;
     public static final String SOULFIRE_STRING = SoulFire.CODE;
-    public static final String DARK_STRING = Dark.CODE;
+    public static final String DARK_STRING = Eldritch.CODE;
 
     private static final int DAMAGE_THRESHOLD_M = 15;
     private static final int DAMAGE_THRESHOLD_L = 50;
@@ -374,7 +377,7 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
         if (element == elenum.FORCE)
             DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.DARK)
-            DamageModifierManager.addModifier(this, new DarkDamage(tips));
+            DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         initializeDescription();
     }
 
@@ -532,6 +535,38 @@ public abstract class AbstractArcanistCard extends CustomCard implements CustomS
     protected void upMagic2(int x) {upgradeSecondMagic(x);}
 
     public void triggerOnDeath() {}
+
+    // Thanks CustomCard renderTitle
+    @Override
+    protected void renderTitle(SpriteBatch sb) {
+        initializeTitle();
+        Color renderColor = (Color) ReflectionHacks.getPrivate(this, AbstractCard.class, "renderColor");
+        boolean useSmallTitleFont = (boolean) ReflectionHacks.getPrivate(this, AbstractCard.class, "useSmallTitleFont");
+        if (isLocked) {
+            FontHelper.cardTitleFont.getData().setScale(drawScale);
+            FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, LOCKED_STRING, current_x, current_y,
+                    0.0F, 175.0F * drawScale * Settings.scale, angle, false, renderColor);
+        } else if (!isSeen) {
+            FontHelper.cardTitleFont.getData().setScale(drawScale);
+            FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, UNKNOWN_STRING, current_x, current_y,
+                    0.0F, 175.0F * drawScale * Settings.scale, angle, false, renderColor);
+        } else {
+            if (!useSmallTitleFont)
+                FontHelper.cardTitleFont.getData().setScale(drawScale);
+            else
+                FontHelper.cardTitleFont.getData().setScale(drawScale * 0.85F);
+
+            if (upgraded) {
+                Color color = Settings.GREEN_TEXT_COLOR.cpy();
+                color.a = renderColor.a;
+                FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, name, current_x, current_y,
+                        0.0F, 175.0F * drawScale * Settings.scale, angle, false, color);
+            } else {
+                FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, name, current_x, current_y,
+                        0.0F, 175.0F * drawScale * Settings.scale, angle, false, renderColor);
+            }
+        }
+    }
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {

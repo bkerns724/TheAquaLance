@@ -59,9 +59,9 @@
       "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
     ]
   },
-  "${ModID}:DarkDamage": {
-    "NAME": "Dark",
-    "DESCRIPTION": "Dark [${ModID}:DarkIcon]",
+  "${ModID}:EldritchDamage": {
+    "NAME": "Eldtich",
+    "DESCRIPTION": "Eldritch [${ModID}:EldritchIcon]",
     "EXTENDED_DESCRIPTION": [
       "Gain #yTemporary #yHP based on unblocked damage dealt.  Has diminishing returns.",
       "Temporary HP",
@@ -219,16 +219,16 @@
     "NAME": "Amplify",
     "DESCRIPTION": "Deal !D! damage.  Gain !M! extra ${ModID}:Resonance."
   },
-  "${ModID}:DefensiveChanneling": {
-    "NAME": "Defensive Channeling",
+  "${ModID}:Disorient": {
+    "NAME": "Disorient",
     "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
   },
-  "${ModID}:VengefulChanneling": {
-    "NAME": "Vengeful Channeling",
+  "${ModID}:Deter": {
+    "NAME": "Deter",
     "DESCRIPTION": "Whenever you are attacked this turn, deal !M! [${ModID}:SoulFireIcon] damage back."
   },
-  "${ModID}:CorruptedChanneling": {
-    "NAME": "Corrupted Channeling",
+  "${ModID}:Corrupt": {
+    "NAME": "Corrupt",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Decay."
   },
   "${ModID}:ChanneledCurse": {
@@ -383,8 +383,8 @@
     "UPGRADE_DESCRIPTION": "${ModID}:Jinx is !C!X + !M! times more effective on the enemy.",
     "EXTENDED_DESCRIPTION": ["2"]
   },
-  "${ModID}:SonicReverberation": {
-    "NAME": "Sonic Reverberation",
+  "${ModID}:Terror": {
+    "NAME": "Terror",
     "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! card. NL Discard 1 card.",
     "UPGRADE_DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! cards. NL Discard 1 card."
   },
@@ -434,7 +434,7 @@
   },
   "${ModID}:EldritchStaff": {
     "NAME": "Eldritch Staff",
-    "DESCRIPTION": "{@@} [${ModID}:DarkIcon] attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
+    "DESCRIPTION": "{@@} [${ModID}:EldritchIcon] attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP."
   },
   "${ModID}:SadisticGlee": {
     "NAME": "Sadistic Glee",

@@ -20,7 +20,7 @@ import theArcanist.TheArcanist;
 import theArcanist.cards.AbstractArcanistCard;
 import theArcanist.cards.AbstractResonantCard;
 import theArcanist.cards.NullElement;
-import theArcanist.damagemods.DarkDamage;
+import theArcanist.damagemods.EldritchDamage;
 import theArcanist.damagemods.ForceDamage;
 import theArcanist.damagemods.IceDamage;
 import theArcanist.damagemods.SoulFireDamage;
@@ -122,7 +122,7 @@ public class SpellForge extends AbstractArcanistEvent {
                     if (checkForUpgradableCard(AbstractArcanistCard.elenum.DARK)) {
                         imageEventText.setDialogOption(options[7]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(2);
-                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DarkDamage.getPowerTips());
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, EldritchDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[7], true);
                     if (checkForUpgradableCard(AbstractArcanistCard.elenum.FIRE)) {
@@ -131,7 +131,6 @@ public class SpellForge extends AbstractArcanistEvent {
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[8], true);
-                    imageEventText.setDialogOption(options[9]);
                     break;
                 case 1:
                     isRemoving = true;
@@ -148,10 +147,6 @@ public class SpellForge extends AbstractArcanistEvent {
                     break;
             }
         } else if (screen == CUR_SCREEN.ELE_CHOICE) {
-            if (buttonPressed == 4) {
-                screen = CUR_SCREEN.INTRO;
-                setChoices();
-            }
             CardGroup eleGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             if (buttonPressed == 0)
                 element = AbstractArcanistCard.elenum.ICE;

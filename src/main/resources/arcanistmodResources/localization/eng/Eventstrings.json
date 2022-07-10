@@ -156,9 +156,8 @@
       "[Leave]",
       "[Cold]",
       "[Force]",
-      "[Dark]",
-      "[Soul Fire]",
-      "[Never Mind]"
+      "[Eldritch]",
+      "[Soul Fire]"
     ]
   },
   "${ModID}:ResearchCenter": {

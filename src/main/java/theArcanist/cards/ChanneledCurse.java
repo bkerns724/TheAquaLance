@@ -11,6 +11,10 @@ public class ChanneledCurse extends AbstractResonantCard {
 
     public ChanneledCurse() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void setResonance() {
         resonance.jinx = baseMagicNumber;
     }
 

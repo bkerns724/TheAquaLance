@@ -13,8 +13,11 @@ public abstract class AbstractResonantCard extends AbstractArcanistCard {
     public AbstractResonantCard(String id, int cost, CardType type, CardRarity rarity, CardTarget target) {
         super(id, cost, type, rarity, target);
         resonance = new Resonance(baseDamage);
+        setResonance();
         initializeDescription();
     }
+
+    protected abstract void setResonance();
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         resonance.resonanceEffects(this, m);

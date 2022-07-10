@@ -19,6 +19,10 @@ public class GenericResonantCard extends AbstractResonantCard {
     }
 
     @Override
+    protected void setResonance() {
+    }
+
+    @Override
     public void applyAttributes() {
     }
 

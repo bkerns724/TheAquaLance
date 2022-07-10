@@ -2,16 +2,20 @@ package theArcanist.cards;
 
 import static theArcanist.ArcanistMod.makeID;
 
-public class DefensiveChanneling extends AbstractResonantCard {
-    public final static String ID = makeID(DefensiveChanneling.class.getSimpleName());
+public class Disorient extends AbstractResonantCard {
+    public final static String ID = makeID(Disorient.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int BLOCK = 3;
     private final static int UPGRADE_BLOCK = 1;
     private final static int COST = 1;
 
-    public DefensiveChanneling() {
+    public Disorient() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void setResonance() {
         resonance.block = baseBlock;
     }
 

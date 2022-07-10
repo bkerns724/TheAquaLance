@@ -5,22 +5,22 @@ import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import theArcanist.ArcanistMod;
 import theArcanist.util.TexLoader;
 
-public class Dark extends AbstractCustomIcon {
-    private static Dark singleton;
-    public static final String ID = ArcanistMod.makeID(Dark.class.getSimpleName());
+public class Eldritch extends AbstractCustomIcon {
+    private static Eldritch singleton;
+    public static final String ID = ArcanistMod.makeID(Eldritch.class.getSimpleName());
     private static final String TEXTURE_STRING = "arcanistmodResources/images/damageIcons/Dark.png";
     private static final Texture TEXTURE =
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "Icon]";
 
-    public Dark() {
+    public Eldritch() {
         super(ID, TEXTURE);
     }
 
-    public static Dark get()
+    public static Eldritch get()
     {
         if (singleton == null) {
-            singleton = new Dark();
+            singleton = new Eldritch();
         }
         return singleton;
     }

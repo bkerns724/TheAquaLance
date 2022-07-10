@@ -11,6 +11,10 @@ public class Amplify extends AbstractResonantCard {
 
     public Amplify() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+    }
+
+    @Override
+    protected void setResonance() {
         resonance.amplify = baseMagicNumber;
     }
 

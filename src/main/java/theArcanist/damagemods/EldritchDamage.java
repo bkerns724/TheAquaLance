@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theArcanist.ArcanistMod;
 import theArcanist.actions.MyAddTempHPAction;
-import theArcanist.icons.Dark;
+import theArcanist.icons.Eldritch;
 import theArcanist.patches.DamageModsIDPatch;
 import theArcanist.powers.EldritchStaffPower;
 import theArcanist.relics.BlueMarbles;
@@ -26,20 +26,20 @@ import static theArcanist.util.Wiz.adp;
 import static theArcanist.util.Wiz.att;
 
 @AutoAdd.Ignore
-public class DarkDamage extends AbstractDamageModifier {
-    public static final String ID = ArcanistMod.makeID(DarkDamage.class.getSimpleName());
+public class EldritchDamage extends AbstractDamageModifier {
+    public static final String ID = ArcanistMod.makeID(EldritchDamage.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo darkTooltip;
     public TooltipInfo darkTooltip2;
     private boolean visibleTips = true;
 
-    public DarkDamage() {
+    public EldritchDamage() {
         darkTooltip = null;
         darkTooltip2 = null;
         DamageModsIDPatch.ID.set(this, ID);
     }
 
-    public DarkDamage(boolean visTips) {
+    public EldritchDamage(boolean visTips) {
         this();
         visibleTips = visTips;
     }
@@ -99,7 +99,7 @@ public class DarkDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        DarkDamage output = new DarkDamage();
+        EldritchDamage output = new EldritchDamage();
         output.darkTooltip = this.darkTooltip;
         output.darkTooltip2 = this.darkTooltip2;
         return output;
@@ -107,6 +107,6 @@ public class DarkDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractCustomIcon getAccompanyingIcon() {
-        return new Dark();
+        return new Eldritch();
     }
 }

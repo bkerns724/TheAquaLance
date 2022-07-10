@@ -10,14 +10,14 @@ import theArcanist.damagemods.ScourgeType;
 import static theArcanist.ArcanistMod.makeID;
 import static theArcanist.util.Wiz.*;
 
-public class SonicReverberation extends AbstractArcanistCard {
-    public final static String ID = makeID(SonicReverberation.class.getSimpleName());
+public class Terror extends AbstractArcanistCard {
+    public final static String ID = makeID(Terror.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
     private final static int DISCARD_AMOUNT = 1;
 
-    public SonicReverberation() {
+    public Terror() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 

@@ -116,7 +116,7 @@
     "NAME": "BlueMarbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "Halve damage thresholds for #yCold, #yForce, and #yDark damage seconday effects."
+      "Halve damage thresholds for [${ModID}:EldritchIcon] [${ModID}:ForceIcon] and [${ModID}:IceIcon] damage seconday effects."
     ]
   },
   "${ModID}:BootsOfSpeed": {
@@ -201,7 +201,7 @@
     "NAME": "Pointy Dentures",
     "FLAVOR": "This is an odd object to enchant with power.",
     "DESCRIPTIONS": [
-      "Whenever you gain #yTemporary_HP from [${ModID}:DarkIcon] attacks, gain !R! more."
+      "Whenever you gain #yTemporary_HP from [${ModID}:EldritchIcon] attacks, gain !R! more."
     ]
   },
   "${ModID}:EnchantmentOils": {

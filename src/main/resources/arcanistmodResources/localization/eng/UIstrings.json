@@ -1,7 +1,7 @@
 {
   "${ModID}:SensoryStone": {
     "TEXT": [
-      "~[#40E0D0]APPREHENSION.~ NL NL You wake up ~slowly~, rubbing grit out of your eyes.  As you enter your kitchen to make breakfast, you are #y@surprised@ to find it is a #r@mess,@ with dirty pots and utensils strewn about.  On the counter is a mostly eaten plate of stir fry. NL NL \"Oh no, not again,\" you murmur. \"I've been sleep wokking.\""
+      "@[#FF8C00]FRUSTRATION@ NL NL You reread the situation report concerning the #ySpire #yBlight for the fifth time. Crop yields are down #r43%, #r17% of the kingdom's citizens are ill, and #r3% have died. NL NL The #pArchmage (you deserved that spot btw) has declared that no one is to get involved with the #ySpire, and refuses to give a reason why. NL NL You spend a few minutes looking out the window at the village you grew up in, then grab your backpack and head down the tower."
     ]
   },
   "${ModID}:Settings": {
