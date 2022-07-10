@@ -1,7 +1,7 @@
 *.class
 
 # My Notes and other stuff
-src/main/resources/arcanistmodResources/images/cutScene/IconStorage
+src/main/resources/exilemodResources/images/cutScene/IconStorage
 Thoughts
 ThoughtsBackup
 
