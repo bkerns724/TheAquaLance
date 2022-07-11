@@ -1,12 +1,12 @@
 package theExile.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theExile.ExileMod;
+import theExile.actions.JinxLoseHPAction;
 import theExile.relics.HexedStaff;
 import theExile.relics.PaperKat;
 
@@ -36,7 +36,7 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
             lossMultiplier += target.getPower(BanePower.POWER_ID).amount;
         if (adp().hasRelic(PaperKat.ID))
             lossMultiplier++;
-        att(new LoseHPAction(target, source, amount*lossMultiplier));
+        att(new JinxLoseHPAction(target, source, amount*lossMultiplier, adp().hasPower(EldritchStaffPower.POWER_ID)));
         return true;
     }
 }

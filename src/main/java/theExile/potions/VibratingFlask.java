@@ -6,15 +6,15 @@ import theExile.actions.ResonantDiscoveryAction;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
 
-public class ForbiddenFlask extends AbstractExilePotion {
-    public static final String POTION_ID = makeID(ForbiddenFlask.class.getSimpleName());
+public class VibratingFlask extends AbstractExilePotion {
+    public static final String POTION_ID = makeID(VibratingFlask.class.getSimpleName());
     public static final int DEFAULT_POTENCY = 1;
     public static final PotionRarity RARITY = PotionRarity.UNCOMMON;
     public static final PotionSize SIZE = PotionSize.CARD;
     public static final boolean IS_THROWN = false;
     public static final boolean TARGET_REQUIRED = false;
 
-    public ForbiddenFlask() {
+    public VibratingFlask() {
         super(POTION_ID, RARITY, SIZE, PotionColor.ENERGY,
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
     }

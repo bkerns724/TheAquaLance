@@ -14,7 +14,6 @@ import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
 import theExile.patches.DamageModsIDPatch;
-import theExile.powers.EldritchStaffPower;
 import theExile.relics.BlueMarbles;
 import theExile.relics.PointyDentures;
 
@@ -59,10 +58,6 @@ public class EldritchDamage extends AbstractDamageModifier {
         if (tempHP > 0) {
             if (adp().hasRelic(PointyDentures.ID))
                 tempHP += 2;
-            if (adp().hasPower(EldritchStaffPower.POWER_ID)) {
-                int mult = adp().getPower(EldritchStaffPower.POWER_ID).amount + 1;
-                att(new MyAddTempHPAction(adp(), adp(), tempHP*mult));
-            }
             else
                 att(new MyAddTempHPAction(adp(), adp(), tempHP));
         }

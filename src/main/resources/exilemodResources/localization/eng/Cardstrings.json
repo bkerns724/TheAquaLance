@@ -63,7 +63,7 @@
     ]
   },
   "${ModID}:EldritchDamage": {
-    "NAME": "Eldtich",
+    "NAME": "Eldritch",
     "DESCRIPTION": "Eldritch [${ModID}:EldritchIcon]",
     "EXTENDED_DESCRIPTION": [
       "Gain #yTemporary #yHP based on unblocked damage dealt.  Has diminishing returns.",
@@ -495,8 +495,8 @@
   },
   "${ModID}:EldritchStaff": {
     "NAME": "Eldritch Staff",
-    "DESCRIPTION": "{@@} [${ModID}:EldritchIcon] Attacks grant {!M!|1=twice |@=!M! times} as much Temporary_HP.",
-    "FLAVOR": "What is a wizard without enchanted equipment?"
+    "DESCRIPTION": "Damage from ${ModID}:Jinx is now [${ModID}:EldritchIcon] .",
+    "FLAVOR": "What is a wizard without her enchanted equipment?"
   },
   "${ModID}:SadisticGlee": {
     "NAME": "Sadistic Glee",

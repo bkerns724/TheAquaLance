@@ -2,7 +2,7 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.DarkerEmbracePower;
+import theExile.powers.SpiritLeechPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
@@ -28,7 +28,7 @@ public class SpiritLeech extends AbstractExileCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        applyToEnemy(m, new DarkerEmbracePower(m, magicNumber));
+        applyToEnemy(m, new SpiritLeechPower(m, magicNumber));
     }
 
     public void upp() {

@@ -97,7 +97,7 @@ public class ExileMod implements
     public static final String FORCE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force.png";
     public static final String FORCE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_M.png";
     public static final String FORCE_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_L.png";
-    public static final String DARK_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Eldritch.png";
+    public static final String DARK_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark.png";
     public static final String DARK_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_M.png";
     public static final String DARK_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_L.png";
     public static final String DARK_L2_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Dark_L2.png";
@@ -414,7 +414,7 @@ public class ExileMod implements
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
 
         BaseMod.addPotion(LiquidCalamity.class, Color.BLUE.cpy(), Color.PINK.cpy(), Color.PURPLE.cpy(), LiquidCalamity.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(ForbiddenFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, ForbiddenFlask.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(VibratingFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, VibratingFlask.POTION_ID, THE_EXILE);
         BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_EXILE);
 
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_EXILE);

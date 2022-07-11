@@ -8,10 +8,10 @@ import theExile.actions.MyAddTempHPAction;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.att;
 
-public class DarkerEmbracePower extends AbstractExilePower {
-    public static String POWER_ID = ExileMod.makeID(DarkerEmbracePower.class.getSimpleName());
+public class SpiritLeechPower extends AbstractExilePower {
+    public static String POWER_ID = ExileMod.makeID(SpiritLeechPower.class.getSimpleName());
 
-    public DarkerEmbracePower(AbstractCreature owner, int amount) {
+    public SpiritLeechPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
     }
 

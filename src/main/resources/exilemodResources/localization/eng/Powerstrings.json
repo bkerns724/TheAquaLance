@@ -178,8 +178,8 @@
       "Whenever you are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
     ]
   },
-  "${ModID}:DarkerEmbracePower": {
-    "NAME": "Dark Embrace",
+  "${ModID}:SpiritLeechPower": {
+    "NAME": "Spirit Leech",
     "DESCRIPTIONS": [
       "Gain !A! #yTemporary #yHP whenever you attack this enemy."
     ]
@@ -212,8 +212,7 @@
   "${ModID}:EldritchStaffPower": {
     "NAME": "Eldritch Staff",
     "DESCRIPTIONS": [
-      "[${ModID}:DarkIcon] attacks grant twice as much #yTemporary #yHP.",
-      "[${ModID}:DarkIcon] attacks grant !A! times extra #yTemporary #yHP."
+      "Damage from #yJinx is now [${ModID}:EldritchIcon] ."
     ]
   },
   "${ModID}:SadisticGleePower": {

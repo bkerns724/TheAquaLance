@@ -10,7 +10,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class IronSigil extends AbstractExileCard {
     public final static String ID = makeID(IronSigil.class.getSimpleName());
-    private final static int MAGIC = 5;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
 
     public IronSigil() {

@@ -21,8 +21,8 @@ import theExile.util.TexLoader;
 import static theExile.util.Wiz.adp;
 
 public class ForceHammerEffect extends AbstractGameEffect {
-    public static final float EFFECT_DUR = 0.6F;
-    public static final float DUR_BEFORE_IMPACT = 0.4F;
+    public static final float EFFECT_DUR = 0.5F;
+    public static final float DUR_BEFORE_IMPACT = 0.3F;
     public static final float DUR_DIFFERENCE = EFFECT_DUR - DUR_BEFORE_IMPACT;
     private float x;
     private float y;

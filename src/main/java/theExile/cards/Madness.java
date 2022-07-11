@@ -13,7 +13,7 @@ import static theExile.util.Wiz.atb;
 
 public class Madness extends AbstractExileCard {
     public final static String ID = makeID(Madness.class.getSimpleName());
-    private final static int COST = 0;
+    private final static int COST = 1;
 
     public Madness() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);

@@ -16,9 +16,8 @@ import static theExile.util.Wiz.*;
 
 public class EldritchStaff extends AbstractExileCard {
     public final static String ID = makeID(EldritchStaff.class.getSimpleName());
-    private final static int MAGIC = 1;
-    private final static int UPGRADED_COST = 0;
-    private final static int COST = 1;
+    private final static int COST = 2;
+    private final static int UPGRADED_COST = 1;
     private final static CardStrings eldritchStrings = CardCrawlGame.languagePack.getCardStrings(EldritchDamage.ID);
 
     public EldritchStaff() {
@@ -26,12 +25,10 @@ public class EldritchStaff extends AbstractExileCard {
     }
 
     @Override
-    protected void applyAttributes() {
-        baseMagicNumber = magicNumber = MAGIC;
-    }
+    protected void applyAttributes() { }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new EldritchStaffPower(p, magicNumber));
+        applyToSelf(new EldritchStaffPower(p, 1));
     }
 
     @Override

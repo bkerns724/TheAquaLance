@@ -12,14 +12,19 @@ import static theExile.util.Wiz.atb;
 
 public class ChaoticMindPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(ChaoticMindPower.class.getSimpleName());
+    private boolean firstCard;
 
     public ChaoticMindPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
+        firstCard = true;
     }
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        atb(new RapidsAction(amount));
+        if (!firstCard)
+            atb(new RapidsAction(amount));
+        else
+            firstCard = false;
     }
 
     @Override

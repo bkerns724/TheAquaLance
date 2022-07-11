@@ -9,9 +9,10 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import theExile.ExileMod;
 import theExile.damagemods.SoulFireDamage;
 
-import java.util.Arrays;
+import java.util.Collections;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.att;
+import static theExile.util.Wiz.removePower;
 
 public class SoulFlameBarrierPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(SoulFlameBarrierPower.class.getSimpleName());
@@ -28,8 +29,8 @@ public class SoulFlameBarrierPower extends AbstractExilePower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.owner != null && info.type == DamageInfo.DamageType.NORMAL && info.owner != this.owner) {
             flash();
-            DamageInfo thornInfo = new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS);
-            DamageModifierManager.bindDamageMods(info, Arrays.asList(new SoulFireDamage()));
+            DamageInfo thornInfo = new DamageInfo(this.owner, amount, DamageInfo.DamageType.THORNS);
+            DamageModifierManager.bindDamageMods(thornInfo, Collections.singletonList(new SoulFireDamage()));
             DamageAction action = new DamageAction(info.owner, thornInfo, ExileMod.Enums.SOUL_FIRE);
             att(action);
         }

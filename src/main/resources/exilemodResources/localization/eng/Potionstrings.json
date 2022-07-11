@@ -4,14 +4,14 @@
     "DESCRIPTIONS": [
       "Apply !P! #yJinx."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "Don't breathe the fumes."
   },
   "${ModID}:MurkyElixir": {
     "NAME": "Murky Elixir",
     "DESCRIPTIONS": [
       "Gain !P! #yShadowcloak."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "Goddamn do I hate the taste of this stuff."
   },
   "${ModID}:SigilPotion": {
     "NAME": "Sigil Potion",
@@ -19,43 +19,43 @@
       "Choose 1 of 3 random #ySigil cards to add to your hand, then discard it.",
       "Choose 1 of 3 random #ySigil cards and add !P! copies to your hand, then discard them."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "This potion doesn't actually create sigils, when the flask is broken it teleports one from a box of extras I've stashed away."
   },
   "${ModID}:StoneskinPotion": {
     "NAME": "Stoneskin Potion",
     "DESCRIPTIONS": [
       "Whenever you would take damage this turn, take !P! less."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "Do you like not getting murdered?  I like not getting murdered!"
   },
   "${ModID}:LiquidCalamity": {
     "NAME": "Liquid Calamity",
     "DESCRIPTIONS": [
       "Apply !P1! #yFrostbite, !P2! #yCrushed, and !P3! #yJinxed."
     ],
-    "FLAVOR": "Wololooooooooooo"
+    "FLAVOR": ""
   },
-  "${ModID}:ForbiddenFlask": {
-    "NAME": "Forbidden Flask",
+  "${ModID}:VibratingFlask": {
+    "NAME": "Vibrating Flask",
     "DESCRIPTIONS": [
       "Choose 1 of 3 random #yResonant cards to add to your hand, it costs 0 this turn.",
       "Choose 1 of 3 random #yResonant cards and add !P! copies to your hand, they cost 0 this turn."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "I discovered how to bottle resonant spells to use later. My research into bottling other spells has been long and fruitless."
   },
   "${ModID}:WhirlpoolPotion": {
     "NAME": "Whirlpool Potion",
     "DESCRIPTIONS": [
       "Draw !P! cards and discard !P! cards."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "This potion grants an incredible burst of speed that is difficult to control."
   },
   "${ModID}:ElixirOfFalseHealth": {
     "NAME": "Elixir of False Health",
     "DESCRIPTIONS": [
       "Gain #yTemporary #yHP equal to !P!% of your max HP."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "I manage to successfully brew this about 1 out of 3 times."
   },
   "${ModID}:UnicornBlood": {
     "NAME": "Unicorn Blood",
@@ -63,13 +63,14 @@
       "Gain !P! Max HP and obtain a unique #yCurse.",
       "Gain !P! Max HP and obtain 2 unique #yCurses."
     ],
-    "FLAVOR": "BEEP BOOP SHOOWHEE"
+    "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },
   "${ModID}:SteelhidePotion": {
     "NAME": "Steelhide Potion",
     "DESCRIPTIONS": [
       "Whenever you would take damage this combat, take !P! less."
-    ]
+    ],
+    "FLAVOR": "When I discovered this potion, I learned that with proper magic, steel could move like flesh but still be hard.  It inspired me to start my golem research."
   },
   "${ModID}:PoisonousSmokeBomb": {
     "NAME": "Poisonous Smoke Bomb",
@@ -77,7 +78,7 @@
       "Flee from a normal combat.  Still gain rewards.",
       "Flee from a non-boss combat.  Still gain rewards."
     ],
-    "FLAVOR": "DO NOT DROP IT!"
+    "FLAVOR": "Clanky Gremlin told me DO NOT DROP IT!  That seems like good advice."
   },
   "${ModID}:ToxicOil": {
     "NAME": "Toxic Oil",
@@ -92,6 +93,6 @@
       "Draw an additional card each turn.",
       "Draw !P! additional cards each turn."
     ],
-    "FLAVOR": "Some mysterious green cloaked stranger has been selling these for a lot of money."
+    "FLAVOR": "It's also great for pranks."
   }
 }
