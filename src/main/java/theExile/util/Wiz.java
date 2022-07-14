@@ -19,7 +19,9 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theExile.ExileMod;
 import theExile.actions.TimedVFXAction;
+import theExile.cards.AbstractExileCard;
 import theExile.powers.JinxPower;
 
 import java.util.ArrayList;
@@ -39,6 +41,22 @@ public class Wiz {
         if (x == 1)
             return AbstractGameAction.AttackEffect.SLASH_HORIZONTAL;
         return AbstractGameAction.AttackEffect.SLASH_VERTICAL;
+    }
+
+    public static AbstractGameAction.AttackEffect getSlashByDamage(int damage) {
+        if (damage < AbstractExileCard.DAMAGE_THRESHOLD_M)
+            return getRandomSlash();
+        else if (damage < AbstractExileCard.DAMAGE_THRESHOLD_L)
+            return AbstractGameAction.AttackEffect.SLASH_HEAVY;
+        return ExileMod.Enums.SLASH_MASSIVE;
+    }
+
+    public static AbstractGameAction.AttackEffect getBluntByDamage(int damage) {
+        if (damage < AbstractExileCard.DAMAGE_THRESHOLD_M)
+            return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
+        else if (damage < AbstractExileCard.DAMAGE_THRESHOLD_L)
+            return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
+        return ExileMod.Enums.BLUNT_MASSIVE;
     }
 
     public static void forAllCardsInList(ArrayList<AbstractCard> cardsList, Consumer<AbstractCard> consumer) {

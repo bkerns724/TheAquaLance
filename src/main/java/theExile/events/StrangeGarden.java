@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import theExile.ExileMod;
-import theExile.TheExile;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SlipperyPotion;
 
@@ -45,7 +44,6 @@ public class StrangeGarden extends AbstractExileEvent {
         params.eventClass = StrangeGarden.class;
         params.eventID = ID;
         params.eventType = TYPE;
-        params.spawnCondition = () -> (adp().chosenClass == TheExile.Enums.THE_EXILE || ExileMod.isUniversalEvents());
         params.bonusCondition = () -> (hasCardOfRarity(AbstractCard.CardRarity.COMMON) ||
                 (hasCardOfRarity(AbstractCard.CardRarity.UNCOMMON) && !adp().hasRelic(Sozu.ID)));
         return params;

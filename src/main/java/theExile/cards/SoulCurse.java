@@ -12,6 +12,7 @@ import static theExile.util.Wiz.*;
 public class SoulCurse extends AbstractExileCard {
     public final static String ID = makeID(SoulCurse.class.getSimpleName());
     private final static int COST = 1;
+    private final static int MAGIC = 1;
 
     public SoulCurse() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
@@ -20,14 +21,15 @@ public class SoulCurse extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         exhaust = true;
+        baseMagicNumber = magicNumber = MAGIC;
+        magicOneIsDebuff = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
-        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int count = getJinxAmountCard(m);
         if (count > 0)
-            applyToEnemy(m, new JinxPower(m, count));
+            applyToEnemy(m, new JinxPower(m, magicNumber*count));
     }
 
     public void upp() {

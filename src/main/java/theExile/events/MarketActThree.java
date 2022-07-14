@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.relics.Sozu;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theExile.ExileMod;
-import theExile.TheExile;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
 
@@ -48,7 +47,6 @@ public class MarketActThree extends AbstractExileEvent {
         params.eventType = TYPE;
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheBeyond.ID);
-        params.spawnCondition = () -> (adp().chosenClass == TheExile.Enums.THE_EXILE || ExileMod.isUniversalEvents());
         params.bonusCondition = () -> (!adp().hasRelic(Sozu.ID));
 
         return params;

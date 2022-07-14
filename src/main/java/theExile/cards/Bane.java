@@ -41,7 +41,6 @@ public class Bane extends AbstractExileCard {
             magicNumber += EnergyPanel.totalCount*2;
         else
             magicNumber += EnergyPanel.totalCount;
-        isMagicNumberModified = true;
         initializeDescription();
     }
 
@@ -54,5 +53,7 @@ public class Bane extends AbstractExileCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
+        if (magicOneIsDebuff)
+            upMagic(UPGRADE_MAGIC);
     }
 }

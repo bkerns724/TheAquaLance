@@ -13,9 +13,10 @@ import static theExile.util.Wiz.*;
 public class Terror extends AbstractExileCard {
     public final static String ID = makeID(Terror.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
     private final static int DISCARD_AMOUNT = 1;
+    private final static int SECOND_MAGIC = 1;
+    private final static int UPGRADE_SECOND = 1;
 
     public Terror() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -24,18 +25,19 @@ public class Terror extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        secondMagic = baseSecondMagic = SECOND_MAGIC;
+        magicOneIsDebuff = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
-        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (getJinxAmountCard(m) > 0)
-            applyToEnemy(m, new VulnerablePower(m, getJinxAmountCard(m), false));
-        atb(new DrawCardAction(magicNumber));
+            applyToEnemy(m, new VulnerablePower(m, magicNumber*getJinxAmountCard(m), false));
+        atb(new DrawCardAction(secondMagic));
         discard(DISCARD_AMOUNT);
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic2(UPGRADE_SECOND);
     }
 }

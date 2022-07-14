@@ -12,7 +12,7 @@ public class EldritchCurse extends AbstractExileCard {
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
-    private final static int DAMAGE = 7;
+    private final static int DAMAGE = 5;
 
     public EldritchCurse() {
         super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);

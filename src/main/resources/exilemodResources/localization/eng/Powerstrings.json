@@ -162,7 +162,7 @@
   "${ModID}:SoulFeedPower": {
     "NAME": "Soul Feed",
     "DESCRIPTIONS": [
-      "Whenever a non-minion enemy dies, gain 1 Max HP."
+      "Whenever a non-minion enemy dies, gain !A! Max HP."
     ]
   },
   "${ModID}:StoneskinPower": {
@@ -184,17 +184,23 @@
       "Gain !A! #yTemporary #yHP whenever you attack this enemy."
     ]
   },
-  "${ModID}:ChargePower": {
-    "NAME": "Charge",
-    "DESCRIPTIONS": [
-      "Whenever you end your turn with at least one [E] , your next attack deals !A! additional damage."
-    ]
-  },
   "${ModID}:ManaBurstPower": {
     "NAME": "Mana Burst",
     "DESCRIPTIONS": [
       "The first !A! time you discard a #ySigil each turn, gain [E].",
       "The first !A! times you discard a #ySigil each turn, gain [E]."
+    ]
+  },
+  "${ModID}:ExileStudyPower": {
+    "NAME": "Study",
+    "DESCRIPTIONS": [
+      "In !A! turns, choose 1 of !A2! cards to add into your hand."
+    ]
+  },
+  "${ModID}:TwistedFormPower": {
+    "NAME": "Twisted Form",
+    "DESCRIPTIONS": [
+      "At the start of its turn, loses !A! #yStrength and !A2! HP. There is no escaping this curse."
     ]
   },
   "${ModID}:DreadfulFinalePower": {

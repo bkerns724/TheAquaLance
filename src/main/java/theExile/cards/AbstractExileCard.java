@@ -42,6 +42,7 @@ import theExile.icons.Ice;
 import theExile.icons.SoulFire;
 import theExile.powers.AbstractExilePower;
 import theExile.powers.BoostedSigilPower;
+import theExile.relics.ChemicalZ;
 import theExile.relics.ManaPurifier;
 import theExile.util.CardArtRoller;
 
@@ -73,14 +74,12 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public boolean magicOneIsDebuff = false;
     public boolean magicTwoIsDebuff = false;
-    public boolean hasScourge = false;
 
     public boolean beingDiscarded = false;
 
     public ArrayList<elenum> damageModList = new ArrayList<>();
     public boolean sigil = false;
     public boolean debuffIncrease = false;
-    public boolean scourgeIncrease = false;
 
     private static final Color FLAVOR_BOX_COLOR = new Color(0.45f, 0, 0.65f, 1.0f);
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
@@ -90,8 +89,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public static final String SOULFIRE_STRING = SoulFire.CODE;
     public static final String DARK_STRING = Eldritch.CODE;
 
-    private static final int DAMAGE_THRESHOLD_M = 15;
-    private static final int DAMAGE_THRESHOLD_L = 50;
+    public static final int DAMAGE_THRESHOLD_M = 15;
+    public static final int DAMAGE_THRESHOLD_L = 50;
 
     public enum elenum {
         ICE,
@@ -192,8 +191,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     protected int getJinxAmountCard(AbstractMonster m) {
         int x = getJinxAmount(m);
-        if (scourgeIncrease)
-            x *= 2;
+        if (adp().hasRelic(ChemicalZ.ID))
+            x += ChemicalZ.BOOST_AMOUNT;
         return x;
     }
 
@@ -315,10 +314,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
         rawDescription = rawDescription.replace("!C!", getCustomString());
 
-        if (hasScourge && !scourgeIncrease)
-            rawDescription = rawDescription.replace("!ScourgeString!", "[exilemod:ScourgeIcon]");
-        else if (hasScourge)
-            rawDescription = rawDescription.replace("!ScourgeString!", "2 [exilemod:ScourgeIcon]");
+        rawDescription = rawDescription.replace("!ScourgeString!", "[exilemod:ScourgeIcon]");
 
         if (selfRetain)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
@@ -369,6 +365,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public void addModifier(elenum element, boolean tips) {
         if (damageModList.contains(element))
             return;
+
         damageModList.add(element);
         if (element == ICE)
             DamageModifierManager.addModifier(this, new IceDamage(tips));
@@ -378,6 +375,12 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.DARK)
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
+
+        if (this instanceof AbstractResonantCard)
+            if (!((AbstractResonantCard) this).resonance.damageMods.contains(element))
+                ((AbstractResonantCard) this).resonance.damageMods.add(element);
+        if (adp() != null)
+            applyPowers();
         initializeDescription();
     }
 
@@ -476,50 +479,48 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void dmg(AbstractMonster m) {
-        dmg(m, getAttackEffect(), null, false, false);
+        dmg(m, getAttackEffect(), false);
     }
 
     public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        dmg(m, fx, null, false, false);
+        dmg(m, fx, false);
     }
 
     public void dmgTop(AbstractMonster m) {
-        dmg(m, getAttackEffect(), null, false, true);
+        dmg(m, getAttackEffect(),  true);
     }
 
     public void dmgTop(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        dmg(m, fx, null, false, true);
+        dmg(m, fx, true);
     }
 
     public void allDmg() {
-        dmg(null, getAttackEffect(), null, false, false);
+        dmg(null, getAttackEffect(), false);
     }
 
     public void allDmg(AbstractGameAction.AttackEffect fx) {
-        dmg(null, fx, null, false, false);
+        dmg(null, fx, false);
     }
 
-    public void allDmgTop() {
-        dmg(null, getAttackEffect(), null, false, true);
-    }
+    public void allDmgTop() { dmg(null, getAttackEffect(), true); }
 
     public void allDmgTop(AbstractGameAction.AttackEffect fx) {
-        dmg(null, fx, null, false, true);
+        dmg(null, fx, true);
     }
 
-    public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx, Color color, boolean rainbow, boolean top) {
+    public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx, boolean top) {
         if (m == null) {
             if (top)
-                att(new AttackAction(multiDamage, fx, color, rainbow));
+                att(new AttackAction(multiDamage, fx));
             else
-                atb(new AttackAction(multiDamage, fx, color, rainbow));
+                atb(new AttackAction(multiDamage, fx));
             return;
         }
         DamageInfo info = new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL);
         if (top)
-            att(new AttackAction(m, info, fx, color, rainbow));
+            att(new AttackAction(m, info, fx));
         else
-            atb(new AttackAction(m, info, fx, color, rainbow));
+            atb(new AttackAction(m, info, fx));
     }
 
     public void blck() {
@@ -580,7 +581,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         card.selfRetain = selfRetain;
         card.magicOneIsDebuff = magicOneIsDebuff;
         card.magicTwoIsDebuff = magicTwoIsDebuff;
-        card.scourgeIncrease = scourgeIncrease;
         card.debuffIncrease = debuffIncrease;
 
         card.damageModList.clear();
@@ -601,7 +601,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         obj.sigil = sigil;
         obj.retain = selfRetain;
         obj.debuffIncrease = debuffIncrease;
-        obj.scourgeIncrease = scourgeIncrease;
         obj.baseDamage = baseDamage;
         obj.baseBlock = baseBlock;
         obj.baseMagic = baseMagicNumber;
@@ -622,7 +621,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             cost = -2;
         selfRetain = obj.retain;
         debuffIncrease = obj.debuffIncrease;
-        scourgeIncrease = obj.scourgeIncrease;
         baseDamage = obj.baseDamage;
         baseBlock = obj.baseBlock;
         baseMagicNumber = obj.baseMagic;

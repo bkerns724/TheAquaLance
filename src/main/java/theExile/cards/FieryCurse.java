@@ -12,7 +12,7 @@ public class FieryCurse extends AbstractExileCard {
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
-    private final static int DAMAGE = 8;
+    private final static int DAMAGE = 6;
 
     public FieryCurse() {
         super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);

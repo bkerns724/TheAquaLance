@@ -1,17 +1,14 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
 
 public class VoidTendrils extends AbstractExileCard {
     public final static String ID = makeID(VoidTendrils.class.getSimpleName());
-    private final static int DAMAGE = 9;
+    private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 1;
     private final static int COST = 1;
 
     public VoidTendrils() {
@@ -21,13 +18,11 @@ public class VoidTendrils extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.DARK);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        atb(new DiscardAction(p, p, magicNumber, false));
     }
 
     public void upp() {

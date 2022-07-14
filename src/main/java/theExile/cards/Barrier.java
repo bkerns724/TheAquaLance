@@ -1,11 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.cardDraw;
 
 public class Barrier extends AbstractExileCard {
     public final static String ID = makeID(Barrier.class.getSimpleName());
@@ -26,7 +25,7 @@ public class Barrier extends AbstractExileCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
-        atb(new DrawCardAction(magicNumber));
+        cardDraw(magicNumber);
     }
 
     public void upp() {

@@ -18,8 +18,8 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
-import theExile.cards.AbstractResonantCard;
 import theExile.cards.NullElement;
+import theExile.cards.cardUtil.Resonance;
 import theExile.damagemods.EldritchDamage;
 import theExile.damagemods.ForceDamage;
 import theExile.damagemods.IceDamage;
@@ -48,6 +48,8 @@ public class SpellForge extends AbstractExileEvent {
 
     static {
         eventStrings = CardCrawlGame.languagePack.getEventString(ID);
+        eventStrings.DESCRIPTIONS[0] = eventStrings.DESCRIPTIONS[0].replace("!E4!",
+                String.valueOf(Resonance.ELEMENT_DAMAGE_PENALTY_PERCENT));
         IMAGE_PATH = ExileMod.makeImagePath("events/" + SpellForge.class.getSimpleName() + ".jpg");
     }
 
@@ -83,8 +85,6 @@ public class SpellForge extends AbstractExileEvent {
             else if (element != null) {
                 AbstractExileCard c = (AbstractExileCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 c.addModifier(element);
-                if (c instanceof AbstractResonantCard)
-                    ((AbstractResonantCard) c).resonance.damageMods.add(element);
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH/2.0f, (float)Settings.HEIGHT/2.0F));

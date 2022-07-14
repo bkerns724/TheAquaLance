@@ -22,6 +22,11 @@
       "Potions that can only be obtained through events."
     ]
   },
+  "${ModID}:ExileStudy": {
+    "TEXT": [
+      "Choose a card."
+    ]
+  },
   "${ModID}:Resonance": {
     "TEXT": [
       "Deal !D! damage.",

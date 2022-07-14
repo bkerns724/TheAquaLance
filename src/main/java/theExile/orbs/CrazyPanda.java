@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import theExile.ExileMod;
 import theExile.actions.PandaSmackAction;
+import theExile.patches.PandaPatch;
 
 import static java.lang.Math.pow;
 import static theExile.util.Wiz.atb;
@@ -118,6 +119,8 @@ public class CrazyPanda extends CustomOrb {
 
     @Override
     public void render(SpriteBatch sb) {
+        if (PandaPatch.AbstractOrbIsInPlayerRender.isPlayerRender.get(this))
+            return;
         sb.setColor(Color.WHITE.cpy());
         sb.setBlendFunction(770, 771);
         sb.draw(img, cX - 48.0F, cY - 48.0F, 48.0F, 48.0F, 96.0F, 96.0F, scale, scale, rotation, 0, 0, 96, 96, false, false);

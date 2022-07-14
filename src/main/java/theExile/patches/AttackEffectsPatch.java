@@ -137,18 +137,16 @@ public class AttackEffectsPatch {
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.RESONANT) {
-                CardCrawlGame.sound.playA("BELL", 0.2f);
+                CardCrawlGame.sound.playAV("BELL", 0.2f, 0.7f);
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.RESONANT_M) {
-                CardCrawlGame.sound.playA("BELL", 0.7f);
                 CardCrawlGame.sound.playA("BELL", 0.7f);
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.RESONANT_L) {
                 CardCrawlGame.sound.playA("BELL", 1.5f);
-                CardCrawlGame.sound.playA("BELL", 1.5f);
-                CardCrawlGame.sound.playA("BELL", 1.5f);
+                CardCrawlGame.sound.playAV("BELL", 1.5f, 0.5f);
                 return SpireReturn.Return();
             }
             if (emptyEffects.contains(effect))

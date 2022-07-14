@@ -1,11 +1,12 @@
 package theExile.powers;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.ExileMod;
-import theExile.actions.RapidsAction;
+import theExile.actions.DiscardToDoAction;
 
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.atb;
@@ -21,8 +22,10 @@ public class ChaoticMindPower extends AbstractExilePower {
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if (!firstCard)
-            atb(new RapidsAction(amount));
+        if (!firstCard) {
+            for (int i = 0; i < amount; i++)
+                atb(new DiscardToDoAction(1, new DrawCardAction(1), true));
+        }
         else
             firstCard = false;
     }

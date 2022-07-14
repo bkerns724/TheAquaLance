@@ -26,28 +26,11 @@ public class ScourgeBubble extends AbstractExileCard {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new ScourgeType());
-        hasScourge = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         blck();
         applyToSelf(new JinxThornsPower(p, magicNumber));
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        magicNumber = baseMagicNumber;
-        super.calculateCardDamage(mo);
-        if (scourgeIncrease)
-            magicNumber *= 2;
-    }
-
-    @Override
-    public void applyPowers() {
-        magicNumber = baseMagicNumber;
-        super.applyPowers();
-        if (scourgeIncrease)
-            magicNumber *= 2;
     }
 
     public void upp() {

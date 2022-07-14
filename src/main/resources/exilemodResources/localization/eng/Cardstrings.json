@@ -111,22 +111,22 @@
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
+    "DESCRIPTION": "Deal !D! damage",
     "FLAVOR": "I learned this spell from a stranger on a train."
   },
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
+    "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR":  "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:VoidTendrils": {
     "NAME": "Void Tendrils",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
+    "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Demonstrating this spell was the reason for my exile.  It's like they want to die to the Spire Blight."
   },
   "${ModID}:SoulFlame": {
     "NAME": "SoulFlame",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
+    "DESCRIPTION": "Discard a card to deal !D! damage.",
     "FLAVOR": "With soul flame, it isn't the body that's burning, so my ice spells still work."
   },
   "${ModID}:ChaoticMind": {
@@ -150,8 +150,8 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "Like Barrier, but with blackjack and hookers."
   },
-  "${ModID}:DemonSigil": {
-    "NAME": "Demon Sigil",
+  "${ModID}:BurningSigil": {
+    "NAME": "Burning Sigil",
     "DESCRIPTION": "Deal !D! damage to ALL enemies.",
     "FLAVOR": "The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana."
   },
@@ -165,8 +165,8 @@
     "DESCRIPTION": "Apply !M! ${ModID}:Jinx to ALL enemies.",
     "FLAVOR": "A proper sigil can only be activated by a trigger word spoken by its creator.  You wouldn't want to curse yourself with a sigil in your pocket, so take great care to enchant it properly."
   },
-  "${ModID}:BurningSigil": {
-    "NAME": "Burning Sigil",
+  "${ModID}:DemonSigil": {
+    "NAME": "Demon Sigil",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Lose !M! HP.",
     "FLAVOR": "It's hard to completely escape the blast zone, but sometimes you just have to nuke shit."
   },
@@ -174,11 +174,6 @@
     "NAME": "Iron Sigil",
     "DESCRIPTION": "Gain !M! ${ModID}:Plated\u00a0Armor.",
     "FLAVOR": "A staple defensive enchantment for longer battles."
-  },
-  "${ModID}:SpiralingSigil": {
-    "NAME": "Spiraling Sigil",
-    "DESCRIPTION": "All enemies gain 1 ${ModID}:Jinx for each debuff they have.",
-    "FLAVOR": "This is a nasty spell for any mage that likes to control the battlefield by weakening her enemies."
   },
   "${ModID}:ChameleonSigil": {
     "NAME": "Chameleon Sigil",
@@ -256,19 +251,19 @@
     "FLAVOR": "A personal favorite of mine.  If the enemy has a lot of bad luck, everything you cast is more likely to be effective."
   },
   "${ModID}:BrrZerk": {
-    "NAME": "Brr Zerk",
-    "DESCRIPTION": "Whenever an Attack deals unblocked damage, apply !M! ${ModID}:Frostbite.",
+    "NAME": "BrrZerk",
+    "DESCRIPTION": "Whenever you deal attack damage this turn, apply !M! ${ModID}:Frostbite.",
     "FLAVOR": "This difficult technique is not a spell, but a way to alter your other spells to also freeze the target."
+  },
+  "${ModID}:TwistedForm": {
+    "NAME": "Twisted Form",
+    "DESCRIPTION": "At the start of its turn, enemy loses !M! Strength and !${ModID}:M2! HP. NL There is no escaping this spell.",
+    "FLAVOR": "Applying a shapeshifting spell to another target isn't easy.  You'll only get a partial effect.  But even partially twisting someone into a pretzel is very effective."
   },
   "${ModID}:Gale": {
     "NAME": "Gale",
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! cards.",
     "FLAVOR": "Pushing your opponent away is a great way to get room for a stronger spell."
-  },
-  "${ModID}:Eruption": {
-    "NAME": "Eruption",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
-    "FLAVOR": "The price for this power was heavy, but we have to stop the Spire."
   },
   "${ModID}:WellPrepared": {
     "NAME": "Well Prepared",
@@ -311,10 +306,10 @@
     "DESCRIPTION": "Whenever a non-minion enemy dies, gain !M! Max HP.",
     "FLAVOR": "Oh man, I'm glad no one discovered I could do this.  I'd probably be executed instead of exiled."
   },
-  "${ModID}:SuddenChill": {
-    "NAME": "Sudden Chill",
+  "${ModID}:IceBrambles": {
+    "NAME": "Ice Brambles",
     "DESCRIPTION": "Deal !D! damage. NL Deal !M! [${ModID}:ScourgeIcon] extra damage.",
-    "FLAVOR": "Cold is even more effective when applied suddenly.  It can send the body into shock."
+    "FLAVOR": "Why choose between freezing and slashing when you can do both?"
   },
   "${ModID}:StoneDaggers": {
     "NAME": "Stone Daggers",
@@ -328,17 +323,17 @@
   },
   "${ModID}:VoidBall": {
     "NAME": "Void Ball",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
+    "DESCRIPTION": "Discard a card to deal !D! damage to ALL enemies.",
     "FLAVOR": "I feel the need.  The need to feed."
   },
   "${ModID}:Enfeeble": {
     "NAME": "Enfeeble",
-    "DESCRIPTION": "Apply !M! Weak.",
+    "DESCRIPTION": "Apply !M! Weak. NL Discard a card.",
     "FLAVOR": "Quick and easy to cast.  It won't win a fight by itself, but the tactical value is high."
   },
   "${ModID}:Grease": {
     "NAME": "Grease",
-    "DESCRIPTION": "Apply !M! Vulnerable.",
+    "DESCRIPTION": "Apply !M! Vulnerable. NL Discard a card.",
     "FLAVOR": "Quick and easy to cast.  A good setup for a stronger spell."
   },
   "${ModID}:RipplingShadows": {
@@ -348,8 +343,8 @@
   },
   "${ModID}:StoneWall": {
     "NAME": "Stone Wall",
-    "DESCRIPTION": "Gain !M! Temporary_HP.",
-    "FLAVOR": "It's my personal mobile fort."
+    "DESCRIPTION": "Gain !M! Temporary_HP. NL Discard a card.",
+    "FLAVOR": "It's not the sturdiest fort, but being able to build it in two seconds counts for a lot."
   },
   "${ModID}:Concentrate": {
     "NAME": "Concentrate",
@@ -358,12 +353,12 @@
   },
   "${ModID}:CurseWeapon": {
     "NAME": "Curse Weapon",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Jinx.",
+    "DESCRIPTION": "Gain !B! Block. NL Discard a card to apply !M! ${ModID}:Jinx.",
     "FLAVOR": "This is why spells are superior.  A weapon can be damaged, destroyed.  The only way to destroy my spells is to destroy me."
   },
-  "${ModID}:Zap": {
-    "NAME": "Zap",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !ScourgeString! Weak.",
+  "${ModID}:Shock": {
+    "NAME": "Shock",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply {!M!|>1=!M!} !ScourgeString! Weak.",
     "FLAVOR": "Not one of my favored elements, but it is good to be a little unpredictable."
   },
   "${ModID}:SickBurn": {
@@ -373,23 +368,13 @@
   },
   "${ModID}:CompressionWave": {
     "NAME": "Compression Wave",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Draw a card. NL Discard a card.",
-    "FLAVOR": "The oomph of a single target force spell is so much more satisfying.  But this has its place."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
+    "FLAVOR": "On smallest monsters like lice you can literally splat them open with this."
   },
   "${ModID}:SpiritLeech": {
     "NAME": "Spirit Leech",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP.",
     "FLAVOR": "Another spell that I'm quite glad no one caught me casting."
-  },
-  "${ModID}:IceNeedles": {
-    "NAME": "Ice Needles",
-    "DESCRIPTION": "Deal !D! damage !M! times.",
-    "FLAVOR": "Often ineffective, but if you can gather the force to push them through..."
-  },
-  "${ModID}:ExploitWeakness": {
-    "NAME": "Exploit Weakness",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx for every debuff.",
-    "FLAVOR": "Even great force can be defended against.  But you can't defend against bad luck."
   },
   "${ModID}:SackOfDebris": {
     "NAME": "Sack Of Debris",
@@ -401,10 +386,20 @@
     "DESCRIPTION": "If you end your turn with no cards in hand, ALL enemies lose !M! Strength that turn.",
     "FLAVOR": "Not a grand finish, but staying alive is very practical."
   },
-  "${ModID}:Charge": {
-    "NAME": "Charge",
-    "DESCRIPTION": "At the end of your turn, your next attack deals !M! additional damage per unspent [E].",
-    "FLAVOR": "Sometimes you gotta wait for an opening.  Why waste your mana while you do so?"
+  "${ModID}:Study": {
+    "NAME": "Study",
+    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! cards to add into your hand.",
+    "FLAVOR": "I didn't get to be a badass by sitting around on the couch all day."
+  },
+  "${ModID}:FrigidBlast": {
+    "NAME": "Frigid Blast",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage X times. NL Draw X cards next turn.",
+    "FLAVOR": "Not a grand finish, but staying alive is very practical."
+  },
+  "${ModID}:Cannon": {
+    "NAME": "Cannon",
+    "DESCRIPTION": "Deal !D! damage. NL Discard !M! cards next turn.",
+    "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
@@ -435,14 +430,14 @@
   },
   "${ModID}:Terror": {
     "NAME": "Terror",
-    "DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw a card. NL Discard a card.",
-    "UPGRADE_DESCRIPTION": "Apply !ScourgeString! Vulnerable. NL Draw !M! cards. NL Discard a card.",
+    "DESCRIPTION": "{@@}Apply {!M!|>1=!M!} !ScourgeString! Vulnerable. NL Draw a card. NL Discard a card.",
+    "UPGRADE_DESCRIPTION": "Apply {!M!|>1=!M!} !ScourgeString! Vulnerable. NL Draw !${ModID}:M2! cards. NL Discard a card.",
     "FLAVOR": "Even if they have the bravery to fight through it, their body will betray them with quivering and they become an easy target."
   },
   "${ModID}:Invisibility": {
     "NAME": "Invisibility",
     "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak.",
-    "FLAVOR": "Hide.  Strike.  Repeat."
+    "FLAVOR": "If you come across a fearsome Rainbow Louse, don't try to fight it.  Use this spell to hide and then hope for the best."
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
@@ -454,8 +449,8 @@
     "DESCRIPTION": "Add a random ${ModID}:Sigil into your hand. NL Discard it.",
     "FLAVOR": "So many mundane skills are useful in combination with wizardry."
   },
-  "${ModID}:Ignition": {
-    "NAME": "Ignition",
+  "${ModID}:Combust": {
+    "NAME": "Combust",
     "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs.",
     "EXTENDED_DESCRIPTION" : [
       "Enemy does not have enough debuffs."
@@ -507,28 +502,27 @@
     "NAME": "Madness",
     "DESCRIPTION": "Enemy enters Wrath.",
     "UPGRADE_DESCRIPTION": "Enemy enters Wrath. NL Whenever an enemy dies, return this to your hand.",
-    "FLAVOR": "A Watcher taught us how to channel our rage in exchange for observing our conclave.  I decided to learn how to channel other people's rage."
+    "FLAVOR": "In exchange for letting her observe our conclave, a Watcher taught us how to channel our rage.  I decided to instead channel other people's rage."
   },
   "${ModID}:Vanish": {
     "NAME": "Vanish",
     "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Gain !${ModID}:M2! Block per ${ModID}:Shadowcloak.",
-    "FLAVOR": "I just don't cast a spell when I do this.  I learned mundane ways of enhancing stealth from some talented acquaintances.  They learned magic ways of enhancing stealth in exchange."
+    "FLAVOR": "I just don't cast a spell when I do this.  I learned mundane ways of enhancing stealth from some talented acquaintances.  In exchange I taught them to brew semi-legal camoflouge potions."
   },
   "${ModID}:SoulCurse": {
     "NAME": "Soul Curse",
-    "DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx.",
-    "UPGRADE_DESCRIPTION": "Apply !ScourgeString! ${ModID}:Jinx.",
+    "DESCRIPTION": "{@@}Apply {!M!|>1=!M!} !ScourgeString! ${ModID}:Jinx.",
     "FLAVOR": "A very nasty spell that I could get away with because the effects are too subtle to notice even if they're standing next to me."
   },
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",
     "DESCRIPTION": "At the end of your turn, Channel a !M! damage Panda. NL Pandas deal damage at the start of your turn.",
-    "FLAVOR": "I always thought summoning spells were weak.  Then I managed to develop a version that lasted."
+    "FLAVOR": "I always thought summoning spells were weak.  Then I managed to develop a version that kept summoning."
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
     "DESCRIPTION": "Gain !${ModID}:M2! Block at the end of your turn. NL Whenever you would take damage, take !M! less.",
-    "FLAVOR": "The epitome of my research.  It would have transformed our fighting forces.  Unfortunately, I was driven out before I could finish the prototype.  In hindsight, they would have been too stubborn to use it, even if I demonstrated by being the first to transcend the limits of the human form."
+    "FLAVOR": "The epitome of my research.  It would have transformed our fighting forces.  Unfortunately, I was driven out before I could finish the prototype.  In hindsight, they would have been too stubborn to use it, even if I demonstrated the advantages by being the first to transcend the limits of the human form."
   },
   "${ModID}:Prepare": {
     "NAME": "Prepare",

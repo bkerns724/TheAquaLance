@@ -12,9 +12,9 @@ import static theExile.util.Wiz.applyToEnemyTop;
 import static theExile.util.Wiz.att;
 
 public class HeavySigilAction extends AbstractGameAction {
-    private int strengthLoss;
-    private DamageInfo info;
-    private AttackEffect effect;
+    private final int strengthLoss;
+    private final DamageInfo info;
+    private final AttackEffect effect;
 
     public HeavySigilAction(AbstractMonster monster, DamageInfo info, int strengthLoss, AttackEffect effect) {
         target = monster;
@@ -32,7 +32,7 @@ public class HeavySigilAction extends AbstractGameAction {
             tickDuration();
             if (isDone) {
                 applyToEnemyTop(target, new StrengthPower(target, -strengthLoss));
-                att(new AttackAction((AbstractMonster) target, info, effect, null, false));
+                att(new AttackAction((AbstractMonster) target, info, effect));
 
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
                     AbstractDungeon.actionManager.clearPostCombatActions();

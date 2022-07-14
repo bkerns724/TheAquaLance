@@ -5,6 +5,7 @@ import static theExile.ExileMod.makeID;
 public class Deter extends AbstractResonantCard {
     public final static String ID = makeID(Deter.class.getSimpleName());
     private final static int DAMAGE = 8;
+    private final static int UPGRADE_DAMAGE = 8;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
@@ -25,6 +26,7 @@ public class Deter extends AbstractResonantCard {
     }
 
     public void upp() {
+        upgradeDamage(UPGRADE_DAMAGE);
         upMagic(UPGRADE_MAGIC);
         resonance.revenge += UPGRADE_MAGIC;
     }

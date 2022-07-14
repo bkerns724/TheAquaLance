@@ -11,7 +11,14 @@
     "FLAVOR": "The ink is fading and the pages are crumbling.",
     "DESCRIPTIONS": [
       "Upon pickup, obtain #bone of #bthree powerful cards.",
-      "Choose a spell to study..."
+      "Choose a spell to learn..."
+    ]
+  },
+  "${ModID}:ChemicalZ": {
+    "NAME": "Chemical Z",
+    "FLAVOR": "Drinking this was a very questionable decision.",
+    "DESCRIPTIONS": [
+      "The effects of your scourge cards are increased by !R!."
     ]
   },
   "${ModID}:VestOfManyPockets": {

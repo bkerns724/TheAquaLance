@@ -71,7 +71,8 @@ public class MarketActOne extends AbstractExileEvent {
             imageEventText.setDialogOption(options[0], true);
         } else {
             EnchantmentOils oils = new EnchantmentOils();
-            imageEventText.setDialogOption(options[1].replace("!RelicString!", FontHelper.colorString(oils.name, "g")), oils);
+            imageEventText.setDialogOption(options[1].replace("!RelicString!",
+                    FontHelper.colorString(oils.name, "g")), oils);
         }
 
         // sell potion

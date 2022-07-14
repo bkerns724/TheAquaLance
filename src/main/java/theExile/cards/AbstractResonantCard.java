@@ -31,7 +31,8 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     @Override
     public void applyPowers() {
-        initializeDescription();
+        baseDamage = resonance.getDamage();
+        baseBlock = resonance.block;
         super.applyPowers();
     }
 

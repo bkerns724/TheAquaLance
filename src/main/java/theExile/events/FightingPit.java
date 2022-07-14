@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theExile.ExileMod;
-import theExile.TheExile;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.PoisonousSmokeBomb;
 
@@ -52,7 +51,6 @@ public class FightingPit extends AbstractExileEvent {
         params.eventType = TYPE;
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(Exordium.ID);
-        params.spawnCondition = () -> (adp().chosenClass == TheExile.Enums.THE_EXILE || ExileMod.isUniversalEvents());
         return params;
     }
 

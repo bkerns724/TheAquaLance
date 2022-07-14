@@ -6,14 +6,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.getDebuffCount;
 
-public class Ignition extends AbstractExileCard {
-    public final static String ID = makeID(Ignition.class.getSimpleName());
+public class Combust extends AbstractExileCard {
+    public final static String ID = makeID(Combust.class.getSimpleName());
     private final static int DAMAGE = 32;
     private final static int UPGRADE_DAMAGE = 10;
     private final static int MAGIC = 5;
     private final static int COST = 0;
 
-    public Ignition() {
+    public Combust() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 

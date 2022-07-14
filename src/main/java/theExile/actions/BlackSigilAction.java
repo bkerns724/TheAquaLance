@@ -11,9 +11,9 @@ import theExile.ExileMod;
 import static theExile.util.Wiz.att;
 
 public class BlackSigilAction extends AbstractGameAction {
-    private int healAmount;
-    private DamageInfo info;
-    private AttackEffect effect;
+    private final int healAmount;
+    private final DamageInfo info;
+    private final AttackEffect effect;
 
     public BlackSigilAction(AbstractMonster monster, DamageInfo info, int healAmount, AttackEffect effect) {
         target = monster;
@@ -32,7 +32,7 @@ public class BlackSigilAction extends AbstractGameAction {
             if (isDone) {
                 AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ExileMod.Enums.FORCE, false));
                 att(new BlackSigilFollowupAction((AbstractMonster) target, healAmount));
-                att(new AttackAction((AbstractMonster) target, info, effect, null, false));
+                att(new AttackAction((AbstractMonster) target, info, effect));
             }
         }
     }

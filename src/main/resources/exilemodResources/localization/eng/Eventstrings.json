@@ -139,7 +139,7 @@
   "${ModID}:SpellForge": {
     "NAME": "Spell Forge",
     "DESCRIPTIONS": [
-      "You come across a shop with a sign that reads \"The Spell Forge\", sandwiched between two pictures of a spellbook and an anvil.  Curious, you enter.  A man unfashionably dressed in a robe AND an apron offers you two possible services.  You can pay money to enhance one of your spells with an element, or you can receive gold if he extracts the essence from one of your spells.",
+      "You come across a shop with a sign that reads \"The Spell Forge\", sandwiched between two pictures of a spellbook and an anvil.  Curious, you enter.  A man unfashionably dressed in a robe AND an apron offers you two possible services.  You can pay money to enhance one of your spells with an element, or you can receive gold if he extracts the essence from one of your spells.  You remember that resonant spells are become !E4!% weaker when mixed with an element.",
       "All right, which element would you like to enhance it with.",
       "Select a card to enhance.",
       "Select a card to remove.",
@@ -189,17 +189,17 @@
   "${ModID}:LadyInRed": {
     "NAME": "The Lady In Red",
     "DESCRIPTIONS": [
-      "You come across a small stone building, with oddly colored smoke billowing out of its chimney.  A sign above the door declares it to be \"The Malice Shop.\"  Curious as to how you buy malice, you enter the door.  A Lady dressed completely in red greets you, and offers you potions to enhance the cruelty of your spells.  The cost she proposes is not in coin, however.",
+      "You come across a small stone building, with oddly colored smoke billowing out of its chimney.  A sign above the door declares it to be \"The Malice Shop.\"  Curious as to how you buy malice, you enter the door.  A Lady dressed completely in red greets you, and offers you wares to enhance the cruelty of your spells.  The cost she proposes is not in coin, however.",
       "You decide to give up some blood, since you can always heal later.  You drink the offered potion and can feel the increase in your power.",
       "You decide to give up a little vitality, to deny your enemies a lot of theirs.  You drink the offered potion and can feel the increase in your power.",
       "You are really suspicious of the costs of these options.  Like, super suspicious, this lady isn't even being subtle.  You leave the shop.",
       "Choose cards to boost.",
-      "Choose cards to boost."
+      "Boost",
+      "Double the debuff amount of an Exile card."
     ],
     "OPTIONS": [
-      "[Scourge] #rLose #r!E! #rHP.  #gBoost #g!sCount! #gScourge #gCards.",
-      "[Scourge] Requires a scourge card and more than !E! HP.",
-      "[Debuff] #rLose #r!E2! #rMax #rHP. #gBoost #g!dCount! #gDebuffing #gCards.",
+      "[Scourge] #rLose #r!E! #rHP.  #gGain !RelicString!.",
+      "[Debuff] #rLose #r!E2! #rMax #rHP. #gBoost #g!dCount! #gDebuffing #gAttacks #gor #gSkills.",
       "[Debuff] Requires a card that applies a debuff.",
       "[Leave]"
     ]

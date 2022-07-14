@@ -24,6 +24,7 @@ public class HeavySigil extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        magicOneIsDebuff = true;
         isMultiDamage = true;
         sigil = true;
         addModifier(elenum.FORCE);

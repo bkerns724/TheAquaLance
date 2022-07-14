@@ -24,6 +24,8 @@ public class Resonance {
     public int extraDraw = 0;
     public int extraEnergy = 0;
     public ArrayList<elenum> damageMods = new ArrayList<>();
+    public static final float ELEMENT_DAMAGE_PENALTY = 0.25f;
+    public static final int ELEMENT_DAMAGE_PENALTY_PERCENT = (int)(ELEMENT_DAMAGE_PENALTY*100);
 
     private static final int MERGE_REDUCTION = 4;
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("Resonance"));
@@ -38,9 +40,10 @@ public class Resonance {
         if (adp() != null && adp().hasPower(SplitResonancePower.POWER_ID))
             hitCount += adp().getPower(SplitResonancePower.POWER_ID).amount;
 
-        card.baseDamage = amount/hitCount;
+        card.baseDamage = getDamage();
         card.baseBlock = block;
         card.calculateCardDamage(m);
+
         for (int i = 0; i < hitCount; i++)
             card.dmg(m);
         if (card.baseBlock > 0)
@@ -140,7 +143,8 @@ public class Resonance {
         if (adp() != null && adp().hasPower(SplitResonancePower.POWER_ID))
             hitCount += adp().getPower(SplitResonancePower.POWER_ID).amount;
 
-        return amount/hitCount;
+        int eleCount = damageMods.size();
+        return (int)((1 - ELEMENT_DAMAGE_PENALTY*eleCount)*amount/hitCount);
     }
 
     private String getConciseDescription() {

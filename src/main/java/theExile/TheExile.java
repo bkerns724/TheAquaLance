@@ -12,6 +12,7 @@ import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -24,17 +25,17 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import theExile.vfx.ExileVictoryEffect;
 import theExile.cards.*;
 import theExile.patches.CutsceneMultiScreenPatch;
-import theExile.relics.*;
+import theExile.relics.NecklaceOfShielding;
+import theExile.vfx.ExileVictoryEffect;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static theExile.TheExile.Enums.EXILE_BLARPLE_COLOR;
 import static theExile.ExileMod.*;
+import static theExile.TheExile.Enums.EXILE_BLARPLE_COLOR;
 
 public class TheExile extends CustomPlayer {
     private static final String[] ORB_TEXTURES = {
@@ -89,10 +90,10 @@ public class TheExile extends CustomPlayer {
         loadAnimation(SKELETON_ATLAS, SKELETON_JSON, 1.0F);
         AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
         stateData.setMix("Hit", "Idle", 0.1F);
-        e.setTimeScale(0.6F);
+        e.setTimeScale(0.9F);
 
-        dialogX = (drawX + 0.0F * Settings.scale);
-        dialogY = (drawY + 240.0F * Settings.scale);
+        dialogX = drawX + 0.0F * Settings.scale;
+        dialogY = drawY + 170.0F * Settings.scale;
     }
 
     @Override
@@ -150,6 +151,16 @@ public class TheExile extends CustomPlayer {
         // Even if the other characters do it, mine won't
         // CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
         Collection<AbstractCustomIcon> icons = CustomIconHelper.getAllIcons();
+    }
+
+    public void damage(DamageInfo info) {
+        if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.output - this.currentBlock > 0) {
+            AnimationState.TrackEntry e = state.setAnimation(0, "Hit", false);
+            state.addAnimation(0, "Idle", true, 0.0F);
+            e.setTimeScale(0.9F);
+        }
+
+        super.damage(info);
     }
 
     @Override

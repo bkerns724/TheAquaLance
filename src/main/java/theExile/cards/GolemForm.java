@@ -11,10 +11,9 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class GolemForm extends AbstractExileCard {
     public final static String ID = makeID(GolemForm.class.getSimpleName());
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 10;
-    private final static int UPGRADE_SECOND = 3;
+    private final static int MAGIC = 2;
+    private final static int SECOND_MAGIC = 8;
+    private final static int UPGRADE_SECOND = 4;
     private final static int COST = 3;
 
     public GolemForm() {
@@ -32,7 +31,6 @@ public class GolemForm extends AbstractExileCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
         upMagic2(UPGRADE_SECOND);
     }
 }

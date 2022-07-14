@@ -6,12 +6,14 @@ import theExile.actions.MyAddTempHPAction;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.discard;
 
 public class StoneWall extends AbstractExileCard {
     public final static String ID = makeID(StoneWall.class.getSimpleName());
-    private final static int MAGIC = 7;
-    private final static int UPGRADE_MAGIC = 3;
-    private final static int COST = 1;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = 2;
+    private final static int COST = 0;
+    private final static int DISCARD_AMOUNT = 1;
 
     public StoneWall() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
@@ -23,6 +25,7 @@ public class StoneWall extends AbstractExileCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         atb(new MyAddTempHPAction(p, p, magicNumber));
+        discard(DISCARD_AMOUNT);
     }
 
     public void upp() {

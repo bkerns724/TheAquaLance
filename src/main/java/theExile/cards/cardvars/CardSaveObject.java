@@ -10,7 +10,6 @@ public class CardSaveObject implements Serializable {
     public boolean sigil = false;
     public boolean retain = false;
     public boolean debuffIncrease = false;
-    public boolean scourgeIncrease = false;
     public int baseDamage = 0;
     public int baseBlock = 0;
     public int baseMagic = 0;

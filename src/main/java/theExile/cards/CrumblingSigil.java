@@ -23,7 +23,6 @@ public class CrumblingSigil extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
         sigil = true;
-        hasScourge = true;
         DamageModifierManager.addModifier(this, new ScourgeType());
     }
 

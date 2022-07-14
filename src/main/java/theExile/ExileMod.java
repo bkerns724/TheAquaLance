@@ -33,10 +33,12 @@ import theExile.cards.cardvars.SecondMagicNumber;
 import theExile.events.*;
 import theExile.icons.*;
 import theExile.potions.*;
+import theExile.powers.TwistedFormPower;
 import theExile.relics.AbstractExileRelic;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static theExile.TheExile.Enums.THE_EXILE;
@@ -68,7 +70,6 @@ public class ExileMod implements
 
     public static final String EXTENDED_CUT_SETTING = "ExtendedCutSetting";
     public static final String BANNER_SETTING = "BannerSetting";
-    public static final String EVENT_SETTING = "EventSetting";
     public static final String SETTINGS_STRINGS = "Settings";
 
     private static SpireConfig modConfig = null;
@@ -111,6 +112,8 @@ public class ExileMod implements
     private static final String COLD_M_OGG = RESOURCES_PRE + "audio/Cold_M.ogg";
     public static final String PEW_KEY = makeID("Pew");
     private static final String PEW_OGG = RESOURCES_PRE + "audio/Pew.ogg";
+    public static final String JINX_KEY = makeID("Jinx");
+    private static final String JINX_OGG = RESOURCES_PRE + "audio/Jinx.ogg";
 
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -121,6 +124,8 @@ public class ExileMod implements
     public static final Color purpleColor = new Color(0.45f, 0f, 0.6f, 1.0f);
     public static final Color darkColor = new Color(0.25f, 0.25f, 0.25f, 1.0f);
     public static final Color EXILE_EYE_COLOR = purpleColor.cpy();
+
+    public static ArrayList<TwistedFormPower> twistedList = new ArrayList<>();
 
     public ExileMod() {
         BaseMod.addColor(TheExile.Enums.EXILE_BLARPLE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
@@ -212,7 +217,6 @@ public class ExileMod implements
             Properties defaults = new Properties();
             defaults.put(EXTENDED_CUT_SETTING, Boolean.toString(true));
             defaults.put(BANNER_SETTING, Boolean.toString(false));
-            defaults.put(EVENT_SETTING, Boolean.toString(false));
             modConfig = new SpireConfig(modID, "Config", defaults);
         } catch (Exception e) {
             e.printStackTrace();
@@ -291,7 +295,6 @@ public class ExileMod implements
 
     private void setupSettings () {
         ModPanel settingsPanel = new ModPanel();
-
         float currentYposition = 740f;
 
         ModLabeledToggleButton extendedCutButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
@@ -303,10 +306,9 @@ public class ExileMod implements
                         saveConfig();
                     }
                 });
-
         settingsPanel.addUIElement(extendedCutButton);
-        currentYposition -= 60.0f;
 
+        currentYposition -= 60.0f;
         ModLabeledToggleButton bannerButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
                 makeID(SETTINGS_STRINGS)).TEXT[1], 350.0f, currentYposition, Settings.CREAM_COLOR,
                 FontHelper.charDescFont, isUniversalBanners(), settingsPanel, label -> {},
@@ -316,21 +318,7 @@ public class ExileMod implements
                         saveConfig();
                     }
                 });
-
         settingsPanel.addUIElement(bannerButton);
-        currentYposition -= 60.0f;
-
-        ModLabeledToggleButton eventButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
-                makeID(SETTINGS_STRINGS)).TEXT[2], 350.0f, currentYposition, Settings.CREAM_COLOR,
-                FontHelper.charDescFont, isUniversalEvents(), settingsPanel, label -> {},
-                button3 -> {
-                    if (modConfig != null) {
-                        modConfig.setBool(EVENT_SETTING, button3.enabled);
-                        saveConfig();
-                    }
-                });
-
-        settingsPanel.addUIElement(eventButton);
 
         Texture badgeTexture = new Texture(BADGE_IMG);
         BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
@@ -357,21 +345,17 @@ public class ExileMod implements
         return modConfig.getBool(BANNER_SETTING);
     }
 
-    public static boolean isUniversalEvents() {
-        if (modConfig == null)
-            return false;
-        return modConfig.getBool(EVENT_SETTING);
-    }
-
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
         BaseMod.addAudio(COLD_M_KEY, COLD_M_OGG);
         BaseMod.addAudio(PEW_KEY, PEW_OGG);
+        BaseMod.addAudio(JINX_KEY, JINX_OGG);
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom room) {
+        twistedList.clear();
         if (room.event instanceof FightingPit && room.eliteTrigger)
             forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, FightingPit.HEALTH_BUFF, true)));
         if (room.event instanceof VoidSpirits)
@@ -390,6 +374,8 @@ public class ExileMod implements
     @Override
     public void receivePostUpdate() {
         time += Gdx.graphics.getDeltaTime();
+        for (TwistedFormPower pow : twistedList)
+            pow.deathCheck();
     }
 
     private static void addEvents() {
