@@ -7,8 +7,13 @@
   "${ModID}:Settings": {
     "TEXT": [
       "Enables the Exile extended heart kill cutscene.",
-      "Recolor banners on other characters.",
-      "A few events can be seen by other characters."
+      "Recolor banners on other characters."
+    ]
+  },
+  "${ModID}:ClickyFtue": {
+    "TEXT": [
+      "Activated Relics.",
+      "Activated relics have an effect that occurs when you click their button next to your energy orb."
     ]
   },
   "${ModID}:NeowPatch": {

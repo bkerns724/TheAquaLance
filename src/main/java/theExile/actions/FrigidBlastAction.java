@@ -5,9 +5,10 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.*;
 
 public class FrigidBlastAction extends AbstractGameAction {
     private final AbstractMonster m;
@@ -41,9 +42,12 @@ public class FrigidBlastAction extends AbstractGameAction {
             adp().getRelic("Chemical X").flash();
         }
 
-        if (effect > 0)
-            for(int i = 0; i < effect; ++i)
-                addToBot(new DamageAction(m, new DamageInfo(adp(), damage, damageTypeForTurn), attackEffect));
+        if (effect > 0) {
+            for (int i = 0; i < effect; ++i)
+                att(new DamageAction(m, new DamageInfo(adp(), damage, damageTypeForTurn), attackEffect));
+
+            applyToSelfTop(new DrawCardNextTurnPower(adp(), effect));
+        }
 
             if (!freeToPlayOnce)
                 adp().energy.use(EnergyPanel.totalCount);

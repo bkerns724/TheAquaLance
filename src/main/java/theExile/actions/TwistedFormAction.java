@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import static theExile.util.Wiz.*;
 
 public class TwistedFormAction extends AbstractGameAction {
-    private int strengthLoss;
-    private int healthLoss;
+    private final int strengthLoss;
+    private final int healthLoss;
 
     public TwistedFormAction(AbstractCreature target, int strengthLoss, int healthLoss) {
         this.target = target;
@@ -22,7 +22,11 @@ public class TwistedFormAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (duration == startDuration) {
+        if (target == null) {
+            isDone = true;
+            return;
+        }
+        else if (duration == startDuration) {
             att(new LoseHPAction(target, adp(), healthLoss));
             CardCrawlGame.sound.play("POWER_CONSTRICTED");
             CardCrawlGame.sound.play("POWER_CONSTRICTED");

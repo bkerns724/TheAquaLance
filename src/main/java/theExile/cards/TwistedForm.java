@@ -11,7 +11,7 @@ public class TwistedForm extends AbstractExileCard {
     public final static String ID = makeID(TwistedForm.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int SECOND_MAGIC = 10;
-    private final static int UPGRADE_SECOND = 10;
+    private final static int UPGRADE_SECOND = 5;
     private final static int COST = 3;
 
     public AbstractMonster targetMonsterForTwisted;

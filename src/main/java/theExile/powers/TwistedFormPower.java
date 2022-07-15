@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.ExileMod;
 import theExile.actions.TwistedFormAction;
 
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.att;
 
 public class TwistedFormPower extends AbstractExilePower implements OnReceivePowerPower {
     public static String POWER_ID = ExileMod.makeID(TwistedFormPower.class.getSimpleName());
@@ -30,10 +30,10 @@ public class TwistedFormPower extends AbstractExilePower implements OnReceivePow
     }
 
     public void deathCheck() {
-        if (owner == null || owner.isDead)
-            ExileMod.twistedList.remove(this);
-        else if (!owner.powers.contains(this))
+        if (owner != null && !owner.isDead && !owner.powers.contains(this))
             owner.powers.add(this);
+        else if (owner != null && owner.isDead)
+            owner = null;
     }
 
     @Override
@@ -49,8 +49,10 @@ public class TwistedFormPower extends AbstractExilePower implements OnReceivePow
     public void stackPower(int stackAmount) { }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (owner.currentHealth > 0 && !isPlayer)
-            atb(new TwistedFormAction(owner, amount, amount2));
+    public void atStartOfTurn() {
+        if (owner == null)
+            return;
+        if (owner.currentHealth > 0)
+            att(new TwistedFormAction(owner, amount, amount2));
     }
 }

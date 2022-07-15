@@ -25,15 +25,14 @@ public class FrostbitePower extends AbstractExilePower {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner == owner) {
             flash();
-            if (owner.hasPower(WaterfallPower.POWER_ID))
-                att(new DamageAction(owner,
-                        new DamageInfo(owner, amount*(1 + owner.getPower(WaterfallPower.POWER_ID).amount),
-                                DamageInfo.DamageType.THORNS),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-            else
-                att(new DamageAction(owner,
-                        new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            //AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ExileMod.Enums.ICE));
+            if (owner.hasPower(WaterfallPower.POWER_ID)) {
+                att(new DamageAction(owner, new DamageInfo(owner, amount * (1 + owner.getPower(WaterfallPower.POWER_ID).amount),
+                                DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+            } else {
+                att(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
+                        AbstractGameAction.AttackEffect.NONE, true));
+            }
             if (amount > 1)
                 reducePower(1);
             else

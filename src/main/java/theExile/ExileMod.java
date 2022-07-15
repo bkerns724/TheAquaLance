@@ -20,11 +20,13 @@ import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.neow.NeowReward;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.ui.FtueTip;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,6 +37,7 @@ import theExile.icons.*;
 import theExile.potions.*;
 import theExile.powers.TwistedFormPower;
 import theExile.relics.AbstractExileRelic;
+import theExile.util.ClickyFtue;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -42,8 +45,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import static theExile.TheExile.Enums.THE_EXILE;
-import static theExile.util.Wiz.atb;
-import static theExile.util.Wiz.forAllMonstersLiving;
+import static theExile.util.Wiz.*;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -106,6 +108,8 @@ public class ExileMod implements
     public static final String RESONANT_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_M.png";
     public static final String RESONANT_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_L.png";
 
+    public static final String FTUE_IMG = RESOURCES_PRE + "images/ui/Ftue.png";
+
     public static final String COLD_KEY = makeID("Cold");
     private static final String COLD_OGG = RESOURCES_PRE + "audio/Cold.ogg";
     public static final String COLD_M_KEY = makeID("Cold_M");
@@ -114,6 +118,8 @@ public class ExileMod implements
     private static final String PEW_OGG = RESOURCES_PRE + "audio/Pew.ogg";
     public static final String JINX_KEY = makeID("Jinx");
     private static final String JINX_OGG = RESOURCES_PRE + "audio/Jinx.ogg";
+
+    public boolean ftueThisSession = false;
 
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -204,6 +210,8 @@ public class ExileMod implements
         public static NeowReward.NeowRewardType UNIQUE_CARD_REWARD;
         @SpireEnum
         public static AbstractPotion.PotionRarity EVENT;
+        @SpireEnum
+        public static FtueTip.TipType CLICKY_IMAGE;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -355,7 +363,13 @@ public class ExileMod implements
 
     @Override
     public void receiveOnBattleStart(AbstractRoom room) {
+        for (TwistedFormPower pow : twistedList)
+            pow.owner = null;
         twistedList.clear();
+        if (!ftueThisSession && adp().chosenClass == THE_EXILE) {
+            AbstractDungeon.ftue = new ClickyFtue("whee", "boop", Settings.WIDTH/2f, Settings.HEIGHT/2f);
+            ftueThisSession = true;
+        }
         if (room.event instanceof FightingPit && room.eliteTrigger)
             forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, FightingPit.HEALTH_BUFF, true)));
         if (room.event instanceof VoidSpirits)
@@ -376,6 +390,7 @@ public class ExileMod implements
         time += Gdx.graphics.getDeltaTime();
         for (TwistedFormPower pow : twistedList)
             pow.deathCheck();
+        twistedList.removeIf(pow -> pow == null || pow.owner == null || adp() == null);
     }
 
     private static void addEvents() {

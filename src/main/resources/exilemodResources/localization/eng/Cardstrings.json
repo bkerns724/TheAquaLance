@@ -388,12 +388,12 @@
   },
   "${ModID}:Study": {
     "NAME": "Study",
-    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! cards to add into your hand.",
+    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand.",
     "FLAVOR": "I didn't get to be a badass by sitting around on the couch all day."
   },
   "${ModID}:FrigidBlast": {
     "NAME": "Frigid Blast",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage X times. NL Draw X cards next turn.",
+    "DESCRIPTION": "Deal !D! damage X times. NL Draw X cards next turn.",
     "FLAVOR": "Not a grand finish, but staying alive is very practical."
   },
   "${ModID}:Cannon": {

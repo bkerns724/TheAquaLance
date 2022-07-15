@@ -379,8 +379,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (this instanceof AbstractResonantCard)
             if (!((AbstractResonantCard) this).resonance.damageMods.contains(element))
                 ((AbstractResonantCard) this).resonance.damageMods.add(element);
-        if (adp() != null)
-            applyPowers();
         initializeDescription();
     }
 
