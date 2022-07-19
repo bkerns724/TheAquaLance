@@ -74,7 +74,7 @@ public class TheExile extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
-    private static final int NUM_STRIKES = 5;
+    private static final int NUM_STRIKES = 4;
     private static final int NUM_DEFENDS = 4;
     private static final int STARTING_HP = 70;
 
@@ -116,22 +116,13 @@ public class TheExile extends CustomPlayer {
         // Sorry Pasha if this causes problems, but this needs to be seeded
         int x;
         int y;
-        if (AbstractDungeon.cardRng != null) {
+        if (AbstractDungeon.cardRng != null)
             x = AbstractDungeon.cardRng.random(0, 1);
-            y = AbstractDungeon.cardRng.random(0, 1);
-        }
-        else {
+        else
             x = 0;
-            y = 0;
-        }
 
         if (x == 0)
-            retVal.add(FieryCurse.ID);
-        else
-            retVal.add(EldritchCurse.ID);
-
-        if (y == 0)
-            retVal.add(FrostBolt.ID);
+            retVal.add(FrostDaggers.ID);
         else
             retVal.add(ForceBolt.ID);
 

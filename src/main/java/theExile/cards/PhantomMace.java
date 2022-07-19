@@ -9,9 +9,9 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class PhantomMace extends AbstractExileCard {
     public final static String ID = makeID(PhantomMace.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 4;
-    private final static int MAGIC = 2;
+    private final static int DAMAGE = 15;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = 5;
     private final static int COST = 2;
 
     public PhantomMace() {
@@ -31,7 +31,17 @@ public class PhantomMace extends AbstractExileCard {
         applyToEnemy(m, new TempNegStrengthPower(m, magicNumber));
     }
 
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int temp = baseDamage;
+        if (mo != null && mo.getIntentBaseDmg() >= 0)
+            baseDamage += magicNumber;
+        super.calculateCardDamage(mo);
+        baseDamage = temp;
+        isDamageModified = baseDamage != damage;
+    }
+
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UPGRADE_MAGIC);
     }
 }

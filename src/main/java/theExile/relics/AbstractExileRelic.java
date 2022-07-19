@@ -6,9 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import theExile.util.TexLoader;
@@ -75,24 +73,6 @@ public abstract class AbstractExileRelic extends CustomRelic {
         {
             cardToPreview.current_x = Settings.WIDTH - 380 * Settings.scale;
             cardToPreview.current_y = Settings.HEIGHT * 0.65F - cardToPreview.hb.width/2.0F;
-        }
-        else if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(relicId))
-        {
-            if (InputHelper.mX >= 1400.0F * Settings.scale)
-            {
-                cardToPreview.current_x = InputHelper.mX - 420 * Settings.scale - cardToPreview.hb.width/2.0F;
-                cardToPreview.current_y = InputHelper.mY - 80*Settings.scale - cardToPreview.hb.height/2.0F;
-            }
-            else if (InputHelper.mX < 1100.0F * Settings.scale)
-            {
-                cardToPreview.current_x = InputHelper.mX + 450 * Settings.scale + cardToPreview.hb.width/2.0F;
-                cardToPreview.current_y = InputHelper.mY - 60*Settings.scale - cardToPreview.hb.height/2.0F;
-            }
-            else
-            {
-                cardToPreview.current_x = InputHelper.mX - 50 * Settings.scale - cardToPreview.hb.width/2.0F;
-                cardToPreview.current_y = InputHelper.mY - 60*Settings.scale - cardToPreview.hb.height/2.0F;
-            }
         }
         cardToPreview.drawScale = 1;
         cardToPreview.render(sb);

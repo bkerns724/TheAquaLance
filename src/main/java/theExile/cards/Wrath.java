@@ -1,18 +1,19 @@
 package theExile.cards;
 
 import basemod.abstracts.CustomCard;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.MiniWrathPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import theExile.util.CardArtRoller;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.getCardTextureString;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToSelf;
+import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class Wrath extends CustomCard {
     public final static String ID = makeID(Wrath.class.getSimpleName());
@@ -33,6 +34,8 @@ public class Wrath extends CustomCard {
             CardArtRoller.computeCard(this);
         } else
             needsArtRefresh = true;
+
+        SoulboundField.soulbound.set(this, true);
     }
 
     @Override
@@ -52,7 +55,7 @@ public class Wrath extends CustomCard {
 
     @Override
     public void triggerWhenDrawn() {
-        applyToSelf(new MiniWrathPower(adp(), magicNumber));
+        forAllMonstersLiving(m -> applyToEnemy(m, new StrengthPower(m, magicNumber)));
     }
 
     @Override

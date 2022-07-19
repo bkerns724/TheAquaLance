@@ -8,15 +8,15 @@ import theExile.powers.ShadowcloakPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
 
-public class Vanish extends AbstractExileCard {
-    public final static String ID = makeID(Vanish.class.getSimpleName());
+public class Camoflouge extends AbstractExileCard {
+    public final static String ID = makeID(Camoflouge.class.getSimpleName());
     private final static int BLOCK = 0;
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int COST = 2;
     private final static int SECOND_MAGIC = 3;
     private final static int UPGRADE_SECOND = 1;
 
-    public Vanish() {
+    public Camoflouge() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
     }
 

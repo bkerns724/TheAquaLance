@@ -9,7 +9,8 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class SpiritLeech extends AbstractExileCard {
     public final static String ID = makeID(SpiritLeech.class.getSimpleName());
-    private final static int DAMAGE = 3;
+    private final static int DAMAGE = 2;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int COST = 0;
 
@@ -32,6 +33,6 @@ public class SpiritLeech extends AbstractExileCard {
     }
 
     public void upp() {
-        exhaust = false;
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

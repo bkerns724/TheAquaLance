@@ -14,7 +14,7 @@ import static theExile.util.Wiz.adp;
 
 public class ShadowcloakPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(ShadowcloakPower.class.getSimpleName());
-    public static final int DAMAGE_MULT_DESC = 25;
+    public static final int DAMAGE_MULT_DESC = 20;
     public static final float DAMAGE_MULT = DAMAGE_MULT_DESC/100.0f;
     private boolean triggered;
 

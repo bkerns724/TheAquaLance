@@ -82,7 +82,7 @@ public class IceDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        IceDamage output = new IceDamage();
+        IceDamage output = new IceDamage(visibleTips);
         output.iceTooltip = this.iceTooltip;
         output.iceTooltip2 = this.iceTooltip2;
         return output;

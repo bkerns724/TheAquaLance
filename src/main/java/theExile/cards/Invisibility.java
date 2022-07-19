@@ -9,8 +9,9 @@ import static theExile.util.Wiz.*;
 
 public class Invisibility extends AbstractExileCard {
     public final static String ID = makeID(Invisibility.class.getSimpleName());
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = 2;
+    private final static int SECOND_MAGIC = 1;
     private final static int COST = 2;
 
     public Invisibility() {
@@ -20,7 +21,7 @@ public class Invisibility extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        exhaust = true;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

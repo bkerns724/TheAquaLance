@@ -7,23 +7,21 @@ import theExile.powers.JinxPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
 
-public class FieryCurse extends AbstractExileCard {
-    public final static String ID = makeID(FieryCurse.class.getSimpleName());
-    private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 1;
+public class Thunderbolt extends AbstractExileCard {
+    public final static String ID = makeID(Thunderbolt.class.getSimpleName());
+    private final static int DAMAGE = 11;
+    private final static int UPGRADE_DAMAGE = 4;
+    private final static int MAGIC = 1;
     private final static int COST = 1;
-    private final static int DAMAGE = 6;
 
-    public FieryCurse() {
-        super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+    public Thunderbolt() {
+        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
-    @Override
-    protected void applyAttributes() {
+    public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
-        addModifier(elenum.FIRE);
+        addModifier(elenum.LIGHTNING);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -32,6 +30,6 @@ public class FieryCurse extends AbstractExileCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

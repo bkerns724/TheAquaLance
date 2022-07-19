@@ -1,14 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.actions.AttackAction;
-import theExile.actions.DiscardToDoAction;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.DARK;
-import static theExile.util.Wiz.atb;
 
 public class VoidBall extends AbstractExileCard {
     public final static String ID = makeID(VoidBall.class.getSimpleName());
@@ -24,14 +20,13 @@ public class VoidBall extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        addModifier(DARK);
         magicNumber = baseMagicNumber = MAGIC;
         isMultiDamage = true;
+        addModifier(DARK);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractGameAction action = new AttackAction(multiDamage, getAttackEffect());
-        atb(new DiscardToDoAction(magicNumber, action, false));
+        allDmg();
     }
 
     public void upp() {

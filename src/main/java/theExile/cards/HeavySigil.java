@@ -1,20 +1,19 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.actions.HeavySigilAction;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.getHighestHealthEnemy;
 
 public class HeavySigil extends AbstractExileCard {
     public final static String ID = makeID(HeavySigil.class.getSimpleName());
-    private final static int DAMAGE = 10;
-    private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int DAMAGE = 6;
+    private final static int MAGIC = 4;
+    private final static int UPGRADE_MAGIC = 2;
 
     public HeavySigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
@@ -24,7 +23,6 @@ public class HeavySigil extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
         isMultiDamage = true;
         sigil = true;
         addModifier(elenum.FORCE);
@@ -35,9 +33,27 @@ public class HeavySigil extends AbstractExileCard {
         AbstractMonster strongestMonster = getHighestHealthEnemy();
         calculateCardDamage(strongestMonster);
 
-        DamageInfo info = new DamageInfo(p, damage, damageTypeForTurn);
-        AbstractGameAction.AttackEffect effect = this.getAttackEffect();
-        atb(new HeavySigilAction(strongestMonster, info, magicNumber, effect));
+        dmg(strongestMonster);
+    }
+
+    public void applyPowers() {
+        AbstractPower strength = adp().getPower(StrengthPower.POWER_ID);
+        if (strength != null)
+            strength.amount *= magicNumber;
+
+        super.applyPowers();
+        if (strength != null)
+            strength.amount /= magicNumber;
+    }
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        AbstractPower strength = adp().getPower(StrengthPower.POWER_ID);
+        if (strength != null)
+            strength.amount *= magicNumber;
+
+        super.calculateCardDamage(mo);
+        if (strength != null)
+            strength.amount /= magicNumber;
     }
 
     public void upp() {

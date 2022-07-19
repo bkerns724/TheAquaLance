@@ -67,7 +67,7 @@
     "NAME": "Black Candle",
     "FLAVOR": "The candle isn't black, the flame is.",
     "DESCRIPTIONS": [
-      "At the end of your turn, apply !R! #y${ModID}:Jinx to ALL enemies and add a #yVoid to your discard pile."
+      "At the end of your turn, apply !R! #y${ModID}:Jinx to ALL enemies and lose !R2! HP."
     ]
   },
   "${ModID}:TuningFork": {
@@ -114,7 +114,7 @@
   },
   "${ModID}:ManaPurifier": {
     "NAME": "Mana Purifier",
-    "FLAVOR": "Purified mana is stronger, but less flexible.",
+    "FLAVOR": "Probably the dullest looking magical artifact in existence.  It saps the color out of everything.",
     "DESCRIPTIONS": [
       "Gain [E] at the start of your turn. All cards are non-elemental."
     ]

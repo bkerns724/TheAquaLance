@@ -76,12 +76,6 @@
       "Takes !A! more damage from attacks."
     ]
   },
-  "${ModID}:SpiritPressurePower": {
-    "NAME": "Spirit Pressure",
-    "DESCRIPTIONS": [
-      "At the start of your turn, apply !A! #yJinx to ALL enemies."
-    ]
-  },
   "${ModID}:SplitResonancePower": {
     "NAME": "Split Resonance",
     "DESCRIPTIONS": [
@@ -153,12 +147,6 @@
       "At the start of your turn, draw !A! cards and discard cards."
     ]
   },
-  "${ModID}:SoulFlameBarrierPower": {
-    "NAME": "Soul Fire Barrier",
-    "DESCRIPTIONS": [
-      "Whenever you are attacked this turn, deal !A! [${ModID}:SoulFireIcon] back."
-    ]
-  },
   "${ModID}:SoulFeedPower": {
     "NAME": "Soul Feed",
     "DESCRIPTIONS": [
@@ -169,6 +157,25 @@
     "NAME": "Stoneskin",
     "DESCRIPTIONS": [
       "Whenever you would take damage, take !A! less."
+    ]
+  },
+  "${ModID}:VibratingPower": {
+    "NAME": "Charged",
+    "DESCRIPTIONS": [
+      "Your next attack deals !A!% more damage."
+    ]
+  },
+  "${ModID}:CrumblingPower": {
+    "NAME": "Crumbling",
+    "DESCRIPTIONS": [
+      "Takes !A! extra damage from everything."
+    ]
+  },
+  "${ModID}:HexingPower": {
+    "NAME": "Hexing",
+    "DESCRIPTIONS": [
+      "At the start of your turn ALL enemies lose HP equal to their Jinx.",
+      "At the start of your turn ALL enemies lose HP equal to !A! times their Jinx."
     ]
   },
   "${ModID}:JinxThornsPower": {

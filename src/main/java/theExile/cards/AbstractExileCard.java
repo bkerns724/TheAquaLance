@@ -32,10 +32,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.TheExile;
 import theExile.actions.AttackAction;
 import theExile.cards.cardvars.CardSaveObject;
-import theExile.damagemods.EldritchDamage;
-import theExile.damagemods.ForceDamage;
-import theExile.damagemods.IceDamage;
-import theExile.damagemods.SoulFireDamage;
+import theExile.damagemods.*;
 import theExile.icons.Eldritch;
 import theExile.icons.Force;
 import theExile.icons.Ice;
@@ -96,7 +93,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         ICE,
         FIRE,
         FORCE,
-        DARK
+        DARK,
+        LIGHTNING
     }
 
     public AbstractExileCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
@@ -375,6 +373,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.DARK)
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
+        if (element == LIGHTNING)
+            DamageModifierManager.addModifier(this, new LightningDamage(tips));
 
         if (this instanceof AbstractResonantCard)
             if (!((AbstractResonantCard) this).resonance.damageMods.contains(element))
@@ -429,6 +429,9 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                     return Enums.DARK_M;
                 else
                     return Enums.DARK_L;
+            }
+            else if (ele == LIGHTNING) {
+                return AbstractGameAction.AttackEffect.LIGHTNING;
             }
             else {
                 return getBluntEffect();

@@ -3,10 +3,7 @@ package theExile.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import theExile.ExileMod;
 
 import static theExile.util.Wiz.att;
 
@@ -30,7 +27,6 @@ public class BlackSigilAction extends AbstractGameAction {
         else {
             tickDuration();
             if (isDone) {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ExileMod.Enums.FORCE, false));
                 att(new BlackSigilFollowupAction((AbstractMonster) target, healAmount));
                 att(new AttackAction((AbstractMonster) target, info, effect));
             }

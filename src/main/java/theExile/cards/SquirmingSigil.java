@@ -10,14 +10,14 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
 import static theExile.util.Wiz.getLowestHealthEnemy;
 
-public class EldritchSigil extends AbstractExileCard {
-    public final static String ID = makeID(EldritchSigil.class.getSimpleName());
+public class SquirmingSigil extends AbstractExileCard {
+    public final static String ID = makeID(SquirmingSigil.class.getSimpleName());
     private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
-    public EldritchSigil() {
+    public SquirmingSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
     }
 

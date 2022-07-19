@@ -7,14 +7,14 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 
-public class ColdSigil extends AbstractExileCard {
-    public final static String ID = makeID(ColdSigil.class.getSimpleName());
+public class IcySigil extends AbstractExileCard {
+    public final static String ID = makeID(IcySigil.class.getSimpleName());
     private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
-    public ColdSigil() {
+    public IcySigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 

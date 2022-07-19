@@ -27,10 +27,10 @@ public class TwistedFormAction extends AbstractGameAction {
             return;
         }
         else if (duration == startDuration) {
+            applyToEnemyTop(target, new StrengthPower(target, -strengthLoss));
             att(new LoseHPAction(target, adp(), healthLoss));
             CardCrawlGame.sound.play("POWER_CONSTRICTED");
             CardCrawlGame.sound.play("POWER_CONSTRICTED");
-            applyToEnemyTop(target, new StrengthPower(target, -strengthLoss));
         }
         tickDuration();
     }

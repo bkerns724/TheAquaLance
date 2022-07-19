@@ -14,7 +14,7 @@ public class CursedSigil extends AbstractExileCard {
     private final static int UPGRADE_MAGIC = 1;
 
     public CursedSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     @Override

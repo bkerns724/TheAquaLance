@@ -2,15 +2,15 @@ package theExile.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import theExile.cards.Vanish;
+import theExile.cards.Camoflouge;
 import theExile.powers.ShadowcloakPower;
 
 import static theExile.util.Wiz.*;
 
 public class ShadowCloakBlockAction extends AbstractGameAction {
-    private Vanish card;
+    private Camoflouge card;
 
-    public ShadowCloakBlockAction(Vanish card) {
+    public ShadowCloakBlockAction(Camoflouge card) {
         duration = DEFAULT_DURATION;
         this.card = card;
     }

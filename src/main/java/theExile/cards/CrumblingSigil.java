@@ -1,37 +1,30 @@
 package theExile.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.damagemods.ScourgeType;
-import theExile.powers.DecayingPower;
+import theExile.powers.CrumblingPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class CrumblingSigil extends AbstractExileCard {
     public final static String ID = makeID(CrumblingSigil.class.getSimpleName());
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int COST = -2;
 
     public CrumblingSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.RARE, CardTarget.ALL_ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ALL_ENEMY);
     }
 
-    @Override
-    protected void applyAttributes() {
+    public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
-        sigil = true;
-        DamageModifierManager.addModifier(this, new ScourgeType());
+        exhaust = true;
     }
 
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        forAllMonstersLiving(monster -> {
-            if (getJinxAmountCard(monster) > 0)
-                applyToEnemy(monster, new DecayingPower(monster, magicNumber*getJinxAmountCard(monster)));
-        });
+        forAllMonstersLiving(mon -> applyToEnemy(mon, new CrumblingPower(mon, magicNumber)));
     }
 
     public void upp() {

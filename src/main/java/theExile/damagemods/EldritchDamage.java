@@ -94,7 +94,7 @@ public class EldritchDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        EldritchDamage output = new EldritchDamage();
+        EldritchDamage output = new EldritchDamage(visibleTips);
         output.darkTooltip = this.darkTooltip;
         output.darkTooltip2 = this.darkTooltip2;
         return output;

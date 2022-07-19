@@ -8,12 +8,12 @@ import theExile.powers.ShadowcloakPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToSelf;
 
-public class ChameleonSigil extends AbstractExileCard {
-    public final static String ID = makeID(ChameleonSigil.class.getSimpleName());
+public class TranslucentSigil extends AbstractExileCard {
+    public final static String ID = makeID(TranslucentSigil.class.getSimpleName());
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
-    public ChameleonSigil() {
+    public TranslucentSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
