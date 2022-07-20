@@ -9,7 +9,7 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class Thunderbolt extends AbstractExileCard {
     public final static String ID = makeID(Thunderbolt.class.getSimpleName());
-    private final static int DAMAGE = 11;
+    private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 1;
     private final static int COST = 1;

@@ -1,10 +1,11 @@
 package theExile.potions;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.EnvenomPower;
 import theExile.ExileMod;
-import theExile.powers.ToxicOilPower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToSelf;
 
 public class ToxicOil extends AbstractExilePotion {
@@ -26,6 +27,6 @@ public class ToxicOil extends AbstractExilePotion {
     }
 
     public void use(AbstractCreature target) {
-        applyToSelf(new ToxicOilPower(potency));
+        applyToSelf(new EnvenomPower(adp(), potency));
     }
 }

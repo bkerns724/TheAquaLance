@@ -29,6 +29,6 @@ public class VibratingPower extends AbstractExilePower {
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return type == DamageInfo.DamageType.NORMAL ? damage * 2.0F : damage;
+        return type == DamageInfo.DamageType.NORMAL ? damage * (1f + amount/100f) : damage;
     }
 }

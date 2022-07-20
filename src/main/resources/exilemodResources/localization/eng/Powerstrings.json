@@ -25,6 +25,12 @@
       "Whenever you would take damage, take !A! less."
     ]
   },
+  "${ModID}:SoulFlameBarrierPower": {
+    "NAME": "Guarding Fire",
+    "DESCRIPTIONS": [
+      "Whenever you are attacked this turn, deal !A! [${ModID}:SoulFireIcon] damage back."
+    ]
+  },
   "${ModID}:ResonatingPower": {
     "NAME": "Resonating",
     "DESCRIPTIONS": [
@@ -171,13 +177,6 @@
       "Takes !A! extra damage from everything."
     ]
   },
-  "${ModID}:HexingPower": {
-    "NAME": "Hexing",
-    "DESCRIPTIONS": [
-      "At the start of your turn ALL enemies lose HP equal to their Jinx.",
-      "At the start of your turn ALL enemies lose HP equal to !A! times their Jinx."
-    ]
-  },
   "${ModID}:JinxThornsPower": {
     "NAME": "Scourging Bubble",
     "DESCRIPTIONS": [
@@ -232,12 +231,6 @@
     "NAME": "Sadistic Glee",
     "DESCRIPTIONS": [
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
-    ]
-  },
-  "${ModID}:ToxicOilPower": {
-    "NAME": "Toxic Oil",
-    "DESCRIPTIONS": [
-      "Whenever an attack deals unblocked damage, the enemy takes !A! damage at the start of their turn every round."
     ]
   },
   "${ModID}:WaterfallPower": {

@@ -1,7 +1,9 @@
 package theExile.powers;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.ExileMod;
+import theExile.cards.AbstractExileCard;
 
 import static theExile.util.Wiz.applyToEnemy;
 import static theExile.util.Wiz.forAllMonstersLiving;
@@ -14,7 +16,8 @@ public class ShockwaveSigilsPower extends AbstractExilePower {
     }
 
     @Override
-    public void onDiscardSigil() {
-        forAllMonstersLiving(m -> applyToEnemy(m, new CrushedPower(m, amount)));
+    public void onAfterCardPlayed(AbstractCard usedCard) {
+        if (usedCard instanceof AbstractExileCard && ((AbstractExileCard) usedCard).sigil)
+            forAllMonstersLiving(m -> applyToEnemy(m, new CrushedPower(m, amount)));
     }
 }

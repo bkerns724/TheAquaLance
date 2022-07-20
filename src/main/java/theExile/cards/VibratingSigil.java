@@ -19,6 +19,7 @@ public class VibratingSigil extends AbstractExileCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        sigil = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

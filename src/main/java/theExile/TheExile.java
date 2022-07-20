@@ -113,9 +113,10 @@ public class TheExile extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
+        retVal.add(Hex.ID);
+
         // Sorry Pasha if this causes problems, but this needs to be seeded
         int x;
-        int y;
         if (AbstractDungeon.cardRng != null)
             x = AbstractDungeon.cardRng.random(0, 1);
         else

@@ -83,7 +83,7 @@
   "${ModID}:ToxicOil": {
     "NAME": "Toxic Oil",
     "DESCRIPTIONS": [
-      "Whenever an attack deals unblocked damage, apply !P! #yDecay to the target."
+      "Whenever you deal unblocked attack damage, apply !P! #yPoison."
     ],
     "FLAVOR": "Brutally efficient."
   },

@@ -21,6 +21,7 @@ public class CrumblingSigil extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
+        sigil = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

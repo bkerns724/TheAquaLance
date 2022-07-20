@@ -113,7 +113,7 @@
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "Deal !D! damage",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card.",
     "FLAVOR": "I learned this spell from a stranger on a train."
   },
   "${ModID}:PhantomFist": {
@@ -123,13 +123,13 @@
   },
   "${ModID}:Thunderbolt": {
     "NAME": "Thunderbolt",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
+    "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR":  "Why is it called THUNDERbolt when it is the LIGHTNING that kills things?"
   },
   "${ModID}:VoidTendrils": {
     "NAME": "Void Tendrils",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Void into your discard pile.",
-    "FLAVOR": "Demonstrating this spell was the reason for my exile.  It's like they want to die to the Spire Blight."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
+    "FLAVOR": "I was caught using this spell fighting a monster, and this led to my exile."
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
@@ -167,8 +167,7 @@
   },
   "${ModID}:HexedSigil": {
     "NAME": "Hexed Sigil",
-    "DESCRIPTION": "At the start of your turn, enemies take damage equal to their ${ModID}:Jinx.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, enemies take damage equal to their ${ModID}:Jinx. NL Apply !M! ${ModID}:Jinx to ALL enemies."
+    "DESCRIPTION": "ALL enemies lose !M! !ScourgeString! HP."
   },
   "${ModID}:HardSigil": {
     "NAME": "Hard Sigil",
@@ -225,7 +224,7 @@
   },
   "${ModID}:VibratingSigil": {
     "NAME": "Vibrating Sigil",
-    "DESCRIPTION": "Your next attack deals !M! % extra damage."
+    "DESCRIPTION": "Your next attack deals !M!% extra damage."
   },
   "${ModID}:ScourgeBubble": {
     "NAME": "Scourge Bubble",
