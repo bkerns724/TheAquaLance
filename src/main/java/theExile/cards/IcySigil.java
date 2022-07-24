@@ -38,6 +38,7 @@ public class IcySigil extends AbstractExileCard {
         baseDamage = temp + magicNumber*getBuffCount();
         super.applyPowers();
         baseDamage = temp;
+        isDamageModified = baseDamage != damage;
     }
 
     @Override
@@ -46,6 +47,7 @@ public class IcySigil extends AbstractExileCard {
         baseDamage = temp + magicNumber*getBuffCount();
         super.calculateCardDamage(mo);
         baseDamage = temp;
+        isDamageModified = baseDamage != damage;
     }
 
     public int getBuffCount() {

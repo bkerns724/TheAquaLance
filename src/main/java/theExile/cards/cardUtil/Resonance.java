@@ -103,19 +103,19 @@ public class Resonance {
         if (amplify > 0)
             builder.append(uiStrings.TEXT[3].replace("!X1!", String.valueOf(amplify)));
         if (jinx > 0)
-            builder.append(uiStrings.TEXT[6].replace("!X4!", String.valueOf(jinx)));
+            builder.append(uiStrings.TEXT[4].replace("!X2!", String.valueOf(jinx)));
         if (extraDraw == 1)
-            builder.append(uiStrings.TEXT[7]);
+            builder.append(uiStrings.TEXT[5]);
         else if (extraDraw > 1)
-            builder.append(uiStrings.TEXT[8].replace("!X5!", String.valueOf(extraDraw)));
+            builder.append(uiStrings.TEXT[6].replace("!X3!", String.valueOf(extraDraw)));
         if (extraEnergy == 1)
-            builder.append(uiStrings.TEXT[9]);
+            builder.append(uiStrings.TEXT[7]);
         else if (extraEnergy == 2)
-            builder.append(uiStrings.TEXT[10]);
+            builder.append(uiStrings.TEXT[8]);
         else if (extraEnergy == 3)
-            builder.append(uiStrings.TEXT[11]);
+            builder.append(uiStrings.TEXT[9]);
         else if (extraEnergy > 3)
-            builder.append(uiStrings.TEXT[12].replace("!X6!", String.valueOf(extraEnergy)));
+            builder.append(uiStrings.TEXT[10].replace("!X4!", String.valueOf(extraEnergy)));
 
         return builder.toString();
     }
@@ -123,7 +123,9 @@ public class Resonance {
     public int getDamage() {
         int eleCount = damageMods.size();
         int bonus = 0;
-        LethalChorusPower pow = (LethalChorusPower) adp().getPower(LethalChorusPower.POWER_ID);
+        LethalChorusPower pow = null;
+        if (adp() != null)
+            pow = (LethalChorusPower) adp().getPower(LethalChorusPower.POWER_ID);
         if (pow != null)
             bonus = (amount - 1) * pow.amount;
         return (int)((1 - ELEMENT_DAMAGE_PENALTY*eleCount)*(damage + bonus)/multiHit);
@@ -153,15 +155,15 @@ public class Resonance {
         }
         if (jinx > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(jinx)));
+            builder.append(uiStringsConcise.TEXT[4].replace("!X4!", String.valueOf(jinx)));
         }
         if (extraDraw > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[7].replace("!X5!", String.valueOf(extraDraw)));
+            builder.append(uiStringsConcise.TEXT[5].replace("!X5!", String.valueOf(extraDraw)));
         }
         if (extraEnergy > 0) {
             addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[8].replace("!X6!", String.valueOf(extraEnergy)));
+            builder.append(uiStringsConcise.TEXT[6].replace("!X6!", String.valueOf(extraEnergy)));
         }
 
         return builder.toString();

@@ -16,8 +16,8 @@ public class MysticalKazoo extends AbstractExileRelic {
 
     public MysticalKazoo() {
         super(ID, RelicTier.COMMON, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
-        setUpdatedDescription();
         amount = BLOCK_AMOUNT;
+        setUpdatedDescription();
     }
 
     @Override

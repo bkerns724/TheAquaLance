@@ -197,6 +197,13 @@
       "Whenever you apply #y${ModID}:Crushed, your next attack deals !R! additional damage."
     ]
   },
+  "${ModID}:MysticalKazoo": {
+    "NAME": "Mystical Kazoo",
+    "FLAVOR": "This is the most annoying enchanted item I have ever seen.",
+    "DESCRIPTIONS": [
+      "Whenever you play a #y${ModID}:Resonant card, gain !R! #yBlock."
+    ]
+  },
   "${ModID}:PaperKat": {
     "NAME": "Paper Kat",
     "FLAVOR": "You think you occasionally hear it purr, but only when you aren't paying attention.",

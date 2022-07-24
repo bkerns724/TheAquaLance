@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import theExile.util.TexLoader;
@@ -20,6 +22,7 @@ public abstract class AbstractExileRelic extends CustomRelic {
     protected int amount;
     protected int amount2;
     protected AbstractCard cardToPreview = null;
+    private static final float BOX_W = 360.0F * Settings.scale;
 
     public AbstractExileRelic(String setId, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx) {
         this(setId, tier, sfx, null);
@@ -62,19 +65,60 @@ public abstract class AbstractExileRelic extends CustomRelic {
 
     private void renderCardPreview(SpriteBatch sb, boolean boss) // Needs implementation for shops, elite drops, and chests
     {
-        if (cardToPreview == null)
-            return;
-
         if (boss) {
             cardToPreview.current_x = Settings.WIDTH*0.94F - cardToPreview.hb.width/2.0F;
             cardToPreview.current_y = Settings.HEIGHT*0.6F - cardToPreview.hb.height/2.0F;
-        }
-        else if (CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.RELIC_VIEW)
-        {
+            cardToPreview.drawScale = 1;
+        } else if (CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.RELIC_VIEW) {
             cardToPreview.current_x = Settings.WIDTH - 380 * Settings.scale;
-            cardToPreview.current_y = Settings.HEIGHT * 0.65F - cardToPreview.hb.width/2.0F;
+            cardToPreview.current_y = Settings.HEIGHT * 0.65F - cardToPreview.hb.width / 2.0F;
+            cardToPreview.drawScale = 1;
+        } else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.SHOP) {
+            int x = InputHelper.mX;
+            int y = InputHelper.mY;
+
+            cardToPreview.current_x = x + BOX_W + cardToPreview.hb.width*0.7f;
+
+            cardToPreview.current_y = y;
+
+            if (cardToPreview.current_y - cardToPreview.hb.height*0.5f < 0)
+                cardToPreview.current_y = cardToPreview.hb.height*0.5f;
+            else if (cardToPreview.current_y >= Settings.HEIGHT - hb.height*0.5f)
+                cardToPreview.current_y = Settings.HEIGHT - hb.height*0.5f;
+
+            cardToPreview.drawScale = 0.7f;
+        } else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD) {
+            int x = InputHelper.mX;
+            int y = InputHelper.mY;
+
+            cardToPreview.current_x = x - BOX_W - cardToPreview.hb.width*0.7f;
+
+            cardToPreview.current_y = y;
+
+            if (cardToPreview.current_y - cardToPreview.hb.height*0.5f < 0)
+                cardToPreview.current_y = cardToPreview.hb.height*0.5f;
+            else if (cardToPreview.current_y >= Settings.HEIGHT - hb.height*0.5f)
+                cardToPreview.current_y = Settings.HEIGHT - hb.height*0.5f;
+
+            cardToPreview.drawScale = 0.7f;
+        } else {
+            int x = InputHelper.mX;
+            int y = InputHelper.mY;
+
+            if (x < 1400.0F * Settings.scale)
+                cardToPreview.current_x = x + BOX_W + cardToPreview.hb.width*0.7f;
+            else
+                cardToPreview.current_x = x - BOX_W - cardToPreview.hb.width*0.7f;
+
+            cardToPreview.current_y = y - cardToPreview.hb.height*0.5f;
+
+            if (cardToPreview.current_y - cardToPreview.hb.height*0.5f < 0)
+                cardToPreview.current_y = cardToPreview.hb.height*0.5f;
+            else if (cardToPreview.current_y >= Settings.HEIGHT - hb.height*0.5f)
+                cardToPreview.current_y = Settings.HEIGHT - hb.height*0.5f;
+
+            cardToPreview.drawScale = 0.7f;
         }
-        cardToPreview.drawScale = 1;
         cardToPreview.render(sb);
     }
 }

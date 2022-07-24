@@ -20,10 +20,7 @@ import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.NullElement;
 import theExile.cards.cardUtil.Resonance;
-import theExile.damagemods.EldritchDamage;
-import theExile.damagemods.ForceDamage;
-import theExile.damagemods.IceDamage;
-import theExile.damagemods.SoulFireDamage;
+import theExile.damagemods.*;
 import theExile.patches.TipsInDialogPatch;
 
 import java.util.ArrayList;
@@ -131,6 +128,12 @@ public class SpellForge extends AbstractExileEvent {
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[8], true);
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.LIGHTNING)) {
+                        imageEventText.setDialogOption(options[9]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(4);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, LightningDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[9], true);
                     break;
                 case 1:
                     isRemoving = true;

@@ -38,15 +38,13 @@
       "Deal !D! damage !X0! times.",
       " NL Gain !B! block.",
       " NL Gain !X1! ${ModID}:Resonance.",
-      " NL Apply !X2! ${ModID}:Decay.",
-      " NL Whenever you are attacked this turn, deal !X3! [${ModID}:SoulFireIcon] damage back.",
-      " NL Apply !X4! ${ModID}:Jinx.",
+      " NL Apply !X2! ${ModID}:Jinx.",
       " NL Draw a card.",
-      " NL Draw !X5! cards",
+      " NL Draw !X3! cards",
       " NL Gain [E] .",
       " NL Gain [E][E] .",
       " NL Gain [E][E][E] .",
-      " NL Gain !X6! [E]. "
+      " NL Gain !X4! [E]. "
     ]
   },
   "${ModID}:ResonanceConcise": {
@@ -55,11 +53,9 @@
       "Deal !D! damage !X0! times.",
       " !B! Block.",
       " !X1! ${ModID}:Resonance.",
-      " !X2! Decay.",
-      " !X3! [${ModID}:SoulFireIcon] Retaliate.",
-      " !X4! ${ModID}:Jinx.",
-      " Draw !X5!.",
-      " !X6! [E]. "
+      " !X2! ${ModID}:Jinx.",
+      " Draw !3!.",
+      " !X4! [E]. "
     ]
   },
   "${ModID}:BlessedNecklaceAction": {
