@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.relics.MarkOfTheVoid;
-import theExile.relics.TransparentBracelet;
+import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
 
@@ -58,7 +58,7 @@ public class VoidSpirits extends AbstractExileEvent {
         super(eventStrings, IMAGE_PATH, getHealthLoss(), getCardsRemoved());
         imageEventText.updateBodyText(descriptions[0]);
 
-        AbstractRelic ring = new TransparentBracelet();
+        AbstractRelic ring = new VoidBracelet();
         imageEventText.setDialogOption(options[0].replace("!RelicString!",
                 FontHelper.colorString(ring.name, "g")), ring);
 
@@ -118,7 +118,7 @@ public class VoidSpirits extends AbstractExileEvent {
                 case 0:
                     adp().decreaseMaxHealth(amount);
                     adRoom().spawnRelicAndObtain((float) Settings.WIDTH * 0.28F,
-                            (float) Settings.HEIGHT / 2.0F, new TransparentBracelet());
+                            (float) Settings.HEIGHT / 2.0F, new VoidBracelet());
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[1]);
                     imageEventText.clearAllDialogs();

@@ -3,7 +3,7 @@ package theExile.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
-import theExile.powers.SoulFeedPower;
+import theExile.powers.ConsumeSoulsPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
@@ -24,7 +24,7 @@ public class ConsumeSouls extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new SoulFeedPower(p, magicNumber));
+        applyToSelf(new ConsumeSoulsPower(p, magicNumber));
     }
 
     public void upp() {

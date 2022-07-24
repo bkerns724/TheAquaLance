@@ -19,7 +19,7 @@ import static theExile.util.Wiz.*;
 public class BootsOfSpeed extends AbstractExileRelic implements EnergyChangeSubscriber, RelicWithButton {
     public static final String ID = makeID(BootsOfSpeed.class.getSimpleName());
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/DrawButton.png";
-    public static final int DRAW_AMOUNT = 3;
+    public static final int DRAW_AMOUNT = 4;
     private int energy;
 
     public BootsOfSpeed() {

@@ -10,10 +10,10 @@ import static theExile.util.Wiz.*;
 
 public class VialOfNectar extends AbstractExileRelic {
     public static final String ID = makeID(VialOfNectar.class.getSimpleName());
-    public static final int TEMP_HP_AMOUNT = 3;
+    public static final int TEMP_HP_AMOUNT = 2;
 
     public VialOfNectar() {
-        super(ID, RelicTier.UNCOMMON, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.COMMON, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
         amount = TEMP_HP_AMOUNT;
         setUpdatedDescription();
     }

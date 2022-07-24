@@ -7,13 +7,13 @@ import theExile.powers.VibratingPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToSelf;
 
-public class VibratingSigil extends AbstractExileCard {
-    public final static String ID = makeID(VibratingSigil.class.getSimpleName());
+public class HummingSigil extends AbstractExileCard {
+    public final static String ID = makeID(HummingSigil.class.getSimpleName());
     private final static int MAGIC = 50;
     private final static int UPGRADE_MAGIC = 25;
     private final static int COST = -2;
 
-    public VibratingSigil() {
+    public HummingSigil() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
     }
 

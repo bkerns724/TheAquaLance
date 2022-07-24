@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.relics.MoltenEgg2;
 import com.megacrit.cardcrawl.relics.ToxicEgg2;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.TheExile;
+import theExile.cards.DeathlyChimes;
 import theExile.cards.ElementalConflux;
-import theExile.cards.Fade;
 import theExile.cards.SummonMonster;
 
 import static theExile.ExileMod.makeID;
@@ -29,7 +29,7 @@ public class AncientSpellTome extends AbstractExileRelic {
     public void onEquip() {
         cardsSelected = false;
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        tmp.addToTop(new Fade());
+        tmp.addToTop(new DeathlyChimes());
         tmp.addToTop(new ElementalConflux());
         tmp.addToTop(new SummonMonster());
 

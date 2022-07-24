@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,13 +15,11 @@ import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
 import theExile.patches.DamageModsIDPatch;
-import theExile.relics.BlueMarbles;
 import theExile.relics.PointyDentures;
+import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
 
-import static java.lang.Math.floor;
-import static java.lang.Math.sqrt;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.att;
 
@@ -50,22 +49,14 @@ public class EldritchDamage extends AbstractDamageModifier {
 
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
-        int tempHP;
-        if (adp().hasRelic(BlueMarbles.ID))
-            tempHP = GetTriangleNumberRootFloor(unblockedAmount*2);
-        else
-            tempHP = GetTriangleNumberRootFloor(unblockedAmount);
+        if (adp().hasRelic(VoidBracelet.ID))
+            unblockedAmount *= 2;
+        int tempHP = unblockedAmount / 3;
         if (tempHP > 0) {
             if (adp().hasRelic(PointyDentures.ID))
-                tempHP += 2;
-            else
-                att(new MyAddTempHPAction(adp(), adp(), tempHP));
+                att(new GainBlockAction(adp(), PointyDentures.BLOCK_AMOUNT));
+            att(new MyAddTempHPAction(adp(), adp(), tempHP));
         }
-    }
-
-    private static int GetTriangleNumberRootFloor(int n) {
-        double x = -0.5f + sqrt(0.25f + 2*n);
-        return (int) floor(x);
     }
 
     @Override

@@ -61,7 +61,7 @@
     "NAME": "Eldritch",
     "DESCRIPTION": "Eldritch [${ModID}:EldritchIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Gain #yTemporary #yHP based on unblocked damage dealt.  Has diminishing returns.",
+      "Gain 1 #yTemporary #yHP for every 3 unblocked damage dealt.",
       "Temporary HP",
       "Temporary HP is lost at the end of battle."
     ]
@@ -86,7 +86,7 @@
     "NAME": "Lightning",
     "DESCRIPTION": "Lightning [${ModID}:LightningIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Receive 1 damage for every 5 damage dealt."
+      "Does 35% extra damage to #yVulnerable targets."
     ]
   },
   "${ModID}:ScourgeType": {
@@ -123,7 +123,7 @@
   },
   "${ModID}:Thunderbolt": {
     "NAME": "Thunderbolt",
-    "DESCRIPTION": "Deal !D! damage.",
+    "DESCRIPTION": "Deal !D! damage. NL Take !M! damage.",
     "FLAVOR":  "Why is it called THUNDERbolt when it is the LIGHTNING that kills things?"
   },
   "${ModID}:VoidTendrils": {
@@ -147,13 +147,8 @@
     "DESCRIPTION": "Gain !B! Block. NL Discard !M! card.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
-  "${ModID}:GreaterBarrier": {
-    "NAME": "Greater Barrier",
-    "DESCRIPTION": "Gain !B! Block.",
-    "FLAVOR": "Like Barrier, but with blackjack and hookers."
-  },
-  "${ModID}:ElectricParty": {
-    "NAME": "Electric Party",
+  "${ModID}:Combust": {
+    "NAME": "Combust",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
   "${ModID}:BurningSigil": {
@@ -161,13 +156,13 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies.",
     "FLAVOR": "The great thing about sigils is they can be prepared ahead of time, so they don't use up your mana."
   },
+  "${ModID}:StoneSigil": {
+    "NAME": "Stone Sigil",
+    "DESCRIPTION": "Reduce attack damage you take by !M! this turn."
+  },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
     "DESCRIPTION": "ALL enemies take !M! extra damage from everything."
-  },
-  "${ModID}:HexedSigil": {
-    "NAME": "Hexed Sigil",
-    "DESCRIPTION": "ALL enemies lose !M! !ScourgeString! HP."
   },
   "${ModID}:HardSigil": {
     "NAME": "Hard Sigil",
@@ -187,11 +182,6 @@
     "NAME": "Iron Sigil",
     "DESCRIPTION": "Gain !M! ${ModID}:Plated\u00a0Armor.",
     "FLAVOR": "A staple defensive enchantment for longer battles."
-  },
-  "${ModID}:TranslucentSigil": {
-    "NAME": "Translucent Sigil",
-    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak.",
-    "FLAVOR": "Daggers aren't the only weapon most effective from behind.  You only need to hide yourself for a second to land a solid blow with a spell."
   },
   "${ModID}:IcySigil": {
     "NAME": "Icy Sigil",
@@ -222,8 +212,8 @@
     "DESCRIPTION": "Lose !${ModID}:M2! HP. NL Gain [E] [E]. NL Draw !M! cards.",
     "FLAVOR": "Casting from your life force hurts, but you don't have any life force if someone runs your face through with a sword."
   },
-  "${ModID}:VibratingSigil": {
-    "NAME": "Vibrating Sigil",
+  "${ModID}:HummingSigil": {
+    "NAME": "Humming Sigil",
     "DESCRIPTION": "Your next attack deals !M!% extra damage."
   },
   "${ModID}:ScourgeBubble": {
@@ -231,25 +221,31 @@
     "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !M! !ScourgeString! damage back.",
     "FLAVOR": "People don't like this spell either. It \"feels evil\". What a stupid thing to say just because you don't like something."
   },
+  "${ModID}:LethalChorus": {
+    "NAME": "Lethal Chorus",
+    "DESCRIPTION": "Resonant cards deal !M! more damage per merged card."
+  },
   "${ModID}:Amplify": {
     "NAME": "Amplify",
-    "DESCRIPTION": "Deal !D! damage.  Gain !M! extra ${ModID}:Resonance.",
+    "DESCRIPTION": "Deal !D! damage.  Gain !M! extra ${ModID}:Resonance."
+  },
+  "${ModID}:SonicAgony": {
+    "NAME": "Sonic Agony",
+    "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Resonant spells are a favorite of mine.  You have to keep spending the mana of course, but you don't have to do anything else to keep casting it."
   },
-  "${ModID}:Disorient": {
-    "NAME": "Disorient",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block.",
+  "${ModID}:DeathlyChimes": {
+    "NAME": "Deathly Chimes",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${ModID}:TwinResonance": {
+    "NAME": "Twin Resonance",
+    "DESCRIPTION": "Deal !D! damage !M! times."
+  },
+  "${ModID}:Shockwave": {
+    "NAME": "Shockwave",
+    "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
-  },
-  "${ModID}:Deter": {
-    "NAME": "Deter",
-    "DESCRIPTION": "Whenever you are attacked this turn, deal !M! [${ModID}:SoulFireIcon] damage back.",
-    "FLAVOR": "You can make resonant spells much more efficient by casting several of them and joining them together."
-  },
-  "${ModID}:Corrupt": {
-    "NAME": "Corrupt",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Decay.",
-    "FLAVOR": "This doesn't kill quickly, but there is no defending against it."
   },
   "${ModID}:ChanneledCurse": {
     "NAME": "Channeled Curse",
@@ -345,11 +341,9 @@
     "DESCRIPTION": "Apply !M! Vulnerable. NL Discard a card.",
     "FLAVOR": "Quick and easy to cast.  A good setup for a stronger spell."
   },
-  "${ModID}:RipplingShadows": {
-    "NAME": "Rippling Shadows",
-    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Draw a card. NL Discard a card.",
-    "UPGRADE_DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Draw !M! cards. NL Discard a card.",
-    "FLAVOR": "You can't catch what you can't see."
+  "${ModID}:Divination": {
+    "NAME": "Divination",
+    "DESCRIPTION": "Scry !M!. NL Draw a card. NL Discard a card."
   },
   "${ModID}:StoneWall": {
     "NAME": "Stone Wall",
@@ -366,10 +360,9 @@
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Jinx.",
     "FLAVOR": "This is why spells are superior.  A weapon can be damaged, destroyed.  The only way to destroy my spells is to destroy me."
   },
-  "${ModID}:Shock": {
-    "NAME": "Shock",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply {!M!|>1=!M!} !ScourgeString! Weak.",
-    "FLAVOR": "Not one of my favored elements, but it is good to be a little unpredictable."
+  "${ModID}:SpellGauntlet": {
+    "NAME": "Spell Gauntlet",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply {!M!|>1=!M!} !ScourgeString! Weak."
   },
   "${ModID}:SickBurn": {
     "NAME": "Sick Burn",
@@ -398,17 +391,20 @@
   },
   "${ModID}:FrigidBlast": {
     "NAME": "Frigid Blast",
-    "DESCRIPTION": "Deal !D! damage X times. NL Draw X cards next turn.",
-    "FLAVOR": "Not a grand finish, but staying alive is very practical."
+    "DESCRIPTION": "Deal !D! damage X times. NL Draw X cards next turn."
   },
-  "${ModID}:Cannon": {
-    "NAME": "Cannon",
+  "${ModID}:ChargedShot": {
+    "NAME": "Charged Shot",
+    "DESCRIPTION": "Deal !D! damage X times. NL Draw X cards next turn."
+  },
+  "${ModID}:ThunderCannon": {
+    "NAME": "Thunder Cannon",
     "DESCRIPTION": "Deal !D! damage. NL Discard !M! cards next turn.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
-    "DESCRIPTION": "The first time you discard a ${ModID}:f each turn, gain [E].",
+    "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E].",
     "FLAVOR": "Sigils are prepared ahead of time with your mana, and then your mana recharges.  You can even add more mana than the enchantment needs and absorb it back when it is used."
   },
   "${ModID}:HexingSteam": {
@@ -441,19 +437,13 @@
     "DESCRIPTION": "Add a random ${ModID}:Sigil into your hand. NL Discard it.",
     "FLAVOR": "So many mundane skills are useful in combination with wizardry."
   },
-  "${ModID}:Combust": {
-    "NAME": "Combust",
+  "${ModID}:BallLightning": {
+    "NAME": "Ball Lightning",
     "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs.",
     "EXTENDED_DESCRIPTION" : [
       "Enemy does not have enough debuffs."
     ],
     "FLAVOR": "This was a great bargain.  I get a powerful spell.  The demon gets what is left of their souls."
-  },
-  "${ModID}:SplitResonance": {
-    "NAME": "Split Resonance",
-    "DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more time. NL Damage is split evenly between hits.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Resonant attacks deal damage !M! more times. NL Damage is split evenly between hits.",
-    "FLAVOR": "I invented this technique.  It didn't catch on because I had become unpopular."
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
@@ -485,10 +475,6 @@
     "DESCRIPTION": "Damage from ${ModID}:Jinx is now [${ModID}:EldritchIcon] .",
     "FLAVOR": "What is a wizard without her enchanted equipment?"
   },
-  "${ModID}:Contingency": {
-    "NAME": "Contingency",
-    "DESCRIPTION": "Autoplay. NL Deal !D! damage to ALL enemies."
-  },
   "${ModID}:SadisticGlee": {
     "NAME": "Sadistic Glee",
     "DESCRIPTION": "Gain !M! Block whenever you apply a debuff to an enemy.",
@@ -499,11 +485,6 @@
     "DESCRIPTION": "Enemy enters Wrath.",
     "UPGRADE_DESCRIPTION": "Enemy enters Wrath. NL Whenever an enemy dies, return this to your hand.",
     "FLAVOR": "In exchange for letting her observe our conclave, a Watcher taught us how to channel our rage.  I decided to instead channel other people's rage."
-  },
-  "${ModID}:Camoflouge": {
-    "NAME": "Camoflouge",
-    "DESCRIPTION": "Gain !M! ${ModID}:Shadowcloak. NL Gain !${ModID}:M2! Block per ${ModID}:Shadowcloak.",
-    "FLAVOR": "I just don't cast a spell when I do this.  I learned mundane ways of enhancing stealth from some talented acquaintances.  In exchange I taught them to brew semi-legal camoflouge potions."
   },
   "${ModID}:SoulCurse": {
     "NAME": "Soul Curse",
@@ -519,11 +500,6 @@
     "NAME": "Prepare",
     "DESCRIPTION": "Next turn, draw !M! additional cards and discard !M! cards.",
     "FLAVOR": "Do this ahead of time.  NOT during battle."
-  },
-  "${ModID}:Fade": {
-    "NAME": "Fade",
-    "DESCRIPTION": "Gain !M! X ${ModID}:Shadowcloak.",
-    "FLAVOR": "This is the most effective camoflouge spell I developed.  It'll take your entire mana pool when you cast it, there's no way to hold any back."
   },
   "${ModID}:MaliciousDagger": {
     "NAME": "Malicious Dagger",
@@ -546,7 +522,7 @@
   },
   "${ModID}:Hallucination": {
     "NAME": "Hallucination",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL When drawn, randomize the cost of cards in your hand.",
+    "DESCRIPTION": "Unplayable. NL Soulbound. NL When drawn, randomize the cost of cards in your hand.",
     "FLAVOR": "Take the poison from a recently slain snecko, and spray it towards your enemy."
   },
   "${ModID}:BadLuck": {

@@ -15,6 +15,11 @@ public class GenericResonantCard extends AbstractResonantCard {
     public GenericResonantCard(Resonance resonance) {
         super(ID, COST, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.resonance = resonance;
+        if (resonance.getDamage() <= 0) {
+            type = CardType.SKILL;
+            if (resonance.jinx <= 0)
+                target = CardTarget.SELF;
+        }
         initializeDescription();
     }
 
@@ -28,7 +33,7 @@ public class GenericResonantCard extends AbstractResonantCard {
 
     // Should not be used
     public GenericResonantCard() {
-        this(new Resonance(8));
+        this(new Resonance());
     }
 
     @Override
@@ -38,7 +43,7 @@ public class GenericResonantCard extends AbstractResonantCard {
 
     public void upp() {
         baseDamage += UPGRADE_DAMAGE;
-        resonance.amount += UPGRADE_DAMAGE;
+        resonance.damage = UPGRADE_DAMAGE;
     }
 
     @Override

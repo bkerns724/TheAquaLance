@@ -5,6 +5,7 @@ import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -12,8 +13,11 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.SoulFire;
 import theExile.patches.DamageModsIDPatch;
+import theExile.relics.HexedStaff;
 
 import java.util.ArrayList;
+
+import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class SoulFireDamage extends AbstractDamageModifier {
@@ -30,6 +34,13 @@ public class SoulFireDamage extends AbstractDamageModifier {
     public SoulFireDamage(boolean visTips) {
         this();
         visibleTips = visTips;
+    }
+
+    @Override
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        if (adp().hasRelic(HexedStaff.ID))
+            damage *= (1f + HexedStaff.BONUS_MULT);
+        return damage;
     }
 
     @Override

@@ -4,11 +4,11 @@ import theExile.TheExile;
 
 import static theExile.ExileMod.makeID;
 
-// Code in ShadowcloakPower
-public class TransparentBracelet extends AbstractExileRelic {
-    public static final String ID = makeID(TransparentBracelet.class.getSimpleName());
+//  in EldritchDamage
+public class VoidBracelet extends AbstractExileRelic {
+    public static final String ID = makeID(VoidBracelet.class.getSimpleName());
 
-    public TransparentBracelet() {
+    public VoidBracelet() {
         super(ID, RelicTier.SPECIAL, LandingSound.MAGICAL, TheExile.Enums.EXILE_BLARPLE_COLOR);
         setUpdatedDescription();
     }

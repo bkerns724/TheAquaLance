@@ -4,37 +4,25 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.getDebuffCount;
 
 public class Combust extends AbstractExileCard {
     public final static String ID = makeID(Combust.class.getSimpleName());
-    private final static int DAMAGE = 32;
-    private final static int UPGRADE_DAMAGE = 10;
-    private final static int MAGIC = 5;
-    private final static int COST = 0;
+    private final static int DAMAGE = 30;
+    private final static int UPGRADE_DAMAGE = 7;
+    private final static int COST = 3;
 
     public Combust() {
-        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
     }
 
-    @Override
-    protected void applyAttributes() {
+    public void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
         addModifier(elenum.FIRE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        int count = getDebuffCount(m);
-        if (count >= 5)
-            return true;
-        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        return false;
+        allDmg();
     }
 
     public void upp() {

@@ -1,31 +1,30 @@
 package theExile.potions;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import theExile.powers.ShadowcloakPower;
+import theExile.powers.FrostbitePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToSelf;
+import static theExile.util.Wiz.applyToEnemy;
 
-public class MurkyElixir extends AbstractExilePotion {
-    public static final String POTION_ID = makeID(MurkyElixir.class.getSimpleName());
-    public static final int DEFAULT_POTENCY = 2;
+public class LiquidNitrogen extends AbstractExilePotion {
+    public static final String POTION_ID = makeID(LiquidNitrogen.class.getSimpleName());
+    public static final int DEFAULT_POTENCY = 6;
     public static final PotionRarity RARITY = PotionRarity.COMMON;
     public static final PotionSize SIZE = PotionSize.M;
     public static final boolean IS_THROWN = false;
     public static final boolean TARGET_REQUIRED = false;
 
-    public MurkyElixir() {
+    public LiquidNitrogen() {
         super(POTION_ID, RARITY, SIZE, PotionColor.ENERGY,
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
     }
 
     @Override
     public void setKeywordStrings() {
-        keywordStrings.add(makeID("Shadowcloak"));
+        keywordStrings.add(makeID("Frostbite"));
     }
 
     public void use(AbstractCreature target) {
-        applyToSelf(new ShadowcloakPower(adp(), potency));
+        applyToEnemy(target, new FrostbitePower(target, potency));
     }
 }

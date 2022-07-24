@@ -82,11 +82,10 @@
       "Takes !A! more damage from attacks."
     ]
   },
-  "${ModID}:SplitResonancePower": {
-    "NAME": "Split Resonance",
+  "${ModID}:LethalChorusPower": {
+    "NAME": "Lethal Chorus",
     "DESCRIPTIONS": [
-      "Your resonant cards deal !A! extra hit. NL The damage is split evenly between hits.",
-      "Your resonant cards deal !A! extra hits. NL The damage is split evenly between hits."
+      "Resonant cards deal !A! more damage per merged card."
     ]
   },
   "${ModID}:MiniWrathPower": {
@@ -122,12 +121,6 @@
       "Loses !A! HP at the start of its turn."
     ]
   },
-  "${ModID}:ShadowcloakPower": {
-    "NAME": "Shadowcloak",
-    "DESCRIPTIONS": [
-      "The first attack you play each turn does !A2!% more damage."
-    ]
-  },
   "${ModID}:TempHPOnHitPower": {
     "NAME": "Life Leech",
     "DESCRIPTIONS": [
@@ -153,8 +146,8 @@
       "At the start of your turn, draw !A! cards and discard cards."
     ]
   },
-  "${ModID}:SoulFeedPower": {
-    "NAME": "Soul Feed",
+  "${ModID}:ConsumeSoulsPower": {
+    "NAME": "Consume Souls",
     "DESCRIPTIONS": [
       "Whenever a non-minion enemy dies, gain !A! Max HP."
     ]
@@ -165,7 +158,7 @@
       "Whenever you would take damage, take !A! less."
     ]
   },
-  "${ModID}:VibratingPower": {
+  "${ModID}:HummingPower": {
     "NAME": "Charged",
     "DESCRIPTIONS": [
       "Your next attack deals !A!% more damage."

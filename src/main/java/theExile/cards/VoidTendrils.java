@@ -9,7 +9,7 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class VoidTendrils extends AbstractExileCard {
     public final static String ID = makeID(VoidTendrils.class.getSimpleName());
-    private final static int DAMAGE = 5;
+    private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int COST = 1;

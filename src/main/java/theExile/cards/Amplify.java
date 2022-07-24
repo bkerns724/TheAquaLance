@@ -4,18 +4,19 @@ import static theExile.ExileMod.makeID;
 
 public class Amplify extends AbstractResonantCard {
     public final static String ID = makeID(Amplify.class.getSimpleName());
-    private final static int DAMAGE = 9;
-    private final static int UPGRADE_DAMAGE = 2;
-    private final static int MAGIC = 2;
+    private final static int DAMAGE = 8;
+    private final static int UPGRADE_DAMAGE = 3;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
     public Amplify() {
-        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     @Override
     protected void setResonance() {
+        resonance.damage = baseDamage;
         resonance.amplify = baseMagicNumber;
     }
 
@@ -27,7 +28,7 @@ public class Amplify extends AbstractResonantCard {
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
-        resonance.amount += UPGRADE_DAMAGE;
+        resonance.damage += UPGRADE_DAMAGE;
         upMagic(UPGRADE_MAGIC);
         resonance.amplify += UPGRADE_MAGIC;
     }

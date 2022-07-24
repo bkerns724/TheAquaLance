@@ -10,7 +10,7 @@ import static theExile.ExileMod.makeID;
 
 public class PointyDentures extends AbstractExileRelic {
     public static final String ID = makeID(PointyDentures.class.getSimpleName());
-    public static final int TEMP_HP_AMOUNT = 2;
+    public static final int BLOCK_AMOUNT = 2;
     private static final CardStrings eldritchStrings = CardCrawlGame.languagePack.getCardStrings(EldritchDamage.ID);
 
     // code in EldritchDamage
@@ -18,7 +18,7 @@ public class PointyDentures extends AbstractExileRelic {
         super(ID, RelicTier.UNCOMMON,
                 LandingSound.HEAVY,
                 TheExile.Enums.EXILE_BLARPLE_COLOR);
-        amount = TEMP_HP_AMOUNT;
+        amount = BLOCK_AMOUNT;
         setUpdatedDescription();
     }
 

@@ -262,6 +262,7 @@ public class ExileMod implements
         CustomIconHelper.addCustomIcon(Eldritch.get());
         CustomIconHelper.addCustomIcon(Scourge.get());
         CustomIconHelper.addCustomIcon(SoulFire.get());
+        CustomIconHelper.addCustomIcon(Lightning.get());
 
         new AutoAdd(modID)
                 .packageFilter(AbstractExileCard.class)
@@ -410,11 +411,11 @@ public class ExileMod implements
 
     private static void addPotions() {
         BaseMod.addPotion(CursedBrew.class, Color.PURPLE.cpy(), Color.BLACK.cpy(), null, CursedBrew.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(MurkyElixir.class, Color.DARK_GRAY.cpy(), Color.BLACK.cpy(), null, MurkyElixir.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(LiquidNitrogen.class, Color.CYAN.cpy(), null, null, LiquidNitrogen.POTION_ID, THE_EXILE);
         BaseMod.addPotion(SigilPotion.class, Color.GOLD.cpy(), Color.GOLDENROD.cpy(), null, SigilPotion.POTION_ID, THE_EXILE);
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
 
-        BaseMod.addPotion(LiquidCalamity.class, Color.BLUE.cpy(), Color.PINK.cpy(), Color.PURPLE.cpy(), LiquidCalamity.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(ForceGrenade.class, Color.PINK.cpy(), Color.RED.cpy(), Color.ORANGE.cpy(), ForceGrenade.POTION_ID, THE_EXILE);
         BaseMod.addPotion(VibratingFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, VibratingFlask.POTION_ID, THE_EXILE);
         BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_EXILE);
 

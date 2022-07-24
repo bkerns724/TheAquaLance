@@ -9,7 +9,7 @@ import static theExile.util.Wiz.*;
 
 public class DreadfulFinale extends AbstractExileCard {
     public final static String ID = makeID(DreadfulFinale.class.getSimpleName());
-    private final static int MAGIC = 6;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 2;
 

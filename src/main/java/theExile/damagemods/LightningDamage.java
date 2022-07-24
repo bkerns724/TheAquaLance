@@ -4,23 +4,21 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.ExileMod;
 import theExile.icons.Lightning;
 import theExile.patches.DamageModsIDPatch;
+import theExile.relics.HexedStaff;
 
 import java.util.ArrayList;
 
 import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.att;
 
 @AutoAdd.Ignore
 public class LightningDamage extends AbstractDamageModifier {
@@ -45,15 +43,10 @@ public class LightningDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount,
-                                        AbstractCreature target) {
-        int totalDamage = unblockedAmount + blockedAmount;
-        int recoil = totalDamage/5;
-        if (recoil > 0) {
-            DamageInfo newInfo = new DamageInfo(adp(), recoil, DamageInfo.DamageType.THORNS);
-            att(new WaitAction(0.1f));
-            att(new DamageAction(adp(), newInfo, AbstractGameAction.AttackEffect.LIGHTNING));
-        }
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        if (adp().hasRelic(HexedStaff.ID))
+            damage *= (1f + HexedStaff.BONUS_MULT);
+        return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.35f : damage;
     }
 
     @Override

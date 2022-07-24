@@ -33,10 +33,7 @@ import theExile.TheExile;
 import theExile.actions.AttackAction;
 import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
-import theExile.icons.Eldritch;
-import theExile.icons.Force;
-import theExile.icons.Ice;
-import theExile.icons.SoulFire;
+import theExile.icons.*;
 import theExile.powers.AbstractExilePower;
 import theExile.powers.BoostedSigilPower;
 import theExile.relics.ChemicalZ;
@@ -85,6 +82,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public static final String FORCE_STRING = Force.CODE;
     public static final String SOULFIRE_STRING = SoulFire.CODE;
     public static final String DARK_STRING = Eldritch.CODE;
+    public static final String LIGHTNING_STRING = Lightning.CODE;
 
     public static final int DAMAGE_THRESHOLD_M = 15;
     public static final int DAMAGE_THRESHOLD_L = 50;
@@ -308,6 +306,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                 rawDescription = rawDescription.replace("!D! ", "!D! " + DARK_STRING + " ");
             if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
+            if (damageModList.contains(LIGHTNING))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }
 
         rawDescription = rawDescription.replace("!C!", getCustomString());
@@ -459,7 +459,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         return amount;
     }
 
-    protected AbstractGameAction.AttackEffect getBluntEffect() {
+    public AbstractGameAction.AttackEffect getBluntEffect() {
         int amount = getDamageForVFX();
         if (amount < DAMAGE_THRESHOLD_M)
             return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
@@ -469,7 +469,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             return Enums.BLUNT_MASSIVE;
     }
 
-    protected AbstractGameAction.AttackEffect getSlashEffect() {
+    public AbstractGameAction.AttackEffect getSlashEffect() {
         int amount = getDamageForVFX();
         if (amount < DAMAGE_THRESHOLD_M)
             return getRandomSlash();

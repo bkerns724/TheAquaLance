@@ -5,10 +5,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theExile.ExileMod;
 import theExile.actions.JinxLoseHPAction;
-import theExile.relics.HexedStaff;
 import theExile.relics.PaperKat;
 
 import static theExile.util.Wiz.adp;
@@ -19,13 +17,6 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
 
     public JinxPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
-        if (adp().hasRelic(HexedStaff.ID)) {
-            AbstractRelic staff = adp().getRelic(HexedStaff.ID);
-            if (staff.counter == 0)
-                return;
-            staff.flash();
-            this.amount += staff.counter;
-        }
     }
 
     @Override

@@ -5,12 +5,12 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.att;
 
-public class FrigidBlastAction extends AbstractGameAction {
+public class ChargedShotAction extends AbstractGameAction {
     private final AbstractMonster m;
     private final boolean freeToPlayOnce;
     private final int damage;
@@ -18,7 +18,7 @@ public class FrigidBlastAction extends AbstractGameAction {
     private final int energyOnUse;
     private final AttackEffect attackEffect;
 
-    public FrigidBlastAction(AbstractMonster m, int damage, DamageInfo.DamageType damageTypeForTurn,
+    public ChargedShotAction(AbstractMonster m, int damage, DamageInfo.DamageType damageTypeForTurn,
                              boolean freeToPlayOnce, int energyOnUse, AttackEffect attackEffect) {
         this.m = m;
         this.damage = damage;
@@ -41,12 +41,9 @@ public class FrigidBlastAction extends AbstractGameAction {
             adp().getRelic("Chemical X").flash();
         }
 
-        if (effect > 0) {
+        if (effect > 0)
             for (int i = 0; i < effect; ++i)
                 att(new DamageAction(m, new DamageInfo(adp(), damage, damageTypeForTurn), attackEffect));
-
-            applyToSelfTop(new DrawCardNextTurnPower(adp(), effect));
-        }
 
             if (!freeToPlayOnce)
                 adp().energy.use(EnergyPanel.totalCount);

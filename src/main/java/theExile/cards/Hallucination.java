@@ -1,6 +1,7 @@
 package theExile.cards;
 
 import basemod.abstracts.CustomCard;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.actions.unique.RandomizeHandCostAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -29,12 +30,13 @@ public class Hallucination extends CustomCard {
                 CardType.CURSE, CardColor.CURSE, CardRarity.SPECIAL, NONE);
 
         baseMagicNumber = magicNumber = MAGIC;
-        isEthereal = true;
 
         if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
             CardArtRoller.computeCard(this);
         } else
             needsArtRefresh = true;
+
+        SoulboundField.soulbound.set(this, true);
     }
 
     public void update() {

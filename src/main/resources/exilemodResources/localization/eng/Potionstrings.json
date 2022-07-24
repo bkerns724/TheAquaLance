@@ -6,12 +6,11 @@
     ],
     "FLAVOR": "Don't breathe the fumes."
   },
-  "${ModID}:MurkyElixir": {
-    "NAME": "Murky Elixir",
+  "${ModID}:LiquidNitrogen": {
+    "NAME": "Liquid Nitrogen",
     "DESCRIPTIONS": [
-      "Gain !P! #yShadowcloak."
-    ],
-    "FLAVOR": "Goddamn do I hate the taste of this stuff."
+      "Apply !P! #yFrostbite."
+    ]
   },
   "${ModID}:SigilPotion": {
     "NAME": "Sigil Potion",
@@ -28,12 +27,11 @@
     ],
     "FLAVOR": "Do you like not getting murdered?  I like not getting murdered!"
   },
-  "${ModID}:LiquidCalamity": {
-    "NAME": "Liquid Calamity",
+  "${ModID}:ForceGrenade": {
+    "NAME": "Force Grenade",
     "DESCRIPTIONS": [
-      "Apply !P1! #yFrostbite, !P2! #yCrushed, and !P3! #yJinxed."
-    ],
-    "FLAVOR": ""
+      "Deal !P! [${ModID}:ForceIcon] damage to ALL enemies."
+    ]
   },
   "${ModID}:VibratingFlask": {
     "NAME": "Vibrating Flask",

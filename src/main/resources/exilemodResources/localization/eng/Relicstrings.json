@@ -60,7 +60,7 @@
     "NAME": "Ring of Shadows",
     "FLAVOR": "The bearers of this ring all slowly went mad.",
     "DESCRIPTIONS": [
-      "Whenever you draw a #yCurse, gain !R! #y${ModID}:Shadowcloak. On pickup, obtain #yHallucination."
+      "Whenever you draw a #yCurse, gain !R! #yBlock. On pickup, obtain #yHallucination."
     ]
   },
   "${ModID}:BlackCandle": {
@@ -74,7 +74,7 @@
     "NAME": "Tuning Fork",
     "FLAVOR": "It constantly makes a quiet hum.  It never ends.",
     "DESCRIPTIONS": [
-      "Whenever you merge one #y${ModID}:Resonant card into another, #yResonance increases by an additional !R!."
+      "Whenever you play a #y${ModID}:Resonant card, deal !R! damage to ALL enemies."
     ]
   },
   "${ModID}:ClownNose": {
@@ -100,9 +100,9 @@
   },
   "${ModID}:TatteredCloak": {
     "NAME": "TatteredCloak",
-    "FLAVOR": "It's worn and has several holes in it.",
+    "FLAVOR": "There's like 500 knives sewn to this thing.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Shadowcloak is a !R!% bonus rather than !R2!% ."
+      "Whenever you discard a card during your turn, add a #yShiv into your hand."
     ]
   },
   "${ModID}:EyeballStaff": {
@@ -123,7 +123,7 @@
     "NAME": "BlueMarbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "Halve damage thresholds for [${ModID}:EldritchIcon] [${ModID}:ForceIcon] and [${ModID}:IceIcon] damage seconday effects."
+      "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply double #y${ModID}:Frostbite and #y${ModID}:Crushed."
     ]
   },
   "${ModID}:BootsOfSpeed": {
@@ -208,7 +208,7 @@
     "NAME": "Pointy Dentures",
     "FLAVOR": "This is an odd object to enchant with power.",
     "DESCRIPTIONS": [
-      "Whenever you gain #yTemporary_HP from [${ModID}:EldritchIcon] attacks, gain !R! more."
+      "Whenever you gain #yTemporary_HP from [${ModID}:EldritchIcon] attacks, gain !R! #yBlock."
     ]
   },
   "${ModID}:EnchantmentOils": {
@@ -222,7 +222,7 @@
     "NAME": "Hexed Staff",
     "FLAVOR": "Whenever you hold it, you immediately feel angrier.",
     "DESCRIPTIONS": [
-      "Whenever you apply #y${ModID}:Jinx, for each #yCurse in your deck, apply 1 extra stack.  Upon pickup, obtain [#EFC851]Wrath."
+      "For each #yCurse in your deck, [${ModID}:SoulFireIcon] and [${ModID}:LightningIcon] damage is increased by !R!%.  Upon pickup, obtain [#EFC851]Wrath."
     ]
   },
   "${ModID}:SoulLamp": {
@@ -232,11 +232,11 @@
       "The first time you are attacked each turn, deal !R! [${ModID}:SoulFireIcon] back."
     ]
   },
-  "${ModID}:TransparentBracelet": {
-    "NAME": "Transparent Bracelet",
-    "FLAVOR": "Takes forever to find it if you take it off.",
+  "${ModID}:VoidBracelet": {
+    "NAME": "Void Bracelet",
+    "FLAVOR": "It is always icy cold, even if you hold it in a fire.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Shadowcloak can be used to boost the first #yBlock card each turn instead of the first attack."
+      "[${ModID}:EldritchIcon] damage grants double #yTemporary_HP."
     ]
   },
   "${ModID}:MarkOfTheVoid": {

@@ -9,13 +9,16 @@ import theExile.cards.Wrath;
 
 import static theExile.ExileMod.makeID;
 
+// Code in SoulFireDamage and LightningDamage
 public class HexedStaff extends AbstractExileRelic {
     public static final String ID = makeID(HexedStaff.class.getSimpleName());
+    public static final float BONUS_MULT = 0.15f;
+    private static final int BONUS_PERCENT = (int)BONUS_MULT*100;
 
     public HexedStaff() {
         super(ID, RelicTier.SPECIAL, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
         cardToPreview = new Wrath();
-        amount = 1;
+        amount = BONUS_PERCENT;
         setUpdatedDescription();
     }
 
@@ -30,8 +33,6 @@ public class HexedStaff extends AbstractExileRelic {
             if (c.type == AbstractCard.CardType.CURSE)
                 ++counter;
         }
-
-        grayscale = counter == 0;
     }
 
     public void onMasterDeckChange() {
@@ -41,7 +42,5 @@ public class HexedStaff extends AbstractExileRelic {
             if (c.type == AbstractCard.CardType.CURSE)
                 ++counter;
         }
-
-        grayscale = counter == 0;
     }
 }

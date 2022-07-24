@@ -1,5 +1,6 @@
 package theExile.actions;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -24,9 +25,17 @@ public class SackOfDebrisAction extends AbstractGameAction {
         if (duration == startingDuration) {
             int count = adp().hand.size();
             if (count != 0) {
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count; i++) {
+                    int x = MathUtils.random(0, 1);
+                    AttackEffect effect;
+                    if (x == 0)
+                        effect = card.getBluntEffect();
+                    else
+                        effect = card.getSlashEffect();
+
                     att(new DamageRandomEnemyAction(new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL),
-                            AttackEffect.BLUNT_LIGHT));
+                            effect));
+                }
                 discardTop(count, true);
             }
 

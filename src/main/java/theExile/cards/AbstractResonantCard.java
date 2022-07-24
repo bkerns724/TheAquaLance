@@ -12,7 +12,7 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     public AbstractResonantCard(String id, int cost, CardType type, CardRarity rarity, CardTarget target) {
         super(id, cost, type, rarity, target);
-        resonance = new Resonance(baseDamage);
+        resonance = new Resonance();
         setResonance();
         initializeDescription();
     }

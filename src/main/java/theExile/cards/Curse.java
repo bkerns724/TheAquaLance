@@ -2,15 +2,14 @@ package theExile.cards;
 
 import static theExile.ExileMod.makeID;
 
-public class ChanneledCurse extends AbstractResonantCard {
-    public final static String ID = makeID(ChanneledCurse.class.getSimpleName());
-    private final static int DAMAGE = 8;
-    private final static int MAGIC = 1;
+public class Curse extends AbstractResonantCard {
+    public final static String ID = makeID(Curse.class.getSimpleName());
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
-    public ChanneledCurse() {
-        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+    public Curse() {
+        super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
     }
 
     @Override
@@ -20,7 +19,6 @@ public class ChanneledCurse extends AbstractResonantCard {
 
     @Override
     protected void applyAttributes() {
-        baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
     }
