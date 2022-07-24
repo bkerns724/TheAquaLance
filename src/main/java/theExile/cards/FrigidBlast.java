@@ -7,8 +7,7 @@ import theExile.actions.FrigidBlastAction;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
 
-public class
-FrigidBlast extends AbstractExileCard {
+public class FrigidBlast extends AbstractExileCard {
     public final static String ID = makeID(FrigidBlast.class.getSimpleName());
     private final static int DAMAGE = 4;
     private final static int UPGRADE_DAMAGE = 2;

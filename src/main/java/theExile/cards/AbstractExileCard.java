@@ -37,6 +37,7 @@ import theExile.icons.*;
 import theExile.powers.AbstractExilePower;
 import theExile.powers.BoostedSigilPower;
 import theExile.relics.ChemicalZ;
+import theExile.relics.HexedStaff;
 import theExile.relics.ManaPurifier;
 import theExile.util.CardArtRoller;
 
@@ -126,6 +127,19 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     protected abstract void applyAttributes();
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        if (adp() == null)
+            return;
+        if (damageModList.contains(LIGHTNING) || damageModList.contains(FIRE)) {
+            HexedStaff staff = (HexedStaff) adp().getRelic(HexedStaff.ID);
+            if (staff != null)
+                damage *= (1f + HexedStaff.BONUS_MULT*staff.counter);
+        }
+        isDamageModified = baseDamage != damage;
+    }
 
     @Override
     public List<String> getCardDescriptors() {

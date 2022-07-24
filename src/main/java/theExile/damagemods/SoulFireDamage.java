@@ -38,8 +38,9 @@ public class SoulFireDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        if (adp().hasRelic(HexedStaff.ID))
-            damage *= (1f + HexedStaff.BONUS_MULT);
+        HexedStaff staff = (HexedStaff) adp().getRelic(HexedStaff.ID);
+        if (staff != null)
+            damage *= (1f + HexedStaff.BONUS_MULT*staff.counter);
         return damage;
     }
 

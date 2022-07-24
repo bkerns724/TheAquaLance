@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.ChargedShotAction;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.att;
 
 public class ChargedShot extends AbstractExileCard {
     public final static String ID = makeID(ChargedShot.class.getSimpleName());
@@ -22,7 +23,7 @@ public class ChargedShot extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        new ChargedShotAction(m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse, getAttackEffect());
+        att(new ChargedShotAction(m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse, getAttackEffect()));
     }
 
     public void upp() {

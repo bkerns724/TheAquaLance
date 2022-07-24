@@ -2,7 +2,7 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.VibratingPower;
+import theExile.powers.HummingPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToSelf;
@@ -23,7 +23,7 @@ public class HummingSigil extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new VibratingPower(magicNumber));
+        applyToSelf(new HummingPower(magicNumber));
     }
 
     public void upp() {

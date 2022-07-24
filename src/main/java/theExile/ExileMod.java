@@ -415,7 +415,7 @@ public class ExileMod implements
         BaseMod.addPotion(SigilPotion.class, Color.GOLD.cpy(), Color.GOLDENROD.cpy(), null, SigilPotion.POTION_ID, THE_EXILE);
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
 
-        BaseMod.addPotion(ForceGrenade.class, Color.PINK.cpy(), Color.RED.cpy(), Color.ORANGE.cpy(), ForceGrenade.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(ForceGrenade.class, Color.PINK.cpy(), null, null, ForceGrenade.POTION_ID, THE_EXILE);
         BaseMod.addPotion(VibratingFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, VibratingFlask.POTION_ID, THE_EXILE);
         BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_EXILE);
 

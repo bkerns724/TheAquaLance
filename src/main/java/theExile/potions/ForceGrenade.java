@@ -20,13 +20,13 @@ import static theExile.util.Wiz.atb;
 public class ForceGrenade extends AbstractExilePotion {
     public static final String POTION_ID = makeID(ForceGrenade.class.getSimpleName());
     private static final CardStrings forceStrings = CardCrawlGame.languagePack.getCardStrings(ForceDamage.ID);
-    public static final int DEFAULT_POTENCY = 1;
+    public static final int DEFAULT_POTENCY = 12;
     public static final PotionRarity RARITY = PotionRarity.UNCOMMON;
     public static final PotionSize SIZE = PotionSize.BOTTLE;
     public static final boolean IS_THROWN = true;
     public static final boolean TARGET_REQUIRED = false;
     private final DamageModContainer container;
-    private static final String crushKey = "Crushed";
+    private static final String crushKey = makeID("Crushed");
 
     public ForceGrenade() {
         super(POTION_ID, RARITY, SIZE, PotionColor.ENERGY,

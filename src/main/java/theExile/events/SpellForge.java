@@ -159,6 +159,8 @@ public class SpellForge extends AbstractExileEvent {
                 element = AbstractExileCard.elenum.DARK;
             else if (buttonPressed == 3)
                 element = AbstractExileCard.elenum.FIRE;
+            else if (buttonPressed == 4)
+                element = AbstractExileCard.elenum.LIGHTNING;
             for (LargeDialogOptionButton x : imageEventText.optionList)
                 TipsInDialogPatch.ButtonPreviewField.previewTips.set(x, null);
             for (AbstractCard c :  adp().masterDeck.group)

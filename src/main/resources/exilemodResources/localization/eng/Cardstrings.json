@@ -151,6 +151,11 @@
     "NAME": "Combust",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
+  "${ModID}:VibratingSigil": {
+    "NAME": "Vibrating Sigil",
+    "DESCRIPTION": "Add a random ${ModID}:Resonant card to your hand.",
+    "UPGRADE_DESCRIPTION": "Add a random ${ModID}:Resonant card to your hand. NL It costs 0 this turn."
+  },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
     "DESCRIPTION": "Deal !D! damage to ALL enemies.",
@@ -227,7 +232,7 @@
   },
   "${ModID}:Amplify": {
     "NAME": "Amplify",
-    "DESCRIPTION": "Deal !D! damage.  Gain !M! extra ${ModID}:Resonance."
+    "DESCRIPTION": "Deal !D! damage.  This card's ${ModID}:Resonance gains !M! extra damage."
   },
   "${ModID}:SonicAgony": {
     "NAME": "Sonic Agony",
@@ -247,8 +252,8 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
   },
-  "${ModID}:ChanneledCurse": {
-    "NAME": "Channeled Curse",
+  "${ModID}:Curse": {
+    "NAME": "Curse",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
     "FLAVOR": "A personal favorite of mine.  If the enemy has a lot of bad luck, everything you cast is more likely to be effective."
   },
@@ -395,7 +400,7 @@
   },
   "${ModID}:ChargedShot": {
     "NAME": "Charged Shot",
-    "DESCRIPTION": "Deal !D! damage X times. NL Draw X cards next turn."
+    "DESCRIPTION": "Deal !D! damage X times."
   },
   "${ModID}:ThunderCannon": {
     "NAME": "Thunder Cannon",

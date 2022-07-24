@@ -61,7 +61,7 @@ public class Resonance {
     public void merge(Resonance inRes) {
         amount += inRes.amount;
         damage += inRes.damage;
-        multiHit += multiHit - 1;
+        multiHit += inRes.multiHit - 1;
         block += inRes.block;
         amplify += inRes.amplify;
         jinx += inRes.jinx;
@@ -79,7 +79,7 @@ public class Resonance {
         if (block > 0)
             count++;
         if (amplify > 0)
-            count++;
+            count += 2;
         if (jinx > 0)
             count++;
         if (extraDraw > 0)
