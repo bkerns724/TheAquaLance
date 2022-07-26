@@ -21,7 +21,8 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
 
     @Override
     public boolean onReceivePower(AbstractPower pow, AbstractCreature target, AbstractCreature source) {
-        if (pow.ID.equals(GainStrengthPower.POWER_ID) || pow.type != PowerType.DEBUFF || pow.owner == source)
+        if (pow.type != PowerType.DEBUFF || pow.owner == source || pow.ID.equals(GainStrengthPower.POWER_ID)
+                || pow.ID.equals(POWER_ID))
             return true;
         int lossMultiplier = 1;
         if (target.hasPower(BanePower.POWER_ID))

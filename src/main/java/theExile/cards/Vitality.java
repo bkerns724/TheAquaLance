@@ -8,14 +8,14 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
 import static theExile.util.Wiz.discard;
 
-public class StoneWall extends AbstractExileCard {
-    public final static String ID = makeID(StoneWall.class.getSimpleName());
+public class Vitality extends AbstractExileCard {
+    public final static String ID = makeID(Vitality.class.getSimpleName());
     private final static int MAGIC = 5;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 0;
     private final static int DISCARD_AMOUNT = 1;
 
-    public StoneWall() {
+    public Vitality() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
     }
 

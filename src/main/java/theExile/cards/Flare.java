@@ -8,9 +8,9 @@ import static theExile.util.Wiz.*;
 
 public class Flare extends AbstractExileCard {
     public final static String ID = makeID(Flare.class.getSimpleName());
-    private final static int BLOCK = 9;
+    private final static int BLOCK = 8;
     private final static int UPGRADE_BLOCK = 3;
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 2;
 

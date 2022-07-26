@@ -12,7 +12,7 @@ public class Dispel extends AbstractExileCard {
     public final static String ID = makeID(Dispel.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 2;
+    private final static int COST = 1;
 
     public Dispel() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -20,6 +20,7 @@ public class Dispel extends AbstractExileCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

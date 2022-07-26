@@ -67,7 +67,7 @@ public class VibratingSigil extends AbstractExileCard {
         if (list.size() == 0) {
             list.add(new SonicAgony());
             list.add(new TwinResonance());
-            list.add(new Shockwave());
+            list.add(new Disorient());
             list.add(new Amplify());
             list.add(new Curse());
         }

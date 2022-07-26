@@ -15,7 +15,6 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -180,8 +179,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         targetDrawScale = 0.8f;
         lighten(true);
 
-        AbstractPower pow = adp().getPower(BoostedSigilPower.POWER_ID);
-        if (purgeOnUse || pow == null || pow.amount <= 0) {
+        BoostedSigilPower pow = (BoostedSigilPower) adp().getPower(BoostedSigilPower.POWER_ID);
+        if (purgeOnUse || pow == null || pow.counter <= 0) {
             att(new NewQueueCardAction(this, true, false, true));
             att(new UnlimboAction(this));
             return;
@@ -191,7 +190,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         AbstractCard tmp = makeSameInstanceOf();
         adp().limbo.addToBottom(tmp);
         tmp.purgeOnUse = true;
-        atb(new ReducePowerAction(adp(), adp(), pow, 1));
+        pow.counter--;
 
         tmp.triggerOnManualDiscard();
 
@@ -467,7 +466,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (isMultiDamage && multiDamage.length > 0) {
             amount = multiDamage[0];
             for (int x : multiDamage)
-                if (x < amount)
+                if (x > amount)
                     amount = x;
         }
         return amount;

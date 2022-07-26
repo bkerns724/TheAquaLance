@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.FlightPower;
 
 import static theExile.ExileMod.makeID;
 
@@ -16,11 +17,16 @@ public class CrumblingPower extends AbstractExilePower {
     public CrumblingPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
+        priority = 1;
     }
 
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
-        return damageType == DamageInfo.DamageType.NORMAL ? damage + amount : damage;
+        // Kinda hacky
+        if (!owner.hasPower(FlightPower.POWER_ID))
+            return damageType == DamageInfo.DamageType.NORMAL ? damage + amount : damage;
+        else
+            return damageType == DamageInfo.DamageType.NORMAL ? damage + 2*amount : damage;
     }
 
     @Override

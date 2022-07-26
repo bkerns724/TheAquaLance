@@ -6,11 +6,11 @@ import theExile.powers.JinxPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
-import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class Hex extends AbstractExileCard {
     public final static String ID = makeID(Hex.class.getSimpleName());
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 0;
 
     public Hex() {
@@ -22,13 +22,10 @@ public class Hex extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (!upgraded)
-            applyToEnemy(m, new JinxPower(m, magicNumber));
-        else
-            forAllMonstersLiving(mon -> applyToEnemy(mon, new JinxPower(mon, magicNumber)));
+        applyToEnemy(m, new JinxPower(m, magicNumber));
     }
 
     public void upp() {
-        target = CardTarget.ALL_ENEMY;
+        upMagic(UPGRADE_MAGIC);
     }
 }

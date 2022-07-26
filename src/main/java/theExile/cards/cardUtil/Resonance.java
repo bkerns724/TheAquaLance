@@ -25,7 +25,7 @@ public class Resonance {
     public int extraDraw = 0;
     public int extraEnergy = 0;
     public ArrayList<elenum> damageMods = new ArrayList<>();
-    public static final float ELEMENT_DAMAGE_PENALTY = 0.25f;
+    public static final float ELEMENT_DAMAGE_PENALTY = 0.2f;
     public static final int ELEMENT_DAMAGE_PENALTY_PERCENT = (int)(ELEMENT_DAMAGE_PENALTY*100);
 
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("Resonance"));

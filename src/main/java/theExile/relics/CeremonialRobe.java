@@ -30,7 +30,7 @@ public class CeremonialRobe extends AbstractExileRelic {
     @Override
     public void atBattleStart() {
         flash();
-        atb(new RelicAboveCreatureAction(adp(), this));
-        applyToSelf(new DexterityPower(adp(), -DEX_LOSS));
+        applyToSelfTop(new DexterityPower(adp(), -DEX_LOSS));
+        att(new RelicAboveCreatureAction(adp(), this));
     }
 }

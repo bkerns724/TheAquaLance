@@ -20,7 +20,7 @@ public class VialOfNectar extends AbstractExileRelic {
 
     @Override
     public void atBattleStart() {
-        atb(new RelicAboveCreatureAction(adp(), this));
-        atb(new MyAddTempHPAction(adp(), adp(), TEMP_HP_AMOUNT));
+        att(new MyAddTempHPAction(adp(), adp(), TEMP_HP_AMOUNT));
+        att(new RelicAboveCreatureAction(adp(), this));
     }
 }

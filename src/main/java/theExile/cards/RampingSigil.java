@@ -10,8 +10,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class RampingSigil extends AbstractExileCard {
     public final static String ID = makeID(RampingSigil.class.getSimpleName());
-    private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int MAGIC = 1;
     private final static int COST = -2;
 
     public RampingSigil() {
@@ -28,6 +27,6 @@ public class RampingSigil extends AbstractExileCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        isInnate = true;
     }
 }

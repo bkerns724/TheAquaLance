@@ -10,7 +10,7 @@ import static theExile.util.Wiz.getJinxAmount;
 
 public class IceBrambles extends AbstractExileCard {
     public final static String ID = makeID(IceBrambles.class.getSimpleName());
-    private final static int DAMAGE = 12;
+    private final static int DAMAGE = 9;
     private final static int COST = 2;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 2;

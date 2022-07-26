@@ -17,8 +17,7 @@ public class GenericResonantCard extends AbstractResonantCard {
         this.resonance = resonance;
         if (resonance.getDamage() <= 0) {
             type = CardType.SKILL;
-            if (resonance.jinx <= 0)
-                target = CardTarget.SELF;
+            target = CardTarget.SELF;
         }
         initializeDescription();
     }

@@ -35,8 +35,7 @@
   },
   "${ModID}:Hex": {
     "NAME": "Hex",
-    "DESCRIPTION": "Apply !M! ${ModID}:Jinx.",
-    "UPGRADE_DESCRIPTION": "Apply !M! ${ModID}:Jinx to ALL enemies."
+    "DESCRIPTION": "Apply !M! ${ModID}:Jinx."
   },
   "${ModID}:FrostDaggers": {
     "NAME": "Frost Daggers",
@@ -133,7 +132,7 @@
   },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
-    "DESCRIPTION": "Whenever you play a card this turn, discard a card at random to draw a card.",
+    "DESCRIPTION": "Draw a card. NL Shuffle !${ModID}:M2! *Cyclers into your draw pile.",
     "FLAVOR": "A skilled wizard can consider the advantage of many different spells in the blink of an eye."
   },
   "${ModID}:Barrier": {
@@ -169,10 +168,9 @@
     "NAME": "Crumbling Sigil",
     "DESCRIPTION": "ALL enemies take !M! extra damage from everything."
   },
-  "${ModID}:HardSigil": {
-    "NAME": "Hard Sigil",
-    "DESCRIPTION": "Gain !B! Block.",
-    "FLAVOR": "Sigils have the qualities of the spell stored inside, though to a lesser degree.  This shielding spell makes its sigil tough to break."
+  "${ModID}:SlipperySigil": {
+    "NAME": "Slippery Sigil",
+    "DESCRIPTION": "Gain !B! Block."
   },
   "${ModID}:CursedSigil": {
     "NAME": "Cursed Sigil",
@@ -204,7 +202,7 @@
   },
   "${ModID}:RampingSigil": {
     "NAME": "Ramping Sigil",
-    "DESCRIPTION": "The next !M! ${ModID}:Sigils you play are played twice.",
+    "DESCRIPTION": "The first ${ModID}:Sigil you play each turn is played twice.",
     "FLAVOR": "I heard you like sigils so I made sigils that give you more sigils."
   },
   "${ModID}:ClockSigil": {
@@ -219,7 +217,7 @@
   },
   "${ModID}:HummingSigil": {
     "NAME": "Humming Sigil",
-    "DESCRIPTION": "Your next attack deals !M!% extra damage."
+    "DESCRIPTION": "Your next attack deals !M! % extra damage."
   },
   "${ModID}:ScourgeBubble": {
     "NAME": "Scourge Bubble",
@@ -247,8 +245,8 @@
     "NAME": "Twin Resonance",
     "DESCRIPTION": "Deal !D! damage !M! times."
   },
-  "${ModID}:Shockwave": {
-    "NAME": "Shockwave",
+  "${ModID}:Disorient": {
+    "NAME": "Disorient",
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
   },
@@ -350,8 +348,8 @@
     "NAME": "Divination",
     "DESCRIPTION": "Scry !M!. NL Draw a card. NL Discard a card."
   },
-  "${ModID}:StoneWall": {
-    "NAME": "Stone Wall",
+  "${ModID}:Vitality": {
+    "NAME": "Vitality",
     "DESCRIPTION": "Gain !M! Temporary_HP. NL Discard a card.",
     "FLAVOR": "It's not the sturdiest fort, but being able to build it in two seconds counts for a lot."
   },
@@ -391,12 +389,12 @@
   },
   "${ModID}:Study": {
     "NAME": "Study",
-    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand.",
+    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand. NL It costs 1 less that turn.",
     "FLAVOR": "I didn't get to be a badass by sitting around on the couch all day."
   },
   "${ModID}:FrigidBlast": {
     "NAME": "Frigid Blast",
-    "DESCRIPTION": "Deal !D! damage X times. NL Draw X cards next turn."
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile."
   },
   "${ModID}:ChargedShot": {
     "NAME": "Charged Shot",
@@ -414,7 +412,7 @@
   },
   "${ModID}:HexingSteam": {
     "NAME": "Hexing Steam",
-    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !${ModID}:M2! ${ModID}:Jinx.",
+    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !M! ${ModID}:Jinx.",
     "FLAVOR": "This does so many unpleasant things at once.  It is my kind of spell."
   },
   "${ModID}:Flare": {
@@ -424,7 +422,7 @@
   },
   "${ModID}:Bane": {
     "NAME": "Bane",
-    "DESCRIPTION": "{@@} ${ModID}:Jinx is {!M!|1=twice|@=!M! times} as effective on the enemy.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Jinx for each debuff on the enemy.",
     "FLAVOR": "There are so many ways to curse someone.  I like to curse them with vulnerability to curses.  I've been told I'm unnervingly enthusiastic about this."
   },
   "${ModID}:Voices": {
@@ -452,7 +450,7 @@
   },
   "${ModID}:Waterfall": {
     "NAME": "Waterfall",
-    "DESCRIPTION": "Deal !D! damage. NL Enemy takes double damage from *Frostbite.",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL *Frostbite is {!M!|1=twice as|2=thrice as|@=!M! times more} effective.",
     "FLAVOR": "Water has high thermal conductivity.  It's weak by itself, deadly with cold spells."
   },
   "${ModID}:Shapeshift": {
@@ -516,13 +514,18 @@
     "DESCRIPTION": "Deal !D! \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 NL damage.",
     "FLAVOR": "I got a little carried away when developing this spell.  Kind of a jack of all trades, master of none thing."
   },
+  "${ModID}:Cycler": {
+    "NAME": "Cycler",
+    "DESCRIPTION": "Draw a card. NL Discard a card.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Discard !M! cards."
+  },
   "${ModID}:Wrath": {
     "NAME": "Wrath",
     "DESCRIPTION": "Unplayable. NL Soulbound. NL When drawn, ALL enemies gain !M! Strength."
   },
   "${ModID}:Greed": {
     "NAME": "Greed",
-    "DESCRIPTION": "Unplayable. NL When drawn, gain !M! Gold and 1 Weak.",
+    "DESCRIPTION": "Unplayable. NL When drawn, gain !M! Gold and 1 Vulnerable.",
     "FLAVOR": "Looting bodies in the middle of battle is one of the most foolish things I have ever seen.  Predictably, I didn't see it for very long, as the opposing side looted his head."
   },
   "${ModID}:Hallucination": {

@@ -4,7 +4,6 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -19,7 +18,8 @@ import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToEnemyTop;
 
 @AutoAdd.Ignore
 public class ForceDamage extends AbstractDamageModifier {
@@ -52,10 +52,8 @@ public class ForceDamage extends AbstractDamageModifier {
         if (adp().hasRelic(BlueMarbles.ID))
             totalDamage *= 2;
         int crushed = totalDamage/6;
-        if (crushed > 0) {
+        if (crushed > 0)
             applyToEnemyTop(target, new CrushedPower(target, crushed));
-            att(new WaitAction(0.1f));
-        }
     }
 
     @Override

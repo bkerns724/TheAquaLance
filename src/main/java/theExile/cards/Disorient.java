@@ -2,13 +2,13 @@ package theExile.cards;
 
 import static theExile.ExileMod.makeID;
 
-public class Shockwave extends AbstractResonantCard {
-    public final static String ID = makeID(Shockwave.class.getSimpleName());
-    private final static int BLOCK = 9;
-    private final static int UPGRADE_BLOCK = 3;
+public class Disorient extends AbstractResonantCard {
+    public final static String ID = makeID(Disorient.class.getSimpleName());
+    private final static int BLOCK = 6;
+    private final static int UPGRADE_BLOCK = 2;
     private final static int COST = 1;
 
-    public Shockwave() {
+    public Disorient() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 

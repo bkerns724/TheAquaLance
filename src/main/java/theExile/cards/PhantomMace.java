@@ -2,10 +2,8 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.TempNegStrengthPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
 
 public class PhantomMace extends AbstractExileCard {
     public final static String ID = makeID(PhantomMace.class.getSimpleName());
@@ -24,12 +22,10 @@ public class PhantomMace extends AbstractExileCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);
-        magicOneIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        applyToEnemy(m, new TempNegStrengthPower(m, magicNumber));
     }
 
     @Override

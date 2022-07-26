@@ -9,7 +9,7 @@ import static theExile.util.Wiz.*;
 
 public class BrrZerk extends AbstractExileCard {
     public final static String ID = makeID(BrrZerk.class.getSimpleName());
-    private final static int MAGIC = 4;
+    private final static int MAGIC = 5;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 

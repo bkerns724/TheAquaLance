@@ -20,13 +20,13 @@ public class MomentumPower extends AbstractExilePower {
     public MomentumPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.BUFF, false, owner, amount);
         this.name = NAME;
-        counter++;
+        counter += amount;
     }
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        counter++;
+        counter += stackAmount;
     }
 
     @Override

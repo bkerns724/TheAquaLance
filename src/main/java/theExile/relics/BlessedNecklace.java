@@ -26,11 +26,6 @@ public class BlessedNecklace extends AbstractExileRelic implements RelicWithButt
     }
 
     @Override
-    public void onEquip() {
-        adp().loseRelic(NecklaceOfShielding.ID);
-    }
-
-    @Override
     public void atPreBattle() {
         grayscale = false;
     }
@@ -66,5 +61,17 @@ public class BlessedNecklace extends AbstractExileRelic implements RelicWithButt
     @Override
     public boolean canSpawn() {
         return adp().hasRelic(NecklaceOfShielding.ID);
+    }
+
+    public void obtain() {
+        if (adp().hasRelic(NecklaceOfShielding.ID)) {
+            for (int i = 0; i < adp().relics.size(); i++) {
+                if ((adp().relics.get(i)).relicId.equals(NecklaceOfShielding.ID)) {
+                    instantObtain(adp(), i, true);
+                    break;
+                }
+            }
+        } else
+            super.obtain();
     }
 }

@@ -7,8 +7,8 @@ import static theExile.ExileMod.makeID;
 
 public class Combust extends AbstractExileCard {
     public final static String ID = makeID(Combust.class.getSimpleName());
-    private final static int DAMAGE = 30;
-    private final static int UPGRADE_DAMAGE = 7;
+    private final static int DAMAGE = 28;
+    private final static int UPGRADE_DAMAGE = 6;
     private final static int COST = 3;
 
     public Combust() {

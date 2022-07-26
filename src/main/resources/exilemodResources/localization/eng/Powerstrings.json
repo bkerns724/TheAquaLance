@@ -130,7 +130,7 @@
   "${ModID}:JinxPower": {
     "NAME": "Jinx",
     "DESCRIPTIONS": [
-      "When debuffed, this creature will lose !A! HP."
+      "When debuffed with another debuff, this creature will lose !A! HP."
     ]
   },
   "${ModID}:ClownNosePower": {
@@ -150,6 +150,13 @@
     "NAME": "Consume Souls",
     "DESCRIPTIONS": [
       "Whenever a non-minion enemy dies, gain !A! Max HP."
+    ]
+  },
+  "${ModID}:BoostedSigilPower": {
+    "NAME": "Double Sigils",
+    "DESCRIPTIONS": [
+      "The first sigil you play each turn is played twice.",
+      "The first !A! sigils you play each turn is played twice."
     ]
   },
   "${ModID}:StoneskinPower": {
@@ -230,7 +237,7 @@
     "NAME": "Soaked",
     "DESCRIPTIONS": [
       "Frostbite is twice as effective.",
-      "Frostbite is !A! times as effective."
+      "Frostbite is !A! times more effective."
     ]
   }
 }

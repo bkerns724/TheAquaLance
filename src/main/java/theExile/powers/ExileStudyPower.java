@@ -18,7 +18,7 @@ public class ExileStudyPower extends AbstractExilePower {
     private static int offset = 0;
 
     public ExileStudyPower(int amount, int amount2) {
-        super(POWER_ID, PowerType.DEBUFF, true, adp(), amount);
+        super(POWER_ID, PowerType.BUFF, true, adp(), amount);
         this.name = NAME;
         ID = POWER_ID + offset++;
         isTwoAmount = true;

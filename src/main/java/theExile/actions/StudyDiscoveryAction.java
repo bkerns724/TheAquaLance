@@ -35,16 +35,11 @@ public class StudyDiscoveryAction extends AbstractGameAction {
             if (!retrieveCard) {
                 if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
                     AbstractCard disCard = AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
-                    AbstractCard disCard2 = AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
-                    if (AbstractDungeon.player.hasPower(MasterRealityPower.POWER_ID)) {
+                    if (AbstractDungeon.player.hasPower(MasterRealityPower.POWER_ID))
                         disCard.upgrade();
-                        disCard2.upgrade();
-                    }
 
-                    //disCard.setCostForTurn(0);
-                    //disCard2.setCostForTurn(0);
+                    disCard.setCostForTurn(disCard.cost - 1);
                     disCard.current_x = -1000.0F * Settings.xScale;
-                    disCard2.current_x = -1000.0F * Settings.xScale + AbstractCard.IMG_HEIGHT_S;
 
                     if (AbstractDungeon.player.hand.size() < 10)
                         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(disCard,

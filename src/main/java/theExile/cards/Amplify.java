@@ -4,10 +4,10 @@ import static theExile.ExileMod.makeID;
 
 public class Amplify extends AbstractResonantCard {
     public final static String ID = makeID(Amplify.class.getSimpleName());
-    private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int DAMAGE = 3;
+    private final static int UPGRADE_DAMAGE = 1;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
     public Amplify() {

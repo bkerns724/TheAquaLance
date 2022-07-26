@@ -49,7 +49,7 @@ public class TwistedFormPower extends AbstractExilePower implements OnReceivePow
     public void stackPower(int stackAmount) { }
 
     @Override
-    public void atStartOfTurn() {
+    public void atEndOfRound() {
         if (owner == null)
             return;
         if (owner.currentHealth > 0)

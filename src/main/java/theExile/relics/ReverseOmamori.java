@@ -27,18 +27,18 @@ public class ReverseOmamori extends AbstractExileRelic {
     public void atBattleStart() {
         if (counter > 0) {
             flash();
-            atb(new RelicAboveCreatureAction(adp(), this));
-            applyToSelf(new DexterityPower(adp(), counter));
+            applyToSelfTop(new DexterityPower(adp(), counter));
+            att(new RelicAboveCreatureAction(adp(), this));
         }
     }
 
     @Override
     public void onEquip() {
-        for (int i = 0; i < CURSE_AMOUNT; i++) {
-            AbstractCard card = new Clumsy();
-            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, (float) Settings.WIDTH / 2.0F,
-                    (float) Settings.HEIGHT / 2.0F));
-        }
+        AbstractCard card = new Clumsy();
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card.makeStatEquivalentCopy(), (float) Settings.WIDTH * 0.6f,
+                (float) Settings.HEIGHT / 2.0F));
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card.makeStatEquivalentCopy(), (float) Settings.WIDTH * 0.4f,
+                (float) Settings.HEIGHT / 2.0F));
     }
 
     @Override
