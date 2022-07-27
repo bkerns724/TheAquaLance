@@ -20,6 +20,7 @@ public class RampingSigil extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

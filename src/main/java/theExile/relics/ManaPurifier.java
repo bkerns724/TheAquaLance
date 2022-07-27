@@ -34,7 +34,7 @@ public class ManaPurifier extends AbstractExileRelic {
 
     public void removeModifiers() {
         for (AbstractCard card : adp().masterDeck.group) {
-            if (card instanceof AbstractExileCard) {
+            if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK) {
                 AbstractExileCard card2 = (AbstractExileCard) card;
                 DamageModifierManager.clearModifiers(card2);
                 card2.damageModList.clear();

@@ -14,11 +14,8 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.ExileMod;
 import theExile.icons.Lightning;
 import theExile.patches.DamageModsIDPatch;
-import theExile.relics.HexedStaff;
 
 import java.util.ArrayList;
-
-import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class LightningDamage extends AbstractDamageModifier {
@@ -44,9 +41,6 @@ public class LightningDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        HexedStaff staff = (HexedStaff) adp().getRelic(HexedStaff.ID);
-        if (staff != null)
-            damage *= (1f + HexedStaff.BONUS_MULT*staff.counter);
         return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.35f : damage;
     }
 

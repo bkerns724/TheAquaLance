@@ -27,8 +27,8 @@ public class ClericsRequest extends AbstractExileEvent {
     private static final String IMAGE_PATH;
     private static final EventUtils.EventType TYPE = EventUtils.EventType.NORMAL;
 
-    private final static int PRICE_A0 = 150;
-    private final static int PRICE_A15 = 200;
+    private final static int PRICE_A0 = 100;
+    private final static int PRICE_A15 = 150;
     private final static float MAX_HP_GAIN = 0.1f;
 
     private int maxHpGain = 0;

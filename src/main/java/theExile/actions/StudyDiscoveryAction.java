@@ -39,7 +39,6 @@ public class StudyDiscoveryAction extends AbstractGameAction {
                         disCard.upgrade();
 
                     disCard.setCostForTurn(disCard.cost - 1);
-                    disCard.current_x = -1000.0F * Settings.xScale;
 
                     if (AbstractDungeon.player.hand.size() < 10)
                         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(disCard,

@@ -18,7 +18,7 @@ public class JinxThornsPower extends AbstractExilePower {
         flash();
         int damAmount = amount*getJinxAmount(info.owner);
         if (damAmount > 0)
-            thornDmg(info.owner, damAmount);
+            thornDmgTop(info.owner, damAmount);
         return damageAmount;
     }
 
