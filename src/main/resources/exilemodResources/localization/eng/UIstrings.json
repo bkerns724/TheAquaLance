@@ -37,7 +37,7 @@
       "Deal !D! damage.",
       "Deal !D! damage !X0! times.",
       " NL Gain !B! Block.",
-      " NL This card's resonance gains !X1! extra damage.",
+      " NL Enemy takes !X1 % more damage from Attacks.",
       " NL Apply !X2! ${ModID}:Jinx.",
       " NL Draw a card.",
       " NL Draw !X3! cards",
@@ -52,7 +52,7 @@
       "Deal !D! damage.",
       "Deal !D! damage !X0! times.",
       " !B! Block.",
-      " !X1! damage increase.",
+      " !X1! Erosion.",
       " !X2! ${ModID}:Jinx.",
       " Draw !3!.",
       " !X4! [E]. "

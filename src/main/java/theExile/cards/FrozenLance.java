@@ -9,7 +9,7 @@ import static theExile.util.Wiz.cardDraw;
 
 public class FrozenLance extends AbstractExileCard {
     public final static String ID = makeID(FrozenLance.class.getSimpleName());
-    private final static int DAMAGE = 8;
+    private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int COST = 1;

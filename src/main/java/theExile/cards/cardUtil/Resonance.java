@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.cards.AbstractExileCard.elenum;
 import theExile.cards.AbstractResonantCard;
+import theExile.powers.ErosionPower;
 import theExile.powers.JinxPower;
 import theExile.powers.LethalChorusPower;
 import theExile.powers.ResonatingPower;
@@ -20,7 +21,7 @@ public class Resonance {
     public int damage = 0;
     public int multiHit = 1;
     public int block = 0;
-    public int amplify = 0;
+    public int erosion = 0;
     public int jinx = 0;
     public int extraDraw = 0;
     public int extraEnergy = 0;
@@ -44,6 +45,8 @@ public class Resonance {
         }
         if (card.baseBlock > 0)
             card.blck();
+        if (erosion > 0)
+            applyToEnemy(m, new ErosionPower(m, erosion));
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
         if (extraDraw > 0)
@@ -54,7 +57,6 @@ public class Resonance {
 
     public void toPower() {
         Resonance outRes = resClone();
-        outRes.damage += outRes.amplify;
         applyToSelf(new ResonatingPower(outRes));
     }
 
@@ -63,7 +65,7 @@ public class Resonance {
         damage += inRes.damage;
         multiHit += inRes.multiHit - 1;
         block += inRes.block;
-        amplify += inRes.amplify;
+        erosion += inRes.erosion;
         jinx += inRes.jinx;
         extraDraw += inRes.extraDraw;
         extraEnergy += inRes.extraEnergy;
@@ -78,7 +80,7 @@ public class Resonance {
             count++;
         if (block > 0)
             count++;
-        if (amplify > 0)
+        if (erosion > 0)
             count += 2;
         if (jinx > 0)
             count++;
@@ -100,8 +102,8 @@ public class Resonance {
 
         if (block > 0)
             builder.append(uiStrings.TEXT[2]);
-        if (amplify > 0)
-            builder.append(uiStrings.TEXT[3].replace("!X1!", String.valueOf(amplify)));
+        if (jinx > 0)
+            builder.append(uiStrings.TEXT[3].replace("!X1!", String.valueOf(erosion)));
         if (jinx > 0)
             builder.append(uiStrings.TEXT[4].replace("!X2!", String.valueOf(jinx)));
         if (extraDraw == 1)
@@ -149,21 +151,21 @@ public class Resonance {
             newLine = addNewLine(newLine, builder);
             builder.append(uiStringsConcise.TEXT[2]);
         }
-        if (amplify > 0) {
+        if (erosion > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(amplify)));
+            builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(erosion)));
         }
         if (jinx > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[4].replace("!X4!", String.valueOf(jinx)));
+            builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(jinx)));
         }
         if (extraDraw > 0) {
             newLine = addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[5].replace("!X5!", String.valueOf(extraDraw)));
+            builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(extraDraw)));
         }
         if (extraEnergy > 0) {
             addNewLine(newLine, builder);
-            builder.append(uiStringsConcise.TEXT[6].replace("!X6!", String.valueOf(extraEnergy)));
+            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(extraEnergy)));
         }
 
         return builder.toString();
@@ -184,7 +186,7 @@ public class Resonance {
         copy.damage = damage;
         copy.multiHit = multiHit;
         copy.block = block;
-        copy.amplify = amplify;
+        copy.erosion = erosion;
         copy.jinx = jinx;
         copy.extraDraw = extraDraw;
         copy.extraEnergy = extraEnergy;

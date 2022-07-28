@@ -2,16 +2,14 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.JinxPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.getDebuffCount;
 
 public class VoidTendrils extends AbstractExileCard {
     public final static String ID = makeID(VoidTendrils.class.getSimpleName());
-    private final static int DAMAGE = 5;
-    private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 2;
+    private final static int DAMAGE = 3;
+    private final static int UPGRADE_DAMAGE = 2;
     private final static int COST = 1;
 
     public VoidTendrils() {
@@ -22,13 +20,12 @@ public class VoidTendrils extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         addModifier(elenum.DARK);
-        magicOneIsDebuff = true;
-        magicNumber = baseMagicNumber = MAGIC;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
-        applyToEnemy(m, new JinxPower(m, magicNumber));
+        int n = getDebuffCount(m);
+        for (int i = 0; i<n; i++)
+            dmg(m, getSlashEffect());
     }
 
     public void upp() {

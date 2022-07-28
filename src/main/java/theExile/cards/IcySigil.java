@@ -10,9 +10,8 @@ import static theExile.util.Wiz.adp;
 public class IcySigil extends AbstractExileCard {
     public final static String ID = makeID(IcySigil.class.getSimpleName());
     private final static int DAMAGE = 6;
-    private final static int UPGRADE_DAMAGE = 2;
     private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int UPGRADE_MAGIC = 2;
 
     public IcySigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
@@ -61,6 +60,5 @@ public class IcySigil extends AbstractExileCard {
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
-        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

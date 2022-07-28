@@ -41,7 +41,7 @@ public class LightningDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.35f : damage;
+        return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.5f : damage;
     }
 
     @Override

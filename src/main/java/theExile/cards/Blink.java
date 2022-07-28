@@ -2,33 +2,31 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.powers.BlinkPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.discard;
+import static theExile.util.Wiz.applyToSelf;
 
 public class Blink extends AbstractExileCard {
     public final static String ID = makeID(Blink.class.getSimpleName());
-    private final static int BLOCK = 11;
-    private final static int UPGRADE_BLOCK = 4;
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
     public Blink() {
-        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override
     protected void applyAttributes() {
-        baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        blck();
-        discard(magicNumber);
+        applyToSelf(new BlinkPower(magicNumber));
     }
 
     public void upp() {
-        upgradeBlock(UPGRADE_BLOCK);
+        upMagic(UPGRADE_MAGIC);
     }
 }

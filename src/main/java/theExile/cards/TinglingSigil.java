@@ -24,6 +24,7 @@ public class TinglingSigil extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
         secondMagic = baseSecondMagic = SECOND_MAGIC;
         sigil = true;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

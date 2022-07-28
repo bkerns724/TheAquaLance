@@ -4,7 +4,6 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -19,7 +18,8 @@ import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToEnemyTop;
 
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
@@ -33,6 +33,7 @@ public class IceDamage extends AbstractDamageModifier {
         iceTooltip = null;
         iceTooltip2 = null;
         DamageModsIDPatch.ID.set(this, ID);
+        priority = 100;
     }
 
     public IceDamage(boolean visibleTips) {
@@ -46,16 +47,12 @@ public class IceDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount,
-                                        AbstractCreature target) {
-        int totalDamage = unblockedAmount + blockedAmount;
+    public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
         if (adp().hasRelic(BlueMarbles.ID))
-            totalDamage *= 2;
-        int frostbite = totalDamage/3;
-        if (frostbite > 0) {
+            lastDamageTaken *= 2;
+        int frostbite = lastDamageTaken / 3;
+        if (frostbite > 0)
             applyToEnemyTop(target, new FrostbitePower(target, frostbite));
-            att(new WaitAction(0.1f));
-        }
     }
 
     @Override

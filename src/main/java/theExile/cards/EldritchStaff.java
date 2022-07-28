@@ -16,7 +16,8 @@ import static theExile.util.Wiz.*;
 
 public class EldritchStaff extends AbstractExileCard {
     public final static String ID = makeID(EldritchStaff.class.getSimpleName());
-    private final static int COST = 1;
+    private final static int COST = 2;
+    private final static int UPGRADED_COST = 1;
     private final static CardStrings eldritchStrings = CardCrawlGame.languagePack.getCardStrings(EldritchDamage.ID);
 
     public EldritchStaff() {
@@ -39,6 +40,6 @@ public class EldritchStaff extends AbstractExileCard {
     }
 
     public void upp() {
-        isInnate = true;
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

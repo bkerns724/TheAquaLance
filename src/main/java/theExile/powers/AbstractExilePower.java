@@ -18,8 +18,8 @@ import static theExile.util.Wiz.replaceLast;
 public abstract class AbstractExilePower extends AbstractPower {
     public int amount2;
     public boolean isTwoAmount = false;
-    public static Color redColor2 = Color.RED.cpy();
-    public static Color greenColor2 = Color.GREEN.cpy();
+    private static Color redColor2 = Color.RED.cpy();
+    private static Color greenColor2 = Color.GREEN.cpy();
     public boolean canGoNegative2 = false;
     public String[] descriptionArray;
 

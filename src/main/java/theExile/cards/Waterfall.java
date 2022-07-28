@@ -9,10 +9,10 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class Waterfall extends AbstractExileCard {
     public final static String ID = makeID(Waterfall.class.getSimpleName());
-    private final static int DAMAGE = 10;
-    private final static int UPGRADE_DAMAGE = 5;
+    private final static int DAMAGE = 12;
+    private final static int UPGRADE_DAMAGE = 6;
     private final static int MAGIC = 1;
-    private final static int COST = 1;
+    private final static int COST = 2;
 
     public Waterfall() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);

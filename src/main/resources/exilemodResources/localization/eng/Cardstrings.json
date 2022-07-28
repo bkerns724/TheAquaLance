@@ -35,7 +35,7 @@
   },
   "${ModID}:Hex": {
     "NAME": "Hex",
-    "DESCRIPTION": "Apply !M! ${ModID}:Jinx."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx."
   },
   "${ModID}:FrostDaggers": {
     "NAME": "Frost Daggers",
@@ -51,7 +51,7 @@
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yFrostbite for every 3 damage dealt.",
+      "Apply 1 #yFrostbite for every 3 unblocked damage dealt.",
       "Frostbite",
       "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
     ]
@@ -69,7 +69,7 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yCrushed for every 6 damage dealt.",
+      "Apply 1 #yCrushed for every 6 unblocked damage dealt.",
       "Crushed",
       "Crushed enemies take more damage from attacks."
     ]
@@ -85,7 +85,7 @@
     "NAME": "Lightning",
     "DESCRIPTION": "Lightning [${ModID}:LightningIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Does 35% extra damage to #yVulnerable targets."
+      "Does 50% extra damage to #yVulnerable targets."
     ]
   },
   "${ModID}:ScourgeType": {
@@ -125,11 +125,6 @@
     "DESCRIPTION": "Deal !D! damage. NL Take !M! damage.",
     "FLAVOR":  "Why is it called THUNDERbolt when it is the LIGHTNING that kills things?"
   },
-  "${ModID}:VoidTendrils": {
-    "NAME": "Void Tendrils",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
-    "FLAVOR": "I was caught using this spell fighting a monster, and this led to my exile."
-  },
   "${ModID}:ChaoticMind": {
     "NAME": "Chaotic Mind",
     "DESCRIPTION": "Draw a card. NL Shuffle !${ModID}:M2! *Cyclers into your draw pile.",
@@ -143,17 +138,12 @@
   },
   "${ModID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "Gain !B! Block. NL Discard !M! card.",
+    "DESCRIPTION": "At the start of your turn gain !B! Block and discard a card.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
   "${ModID}:Combust": {
     "NAME": "Combust",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
-  },
-  "${ModID}:VibratingSigil": {
-    "NAME": "Vibrating Sigil",
-    "DESCRIPTION": "Add a random ${ModID}:Resonant card to your hand.",
-    "UPGRADE_DESCRIPTION": "Add a random ${ModID}:Resonant card to your hand. NL It costs 0 this turn."
   },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
@@ -200,11 +190,6 @@
     "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL If Fatal, heal !M! HP.",
     "FLAVOR": "The old ones grow stronger with the vitality I leech from my enemies.  And I get a cut."
   },
-  "${ModID}:RampingSigil": {
-    "NAME": "Ramping Sigil",
-    "DESCRIPTION": "The first ${ModID}:Sigil you play each turn is played twice.",
-    "FLAVOR": "I heard you like sigils so I made sigils that give you more sigils."
-  },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
     "DESCRIPTION": "ALL enemies lose !M! Strength.",
@@ -228,14 +213,14 @@
     "NAME": "Lethal Chorus",
     "DESCRIPTION": "Resonant cards deal !M! more damage per merged card."
   },
-  "${ModID}:Amplify": {
-    "NAME": "Amplify",
-    "DESCRIPTION": "Deal !D! damage.  This card's ${ModID}:Resonance gains !M! extra damage."
-  },
   "${ModID}:SonicAgony": {
     "NAME": "Sonic Agony",
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Resonant spells are a favorite of mine.  You have to keep spending the mana of course, but you don't have to do anything else to keep casting it."
+  },
+  "${ModID}:Erosion": {
+    "NAME": "Erosion",
+    "DESCRIPTION": "Deal !D! damage. NL Enemy takes !M! % more damage from Attacks."
   },
   "${ModID}:DeathlyChimes": {
     "NAME": "Deathly Chimes",
@@ -316,10 +301,9 @@
     "DESCRIPTION": "Deal !D! damage. NL Deal !M! [${ModID}:ScourgeIcon] extra damage.",
     "FLAVOR": "Why choose between freezing and slashing when you can do both?"
   },
-  "${ModID}:StoneDaggers": {
-    "NAME": "Stone Daggers",
-    "DESCRIPTION": "Deal !D! damage for each debuff on the enemy.",
-    "FLAVOR": "Another spell I learned that I was unenthusiastic about. But I had to have several spells I could demonstrate that weren't... controversial."
+  "${ModID}:VoidTendrils": {
+    "NAME": "Void Tendrils",
+    "DESCRIPTION": "Deal !D! damage for each debuff on the enemy."
   },
   "${ModID}:PhantomMace": {
     "NAME": "Phantom Mace",
@@ -400,10 +384,25 @@
     "NAME": "Charged Shot",
     "DESCRIPTION": "Deal !D! damage X times."
   },
-  "${ModID}:ThunderCannon": {
-    "NAME": "Thunder Cannon",
+  "${ModID}:TargetWeakness": {
+    "NAME": "Target Weakness",
+    "DESCRIPTION": "For !M! turns, enemy takes 50% extra damage from Attacks if they are Weakened.",
+    "FLAVOR": "The Ironclads, before they were destroyed, trained themselves to quickly analyze opponents for weaknesses.  I once hired an old veteran to teach me how to analyze my foes.  It significantly improved my tactics."
+  },
+  "${ModID}:Cannon": {
+    "NAME": "Cannon",
     "DESCRIPTION": "Deal !D! damage. NL Discard !M! cards next turn.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
+  },
+  "${ModID}:StaticDischarge": {
+    "NAME": "Static Discharge",
+    "DESCRIPTION": "Deal !M! [${ModID}:LightningIcon] damage to the first enemy that attacks you each turn.",
+    "FLAVOR": "BZZZT!"
+  },
+  "${ModID}:ShockingSigil": {
+    "NAME": "Shocking Sigil",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.  Each enemy loses [${ModID}:ScourgeIcon] hp at the beginning of their turn.",
+    "FLAVOR": "BZZZT!"
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
@@ -485,8 +484,7 @@
   },
   "${ModID}:Madness": {
     "NAME": "Madness",
-    "DESCRIPTION": "Enemy enters Wrath.",
-    "UPGRADE_DESCRIPTION": "Enemy enters Wrath. NL Whenever an enemy dies, return this to your hand.",
+    "DESCRIPTION": "Enemy enters Wrath and gains !M! Vulnerable.",
     "FLAVOR": "In exchange for letting her observe our conclave, a Watcher taught us how to channel our rage.  I decided to instead channel other people's rage."
   },
   "${ModID}:SoulCurse": {

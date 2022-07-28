@@ -8,7 +8,7 @@ import static theExile.util.Wiz.getDebuffCount;
 
 public class BallLightning extends AbstractExileCard {
     public final static String ID = makeID(BallLightning.class.getSimpleName());
-    private final static int DAMAGE = 28;
+    private final static int DAMAGE = 25;
     private final static int UPGRADE_DAMAGE = 7;
     private final static int MAGIC = 5;
     private final static int COST = 0;

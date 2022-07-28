@@ -27,11 +27,7 @@ public class SackOfDebrisAction extends AbstractGameAction {
             if (count != 0) {
                 for (int i = 0; i < count; i++) {
                     int x = MathUtils.random(0, 1);
-                    AttackEffect effect;
-                    if (x == 0)
-                        effect = card.getBluntEffect();
-                    else
-                        effect = card.getSlashEffect();
+                    AttackEffect effect = card.getSlashEffect();
 
                     att(new DamageRandomEnemyAction(new DamageInfo(adp(), card.damage, DamageInfo.DamageType.NORMAL),
                             effect));

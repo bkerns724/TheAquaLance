@@ -34,7 +34,6 @@ import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
 import theExile.icons.*;
 import theExile.powers.AbstractExilePower;
-import theExile.powers.BoostedSigilPower;
 import theExile.relics.ChemicalZ;
 import theExile.relics.ManaPurifier;
 import theExile.util.CardArtRoller;
@@ -169,21 +168,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         targetAngle = 0;
         targetDrawScale = 0.8f;
         lighten(true);
-
-        BoostedSigilPower pow = (BoostedSigilPower) adp().getPower(BoostedSigilPower.POWER_ID);
-        if (purgeOnUse || pow == null || pow.counter <= 0) {
-            att(new NewQueueCardAction(this, true, false, true));
-            att(new UnlimboAction(this));
-            return;
-        }
-
-        pow.flash();
-        AbstractCard tmp = makeSameInstanceOf();
-        adp().limbo.addToBottom(tmp);
-        tmp.purgeOnUse = true;
-        pow.counter--;
-
-        tmp.triggerOnManualDiscard();
 
         att(new NewQueueCardAction(this, true, false, true));
         att(new UnlimboAction(this));
