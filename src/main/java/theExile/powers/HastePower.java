@@ -24,9 +24,6 @@ public class HastePower extends AbstractExilePower {
         AbstractPower discardPow = adp().getPower(DiscardNextTurnPower.POWER_ID);
         if (discardPow != null)
             discardAmount += discardPow.amount;
-        BlinkPower blinkPow = (BlinkPower)adp().getPower(BlinkPower.POWER_ID);
-        if (blinkPow != null)
-            discardAmount += blinkPow.amount2;
         cardDraw(drawAmount);
         discard(discardAmount);
     }

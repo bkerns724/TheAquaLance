@@ -25,8 +25,6 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
                 || pow.ID.equals(POWER_ID))
             return true;
         int lossMultiplier = 1;
-        if (target.hasPower(BanePower.POWER_ID))
-            lossMultiplier += target.getPower(BanePower.POWER_ID).amount;
         if (adp().hasRelic(PaperKat.ID))
             lossMultiplier++;
         att(new JinxLoseHPAction(target, source, amount*lossMultiplier, adp().hasPower(EldritchStaffPower.POWER_ID),

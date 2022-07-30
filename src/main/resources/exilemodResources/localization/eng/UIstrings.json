@@ -37,7 +37,7 @@
       "Deal !D! damage.",
       "Deal !D! damage !X0! times.",
       " NL Gain !B! Block.",
-      " NL Gain !X1! ${ModID}:Vigor.",
+      " NL Enemy loses !X1! HP at the start of its turns.",
       " NL Apply !X2! ${ModID}:Jinx.",
       " NL Draw a card.",
       " NL Draw !X3! cards",
@@ -52,7 +52,7 @@
       "Deal !D! damage.",
       "Deal !D! damage !X0! times.",
       " !B! Block.",
-      " !X1! Vigor.",
+      " !X1! Ringing.",
       " !X2! ${ModID}:Jinx.",
       " Draw !3!.",
       " !X4! [E]. "

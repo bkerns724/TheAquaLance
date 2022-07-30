@@ -138,12 +138,16 @@
   },
   "${ModID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "At the start of your turn gain !M! Block and discard a card.",
+    "DESCRIPTION": "Gain !B! Block. NL Discard a card. NL Discard a card next turn.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
   "${ModID}:Combust": {
     "NAME": "Combust",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
+  },
+  "${ModID}:SpiritPressure": {
+    "NAME": "Spirit Pressure",
+    "DESCRIPTION": "At the end of your turn apply !M! ${ModID}:Jinx to ALL enemies."
   },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
@@ -211,12 +215,17 @@
   },
   "${ModID}:LethalChorus": {
     "NAME": "Lethal Chorus",
-    "DESCRIPTION": "Resonant cards deal !M! more damage per merged card."
+    "DESCRIPTION": "${ModID}:Resonant cards deal !M! more damage per merged card."
   },
   "${ModID}:SonicAgony": {
     "NAME": "Sonic Agony",
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Resonant spells are a favorite of mine.  You have to keep spending the mana of course, but you don't have to do anything else to keep casting it."
+  },
+  "${ModID}:LongNote": {
+    "NAME": "Long Note",
+    "DESCRIPTION": "Deal !D! damage. NL Enemy takes !M! damage at the start of its turns.",
+    "FLAVOR": "This is the song that never ends.  It goes on and on my friends."
   },
   "${ModID}:DeathlyChimes": {
     "NAME": "Deathly Chimes",
@@ -228,12 +237,8 @@
   },
   "${ModID}:Disorient": {
     "NAME": "Disorient",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block.",
+    "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
-  },
-  "${ModID}:Reverberation": {
-    "NAME": "Reverberation",
-    "DESCRIPTION": "Gain !M! ${ModID}:Vigor."
   },
   "${ModID}:Curse": {
     "NAME": "Curse",
@@ -259,11 +264,6 @@
     "NAME": "Well Prepared",
     "DESCRIPTION": "Draw !M! cards. NL Discard a card.",
     "FLAVOR": "You have to ALWAYS be prepared.  You never know when you will be ambushed."
-  },
-  "${ModID}:Momentum": {
-    "NAME": "Momentum",
-    "DESCRIPTION": "The first time you play an attack each turn, draw !M! card.",
-    "FLAVOR": "If you can cast spells and run at the same time, that is much better than being a sitting duck.  Don't neglect your physical training."
   },
   "${ModID}:Run": {
     "NAME": "Run",
@@ -339,8 +339,7 @@
   },
   "${ModID}:Concentrate": {
     "NAME": "Concentrate",
-    "DESCRIPTION": "Next turn gain [E] and draw !M! additional cards.",
-    "FLAVOR": "This technique has its place, but you have to know when to use it.  Do you need a powerful spell, or do you need a fast spell?"
+    "DESCRIPTION": "Next turn draw !M! additional cards."
   },
   "${ModID}:CurseWeapon": {
     "NAME": "Curse Weapon",
@@ -425,7 +424,7 @@
   },
   "${ModID}:Voices": {
     "NAME": "Voices",
-    "DESCRIPTION": "Apply !M! Vulnerable. NL Enemy deals !M! less damage with attacks this turn."
+    "DESCRIPTION": "Apply !M! Vulnerable. NL Draw !${ModID}:M2! cards."
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",

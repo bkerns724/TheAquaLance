@@ -51,13 +51,6 @@
       "At the end of your turn Channel !A! pandas that deals !A2! damage."
     ]
   },
-  "${ModID}:MomentumPower": {
-    "NAME": "Momentum",
-    "DESCRIPTIONS": [
-      "The first !A! time you attack each turn, draw a card.",
-      "The first !A! times you attack each turn, draw a card."
-    ]
-  },
   "${ModID}:EnergizedArcanistPower": {
     "NAME": "Energized",
     "DESCRIPTIONS": [
@@ -68,6 +61,12 @@
     "NAME": "Brr Zerk",
     "DESCRIPTIONS": [
       "Whenever you attack, apply !A! #yFrostbite."
+    ]
+  },
+  "${ModID}:RingingPower": {
+    "NAME": "Ringing",
+    "DESCRIPTIONS": [
+      "Loses !A! at the start of its turn."
     ]
   },
   "${ModID}:TempNegStrengthPower": {
@@ -188,13 +187,6 @@
       "Deal !A! [${ModID}:LightningIcon] damage to the first enemy that attacks you each turn."
     ]
   },
-  "${ModID}:BlinkPower": {
-    "NAME": "Blink Power",
-    "DESCRIPTIONS": [
-      "At the start of your turn gain !A! Block and discard a card.",
-      "At the start of your turn gain !A! Block and discard !A2! cards."
-    ]
-  },
   "${ModID}:JinxThornsPower": {
     "NAME": "Scourging Bubble",
     "DESCRIPTIONS": [
@@ -208,11 +200,17 @@
       "Gain !A! #yTemporary #yHP whenever you attack this enemy."
     ]
   },
+  "${ModID}:SpiritPressurePower": {
+    "NAME": "Spirit Pressure",
+    "DESCRIPTIONS": [
+      "Apply !A! #yJinx to ALL enemies at the end of your turn."
+    ]
+  },
   "${ModID}:ManaBurstPower": {
     "NAME": "Mana Burst",
     "DESCRIPTIONS": [
-      "The first !A! time you discard a #ySigil each turn, gain [E].",
-      "The first !A! times you discard a #ySigil each turn, gain [E]."
+      "The first !A! time you discard a #ySigil each turn, gain [B].",
+      "The first !A! times you discard a #ySigil each turn, gain [B]."
     ]
   },
   "${ModID}:ExileStudyPower": {

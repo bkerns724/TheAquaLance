@@ -9,10 +9,7 @@ import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.DuVuDoll;
-import com.megacrit.cardcrawl.relics.IncenseBurner;
-import com.megacrit.cardcrawl.relics.Sozu;
+import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import theExile.ExileMod;
@@ -132,7 +129,8 @@ public class MarketActThree extends AbstractExileEvent {
     private static AbstractRelic getRelic() {
         ArrayList<AbstractRelic> list = new ArrayList<>();
         for (AbstractRelic relic : adp().relics) {
-            if (relic.tier != AbstractRelic.RelicTier.RARE || relic.grayscale)
+            if (relic.tier != AbstractRelic.RelicTier.RARE || relic.grayscale
+                    || (relic.relicId.equals(Girya.ID) && relic.counter == 3))
                 continue;
             try {
                 Class methodClass = relic.getClass().getMethod("onEquip").getDeclaringClass();

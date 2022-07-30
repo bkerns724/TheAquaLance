@@ -3,6 +3,7 @@ package theExile.powers;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theExile.ExileMod;
 
@@ -18,7 +19,7 @@ public class SadisticGleePower extends AbstractExilePower {
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power.type == PowerType.DEBUFF && source == owner && target != owner
-                && !power.ID.equals(GainStrengthPower.POWER_ID))
+                && !power.ID.equals(GainStrengthPower.POWER_ID) && !target.hasPower(ArtifactPower.POWER_ID))
             att(new GainBlockAction(owner, amount, true));
     }
 }

@@ -63,13 +63,6 @@
       "Whenever you draw a #yCurse, gain !R! #yBlock. On pickup, obtain #yHallucination."
     ]
   },
-  "${ModID}:BlackCandle": {
-    "NAME": "Black Candle",
-    "FLAVOR": "The candle isn't black, the flame is.",
-    "DESCRIPTIONS": [
-      "At the end of your turn, apply !R! #y${ModID}:Jinx to ALL enemies and lose !R2! HP."
-    ]
-  },
   "${ModID}:TuningFork": {
     "NAME": "Tuning Fork",
     "FLAVOR": "It constantly makes a quiet hum.  It never ends.",

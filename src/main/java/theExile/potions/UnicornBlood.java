@@ -3,18 +3,22 @@ package theExile.potions;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
 import com.megacrit.cardcrawl.relics.SacredBark;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.cards.BadLuck;
+import theExile.patches.NoDiscardPotionPatch;
 
 import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adRoom;
 import static theExile.util.Wiz.adp;
 
 public class UnicornBlood extends AbstractExilePotion {
     public static final String POTION_ID = makeID(UnicornBlood.class.getSimpleName());
-    public static final int DEFAULT_POTENCY = 15;
+    public static final int DEFAULT_POTENCY = 20;
     public static final PotionRarity RARITY = PotionRarity.RARE;
     public static final PotionSize SIZE = PotionSize.BOTTLE;
     public static final boolean IS_THROWN = false;
@@ -30,6 +34,16 @@ public class UnicornBlood extends AbstractExilePotion {
         if (keywordStrings == null)
             keywordStrings = new ArrayList<>();
         keywordStrings.add("curse");
+    }
+
+    public boolean canUse() {
+        if (NoDiscardPotionPatch.PotionDiscardField.eventReserved.get(this))
+            return false;
+        if (AbstractDungeon.actionManager.turnHasEnded && adRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            return false;
+        } else {
+            return AbstractDungeon.getCurrRoom().event == null || !(AbstractDungeon.getCurrRoom().event instanceof WeMeetAgain);
+        }
     }
 
     public void use(AbstractCreature target) {

@@ -9,7 +9,7 @@ public class Curse extends AbstractResonantCard {
     private final static int COST = 1;
 
     public Curse() {
-        super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     @Override
