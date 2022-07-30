@@ -12,6 +12,7 @@ import static theExile.util.Wiz.*;
 public class SoulCurse extends AbstractExileCard {
     public final static String ID = makeID(SoulCurse.class.getSimpleName());
     private final static int COST = 1;
+    private final static int UPGRADED_COST = 0;
     private final static int MAGIC = 1;
 
     public SoulCurse() {
@@ -33,6 +34,6 @@ public class SoulCurse extends AbstractExileCard {
     }
 
     public void upp() {
-        exhaust = false;
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

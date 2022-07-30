@@ -14,12 +14,13 @@ public class Cycler extends AbstractExileCard {
     private final static int COST = 0;
 
     public Cycler() {
-        super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, COST, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
     }
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         selfRetain = true;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

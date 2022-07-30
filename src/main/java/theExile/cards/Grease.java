@@ -21,7 +21,6 @@ public class Grease extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        exhaust = true;
         magicOneIsDebuff = true;
     }
 

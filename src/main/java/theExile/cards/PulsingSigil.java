@@ -2,18 +2,17 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PlatedArmorPower;
+import theExile.powers.PulsingSigilPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToSelf;
 
-public class IronSigil extends AbstractExileCard {
-    public final static String ID = makeID(IronSigil.class.getSimpleName());
+public class PulsingSigil extends AbstractExileCard {
+    public final static String ID = makeID(PulsingSigil.class.getSimpleName());
     private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
 
-    public IronSigil() {
+    public PulsingSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
@@ -25,7 +24,7 @@ public class IronSigil extends AbstractExileCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new PlatedArmorPower(adp(), magicNumber));
+        applyToSelf(new PulsingSigilPower(magicNumber));
     }
 
     public void upp() {

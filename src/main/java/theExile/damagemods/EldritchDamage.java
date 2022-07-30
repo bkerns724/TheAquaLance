@@ -60,21 +60,9 @@ public class EldritchDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
-        if (adp().hasRelic(VoidBracelet.ID))
-            unblockedAmount *= 2;
-        int tempHP = unblockedAmount / 3;
-        if (tempHP > 0) {
-            if (adp().hasRelic(PointyDentures.ID))
-                att(new GainBlockAction(adp(), PointyDentures.BLOCK_AMOUNT));
-            att(new MyAddTempHPAction(adp(), adp(), tempHP));
-        }
-    }
-
-    @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
         if (!visibleTips)
-            return new ArrayList<TooltipInfo>();
+            return new ArrayList<>();
         if (darkTooltip == null)
             darkTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         if (darkTooltip2 == null)

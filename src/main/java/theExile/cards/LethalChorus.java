@@ -9,7 +9,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class LethalChorus extends AbstractExileCard {
     public final static String ID = makeID(LethalChorus.class.getSimpleName());
-    private final static int MAGIC = 5;
+    private final static int MAGIC = 6;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 2;
 

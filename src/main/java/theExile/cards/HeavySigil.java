@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
@@ -12,18 +13,17 @@ import static theExile.util.Wiz.getHighestHealthEnemy;
 public class HeavySigil extends AbstractExileCard {
     public final static String ID = makeID(HeavySigil.class.getSimpleName());
     private final static int DAMAGE = 6;
-    private final static int MAGIC = 4;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 2;
 
     public HeavySigil() {
-        super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.NONE);
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        isMultiDamage = true;
         sigil = true;
         addModifier(elenum.FORCE);
     }
@@ -41,9 +41,17 @@ public class HeavySigil extends AbstractExileCard {
         if (strength != null)
             strength.amount *= magicNumber;
 
+        AbstractPower vigor = adp().getPower(VigorPower.POWER_ID);
+        if (vigor != null)
+            vigor.amount *= magicNumber;
+
         super.applyPowers();
+
         if (strength != null)
             strength.amount /= magicNumber;
+
+        if (vigor != null)
+            vigor.amount /= magicNumber;
     }
 
     public void calculateCardDamage(AbstractMonster mo) {
@@ -51,9 +59,17 @@ public class HeavySigil extends AbstractExileCard {
         if (strength != null)
             strength.amount *= magicNumber;
 
+        AbstractPower vigor = adp().getPower(VigorPower.POWER_ID);
+        if (vigor != null)
+            vigor.amount *= magicNumber;
+
         super.calculateCardDamage(mo);
+
         if (strength != null)
             strength.amount /= magicNumber;
+
+        if (vigor != null)
+            vigor.amount /= magicNumber;
     }
 
     public void upp() {

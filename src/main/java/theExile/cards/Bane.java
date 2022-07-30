@@ -11,7 +11,8 @@ import static theExile.util.Wiz.getDebuffCount;
 public class Bane extends AbstractExileCard {
     public final static String ID = makeID(Bane.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int COST = 1;
+    private final static int COST = 2;
+    private final static int UPGRADED_COST = 1;
 
     public Bane() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -21,7 +22,6 @@ public class Bane extends AbstractExileCard {
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         magicOneIsDebuff = true;
-        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -29,6 +29,6 @@ public class Bane extends AbstractExileCard {
     }
 
     public void upp() {
-        exhaust = false;
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

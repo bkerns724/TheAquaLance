@@ -3,10 +3,13 @@ package theExile.powers;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theExile.damagemods.LightningDamage;
 
 import static theExile.ExileMod.makeID;
@@ -32,9 +35,16 @@ public class ExileStaticDischargePower extends AbstractExilePower {
             ready = false;
             DamageInfo newInfo = new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS);
             DamageModifierManager.bindDamageMods(info, new DamageModContainer(this, new LightningDamage()));
-            att(new DamageAction(info.owner, newInfo, AbstractGameAction.AttackEffect.LIGHTNING));
+            att(new DamageAction(info.owner, newInfo, AbstractGameAction.AttackEffect.NONE));
+            att(new VFXAction(new LightningEffect(info.owner.drawX, info.owner.drawY)));
+            att(new SFXAction("ORB_LIGHTNING_EVOKE"));
         }
 
         return damageAmount;
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        ready = true;
     }
 }

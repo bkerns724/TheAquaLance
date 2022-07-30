@@ -138,7 +138,7 @@
   },
   "${ModID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "At the start of your turn gain !B! Block and discard a card.",
+    "DESCRIPTION": "At the start of your turn gain !M! Block and discard a card.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
   "${ModID}:Combust": {
@@ -171,9 +171,9 @@
     "NAME": "Hot Sigil",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
-  "${ModID}:IronSigil": {
-    "NAME": "Iron Sigil",
-    "DESCRIPTION": "Gain !M! ${ModID}:Plated\u00a0Armor.",
+  "${ModID}:PulsingSigil": {
+    "NAME": "Pulsing Sigil",
+    "DESCRIPTION": "Gain !M! Temporary_HP at the start of your turn.",
     "FLAVOR": "A staple defensive enchantment for longer battles."
   },
   "${ModID}:IcySigil": {
@@ -183,7 +183,7 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Deal !D! damage. NL Strength affects this card !M! times."
+    "DESCRIPTION": "Deal !D! damage. NL Strength and ${ModID}:Vigor affects this card !M! times."
   },
   "${ModID}:SquirmingSigil": {
     "NAME": "Squirming Sigil",
@@ -218,10 +218,6 @@
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Resonant spells are a favorite of mine.  You have to keep spending the mana of course, but you don't have to do anything else to keep casting it."
   },
-  "${ModID}:Erosion": {
-    "NAME": "Erosion",
-    "DESCRIPTION": "Deal !D! damage. NL Enemy takes !M! % more damage from Attacks."
-  },
   "${ModID}:DeathlyChimes": {
     "NAME": "Deathly Chimes",
     "DESCRIPTION": "Deal !D! damage."
@@ -232,12 +228,16 @@
   },
   "${ModID}:Disorient": {
     "NAME": "Disorient",
-    "DESCRIPTION": "Gain !B! Block.",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block.",
     "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
+  },
+  "${ModID}:Reverberation": {
+    "NAME": "Reverberation",
+    "DESCRIPTION": "Gain !M! ${ModID}:Vigor."
   },
   "${ModID}:Curse": {
     "NAME": "Curse",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Jinx.",
     "FLAVOR": "A personal favorite of mine.  If the enemy has a lot of bad luck, everything you cast is more likely to be effective."
   },
   "${ModID}:BrrZerk": {
@@ -257,7 +257,7 @@
   },
   "${ModID}:WellPrepared": {
     "NAME": "Well Prepared",
-    "DESCRIPTION": "Draw !M! cards. NL Discard a card. NL Exhaustive !stslib:ex!.",
+    "DESCRIPTION": "Draw !M! cards. NL Discard a card.",
     "FLAVOR": "You have to ALWAYS be prepared.  You never know when you will be ambushed."
   },
   "${ModID}:Momentum": {
@@ -301,13 +301,13 @@
     "DESCRIPTION": "Deal !D! damage. NL Deal !M! [${ModID}:ScourgeIcon] extra damage.",
     "FLAVOR": "Why choose between freezing and slashing when you can do both?"
   },
-  "${ModID}:VoidTendrils": {
-    "NAME": "Void Tendrils",
+  "${ModID}:StoneDaggers": {
+    "NAME": "Stone Daggers",
     "DESCRIPTION": "Deal !D! damage for each debuff on the enemy."
   },
   "${ModID}:PhantomMace": {
     "NAME": "Phantom Mace",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage if the enemy intends to attack."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !M! additional damage if the enemy intends to attack."
   },
   "${ModID}:Dispel": {
     "NAME": "Dispel",
@@ -349,11 +349,11 @@
   },
   "${ModID}:SpellGauntlet": {
     "NAME": "Spell Gauntlet",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply {!M!|>1=!M!} !ScourgeString! Weak."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !ScourgeString! Block."
   },
   "${ModID}:SickBurn": {
     "NAME": "Sick Burn",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Poison.",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply {!M!|>1=!M!} [${ModID}:ScourgeIcon] Poison.",
     "FLAVOR": "I got to name this spell.  I'm quite proud of it."
   },
   "${ModID}:SpiritLeech": {
@@ -401,7 +401,7 @@
   },
   "${ModID}:ShockingSigil": {
     "NAME": "Shocking Sigil",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies.  Each enemy loses [${ModID}:ScourgeIcon] hp at the beginning of their turn.",
+    "DESCRIPTION": "Deal !D! damage to a random enemy.",
     "FLAVOR": "BZZZT!"
   },
   "${ModID}:ManaBurst": {
@@ -411,8 +411,7 @@
   },
   "${ModID}:HexingSteam": {
     "NAME": "Hexing Steam",
-    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !M! ${ModID}:Jinx.",
-    "FLAVOR": "This does so many unpleasant things at once.  It is my kind of spell."
+    "DESCRIPTION": "Apply !M! Weak and !M! ${ModID}:Jinx."
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
@@ -426,8 +425,7 @@
   },
   "${ModID}:Voices": {
     "NAME": "Voices",
-    "DESCRIPTION": "{@@}Apply {!M!|>1=!M!} !ScourgeString! Vulnerable. NL Draw a card. NL Discard a card.",
-    "UPGRADE_DESCRIPTION": "Apply {!M!|>1=!M!} !ScourgeString! Vulnerable. NL Draw !${ModID}:M2! cards. NL Discard a card."
+    "DESCRIPTION": "Apply !M! Vulnerable. NL Enemy deals !M! less damage with attacks this turn."
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
@@ -484,7 +482,7 @@
   },
   "${ModID}:Madness": {
     "NAME": "Madness",
-    "DESCRIPTION": "Enemy enters Wrath and gains !M! Vulnerable.",
+    "DESCRIPTION": "Enemy enters Wrath.",
     "FLAVOR": "In exchange for letting her observe our conclave, a Watcher taught us how to channel our rage.  I decided to instead channel other people's rage."
   },
   "${ModID}:SoulCurse": {

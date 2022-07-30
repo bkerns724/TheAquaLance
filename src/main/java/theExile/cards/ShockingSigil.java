@@ -1,16 +1,16 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.ShockedPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
 
 public class ShockingSigil extends AbstractExileCard {
     public final static String ID = makeID(ShockingSigil.class.getSimpleName());
-    private final static int DAMAGE = 5;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 14;
+    private final static int UPGRADE_DAMAGE = 4;
+    private final static int MAGIC = 3;
     private final static int COST = -2;
 
     public ShockingSigil() {
@@ -19,13 +19,17 @@ public class ShockingSigil extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.LIGHTNING);
         isMultiDamage = true;
+        sigil = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        allDmg();
-        forAllMonstersLiving(mon -> applyToEnemy(mon, new ShockedPower(mon, getJinxAmount(mon))));
+        AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(null, true,
+                AbstractDungeon.cardRandomRng);
+        calculateCardDamage(mo);
+        dmg(mo);
     }
 
     public void upp() {

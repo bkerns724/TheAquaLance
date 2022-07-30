@@ -33,7 +33,15 @@
       "plated\u00a0Armor",
       "plated\u00a0armor"
     ],
-    "DESCRIPTION": "At the end of your turn gain #yBlock. When receiving unblocked attack damage, reduce Plated Armor by 1."
+    "DESCRIPTION": "Creatures with Plated Armor gain #yBlock at the end of their turn. When they receive unblocked attack damage, they lose 1 Plated Armor."
+  },
+  {
+    "PROPER_NAME": "Vigor",
+    "NAMES": [
+      "Vigor",
+      "vigor"
+    ],
+    "DESCRIPTION": "Creatures with Vigor deal additional damage with their next attack."
   },
   {
     "PROPER_NAME": "Resonate",

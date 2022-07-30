@@ -10,8 +10,7 @@ import static theExile.util.Wiz.*;
 public class Momentum extends AbstractExileCard {
     public final static String ID = makeID(Momentum.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int UPGRADED_COST = 0;
-    private final static int COST = 1;
+    private final static int COST = 0;
 
     public Momentum() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -27,6 +26,6 @@ public class Momentum extends AbstractExileCard {
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        isInnate = true;
     }
 }

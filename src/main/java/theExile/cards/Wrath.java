@@ -20,7 +20,7 @@ public class Wrath extends CustomCard {
     public final static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public final static String NAME = cardStrings.NAME;
     public final static String DESCRIPTION = cardStrings.DESCRIPTION;
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 1;
     private final static int COST = -2;
 
     private boolean needsArtRefresh = false;

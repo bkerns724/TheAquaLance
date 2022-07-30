@@ -139,10 +139,10 @@
       "When debuffed with another debuff, this creature will lose !A! HP."
     ]
   },
-  "${ModID}:ErosionPower": {
-    "NAME": "Erosion",
+  "${ModID}:PulsingSigilPower": {
+    "NAME": "Pulsing",
     "DESCRIPTIONS": [
-      "Enemy takes !A! % more damage from Attacks."
+      "Gain !A! #yTemporary #yHP at the start of your turn."
     ]
   },
   "${ModID}:ClownNosePower": {

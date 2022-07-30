@@ -10,7 +10,7 @@ import static theExile.util.Wiz.discard;
 
 public class Vitality extends AbstractExileCard {
     public final static String ID = makeID(Vitality.class.getSimpleName());
-    private final static int MAGIC = 5;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 0;
     private final static int DISCARD_AMOUNT = 1;

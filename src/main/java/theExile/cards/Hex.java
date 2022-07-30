@@ -9,7 +9,7 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class Hex extends AbstractExileCard {
     public final static String ID = makeID(Hex.class.getSimpleName());
-    private final static int DAMAGE = 5;
+    private final static int DAMAGE = 4;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 2;
     private final static int COST = 1;
@@ -21,6 +21,7 @@ public class Hex extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseDamage = DAMAGE;
+        addModifier(elenum.DARK);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
