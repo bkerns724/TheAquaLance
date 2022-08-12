@@ -2,16 +2,15 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import theExile.powers.CrushedPower;
+import theExile.powers.CollapsePower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.applyToEnemy;
 
 public class Collapse extends AbstractExileCard {
     public final static String ID = makeID(Collapse.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int DAMAGE = 18;
+    private final static int UPGRADE_DAMAGE = 6;
     private final static int COST = 2;
 
     public Collapse() {
@@ -21,27 +20,14 @@ public class Collapse extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
-    }
-
-    public void calculateCardDamage(AbstractMonster mo) {
-        if (!mo.hasPower(CrushedPower.POWER_ID))
-            return;
-
-        AbstractPower crushed = mo.getPower(CrushedPower.POWER_ID);
-        crushed.amount *= this.magicNumber;
-
-        super.calculateCardDamage(mo);
-
-        crushed.amount /= this.magicNumber;
+        applyToEnemy(m, new CollapsePower(m, damage));
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

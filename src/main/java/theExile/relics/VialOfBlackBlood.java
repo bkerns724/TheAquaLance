@@ -1,68 +1,45 @@
 package theExile.relics;
 
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theExile.TheExile;
-import theExile.cards.DemonsCantrip;
-
-import java.util.Iterator;
+import theExile.cards.AbstractExileCard;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
 public class VialOfBlackBlood extends AbstractExileRelic {
     public static final String ID = makeID(VialOfBlackBlood.class.getSimpleName());
-    private boolean calledTransform = true;
-    private int count = 0;
+    public static final int SELF_DAMAGE = 2;
 
     public VialOfBlackBlood() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
-        cardToPreview = new DemonsCantrip();
+        amount = SELF_DAMAGE;
         setUpdatedDescription();
     }
 
     @Override
-    public void onEquip() {
-        calledTransform = false;
-        Iterator<AbstractCard> i = AbstractDungeon.player.masterDeck.group.iterator();
-
-        while(true) {
-            AbstractCard e;
-            do {
-                if (!i.hasNext()) {
-                    if (count > 0) {
-                        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-
-                        for(int j = 0; j < count; ++j) {
-                            AbstractCard card = new DemonsCantrip();
-
-                            for (AbstractRelic relic : adp().relics)
-                                relic.onPreviewObtainCard(card);
-
-                            group.addToBottom(card);
-                        }
-
-                        AbstractDungeon.gridSelectScreen.openConfirmationGrid(group, DESCRIPTIONS[1]);
-                    }
-
-                    return;
-                }
-
-                e = (AbstractCard)i.next();
-            } while(!e.hasTag(AbstractCard.CardTags.STARTER_DEFEND) && !e.hasTag(AbstractCard.CardTags.STARTER_STRIKE));
-
-            i.remove();
-            ++count;
+    public float atDamageModify(float damage, AbstractCard c) {
+        if (c instanceof AbstractExileCard) {
+            AbstractExileCard card = (AbstractExileCard) c;
+            if (card.damageModList.contains(AbstractExileCard.elenum.LIGHTNING))
+                damage *= 2;
+            if (card.damageModList.contains(AbstractExileCard.elenum.FIRE))
+                damage *= 2;
         }
+        return damage;
     }
 
-    public void update() {
-        super.update();
-        if (!calledTransform && AbstractDungeon.screen != AbstractDungeon.CurrentScreen.GRID) {
-            calledTransform = true;
-            AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
+    @Override
+    public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
+        if (targetCard instanceof AbstractExileCard) {
+            AbstractExileCard card = (AbstractExileCard) targetCard;
+            if (card.damageModList.contains(AbstractExileCard.elenum.LIGHTNING))
+                atb(new LoseHPAction(adp(), adp(), SELF_DAMAGE));
+            if (card.damageModList.contains(AbstractExileCard.elenum.FIRE))
+                atb(new LoseHPAction(adp(), adp(), SELF_DAMAGE));
         }
     }
 }

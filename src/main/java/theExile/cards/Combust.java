@@ -18,6 +18,7 @@ public class Combust extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         exhaust = true;
+        isMultiDamage = true;
         addModifier(elenum.FIRE);
     }
 

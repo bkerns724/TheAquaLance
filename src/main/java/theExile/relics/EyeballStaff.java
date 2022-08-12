@@ -16,9 +16,9 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
 
 public class EyeballStaff extends AbstractExileRelic implements RelicWithButton {
-    public static final String ID = makeID("EyeballStaff");
+    public static final String ID = makeID(EyeballStaff.class.getSimpleName());
     private static final String textureString = "exilemodResources/images/ui/ScryButton.png";
-    public static final int SCRY_AMOUNT = 3;
+    public static final int SCRY_AMOUNT = 4;
 
     public EyeballStaff() {
         super(ID, RelicTier.RARE, LandingSound.SOLID, TheExile.Enums.EXILE_BLARPLE_COLOR);

@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
@@ -41,17 +40,10 @@ public class HeavySigil extends AbstractExileCard {
         if (strength != null)
             strength.amount *= magicNumber;
 
-        AbstractPower vigor = adp().getPower(VigorPower.POWER_ID);
-        if (vigor != null)
-            vigor.amount *= magicNumber;
-
         super.applyPowers();
 
         if (strength != null)
             strength.amount /= magicNumber;
-
-        if (vigor != null)
-            vigor.amount /= magicNumber;
     }
 
     public void calculateCardDamage(AbstractMonster mo) {
@@ -59,17 +51,10 @@ public class HeavySigil extends AbstractExileCard {
         if (strength != null)
             strength.amount *= magicNumber;
 
-        AbstractPower vigor = adp().getPower(VigorPower.POWER_ID);
-        if (vigor != null)
-            vigor.amount *= magicNumber;
-
         super.calculateCardDamage(mo);
 
         if (strength != null)
             strength.amount /= magicNumber;
-
-        if (vigor != null)
-            vigor.amount /= magicNumber;
     }
 
     public void upp() {

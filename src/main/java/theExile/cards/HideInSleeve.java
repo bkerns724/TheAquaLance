@@ -23,6 +23,7 @@ public class HideInSleeve extends AbstractExileCard {
 
     @Override
     protected void applyAttributes() {
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -52,7 +53,7 @@ public class HideInSleeve extends AbstractExileCard {
 
         c = list.get(cardRandomRng.random(list.size() - 1));
 
-        atb(new MakeAndDiscardAction((AbstractExileCard) c));
+        atb(new MakeAndDiscardAction(c));
     }
 
     public void upp() {

@@ -2,30 +2,30 @@ package theExile.events;
 
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.curses.Clumsy;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
-import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
+import theExile.damagemods.*;
 import theExile.patches.TipsInDialogPatch;
+import theExile.potions.SteelhidePotion;
+import theExile.potions.VampiricPoison;
 
 import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adRoom;
 import static theExile.util.Wiz.adp;
 
 public class ResearchCenter extends AbstractExileEvent {
@@ -33,12 +33,12 @@ public class ResearchCenter extends AbstractExileEvent {
     private static final EventStrings eventStrings;
     private static final String IMAGE_PATH;
     private static final EventUtils.EventType TYPE = EventUtils.EventType.SHRINE;
-    private static final int GOLD_A0 = 100;
-    private static final int GOLD_A15 = 125;
-    private static final float HEALTH_A0 = 0.15f;
-    private static final float HEALTH_A15 = 0.2f;
+    private static final int GOLD_A0 = 150;
+    private static final int GOLD_A15 = 200;
 
-    private boolean pickedRetain = false;
+    private boolean pickedElement = false;
+    private boolean pickedSigil = false;
+    private AbstractExileCard.elenum element = null;
 
     private CUR_SCREEN screen = CUR_SCREEN.INTRO;
 
@@ -55,47 +55,50 @@ public class ResearchCenter extends AbstractExileEvent {
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheCity.ID);
         params.playerClass = TheExile.Enums.THE_EXILE;
-        params.bonusCondition = () -> (adp().gold >= getGoldCost() && hasSigil() || hasCardForSigil());
+        params.bonusCondition = () -> (adp().gold >= getGoldCost());
         return params;
     }
 
     public ResearchCenter() {
-        super(eventStrings, IMAGE_PATH, getGoldCost(), getHealthCost());
+        super(eventStrings, IMAGE_PATH, getGoldCost());
+        noCardsInRewards = true;
 
-        if (adp().gold >= getGoldCost() && hasSigil())
+        if (adp().gold >= getGoldCost() && hasCardForElement())
             imageEventText.setDialogOption(options[0]);
         else
             imageEventText.setDialogOption(options[1], true);
-        if (hasCardForSigil()) {
-            imageEventText.setDialogOption(options[2], new Clumsy());
-            LargeDialogOptionButton but = imageEventText.optionList.get(1);
-            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsFull());
+
+        if (hasCardForSigil() && adp().gold >= getGoldCost())
+            imageEventText.setDialogOption(options[7]);
+        else
+            imageEventText.setDialogOption(options[8], true);
+
+        if (adp().gold > getGoldCost()) {
+            imageEventText.setDialogOption(options[9].replace("!PotionString!",
+                    FontHelper.colorString(new SteelhidePotion().name, "g")));
+            LargeDialogOptionButton but = imageEventText.optionList.get(2);
+            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, new SteelhidePotion().tips);
         }
-        else {
-            imageEventText.setDialogOption(options[3], true);
-            LargeDialogOptionButton but = imageEventText.optionList.get(1);
-            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, getTipsShort());
-        }
-        imageEventText.setDialogOption(options[4]);
+        else
+            imageEventText.setDialogOption(options[10], true);
+
+        imageEventText.setDialogOption(options[11]);
     }
 
     public void update() {
         super.update();
         if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            if (pickedRetain) {
-                AbstractCard c = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-                AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                c.selfRetain = true;
-                c.initializeDescription();
+            if (pickedElement) {
+                AbstractExileCard c = (AbstractExileCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+                c.addModifier(element);
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH/2.0f, (float)Settings.HEIGHT/2.0F));
-                imageEventText.updateBodyText(descriptions[1]);
-                imageEventText.clearAllDialogs();
-                imageEventText.setDialogOption(options[6]);
-                screen = CUR_SCREEN.COMPLETE;
+                AbstractDungeon.gridSelectScreen.selectedCards.clear();
+                adp().loseGold(amount);
+                imageEventText.updateBodyText(descriptions[3]);
             }
-            else {
+            else if (pickedSigil) {
                 AbstractExileCard c = (AbstractExileCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 c.sigil = true;
                 c.cost = -2;
@@ -106,11 +109,12 @@ public class ResearchCenter extends AbstractExileEvent {
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH/2.0f, (float)Settings.HEIGHT/2.0F));
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                imageEventText.updateBodyText(descriptions[3]);
-                imageEventText.clearAllDialogs();
-                imageEventText.setDialogOption(options[5]);
-                screen = CUR_SCREEN.POTION;
+                adp().loseGold(amount);
+                imageEventText.updateBodyText(descriptions[4]);
             }
+            imageEventText.clearAllDialogs();
+            imageEventText.setDialogOption(options[12]);
+            screen = CUR_SCREEN.COMPLETE;
         }
     }
 
@@ -118,82 +122,98 @@ public class ResearchCenter extends AbstractExileEvent {
         if (screen == CUR_SCREEN.INTRO) {
             switch (buttonPressed) {
                 case 0:
-                    pickedRetain = true;
-                    adp().loseGold(amount);
-                    CardGroup retainGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                    for (AbstractCard c :  adp().masterDeck.group) {
-                        if (c instanceof AbstractExileCard && ((AbstractExileCard) c).sigil)
-                            retainGroup.addToTop(c);
-                        for (LargeDialogOptionButton but : imageEventText.optionList)
-                            TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, new ArrayList<>());
-                    }
-                    AbstractDungeon.gridSelectScreen.open(retainGroup, 1, descriptions[2], false,
-                            false, false, false);
+                    pickedElement = true;
+                    screen = CUR_SCREEN.ELE_CHOICE;
+                    imageEventText.updateBodyText(descriptions[1]);
+                    imageEventText.clearAllDialogs();
+
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.ICE)) {
+                        imageEventText.setDialogOption(options[2]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(0);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, IceDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[2], true);
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.FORCE)) {
+                        imageEventText.setDialogOption(options[3]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(1);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, ForceDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[3], true);
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.DARK)) {
+                        imageEventText.setDialogOption(options[4]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(2);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, EldritchDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[4], true);
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.FIRE)) {
+                        imageEventText.setDialogOption(options[5]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(3);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[5], true);
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.LIGHTNING)) {
+                        imageEventText.setDialogOption(options[6]);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(4);
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, LightningDamage.getPowerTips());
+                    } else
+                        imageEventText.setDialogOption(options[6], true);
                     break;
                 case 1:
-                    pickedRetain = false;
+                    pickedSigil = true;
                     CardGroup sigilGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
                     for (AbstractCard c :  adp().masterDeck.group) {
-                        if (c instanceof AbstractExileCard && c.cost < 3 && c.cost >= 0)
+                        if (c instanceof AbstractExileCard && c.cost >= 0)
                             sigilGroup.addToTop(c);
                     }
-                    AbstractDungeon.gridSelectScreen.open(sigilGroup, 1, descriptions[4], false,
+                    AbstractDungeon.gridSelectScreen.open(sigilGroup, 1, descriptions[2], false,
                             false, false, false);
                     for (LargeDialogOptionButton but : imageEventText.optionList)
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, new ArrayList<>());
                     break;
                 case 2:
+                    adp().loseGold(amount);
+                    adRoom().rewards.clear();
+                    adRoom().rewards.add(new RewardItem(new VampiricPoison()));
+                    AbstractDungeon.combatRewardScreen.open();
+                    screen = CUR_SCREEN.COMPLETE;
+                    imageEventText.updateBodyText(descriptions[5]);
+                    imageEventText.clearAllDialogs();
+                    imageEventText.setDialogOption(options[12]);
+                    break;
+                case 3:
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[6]);
                     imageEventText.clearAllDialogs();
-                    imageEventText.setDialogOption(options[6]);
-                    drinkPotion();
+                    imageEventText.setDialogOption(options[12]);
                     break;
             }
-        } else if (screen == CUR_SCREEN.POTION) {
-            drinkPotion();
-            imageEventText.updateBodyText(descriptions[5]);
-            imageEventText.clearAllDialogs();
-            imageEventText.setDialogOption(options[6]);
-            screen = CUR_SCREEN.COMPLETE;
-
+        } else if (screen == CUR_SCREEN.ELE_CHOICE) {
+            CardGroup eleGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            if (buttonPressed == 0)
+                element = AbstractExileCard.elenum.ICE;
+            else if (buttonPressed == 1)
+                element = AbstractExileCard.elenum.FORCE;
+            else if (buttonPressed == 2)
+                element = AbstractExileCard.elenum.DARK;
+            else if (buttonPressed == 3)
+                element = AbstractExileCard.elenum.FIRE;
+            else if (buttonPressed == 4)
+                element = AbstractExileCard.elenum.LIGHTNING;
+            for (LargeDialogOptionButton x : imageEventText.optionList)
+                TipsInDialogPatch.ButtonPreviewField.previewTips.set(x, null);
+            for (AbstractCard c :  adp().masterDeck.group)
+                if (c instanceof AbstractExileCard && c.type == AbstractCard.CardType.ATTACK
+                        && !((AbstractExileCard) c).damageModList.contains(element))
+                    eleGroup.addToTop(c);
+            AbstractDungeon.gridSelectScreen.open(eleGroup, 1, descriptions[2], false);
         } else
             openMap();
     }
 
     private enum CUR_SCREEN {
         INTRO,
-        POTION,
+        ELE_CHOICE,
         COMPLETE;
-    }
-
-    private ArrayList<PowerTip> getTipsFull() {
-        ArrayList<PowerTip> list = new ArrayList<>();
-        list.add(new PowerTip(descriptions[7], descriptions[8]));
-        list.add(new PowerTip(descriptions[9], descriptions[10].replace("!HealthString!", "" + amount2)));
-        return list;
-    }
-
-    private ArrayList<PowerTip> getTipsShort() {
-        ArrayList<PowerTip> list = new ArrayList<>();
-        list.add(new PowerTip(descriptions[7], descriptions[8]));
-        return list;
-    }
-
-    private void drinkPotion() {
-        int x = AbstractDungeon.miscRng.random(0, 2);
-        ExileMod.logger.info("potion");
-        ExileMod.logger.info(x);
-        if (x == 0)
-            return;
-        if (x == 1) {
-            AbstractDungeon.player.damage(new DamageInfo(adp(), amount2, DamageInfo.DamageType.HP_LOSS));
-            AbstractDungeon.effectList.add(new FlashAtkImgEffect(adp().hb.cX, adp().hb.cY, AbstractGameAction.AttackEffect.POISON));
-            return;
-        }
-        if (x == 2)
-            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Clumsy(),Settings.WIDTH/2.0f,
-                    (float)Settings.HEIGHT/2.0F ));
     }
 
     private static int getGoldCost() {
@@ -202,22 +222,25 @@ public class ResearchCenter extends AbstractExileEvent {
         return GOLD_A15;
     }
 
-    private static int getHealthCost() {
-        if (AbstractDungeon.ascensionLevel < 15)
-            return (int)(HEALTH_A0*adp().maxHealth);
-        return (int)(HEALTH_A15*adp().maxHealth);
-    }
-
-    private static boolean hasSigil() {
+    private static boolean hasCardForSigil() {
         for (AbstractCard c : adp().masterDeck.group)
-            if (c instanceof AbstractExileCard && ((AbstractExileCard) c).sigil)
+            if (c instanceof AbstractExileCard && c.cost >= 0)
                 return true;
         return false;
     }
 
-    private static boolean hasCardForSigil() {
-        for (AbstractCard c : adp().masterDeck.group)
-            if (c instanceof AbstractExileCard && c.cost < 3 && c.cost >= 0)
+    private static boolean hasCardForElement() {
+        for (AbstractCard card : adp().masterDeck.group)
+            if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK &&
+                    ((AbstractExileCard) card).damageModList.size() < 5)
+                return true;
+        return false;
+    }
+
+    private static boolean checkForUpgradableCard(AbstractExileCard.elenum ele) {
+        for (AbstractCard card : adp().masterDeck.group)
+            if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK &&
+                    !((AbstractExileCard) card).damageModList.contains(ele))
                 return true;
         return false;
     }

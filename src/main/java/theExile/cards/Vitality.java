@@ -2,21 +2,19 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.actions.MyAddTempHPAction;
+import theExile.powers.VitalityPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
-import static theExile.util.Wiz.discard;
+import static theExile.util.Wiz.applyToSelf;
 
 public class Vitality extends AbstractExileCard {
     public final static String ID = makeID(Vitality.class.getSimpleName());
-    private final static int MAGIC = 4;
-    private final static int UPGRADE_MAGIC = 2;
-    private final static int COST = 0;
-    private final static int DISCARD_AMOUNT = 1;
+    private final static int MAGIC = 1;
+    private final static int UPGRADED_COST = 0;
+    private final static int COST = 1;
 
     public Vitality() {
-        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     public void applyAttributes() {
@@ -24,11 +22,10 @@ public class Vitality extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        atb(new MyAddTempHPAction(p, p, magicNumber));
-        discard(DISCARD_AMOUNT);
+        applyToSelf(new VitalityPower(magicNumber));
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

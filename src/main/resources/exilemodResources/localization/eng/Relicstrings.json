@@ -1,11 +1,4 @@
 {
-  "${ModID}:CeremonialRobe": {
-    "NAME": "Ceremonial Robe",
-    "FLAVOR": "Elegant, but difficult to fight in.",
-    "DESCRIPTIONS": [
-      "At the start of your turn, draw an additional card.  At the start of each combat, lose !R2! #yDexterity."
-    ]
-  },
   "${ModID}:AncientSpellTome": {
     "NAME": "Ancient Spell Tome",
     "FLAVOR": "The ink is fading and the pages are crumbling.",
@@ -14,32 +7,25 @@
       "Choose a spell to learn..."
     ]
   },
-  "${ModID}:ChemicalZ": {
-    "NAME": "Chemical Z",
-    "FLAVOR": "Drinking this was a very questionable decision.",
-    "DESCRIPTIONS": [
-      "The effects of your scourge cards are increased by !R!."
-    ]
-  },
   "${ModID}:VestOfManyPockets": {
     "NAME": "Vest Of Many Pockets",
     "FLAVOR": "It's got pockets for days.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can draw !R! card then discard !R! card."
+      "#y${ModID}:Activated. Once per combat you can draw !R! card then discard !R! card."
     ]
   },
   "${ModID}:NecklaceOfShielding": {
     "NAME": "Necklace Of Shielding",
     "FLAVOR": "It's a little unstable, but it works.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat gain !R2! #yBlock and discard a card."
+      "#y${ModID}:Activated. Once per combat gain !R2! #yBlock and discard a card."
     ]
   },
   "${ModID}:BlessedNecklace": {
     "NAME": "Blessed Necklace",
-    "FLAVOR": "Cleric talented!  Enjoy the blessing!",
+    "FLAVOR": "Cleric talented! Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [VIOLET]Necklace [VIOLET]of [VIOLET]Shielding.  #y${ModID}:Activated.  Once per combat you can discard any number of cards to gain !R! #yBlock per card discarded."
+      "Replaces [VIOLET]Necklace [VIOLET]of [VIOLET]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! #yBlock per card discarded."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -47,13 +33,6 @@
     "FLAVOR": "It's scary.",
     "DESCRIPTIONS": [
       "At the start of each combat, apply !R! #y${ModID}:Jinx to ALL enemies."
-    ]
-  },
-  "${ModID}:RingOfWarding": {
-    "NAME": "Ring of Warding",
-    "FLAVOR": "It protects against curses, but not completely.",
-    "DESCRIPTIONS": [
-      "The first !R! times each combat that you draw a #yCurse, draw a card."
     ]
   },
   "${ModID}:RingOfShadows": {
@@ -65,30 +44,23 @@
   },
   "${ModID}:TuningFork": {
     "NAME": "Tuning Fork",
-    "FLAVOR": "It constantly makes a quiet hum.  It never ends.",
+    "FLAVOR": "It constantly makes a quiet hum. It never ends.",
     "DESCRIPTIONS": [
-      "Whenever you play a #y${ModID}:Resonant card, deal !R! damage to ALL enemies."
-    ]
-  },
-  "${ModID}:ClownNose": {
-    "NAME": "Clown Nose",
-    "FLAVOR": "Honk Honk.",
-    "DESCRIPTIONS": [
-      "When you cause an enemy to reach !R! unique debuffs for the first time, deal !R2! damage to it."
+      "#y${ModID}:Activated. Once per combat the next #y${ModID}:Resonant card you play costs 0."
     ]
   },
   "${ModID}:StoneScales": {
     "NAME": "Stone Scales",
     "FLAVOR": "You wonder what turned these scales to stone.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat, for one turn, whenever you would take damage, take !R! less."
+      "#y${ModID}:Activated. Once per combat, for one turn, whenever you would take damage, take !R! less."
     ]
   },
   "${ModID}:EtherealConverter": {
     "NAME": "Ethereal Converter",
     "FLAVOR": "You have no idea how this works.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can turn your #yBlock into #yTemporary_HP."
+      "#y${ModID}:Activated. Once per combat you can turn your #yBlock into #yTemporary_HP."
     ]
   },
   "${ModID}:TatteredCloak": {
@@ -102,14 +74,14 @@
     "NAME": "Eyeball Staff",
     "FLAVOR": "The eye is attracted to movement.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  Once per combat you can Scry !R!.  Play any #y${ModID}:Sigils you discard."
+      "#y${ModID}:Activated. Once per combat you can Scry !R!. Play any #y${ModID}:Sigils you discard."
     ]
   },
   "${ModID}:ManaPurifier": {
     "NAME": "Mana Purifier",
-    "FLAVOR": "Probably the dullest looking magical artifact in existence.  It saps the color out of everything.",
+    "FLAVOR": "Probably the dullest looking magical artifact in existence. It saps the color out of everything.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. All cards are non-elemental."
+      "Gain [E] at the start of your turn. None of your cards can have damage types."
     ]
   },
   "${ModID}:BlueMarbles": {
@@ -119,40 +91,18 @@
       "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply double #y${ModID}:Frostbite and #y${ModID}:Crushed."
     ]
   },
-  "${ModID}:BootsOfSpeed": {
-    "NAME": "Boots Of Speed",
-    "FLAVOR": "WHEEEEEEE.",
-    "DESCRIPTIONS": [
-      "#y${ModID}:Activated.  You can spend [E] to draw !R! cards."
-    ]
-  },
   "${ModID}:VialOfBlackBlood": {
     "NAME": "Vial of Black Blood",
     "FLAVOR": "It is hot enough to almost burn you.",
     "DESCRIPTIONS": [
-      "On pickup, replace all of your Strikes and Defends with #yDemon's #yCantrip.",
-      "You drink the contents of the vial..."
+      "Your [${ModID}:LightningIcon] and [${ModID}:SoulFireIcon] attacks deal double damage but you lose !R! HP when you play one."
     ]
   },
   "${ModID}:ReverseOmamori": {
     "NAME": "Reverse Omamori",
     "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
     "DESCRIPTIONS": [
-      "For each #yCurse in your deck, start each combat with 1 #yDexterity.  Upon pickup, add !R! [#EFC851]Clumsy to your deck."
-    ]
-  },
-  "${ModID}:VialOfNectar": {
-    "NAME": "Vial of Nectar",
-    "FLAVOR": "It's very thick, but tastes sweet.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain !R! #yTemporary_HP."
-    ]
-  },
-  "${ModID}:RockyEgg": {
-    "NAME": "RockyEgg",
-    "FLAVOR": "You're not sure what creature laid this, but it occasionally stirs.",
-    "DESCRIPTIONS": [
-      "Whenever you add a #ySigil card into your deck, #yUpgrade it."
+      "For each #yCurse in your deck, start each combat with 1 #yDexterity. Upon pickup, add !R! [#EFC851]Clumsy to your deck."
     ]
   },
   "${ModID}:Mythril": {
@@ -169,13 +119,6 @@
       "Whenever you discard a card during your turn, gain !R! #yBlock."
     ]
   },
-  "${ModID}:UnmeltingIce": {
-    "NAME": "Unmelting Ice",
-    "FLAVOR": "It never melts.",
-    "DESCRIPTIONS": [
-      "Whenever you apply #y${ModID}:Frostbite, apply !R! more."
-    ]
-  },
   "${ModID}:TwistedShuriken": {
     "NAME": "Twisted Shuriken",
     "FLAVOR": "You aren't sure how to throw this, but it looks brutal.",
@@ -183,53 +126,11 @@
       "Every time you play !R2! attacks in a single turn, ALL enemies lose !R! #yStrength."
     ]
   },
-  "${ModID}:Pliers": {
-    "NAME": "Pliers",
-    "FLAVOR": "The jaws have flecks of dried blood on them.",
-    "DESCRIPTIONS": [
-      "Whenever you apply #y${ModID}:Crushed, your next attack deals !R! additional damage."
-    ]
-  },
-  "${ModID}:MysticalKazoo": {
-    "NAME": "Mystical Kazoo",
-    "FLAVOR": "This is the most annoying enchanted item I have ever seen.",
-    "DESCRIPTIONS": [
-      "Whenever you play a #y${ModID}:Resonant card, gain !R! #yBlock."
-    ]
-  },
-  "${ModID}:PaperKat": {
-    "NAME": "Paper Kat",
-    "FLAVOR": "You think you occasionally hear it purr, but only when you aren't paying attention.",
-    "DESCRIPTIONS": [
-      "HP loss from #y${ModID}:Jinx is twice as effective."
-    ]
-  },
-  "${ModID}:PointyDentures": {
-    "NAME": "Pointy Dentures",
-    "FLAVOR": "This is an odd object to enchant with power.",
-    "DESCRIPTIONS": [
-      "Whenever you gain #yTemporary_HP from [${ModID}:EldritchIcon] attacks, gain !R! #yBlock."
-    ]
-  },
-  "${ModID}:EnchantmentOils": {
-    "NAME": "Enchantment Oils",
-    "FLAVOR": "Makes your sword magic, just rub it on.",
-    "DESCRIPTIONS": [
-      "All of your #yStaff #yStrike cards gain a random element and deal !R! additional damage."
-    ]
-  },
   "${ModID}:HexedStaff": {
     "NAME": "Hexed Staff",
     "FLAVOR": "Whenever you hold it, you immediately feel angrier.",
     "DESCRIPTIONS": [
-      "For each #yCurse in your deck, [${ModID}:SoulFireIcon] and [${ModID}:LightningIcon] damage is increased by !R!%.  Upon pickup, obtain [#EFC851]Wrath."
-    ]
-  },
-  "${ModID}:SoulLamp": {
-    "NAME": "Soul Lamp",
-    "FLAVOR": "The flame never goes out.",
-    "DESCRIPTIONS": [
-      "The first time you are attacked each turn, deal !R! [${ModID}:SoulFireIcon] back."
+      "For each #yCurse in your deck, ${ModID}:Jinx damage is increased by !R!%. Upon pickup, obtain [#EFC851]Wrath."
     ]
   },
   "${ModID}:VoidBracelet": {
@@ -237,20 +138,6 @@
     "FLAVOR": "It is always icy cold, even if you hold it in a fire.",
     "DESCRIPTIONS": [
       "[${ModID}:EldritchIcon] damage grants double #yTemporary_HP."
-    ]
-  },
-  "${ModID}:MarkOfTheVoid": {
-    "NAME": "Mark of the Void",
-    "FLAVOR": "A strange symbol marks your forehead.  It nibbles at your mana on a regular basis.",
-    "DESCRIPTIONS": [
-      "Every !R! turns, lose [E] ."
-    ]
-  },
-  "${ModID}:RandomRelic": {
-    "NAME": "Random Relic",
-    "FLAVOR": "It could be anything.  It could even be a boat.",
-    "DESCRIPTIONS": [
-      "Granted one of four possible Arcanist starting relics, chosen at random."
     ]
   }
 }

@@ -113,8 +113,8 @@ public class TheExile extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
-        retVal.add(Hex.ID);
-        retVal.add(FrostDaggers.ID);
+        retVal.add(ForceBolt.ID);
+        retVal.add(ColdSigil.ID);
 
         return retVal;
     }
@@ -161,7 +161,7 @@ public class TheExile extends CustomPlayer {
 
     @Override
     public Color getCardTrailColor() {
-        return ExileMod.getColor();
+        return Color.PURPLE.cpy();
     }
 
     @Override
@@ -184,7 +184,7 @@ public class TheExile extends CustomPlayer {
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }
-        return new Gale();
+        return new Concentrate();
     }
 
     public static AbstractCard getCardForLibrary() {
@@ -196,7 +196,7 @@ public class TheExile extends CustomPlayer {
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }
-        return new Gale();
+        return new Concentrate();
     }
 
     @Override
@@ -211,12 +211,12 @@ public class TheExile extends CustomPlayer {
 
     @Override
     public Color getCardRenderColor() {
-        return getColor();
+        return Color.PURPLE.cpy();
     }
 
     @Override
     public Color getSlashAttackColor() {
-        return getColor();
+        return Color.PURPLE.cpy();
     }
 
     @Override

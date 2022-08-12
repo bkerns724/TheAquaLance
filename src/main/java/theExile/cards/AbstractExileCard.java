@@ -34,13 +34,11 @@ import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
 import theExile.icons.*;
 import theExile.powers.AbstractExilePower;
-import theExile.relics.ChemicalZ;
 import theExile.relics.ManaPurifier;
 import theExile.util.CardArtRoller;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 import static theExile.ExileMod.*;
 import static theExile.cards.AbstractExileCard.elenum.*;
@@ -57,6 +55,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public boolean upgradedSecondMagic;
     public boolean isSecondMagicModified;
 
+    public int thirdMagic;
+    public int baseThirdMagic;
+    public boolean upgradedThirdMagic;
+    public boolean isThirdMagicModified;
+
     private float rotationTimer = 0;
     protected int previewIndex;
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
@@ -68,6 +71,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public boolean magicTwoIsDebuff = false;
 
     public boolean beingDiscarded = false;
+    public boolean elegant = false;
 
     public ArrayList<elenum> damageModList = new ArrayList<>();
     public boolean sigil = false;
@@ -130,14 +134,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         super.applyPowers();
     }
 
-    @Override
-    public List<String> getCardDescriptors() {
-        ArrayList<String> retVal = new ArrayList<>();
-        if (sigil)
-            retVal.add(thisCardStrings.EXTENDED_DESCRIPTION[8]);
-        return retVal;
-    }
-
     public void onPickup() {}
 
     @Override
@@ -169,15 +165,21 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         targetDrawScale = 0.8f;
         lighten(true);
 
-        att(new NewQueueCardAction(this, true, false, true));
+        if (this instanceof SquirmingSigil)
+            att(new NewQueueCardAction(this, getLowestHealthEnemy(), true, true));
+        else if (this instanceof HeavySigil)
+            att(new NewQueueCardAction(this, getHighestHealthEnemy(), true, true));
+        else if (this.target == CardTarget.ENEMY) {
+            AbstractMonster monster = AbstractDungeon.getMonsters().getRandomMonster(null,true,
+                    AbstractDungeon.cardRandomRng);
+            att(new NewQueueCardAction(this, monster, false, true));
+        }else
+            att(new NewQueueCardAction(this, true, false, true));
         att(new UnlimboAction(this));
     }
 
     protected int getJinxAmountCard(AbstractMonster m) {
-        int x = getJinxAmount(m);
-        if (adp().hasRelic(ChemicalZ.ID))
-            x += ChemicalZ.BOOST_AMOUNT;
-        return x;
+        return getJinxAmount(m);
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
@@ -186,7 +188,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (!superBool) {
             beingDiscarded = false;
             return false;
-        }
+        } else if (elegant)
+            return true;
         else if (!beingDiscarded && sigil) {
             cantUseMessage = thisCardStrings.EXTENDED_DESCRIPTION[9];
             return false;
@@ -198,10 +201,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (sigil)
             beingDiscarded = false;
+        elegant = false;
         onUse(p, m);
     }
 
-    protected abstract void onUse(AbstractPlayer p, AbstractMonster m);
+    public abstract void onUse(AbstractPlayer p, AbstractMonster m);
 
     @Override
     protected Texture getPortraitImage() {
@@ -237,6 +241,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         super.resetAttributes();
         secondMagic = baseSecondMagic;
         isSecondMagicModified = false;
+        thirdMagic = baseThirdMagic;
+        isThirdMagicModified = false;
     }
 
     public void displayUpgrades() {
@@ -245,12 +251,22 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             secondMagic = baseSecondMagic;
             isSecondMagicModified = true;
         }
+        if (upgradedThirdMagic) {
+            thirdMagic = baseThirdMagic;
+            isThirdMagicModified = true;
+        }
     }
 
     protected void upgradeSecondMagic(int upgradeAmount) {
         baseSecondMagic += upgradeAmount;
         secondMagic = baseSecondMagic;
         upgradedSecondMagic = true;
+    }
+
+    protected void upgradeThirdMagic(int upgradeAmount) {
+        baseThirdMagic += upgradeAmount;
+        thirdMagic = baseThirdMagic;
+        upgradedThirdMagic = true;
     }
 
     protected void upgradeCardToPreview() {
@@ -300,8 +316,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
         rawDescription = rawDescription.replace("!C!", getCustomString());
 
-        rawDescription = rawDescription.replace("!ScourgeString!", "[exilemod:ScourgeIcon]");
-
         if (selfRetain)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
         if (isInnate)
@@ -311,8 +325,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (sigil)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
 
-        if (this instanceof AbstractResonantCard)
+        if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null) {
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
+            int amount = ((AbstractResonantCard) this).resonance.amount;
+            rawDescription = rawDescription.replace("!Res!", Integer.toString(amount));
+        }
 
         if (exhaust)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
@@ -368,6 +385,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             if (!((AbstractResonantCard) this).resonance.damageMods.contains(element))
                 ((AbstractResonantCard) this).resonance.damageMods.add(element);
         initializeDescription();
+    }
+
+    public void addModifier(ArrayList<elenum> elements, boolean tips) {
+        for (elenum e : elements)
+            addModifier(e, tips);
     }
 
     public void addModifier(elenum element) {
@@ -524,6 +546,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     protected void upMagic2(int x) {upgradeSecondMagic(x);}
 
+    protected void upMagic3(int x) {upgradeThirdMagic(x);}
+
     public void triggerOnDeath() {}
 
     // Thanks CustomCard renderTitle
@@ -566,6 +590,9 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         card.secondMagic = secondMagic;
         card.baseSecondMagic = baseSecondMagic;
         card.upgradedSecondMagic = upgradedSecondMagic;
+        card.thirdMagic = thirdMagic;
+        card.baseThirdMagic = baseThirdMagic;
+        card.upgradedThirdMagic = upgradedThirdMagic;
         card.sigil = sigil;
         card.selfRetain = selfRetain;
         card.magicOneIsDebuff = magicOneIsDebuff;
@@ -594,6 +621,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         obj.baseBlock = baseBlock;
         obj.baseMagic = baseMagicNumber;
         obj.baseSecondMagic = baseSecondMagic;
+        obj.baseThirdMagic = baseThirdMagic;
         return obj;
     }
 
@@ -616,6 +644,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         magicNumber = baseMagicNumber;
         baseSecondMagic = obj.baseSecondMagic;
         secondMagic = baseSecondMagic;
+        baseThirdMagic = obj.baseThirdMagic;
+        thirdMagic = baseThirdMagic;
     }
 
     @Override

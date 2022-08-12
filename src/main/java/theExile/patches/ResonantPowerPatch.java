@@ -14,7 +14,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.PowerBuffEffect;
 import javassist.CtBehavior;
 import theExile.cards.AbstractResonantCard;
+import theExile.cards.Convert;
+import theExile.powers.ConvertPower;
 import theExile.powers.ResonatingPower;
+
+import static theExile.util.Wiz.adp;
 
 public class ResonantPowerPatch {
     @SpirePatch2(
@@ -64,7 +68,10 @@ public class ResonantPowerPatch {
         )
         public static SpireReturn InsertPatch (UseCardAction __instance) {
             AbstractCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
-            if (targetCard instanceof AbstractResonantCard)
+            boolean convert = (adp().hasPower(ConvertPower.POWER_ID)
+                    && (targetCard.type == AbstractCard.CardType.ATTACK || targetCard.type == AbstractCard.CardType.SKILL)
+                    && !targetCard.exhaust && !(targetCard instanceof Convert));
+            if (targetCard instanceof AbstractResonantCard || convert)
             {
                 AbstractDungeon.actionManager.addToTop(new ShowCardAction(targetCard));
                 if (Settings.FAST_MODE)

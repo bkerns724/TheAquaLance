@@ -10,8 +10,8 @@ import static theExile.util.Wiz.*;
 public class ManaBurst extends AbstractExileCard {
     public final static String ID = makeID(ManaBurst.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int UPGRADED_COST = 0;
-    private final static int COST = 1;
+    private final static int UPGRADED_COST = 1;
+    private final static int COST = 2;
 
     public ManaBurst() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);

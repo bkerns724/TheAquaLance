@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.ICE;
-import static theExile.util.Wiz.cardDraw;
+import static theExile.util.Wiz.discard;
 
 public class FrozenLance extends AbstractExileCard {
     public final static String ID = makeID(FrozenLance.class.getSimpleName());
-    private final static int DAMAGE = 7;
+    private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int COST = 1;
@@ -27,7 +27,7 @@ public class FrozenLance extends AbstractExileCard {
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        cardDraw(magicNumber);
+        discard(1);
     }
 
     public void upp() {

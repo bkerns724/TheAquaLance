@@ -1,10 +1,10 @@
 package theExile.powers;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.FlightPower;
 
 import static theExile.ExileMod.makeID;
 
@@ -17,20 +17,20 @@ public class CrumblingPower extends AbstractExilePower {
     public CrumblingPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
-        priority = 1;
     }
 
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
-        // Kinda hacky
-        if (!owner.hasPower(FlightPower.POWER_ID))
-            return damageType == DamageInfo.DamageType.NORMAL ? damage + amount : damage;
-        else
-            return damageType == DamageInfo.DamageType.NORMAL ? damage + 2*amount : damage;
+        return damageType != DamageInfo.DamageType.NORMAL ? damage * (1f + amount/100f)  : damage;
+    }
+
+    @Override
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType type, AbstractCard card) {
+        return super.atDamageFinalReceive(damage, type, card);
     }
 
     @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        return info.type != DamageInfo.DamageType.NORMAL ? damageAmount + amount : damageAmount;
+        return info.type != DamageInfo.DamageType.NORMAL ? (int)(damageAmount * (1f + amount/100f))  : damageAmount;
     }
 }

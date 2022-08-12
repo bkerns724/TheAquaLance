@@ -1,6 +1,7 @@
 package theExile.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,13 +11,14 @@ import theExile.cards.AbstractExileCard;
 import theExile.cards.GenericResonantCard;
 import theExile.cards.cardUtil.Resonance;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
 public class ResonatingPower extends AbstractExilePower implements OnReceivePowerPower {
     public static String POWER_ID = ExileMod.makeID(ResonatingPower.class.getSimpleName());
     public final static String POWER_MESSAGE = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).DESCRIPTIONS[1];
 
-    Resonance resonance;
+    public Resonance resonance;
 
     public ResonatingPower(Resonance resonance) {
         super(POWER_ID, PowerType.BUFF, false, adp(), resonance.amount);
@@ -46,13 +48,17 @@ public class ResonatingPower extends AbstractExilePower implements OnReceivePowe
     public void stackPower(int stackAmount) {
     }
 
-    public void atEndOfTurn(boolean isPlayer) {
+    @Override
+    public void atStartOfTurnPostDraw() {
         GenericResonantCard card = new GenericResonantCard(resonance.resClone());
         for (AbstractExileCard.elenum e : resonance.damageMods)
             card.addModifier(e);
         card.applyPowers();
         card.initializeDescription();
-        topDeck(card);
+        atb(new MakeTempCardInHandAction(card, false));
         atb(new RemoveSpecificPowerAction(owner, owner, this));
+    }
+
+    public void atEndOfTurn(boolean isPlayer) {
     }
 }

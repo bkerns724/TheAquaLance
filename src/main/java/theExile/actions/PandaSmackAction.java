@@ -1,17 +1,12 @@
 package theExile.actions;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theExile.ExileMod;
-import theExile.damagemods.ForceDamage;
 import theExile.orbs.CrazyPanda;
 
-import static theExile.cards.AbstractExileCard.DAMAGE_THRESHOLD_M;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.att;
 
@@ -66,11 +61,7 @@ public class PandaSmackAction extends AbstractGameAction {
             panda.cY = targetY;
             if (target != null && target.currentHealth > 0 && adp() != null) {
                 DamageInfo info = new DamageInfo(adp(), panda.passiveAmount, DamageInfo.DamageType.THORNS);
-                DamageModifierManager.bindDamageMods(info, new DamageModContainer(this, new ForceDamage()));
-                AttackEffect effect = ExileMod.Enums.FORCE;
-                if (amount >= DAMAGE_THRESHOLD_M)
-                    effect = ExileMod.Enums.FORCE_M;
-                att(new DamageAction(target, info, effect, true));
+                att(new DamageAction(target, info, AttackEffect.BLUNT_HEAVY, true));
             }
             panda.startBounce(targetX, targetY);
             isDone = true;

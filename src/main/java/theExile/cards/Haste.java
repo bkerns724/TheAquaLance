@@ -10,8 +10,7 @@ import static theExile.util.Wiz.*;
 public class Haste extends AbstractExileCard {
     public final static String ID = makeID(Haste.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int COST = 1;
-    private final static int UPGRADED_COST = 0;
+    private final static int COST = 0;
 
     public Haste() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
@@ -23,10 +22,10 @@ public class Haste extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new HastePower(p, magicNumber));
+        applyToSelf(new HastePower(magicNumber));
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        isInnate = true;
     }
 }

@@ -1,116 +1,16 @@
 {
-  "${ModID}:MarketActOne": {
-    "NAME": "Small Market",
-    "DESCRIPTIONS": [
-      "You come across a small market amongst the slums.  You only see one thing that interests you amongst the stalls, a weaponsmith who is selling a set of oils to enchant weapons with magic effects.  You can sense that their magic is genuine.  On your way over, an alchemist sees a potion on your belt and offers you a good price for it.",
-      "You decide having a better fallback option for when you can't cast spells is a good investment.  You pay the price for the oil and immediately rub some on your staff.  You hit the ground with the butt of your staff and it makes more of a dent than you expected.  Pleased, you carry on your way.",
-      "You decide that gold is always useful.  You sell one of your less useful potions to an alchemist and receive a bag of gold in return.  You're not convinced the potion was worth as much as he was offering, but that's not your problem.  You carry on your way.",
-      "You see nothing that interests you here.  You carry on your way."
-    ],
-    "OPTIONS": [
-      "[LOCKED] Requires: !E! Gold",
-      "[Buy Oil] #y!E! #yGold: #gGain !RelicString!.",
-      "[LOCKED] Requires: Potion",
-      "[Sell Potion] #rLose !PotionString!. #gGain #y!E2! #yGold",
-      "[Keep Moving]",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:FightingPit": {
-    "NAME": "Fighting Pit",
-    "DESCRIPTIONS": [
-      "You come across a building that looks like a colosseum, except smaller.  And painted to look like stone instead of actually made of stone.  A gremlin in oversized armor clanks his way up to you.  \"Are you here to fight?  We have great prizes!  Especially if you take on our toughest fight!\"",
-      "You easily dispatch your opponents.  The gremlins overseeing the fight seem displeased that you undersold your fighting capabilities, but they don't seem eager to confront you either.  The clanky gremlin brings you a moderate amount of gold without saying anything.",
-      "It wasn't easy but you prevail.  The crowd erupts into cheers.  The clanky gremlin comes up to you and hands you a flask filled with dark green swirling smoke.  \"Here is your prize!  Don't drop it!  Seriously, DO NOT DROP IT!\"",
-      "You see no reason to risk your neck here.  The clanky gremlin suggests you could buy a ticket to spectate, but you aren't interested.",
-      "You take your winnings and leave."
-    ],
-    "OPTIONS": [
-      "[Regular Fight] #rFight #ran #reasy #rfight.  #gNormal #gCombat #gRewards.",
-      "[Tough Fight] #rFight #ra #rtough #rElite.  #gGain #gGreat #gRewards.",
-      "[Refuse]",
-      "[Collect Winnings]",
-      "[Leave]"
-    ]
-  },
   "${ModID}:ClericsRequest": {
     "NAME": "Cleric's Request",
     "DESCRIPTIONS": [
-      "You jump in surprise as a voice behind you screams.  @\"Friend!@  @I@ @have@ @a@ @deal@ @for@ @you!@  @You@ @can@ @have@ @this@ @powerful@ @staff@ @for@ @free@ @if@ @you@ @take@ @its@ @curse@ @away@ @from@ @here!\"@  After he sees you hesitate at the mention of a curse, he screams again.  @\"Or@ @you@ @can@ @buy@ @a@ @+1@ @increase@ @to@ @your@ @constitution!\"@  You don't know who this blue guy with the weird gold jewelry is, but you wish you had spent time to learn the silence spell.",
-      "You can sense the power of the staff, and also its malice.  You decide that harnessing its power is worth the risk.",
-      "You give him the gold, along with a suggestion that he use it to buy an indoor voice.  He casts his magic on you in return and the effect is subtle, but your bruises and cuts bother you a little less.",
+      "You jump in surprise as a voice behind you screams. @\"Friend!@ @I@ @have@ @a@ @deal@ @for@ @you!@ @You@ @can@ @have@ @this@ @powerful@ @staff@ @for@ @free@ @if@ @you@ @take@ @its@ @curse@ @away@ @from@ @here!\"@ After he sees you hesitate at the mention of a curse, he screams again. @\"Or@ @you@ @can@ @buy@ @a@ @+1@ @increase@ @to@ @your@ @constitution!\"@ You don't know who this blue guy with the weird gold jewelry is, but you wish you had spent time to learn the silence spell.",
+      "You can sense the power of the staff, and also its malice. You decide that harnessing its power is worth the risk.",
+      "You give him the gold, along with a suggestion that he use it to buy an indoor voice. He casts his magic on you in return and the effect is subtle, but your bruises and cuts bother you a little less.",
       "You don't think people that scream a lot for no reason are sane, so you leave without making a deal."
     ],
     "OPTIONS": [
-      "[Staff] #gGain !RelicString!.  It comes with !CardString!.",
-      "[Max HP] #y!E! #yGold:  #gGain #g!E2! #gMax #gHP.",
+      "[Staff] #gGain !RelicString!. It comes with !CardString!.",
+      "[Max HP] #y!E! #yGold: #gGain #g!E2! #gMax #gHP.",
       "[Max HP] Requires: !E! Gold.",
-      "[Refuse]",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:MarketActTwo": {
-    "NAME": "Bustling Market",
-    "DESCRIPTIONS": [
-      "You come across a busy market in the middle of the city.  You don't see anything that could aid you in the battles ahead; most of the stalls are selling things like food, clothing, and other household goods.  However, eventually you come across a potion shop.  They're almost sold out after a busy day but they do have one interesting (and expensive) item left: a potent magical poison that can soak into the wood of a wand or staff, empowering the spells cast with it for the next several minutes with a toxic effect.",
-      "The poison was expensive, but you're satisfied with your purchase.",
-      "You're giving up a valuable potion, but you think the poison is even more useful to you.",
-      "You don't think the poison is worth the price, so you leave."
-    ],
-    "OPTIONS": [
-      "[Buy] #y!E! #yGold: #gGain !PotionString2!",
-      "[Buy] Requires: !E! Gold",
-      "[Trade] #rLose !PotionString!. #gGain !PotionString2!",
-      "[Trade] Requires: Rare Potion",
-      "[Refuse]",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:StrangeGarden": {
-    "NAME": "Strange Garden",
-    "DESCRIPTIONS": [
-      "You find a large garden plot, unattended.  A sign at the gate warns that \"Anyone who takes from here will lose something in return.\"  You can feel magic here, so the sign is likely not bluster.  However, you do spot some potential reagents for a potion, and some berries that could sate your hunger.",
-      "As you tug the blue bulbs out of the ground, you have a nagging feeling in the back of your head like you've just forgotten something important.  You push the thought aside and mash the blue bulbs into a paste, cast the incantation, then mix them with water to make it drinkable.",
-      "The berries are delicious and you feel more energetic after eating them.  Hours later, as you practice your cantrips before bed, you realize you've completely forgotten one of them.",
-      "You can feel the enchantment over the garden, even if you can't tell what it does.  You decide it is wisest to leave it alone."
-    ],
-    "OPTIONS": [
-      "[Pick Blue Bulbs] #rLose !Card!. #gGain !PotionString!",
-      "[Pick Blue Bulbs] Requires: Uncommon card",
-      "[Pick Berries] #rLose !Card!. #gHeal #g!E! #gHP",
-      "[Pick Berries] Requires: Common card",
-      "[Keep Moving]",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:MysteriousHoard": {
-    "NAME": "Mysterious Hoard",
-    "DESCRIPTIONS": [
-      "Before you lies a pedestal with a lamp resting on top.  It burns with a purple flame.  Piled up against the pedestal is a moderately large sum of #ygold.  When you try to pick some up, the flame from the lamp swats your hand away.  Rubbing your stinging hand, you muse on what to do.",
-      "A powerful relic is worth more than #ygold, so you pick up the lamp instead.  Hot, burning agony shoots through your entire body, but before you can think to drop the lamp it starts to quickly subside.",
-      "You conjure a strong wind to blow out the lamp.  You pick up all the #ygold, but it isn't enough.  #r~You~ #r~need~ #r~more.~  #r~YOU~ #r~NEED~ #r~MORE!~",
-      "This whole thing seems more trouble than it is worth."
-    ],
-    "OPTIONS": [
-      "[Take Lamp] #gGain !RelicString!. #rGain !CardString!.",
-      "[Blow It Out] #gGain #y!E! #yGold. #rGain !CardString!.",
-      "[Cautiously Back Away]",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:MarketActThree": {
-    "NAME": "Bizarre Market",
-    "DESCRIPTIONS": [
-      "You come across a strange market.  Most of the merchants appear to be mutated in some form or another, or completely inhuman.  You spot a stall manned by a pair of darklings, of all things.  One of the more human merchants catches your attention.  \"I have an extremely powerful potion for trade, it'll make your flesh as hard as steel.  I'm not taking #ygold though, I'm only interested in certain relics.\"",
-      "You hand over one of your most powerful relics, and she hands over the potion in return.  In a small but sudden burst of flame, she disappears.",
-      "You indicate that you don't have anything valuable enough to trade.  While she is trying to barter with someone else, you quickly snatch the potion and walk away.",
-      "You indicate that you don't have anything valuable enough to trade.  While she is trying to barter with someone else, you quickly snatch the potion.  Her arm suddenly shifts into a large, clawed arm and slashes you across your back.  The injury is excruciating, but you toss the potion back at her and flee as she tries to catch it.",
-      "You don't think you can negotiate a deal in your favor, so you leave."
-    ],
-    "OPTIONS": [
-      "[Trade Relic] #rLose !RelicString!.  #gGain !PotionString!.",
-      "[Trade Relic] Requires Suitable Relic.",
-      "[Try To Steal] #g50% #gChance !PotionString!.  #r50% #rChance #rLose #r!E! #rHP.",
       "[Refuse]",
       "[Leave]"
     ]
@@ -118,107 +18,47 @@
   "${ModID}:VoidSpirits": {
     "NAME": "Void Spirits",
     "DESCRIPTIONS": [
-      "You happen upon a group of what looks like void spirits dancing around a large well.  The inside of the well contains a whirlpool of pitch black water.  One of the spirits tosses in a stone and it disappears without making a sound.  The spirits then turn to you, and you know enough about void spirits to know they won't let you leave without an offering.  However, those who make offerings always receive something in return.",
-      "You use a knife to slice open your palm, and let some of your blood flow into the well.  You immediately feel weaker than you would expect from minor blood loss.  The void spirits bounce up and down and you feel something on one of your fingers.  Looking closely, you can just barely make out a ring.",
-      "You decide to offer up some of your mana.  You concentrate and pour some into the well.  Unexpectedly, the connection is two way.  You feel something reach out and latch onto your mind and your magic.  It offers to take away any unwanted memories, fears, or desires.",
-      "Your thoughts seem sharper, more focused.  However, you can feel your mana slowly trickling out into the well, although not as fast as you can generate it.  It seems some of the connection is permanent.",
-      "It was a tough fight but you prevail.  As you go to collect the spoils, the spirits evaporate into nothing.",
+      "You happen upon a group of what looks like void spirits dancing around a large well. The inside of the well contains a whirlpool of pitch black water. One of the spirits tosses in a stone and it disappears without making a sound. The spirits then turn to you, and you know enough about void spirits to know they won't let you leave without an offering. However, those who make offerings always receive something in return.",
+      "You use a knife to slice open your palm, and let some of your blood flow into the well. You immediately feel weaker than you would expect from minor blood loss. The void spirits bounce up and down and you feel something on one of your fingers. Looking closely, you can just barely make out a ring.",
+      "You decide to offer up some of your mana. You concentrate and pour some into the well. Unexpectedly, the connection is two way. You feel something reach out and latch onto your mind and your magic. It offers to take away any unwanted memories, fears, or desires.",
+      "Your thoughts seem sharper, more focused. However, you can feel your mana slowly trickling out into the well, although not as fast as you can generate it. It seems some of the connection is permanent.",
+      "It was a tough fight but you prevail. You manage to collect some of their essence before they dissipate.",
       "Select a card to remove.",
       "Select cards to remove."
     ],
     "OPTIONS": [
-      "[Offer Flesh] #rLose #r!E! #rMax #rHP.  #gGain !RelicString!.",
-      "[Offer Mana] #rGain !RelicString!.  #gRemove #g!E2! #gCard.",
-      "[Offer Mana] #rGain !RelicString!.  #gRemove #gup #gto #g!E2! #gCards.",
+      "[Offer Flesh] #rLose #r!E! #rMax #rHP. #gGain !RelicString!.",
+      "[Offer Mana] #rGain !CardString!. #gRemove #g!E2! #gCard.",
+      "[Offer Mana] #rGain !CardString!. #gRemove #gup #gto #g!E2! #gCards.",
       "[Offer Mana] Requires a removable card.",
-      "[Fight Through]",
+      "[Fight Through] #rDifficult #rFight. #gGain !PotionString!",
       "[Continue]",
       "[Leave]"
-    ]
-  },
-  "${ModID}:SpellForge": {
-    "NAME": "Spell Forge",
-    "DESCRIPTIONS": [
-      "You come across a shop with a sign that reads \"The Spell Forge\", sandwiched between two pictures of a spellbook and an anvil.  Curious, you enter.  A man unfashionably dressed in a robe AND an apron offers you two possible services.  You can pay money to enhance one of your spells with an element, or you can receive gold if he extracts the essence from one of your spells.  You remember that resonant spells are become !E4!% weaker when mixed with an element.",
-      "All right, which element would you like to enhance it with.",
-      "Select a card to enhance.",
-      "Select a card to remove.",
-      "The spell smith finishes his work, and the quality is top notch.  Do you want another service?",
-      "The spell smith finishes his work, and hands you a large bag of gold.  Do you want another service?",
-      "Suitable Card",
-      "An Arcanist card with less than two elements.",
-      "An Arcanist card with at least one element."
-    ],
-    "OPTIONS": [
-      "[Enhance] #y!E3! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",
-      "[Enhance] Requires !E3! Gold and a suitable card.",
-      "[Extract Element] Remove Elemental Card. #rGain !CardString!. #yGain #y!E2! #yGold.",
-      "[Extract Element] Requires a suitable card.",
-      "[Leave]",
-      "[Cold]",
-      "[Force]",
-      "[Eldritch]",
-      "[Soul Fire]",
-      "[Lightning]"
     ]
   },
   "${ModID}:ResearchCenter": {
     "NAME": "Research Center",
     "DESCRIPTIONS": [
-      "You come across a large building that advertises itself as a research center.  Walking inside, there's several wizards bustling about.  You're familiar with most of what they do but they do have a few services they can provide.  For a price, of course.",
-      "They sprinkle a fine powder of some sort on your sigil and then cast a spell on it.  When they hand it back to you, it floats near your hand until you will it to stop.",
-      "Choose a sigil to enhance",
-      "With their assistance, you manage to figure out the pattern to etch a difficult spell into the hard clay of a blank sigil.  As payment, you take an uneasy look at the potion they bring forth, then bring it to your lips.",
-      "Choose a card to modify",
-      "It's ~disgusting.~",
-      "None of these options are worth the cost.",
-      "Suitable Card",
-      "An Arcanist card that costs less than 3.",
-      "Possible Effects",
-      "Gain Clumsy, Lose #b!HealthString! Health, or No Effect."
+      "You come across a large building that advertises itself as a research center. Walking inside, there's several wizards bustling about. You're familiar with most of what they do but they do have a few services they can provide. For a price, of course.",
+      "Which element do you wish to enhance a card with?",
+      "Select a card to enhance.",
+      "The elemental master finishes his scroll, and the complexity daunts even you. NL By the time he is finished, almost everyone else has left, so you set off.",
+      "The enchantment master shows you how to turn one of your more complex spells into a sigil, and the complexity of the etchings daunts even you. NL By the time she is finished, almost everyone else has left, so you set off.",
+      "The potion master hands you a flask with a dull grey substance. NL The brewing process lasted awhile and almost everyone else has left.",
+      "None of these options are worth the cost."
     ],
     "OPTIONS": [
-      "[Retain] #y!E! #yGold:  #gChoose #ga #gSigil #gto #gGain #gRetain.",
-      "[Retain] Requires !E! Gold and a Sigil.",
-      "[Sigil] #gMake #ga #gSuitable #gCard #ga #gSigil.  #rDrink #ra #rStrange #rConcoction.",
-      "[Sigil] Requires a Suitable Card.",
-      "[Refuse]",
-      "[Drink Potion] #rBottoms #rUp!",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:LadyInRed": {
-    "NAME": "The Lady In Red",
-    "DESCRIPTIONS": [
-      "You come across a small stone building, with oddly colored smoke billowing out of its chimney.  A sign above the door declares it to be \"The Malice Shop.\"  Curious as to how you buy malice, you enter the door.  A Lady dressed completely in red greets you, and offers you wares to enhance the cruelty of your spells.  The cost she proposes is not in coin, however.",
-      "You decide to give up some blood, since you can always heal later.  You drink the offered potion and can feel the increase in your power.",
-      "You decide to give up a little vitality, to deny your enemies a lot of theirs.  You drink the offered potion and can feel the increase in your power.",
-      "You are really suspicious of the costs of these options.  Like, super suspicious, this lady isn't even being subtle.  You leave the shop.",
-      "Choose cards to boost.",
-      "Boost",
-      "Double the debuff amount of an Exile card."
-    ],
-    "OPTIONS": [
-      "[Scourge] #rLose #r!E! #rHP.  #gGain !RelicString!.",
-      "[Debuff] #rLose #r!E2! #rMax #rHP. #gBoost #g!dCount! #gDebuffing #gAttacks #gor #gSkills.",
-      "[Debuff] Requires a card that applies a debuff.",
-      "[Leave]"
-    ]
-  },
-  "${ModID}:SpellShootingRange": {
-    "NAME": "Shooting Range",
-    "DESCRIPTIONS": [
-      "You come across a field, training dummies set up on one side, a group of people casting spells on the other.  The spells are basic resonant spells, nothing interesting.  What is interesting, however, is the speed at which the instructor can sling a spell without spending much of her mana at all.  You decide you could pick up some pointers, but she says she is more interested in unique trinkets than gold.",
-      "You practice being faster with your spell.  After some practice, it barely takes any time at all to cast it.",
-      "You practice being more efficient with your spell.  After some practice, it barely takes any effort at all to cast it.",
-      "The price she is asking is way too high.  You leave.",
-      "Choose a card to enhance."
-    ],
-    "OPTIONS": [
-      "[Speed] #gA #gResonant #gCard #gGains #gDraw.  #rLose !RelicString!.",
-      "[Speed] Requires a tradable relic and a resonant card",
-      "[Efficiency] #gA #gResonant #gCard #gGains #gEnergy.  #rLose !RelicString!.",
-      "[Efficiency] Requires a tradable relic and a resonant card",
+      "[Enhance] #y!E! #yGold: #gAdd #gA #gDamage #gType #gTo #gA #gCard.",
+      "[Enhance] Requires !E! Gold and an Exile class attack card.",
+      "[Cold]",
+      "[Force]",
+      "[Eldritch]",
+      "[Soul Fire]",
+      "[Lightning]",
+      "[Sigil] #y!E! #yGold: #gTurn #ga #gCard #ginto #ga #gSigil.",
+      "[Sigil] Requires !E! Gold and an Exile class card.",
+      "[Potion] #y !E! Gold: #gGain !PotionString!.",
+      "[Potion] Requires !E! Gold.",
       "[Refuse]",
       "[Leave]"
     ]

@@ -7,9 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theExile.ExileMod;
-import theExile.relics.UnmeltingIce;
 
-import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.att;
 
 public class FrostbitePower extends AbstractExilePower {
@@ -17,8 +15,6 @@ public class FrostbitePower extends AbstractExilePower {
 
     public FrostbitePower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
-        if ( adp().hasRelic(UnmeltingIce.ID) )
-            this.amount += UnmeltingIce.FROST_BOOST;
     }
 
     @Override
@@ -26,17 +22,19 @@ public class FrostbitePower extends AbstractExilePower {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner == owner) {
             flash();
             //AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ExileMod.Enums.ICE));
-            if (owner.hasPower(WaterfallPower.POWER_ID)) {
-                att(new DamageAction(owner, new DamageInfo(owner, amount * (1 + owner.getPower(WaterfallPower.POWER_ID).amount),
+            if (owner.hasPower(DoubleFrostPower.POWER_ID)) {
+                att(new DamageAction(owner, new DamageInfo(owner, amount * 2,
                                 DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
             } else {
                 att(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
                         AbstractGameAction.AttackEffect.NONE, true));
             }
-            if (amount > 1)
-                reducePower(1);
-            else
-                att(new RemoveSpecificPowerAction(owner, owner, this));
+            if (!owner.hasPower(StasisFieldPower.POWER_ID)) {
+                if (amount > 1)
+                    reducePower(1);
+                else
+                    att(new RemoveSpecificPowerAction(owner, owner, this));
+            }
             updateDescription();
             AbstractDungeon.onModifyPower();
         }

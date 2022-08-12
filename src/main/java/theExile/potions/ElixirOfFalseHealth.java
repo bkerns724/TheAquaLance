@@ -30,7 +30,7 @@ public class ElixirOfFalseHealth extends AbstractExilePotion {
     }
 
     public void use(AbstractCreature target) {
-        int amount = (int) (adp().maxHealth*35f/100f);
+        int amount = (int) (adp().maxHealth*potency/100f);
         atb(new MyAddTempHPAction(adp(), adp(), amount));
     }
 }

@@ -32,16 +32,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.cardvars.SecondMagicNumber;
-import theExile.events.*;
+import theExile.cards.cardvars.ThirdMagicNumber;
+import theExile.events.ClericsRequest;
+import theExile.events.ResearchCenter;
+import theExile.events.VoidSpirits;
 import theExile.icons.*;
 import theExile.potions.*;
-import theExile.powers.TwistedFormPower;
 import theExile.relics.AbstractExileRelic;
 import theExile.util.ClickyFtue;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Properties;
 
 import static theExile.TheExile.Enums.THE_EXILE;
@@ -71,7 +72,6 @@ public class ExileMod implements
     }
 
     public static final String EXTENDED_CUT_SETTING = "ExtendedCutSetting";
-    public static final String BANNER_SETTING = "BannerSetting";
     public static final String SETTINGS_STRINGS = "Settings";
 
     private static SpireConfig modConfig = null;
@@ -119,8 +119,6 @@ public class ExileMod implements
     public static final String JINX_KEY = makeID("Jinx");
     private static final String JINX_OGG = RESOURCES_PRE + "audio/Jinx.ogg";
 
-    public boolean ftueThisSession = false;
-
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
             "The Exile", "Bryan", "This mod adds a new character, the Exile."
@@ -130,8 +128,6 @@ public class ExileMod implements
     public static final Color purpleColor = new Color(0.45f, 0f, 0.6f, 1.0f);
     public static final Color darkColor = new Color(0.25f, 0.25f, 0.25f, 1.0f);
     public static final Color EXILE_EYE_COLOR = purpleColor.cpy();
-
-    public static ArrayList<TwistedFormPower> twistedList = new ArrayList<>();
 
     public ExileMod() {
         BaseMod.addColor(TheExile.Enums.EXILE_BLARPLE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
@@ -224,7 +220,6 @@ public class ExileMod implements
         try {
             Properties defaults = new Properties();
             defaults.put(EXTENDED_CUT_SETTING, Boolean.toString(true));
-            defaults.put(BANNER_SETTING, Boolean.toString(false));
             modConfig = new SpireConfig(modID, "Config", defaults);
         } catch (Exception e) {
             e.printStackTrace();
@@ -256,6 +251,7 @@ public class ExileMod implements
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new SecondMagicNumber());
+        BaseMod.addDynamicVariable(new ThirdMagicNumber());
 
         CustomIconHelper.addCustomIcon(Force.get());
         CustomIconHelper.addCustomIcon(Ice.get());
@@ -317,18 +313,6 @@ public class ExileMod implements
                 });
         settingsPanel.addUIElement(extendedCutButton);
 
-        currentYposition -= 60.0f;
-        ModLabeledToggleButton bannerButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
-                makeID(SETTINGS_STRINGS)).TEXT[1], 350.0f, currentYposition, Settings.CREAM_COLOR,
-                FontHelper.charDescFont, isUniversalBanners(), settingsPanel, label -> {},
-                button2 -> {
-                    if (modConfig != null) {
-                        modConfig.setBool(BANNER_SETTING, button2.enabled);
-                        saveConfig();
-                    }
-                });
-        settingsPanel.addUIElement(bannerButton);
-
         Texture badgeTexture = new Texture(BADGE_IMG);
         BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
                 settingsPanel);
@@ -348,12 +332,6 @@ public class ExileMod implements
         return modConfig.getBool(EXTENDED_CUT_SETTING);
     }
 
-    public static boolean isUniversalBanners() {
-        if (modConfig == null)
-            return false;
-        return modConfig.getBool(BANNER_SETTING);
-    }
-
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
@@ -364,67 +342,29 @@ public class ExileMod implements
 
     @Override
     public void receiveOnBattleStart(AbstractRoom room) {
-        for (TwistedFormPower pow : twistedList)
-            pow.owner = null;
-        twistedList.clear();
-        if (!ftueThisSession && adp().chosenClass == THE_EXILE) {
+        if (adp().chosenClass == THE_EXILE && AbstractDungeon.floorNum == 1)
             AbstractDungeon.ftue = new ClickyFtue("whee", "boop", Settings.WIDTH/2f, Settings.HEIGHT/2f);
-            ftueThisSession = true;
-        }
-        if (room.event instanceof FightingPit && room.eliteTrigger)
-            forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, FightingPit.HEALTH_BUFF, true)));
         if (room.event instanceof VoidSpirits)
             forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF, true)));
-    }
-
-    public static Color getColor() {
-        Color blendedColor = new Color();
-        blendedColor.r = (float) ((purpleColor.r + darkColor.r)/2.0f + Math.sin(ExileMod.time/20) *(purpleColor.r - darkColor.r)/2.0f);
-        blendedColor.g = (float) ((purpleColor.g + darkColor.g)/2.0f + Math.sin(ExileMod.time/20) *(purpleColor.g - darkColor.g)/2.0f);
-        blendedColor.b = (float) ((purpleColor.b + darkColor.b)/2.0f + Math.sin(ExileMod.time/20) *(purpleColor.b - darkColor.b)/2.0f);
-        blendedColor.a = 1.0f;
-        return blendedColor;
     }
 
     @Override
     public void receivePostUpdate() {
         time += Gdx.graphics.getDeltaTime();
-        for (TwistedFormPower pow : twistedList)
-            pow.deathCheck();
-        twistedList.removeIf(pow -> pow == null || pow.owner == null || adp() == null);
     }
 
     private static void addEvents() {
-        BaseMod.addEvent(MarketActOne.getParams());
-        BaseMod.addEvent(FightingPit.getParams());
         BaseMod.addEvent(ClericsRequest.getParams());
-        BaseMod.addEvent(MarketActTwo.getParams());
-        BaseMod.addEvent(StrangeGarden.getParams());
-        BaseMod.addEvent(MysteriousHoard.getParams());
         BaseMod.addEvent(VoidSpirits.getParams());
-        BaseMod.addEvent(SpellForge.getParams());
-        BaseMod.addEvent(MarketActThree.getParams());
         BaseMod.addEvent(ResearchCenter.getParams());
-        BaseMod.addEvent(LadyInRed.getParams());
-        BaseMod.addEvent(SpellShootingRange.getParams());
     }
 
     private static void addPotions() {
         BaseMod.addPotion(CursedBrew.class, Color.PURPLE.cpy(), Color.BLACK.cpy(), null, CursedBrew.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(LiquidNitrogen.class, Color.CYAN.cpy(), null, null, LiquidNitrogen.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(SigilPotion.class, Color.GOLD.cpy(), Color.GOLDENROD.cpy(), null, SigilPotion.POTION_ID, THE_EXILE);
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
-
-        BaseMod.addPotion(ForceGrenade.class, Color.PINK.cpy(), null, null, ForceGrenade.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(VibratingFlask.class, Color.PINK.cpy(), Color.MAGENTA.cpy(), null, VibratingFlask.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(WhirlpoolPotion.class, Color.CYAN.cpy(), null, null, WhirlpoolPotion.POTION_ID, THE_EXILE);
-
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_EXILE);
         BaseMod.addPotion(UnicornBlood.class, Color.WHITE.cpy(), null, null, UnicornBlood.POTION_ID, THE_EXILE);
-
-        BaseMod.addPotion(SteelhidePotion.class, Color.LIGHT_GRAY.cpy(), Color.GRAY.cpy(), null, SteelhidePotion.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(PoisonousSmokeBomb.class, Color.DARK_GRAY.cpy(), null, Color.GREEN, PoisonousSmokeBomb.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(ToxicOil.class, Color.LIME, null, null, ToxicOil.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(SlipperyPotion.class, Color.CYAN, null, null, SlipperyPotion.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(VampiricPoison.class, Color.LIME, null, null, VampiricPoison.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(SteelhidePotion.class, Color.GRAY.cpy(), null, null, SteelhidePotion.POTION_ID, THE_EXILE);
     }
 }

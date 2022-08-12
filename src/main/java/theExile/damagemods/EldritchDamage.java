@@ -4,7 +4,6 @@ import basemod.AutoAdd;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,7 +14,6 @@ import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
 import theExile.patches.DamageModsIDPatch;
-import theExile.relics.PointyDentures;
 import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
@@ -52,11 +50,8 @@ public class EldritchDamage extends AbstractDamageModifier {
         if (adp().hasRelic(VoidBracelet.ID))
             lastDamageTaken *= 2;
         int tempHP = lastDamageTaken / 3;
-        if (tempHP > 0) {
-            if (adp().hasRelic(PointyDentures.ID))
-                att(new GainBlockAction(adp(), PointyDentures.BLOCK_AMOUNT));
+        if (tempHP > 0)
             att(new MyAddTempHPAction(adp(), adp(), tempHP));
-        }
     }
 
     @Override

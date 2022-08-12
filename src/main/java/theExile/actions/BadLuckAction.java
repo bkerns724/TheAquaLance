@@ -1,9 +1,12 @@
 package theExile.actions;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+
+import java.util.ArrayList;
 
 import static theExile.util.Wiz.adp;
 
@@ -19,22 +22,33 @@ public class BadLuckAction extends AbstractGameAction {
         int cost = -3;
         int xCost = adp().energy.energy;
         for (AbstractCard handCard : adp().hand.group ) {
-            if (cost == 2)
+            if (handCard.cost == -2)
                 continue;
-            if (cost == -1 && xCost > cost) {
+            if (handCard.cost == -1 && xCost > cost)
                 cost = xCost;
-                card = handCard;
-            }
-            else if (handCard.cost > cost) {
+            else if (handCard.cost > cost)
                 cost = handCard.cost;
-                card = handCard;
-            }
         }
 
-        isDone = true;
-
-        if (card == null)
+        if (cost < 0) {
+            isDone = true;
             return;
+        }
+
+        ArrayList<AbstractCard> cards = new ArrayList<>();
+        for (AbstractCard handCard : adp().hand.group)
+            if (handCard.cost == cost)
+                cards.add(handCard);
+
+        if (cards.size() == 0) {
+            isDone = true;
+            return;
+        }
+
+        int x = MathUtils.random(0, cards.size() - 1);
+        card = cards.get(x);
+
+        isDone = true;
 
         adp().hand.moveToDiscardPile(card);
         card.triggerOnManualDiscard();

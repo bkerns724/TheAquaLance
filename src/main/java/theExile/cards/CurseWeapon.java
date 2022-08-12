@@ -11,7 +11,7 @@ public class CurseWeapon extends AbstractExileCard {
     public final static String ID = makeID(CurseWeapon.class.getSimpleName());
     private final static int BLOCK = 6;
     private final static int UPGRADE_BLOCK = 3;
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 1;
     private final static int COST = 1;
 
     public CurseWeapon() {

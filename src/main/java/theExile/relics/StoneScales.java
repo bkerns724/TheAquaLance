@@ -16,10 +16,10 @@ import static theExile.util.Wiz.*;
 public class StoneScales extends AbstractExileRelic implements RelicWithButton {
     public static final String ID = makeID("StoneScales");
     public static final String textureString = "exilemodResources/images/ui/StoneSkinButton.png";
-    public static final int STONESKIN_AMOUNT = 3;
+    public static final int STONESKIN_AMOUNT = 2;
 
     public StoneScales() {
-        super(ID, RelicTier.RARE, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.UNCOMMON, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
         amount = STONESKIN_AMOUNT;
         setUpdatedDescription();
     }

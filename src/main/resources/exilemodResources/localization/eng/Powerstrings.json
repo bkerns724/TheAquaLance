@@ -44,11 +44,29 @@
       "Whenever this enemy attacks, it suffers !A! damage then reduces Frostbite by 1."
     ]
   },
+  "${ModID}:ResonantCostZeroPower": {
+    "NAME": "Tuning Fork",
+    "DESCRIPTIONS": [
+      "The next #yResonant card you play costs 0.",
+      "The next !A! #yResonant cards you play cost 0."
+    ]
+  },
   "${ModID}:SummonMonsterPower": {
     "NAME": "Summon Monster",
     "DESCRIPTIONS": [
-      "At the end of your turn Channel !A! panda that deals !A2! damage.",
-      "At the end of your turn Channel !A! pandas that deals !A2! damage."
+      "At the end of your turn Channel a panda that deals !A! damage."
+    ]
+  },
+  "${ModID}:SiphoningPower": {
+    "NAME": "Siphoning",
+    "DESCRIPTIONS": [
+      "When you deal unblocked attack damage, apply !A! Siphon."
+    ]
+  },
+  "${ModID}:SiphonedPower": {
+    "NAME": "Siphoned Power",
+    "DESCRIPTIONS": [
+      "At the start of its turn, takes !A! [${ModID}:EldritchIcon] damage."
     ]
   },
   "${ModID}:EnergizedArcanistPower": {
@@ -60,13 +78,13 @@
   "${ModID}:BrrZerkPower": {
     "NAME": "Brr Zerk",
     "DESCRIPTIONS": [
-      "Whenever you attack, apply !A! #yFrostbite."
+      "Whenever deal unblocked attack damage, apply !A! #yFrostbite."
     ]
   },
   "${ModID}:RingingPower": {
     "NAME": "Ringing",
     "DESCRIPTIONS": [
-      "Loses !A! at the start of its turn."
+      "Loses !A! HP at the start of its turn."
     ]
   },
   "${ModID}:TempNegStrengthPower": {
@@ -78,52 +96,71 @@
   "${ModID}:CrushedPower": {
     "NAME": "Crushed",
     "DESCRIPTIONS": [
-      "Takes !A! more damage from attacks."
+      "Takes !A! more damage from attacks this turn."
     ]
   },
-  "${ModID}:LethalChorusPower": {
-    "NAME": "Lethal Chorus",
+  "${ModID}:StasisFieldPower": {
+    "NAME": "StasisField",
+    "DESCRIPTIONS": [
+      "#yCrushed and #yFrostbite do not wear off."
+    ]
+  },
+  "${ModID}:ConvertPower": {
+    "NAME": "ConvertPower",
+    "DESCRIPTIONS": [
+      "The next card you play that isn't a power and doesn't exhaust becomes #yResonant.",
+      "The next !A! cards you play that aren't a power and don't exhaust become #yResonant."
+    ]
+  },
+  "${ModID}:SharpNoisePower": {
+    "NAME": "Sharp Noise",
     "DESCRIPTIONS": [
       "Resonant cards deal !A! more damage per merged card."
     ]
   },
-  "${ModID}:MiniWrathPower": {
-    "NAME": "Rage",
+  "${ModID}:CollapsePower": {
+    "NAME": "Collapsing",
     "DESCRIPTIONS": [
-      "Deal an extra 50% damage this turn."
+      "Will take !A! [${ModID}:ForceIcon] damage next turn."
     ]
   },
-  "${ModID}:ChaosAuraPower": {
-    "NAME": "Chaos Aura",
+  "${ModID}:Greased": {
+    "NAME": "Greased",
     "DESCRIPTIONS": [
-      "At the start of your turn, apply !A! negative effect to ALL enemies.",
-      "At the start of your turn, apply !A! negative effects to ALL enemies."
+      "Takes +50% damage from the next attack.",
+      "Takes +50% damage from the next !A! attacks."
+    ]
+  },
+  "${ModID}:DoubleFrostPower": {
+    "NAME": "Ice Brambles",
+    "DESCRIPTIONS": [
+      "Target takes double damage from #yFrostbite this turn.",
+      "Target takes double damage from #yFrostbite for !A! turns."
+    ]
+  },
+  "${ModID}:AcousticsPower": {
+    "NAME": "Acoustics",
+    "DESCRIPTIONS": [
+      "Resonant cards target ALL enemies."
+    ]
+  },
+  "${ModID}:ElegantEtchingPower": {
+    "NAME": "ElegantEtching",
+    "DESCRIPTIONS": [
+      "Whenever you a #ySigil is played, play the top card of your deck."
     ]
   },
   "${ModID}:ChaoticMindPower": {
     "NAME": "Chaotic Mind",
     "DESCRIPTIONS": [
-      "Whenever you play a card this turn, discard !A! random card to draw !A! random card.",
-      "Whenever you play a card this turn, discard !A! random cards to draw !A! random cards."
-    ]
-  },
-  "${ModID}:BanePower": {
-    "NAME": "Bane",
-    "DESCRIPTIONS": [
-      "#yJinx is !A! time more effective on the enemy.",
-      "#yJinx is !A! times more effective on the enemy."
-    ]
-  },
-  "${ModID}:ShockedPower": {
-    "NAME": "Shocked",
-    "DESCRIPTIONS": [
-      "Loses !A! HP at the start of its turn."
+      "Activate to draw a card and discard a card. !A! use left.",
+      "Activate to draw a card and discard a card. !A! uses left."
     ]
   },
   "${ModID}:TargetedPower": {
     "NAME": "Targeted",
     "DESCRIPTIONS": [
-      "Takes !A! % more damage from Attacks when #yWeakened."
+      "Takes 50% more damage from Attacks when #yWeakened."
     ]
   },
   "${ModID}:TempHPOnHitPower": {
@@ -138,23 +175,12 @@
       "When debuffed with another debuff, this creature will lose !A! HP."
     ]
   },
-  "${ModID}:PulsingSigilPower": {
-    "NAME": "Pulsing",
-    "DESCRIPTIONS": [
-      "Gain !A! #yTemporary #yHP at the start of your turn."
-    ]
-  },
-  "${ModID}:ClownNosePower": {
-    "NAME": "Clown Nose Problem",
-    "DESCRIPTIONS": [
-      "Should Not Be Seen."
-    ]
-  },
   "${ModID}:HastePower": {
     "NAME": "Haste",
     "DESCRIPTIONS": [
-      "At the start of your turn, draw !A! card and discard card.",
-      "At the start of your turn, draw !A! cards and discard cards."
+      "Once per turn, you may spend [E] to draw 3 cards.",
+      "!A! times per turn, you may spend [E] to draw 3 cards.",
+      "You may spend [E] to draw 3 cards."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
@@ -169,14 +195,32 @@
       "Whenever you would take damage, take !A! less."
     ]
   },
-  "${ModID}:HummingPower": {
-    "NAME": "Charged",
-    "DESCRIPTIONS": [
-      "Your next attack deals !A!% more damage."
-    ]
-  },
   "${ModID}:CrumblingPower": {
     "NAME": "Crumbling",
+    "DESCRIPTIONS": [
+      "Takes !A! % extra damage from non-Attacks."
+    ]
+  },
+  "${ModID}:GolemPower": {
+    "NAME": "Golem",
+    "DESCRIPTIONS": [
+      "Once per turn, you can use Golem Punch or Frost Breath.",
+      "!A! times per turn, you can use Golem Punch or Frost Breath.",
+      "Golem Punch",
+      "Deal 30 [${}:ForceIcon] damage to a random enemy."
+    ]
+  },
+  "${ModID}:GolemFrostPower": {
+    "NAME": "Crumbling",
+    "DESCRIPTIONS": [
+      "SHOULD NOT BE SEEN",
+      "SHOULD NOT BE SEEN",
+      "Frost Breath",
+      "Deal 20 [${}:IceIcon] damage to ALL enemies."
+    ]
+  },
+  "${ModID}:DecayPower": {
+    "NAME": "Decay",
     "DESCRIPTIONS": [
       "Takes !A! extra damage from everything."
     ]
@@ -184,14 +228,14 @@
   "${ModID}:ExileStaticDischargePower": {
     "NAME": "Static Discharge",
     "DESCRIPTIONS": [
-      "Deal !A! [${ModID}:LightningIcon] damage to the first enemy that attacks you each turn."
+      "Deal !A! [${ModID}:LightningIcon] damage to the first enemy that attacks you this turn."
     ]
   },
-  "${ModID}:JinxThornsPower": {
-    "NAME": "Scourging Bubble",
+  "${ModID}:ViciousKickbackPower": {
+    "NAME": "ViciousKickback",
     "DESCRIPTIONS": [
-      "Whenever you are attacked, deal [${ModID}:ScourgeIcon] damage back.",
-      "Whenever you are attacked, deal !A! [${ModID}:ScourgeIcon] damage back."
+      "Whenever you are attacked, deal damage back equal to the number of the attacker's unique debuffs.",
+      "Whenever you are attacked, deal damage back equal to !A! times the number of the attacker's unique debuffs."
     ]
   },
   "${ModID}:SpiritLeechPower": {
@@ -203,7 +247,7 @@
   "${ModID}:SpiritPressurePower": {
     "NAME": "Spirit Pressure",
     "DESCRIPTIONS": [
-      "Apply !A! #yJinx to ALL enemies at the end of your turn."
+      "Whenever you apply #yJinx, apply !A! more."
     ]
   },
   "${ModID}:ManaBurstPower": {
@@ -219,10 +263,11 @@
       "In !A! turns, choose 1 of !A2! cards to add into your hand."
     ]
   },
-  "${ModID}:TwistedFormPower": {
-    "NAME": "Twisted Form",
+  "${ModID}:VitalityPower": {
+    "NAME": "Study",
     "DESCRIPTIONS": [
-      "At the start of its turn, loses !A! #yStrength and !A2! HP. There is no escaping this curse."
+      "Whenever you would discard a status, exhaust it and draw a card.",
+      "Whenever you would discard a status, exhaust it and draw !A! cards."
     ]
   },
   "${ModID}:DreadfulFinalePower": {
@@ -231,29 +276,10 @@
       "Whenever you end your turn with no cards in hand, ALL enemies lose !A! #yStrength that turn."
     ]
   },
-  "${ModID}:ShockwaveSigilsPower": {
-    "NAME": "Shockwave Sigils",
-    "DESCRIPTIONS": [
-      "Whenever you discard a #ySigil, apply !A! crushed to ALL enemies."
-    ]
-  },
-  "${ModID}:EldritchStaffPower": {
-    "NAME": "Eldritch Staff",
-    "DESCRIPTIONS": [
-      "Damage from #yJinx is now [${ModID}:EldritchIcon] ."
-    ]
-  },
   "${ModID}:SadisticGleePower": {
     "NAME": "Sadistic Glee",
     "DESCRIPTIONS": [
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
-    ]
-  },
-  "${ModID}:WaterfallPower": {
-    "NAME": "Soaked",
-    "DESCRIPTIONS": [
-      "Frostbite is twice as effective.",
-      "Frostbite is !A! times more effective."
     ]
   }
 }

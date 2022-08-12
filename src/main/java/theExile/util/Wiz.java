@@ -108,7 +108,10 @@ public class Wiz {
     }
 
     public static AbstractRoom adRoom() {
-        return AbstractDungeon.getCurrRoom();
+        if (AbstractDungeon.getCurrMapNode() != null)
+            return AbstractDungeon.getCurrRoom();
+        else
+            return null;
     }
 
     public static ArrayList<AbstractCard> getAllCardsInCardGroups(boolean includeHand, boolean includeExhaust) {

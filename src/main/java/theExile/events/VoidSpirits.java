@@ -11,11 +11,17 @@ import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.ui.buttons.LargeDialogOptionButton;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
-import theExile.relics.MarkOfTheVoid;
+import theExile.cards.NullElement;
+import theExile.patches.TipsInDialogPatch;
+import theExile.potions.VampiricPoison;
 import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
@@ -30,10 +36,10 @@ public class VoidSpirits extends AbstractExileEvent {
     private static final String IMAGE_PATH;
     private static final EventUtils.EventType TYPE = EventUtils.EventType.NORMAL;
 
-    public static final float HEALTH_BUFF = 0.5f;
-    public static final float HEALTH_LOSS_A0 = 0.15f;
-    public static final int CARD_REMOVE_A0 = 5;
-    public static final float HEALTH_LOSS_A15 = 0.2f;
+    public static final float HEALTH_BUFF = 1f;
+    public static final float HEALTH_LOSS_A0 = 0.25f;
+    public static final float HEALTH_LOSS_A15 = 0.3f;
+    public static final int CARD_REMOVE_A0 = 4;
     public static final int CARD_REMOVE_A15 = 3;
 
     private CUR_SCREEN screen = CUR_SCREEN.INTRO;
@@ -62,20 +68,22 @@ public class VoidSpirits extends AbstractExileEvent {
         imageEventText.setDialogOption(options[0].replace("!RelicString!",
                 FontHelper.colorString(ring.name, "g")), ring);
 
-        if (amount2 == 1) {
-            AbstractRelic mark = new MarkOfTheVoid();
-            imageEventText.setDialogOption(options[1].replace("!RelicString!",
-                    FontHelper.colorString(mark.name, "r")), new MarkOfTheVoid());
-        }
-        else if (amount2 > 1) {
-            AbstractRelic mark = new MarkOfTheVoid();
-            imageEventText.setDialogOption(options[2].replace("!RelicString!",
-                    FontHelper.colorString(mark.name, "r")), new MarkOfTheVoid());
-        }
+        int removableCards = getCardsRemoved();
+        AbstractCard card = new NullElement();
+        if (removableCards == 1)
+            imageEventText.setDialogOption(options[1].replace("!CardString!",
+                    FontHelper.colorString(card.name, "r")), card);
+        else if (removableCards > 1)
+            imageEventText.setDialogOption(options[2].replace("!CardString!",
+                    FontHelper.colorString(card.name, "r")), card);
         else
             imageEventText.setDialogOption(options[3], true);
 
-        imageEventText.setDialogOption(options[4]);
+        AbstractPotion potion = new VampiricPoison();
+        imageEventText.setDialogOption(options[4].replace("!PotionString!",
+                FontHelper.colorString(potion.name, "g")));
+        LargeDialogOptionButton but = imageEventText.optionList.get(2);
+        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, potion.tips);
     }
 
     public void update() {
@@ -100,15 +108,15 @@ public class VoidSpirits extends AbstractExileEvent {
                     xOffset = xOffsetBase + 0.36f;
                 count++;
                 AbstractDungeon.effectList.add(new PurgeCardEffect(c, xOffset*Settings.WIDTH, Settings.HEIGHT/2.0f));
-                AbstractDungeon.player.masterDeck.removeCard(c);
+                adp().masterDeck.removeCard(c);
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new NullElement(), (float) Settings.WIDTH / 2.0F,
+                    (float) Settings.HEIGHT / 2.0F));
             screen = CUR_SCREEN.COMPLETE;
             imageEventText.updateBodyText(descriptions[3]);
             imageEventText.clearAllDialogs();
             imageEventText.setDialogOption(options[6]);
-            adRoom().spawnRelicAndObtain((float) Settings.WIDTH * 0.28F,
-                    (float) Settings.HEIGHT / 2.0F, new MarkOfTheVoid());
         }
     }
 
@@ -131,32 +139,39 @@ public class VoidSpirits extends AbstractExileEvent {
                     imageEventText.setDialogOption(options[5]);
                     break;
                 case 2:
+                    screen = CUR_SCREEN.COMPLETE;
+                    adRoom().rewardAllowed = true;
                     adRoom().monsters = MonsterHelper.getEncounter("3 Darklings");
                     adRoom().rewards.clear();
-                    adRoom().rewardAllowed = false;
-                    enterCombatFromImage();
-                    screen = CUR_SCREEN.COMPLETE;
-                    imageEventText.updateBodyText(descriptions[4]);
+                    adRoom().addGoldToRewards(30);
+                    adRoom().rewards.add(new RewardItem(new VampiricPoison()));
+                    adRoom().eliteTrigger = true;
                     imageEventText.clearAllDialogs();
-                    imageEventText.setDialogOption(options[6]);
-                    break;
+                    enterCombatFromImage();
             }
-        } else if (screen == CUR_SCREEN.COMPLETE)
+        } else if (screen == CUR_SCREEN.COMPLETE) {
+            ExileMod.logger.info("ABOUT TO OPEN MAP");
             openMap();
-        else {
-            if (amount2 == 1)
+        }
+        else if (screen == CUR_SCREEN.CARD_SCREEN){
+            int removableCards = getCardsRemoved();
+            if (removableCards == 1)
                 AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(adp().masterDeck.getPurgeableCards()),
-                        amount2, descriptions[5], false);
-            else if (amount2 > 1)
+                        removableCards, descriptions[5], false);
+            else if (removableCards > 1)
                 AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(adp().masterDeck.getPurgeableCards()),
-                        amount2, descriptions[6], false);
+                        removableCards, descriptions[6], false);
+        } else {
+            ExileMod.logger.info("ABOUT TO OPEN MAP");
+            openMap();
         }
     }
 
     public void reopen() {
-        AbstractDungeon.resetPlayer();
-        AbstractDungeon.player.drawX = (float) Settings.WIDTH * 0.25F;
-        AbstractDungeon.player.preBattlePrep();
+        ExileMod.logger.info("REOPENED FROM COMBAT");
+        imageEventText.updateBodyText(descriptions[4]);
+        imageEventText.clearAllDialogs();
+        imageEventText.setDialogOption(options[5]);
         enterImageFromCombat();
     }
 

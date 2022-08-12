@@ -1,5 +1,6 @@
 package theExile.powers;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -38,6 +39,7 @@ public class ManaBurstPower extends AbstractExilePower {
         if (counter > 0) {
             --counter;
             atb(new GainEnergyAction(1));
+            atb(new DrawCardAction(1));
         }
     }
 }

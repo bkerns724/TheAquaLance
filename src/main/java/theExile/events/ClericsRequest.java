@@ -48,6 +48,7 @@ public class ClericsRequest extends AbstractExileEvent {
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(Exordium.ID);
         params.playerClass = TheExile.Enums.THE_EXILE;
+        params.bonusCondition = () -> (adp().gold >= getMaxHpPrice());
         return params;
     }
 

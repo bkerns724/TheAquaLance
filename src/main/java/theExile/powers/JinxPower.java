@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theExile.ExileMod;
 import theExile.actions.JinxLoseHPAction;
-import theExile.relics.PaperKat;
+import theExile.relics.HexedStaff;
 
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.att;
@@ -24,11 +24,11 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
         if (pow.type != PowerType.DEBUFF || pow.owner == source || pow.ID.equals(GainStrengthPower.POWER_ID)
                 || pow.ID.equals(POWER_ID))
             return true;
-        int lossMultiplier = 1;
-        if (adp().hasRelic(PaperKat.ID))
-            lossMultiplier++;
-        att(new JinxLoseHPAction(target, source, amount*lossMultiplier, adp().hasPower(EldritchStaffPower.POWER_ID),
-                (pow instanceof JinxPower)));
+        float lossMultiplier = 1;
+        HexedStaff staff = (HexedStaff) adp().getRelic(HexedStaff.ID);
+        if (staff != null)
+            lossMultiplier += staff.counter * HexedStaff.BONUS_MULT;
+        att(new JinxLoseHPAction(target, source, (int)(amount*lossMultiplier), (pow instanceof JinxPower)));
         return true;
     }
 

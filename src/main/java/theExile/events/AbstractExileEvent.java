@@ -13,7 +13,6 @@ public abstract class AbstractExileEvent extends AbstractImageEvent {
 
     public AbstractExileEvent(EventStrings eventStrings, String imagePath, int amount, int amount2) {
         super(eventStrings.NAME, eventStrings.DESCRIPTIONS[0], imagePath);
-        noCardsInRewards = true;
         this.amount = amount;
         this.amount2 = amount2;
         name = eventStrings.NAME;

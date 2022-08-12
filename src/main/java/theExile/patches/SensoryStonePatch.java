@@ -16,7 +16,7 @@ import theExile.ExileMod;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.MaliciousDagger;
 import theExile.cards.ManaBlood;
-import theExile.cards.ScourgeBubble;
+import theExile.cards.GreaterBarrier;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -91,7 +91,7 @@ public class SensoryStonePatch {
             int y = AbstractDungeon.cardRng.random(0, 2);
             rewardItem.cards.remove(x);
             ArrayList<AbstractExileCard> newCards = new ArrayList<>();
-            newCards.add(new ScourgeBubble());
+            newCards.add(new GreaterBarrier());
             newCards.add(new MaliciousDagger());
             newCards.add(new ManaBlood());
             AbstractExileCard newCard = newCards.get(y);

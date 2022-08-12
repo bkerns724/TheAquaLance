@@ -1,7 +1,6 @@
 package theExile.cards;
 
 import basemod.abstracts.CustomCard;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
@@ -34,8 +33,6 @@ public class Wrath extends CustomCard {
             CardArtRoller.computeCard(this);
         } else
             needsArtRefresh = true;
-
-        SoulboundField.soulbound.set(this, true);
     }
 
     @Override

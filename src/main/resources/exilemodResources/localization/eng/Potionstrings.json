@@ -6,20 +6,6 @@
     ],
     "FLAVOR": "Don't breathe the fumes."
   },
-  "${ModID}:LiquidNitrogen": {
-    "NAME": "Liquid Nitrogen",
-    "DESCRIPTIONS": [
-      "Apply !P! #yFrostbite."
-    ]
-  },
-  "${ModID}:SigilPotion": {
-    "NAME": "Sigil Potion",
-    "DESCRIPTIONS": [
-      "Choose 1 of 3 random #ySigil cards to add to your hand, then discard it.",
-      "Choose 1 of 3 random #ySigil cards and add !P! copies to your hand, then discard them."
-    ],
-    "FLAVOR": "This potion doesn't actually create sigils, when the flask is broken it teleports one from a box of extras I've stashed away."
-  },
   "${ModID}:StoneskinPotion": {
     "NAME": "Stoneskin Potion",
     "DESCRIPTIONS": [
@@ -27,26 +13,11 @@
     ],
     "FLAVOR": "Do you like not getting murdered?  I like not getting murdered!"
   },
-  "${ModID}:ForceGrenade": {
-    "NAME": "Force Grenade",
+  "${ModID}:SteelhidePotion": {
+    "NAME": "Steelhide Potion",
     "DESCRIPTIONS": [
-      "Deal !P! [${ModID}:ForceIcon] damage to ALL enemies."
+      "Whenever you would take damage, take !P! less."
     ]
-  },
-  "${ModID}:VibratingFlask": {
-    "NAME": "Vibrating Flask",
-    "DESCRIPTIONS": [
-      "Choose 1 of 3 random #yResonant cards to add to your hand, it costs 0 this turn.",
-      "Choose 1 of 3 random #yResonant cards and add !P! copies to your hand, they cost 0 this turn."
-    ],
-    "FLAVOR": "I discovered how to bottle resonant spells to use later. My research into bottling other spells has been long and fruitless."
-  },
-  "${ModID}:WhirlpoolPotion": {
-    "NAME": "Whirlpool Potion",
-    "DESCRIPTIONS": [
-      "Draw !P! cards and discard !P! cards."
-    ],
-    "FLAVOR": "This potion grants an incredible burst of speed that is difficult to control."
   },
   "${ModID}:ElixirOfFalseHealth": {
     "NAME": "Elixir of False Health",
@@ -63,34 +34,11 @@
     ],
     "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },
-  "${ModID}:SteelhidePotion": {
-    "NAME": "Steelhide Potion",
+  "${ModID}:VampiricPoison": {
+    "NAME": "Vampiric Poison",
     "DESCRIPTIONS": [
-      "Whenever you would take damage this combat, take !P! less."
-    ],
-    "FLAVOR": "When I discovered this potion, I learned that with proper magic, steel could move like flesh but still be hard.  It inspired me to start my golem research."
-  },
-  "${ModID}:PoisonousSmokeBomb": {
-    "NAME": "Poisonous Smoke Bomb",
-    "DESCRIPTIONS": [
-      "Flee from a normal combat.  Still gain rewards.",
-      "Flee from a non-boss combat.  Still gain rewards."
-    ],
-    "FLAVOR": "Clanky Gremlin told me DO NOT DROP IT!  That seems like good advice."
-  },
-  "${ModID}:ToxicOil": {
-    "NAME": "Toxic Oil",
-    "DESCRIPTIONS": [
-      "Whenever you deal unblocked attack damage, apply !P! #yPoison."
+      "Whenever you deal unblocked attack damage, apply !P! Siphon. Siphoned creatures take [${ModID}:EldritchIcon] damage at the start of their turn."
     ],
     "FLAVOR": "Brutally efficient."
-  },
-  "${ModID}:SlipperyPotion": {
-    "NAME": "Slippery Potion",
-    "DESCRIPTIONS": [
-      "Draw an additional card each turn.",
-      "Draw !P! additional cards each turn."
-    ],
-    "FLAVOR": "It's also great for pranks."
   }
 }

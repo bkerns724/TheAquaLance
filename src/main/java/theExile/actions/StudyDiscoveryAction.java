@@ -38,7 +38,7 @@ public class StudyDiscoveryAction extends AbstractGameAction {
                     if (AbstractDungeon.player.hasPower(MasterRealityPower.POWER_ID))
                         disCard.upgrade();
 
-                    disCard.setCostForTurn(disCard.cost - 1);
+                    disCard.setCostForTurn(0);
 
                     if (AbstractDungeon.player.hand.size() < 10)
                         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(disCard,

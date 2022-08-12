@@ -1,30 +1,56 @@
 package theExile.relics;
 
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import theExile.ExileMod;
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.relics.RelicWithButton;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import theExile.TheExile;
-import theExile.cards.AbstractResonantCard;
+import theExile.powers.ResonantCostZeroPower;
+
+import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.applyToSelf;
 
-public class TuningFork extends AbstractExileRelic {
+public class TuningFork extends AbstractExileRelic implements RelicWithButton {
     public static final String ID = makeID(TuningFork.class.getSimpleName());
-    public static final int DAMAGE_AMOUNT = 3;
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/ResonantButton.png";
 
     public TuningFork() {
         super(ID, RelicTier.UNCOMMON, LandingSound.MAGICAL, TheExile.Enums.EXILE_BLARPLE_COLOR);
-        amount = DAMAGE_AMOUNT;
         setUpdatedDescription();
     }
 
     @Override
-    public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-        if (targetCard instanceof AbstractResonantCard)
-            atb(new DamageAllEnemiesAction(null, DamageInfo.createDamageMatrix(DAMAGE_AMOUNT,
-                    true), DamageInfo.DamageType.THORNS, ExileMod.Enums.RESONANT));
+    public Texture getTexture() {
+        return ImageMaster.loadImage(TEXTURE_STRING);
+    }
+
+    @Override
+    public void onButtonPress() {
+        if (!grayscale) {
+            applyToSelf(new ResonantCostZeroPower(1));
+            grayscale = true;
+        }
+    }
+
+    @Override
+    public boolean isButtonDisabled() {
+        return grayscale;
+    }
+
+    @Override
+    public ArrayList<PowerTip> getHoverTips() {
+        return tips;
+    }
+
+    @Override
+    public void atPreBattle() {
+        grayscale = false;
+    }
+
+    @Override
+    public void onVictory() {
+        grayscale = false;
     }
 }

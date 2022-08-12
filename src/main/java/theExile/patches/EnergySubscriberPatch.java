@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theExile.util.EnergyChangeSubscriber;
 
 import static theExile.util.Wiz.adp;
 

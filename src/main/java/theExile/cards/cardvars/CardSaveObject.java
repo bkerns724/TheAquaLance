@@ -14,4 +14,5 @@ public class CardSaveObject implements Serializable {
     public int baseBlock = 0;
     public int baseMagic = 0;
     public int baseSecondMagic = 0;
+    public int baseThirdMagic = 0;
 }

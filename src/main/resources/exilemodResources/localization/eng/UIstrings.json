@@ -1,7 +1,7 @@
 {
   "${ModID}:SensoryStone": {
     "TEXT": [
-      "~[#FF8C00]FRUSTRATION~ NL NL #r\"FOR #rYOUR #rCRIMES #rAGAINST #rTHE #rNATURAL #rORDER, #rYOU #rARE #rHEREBY #rBANISHED #rFROM #rTHE #rREALM!\" NL NL As the doors close, you still fail to understand why.  As it is, they are all going to die to the #ySpire and its #yBlight. Desperate times call for desperate measures. And not only did they refuse to help you, they #r@EXILED@ you! NL NL A few days later, you regain your resolve.  You're determined that the power from your deals will not be wasted, even if no one will ever appreciate you for it."
+      "~[#FF8C00]FRUSTRATION~ NL NL #r\"FOR #rYOUR #rCRIMES #rAGAINST #rTHE #rNATURAL #rORDER, #rYOU #rARE #rHEREBY #rBANISHED #rFROM #rTHE #rREALM!\" NL NL As the doors close, you still fail to understand why. As it is, they are all going to die to the #ySpire and its #yBlight. Desperate times call for desperate measures. And not only did they refuse to help you, they #r@EXILED@ you! NL NL A few days later, you regain your resolve. You're determined that the power from your deals will not be wasted, even if no one will ever appreciate you for it."
     ]
   },
   "${ModID}:Settings": {
@@ -35,32 +35,24 @@
   "${ModID}:Resonance": {
     "TEXT": [
       "Deal !D! damage.",
-      "Deal !D! damage !X0! times.",
+      "Deal !D! damage to ALL enemies.",
       " NL Gain !B! Block.",
       " NL Enemy loses !X1! HP at the start of its turns.",
+      " NL ALL enemies lose !X1! HP at the start of their turns.",
       " NL Apply !X2! ${ModID}:Jinx.",
-      " NL Draw a card.",
-      " NL Draw !X3! cards",
-      " NL Gain [E] .",
-      " NL Gain [E][E] .",
-      " NL Gain [E][E][E] .",
-      " NL Gain !X4! [E]. "
+      " NL Apply !X2! ${ModID}:Jinx to ALL enemies.",
+      " NL Use !CardName!"
     ]
   },
   "${ModID}:ResonanceConcise": {
     "TEXT": [
-      "Deal !D! damage.",
-      "Deal !D! damage !X0! times.",
-      " !B! Block.",
-      " !X1! Ringing.",
-      " !X2! ${ModID}:Jinx.",
-      " Draw !3!.",
-      " !X4! [E]. "
-    ]
-  },
-  "${ModID}:BlessedNecklaceAction": {
-    "TEXT": [
-      "Choose Any Number of Cards to Replace (Blessed Necklace)"
+      "Targets ALL enemies. NL ",
+      "Deal !D! damage. NL ",
+      "!B! Block. NL ",
+      "!X1! Ringing. NL ",
+      "!X2! ${ModID}:Jinx. NL ",
+      "Use !CardName! NL ",
+      "Use !X3! cards"
     ]
   }
 }

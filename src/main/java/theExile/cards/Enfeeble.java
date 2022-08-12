@@ -5,17 +5,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
-import static theExile.util.Wiz.discard;
+import static theExile.util.Wiz.*;
 
 public class Enfeeble extends AbstractExileCard {
     public final static String ID = makeID(Enfeeble.class.getSimpleName());
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 0;
 
     public Enfeeble() {
-        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
     }
 
     @Override
@@ -25,7 +24,7 @@ public class Enfeeble extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new WeakPower(m, magicNumber, false));
+        forAllMonstersLiving(mon -> applyToEnemy(mon, new WeakPower(mon, magicNumber, false)));
         discard(1);
     }
 

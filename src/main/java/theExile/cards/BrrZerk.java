@@ -9,12 +9,12 @@ import static theExile.util.Wiz.*;
 
 public class BrrZerk extends AbstractExileCard {
     public final static String ID = makeID(BrrZerk.class.getSimpleName());
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 2;
-    private final static int COST = 1;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
+    private final static int COST = 3;
 
     public BrrZerk() {
-        super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

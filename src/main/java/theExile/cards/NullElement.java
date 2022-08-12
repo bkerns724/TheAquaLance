@@ -1,6 +1,7 @@
 package theExile.cards;
 
 import basemod.abstracts.CustomCard;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -31,6 +32,8 @@ public class NullElement extends CustomCard {
             CardArtRoller.computeCard(this);
         } else
             needsArtRefresh = true;
+
+        SoulboundField.soulbound.set(this, true);
     }
 
     public void update() {

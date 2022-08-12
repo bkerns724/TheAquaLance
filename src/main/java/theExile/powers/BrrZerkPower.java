@@ -1,11 +1,10 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.ExileMod;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.applyToEnemy;
 
 public class BrrZerkPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(BrrZerkPower.class.getSimpleName());
@@ -19,10 +18,5 @@ public class BrrZerkPower extends AbstractExilePower {
             flash();
             applyToEnemy(target, new FrostbitePower(target, amount));
         }
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 }

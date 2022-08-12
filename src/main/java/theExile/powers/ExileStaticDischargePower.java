@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,8 +14,7 @@ import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theExile.damagemods.LightningDamage;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.att;
+import static theExile.util.Wiz.*;
 
 public class ExileStaticDischargePower extends AbstractExilePower {
     public static String POWER_ID = makeID(ExileStaticDischargePower.class.getSimpleName());
@@ -31,10 +31,11 @@ public class ExileStaticDischargePower extends AbstractExilePower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (ready && info.owner != this.owner) {
+        if (ready && info.owner != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
             ready = false;
             DamageInfo newInfo = new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS);
             DamageModifierManager.bindDamageMods(info, new DamageModContainer(this, new LightningDamage()));
+            att(new RemoveSpecificPowerAction(adp(), adp(), this));
             att(new DamageAction(info.owner, newInfo, AbstractGameAction.AttackEffect.NONE));
             att(new VFXAction(new LightningEffect(info.owner.drawX, info.owner.drawY)));
             att(new SFXAction("ORB_LIGHTNING_EVOKE"));
@@ -45,6 +46,6 @@ public class ExileStaticDischargePower extends AbstractExilePower {
 
     @Override
     public void atStartOfTurn() {
-        ready = true;
+        atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 }

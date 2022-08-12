@@ -3,8 +3,10 @@ package theExile.cards;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theExile.cards.cardUtil.Resonance;
+import theExile.powers.AcousticsPower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class GenericResonantCard extends AbstractResonantCard {
@@ -15,13 +17,10 @@ public class GenericResonantCard extends AbstractResonantCard {
     public GenericResonantCard(Resonance resonance) {
         super(ID, COST, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.resonance = resonance;
-        if (resonance.getDamage() <= 0) {
+        if (resonance.getDamage() <= 0)
             type = CardType.SKILL;
-            if (resonance.jinx > 0)
-                target = CardTarget.ENEMY;
-            else
-                target = CardTarget.SELF;
-        }
+        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
+            target = CardTarget.ALL_ENEMY;
         initializeDescription();
     }
 
