@@ -2,39 +2,44 @@ package theExile.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.cards.AbstractExileCard;
-import theExile.cards.GolemPunchHelper;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theExile.actions.GolemPunchAction;
 
 import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
 public class GolemPunchPower extends AbstractExilePower implements PowerWithButton {
     public static String POWER_ID = makeID(GolemPunchPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private AbstractExileCard helperCard;
-    private static final String TEXTURE_STRING = "exilemodResources/images/ui/GolemPunchButton.png";
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/GolemFistButton.png";
+    private static final int PUNCH_DAMAGE = 30;
     public int counter;
 
     public GolemPunchPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
-        helperCard = new GolemPunchHelper();
         counter = amount;
     }
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        counter += amount;
+        counter += stackAmount;
+    }
+
+    @Override
+    public int getNumber() {
+        if (counter > 0)
+            return counter;
+        return -1;
     }
 
     @Override
@@ -44,12 +49,9 @@ public class GolemPunchPower extends AbstractExilePower implements PowerWithButt
 
     @Override
     public void onButtonPress() {
-        AbstractMonster mon = AbstractDungeon.getMonsters().getRandomMonster(null, true,
-                AbstractDungeon.cardRandomRng);
-        helperCard.calculateCardDamage(mon);
-        helperCard.onUse(adp(), mon);
+        atb(new GolemPunchAction(PUNCH_DAMAGE));
         counter--;
-        GolemFrostPower pow = (GolemFrostPower)adp().getPower(GolemPunchPower.POWER_ID);
+        GolemFrostPower pow = (GolemFrostPower)adp().getPower(GolemFrostPower.POWER_ID);
         if (pow != null)
             pow.counter--;
     }
@@ -61,7 +63,7 @@ public class GolemPunchPower extends AbstractExilePower implements PowerWithButt
 
     @Override
     public boolean isButtonDisabled() {
-        return counter == 0;
+        return counter == 0 || EnergyPanel.totalCount <= 0;
     }
 
     @Override

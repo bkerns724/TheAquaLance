@@ -14,4 +14,6 @@ public interface PowerWithButton {
     boolean isButtonDisabled();
 
     ArrayList<PowerTip> getHoverTips();
+
+    default int getNumber() {return -1;}
 }

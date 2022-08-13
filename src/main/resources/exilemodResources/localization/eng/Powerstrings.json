@@ -108,8 +108,8 @@
   "${ModID}:ConvertPower": {
     "NAME": "ConvertPower",
     "DESCRIPTIONS": [
-      "The next card you play that isn't a power and doesn't exhaust becomes #yResonant.",
-      "The next !A! cards you play that aren't a power and don't exhaust become #yResonant."
+      "The next non-power non-exhausting Exile card you play becomes ${ModID}:Resonant.",
+      "The next !A! non-power non-exhausting Exile cards you play become ${ModID}:Resonant."
     ]
   },
   "${ModID}:SharpNoisePower": {
@@ -124,7 +124,7 @@
       "Will take !A! [${ModID}:ForceIcon] damage next turn."
     ]
   },
-  "${ModID}:Greased": {
+  "${ModID}:GreasePower": {
     "NAME": "Greased",
     "DESCRIPTIONS": [
       "Takes +50% damage from the next attack.",
@@ -201,7 +201,7 @@
       "Takes !A! % extra damage from non-Attacks."
     ]
   },
-  "${ModID}:GolemPower": {
+  "${ModID}:GolemPunchPower": {
     "NAME": "Golem",
     "DESCRIPTIONS": [
       "Once per turn, you can use Golem Punch or Frost Breath.",
@@ -211,7 +211,7 @@
     ]
   },
   "${ModID}:GolemFrostPower": {
-    "NAME": "Crumbling",
+    "NAME": "SHOULD NOT BE SEEN",
     "DESCRIPTIONS": [
       "SHOULD NOT BE SEEN",
       "SHOULD NOT BE SEEN",

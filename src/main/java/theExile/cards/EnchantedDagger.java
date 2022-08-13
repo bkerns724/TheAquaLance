@@ -1,5 +1,6 @@
 package theExile.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -28,6 +29,7 @@ public class EnchantedDagger extends AbstractExileCard {
     @Override
     public void applyPowers() {
         damageModList.clear();
+        DamageModifierManager.clearModifiers(this);
         for (AbstractCard card : adp().hand.group) {
             if (card instanceof AbstractExileCard && card != this)
                 addModifier(((AbstractExileCard) card).damageModList, true);

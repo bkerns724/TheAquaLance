@@ -1,19 +1,19 @@
 package theExile.powers;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import theExile.actions.ChaoticMindAction;
 
 import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
-public class ChaoticMindPower extends AbstractExilePower implements PowerWithButton, InvisiblePower {
+public class ChaoticMindPower extends AbstractExilePower implements PowerWithButton {
     public static String POWER_ID = makeID(ChaoticMindPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -32,14 +32,12 @@ public class ChaoticMindPower extends AbstractExilePower implements PowerWithBut
 
     @Override
     public void onButtonPress() {
-        cardDraw(1);
-        discard(1);
-        atb(new ReducePowerAction(owner, owner, this, 1));
+        atb(new ChaoticMindAction());
     }
 
     @Override
     public boolean isButtonDisabled() {
-        return false;
+        return amount <= 0;
     }
 
     @Override
@@ -47,5 +45,10 @@ public class ChaoticMindPower extends AbstractExilePower implements PowerWithBut
         ArrayList<PowerTip> list = new ArrayList<>();
         list.add(new PowerTip(name, description));
         return list;
+    }
+
+    @Override
+    public int getNumber() {
+        return amount;
     }
 }

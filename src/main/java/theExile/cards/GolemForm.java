@@ -14,8 +14,8 @@ public class GolemForm extends AbstractExileCard {
     public final static String ID = makeID(GolemForm.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 30;
-    private final static int THIRD_MAGIC = 20;
+    public final static int SECOND_MAGIC = 30;
+    public final static int THIRD_MAGIC = 20;
     private final static int COST = 3;
 
     public GolemForm() {

@@ -13,7 +13,7 @@ public class Thunderbolt extends AbstractExileCard {
     private final static int COST = 1;
 
     public Thunderbolt() {
-        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
     }
 
     public void applyAttributes() {

@@ -138,11 +138,12 @@
   },
   "${ModID}:Decay": {
     "NAME": "Decay",
-    "DESCRIPTION": "Apply Decay equal to the target's ${ModID}:Jinx. NL Decay increases all damage taken."
+    "DESCRIPTION": "Apply Decay equal to the target's ${ModID}:Jinx. NL Decay increases all damage taken.",
+    "UPGRADE_DESCRIPTION": "Apply Decay equal to the target's ${ModID}:Jinx + 1. NL Decay increases all damage taken."
   },
   "${ModID}:SpiritPressure": {
     "NAME": "Spirit Pressure",
-    "DESCRIPTION": "At the end of your turn apply !M! ${ModID}:Jinx to ALL enemies."
+    "DESCRIPTION": "Whenever you apply ${ModID}:Jinx, apply !M! more."
   },
   "${ModID}:WailingSigil": {
     "NAME": "Wailing Sigil",
@@ -236,7 +237,7 @@
   },
   "${ModID}:Convert": {
     "NAME": "Convert",
-    "DESCRIPTION": "The next card you play that isn't a power and doesn't exhaust becomes ${ModID}:Resonant."
+    "DESCRIPTION": "The next non-power non-exhausting Exile card you play becomes ${ModID}:Resonant."
   },
   "${ModID}:GreaterBarrier": {
     "NAME": "Greater Barrier",
@@ -369,10 +370,6 @@
     "NAME": "Frigid Blast",
     "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile."
   },
-  "${ModID}:ChargedShot": {
-    "NAME": "Charged Shot",
-    "DESCRIPTION": "Deal !D! damage X times."
-  },
   "${ModID}:TargetWeakness": {
     "NAME": "Target Weakness",
     "DESCRIPTION": "For !M! turns, enemy takes 50% more damage from Attacks if they are Weakened.",
@@ -383,23 +380,13 @@
     "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
   },
-  "${ModID}:StaticDischarge": {
-    "NAME": "Static Discharge",
-    "DESCRIPTION": "Gain !B! Block. NL Deal !M! [${ModID}:LightningIcon] damage to the first enemy that attacks you this turn.",
-    "FLAVOR": "BZZZT!"
-  },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
     "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E] and draw a card.",
     "FLAVOR": "Sigils are prepared ahead of time with your mana, and then your mana recharges. You can even add more mana than the enchantment needs and absorb it back when it is used."
   },
-  "${ModID}:Drain": {
-    "NAME": "Drain",
-    "DESCRIPTION": "Apply Weak equal to the target's ${ModID}:Jinx.",
-    "UPGRADE_DESCRIPTION": "Apply Weak equal to the target's ${ModID}:Jinx + 1."
-  },
-  "${ModID}:LightningBlast": {
-    "NAME": "Lightning Blast",
+  "${ModID}:ThunderStrike": {
+    "NAME": "Thunder Strike",
     "DESCRIPTION": "Deal !D! damage. NL Discard !M! cards next turn."
   },
   "${ModID}:Flare": {
@@ -407,10 +394,13 @@
     "DESCRIPTION": "Gain !B! Block. NL Gain !M! additional Block per debuff amongst ALL enemies.",
     "FLAVOR": "The aggressive version of they can't catch you if they can't see you."
   },
-  "${ModID}:Voices": {
-    "NAME": "Voices",
-    "DESCRIPTION": "Apply Vulnerable equal to the target's ${ModID}:Jinx.",
-    "UPGRADE_DESCRIPTION": "Apply Vulnerable equal to the target's ${ModID}:Jinx + 1."
+  "${ModID}:CurseArmor": {
+    "NAME": "Curse Armor",
+    "DESCRIPTION": "Apply !M! Vulnerable and !${ModID}:M2! ${ModID}:Crushed."
+  },
+  "${ModID}:ChillWind": {
+    "NAME": "Chill Wind",
+    "DESCRIPTION": "Apply !M! Weak. NL Apply ${ModID}:Frostbite equal to ${ModID}:Jinx."
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
@@ -449,17 +439,9 @@
     "NAME": "Acoustics",
     "DESCRIPTION": "Resonant cards now target ALL enemies."
   },
-  "${ModID}:GolemPunchHelper": {
-    "NAME": "SHOULD NOT BE SEEN",
-    "DESCRIPTION": "SHOULD NOT BE SEEN"
-  },
-  "${ModID}:GolemFrostHelper": {
-    "NAME": "SHOULD NOT BE SEEN",
-    "DESCRIPTION": "SHOULD NOT BE SEEN"
-  },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Reduce damage taken by !M!. NL ${ModID}:Activate: Deal !${ModID}:M2! [${ModID}:ForceIcon] damage. NL ${ModID}:Activate: Deal !{ModID}:M3! [${ModID}:IceDamage] damage to ALL enemies.",
+    "DESCRIPTION": "Reduce damage taken by !M!. NL ${ModID}:Activate: Deal !${ModID}:M2! [${ModID}:ForceIcon] damage. NL ${ModID}:Activate: Deal !${ModID}:M3! [${ModID}:IceIcon] damage to ALL enemies.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:SadisticGlee": {

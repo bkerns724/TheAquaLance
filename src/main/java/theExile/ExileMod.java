@@ -39,6 +39,7 @@ import theExile.events.VoidSpirits;
 import theExile.icons.*;
 import theExile.potions.*;
 import theExile.relics.AbstractExileRelic;
+import theExile.util.ClickableForPower;
 import theExile.util.ClickyFtue;
 
 import java.io.IOException;
@@ -58,6 +59,7 @@ public class ExileMod implements
         EditCharactersSubscriber,
         AddAudioSubscriber,
         OnStartBattleSubscriber,
+        PostBattleSubscriber,
         PostUpdateSubscriber,
         PostInitializeSubscriber {
     public static final String SETTINGS_FILE = "ExileModSettings";
@@ -208,6 +210,8 @@ public class ExileMod implements
         public static AbstractPotion.PotionRarity EVENT;
         @SpireEnum
         public static FtueTip.TipType CLICKY_IMAGE;
+        @SpireEnum
+        public static AbstractCard.CardTarget AUTOAIM_ENEMY;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -256,7 +260,6 @@ public class ExileMod implements
         CustomIconHelper.addCustomIcon(Force.get());
         CustomIconHelper.addCustomIcon(Ice.get());
         CustomIconHelper.addCustomIcon(Eldritch.get());
-        CustomIconHelper.addCustomIcon(Scourge.get());
         CustomIconHelper.addCustomIcon(SoulFire.get());
         CustomIconHelper.addCustomIcon(Lightning.get());
 
@@ -351,6 +354,11 @@ public class ExileMod implements
     @Override
     public void receivePostUpdate() {
         time += Gdx.graphics.getDeltaTime();
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        ClickableForPower.getClickableList().clear();
     }
 
     private static void addEvents() {

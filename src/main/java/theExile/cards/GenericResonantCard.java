@@ -21,6 +21,10 @@ public class GenericResonantCard extends AbstractResonantCard {
             type = CardType.SKILL;
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
             target = CardTarget.ALL_ENEMY;
+        else if (resonance.jinx > 0 || resonance.ringing > 0 || resonance.damage > 0)
+            target = CardTarget.ENEMY;
+        else
+            target = CardTarget.SELF;
         initializeDescription();
     }
 

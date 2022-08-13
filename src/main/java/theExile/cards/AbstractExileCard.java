@@ -15,6 +15,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -30,10 +31,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.TheExile;
 import theExile.actions.AttackAction;
+import theExile.cards.cardUtil.Resonance;
 import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
 import theExile.icons.*;
 import theExile.powers.AbstractExilePower;
+import theExile.powers.ConvertPower;
 import theExile.relics.ManaPurifier;
 import theExile.util.CardArtRoller;
 
@@ -88,6 +91,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public static final int DAMAGE_THRESHOLD_M = 15;
     public static final int DAMAGE_THRESHOLD_L = 50;
+
+    public boolean resPoof = false;
 
     public enum elenum {
         ICE,
@@ -165,11 +170,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         targetDrawScale = 0.8f;
         lighten(true);
 
-        if (this instanceof SquirmingSigil)
-            att(new NewQueueCardAction(this, getLowestHealthEnemy(), true, true));
-        else if (this instanceof HeavySigil)
-            att(new NewQueueCardAction(this, getHighestHealthEnemy(), true, true));
-        else if (this.target == CardTarget.ENEMY) {
+        if (this.target == CardTarget.ENEMY) {
             AbstractMonster monster = AbstractDungeon.getMonsters().getRandomMonster(null,true,
                     AbstractDungeon.cardRandomRng);
             att(new NewQueueCardAction(this, monster, false, true));
@@ -203,9 +204,22 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             beingDiscarded = false;
         elegant = false;
         onUse(p, m);
+        boolean convert = (!exhaust && !purgeOnUse && (type == AbstractCard.CardType.ATTACK || type == AbstractCard.CardType.SKILL)
+                && adp() != null && adp().hasPower(ConvertPower.POWER_ID));
+        if (convert) {
+            Resonance resonance = new Resonance();
+            resonance.cards.add((AbstractExileCard) makeStatEquivalentCopy());
+            resonance.toPower();
+            AbstractPower pow = adp().getPower(ConvertPower.POWER_ID);
+            atb(new ReducePowerAction(adp(), adp(), pow, 1));
+            resPoof = true;
+        } else if (this instanceof AbstractResonantCard)
+            ((AbstractResonantCard) this).resonance.toPower();
     }
 
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
+
+    public void onTarget(AbstractMonster m) {}
 
     @Override
     protected Texture getPortraitImage() {

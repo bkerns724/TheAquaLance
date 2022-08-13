@@ -9,16 +9,19 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableForRelic;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theExile.actions.FlashClickyAction;
 import theExile.powers.PowerWithButton;
 
 import java.util.ArrayList;
 
 import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
 public class ClickableForPower extends ClickableUIElement {
     public static final float CE_Y = 132.0F;
@@ -41,7 +44,7 @@ public class ClickableForPower extends ClickableUIElement {
     }
 
     protected void onHover() {
-        if (power != null) {
+        if (!adp().powers.contains(power)) {
             float y = TipHelper.calculateToAvoidOffscreen(powerUI.getHoverTips(), (float)InputHelper.mY);
             TipHelper.queuePowerTips((float)InputHelper.mX + 60.0F * Settings.scale, (float)InputHelper.mY + y,
                     powerUI.getHoverTips());
@@ -49,7 +52,7 @@ public class ClickableForPower extends ClickableUIElement {
     }
 
     protected void onClick() {
-        if (power != null)
+        if (adp().powers.contains(power))
             if (!AbstractDungeon.actionManager.turnHasEnded && !AbstractDungeon.isScreenUp
                     && AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT && !AbstractDungeon.actionManager.usingCard
                     && !powerUI.isButtonDisabled())
@@ -60,20 +63,23 @@ public class ClickableForPower extends ClickableUIElement {
     }
 
     public void update() {
-        if (AbstractDungeon.overlayMenu != null && AbstractDungeon.overlayMenu.energyPanel != null && power != null) {
+        if (!adp().powers.contains(power)) {
+            grayscale = true;
+            return;
+        }
+        if (AbstractDungeon.overlayMenu != null && AbstractDungeon.overlayMenu.energyPanel != null) {
             int orbWidth = ReflectionHacks.getPrivate(AbstractDungeon.overlayMenu.energyPanel, EnergyPanel.class,
                     "RAW_W");
             float orbWidthFloat = (float) orbWidth;
             setX(AbstractDungeon.overlayMenu.energyPanel.current_x - (orbWidthFloat * 0.4F + 32.0F) * Settings.xScale);
             grayscale = powerUI.isButtonDisabled();
             super.update();
-        } else if (power == null)
-            updateClickableList();
+        }
     }
 
     public void render(SpriteBatch sb) {
         if (!adp().powers.contains(power))
-            grayscale = true;
+            return;
         if (grayscale)
             super.render(sb, Color.GRAY.cpy());
         else if (!hitbox.hovered)
@@ -84,6 +90,13 @@ public class ClickableForPower extends ClickableUIElement {
             super.render(sb, Color.WHITE.cpy());
             sb.setShader(oldShade);
         }
+        int count = -1;
+        if (adp().powers.contains(powerUI))
+            count = powerUI.getNumber();
+        if (count > -1)
+            FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L,
+                    Integer.toString(count), hitbox.x - 16*Settings.scale,
+                    hitbox.y + hitbox.height/2.0f , Color.WHITE.cpy(), 1.0f);
     }
 
     public static ArrayList<ClickableForPower> getClickableList() {
@@ -97,48 +110,49 @@ public class ClickableForPower extends ClickableUIElement {
         if (clickableList == null)
             clickableList = new ArrayList<>();
 
-        clickableList.removeIf(clicky -> clicky.getPower() == null);
-
-        if (adp() != null)
-            clickableList.removeIf(clicky -> !adp().powers.contains(clicky.power));
-        else
+        if (adp() == null) {
             clickableList.clear();
-
-        if (adp() == null)
             return;
+        }
+
+        clickableList.removeIf(clicky -> !adp().powers.contains(clicky.power));
 
         for (AbstractPower pow : adp().powers) {
             if (pow instanceof PowerWithButton) {
+                boolean needNewClicky = true;
                 for (ClickableForPower clicky : clickableList) {
-                    if (clicky.power == pow)
+                    if (clicky.power == pow) {
+                        needNewClicky = false;
                         break;
+                    }
                 }
 
-                ClickableForPower newClicky = new ClickableForPower((PowerWithButton) pow,
-                        0f, ClickableForRelic.CE_Y + (1 + clickableList.size()) * Y_INCREMENT,
-                        ClickableForRelic.CE_W, ClickableForRelic.CE_H);
-                clickableList.add(newClicky);
+                if (needNewClicky) {
+                    ClickableForPower newClicky = new ClickableForPower((PowerWithButton) pow,0f,
+                            CE_Y + (1 + clickableList.size() + ClickableForRelic.getClickableList().size()) * Y_INCREMENT,
+                            CE_W, CE_H);
+                    clickableList.add(newClicky);
+                    atb(new FlashClickyAction(newClicky));
+                }
             }
         }
 
-        AlignClickies();
+        alignClickies();
     }
 
-    private static void AlignClickies() {
+    public static void alignClickies() {
         int order = 0;
-        ClickableForRelic.updateClickableList();
         ArrayList<ClickableForRelic> clickList = ClickableForRelic.getClickableList();
 
         for (ClickableForRelic clicky : clickList) {
-            clicky.setY((132.0F + (float) order * 56.0F) * Settings.yScale);
+            clicky.setY((CE_Y + (float) order * Y_INCREMENT) * Settings.yScale);
             ++order;
         }
 
-        ClickableForPower.updateClickableList();
-        ArrayList<ClickableForPower> clickList2 = ClickableForPower.getClickableList();
+        ArrayList<ClickableForPower> clickList2 = getClickableList();
 
         for (ClickableForPower clicky : clickList2) {
-            clicky.setY((132.0F + (float) order * 56.0F) * Settings.yScale);
+            clicky.setY((CE_Y + (float) order * Y_INCREMENT) * Settings.yScale);
             ++order;
         }
     }

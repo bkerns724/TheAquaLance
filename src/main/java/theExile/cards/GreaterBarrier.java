@@ -13,7 +13,7 @@ public class GreaterBarrier extends AbstractExileCard {
     private final static int COST = 2;
 
     public GreaterBarrier() {
-        super(ID, COST, CardType.SKILL, ExileMod.Enums.UNIQUE, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, ExileMod.Enums.UNIQUE, CardTarget.SELF);
     }
 
     public void applyAttributes() {

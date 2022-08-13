@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
@@ -16,7 +17,7 @@ public class HeavySigil extends AbstractExileCard {
     private final static int UPGRADE_MAGIC = 2;
 
     public HeavySigil() {
-        super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.NONE);
+        super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, ExileMod.Enums.AUTOAIM_ENEMY);
     }
 
     @Override
@@ -32,7 +33,12 @@ public class HeavySigil extends AbstractExileCard {
         AbstractMonster strongestMonster = getHighestHealthEnemy();
         calculateCardDamage(strongestMonster);
 
-        dmg(strongestMonster);
+        onTarget(strongestMonster);
+    }
+
+    @Override
+    public void onTarget(AbstractMonster m) {
+        dmg(m);
     }
 
     public void applyPowers() {

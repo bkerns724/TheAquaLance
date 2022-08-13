@@ -15,7 +15,7 @@ public class Grease extends AbstractExileCard {
     private final static int COST = 0;
 
     public Grease() {
-        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
     @Override

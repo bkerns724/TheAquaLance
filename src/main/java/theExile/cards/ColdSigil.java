@@ -2,6 +2,7 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.getLowestHealthEnemy;
@@ -13,7 +14,7 @@ public class ColdSigil extends AbstractExileCard {
     private final static int COST = -2;
 
     public ColdSigil() {
-        super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ALL_ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.BASIC, ExileMod.Enums.AUTOAIM_ENEMY);
     }
 
     public void applyAttributes() {
@@ -23,10 +24,16 @@ public class ColdSigil extends AbstractExileCard {
         isMultiDamage = true;
     }
 
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractMonster weakestMonster = getLowestHealthEnemy();
         calculateCardDamage(weakestMonster);
-        dmg(weakestMonster);
+        onTarget(weakestMonster);
+    }
+
+    @Override
+    public void onTarget(AbstractMonster m) {
+        dmg(m);
     }
 
     public void upp() {

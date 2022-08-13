@@ -20,7 +20,6 @@ import theExile.cards.AbstractExileCard;
 import theExile.damagemods.*;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
-import theExile.potions.VampiricPoison;
 
 import java.util.ArrayList;
 
@@ -173,7 +172,7 @@ public class ResearchCenter extends AbstractExileEvent {
                 case 2:
                     adp().loseGold(amount);
                     adRoom().rewards.clear();
-                    adRoom().rewards.add(new RewardItem(new VampiricPoison()));
+                    adRoom().rewards.add(new RewardItem(new SteelhidePotion()));
                     AbstractDungeon.combatRewardScreen.open();
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[5]);

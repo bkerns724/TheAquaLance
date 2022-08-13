@@ -16,16 +16,17 @@ public class Decay extends AbstractExileCard {
     }
 
     public void applyAttributes() {
-        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int count = getJinxAmountCard(m);
+        if (upgraded)
+            count++;
         if (count > 0)
             applyToEnemy(m, new DecayPower(m, count));
     }
 
     public void upp() {
-        exhaust = false;
+
     }
 }

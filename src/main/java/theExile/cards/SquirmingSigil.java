@@ -4,11 +4,11 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.ExileMod;
 import theExile.actions.BlackSigilAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
-import static theExile.util.Wiz.getLowestHealthEnemy;
+import static theExile.util.Wiz.*;
 
 public class SquirmingSigil extends AbstractExileCard {
     public final static String ID = makeID(SquirmingSigil.class.getSimpleName());
@@ -18,7 +18,7 @@ public class SquirmingSigil extends AbstractExileCard {
     private final static int UPGRADE_MAGIC = 1;
 
     public SquirmingSigil() {
-        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, ExileMod.Enums.AUTOAIM_ENEMY);
     }
 
     @Override
@@ -33,11 +33,15 @@ public class SquirmingSigil extends AbstractExileCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractMonster weakestMonster = getLowestHealthEnemy();
         calculateCardDamage(weakestMonster);
+        onTarget(weakestMonster);
+    }
 
-        DamageInfo info = new DamageInfo(p, damage, damageTypeForTurn);
+    @Override
+    public void onTarget(AbstractMonster m) {
+        DamageInfo info = new DamageInfo(adp(), damage, damageTypeForTurn);
         AbstractGameAction.AttackEffect effect = this.getAttackEffect();
 
-        atb(new BlackSigilAction(weakestMonster, info, magicNumber, effect));
+        atb(new BlackSigilAction(m, info, magicNumber, effect));
     }
 
     public void upp() {
