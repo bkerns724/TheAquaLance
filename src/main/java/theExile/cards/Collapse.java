@@ -9,8 +9,8 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class Collapse extends AbstractExileCard {
     public final static String ID = makeID(Collapse.class.getSimpleName());
-    private final static int DAMAGE = 18;
-    private final static int UPGRADE_DAMAGE = 6;
+    private final static int DAMAGE = 16;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
     public Collapse() {
@@ -24,7 +24,12 @@ public class Collapse extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new CollapsePower(m, damage));
+        applyToEnemy(m, new CollapsePower(m, this));
+    }
+
+    public void trigger(AbstractMonster m) {
+        calculateCardDamage(m);
+        dmg(m);
     }
 
     public void upp() {
