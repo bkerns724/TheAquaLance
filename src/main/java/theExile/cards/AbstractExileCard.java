@@ -28,7 +28,10 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.ending.SpireShield;
+import com.megacrit.cardcrawl.monsters.ending.SpireSpear;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.SurroundedPower;
 import theExile.TheExile;
 import theExile.actions.AttackAction;
 import theExile.cards.cardUtil.Resonance;
@@ -447,15 +450,27 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                     return Enums.SOUL_FIRE_L;
             }
             else if (ele == DARK) {
+                boolean lower = false;
+                for (AbstractMonster m : getEnemies()) {
+                    if (m instanceof SpireShield)
+                        lower = true;
+                    else if (m instanceof SpireSpear)
+                        lower = true;
+                }
                 if (amount < DAMAGE_THRESHOLD_M)
                     return Enums.DARK;
-                else if (amount < DAMAGE_THRESHOLD_L)
+                else if (amount < DAMAGE_THRESHOLD_L || lower)
                     return Enums.DARK_M;
                 else
                     return Enums.DARK_L;
             }
             else if (ele == LIGHTNING) {
-                return AbstractGameAction.AttackEffect.LIGHTNING;
+                if (amount < DAMAGE_THRESHOLD_M)
+                    return AbstractGameAction.AttackEffect.LIGHTNING;
+                else if (amount < DAMAGE_THRESHOLD_L || adp().hasPower(SurroundedPower.POWER_ID))
+                    return Enums.LIGHTNING_M;
+                else
+                    return Enums.LIGHTNING_L;
             }
             else {
                 return getBluntEffect();

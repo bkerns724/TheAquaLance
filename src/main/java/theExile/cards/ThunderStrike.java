@@ -15,7 +15,7 @@ public class ThunderStrike extends AbstractExileCard {
     private final static int COST = 1;
 
     public ThunderStrike() {
-        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     public void applyAttributes() {

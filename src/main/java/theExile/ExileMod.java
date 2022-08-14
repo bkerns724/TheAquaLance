@@ -93,6 +93,7 @@ public class ExileMod implements
     private static final String CHARSELECT_BUTTON = RESOURCES_PRE + "images/charSelect/charButton.png";
     private static final String CHARSELECT_PORTRAIT = RESOURCES_PRE + "images/charSelect/charBG.png";
 
+    public static final String LIGHTNING_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Lightning.png";
     public static final String WATER_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Blood.png";
     public static final String ACID_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Acid.png";
@@ -202,6 +203,10 @@ public class ExileMod implements
         public static AbstractGameAction.AttackEffect BLUNT_MASSIVE;
         @SpireEnum
         public static AbstractGameAction.AttackEffect SLASH_MASSIVE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect LIGHTNING_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect LIGHTNING_L;
         @SpireEnum
         public static AbstractCard.CardRarity UNIQUE;
         @SpireEnum

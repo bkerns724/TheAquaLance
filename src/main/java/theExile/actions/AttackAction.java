@@ -7,13 +7,13 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 import theExile.ExileMod;
 import theExile.vfx.*;
 
@@ -62,6 +62,8 @@ public class AttackAction extends AbstractGameAction {
                 color = Color.PINK.cpy();
             if (effect == ExileMod.Enums.DARK || effect == ExileMod.Enums.DARK_M)
                 color = Color.BLACK.cpy();
+            if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
+                color = Color.YELLOW.cpy();
 
             if (color != null) {
                 ColoredDamagePatch.DamageActionColorField.damageColor.set(action, color);
@@ -150,23 +152,31 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.BLUNT_MASSIVE) {
-            if (m == null) {
-                // I super hate how wait action has a maximum of 0.1f on Fast setting
-                for (int i = 0; i < 6; i++)
-                    att(new WaitAction(0.1f));
-                forAllMonstersLiving(m ->
-                        vfxTop(new MyWeightyImpactEffect(m.hb.cX, m.hb.cY)));
-            } else
-                vfxTop(new MyWeightyImpactEffect(m.hb.cX, m.hb.cY), 0.6f);
+            if (m == null)
+                forAllMonstersLiving(m -> vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F)));
+            else
+                vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F));
         }
 
         if (effect == ExileMod.Enums.SLASH_MASSIVE) {
-            if (m == null) {
-                att(new WaitAction(0.1f));
-                forAllMonstersLiving(m ->
-                        vfxTop(new SlashMassiveEffect(m)));
-            } else
-                vfxTop(new SlashMassiveEffect(m), SlashMassiveEffect.EFFECT_DUR - SlashMassiveEffect.HIT_TIME - 0.1f);
+            if (m == null)
+                forAllMonstersLiving(m -> vfxTop(new SlashMassiveEffect(m)));
+            else
+                vfxTop(new SlashMassiveEffect(m));
+        }
+
+        if (effect == ExileMod.Enums.LIGHTNING_M) {
+            if (m == null)
+                forAllMonstersLiving(m -> vfxTop(new GreenLightningEffect(m.drawX, m.drawY)));
+            else
+                vfxTop(new GreenLightningEffect(m.drawX, m.drawY));
+        }
+
+        if (effect == ExileMod.Enums.LIGHTNING_L) {
+            if (m == null)
+                forAllMonstersLiving(m -> vfxTop(new LargeGreenLightningEffect(m)));
+            else
+                vfxTop(new LargeGreenLightningEffect(m));
         }
 
         ColoredDamagePatch.DamageActionColorField.rainbow.set(action, rainbow);
@@ -180,6 +190,7 @@ public class AttackAction extends AbstractGameAction {
 
     static {
         simpleEffects = new ArrayList<>();
+        simpleEffects.add(AttackEffect.LIGHTNING);
         simpleEffects.add(ExileMod.Enums.ICE);
         simpleEffects.add(ExileMod.Enums.ICE_M);
         simpleEffects.add(ExileMod.Enums.SOUL_FIRE);

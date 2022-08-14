@@ -54,7 +54,9 @@ public class AttackEffectsPatch {
 
         Texture texture;
 
-        if (effect == ExileMod.Enums.WATER)
+        if (effect == AbstractGameAction.AttackEffect.LIGHTNING)
+            texture = TexLoader.getTexture(ExileMod.LIGHTNING_EFFECT_FILE);
+        else if (effect == ExileMod.Enums.WATER)
             texture = TexLoader.getTexture(ExileMod.WATER_EFFECT_FILE);
         else if (effect == ExileMod.Enums.BLOOD)
             texture = TexLoader.getTexture(ExileMod.BLOOD_EFFECT_FILE);
@@ -96,6 +98,10 @@ public class AttackEffectsPatch {
     )
     public static class SfxPatch {
         public static SpireReturn Prefix(AbstractGameAction.AttackEffect effect) {
+            if (effect == AbstractGameAction.AttackEffect.LIGHTNING) {
+                CardCrawlGame.sound.play("ORB_PLASMA_CHANNEL");
+                return SpireReturn.Return();
+            }
             if (effect == ExileMod.Enums.WATER) {
                 CardCrawlGame.sound.play("ATTACK_POISON");
                 return SpireReturn.Return();
@@ -158,6 +164,8 @@ public class AttackEffectsPatch {
     static {
         emptyEffects = new ArrayList<>();
         emptyEffects.add(ExileMod.Enums.DARK_WAVE);
+        emptyEffects.add(ExileMod.Enums.LIGHTNING_M);
+        emptyEffects.add(ExileMod.Enums.LIGHTNING_L);
         emptyEffects.add(ExileMod.Enums.DARK_WAVE_M);
         emptyEffects.add(ExileMod.Enums.DARK_WAVE_L);
         emptyEffects.add(ExileMod.Enums.FORCE_L);
