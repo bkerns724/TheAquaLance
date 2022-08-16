@@ -10,24 +10,24 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
-import theExile.icons.SoulFire;
+import theExile.icons.DemonFire;
 import theExile.patches.DamageModsIDPatch;
 
 import java.util.ArrayList;
 
 @AutoAdd.Ignore
-public class SoulFireDamage extends AbstractDamageModifier {
-    public static final String ID = ExileMod.makeID(SoulFireDamage.class.getSimpleName());
+public class DemonFireDamage extends AbstractDamageModifier {
+    public static final String ID = ExileMod.makeID(DemonFireDamage.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public TooltipInfo soulFireTooltip;
+    public TooltipInfo demonFireTooltip;
     private boolean visibleTips = true;
 
-    public SoulFireDamage() {
-        soulFireTooltip = null;
+    public DemonFireDamage() {
+        demonFireTooltip = null;
         DamageModsIDPatch.ID.set(this, ID);
     }
 
-    public SoulFireDamage(boolean visTips) {
+    public DemonFireDamage(boolean visTips) {
         this();
         visibleTips = visTips;
     }
@@ -46,10 +46,10 @@ public class SoulFireDamage extends AbstractDamageModifier {
     public ArrayList<TooltipInfo> getCustomTooltips() {
         if (!visibleTips)
             return new ArrayList<>();
-        if (soulFireTooltip == null)
-            soulFireTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
+        if (demonFireTooltip == null)
+            demonFireTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
 
-        return new ArrayList<TooltipInfo>() { { add(soulFireTooltip); } };
+        return new ArrayList<TooltipInfo>() { { add(demonFireTooltip); } };
     }
 
     public static ArrayList<PowerTip> getPowerTips() {
@@ -66,13 +66,13 @@ public class SoulFireDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        SoulFireDamage output = new SoulFireDamage(visibleTips);
-        output.soulFireTooltip = this.soulFireTooltip;
+        DemonFireDamage output = new DemonFireDamage(visibleTips);
+        output.demonFireTooltip = this.demonFireTooltip;
         return output;
     }
 
     @Override
     public AbstractCustomIcon getAccompanyingIcon() {
-        return new SoulFire();
+        return new DemonFire();
     }
 }

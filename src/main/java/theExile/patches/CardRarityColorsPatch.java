@@ -91,7 +91,7 @@ public class CardRarityColorsPatch {
             Color color = ReflectionHacks.getPrivate(__instance, AbstractCard.class, "renderColor");
             Texture texture = CardRarityColorsPatch.UNIQUE_ATK_512;
             TextureAtlas.AtlasRegion img = texToAtReg(texture);
-            img.offsetX = 125f;
+            img.offsetX = 124f;
             img.offsetY = 219f;
             img.originalHeight = 512;
             img.originalWidth = 512;
@@ -116,8 +116,8 @@ public class CardRarityColorsPatch {
             Color color = ReflectionHacks.getPrivate(__instance, AbstractCard.class, "renderColor");
             Texture texture = CardRarityColorsPatch.UNIQUE_POWER_512;
             TextureAtlas.AtlasRegion img = texToAtReg(texture);
-            img.offsetX = 125f;
-            img.offsetY = 219f;
+            img.offsetX = 121f;
+            img.offsetY = 222f;
             img.originalHeight = 512;
             img.originalWidth = 512;
             method.invoke(__instance, sb[0], color, img, x, y);
@@ -141,8 +141,8 @@ public class CardRarityColorsPatch {
             Color color = ReflectionHacks.getPrivate(__instance, AbstractCard.class, "renderColor");
             Texture texture = CardRarityColorsPatch.UNIQUE_SKILL_512;
             TextureAtlas.AtlasRegion img = texToAtReg(texture);
-            img.offsetX = 125f;
-            img.offsetY = 219f;
+            img.offsetX = 123f;
+            img.offsetY = 222f;
             img.originalHeight = 512;
             img.originalWidth = 512;
             method.invoke(__instance, sb[0], color, img, x, y);

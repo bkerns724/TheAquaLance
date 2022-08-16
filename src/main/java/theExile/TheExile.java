@@ -35,7 +35,7 @@ import java.util.Collection;
 import java.util.List;
 
 import static theExile.ExileMod.*;
-import static theExile.TheExile.Enums.EXILE_BLARPLE_COLOR;
+import static theExile.TheExile.Enums.EXILE_BROWN_COLOR;
 
 public class TheExile extends CustomPlayer {
     private static final String[] ORB_TEXTURES = {
@@ -156,12 +156,12 @@ public class TheExile extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return EXILE_BLARPLE_COLOR;
+        return EXILE_BROWN_COLOR;
     }
 
     @Override
     public Color getCardTrailColor() {
-        return Color.PURPLE.cpy();
+        return Color.BROWN.cpy();
     }
 
     @Override
@@ -224,7 +224,7 @@ public class TheExile extends CustomPlayer {
         return new AbstractGameAction.AttackEffect[]{
                 ExileMod.Enums.FORCE,
                 ExileMod.Enums.ICE,
-                ExileMod.Enums.DARK,
+                ExileMod.Enums.ELDRITCH,
                 ExileMod.Enums.SOUL_FIRE
         };
     }
@@ -282,7 +282,7 @@ public class TheExile extends CustomPlayer {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_EXILE;
         @SpireEnum(name = "EXILE_COLOR")
-        public static AbstractCard.CardColor EXILE_BLARPLE_COLOR;
+        public static AbstractCard.CardColor EXILE_BROWN_COLOR;
         @SpireEnum(name = "EXILE_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_EXILE_COLOR;

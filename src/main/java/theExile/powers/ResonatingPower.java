@@ -54,7 +54,6 @@ public class ResonatingPower extends AbstractExilePower implements OnReceivePowe
         for (AbstractExileCard.elenum e : resonance.damageMods)
             card.addModifier(e);
         card.applyPowers();
-        card.initializeDescription();
         atb(new MakeTempCardInHandAction(card, false));
         atb(new RemoveSpecificPowerAction(owner, owner, this));
     }

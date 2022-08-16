@@ -17,7 +17,7 @@ public class TuningFork extends AbstractExileRelic implements RelicWithButton {
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/ResonantButton.png";
 
     public TuningFork() {
-        super(ID, RelicTier.UNCOMMON, LandingSound.MAGICAL, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.UNCOMMON, LandingSound.MAGICAL, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

@@ -17,7 +17,7 @@ public class BlueMarbles extends AbstractExileRelic {
     private static final CardStrings iceStrings = CardCrawlGame.languagePack.getCardStrings(IceDamage.ID);
 
     public BlueMarbles() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

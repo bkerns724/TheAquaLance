@@ -99,7 +99,7 @@ public class ExileMod implements
     public static final String ACID_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Acid.png";
     public static final String ICE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice.png";
     public static final String ICE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice_M.png";
-    public static final String SOUL_FIRE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/SoulFire.png";
+    public static final String DEMON_FIRE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/DemonFire.png";
     public static final String FORCE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force.png";
     public static final String FORCE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_M.png";
     public static final String FORCE_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Force_L.png";
@@ -133,7 +133,7 @@ public class ExileMod implements
     public static final Color EXILE_EYE_COLOR = purpleColor.cpy();
 
     public ExileMod() {
-        BaseMod.addColor(TheExile.Enums.EXILE_BLARPLE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
+        BaseMod.addColor(TheExile.Enums.EXILE_BROWN_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
                 EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
@@ -182,11 +182,11 @@ public class ExileMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect SOUL_FIRE_L;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK;
+        public static AbstractGameAction.AttackEffect ELDRITCH;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK_M;
+        public static AbstractGameAction.AttackEffect ELDRITCH_M;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect DARK_L;
+        public static AbstractGameAction.AttackEffect ELDRITCH_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_WAVE;
         @SpireEnum
@@ -265,7 +265,7 @@ public class ExileMod implements
         CustomIconHelper.addCustomIcon(Force.get());
         CustomIconHelper.addCustomIcon(Ice.get());
         CustomIconHelper.addCustomIcon(Eldritch.get());
-        CustomIconHelper.addCustomIcon(SoulFire.get());
+        CustomIconHelper.addCustomIcon(DemonFire.get());
         CustomIconHelper.addCustomIcon(Lightning.get());
 
         new AutoAdd(modID)

@@ -60,7 +60,7 @@ public class AttackAction extends AbstractGameAction {
                 color = Color.BLUE.cpy();
             if (effect == ExileMod.Enums.FORCE || effect == ExileMod.Enums.FORCE_M)
                 color = Color.PINK.cpy();
-            if (effect == ExileMod.Enums.DARK || effect == ExileMod.Enums.DARK_M)
+            if (effect == ExileMod.Enums.ELDRITCH || effect == ExileMod.Enums.ELDRITCH_M)
                 color = Color.BLACK.cpy();
             if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
                 color = Color.YELLOW.cpy();
@@ -122,7 +122,7 @@ public class AttackAction extends AbstractGameAction {
                 vfxTop(new ForceHammerEffect(m.hb.cX, m.hb.y), ForceHammerEffect.DUR_BEFORE_IMPACT - 0.1f);
         }
 
-        if (effect == ExileMod.Enums.DARK_L) {
+        if (effect == ExileMod.Enums.ELDRITCH_L) {
             color = Color.BLACK.cpy();
             if (m == null)
                 vfxTop(new DarkLargeEffect(null), DarkLargeEffect.DUR_BEFORE_IMPACT - 0.3f);
@@ -191,13 +191,15 @@ public class AttackAction extends AbstractGameAction {
     static {
         simpleEffects = new ArrayList<>();
         simpleEffects.add(AttackEffect.LIGHTNING);
+        simpleEffects.add(ExileMod.Enums.ACID);
+        simpleEffects.add(ExileMod.Enums.BLOOD);
         simpleEffects.add(ExileMod.Enums.ICE);
         simpleEffects.add(ExileMod.Enums.ICE_M);
         simpleEffects.add(ExileMod.Enums.SOUL_FIRE);
         simpleEffects.add(ExileMod.Enums.FORCE);
         simpleEffects.add(ExileMod.Enums.FORCE_M);
-        simpleEffects.add(ExileMod.Enums.DARK);
-        simpleEffects.add(ExileMod.Enums.DARK_M);
+        simpleEffects.add(ExileMod.Enums.ELDRITCH);
+        simpleEffects.add(ExileMod.Enums.ELDRITCH_M);
         simpleEffects.add(ExileMod.Enums.RESONANT);
         simpleEffects.add(ExileMod.Enums.RESONANT_M);
         simpleEffects.add(ExileMod.Enums.RESONANT_L);

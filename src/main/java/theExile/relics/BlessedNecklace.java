@@ -20,7 +20,7 @@ public class BlessedNecklace extends AbstractExileRelic implements RelicWithButt
     public static final int BLOCK_AMOUNT = 8;
 
     public BlessedNecklace() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = BLOCK_AMOUNT;
         setUpdatedDescription();
     }

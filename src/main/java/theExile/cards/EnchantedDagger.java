@@ -23,7 +23,10 @@ public class EnchantedDagger extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
+        if (damageModList.isEmpty())
+            dmg(m, getSlashEffect());
+        else
+            dmg(m);
     }
 
     @Override

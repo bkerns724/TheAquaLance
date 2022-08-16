@@ -14,7 +14,7 @@ public class ManaPurifier extends AbstractExileRelic {
     public static final String ID = makeID(ManaPurifier.class.getSimpleName());
 
     public ManaPurifier() {
-        super(ID, RelicTier.BOSS, LandingSound.MAGICAL, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.MAGICAL, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

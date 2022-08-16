@@ -5,12 +5,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
 
-public class EarthenSigil extends AbstractExileCard {
-    public final static String ID = makeID(EarthenSigil.class.getSimpleName());
+public class HardSigil extends AbstractExileCard {
+    public final static String ID = makeID(HardSigil.class.getSimpleName());
     private final static int BLOCK = 11;
     private final static int UPGRADE_BLOCK = 4;
 
-    public EarthenSigil() {
+    public HardSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
     }
 

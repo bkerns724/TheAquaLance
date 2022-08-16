@@ -5,12 +5,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
 
-public class HotSigil extends AbstractExileCard {
-    public final static String ID = makeID(HotSigil.class.getSimpleName());
+public class BurningSigil extends AbstractExileCard {
+    public final static String ID = makeID(BurningSigil.class.getSimpleName());
     private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 3;
 
-    public HotSigil() {
+    public BurningSigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
     }
 

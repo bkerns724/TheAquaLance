@@ -25,7 +25,7 @@
     "NAME": "Blessed Necklace",
     "FLAVOR": "Cleric talented! Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [VIOLET]Necklace [VIOLET]of [VIOLET]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! #yBlock per card discarded."
+      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! #yBlock per card discarded."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -95,7 +95,7 @@
     "NAME": "Vial of Black Blood",
     "FLAVOR": "It is hot enough to almost burn you.",
     "DESCRIPTIONS": [
-      "Your [${ModID}:LightningIcon] and [${ModID}:SoulFireIcon] attacks deal double damage but you lose !R! HP when you play one."
+      "Your [${ModID}:LightningIcon] and [${ModID}:DemonFireIcon] attacks deal double damage but you lose !R! HP when you play one."
     ]
   },
   "${ModID}:ReverseOmamori": {

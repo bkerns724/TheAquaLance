@@ -34,18 +34,11 @@ public class Resonance {
             forAllMonstersLiving(mon -> resonanceEffectsSub(card, mon));
             for (AbstractExileCard inCard : cards) {
                 inCard.beingDiscarded = true;
-                if (inCard.target == AbstractCard.CardTarget.ENEMY)
+                if (inCard.target == AbstractCard.CardTarget.ENEMY || inCard.target == ExileMod.Enums.AUTOAIM_ENEMY)
                     forAllMonstersLiving(mon -> {
                         if (inCard.canUse(adp(), mon)) {
                             inCard.calculateCardDamage(mon);
                             inCard.onUse(adp(), mon);
-                        }
-                    });
-                else if (inCard.target == ExileMod.Enums.AUTOAIM_ENEMY)
-                    forAllMonstersLiving(mon -> {
-                        if (inCard.canUse(adp(), mon)) {
-                            inCard.calculateCardDamage(mon);
-                            inCard.onTarget(mon);
                         }
                     });
                 else {
@@ -68,7 +61,7 @@ public class Resonance {
 
     public void resonanceEffectsSub(AbstractResonantCard card, AbstractMonster m) {
         card.baseDamage = getDamage();
-        card.baseBlock = block;
+        card.baseBlock = getBlock();
         card.calculateCardDamage(m);
 
         if (card.baseDamage > 0)
@@ -99,8 +92,8 @@ public class Resonance {
     }
 
     public String getDescription() {
-        int count = 0;
-        if (damage > 0)
+        int count = 1;
+        if (getDamage() > 0)
             count++;
         if (block > 0)
             count++;
@@ -111,7 +104,7 @@ public class Resonance {
         count += cards.size();
 
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
-            if (damage > 0)
+            if (getDamage() > 0)
                 count++;
             if (ringing > 0)
                 count ++;
@@ -123,7 +116,7 @@ public class Resonance {
             return getConciseDescription();
 
         StringBuilder builder;
-        if (damage > 0) {
+        if (getDamage() > 0) {
             if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
                 builder = new StringBuilder(uiStrings.TEXT[1]);
             else
@@ -132,7 +125,7 @@ public class Resonance {
         else
             builder = new StringBuilder();
 
-        if (block > 0)
+        if (getBlock() > 0)
             builder.append(uiStrings.TEXT[2]);
         if (ringing > 0) {
             if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
@@ -152,18 +145,73 @@ public class Resonance {
         return builder.toString();
     }
 
-    public boolean isSingleTarget() {
-        if (adp() == null)
-            return false;
-        if (adp().hasPower(AcousticsPower.POWER_ID))
-            return false;
-        if (damage > 0 || jinx > 0 || ringing > 0)
-            return true;
-        for (AbstractCard card : cards) {
-            if (card.target == AbstractCard.CardTarget.ENEMY)
-                return true;
+    private String getConciseDescription() {
+        StringBuilder builder = new StringBuilder();
+        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
+            builder.append(uiStringsConcise.TEXT[0]);
+        int spaceCount = 0;
+        if (getDamage() > 0) {
+            builder.append(uiStringsConcise.TEXT[1]);
+            spaceCount++;
         }
-        return false;
+        if (getBlock() > 0) {
+            if (spaceCount == 1)
+                builder.append(" ");
+            builder.append(uiStringsConcise.TEXT[2]);
+            spaceCount++;
+        }
+
+        if (ringing > 0) {
+            if (spaceCount == 2)
+                builder.append(" NL ");
+            else if (spaceCount == 1)
+                builder.append(" ");
+            builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(ringing)));
+            spaceCount++;
+        }
+        if (jinx > 0) {
+            if (spaceCount == 2)
+                builder.append(" NL ");
+            else if (spaceCount % 2 == 1)
+                builder.append(" ");
+            builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(jinx)));
+        }
+
+        if (cards.size() < 3)
+            for (AbstractCard card : cards)
+                builder.append(uiStringsConcise.TEXT[5].replace("!CardName!", yellowString(card.name)));
+        else
+            builder.append(uiStringsConcise.TEXT[6].replace("!X3!", String.valueOf(cards.size())));
+
+        return builder.toString();
+    }
+
+    public AbstractCard.CardType getCardType() {
+        if (getDamage() > 0)
+            return AbstractCard.CardType.ATTACK;
+        for (AbstractExileCard card : cards)
+            if (card.type == AbstractCard.CardType.ATTACK)
+                return AbstractCard.CardType.ATTACK;
+        return AbstractCard.CardType.SKILL;
+    }
+
+    public AbstractCard.CardTarget getCardTarget() {
+        for (AbstractExileCard card : cards)
+            if (card.target == AbstractCard.CardTarget.ALL)
+                return AbstractCard.CardTarget.ALL;
+        for (AbstractExileCard card : cards)
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY)
+                return AbstractCard.CardTarget.ALL_ENEMY;
+        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
+            if (getDamage() > 0 || ringing > 0 || jinx > 0)
+                return AbstractCard.CardTarget.ALL_ENEMY;
+            for (AbstractExileCard card : cards)
+                if (card.target == AbstractCard.CardTarget.ENEMY || card.target == ExileMod.Enums.AUTOAIM_ENEMY)
+                    return AbstractCard.CardTarget.ALL_ENEMY;
+        }
+        if (getDamage() > 0 || ringing > 0 || jinx > 0)
+            return AbstractCard.CardTarget.ENEMY;
+        return AbstractCard.CardTarget.SELF;
     }
 
     public int getDamage() {
@@ -176,28 +224,16 @@ public class Resonance {
         return (damage + bonus);
     }
 
-    private String getConciseDescription() {
-        StringBuilder builder = new StringBuilder();
-        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
-            builder.append(uiStringsConcise.TEXT[0]);
-        if (damage > 0)
-            builder.append(uiStringsConcise.TEXT[1]);
-
-        if (block > 0)
-            builder.append(uiStringsConcise.TEXT[2]);
-
-        if (ringing > 0)
-            builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(ringing)));
-        if (jinx > 0)
-            builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(jinx)));
-
-        if (cards.size() < 4)
-            for (AbstractCard card : cards)
-                builder.append(uiStringsConcise.TEXT[5].replace("!CardName!", yellowString(card.name)));
-        else
-            builder.append(uiStringsConcise.TEXT[6].replace("!X3!", String.valueOf(cards.size())));
-
-        return builder.toString();
+    public int getBlock() {
+        int bonus = 0;
+        /*
+        SharpNoisePower pow = null;
+        if (adp() != null)
+            pow = (SharpNoisePower) adp().getPower(SharpNoisePower.POWER_ID);
+        if (pow != null)
+            bonus = amount * pow.amount;
+        */
+        return (block + bonus);
     }
 
     public static String yellowString(String input) {

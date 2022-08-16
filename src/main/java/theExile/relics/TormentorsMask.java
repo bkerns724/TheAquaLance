@@ -12,7 +12,7 @@ public class TormentorsMask extends AbstractExileRelic {
     private static final int JINX_AMOUNT = 1;
 
     public TormentorsMask() {
-        super(ID, RelicTier.COMMON, LandingSound.FLAT, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.COMMON, LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = JINX_AMOUNT;
         setUpdatedDescription();
     }

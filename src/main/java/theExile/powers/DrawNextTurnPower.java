@@ -17,8 +17,7 @@ public class DrawNextTurnPower extends AbstractExilePower {
 
     @Override
     public void atStartOfTurnPostDraw() {
-        if (!adp().hasPower(HastePower.POWER_ID))
-            atb(new DrawCardAction(amount));
+        atb(new DrawCardAction(amount));
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 }

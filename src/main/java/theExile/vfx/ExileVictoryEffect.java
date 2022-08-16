@@ -43,7 +43,7 @@ public class ExileVictoryEffect extends AbstractGameEffect {
 
         vY = MathUtils.random(600.0F, 800.0F) * Settings.scale;
         // color = new Color(MathUtils.random(0.4F, 0.8F), MathUtils.random(0.1F, 0.4F), MathUtils.random(0.4F, 0.9F), 0.8F);
-        color = Color.ORANGE.cpy();
+        color = new Color(0.9f, 0.55f,  0f, 1f);
         renderBehind = false;
         scale = MathUtils.random(6.0F, 7.0F) * Settings.scale;
     }

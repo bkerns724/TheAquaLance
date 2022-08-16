@@ -20,7 +20,7 @@ public class NecklaceOfShielding extends AbstractExileRelic implements RelicWith
     private static final int blockAmount = 5;
 
     public NecklaceOfShielding() {
-        super(ID, RelicTier.STARTER, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.STARTER, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = discardAmount;
         amount2 = blockAmount;
         setUpdatedDescription();

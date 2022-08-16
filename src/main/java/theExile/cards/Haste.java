@@ -9,7 +9,7 @@ import static theExile.util.Wiz.*;
 
 public class Haste extends AbstractExileCard {
     public final static String ID = makeID(Haste.class.getSimpleName());
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 3;
     private final static int COST = 0;
 
     public Haste() {
@@ -22,7 +22,7 @@ public class Haste extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new HastePower(magicNumber));
+        applyToSelf(new HastePower(1));
     }
 
     public void upp() {

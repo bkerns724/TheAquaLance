@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.Dualcast;
 import theExile.damagemods.*;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
@@ -147,13 +148,13 @@ public class ResearchCenter extends AbstractExileEvent {
                     if (checkForUpgradableCard(AbstractExileCard.elenum.FIRE)) {
                         imageEventText.setDialogOption(options[5]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(3);
-                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, SoulFireDamage.getPowerTips());
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DemonFireDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[5], true);
                     if (checkForUpgradableCard(AbstractExileCard.elenum.LIGHTNING)) {
                         imageEventText.setDialogOption(options[6]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(4);
-                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, LightningDamage.getPowerTips());
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DeathLightningDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[6], true);
                     break;
@@ -231,16 +232,21 @@ public class ResearchCenter extends AbstractExileEvent {
     private static boolean hasCardForElement() {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK &&
-                    ((AbstractExileCard) card).damageModList.size() < 5)
+                    ((AbstractExileCard) card).damageModList.size() < 5) {
+                if (!(card instanceof Dualcast) || ((AbstractExileCard) card).damageModList.size() < 3)
                 return true;
+            }
         return false;
     }
 
     private static boolean checkForUpgradableCard(AbstractExileCard.elenum ele) {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK &&
-                    !((AbstractExileCard) card).damageModList.contains(ele))
-                return true;
+                    !((AbstractExileCard) card).damageModList.contains(ele)) {
+                if (!(card instanceof Dualcast)
+                        || (ele != AbstractExileCard.elenum.FORCE && ele != AbstractExileCard.elenum.ICE))
+                    return true;
+            }
         return false;
     }
 }

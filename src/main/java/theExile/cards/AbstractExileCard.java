@@ -9,6 +9,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
@@ -70,7 +71,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     protected int previewIndex;
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
 
-    private boolean needsArtRefresh = false;
+    protected boolean needsArtRefresh = false;
     protected boolean overrideRawDesc = false;
 
     public boolean magicOneIsDebuff = false;
@@ -88,7 +89,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public static final String COLD_STRING = Ice.CODE;
     public static final String FORCE_STRING = Force.CODE;
-    public static final String SOULFIRE_STRING = SoulFire.CODE;
+    public static final String SOULFIRE_STRING = DemonFire.CODE;
     public static final String DARK_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
 
@@ -106,7 +107,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public AbstractExileCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
-        this(cardID, cost, type, rarity, target, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        this(cardID, cost, type, rarity, target, TheExile.Enums.EXILE_BROWN_COLOR);
     }
 
     public AbstractExileCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
@@ -191,8 +192,9 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
         if (!superBool) {
             beingDiscarded = false;
+            elegant = false;
             return false;
-        } else if (elegant)
+        } else if (elegant && sigil)
             return true;
         else if (!beingDiscarded && sigil) {
             cantUseMessage = thisCardStrings.EXTENDED_DESCRIPTION[9];
@@ -203,12 +205,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (sigil)
+        if (sigil) {
             beingDiscarded = false;
-        elegant = false;
+            elegant = false;
+        }
         onUse(p, m);
         boolean convert = (!exhaust && !purgeOnUse && (type == AbstractCard.CardType.ATTACK || type == AbstractCard.CardType.SKILL)
-                && adp() != null && adp().hasPower(ConvertPower.POWER_ID));
+                && adp() != null && adp().hasPower(ConvertPower.POWER_ID) && !(this instanceof AbstractResonantCard));
         if (convert) {
             Resonance resonance = new Resonance();
             resonance.cards.add((AbstractExileCard) makeStatEquivalentCopy());
@@ -390,13 +393,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (element == ICE)
             DamageModifierManager.addModifier(this, new IceDamage(tips));
         if (element == elenum.FIRE)
-            DamageModifierManager.addModifier(this, new SoulFireDamage(tips));
+            DamageModifierManager.addModifier(this, new DemonFireDamage(tips));
         if (element == elenum.FORCE)
             DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.DARK)
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         if (element == LIGHTNING)
-            DamageModifierManager.addModifier(this, new LightningDamage(tips));
+            DamageModifierManager.addModifier(this, new DeathLightningDamage(tips));
 
         if (this instanceof AbstractResonantCard)
             if (!((AbstractResonantCard) this).resonance.damageMods.contains(element))
@@ -458,11 +461,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                         lower = true;
                 }
                 if (amount < DAMAGE_THRESHOLD_M)
-                    return Enums.DARK;
+                    return Enums.ELDRITCH;
                 else if (amount < DAMAGE_THRESHOLD_L || lower)
-                    return Enums.DARK_M;
+                    return Enums.ELDRITCH_M;
                 else
-                    return Enums.DARK_L;
+                    return Enums.ELDRITCH_L;
             }
             else if (ele == LIGHTNING) {
                 if (amount < DAMAGE_THRESHOLD_M)
@@ -483,8 +486,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             else
                 return Enums.DARK_WAVE_L;
         }
-        else
-            return getSlashEffect();
+        else {
+            int x = MathUtils.random(0, 1);
+            if (x == 1)
+                return getSlashEffect();
+            else
+                return getBluntEffect();
+        }
     }
 
     protected int getDamageForVFX() {

@@ -1,7 +1,7 @@
 {
   "${ModID}:SensoryStone": {
     "TEXT": [
-      "~[#FF8C00]FRUSTRATION~ NL NL #r\"FOR #rYOUR #rCRIMES #rAGAINST #rTHE #rNATURAL #rORDER, #rYOU #rARE #rHEREBY #rBANISHED #rFROM #rTHE #rREALM!\" NL NL As the doors close, you still fail to understand why. As it is, they are all going to die to the #ySpire and its #yBlight. Desperate times call for desperate measures. And not only did they refuse to help you, they #r@EXILED@ you! NL NL A few days later, you regain your resolve. You're determined that the power from your deals will not be wasted, even if no one will ever appreciate you for it."
+      "~[#FF8C00]FRUSTRATION~ NL NL #r\"FOR #rYOUR #rCRIMES #rAGAINST #rTHE #rNATURAL #rORDER, #rYOU #rARE #rHEREBY #rBANISHED #rFROM #rTHE #rREALM!\" NL NL As the doors close, you still fail to understand why. As it is, they are all going to die to the #ySpire and its #yBlight. Desperate times call for desperate measures. And not only did they refuse to help you, they #r@EXILED@ you! Well, you're going to take down the #ySpire anyway, and prove them wrong."
     ]
   },
   "${ModID}:Settings": {
@@ -46,13 +46,13 @@
   },
   "${ModID}:ResonanceConcise": {
     "TEXT": [
-      "Targets ALL enemies.",
-      " NL Deal !D! damage.",
-      " NL Gain !B! Block.",
-      " NL !X1! Ringing.",
-      " NL !X2! ${ModID}:Jinx.",
+      "Targets ALL enemies. NL ",
+      "!D! damage.",
+      "!B! Block.",
+      "!X1! Ringing.",
+      "!X2! ${ModID}:Jinx.",
       " NL Use !CardName!.",
-      " NL Use !X3! cards"
+      " NL Use !X3! cards."
     ]
   }
 }

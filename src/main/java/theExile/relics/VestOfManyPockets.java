@@ -21,7 +21,7 @@ public class VestOfManyPockets extends AbstractExileRelic implements RelicWithBu
     private static final int CYCLE_AMOUNT = 1;
 
     public VestOfManyPockets() {
-        super(ID, AbstractRelic.RelicTier.COMMON, AbstractRelic.LandingSound.FLAT, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, AbstractRelic.RelicTier.COMMON, AbstractRelic.LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = CYCLE_AMOUNT;
         setUpdatedDescription();
     }

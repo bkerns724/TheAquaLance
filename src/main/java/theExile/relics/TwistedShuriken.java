@@ -18,7 +18,7 @@ public class TwistedShuriken extends AbstractExileRelic {
     public TwistedShuriken() {
         super(ID, AbstractRelic.RelicTier.UNCOMMON,
                 AbstractRelic.LandingSound.CLINK,
-                TheExile.Enums.EXILE_BLARPLE_COLOR);
+                TheExile.Enums.EXILE_BROWN_COLOR);
         amount = LOSE_STR_AMT;
         amount2 = NUM_CARDS;
         setUpdatedDescription();

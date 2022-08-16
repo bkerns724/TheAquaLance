@@ -17,7 +17,7 @@ public class ReverseOmamori extends AbstractExileRelic {
     public static final int CURSE_AMOUNT = 2;
 
     public ReverseOmamori() {
-        super(ID, RelicTier.BOSS, LandingSound.FLAT, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = CURSE_AMOUNT;
         cardToPreview = new Clumsy();
         setUpdatedDescription();

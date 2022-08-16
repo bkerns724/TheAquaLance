@@ -5,22 +5,22 @@ import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import theExile.ExileMod;
 import theExile.util.TexLoader;
 
-public class SoulFire extends AbstractCustomIcon {
-    private static SoulFire singleton;
-    public static final String ID = ExileMod.makeID(SoulFire.class.getSimpleName());
-    private static final String TEXTURE_STRING = "exilemodResources/images/damageIcons/SoulFire.png";
+public class DemonFire extends AbstractCustomIcon {
+    private static DemonFire singleton;
+    public static final String ID = ExileMod.makeID(DemonFire.class.getSimpleName());
+    private static final String TEXTURE_STRING = "exilemodResources/images/damageIcons/DemonFire.png";
     private static final Texture TEXTURE =
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "Icon]";
 
-    public SoulFire() {
+    public DemonFire() {
         super(ID, TEXTURE);
     }
 
-    public static SoulFire get()
+    public static DemonFire get()
     {
         if (singleton == null)
-            singleton = new SoulFire();
+            singleton = new DemonFire();
         return singleton;
     }
 }

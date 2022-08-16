@@ -7,14 +7,14 @@ import theExile.powers.JinxPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
 
-public class CursingSlice extends AbstractExileCard {
-    public final static String ID = makeID(CursingSlice.class.getSimpleName());
-    private final static int DAMAGE = 5;
+public class EldritchTentacle extends AbstractExileCard {
+    public final static String ID = makeID(EldritchTentacle.class.getSimpleName());
+    private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 2;
     private final static int MAGIC = 1;
     private final static int COST = 1;
 
-    public CursingSlice() {
+    public EldritchTentacle() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
@@ -25,7 +25,7 @@ public class CursingSlice extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, getSlashEffect());
+        dmg(m);
         applyToEnemy(m, new JinxPower(m, magicNumber));
     }
 

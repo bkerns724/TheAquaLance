@@ -44,7 +44,7 @@ public class ClickableForPower extends ClickableUIElement {
     }
 
     protected void onHover() {
-        if (!adp().powers.contains(power)) {
+        if (adp().powers.contains(power)) {
             float y = TipHelper.calculateToAvoidOffscreen(powerUI.getHoverTips(), (float)InputHelper.mY);
             TipHelper.queuePowerTips((float)InputHelper.mX + 60.0F * Settings.scale, (float)InputHelper.mY + y,
                     powerUI.getHoverTips());

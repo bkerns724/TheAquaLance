@@ -2,14 +2,14 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.CollapsePower;
+import theExile.actions.TripleCrushedAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.atb;
 
 public class Collapse extends AbstractExileCard {
     public final static String ID = makeID(Collapse.class.getSimpleName());
-    private final static int DAMAGE = 16;
+    private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
@@ -24,7 +24,8 @@ public class Collapse extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new CollapsePower(m, this));
+        dmg(m);
+        atb(new TripleCrushedAction(m));
     }
 
     public void trigger(AbstractMonster m) {

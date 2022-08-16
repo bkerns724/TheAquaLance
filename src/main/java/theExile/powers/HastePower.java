@@ -21,7 +21,7 @@ public class HastePower extends AbstractExilePower implements PowerWithButton {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/HasteButton.png";
     private int counter;
-    private final static int CARD_DRAW = 3;
+    private final static int CARD_DRAW = 2;
 
     public HastePower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);

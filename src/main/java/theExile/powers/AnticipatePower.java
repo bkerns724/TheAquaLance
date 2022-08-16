@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import theExile.actions.ChaoticMindAction;
+import theExile.actions.AnticipateAction;
 
 import java.util.ArrayList;
 
@@ -13,14 +13,14 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.atb;
 
-public class ChaoticMindPower extends AbstractExilePower implements PowerWithButton {
-    public static String POWER_ID = makeID(ChaoticMindPower.class.getSimpleName());
+public class AnticipatePower extends AbstractExilePower implements PowerWithButton {
+    public static String POWER_ID = makeID(AnticipatePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/ChaoticMindButton.png";
 
-    public ChaoticMindPower(int amount) {
+    public AnticipatePower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
     }
@@ -32,7 +32,7 @@ public class ChaoticMindPower extends AbstractExilePower implements PowerWithBut
 
     @Override
     public void onButtonPress() {
-        atb(new ChaoticMindAction());
+        atb(new AnticipateAction());
     }
 
     @Override

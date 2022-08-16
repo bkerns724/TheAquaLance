@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.DrawPower;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.applyToSelf;
 
 public class ManaBlood extends AbstractExileCard {
     public final static String ID = makeID(ManaBlood.class.getSimpleName());

@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-import theExile.damagemods.LightningDamage;
+import theExile.damagemods.DeathLightningDamage;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
@@ -34,7 +34,7 @@ public class ExileStaticDischargePower extends AbstractExilePower {
         if (ready && info.owner != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
             ready = false;
             DamageInfo newInfo = new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS);
-            DamageModifierManager.bindDamageMods(info, new DamageModContainer(this, new LightningDamage()));
+            DamageModifierManager.bindDamageMods(info, new DamageModContainer(this, new DeathLightningDamage()));
             att(new RemoveSpecificPowerAction(adp(), adp(), this));
             att(new DamageAction(info.owner, newInfo, AbstractGameAction.AttackEffect.NONE));
             att(new VFXAction(new LightningEffect(info.owner.drawX, info.owner.drawY)));

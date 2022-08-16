@@ -9,9 +9,10 @@ import static theExile.util.Wiz.shuffleIn;
 
 public class Cannon extends AbstractExileCard {
     public final static String ID = makeID(Cannon.class.getSimpleName());
-    private final static int DAMAGE = 10;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 4;
     private final static int MAGIC = 2;
+    private final static int SECOND_MAGIC = 2;
+    private final static int UPGRADE_SECOND = 1;
     private final static int COST = 0;
 
     public Cannon() {
@@ -21,16 +22,18 @@ public class Cannon extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        addModifier(elenum.FORCE);
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
+        addModifier(elenum.LIGHTNING);
         cardsToPreview = new Dazed();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
+        for (int i = 0; i < secondMagic; i++)
+            dmg(m);
         shuffleIn(new Dazed(), magicNumber);
     }
 
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upMagic2(UPGRADE_SECOND);
     }
 }

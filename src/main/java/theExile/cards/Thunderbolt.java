@@ -8,7 +8,7 @@ import static theExile.util.Wiz.getHighestHealthEnemy;
 
 public class Thunderbolt extends AbstractExileCard {
     public final static String ID = makeID(Thunderbolt.class.getSimpleName());
-    private final static int DAMAGE = 12;
+    private final static int DAMAGE = 11;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
 

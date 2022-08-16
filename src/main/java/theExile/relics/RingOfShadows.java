@@ -17,7 +17,7 @@ public class RingOfShadows extends AbstractExileRelic {
     private static final int BLOCK_AMOUNT = 7;
 
     public RingOfShadows() {
-        super(ID, RelicTier.SHOP, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.SHOP, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         cardToPreview = new Hallucination();
         amount = BLOCK_AMOUNT;
         setUpdatedDescription();

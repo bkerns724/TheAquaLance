@@ -2,32 +2,30 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.EquilibriumPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.cardDraw;
-import static theExile.util.Wiz.discard;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToSelf;
 
-public class FrostVortex extends AbstractExileCard {
-    public final static String ID = makeID(FrostVortex.class.getSimpleName());
-    private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 1;
-    private final static int COST = 1;
+public class DeepFreeze extends AbstractExileCard {
+    public final static String ID = makeID(DeepFreeze.class.getSimpleName());
+    private final static int DAMAGE = 14;
+    private final static int UPGRADE_DAMAGE = 4;
+    private final static int COST = 2;
 
-    public FrostVortex() {
+    public DeepFreeze() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.ICE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        cardDraw(magicNumber);
-        discard(magicNumber);
+        applyToSelf(new EquilibriumPower(adp(), 1));
     }
 
     public void upp() {

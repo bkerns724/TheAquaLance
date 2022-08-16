@@ -1,5 +1,6 @@
 package theExile.powers;
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -8,7 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
 
-public class SpiritPressurePower extends AbstractExilePower {
+public class SpiritPressurePower extends AbstractExilePower implements BetterOnApplyPowerPower {
     public static String POWER_ID = makeID(SpiritPressurePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -20,13 +21,14 @@ public class SpiritPressurePower extends AbstractExilePower {
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (target != source && power instanceof JinxPower)
-            power.amount += amount;
+    public boolean betterOnApplyPower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        if (abstractPower instanceof JinxPower)
+            abstractPower.amount += amount;
+        return true;
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        forAllMonstersLiving(m -> applyToEnemy(m, new JinxPower(m, amount)));
+    public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        return stackAmount += amount;
     }
 }

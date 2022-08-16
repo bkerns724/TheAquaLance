@@ -25,7 +25,7 @@ public class MaliciousDagger extends AbstractExileCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int count = getCurseCount();
         for (int i = 0; i < count; i++)
-            dmg(m);
+            dmg(m, getSlashEffect());
     }
 
     private int getCurseCount() {

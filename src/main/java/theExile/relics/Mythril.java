@@ -14,7 +14,7 @@ public class Mythril extends AbstractExileRelic {
     private static final int BLOCK_AMT = 6;
 
     public Mythril() {
-        super(ID, RelicTier.COMMON, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.COMMON, LandingSound.HEAVY, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = BLOCK_AMT;
         setUpdatedDescription();
     }

@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import theExile.ExileMod;
 import theExile.cards.cardUtil.Resonance;
-import theExile.powers.AcousticsPower;
 import theExile.powers.ResonantCostZeroPower;
 
 import static theExile.util.Wiz.adRoom;
@@ -34,7 +34,7 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
             return true;
 
         if (adp() != null && AbstractDungeon.currMapNode != null &&
-                adRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
+                adRoom() != null && adRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
                 adp().hasPower(ResonantCostZeroPower.POWER_ID))
             return true;
 
@@ -44,36 +44,33 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     @Override
     public void applyPowers() {
         baseDamage = resonance.getDamage();
-        baseBlock = resonance.block;
-        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
-            target = CardTarget.ALL_ENEMY;
+        baseBlock = resonance.getBlock();
+        type = resonance.getCardType();
+        target = resonance.getCardTarget();
+        if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
             isMultiDamage = true;
-            initializeDescription();
-        } else if (resonance.isSingleTarget()) {
-            target = CardTarget.ENEMY;
-            isMultiDamage = false;
-            initializeDescription();
-        } else {
-            target = CardTarget.SELF;
-            isMultiDamage = false;
-            initializeDescription();
-        }
         super.applyPowers();
+        initializeDescription();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = resonance.getDamage();
-        baseBlock = resonance.block;
+        baseBlock = resonance.getBlock();
+        type = resonance.getCardType();
+        target = resonance.getCardTarget();
+        if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
+            isMultiDamage = true;
         super.calculateCardDamage(mo);
     }
 
     @Override
     public void initializeDescription() {
-        if (resonance != null && adRoom() != null && adRoom().phase == AbstractRoom.RoomPhase.COMBAT
-                && !AbstractDungeon.gridSelectScreen.forUpgrade) {
+        if (resonance != null && adRoom() != null && adp() != null && !AbstractDungeon.gridSelectScreen.forUpgrade) {
             baseDamage = resonance.getDamage();
             baseBlock = resonance.block;
+            type = resonance.getCardType();
+            target = resonance.getCardTarget();
             rawDescription = resonance.getDescription();
             overrideRawDesc = true;
         } else

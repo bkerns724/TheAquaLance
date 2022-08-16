@@ -29,7 +29,7 @@ public class PlayTopCardElegantAction extends AbstractGameAction {
             return;
 
         if (AbstractDungeon.player.drawPile.isEmpty()) {
-            att(new PlayTopCardAction(null, false));
+            att(new PlayTopCardElegantAction());
             att(new EmptyDeckShuffleAction());
             return;
         }

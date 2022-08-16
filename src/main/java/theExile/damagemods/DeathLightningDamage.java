@@ -18,18 +18,18 @@ import theExile.patches.DamageModsIDPatch;
 import java.util.ArrayList;
 
 @AutoAdd.Ignore
-public class LightningDamage extends AbstractDamageModifier {
-    public static final String ID = ExileMod.makeID(LightningDamage.class.getSimpleName());
+public class DeathLightningDamage extends AbstractDamageModifier {
+    public static final String ID = ExileMod.makeID(DeathLightningDamage.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo lightningTooltip;
     private boolean visibleTips = true;
 
-    public LightningDamage() {
+    public DeathLightningDamage() {
         lightningTooltip = null;
         DamageModsIDPatch.ID.set(this, ID);
     }
 
-    public LightningDamage(boolean visTips) {
+    public DeathLightningDamage(boolean visTips) {
         this();
         visibleTips = visTips;
     }
@@ -68,7 +68,7 @@ public class LightningDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        LightningDamage output = new LightningDamage(visibleTips);
+        DeathLightningDamage output = new DeathLightningDamage(visibleTips);
         output.lightningTooltip = this.lightningTooltip;
         return output;
     }

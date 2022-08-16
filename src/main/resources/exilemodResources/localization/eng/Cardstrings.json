@@ -65,15 +65,15 @@
       "Crushed enemies take more damage from attacks for one turn."
     ]
   },
-  "${ModID}:SoulFireDamage": {
-    "NAME": "Soul Fire",
-    "DESCRIPTION": "Soul Fire [${ModID}:SoulFireIcon]",
+  "${ModID}:DemonFireDamage": {
+    "NAME": "Demon Fire",
+    "DESCRIPTION": "Demon Fire [${ModID}:DemonFireIcon]",
     "EXTENDED_DESCRIPTION": [
       "Ignores Block."
     ]
   },
-  "${ModID}:LightningDamage": {
-    "NAME": "Lightning",
+  "${ModID}:DeathLightningDamage": {
+    "NAME": "Death Lightning",
     "DESCRIPTION": "Lightning [${ModID}:LightningIcon]",
     "EXTENDED_DESCRIPTION": [
       "Does 50% extra damage to #yVulnerable targets."
@@ -81,17 +81,12 @@
   },
   "${ModID}:AcidSpray": {
     "NAME": "Acid Spray",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable.",
-    "FLAVOR": "Not one of my favored elements, but it's great for eating through defenses."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
   },
   "${ModID}:Miasma": {
     "NAME": "Miasma",
     "DESCRIPTION": "Apply !${ModID}:M2! Weak. NL Target deals !M! less damage with attacks this turn.",
-    "FLAVOR": "The victims can never say what exactly was wrong with them, only that it was a horrible feeling."
-  },
-  "${ModID}:FrostVortex": {
-    "NAME": "Frost Vortex",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Discard a card."
+    "FLAVOR": "Every year the new students call it the fart spell and believe they've attained the pinnacle of humor."
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
@@ -106,11 +101,12 @@
   "${ModID}:Thunderbolt": {
     "NAME": "Thunderbolt",
     "DESCRIPTION": "Deal !D! damage to the highest HP enemy.",
-    "FLAVOR": "Why is it called THUNDERbolt when it is the LIGHTNING that kills things?"
+    "FLAVOR": "Lightning spells are excellent at penetrating targets to their core, where the soul resides. Weaving in a small amount of necromantic energy makes these spells much more effective."
   },
-  "${ModID}:ChaoticMind": {
-    "NAME": "Chaotic Mind",
-    "DESCRIPTION": "Draw a card. NL ${ModID}:Activate: You may draw a card and discard a card !M! times."
+  "${ModID}:Anticipate": {
+    "NAME": "Anticipate",
+    "DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card one time.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card !M! times."
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
@@ -123,10 +119,10 @@
     "DESCRIPTION": "Gain !B! Block. NL Discard a card. NL Discard a card next turn.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
-  "${ModID}:CursingSlice": {
-    "NAME": "Cursing Slice",
+  "${ModID}:EldritchTentacle": {
+    "NAME": "Eldritch Tentacle",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx.",
-    "FLAVOR": "I hide a small enchanted dagger up my sleeve as a last defense."
+    "FLAVOR": "A pact with primordial beings lets me drain a target's life force to revitalize my own. These beings get a cut of this life force in exchange."
   },
   "${ModID}:StasisField": {
     "NAME": "Stasis Field",
@@ -156,32 +152,27 @@
   "${ModID}:ColdSigil": {
     "NAME": "Cold Sigil",
     "DESCRIPTION": "Deal !D! damage to the lowest HP enemy.",
-    "FLAVOR": "You can cast a spell without spending mana if you prepare it before hand. Inscribe the appropriate runes on an object and activate it with a command word. Make sure only your voice can activate it."
+    "FLAVOR": "Inscribe the appropriate runes into clay, cast an incantation, and spend the mana before battle. During battle it will cost no mana to activate it, although you will need to throw it accurately."
   },
-  "${ModID}:EarthenSigil": {
-    "NAME": "Earthen Sigil",
+  "${ModID}:HardSigil": {
+    "NAME": "Hard Sigil",
     "DESCRIPTION": "Gain !B! Block.",
-    "FLAVOR": "Sigils are more potent when prepared on a material which reflects the properties of the spell. This is not always practical, unfortunately."
+    "FLAVOR": "Sigils take on the properties of their spells to a minor degree. This sigil is particularly hard to break."
   },
   "${ModID}:CursedSigil": {
     "NAME": "Cursed Sigil",
     "DESCRIPTION": "Apply !M! ${ModID}:Jinx to ALL enemies.",
     "FLAVOR": "A proper sigil can only be activated by a trigger word spoken by its creator. You wouldn't want to curse yourself with a sigil in your pocket, so take great care to enchant it properly."
   },
-  "${ModID}:HotSigil": {
-    "NAME": "Hot Sigil",
+  "${ModID}:BurningSigil": {
+    "NAME": "Burning Sigil",
     "DESCRIPTION": "Deal !D! damage to ALL enemies.",
-    "FLAVOR": "Many sigils take on the properties of the spells stored in them, to a small degree."
+    "FLAVOR": "There are things I do not understand about Demon Fire, but I know that it somehow burns in a supernatural way unrelated to thermodynamics. This allows me to mix in ice spells without losing effectiveness."
   },
   "${ModID}:PulsingSigil": {
     "NAME": "Pulsing Sigil",
-    "DESCRIPTION": "Add a random resonant card to hand. NL It costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Add a random upgraded resonant card to hand. NL It costs 0 this turn."
-  },
-  "${ModID}:IcySigil": {
-    "NAME": "Icy Sigil",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Deal !M! more damage for each buff you have.",
-    "FLAVOR": "Carrying such a cold sigil around can be very uncomfortable, but it's worth it."
+    "DESCRIPTION": "Add a random ${ModID}:Resonant card to hand. NL It costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Add a random Upgraded ${ModID}:Resonant card to hand. NL It costs 0 this turn."
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
@@ -189,8 +180,7 @@
   },
   "${ModID}:SquirmingSigil": {
     "NAME": "Squirming Sigil",
-    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL If Fatal, heal !M! HP.",
-    "FLAVOR": "The old ones grow stronger with the vitality I leech from my enemies. And I get a cut."
+    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL If Fatal, heal !M! HP."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
@@ -200,7 +190,7 @@
   "${ModID}:TinglingSigil": {
     "NAME": "Tingling Sigil",
     "DESCRIPTION": "Lose !${ModID}:M2! HP. NL Gain [E] [E]. NL Draw !M! cards.",
-    "FLAVOR": "Casting from your life force hurts, but you don't have any life force if someone runs your face through with a sword."
+    "FLAVOR": "Casting from your life force hurts, but you won't have any life force if once runs your face through with a sword."
   },
   "${ModID}:SharpNoise": {
     "NAME": "Sharp Noise",
@@ -225,8 +215,8 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
   },
-  "${ModID}:RepeatedCurse": {
-    "NAME": "Repeated Curse",
+  "${ModID}:BadVibes": {
+    "NAME": "Bad Vibes",
     "DESCRIPTION": "Apply !M! ${ModID}:Jinx.",
     "FLAVOR": "A personal favorite of mine. If the enemy has a lot of bad luck, everything you cast is more likely to be effective."
   },
@@ -250,14 +240,13 @@
   },
   "${ModID}:WellPrepared": {
     "NAME": "Well Prepared",
-    "DESCRIPTION": "Draw !M! cards. NL Discard a card.",
-    "FLAVOR": "You have to ALWAYS be prepared. You never know when you will be ambushed."
+    "DESCRIPTION": "Draw !M! cards. NL Discard a card."
   },
   "${ModID}:ManaBlood": {
     "NAME": "Mana Blood",
     "DESCRIPTION": "At the start of your turn, gain [E] and draw a card.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, gain [E] and draw a card.",
-    "FLAVOR": "If you inject the right reagents, you can become more powerful. I was called foolish for improving myself this way."
+    "FLAVOR": "If you inject the right reagents into your veins, you can become much more powerful. I was called foolish for improving myself this way."
   },
   "${ModID}:Haste": {
     "NAME": "Haste",
@@ -276,7 +265,7 @@
   },
   "${ModID}:ConsumeSouls": {
     "NAME": "Consume Souls",
-    "DESCRIPTION": "Whenever a non-minion enemy dies, gain !M! Max HP.",
+    "DESCRIPTION": "Whenever you cause Fatal damage, gain !M! Max HP.",
     "FLAVOR": "Oh man, I'm glad no one discovered I could do this. I'd probably be executed instead of exiled."
   },
   "${ModID}:IceBrambles": {
@@ -303,7 +292,7 @@
   "${ModID}:Debilitate": {
     "NAME": "Debilitate",
     "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! ${ModID}:Crushed and ${ModID}:Frostbite.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! ${ModID}:Crushed, ${ModID}:Frostbite and Poison."
+    "FLAVOR": "My favorite spell."
   },
   "${ModID}:EnchantedDagger": {
     "NAME": "EnchantedDagger",
@@ -317,16 +306,17 @@
   "${ModID}:Grease": {
     "NAME": "Grease",
     "DESCRIPTION": "Target takes +50% damage from the next attack. NL Discard a card.",
-    "UPGRADE_DESCRIPTION": "Target takes +50% damage from the !M! attacks. NL Discard a card.",
+    "UPGRADE_DESCRIPTION": "Target takes +50% damage from the next !M! attacks. NL Discard a card.",
     "FLAVOR": "Quick and easy to cast. A good setup for a stronger spell."
   },
-  "${ModID}:Divination": {
-    "NAME": "Divination",
-    "DESCRIPTION": "Scry !M!. NL Draw a card. NL Discard a card."
+  "${ModID}:Run": {
+    "NAME": "Run",
+    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards.",
+    "FLAVOR": "Magic is superior to physical prowess, but they aren't mutually exclusive. Staying in shape still has value."
   },
   "${ModID}:Vitality": {
     "NAME": "Vitality",
-    "DESCRIPTION": "Whenever you discard a status card, exhaust it and draw a card."
+    "DESCRIPTION": "Whenever you discard a Status card, Exhaust it and draw a card."
   },
   "${ModID}:Concentrate": {
     "NAME": "Concentrate",
@@ -348,27 +338,21 @@
   },
   "${ModID}:SpiritLeech": {
     "NAME": "Spirit Leech",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP.",
-    "FLAVOR": "Another spell that I'm quite glad no one caught me casting."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:SackOfDebris": {
     "NAME": "Sack Of Debris",
     "DESCRIPTION": "Discard your hand. NL Deal !D! damage to a random enemy for each card discarded.",
-    "FLAVOR": "It's not just the spells you know, it's how you use them. Small sharp metal objects in a bag aren't particularly deadly. Neither is a propulsion spell. But if you combine them, they are very deadly."
+    "FLAVOR": "It's not just the spells you know, it's how you use them. Small sharp metal objects in a bag aren't particularly deadly. Neither is a propulsion spell. But if you combine them..."
   },
   "${ModID}:DreadfulFinale": {
     "NAME": "Dreadful Finale",
-    "DESCRIPTION": "If you end your turn with no cards in hand, ALL enemies lose !M! Strength that turn.",
-    "FLAVOR": "Not a grand finish, but staying alive is very practical."
+    "DESCRIPTION": "If you end your turn with no cards in hand, ALL enemies lose !M! Strength that turn."
   },
   "${ModID}:Study": {
     "NAME": "Study",
-    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand. It costs 1 less that turn.",
+    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand. It costs 0 that turn.",
     "FLAVOR": "I didn't get to be a badass by sitting around on the couch all day."
-  },
-  "${ModID}:FrigidBlast": {
-    "NAME": "Frigid Blast",
-    "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile."
   },
   "${ModID}:TargetWeakness": {
     "NAME": "Target Weakness",
@@ -377,17 +361,33 @@
   },
   "${ModID}:Cannon": {
     "NAME": "Cannon",
-    "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile.",
+    "DESCRIPTION": "Deal !D! damage !${ModID}:M2! times. NL Shuffle !M! *Dazed into your draw pile.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
+  },
+  "${ModID}:DeepFreeze": {
+    "NAME": "Deep Freeze",
+    "DESCRIPTION": "Deal !D! damage. NL Retain your hand this turn."
+  },
+  "${ModID}:Push": {
+    "NAME": "Push",
+    "DESCRIPTION": "Gain !B! Block. NL Shuffle a *Wound into your draw pile."
+  },
+  "${ModID}:Dualcast": {
+    "NAME": "Dual Cast",
+    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Deal !D! [${ModID}:ForceIcon] damage. NL Discard a card."
+  },
+  "${ModID}:SpinningSigil": {
+    "NAME": "Spinning Sigil",
+    "DESCRIPTION": "Deal !D! damage to the highest hp enemy. NL Draw a card. NL Discard a card."
   },
   "${ModID}:ManaBurst": {
     "NAME": "Mana Burst",
     "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E] and draw a card.",
-    "FLAVOR": "Sigils are prepared ahead of time with your mana, and then your mana recharges. You can even add more mana than the enchantment needs and absorb it back when it is used."
+    "FLAVOR": "If you add more mana than necessary into the crafting process, you can get some back when you activate it."
   },
-  "${ModID}:ThunderStrike": {
-    "NAME": "Thunder Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Discard !M! cards next turn."
+  "${ModID}:LightningBlast": {
+    "NAME": "Lightning Blast",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Discard !M! cards next turn."
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
@@ -404,36 +404,28 @@
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you would take damage this turn, take !M! less.",
-    "FLAVOR": "I prefer to get out of the way. But this is effective if you are fighting several weaker enemies."
-  },
-  "${ModID}:HideInSleeve": {
-    "NAME": "Hide In Sleeve",
-    "DESCRIPTION": "Add a random ${ModID}:Sigil into your hand. NL Discard it.",
-    "FLAVOR": "So many mundane skills are useful in combination with wizardry."
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you would take damage this turn, take !M! less."
   },
   "${ModID}:BallLightning": {
     "NAME": "Ball Lightning",
     "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs.",
     "EXTENDED_DESCRIPTION" : [
       "Enemy does not have enough debuffs."
-    ],
-    "FLAVOR": "This was a great bargain. I get a powerful spell. The demon gets what is left of their souls."
+    ]
   },
   "${ModID}:Shapeshift": {
     "NAME": "Shapeshift",
-    "DESCRIPTION": "Upon pickup, gain *Injury. NL Gain !M! Strength and !M! Dexterity.",
+    "DESCRIPTION": "Gain !M! Strength and !M! Dexterity. NL Upon pickup, gain *Injury.",
     "FLAVOR": "Well of course it hurts. You rearranged your entire body including the organs. This was an entirely foreseeable consequence."
   },
   "${ModID}:Collapse": {
     "NAME": "Collapse",
-    "DESCRIPTION": "Deal !D! damage next turn.",
+    "DESCRIPTION": "Deal !D! damage. NL Triple the enemy's ${ModID}:Crushed.",
     "FLAVOR": "Force spells were viewed in a better light before people saw the gruesome results of this one."
   },
   "${ModID}:ShadowLance": {
     "NAME": "Shadow Lance",
-    "DESCRIPTION": "Deal !D! damage. NL Steal !M! Strength.",
-    "FLAVOR": "That's some nice power you have there. I think I'll take it."
+    "DESCRIPTION": "Deal !D! damage. NL Steal !M! Strength."
   },
   "${ModID}:Acoustics": {
     "NAME": "Acoustics",
@@ -456,7 +448,7 @@
   "${ModID}:Madness": {
     "NAME": "Madness",
     "DESCRIPTION": "Enemy enters Wrath.",
-    "FLAVOR": "In exchange for letting her observe our conclave, a Watcher taught us how to channel our rage. I decided to instead channel other people's rage."
+    "FLAVOR": "In exchange for letting her observe my conclave, a Watcher taught us how to channel our rage. I decided to instead channel other people's rage."
   },
   "${ModID}:DownwardSpiral": {
     "NAME": "Downward Spiral",
@@ -489,7 +481,7 @@
   "${ModID}:Hallucination": {
     "NAME": "Hallucination",
     "DESCRIPTION": "Unplayable. NL When drawn, randomize the cost of cards in your hand.",
-    "FLAVOR": "Take the poison from a recently slain snecko, and spray it towards your enemy."
+    "FLAVOR": "Store the venom if you slay a snecko. It is highly effective when sprayed at your foes."
   },
   "${ModID}:BadLuck": {
     "NAME": "Bad Luck",
@@ -497,7 +489,6 @@
   },
   "${ModID}:NullElement": {
     "NAME": "Null Element",
-    "DESCRIPTION": "Unplayable. NL Soulbound. NL Ethereal. NL When drawn, lose [E].",
-    "FLAVOR": "Sometimes, as part of a deal with taboo beings, you can gift them the knowledge of a spell straight out of your head. You better get something good in return because the hole it leaves in your mind can be debilitating at unpredictable times."
+    "DESCRIPTION": "Unplayable. NL Soulbound. NL Ethereal. NL When drawn, lose [E]."
   }
 }

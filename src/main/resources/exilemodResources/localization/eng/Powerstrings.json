@@ -13,12 +13,6 @@
       "Draw !A! cards next turn."
     ]
   },
-  "${ModID}:Vitality": {
-    "NAME": "Vitality",
-    "DESCRIPTIONS": [
-      "Your next Block card blocks for !A! more."
-    ]
-  },
   "${ModID}:SteelhidePower": {
     "NAME": "Steelhide",
     "DESCRIPTIONS": [
@@ -28,7 +22,7 @@
   "${ModID}:SoulFlameBarrierPower": {
     "NAME": "Guarding Fire",
     "DESCRIPTIONS": [
-      "Whenever you are attacked this turn, deal !A! [${ModID}:SoulFireIcon] damage back."
+      "Whenever you are attacked this turn, deal !A! [${ModID}:DemonFireIcon] damage back."
     ]
   },
   "${ModID}:ResonatingPower": {
@@ -118,12 +112,6 @@
       "Resonant cards deal !A! more damage per merged card."
     ]
   },
-  "${ModID}:CollapsePower": {
-    "NAME": "Collapsing",
-    "DESCRIPTIONS": [
-      "Will take !A! [${ModID}:ForceIcon] damage next turn."
-    ]
-  },
   "${ModID}:GreasePower": {
     "NAME": "Greased",
     "DESCRIPTIONS": [
@@ -150,8 +138,8 @@
       "Whenever you a #ySigil is played, play the top card of your deck."
     ]
   },
-  "${ModID}:ChaoticMindPower": {
-    "NAME": "Chaotic Mind",
+  "${ModID}:AnticipatePower": {
+    "NAME": "Anticipate",
     "DESCRIPTIONS": [
       "Activate to draw a card and discard a card. !A! use left.",
       "Activate to draw a card and discard a card. !A! uses left."
@@ -207,7 +195,7 @@
       "Once per turn, you can use Golem Punch or Frost Breath.",
       "!A! times per turn, you can use Golem Punch or Frost Breath.",
       "Golem Punch",
-      "Deal 30 [${}:ForceIcon] damage to a random enemy."
+      "Deal 30 [${ModID}:ForceIcon] damage to a random enemy."
     ]
   },
   "${ModID}:GolemFrostPower": {
@@ -216,7 +204,7 @@
       "SHOULD NOT BE SEEN",
       "SHOULD NOT BE SEEN",
       "Frost Breath",
-      "Deal 20 [${}:IceIcon] damage to ALL enemies."
+      "Deal 20 [${ModID}:IceIcon] damage to ALL enemies."
     ]
   },
   "${ModID}:DecayPower": {
@@ -264,7 +252,7 @@
     ]
   },
   "${ModID}:VitalityPower": {
-    "NAME": "Study",
+    "NAME": "Vitality",
     "DESCRIPTIONS": [
       "Whenever you would discard a status, exhaust it and draw a card.",
       "Whenever you would discard a status, exhaust it and draw !A! cards."

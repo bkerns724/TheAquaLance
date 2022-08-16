@@ -19,7 +19,7 @@ public class EtherealConverter extends AbstractExileRelic implements RelicWithBu
     private static final String textureString = "exilemodResources/images/ui/ConverterButton.png";
 
     public EtherealConverter() {
-        super(ID, RelicTier.RARE, LandingSound.MAGICAL, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.RARE, LandingSound.MAGICAL, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

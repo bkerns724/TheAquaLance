@@ -15,7 +15,7 @@ public class HexedStaff extends AbstractExileRelic {
     private static final int BONUS_PERCENT = (int)(BONUS_MULT*100);
 
     public HexedStaff() {
-        super(ID, RelicTier.SPECIAL, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.SPECIAL, LandingSound.HEAVY, TheExile.Enums.EXILE_BROWN_COLOR);
         cardToPreview = new Wrath();
         amount = BONUS_PERCENT;
         setUpdatedDescription();

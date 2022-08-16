@@ -11,7 +11,7 @@ public class TatteredCloak extends AbstractExileRelic {
     public static final String ID = makeID(TatteredCloak.class.getSimpleName());
 
     public TatteredCloak() {
-        super(ID, RelicTier.RARE, LandingSound.FLAT, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.RARE, LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

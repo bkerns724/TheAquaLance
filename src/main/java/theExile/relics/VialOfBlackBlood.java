@@ -15,7 +15,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     public static final int SELF_DAMAGE = 2;
 
     public VialOfBlackBlood() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = SELF_DAMAGE;
         setUpdatedDescription();
     }

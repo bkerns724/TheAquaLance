@@ -21,7 +21,7 @@ public class EyeballStaff extends AbstractExileRelic implements RelicWithButton 
     public static final int SCRY_AMOUNT = 4;
 
     public EyeballStaff() {
-        super(ID, RelicTier.RARE, LandingSound.SOLID, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.RARE, LandingSound.SOLID, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = SCRY_AMOUNT;
         setUpdatedDescription();
     }

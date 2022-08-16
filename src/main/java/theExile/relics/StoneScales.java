@@ -19,7 +19,7 @@ public class StoneScales extends AbstractExileRelic implements RelicWithButton {
     public static final int STONESKIN_AMOUNT = 2;
 
     public StoneScales() {
-        super(ID, RelicTier.UNCOMMON, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.UNCOMMON, LandingSound.HEAVY, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = STONESKIN_AMOUNT;
         setUpdatedDescription();
     }

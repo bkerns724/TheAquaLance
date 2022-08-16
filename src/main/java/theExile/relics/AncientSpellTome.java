@@ -22,7 +22,7 @@ public class AncientSpellTome extends AbstractExileRelic {
     private boolean cardsSelected = true;
 
     public AncientSpellTome() {
-        super(ID, RelicTier.SHOP, LandingSound.HEAVY, TheExile.Enums.EXILE_BLARPLE_COLOR);
+        super(ID, RelicTier.SHOP, LandingSound.HEAVY, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 
