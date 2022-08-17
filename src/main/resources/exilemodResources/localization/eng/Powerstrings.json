@@ -109,7 +109,7 @@
   "${ModID}:SharpNoisePower": {
     "NAME": "Sharp Noise",
     "DESCRIPTIONS": [
-      "Resonant cards deal !A! damage per resonance card."
+      "Resonant cards deal !A! damage per Resonance."
     ]
   },
   "${ModID}:AcousticsPower": {
@@ -137,10 +137,10 @@
       "Takes 50% more damage from Attacks when #yWeakened."
     ]
   },
-  "${ModID}:TempHPOnHitPower": {
-    "NAME": "Life Leech",
+  "${ModID}:DrainingStrikesPower": {
+    "NAME": "Draining Strikes",
     "DESCRIPTIONS": [
-      "Gain !A! #yTemporary #yHP whenever you strike a target."
+      "Whenever an attack deals unblocked damage, gain !A! Temporary_HP."
     ]
   },
   "${ModID}:JinxPower": {
@@ -149,12 +149,18 @@
       "When debuffed with another debuff, this creature will lose !A! HP."
     ]
   },
+  "${ModID}:NoceboPower": {
+    "NAME": "Nocebo",
+    "DESCRIPTIONS": [
+      "This doesn't do anything."
+    ]
+  },
   "${ModID}:HastePower": {
     "NAME": "Haste",
     "DESCRIPTIONS": [
       "Once per turn, you may spend [E] to draw 3 cards.",
       "!A! times per turn, you may spend [E] to draw 3 cards.",
-      "You may spend [E] to draw 3 cards."
+      "Spend [E] to draw 3 cards."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
@@ -181,7 +187,7 @@
       "Once per turn, you can use Golem Punch or Frost Breath.",
       "!A! times per turn, you can use Golem Punch or Frost Breath.",
       "Golem Punch",
-      "Deal 30 [${ModID}:ForceIcon] damage to a random enemy."
+      "Spend [E] to deal 30 [${ModID}:ForceIcon] damage to a random enemy."
     ]
   },
   "${ModID}:GolemFrostPower": {
@@ -190,7 +196,7 @@
       "SHOULD NOT BE SEEN",
       "SHOULD NOT BE SEEN",
       "Frost Breath",
-      "Deal 20 [${ModID}:IceIcon] damage to ALL enemies."
+      "Spend [E] to deal 20 [${ModID}:IceIcon] damage to ALL enemies."
     ]
   },
   "${ModID}:DecayPower": {
@@ -210,12 +216,6 @@
     "DESCRIPTIONS": [
       "Whenever you are attacked, deal damage back equal to the number of the attacker's unique debuffs.",
       "Whenever you are attacked, deal damage back equal to !A! times the number of the attacker's unique debuffs."
-    ]
-  },
-  "${ModID}:SpiritLeechPower": {
-    "NAME": "Spirit Leech",
-    "DESCRIPTIONS": [
-      "Gain !A! #yTemporary #yHP whenever you attack this enemy."
     ]
   },
   "${ModID}:SpiritPressurePower": {

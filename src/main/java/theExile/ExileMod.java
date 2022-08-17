@@ -377,7 +377,7 @@ public class ExileMod implements
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_EXILE);
         BaseMod.addPotion(UnicornBlood.class, Color.WHITE.cpy(), null, null, UnicornBlood.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(VampiricPoison.class, Color.LIME, null, null, VampiricPoison.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(VoidPoison.class, Color.LIME, null, null, VoidPoison.POTION_ID, THE_EXILE);
         BaseMod.addPotion(SteelhidePotion.class, Color.GRAY.cpy(), null, null, SteelhidePotion.POTION_ID, THE_EXILE);
     }
 }

@@ -279,10 +279,6 @@
     "NAME": "Phantom Mace",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "${ModID}:Harmony": {
-    "NAME": "Harmony",
-    "DESCRIPTION": "${ModID}:Resonant cards gain !M! block per ${ModID}:resonance."
-  },
   "${ModID}:Dispel": {
     "NAME": "Dispel",
     "DESCRIPTION": "Remove ALL of your debuffs. NL Gain !M! Artifact.",
@@ -292,6 +288,10 @@
     "NAME": "Void Ball",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
+  "${ModID}:DrainingStrikes": {
+    "NAME": "Draining Strikes",
+    "DESCRIPTION": "Whenever an attack deals unblocked damage, gain !M! Temporary_HP."
+  },
   "${ModID}:Debilitate": {
     "NAME": "Debilitate",
     "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! ${ModID}:Crushed and ${ModID}:Frostbite.",
@@ -300,6 +300,11 @@
   "${ModID}:EnchantedDagger": {
     "NAME": "EnchantedDagger",
     "DESCRIPTION": "Deal !D! damage. NL Gains all damage types of other cards in your hand."
+  },
+  "${ModID}:Nocebo": {
+    "NAME": "Nocebo",
+    "DESCRIPTION": "Deal !D! damage. NL Apply *Nocebo !M! time. NL *Nocebo is a debuff that does nothing.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply *Nocebo !M! times. NL *Nocebo is a debuff that does nothing."
   },
   "${ModID}:Enfeeble": {
     "NAME": "Enfeeble",
@@ -337,10 +342,6 @@
     "NAME": "Sick Burn",
     "DESCRIPTION": "{@@}Deal !D! damage. NL Apply !M! Poison.",
     "FLAVOR": "I got to name this spell. I'm quite proud of it."
-  },
-  "${ModID}:SpiritLeech": {
-    "NAME": "Spirit Leech",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy, gain 1 Temporary_HP."
   },
   "${ModID}:SackOfDebris": {
     "NAME": "Sack Of Debris",
@@ -431,7 +432,7 @@
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Reduce damage taken by !M!. NL ${ModID}:Activate: Deal !${ModID}:M2! [${ModID}:ForceIcon] damage to a random enemy or Deal !${ModID}:M3! [${ModID}:IceIcon] damage to ALL enemies.",
+    "DESCRIPTION": "Take !M! less damage from attacks. NL ${ModID}:Activate: Once per turn you may use ${ModID}:Golem\u00a0Punch or ${ModID}:Frost\u00a0Breath.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:SadisticGlee": {

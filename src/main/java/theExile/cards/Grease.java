@@ -5,8 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
-import static theExile.util.Wiz.discard;
+import static theExile.util.Wiz.*;
 
 public class Grease extends AbstractExileCard {
     public final static String ID = makeID(Grease.class.getSimpleName());
@@ -15,7 +14,7 @@ public class Grease extends AbstractExileCard {
     private final static int COST = 0;
 
     public Grease() {
-        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
     }
 
     @Override
@@ -25,7 +24,7 @@ public class Grease extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
+        forAllMonstersLiving(mon -> applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false)));
         discard(1);
     }
 

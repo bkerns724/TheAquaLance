@@ -34,9 +34,11 @@ public class IceBrambles extends AbstractExileCard {
             baseDamage += magicNumber;
         super.calculateCardDamage(mo);
         baseDamage = temp;
+        isDamageModified = baseDamage != damage;
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UPGRADE_DAMAGE);
     }
 }

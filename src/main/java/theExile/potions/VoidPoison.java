@@ -1,21 +1,22 @@
 package theExile.potions;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.EnvenomPower;
 import theExile.ExileMod;
-import theExile.powers.SiphoningPower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToSelf;
 
-public class VampiricPoison extends AbstractExilePotion {
-    public static final String POTION_ID = makeID(VampiricPoison.class.getSimpleName());
+public class VoidPoison extends AbstractExilePotion {
+    public static final String POTION_ID = makeID(VoidPoison.class.getSimpleName());
     public static final int DEFAULT_POTENCY = 1;
     public static final PotionRarity RARITY = ExileMod.Enums.EVENT;
     public static final PotionSize SIZE = PotionSize.T;
     public static final boolean IS_THROWN = false;
     public static final boolean TARGET_REQUIRED = false;
 
-    public VampiricPoison() {
+    public VoidPoison() {
         super(POTION_ID, RARITY, SIZE, PotionColor.ENERGY,
                 IS_THROWN, TARGET_REQUIRED, DEFAULT_POTENCY);
     }
@@ -25,6 +26,6 @@ public class VampiricPoison extends AbstractExilePotion {
     }
 
     public void use(AbstractCreature target) {
-        applyToSelf(new SiphoningPower(potency));
+        applyToSelf(new EnvenomPower(adp(), potency));
     }
 }

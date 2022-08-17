@@ -34,11 +34,11 @@
     ],
     "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },
-  "${ModID}:VampiricPoison": {
-    "NAME": "Vampiric Poison",
+  "${ModID}:VoidPoison": {
+    "NAME": "Void Poison",
     "DESCRIPTIONS": [
-      "Whenever you deal unblocked attack damage, apply !P! Siphon. Siphoned creatures take [${ModID}:EldritchIcon] damage at the start of their turn."
+      "Whenever you deal unblocked attack damage, apply !P! Poison."
     ],
-    "FLAVOR": "Brutally efficient."
+    "FLAVOR": "Dilute it with 5 gallons of water, dip the head of your staff in it, and your spells become poisonous."
   }
 }

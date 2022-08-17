@@ -44,7 +44,6 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     @Override
     public void applyPowers() {
         baseDamage = resonance.getDamage();
-        baseBlock = resonance.getBlock();
         type = resonance.getCardType();
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
@@ -56,7 +55,6 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = resonance.getDamage();
-        baseBlock = resonance.getBlock();
         type = resonance.getCardType();
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
@@ -68,7 +66,6 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     public void initializeDescription() {
         if (resonance != null && adRoom() != null && adp() != null && !AbstractDungeon.gridSelectScreen.forUpgrade) {
             baseDamage = resonance.getDamage();
-            baseBlock = resonance.getBlock();
             type = resonance.getCardType();
             target = resonance.getCardTarget();
             rawDescription = resonance.getDescription();

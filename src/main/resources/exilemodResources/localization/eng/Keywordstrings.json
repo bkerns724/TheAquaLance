@@ -18,6 +18,34 @@
     "DESCRIPTION": "Activated relics do not have a passive effect. They have an effect when their button is clicked."
   },
   {
+    "PROPER_NAME": "Golem\u00a0Punch",
+    "NAMES": [
+      "Golem\u00a0Punch",
+      "golem\u00a0Punch",
+      "Golem\u00a0punch",
+      "golem\u00a0punch"
+    ],
+    "DESCRIPTION": "Spend [E] to deal 30 [${ModID}:ForceIcon] damage to a random enemy."
+  },
+  {
+    "PROPER_NAME": "Frost\u00a0Breath",
+    "NAMES": [
+      "Frost\u00a0Breath",
+      "frost\u00a0Breath",
+      "Frost\u00a0breath",
+      "frost\u00a0breath"
+    ],
+    "DESCRIPTION": "Spend [E] to deal 20 [${ModID}:IceIcon] damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Activated",
+    "NAMES": [
+      "Activated",
+      "activated"
+    ],
+    "DESCRIPTION": "Activated relics do not have a passive effect. They have an effect when their button is clicked."
+  },
+  {
     "PROPER_NAME": "Activate",
     "NAMES": [
       "Activate",

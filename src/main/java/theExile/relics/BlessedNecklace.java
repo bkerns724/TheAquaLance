@@ -17,7 +17,7 @@ import static theExile.util.Wiz.atb;
 public class BlessedNecklace extends AbstractExileRelic implements RelicWithButton {
     public static final String ID = makeID(BlessedNecklace.class.getSimpleName());
     private static final String textureString = "exilemodResources/images/ui/BlessedButton.png";
-    public static final int BLOCK_AMOUNT = 8;
+    public static final int BLOCK_AMOUNT = 6;
 
     public BlessedNecklace() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);

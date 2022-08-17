@@ -61,13 +61,10 @@ public class Resonance {
 
     public void resonanceEffectsSub(AbstractResonantCard card, AbstractMonster m) {
         card.baseDamage = getDamage();
-        card.baseBlock = getBlock();
         card.calculateCardDamage(m);
 
         if (card.baseDamage > 0)
             card.dmg(m);
-        if (card.baseBlock > 0)
-            card.blck();
         if (ringing > 0)
             applyToEnemy(m, new RingingPower(m, ringing));
         if (jinx > 0)
@@ -129,8 +126,6 @@ public class Resonance {
         else
             builder = new StringBuilder();
 
-        if (getBlock() > 0)
-            builder.append(uiStrings.TEXT[2]);
         if (ringing > 0) {
             if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
                 builder.append(uiStrings.TEXT[4].replace("!X1!", String.valueOf(ringing)));
@@ -147,7 +142,7 @@ public class Resonance {
             if (cycle == 1)
                 builder.append(uiStrings.TEXT[7]);
             else
-                builder.append(uiStrings.TEXT[8].replace("!X3!", String.valueOf(jinx)));
+                builder.append(uiStrings.TEXT[8].replace("!X3!", String.valueOf(cycle)));
         }
         for (AbstractCard card : cards)
             builder.append(uiStrings.TEXT[9].replace("!CardName!", yellowString(card.name)));
@@ -164,17 +159,9 @@ public class Resonance {
             builder.append(uiStringsConcise.TEXT[1]);
             spaceCount++;
         }
-        if (getBlock() > 0) {
-            if (spaceCount == 1)
-                builder.append(" ");
-            builder.append(uiStringsConcise.TEXT[2]);
-            spaceCount++;
-        }
 
         if (ringing > 0) {
-            if (spaceCount == 2)
-                builder.append(" NL ");
-            else if (spaceCount == 1)
+            if (spaceCount == 1)
                 builder.append(" ");
             builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(ringing)));
             spaceCount++;
@@ -182,16 +169,16 @@ public class Resonance {
         if (jinx > 0) {
             if (spaceCount == 2)
                 builder.append(" NL ");
-            else if (spaceCount % 2 == 1)
+            else if (spaceCount == 1)
                 builder.append(" ");
             builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(jinx)));
         }
         if (cycle > 0) {
-            if (spaceCount % 2 == 0 && spaceCount > 0)
+            if (spaceCount == 2)
                 builder.append(" NL ");
             else if (spaceCount % 2 == 1)
                 builder.append(" ");
-            builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(jinx)));
+            builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(cycle)));
         }
 
         if (cards.size() < 3)
@@ -239,16 +226,6 @@ public class Resonance {
         if (pow != null)
             bonus = amount * pow.amount;
         return (damage + bonus);
-    }
-
-    public int getBlock() {
-        HarmonyPower pow = null;
-        if (adp() != null)
-            pow = (HarmonyPower) adp().getPower(HarmonyPower.POWER_ID);
-        if (pow != null)
-            return amount * pow.amount;
-        else
-            return 0;
     }
 
     public static String yellowString(String input) {

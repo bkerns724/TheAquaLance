@@ -211,12 +211,12 @@ public class TheExile extends CustomPlayer {
 
     @Override
     public Color getCardRenderColor() {
-        return Color.PURPLE.cpy();
+        return Color.BROWN.cpy();
     }
 
     @Override
     public Color getSlashAttackColor() {
-        return Color.PURPLE.cpy();
+        return Color.BROWN.cpy();
     }
 
     @Override
