@@ -1,6 +1,7 @@
 package theExile.util;
 
 import basemod.patches.whatmod.WhatMod;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,7 +24,8 @@ public class CardArtRoller {
             ReskinInfo r = infos.computeIfAbsent(key, key2 -> {
                 Random rng = new Random((long) c.cardID.hashCode());
                 ArrayList<AbstractCard> cardsList = Wiz.getCardsMatchingPredicate(s -> s.type == c.type && WhatMod.findModName(s.getClass()) == null, true);
-                String q = Wiz.getRandomItem(cardsList, rng).cardID;
+                String q;
+                q = Wiz.getRandomItem(cardsList, rng).cardID;
                 return new ReskinInfo(q, rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.randomBoolean());
             });
             TextureAtlas.AtlasRegion t = CardLibrary.getCard(r.origCardID).portrait;
@@ -33,6 +35,7 @@ public class CardArtRoller {
             SpriteBatch sb = new SpriteBatch();
             sb.setProjectionMatrix(og.combined);
             ImageHelper.beginBuffer(fb);
+            sb.setColor(Color.WHITE.cpy());
             sb.begin();
             sb.draw(t, -125, -95);
             sb.end();
@@ -52,6 +55,7 @@ public class CardArtRoller {
         SpriteBatch sb = new SpriteBatch();
         sb.setProjectionMatrix(og.combined);
         ImageHelper.beginBuffer(fb);
+        sb.setColor(Color.WHITE.cpy());
         sb.begin();
         sb.draw(t, -250, -190);
         sb.end();
@@ -59,6 +63,8 @@ public class CardArtRoller {
         t.flip(false, true);
         TextureRegion a = ImageHelper.getBufferTexture(fb);
         return a.getTexture();
+
+        //Actually, I think this can work. Because SingleCardViewPopup disposes of the texture, we can just make a new one every time.
     }
 
     public static class ReskinInfo {

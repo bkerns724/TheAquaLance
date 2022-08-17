@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import theExile.actions.PlayTopCardElegantAction;
+import theExile.actions.PlayRandomCardDiscardAction;
 import theExile.cards.AbstractExileCard;
 
 import static theExile.ExileMod.makeID;
@@ -26,7 +26,7 @@ public class ElegantEtchingPower extends AbstractExilePower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card instanceof AbstractExileCard && ((AbstractExileCard) card).sigil) {
             flash();
-            atb(new PlayTopCardElegantAction());
+            atb(new PlayRandomCardDiscardAction());
         }
     }
 }

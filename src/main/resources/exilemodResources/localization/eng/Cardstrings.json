@@ -159,8 +159,8 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "Sigils take on the properties of their spells to a minor degree. This sigil is particularly hard to break."
   },
-  "${ModID}:CursedSigil": {
-    "NAME": "Cursed Sigil",
+  "${ModID}:JinxedSigil": {
+    "NAME": "Jinxed Sigil",
     "DESCRIPTION": "Apply !M! ${ModID}:Jinx to ALL enemies.",
     "FLAVOR": "A proper sigil can only be activated by a trigger word spoken by its creator. You wouldn't want to curse yourself with a sigil in your pocket, so take great care to enchant it properly."
   },
@@ -194,7 +194,7 @@
   },
   "${ModID}:SharpNoise": {
     "NAME": "Sharp Noise",
-    "DESCRIPTION": "Cards deal !M! more damage per ${ModID}:resonance."
+    "DESCRIPTION": "${ModID}:Resonant cards deal !M! damage per ${ModID}:resonance."
   },
   "${ModID}:SonicAgony": {
     "NAME": "Sonic Agony",
@@ -210,10 +210,9 @@
     "NAME": "Lethal Chimes",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "${ModID}:Disorient": {
-    "NAME": "Disorient",
-    "DESCRIPTION": "Gain !B! Block.",
-    "FLAVOR": "If you can last long enough to cast several resonant spells, you've won against even the toughest foes."
+  "${ModID}:Beat": {
+    "NAME": "Beat",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Discard a card."
   },
   "${ModID}:BadVibes": {
     "NAME": "Bad Vibes",
@@ -270,7 +269,7 @@
   },
   "${ModID}:IceBrambles": {
     "NAME": "Ice Brambles",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Frostbite deals double damage to the enemy this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! extra damage if the enemy intends to attack."
   },
   "${ModID}:StoneDaggers": {
     "NAME": "Stone Daggers",
@@ -278,7 +277,11 @@
   },
   "${ModID}:PhantomMace": {
     "NAME": "Phantom Mace",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${ModID}:Harmony": {
+    "NAME": "Harmony",
+    "DESCRIPTION": "${ModID}:Resonant cards gain !M! block per ${ModID}:resonance."
   },
   "${ModID}:Dispel": {
     "NAME": "Dispel",
@@ -305,8 +308,7 @@
   },
   "${ModID}:Grease": {
     "NAME": "Grease",
-    "DESCRIPTION": "Target takes +50% damage from the next attack. NL Discard a card.",
-    "UPGRADE_DESCRIPTION": "Target takes +50% damage from the next !M! attacks. NL Discard a card.",
+    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies NL Discard a card.",
     "FLAVOR": "Quick and easy to cast. A good setup for a stronger spell."
   },
   "${ModID}:Run": {
@@ -345,10 +347,6 @@
     "DESCRIPTION": "Discard your hand. NL Deal !D! damage to a random enemy for each card discarded.",
     "FLAVOR": "It's not just the spells you know, it's how you use them. Small sharp metal objects in a bag aren't particularly deadly. Neither is a propulsion spell. But if you combine them..."
   },
-  "${ModID}:DreadfulFinale": {
-    "NAME": "Dreadful Finale",
-    "DESCRIPTION": "If you end your turn with no cards in hand, ALL enemies lose !M! Strength that turn."
-  },
   "${ModID}:Study": {
     "NAME": "Study",
     "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand. It costs 0 that turn.",
@@ -361,7 +359,7 @@
   },
   "${ModID}:Cannon": {
     "NAME": "Cannon",
-    "DESCRIPTION": "Deal !D! damage !${ModID}:M2! times. NL Shuffle !M! *Dazed into your draw pile.",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Shuffle !${ModID}:M2! *Dazed into your draw pile.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
   },
   "${ModID}:DeepFreeze": {
@@ -370,7 +368,7 @@
   },
   "${ModID}:Push": {
     "NAME": "Push",
-    "DESCRIPTION": "Gain !B! Block. NL Shuffle a *Wound into your draw pile."
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! cards next turn."
   },
   "${ModID}:Dualcast": {
     "NAME": "Dual Cast",
@@ -396,11 +394,11 @@
   },
   "${ModID}:CurseArmor": {
     "NAME": "Curse Armor",
-    "DESCRIPTION": "Apply !M! Vulnerable and !${ModID}:M2! ${ModID}:Crushed."
+    "DESCRIPTION": "Apply !M! Vulnerable and !${ModID}:M2! ${ModID}:Jinx."
   },
   "${ModID}:ChillWind": {
     "NAME": "Chill Wind",
-    "DESCRIPTION": "Apply !M! Weak. NL Apply ${ModID}:Frostbite equal to ${ModID}:Jinx."
+    "DESCRIPTION": "Apply !M! Weak. NL Draw !${ModID}:M2! cards."
   },
   "${ModID}:Stoneskin": {
     "NAME": "Stoneskin",
@@ -433,7 +431,7 @@
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Reduce damage taken by !M!. NL ${ModID}:Activate: Deal !${ModID}:M2! [${ModID}:ForceIcon] damage. NL ${ModID}:Activate: Deal !${ModID}:M3! [${ModID}:IceIcon] damage to ALL enemies.",
+    "DESCRIPTION": "Reduce damage taken by !M!. NL ${ModID}:Activate: Deal !${ModID}:M2! [${ModID}:ForceIcon] damage to a random enemy or Deal !${ModID}:M3! [${ModID}:IceIcon] damage to ALL enemies.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:SadisticGlee": {
@@ -443,7 +441,7 @@
   },
   "${ModID}:ElegantEtching": {
     "NAME": "Elegant Etching",
-    "DESCRIPTION": "Whenever a ${ModID}:Sigil is played, play the top card of your deck. NL ${ModID}:Sigils can be played this way."
+    "DESCRIPTION": "Whenever a ${ModID}:Sigil is played, play a random playable card from your discard pile."
   },
   "${ModID}:Madness": {
     "NAME": "Madness",

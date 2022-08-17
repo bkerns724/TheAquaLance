@@ -21,14 +21,8 @@ public class FrostbitePower extends AbstractExilePower {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner == owner) {
             flash();
-            //AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, ExileMod.Enums.ICE));
-            if (owner.hasPower(DoubleFrostPower.POWER_ID)) {
-                att(new DamageAction(owner, new DamageInfo(owner, amount * 2,
-                                DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
-            } else {
-                att(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
-                        AbstractGameAction.AttackEffect.NONE, true));
-            }
+            att(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
+                    AbstractGameAction.AttackEffect.NONE, true));
             if (!owner.hasPower(StasisFieldPower.POWER_ID)) {
                 if (amount > 1)
                     reducePower(1);

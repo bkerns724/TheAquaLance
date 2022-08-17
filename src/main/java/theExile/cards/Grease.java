@@ -2,7 +2,7 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.GreasePower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
@@ -25,7 +25,7 @@ public class Grease extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToEnemy(m, new GreasePower(m, magicNumber));
+        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
         discard(1);
     }
 

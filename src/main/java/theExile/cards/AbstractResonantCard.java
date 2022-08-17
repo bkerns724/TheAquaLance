@@ -68,7 +68,7 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     public void initializeDescription() {
         if (resonance != null && adRoom() != null && adp() != null && !AbstractDungeon.gridSelectScreen.forUpgrade) {
             baseDamage = resonance.getDamage();
-            baseBlock = resonance.block;
+            baseBlock = resonance.getBlock();
             type = resonance.getCardType();
             target = resonance.getCardTarget();
             rawDescription = resonance.getDescription();

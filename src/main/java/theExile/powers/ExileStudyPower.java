@@ -1,6 +1,5 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -17,22 +16,16 @@ public class ExileStudyPower extends AbstractExilePower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static int offset = 0;
 
-    public ExileStudyPower(int amount, int amount2) {
+    public ExileStudyPower(int amount) {
         super(POWER_ID, PowerType.BUFF, true, adp(), amount);
         this.name = NAME;
         ID = POWER_ID + offset++;
-        isTwoAmount = true;
-        this.amount2 = amount2;
         updateDescription();
     }
 
     @Override
     public void atStartOfTurnPostDraw() {
-        if (amount > 1)
-            atb(new ReducePowerAction(owner, owner, this, 1));
-        else {
-            atb(new StudyDiscoveryAction(amount2));
-            atb(new RemoveSpecificPowerAction(owner, owner, this));
-        }
+        atb(new StudyDiscoveryAction(amount));
+        atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

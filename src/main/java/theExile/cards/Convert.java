@@ -26,6 +26,6 @@ public class Convert extends AbstractExileCard {
     }
 
     public void upp() {
-        selfRetain = true;
+        exhaust = false;
     }
 }

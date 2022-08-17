@@ -109,21 +109,7 @@
   "${ModID}:SharpNoisePower": {
     "NAME": "Sharp Noise",
     "DESCRIPTIONS": [
-      "Resonant cards deal !A! more damage per merged card."
-    ]
-  },
-  "${ModID}:GreasePower": {
-    "NAME": "Greased",
-    "DESCRIPTIONS": [
-      "Takes +50% damage from the next attack.",
-      "Takes +50% damage from the next !A! attacks."
-    ]
-  },
-  "${ModID}:DoubleFrostPower": {
-    "NAME": "Ice Brambles",
-    "DESCRIPTIONS": [
-      "Target takes double damage from #yFrostbite this turn.",
-      "Target takes double damage from #yFrostbite for !A! turns."
+      "Resonant cards deal !A! damage per resonance card."
     ]
   },
   "${ModID}:AcousticsPower": {
@@ -135,7 +121,7 @@
   "${ModID}:ElegantEtchingPower": {
     "NAME": "ElegantEtching",
     "DESCRIPTIONS": [
-      "Whenever you a #ySigil is played, play the top card of your deck."
+      "Whenever you play a #ySigil, play a random playable card from you discard pile."
     ]
   },
   "${ModID}:AnticipatePower": {
@@ -256,12 +242,6 @@
     "DESCRIPTIONS": [
       "Whenever you would discard a status, exhaust it and draw a card.",
       "Whenever you would discard a status, exhaust it and draw !A! cards."
-    ]
-  },
-  "${ModID}:DreadfulFinalePower": {
-    "NAME": "Dreadful Finale",
-    "DESCRIPTIONS": [
-      "Whenever you end your turn with no cards in hand, ALL enemies lose !A! #yStrength that turn."
     ]
   },
   "${ModID}:SadisticGleePower": {

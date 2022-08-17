@@ -41,7 +41,9 @@
       " NL ALL enemies lose !X1! HP at the start of their turns.",
       " NL Apply !X2! ${ModID}:Jinx.",
       " NL Apply !X2! ${ModID}:Jinx to ALL enemies.",
-      " NL Use !CardName!"
+      " NL Draw a card and discard a card.",
+      " NL Draw !X3! cards and discard !X3! cards.",
+      " NL Use !CardName!."
     ]
   },
   "${ModID}:ResonanceConcise": {
@@ -51,8 +53,9 @@
       "!B! Block.",
       "!X1! Ringing.",
       "!X2! ${ModID}:Jinx.",
+      "!X3! Card Cycle.",
       " NL Use !CardName!.",
-      " NL Use !X3! cards."
+      " NL Use !X4! cards."
     ]
   }
 }

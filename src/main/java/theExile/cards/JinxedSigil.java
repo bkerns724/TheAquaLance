@@ -8,12 +8,12 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
 import static theExile.util.Wiz.forAllMonstersLiving;
 
-public class CursedSigil extends AbstractExileCard {
-    public final static String ID = makeID(CursedSigil.class.getSimpleName());
+public class JinxedSigil extends AbstractExileCard {
+    public final static String ID = makeID(JinxedSigil.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
 
-    public CursedSigil() {
+    public JinxedSigil() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 

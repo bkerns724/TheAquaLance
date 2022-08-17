@@ -78,7 +78,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public boolean magicTwoIsDebuff = false;
 
     public boolean beingDiscarded = false;
-    public boolean elegant = false;
 
     public ArrayList<elenum> damageModList = new ArrayList<>();
     public boolean sigil = false;
@@ -190,12 +189,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean superBool = super.canUse(p, m);
 
-        if (!superBool) {
-            beingDiscarded = false;
-            elegant = false;
+        if (!superBool)
             return false;
-        } else if (elegant && sigil)
-            return true;
         else if (!beingDiscarded && sigil) {
             cantUseMessage = thisCardStrings.EXTENDED_DESCRIPTION[9];
             return false;
@@ -205,10 +200,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (sigil) {
+        if (sigil)
             beingDiscarded = false;
-            elegant = false;
-        }
         onUse(p, m);
         boolean convert = (!exhaust && !purgeOnUse && (type == AbstractCard.CardType.ATTACK || type == AbstractCard.CardType.SKILL)
                 && adp() != null && adp().hasPower(ConvertPower.POWER_ID) && !(this instanceof AbstractResonantCard));
@@ -379,6 +372,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                 }
             }
         }
+    }
+
+    public String cardArtCopy() {
+        return null;
     }
 
     protected float getRotationTimeNeeded() {

@@ -2,17 +2,13 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
 
 public class PhantomMace extends AbstractExileCard {
     public final static String ID = makeID(PhantomMace.class.getSimpleName());
-    private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int DAMAGE = 14;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
     public PhantomMace() {
@@ -22,17 +18,14 @@ public class PhantomMace extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
-        upMagic(UPGRADE_MAGIC);
     }
 }

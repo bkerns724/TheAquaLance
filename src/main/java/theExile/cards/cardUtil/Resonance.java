@@ -18,9 +18,9 @@ import static theExile.util.Wiz.*;
 public class Resonance {
     public int amount = 1;
     public int damage = 0;
-    public int block = 0;
     public int ringing = 0;
     public int jinx = 0;
+    public int cycle = 0;
     public ArrayList<elenum> damageMods = new ArrayList<>();
     public ArrayList<AbstractExileCard> cards = new ArrayList<>();
 
@@ -72,6 +72,10 @@ public class Resonance {
             applyToEnemy(m, new RingingPower(m, ringing));
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
+        if (cycle > 0) {
+            cardDraw(cycle);
+            discard(cycle);
+        }
     }
 
     public void toPower() {
@@ -82,7 +86,7 @@ public class Resonance {
     public void merge(Resonance inRes) {
         amount += inRes.amount;
         damage += inRes.damage;
-        block += inRes.block;
+        cycle += inRes.cycle;
         ringing += inRes.ringing;
         jinx += inRes.jinx;
         cards.addAll(inRes.cards);
@@ -95,12 +99,12 @@ public class Resonance {
         int count = 1;
         if (getDamage() > 0)
             count++;
-        if (block > 0)
-            count++;
         if (ringing > 0)
             count += 2;
         if (jinx > 0)
             count++;
+        if (cycle > 0)
+            count += 2;
         count += cards.size();
 
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
@@ -112,7 +116,7 @@ public class Resonance {
                 count++;
         }
 
-        if (count > 5)
+        if (count > 6)
             return getConciseDescription();
 
         StringBuilder builder;
@@ -139,8 +143,14 @@ public class Resonance {
             else
                 builder.append(uiStrings.TEXT[5].replace("!X2!", String.valueOf(jinx)));
         }
+        if (cycle > 0) {
+            if (cycle == 1)
+                builder.append(uiStrings.TEXT[7]);
+            else
+                builder.append(uiStrings.TEXT[8].replace("!X3!", String.valueOf(jinx)));
+        }
         for (AbstractCard card : cards)
-            builder.append(uiStrings.TEXT[7].replace("!CardName!", yellowString(card.name)));
+            builder.append(uiStrings.TEXT[9].replace("!CardName!", yellowString(card.name)));
 
         return builder.toString();
     }
@@ -176,12 +186,19 @@ public class Resonance {
                 builder.append(" ");
             builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(jinx)));
         }
+        if (cycle > 0) {
+            if (spaceCount % 2 == 0 && spaceCount > 0)
+                builder.append(" NL ");
+            else if (spaceCount % 2 == 1)
+                builder.append(" ");
+            builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(jinx)));
+        }
 
         if (cards.size() < 3)
             for (AbstractCard card : cards)
-                builder.append(uiStringsConcise.TEXT[5].replace("!CardName!", yellowString(card.name)));
+                builder.append(uiStringsConcise.TEXT[6].replace("!CardName!", yellowString(card.name)));
         else
-            builder.append(uiStringsConcise.TEXT[6].replace("!X3!", String.valueOf(cards.size())));
+            builder.append(uiStringsConcise.TEXT[7].replace("!X4!", String.valueOf(cards.size())));
 
         return builder.toString();
     }
@@ -225,15 +242,13 @@ public class Resonance {
     }
 
     public int getBlock() {
-        int bonus = 0;
-        /*
-        SharpNoisePower pow = null;
+        HarmonyPower pow = null;
         if (adp() != null)
-            pow = (SharpNoisePower) adp().getPower(SharpNoisePower.POWER_ID);
+            pow = (HarmonyPower) adp().getPower(HarmonyPower.POWER_ID);
         if (pow != null)
-            bonus = amount * pow.amount;
-        */
-        return (block + bonus);
+            return amount * pow.amount;
+        else
+            return 0;
     }
 
     public static String yellowString(String input) {
@@ -252,9 +267,9 @@ public class Resonance {
         Resonance copy = new Resonance();
         copy.amount = amount;
         copy.damage = damage;
-        copy.block = block;
         copy.ringing = ringing;
         copy.jinx = jinx;
+        copy.cycle = cycle;
         for (AbstractExileCard inCard : cards)
             copy.cards.add((AbstractExileCard)inCard.makeStatEquivalentCopy());
         copy.damageMods.addAll(damageMods);
