@@ -6,14 +6,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.getDebuffCount;
 
-public class BallLightning extends AbstractExileCard {
-    public final static String ID = makeID(BallLightning.class.getSimpleName());
-    private final static int DAMAGE = 25;
-    private final static int UPGRADE_DAMAGE = 7;
+public class BoltFromTheBlue extends AbstractExileCard {
+    public final static String ID = makeID(BoltFromTheBlue.class.getSimpleName());
+    private final static int DAMAGE = 30;
+    private final static int UPGRADE_DAMAGE = 5;
     private final static int MAGIC = 5;
-    private final static int COST = 0;
+    private final static int COST = 1;
 
-    public BallLightning() {
+    public BoltFromTheBlue() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 

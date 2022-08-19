@@ -180,7 +180,7 @@
   },
   "${ModID}:SquirmingSigil": {
     "NAME": "Squirming Sigil",
-    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL If Fatal, heal !M! HP."
+    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL Deals double damage to minions."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
@@ -221,8 +221,7 @@
   },
   "${ModID}:BrrZerk": {
     "NAME": "BrrZerk",
-    "DESCRIPTION": "Whenever you deal unblocked attack damage, apply !M! ${ModID}:Frostbite.",
-    "FLAVOR": "This difficult technique is not a spell, but a way to alter your other spells to also freeze the target."
+    "DESCRIPTION": "Deal !D! damage !M! times."
   },
   "${ModID}:Convert": {
     "NAME": "Convert",
@@ -256,11 +255,6 @@
     "NAME": "Arcane Beam",
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Only a few have mastered this spell. Those who do are revered."
-  },
-  "${ModID}:ChaoticFlurry": {
-    "NAME": "Chaotic Flurry",
-    "DESCRIPTION": "{@@}Play the top !M! {!M!|1=card|@=cards} of your draw pile.",
-    "FLAVOR": "This is a spell that casts more spells. Powerful, but the results are... unpredictable."
   },
   "${ModID}:ConsumeSouls": {
     "NAME": "Consume Souls",
@@ -316,11 +310,6 @@
     "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies NL Discard a card.",
     "FLAVOR": "Quick and easy to cast. A good setup for a stronger spell."
   },
-  "${ModID}:Run": {
-    "NAME": "Run",
-    "DESCRIPTION": "Draw !M! cards. NL Discard !M! cards.",
-    "FLAVOR": "Magic is superior to physical prowess, but they aren't mutually exclusive. Staying in shape still has value."
-  },
   "${ModID}:Vitality": {
     "NAME": "Vitality",
     "DESCRIPTION": "Whenever you discard a Status card, Exhaust it and draw a card."
@@ -360,7 +349,7 @@
   },
   "${ModID}:Cannon": {
     "NAME": "Cannon",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Shuffle !${ModID}:M2! *Dazed into your draw pile.",
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
   },
   "${ModID}:DeepFreeze": {
@@ -384,8 +373,8 @@
     "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E] and draw a card.",
     "FLAVOR": "If you add more mana than necessary into the crafting process, you can get some back when you activate it."
   },
-  "${ModID}:LightningBlast": {
-    "NAME": "Lightning Blast",
+  "${ModID}:ThunderStrike": {
+    "NAME": "Thunder Strike",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Discard !M! cards next turn."
   },
   "${ModID}:Flare": {
@@ -405,8 +394,8 @@
     "NAME": "Stoneskin",
     "DESCRIPTION": "Gain !B! Block. NL Whenever you would take damage this turn, take !M! less."
   },
-  "${ModID}:BallLightning": {
-    "NAME": "Ball Lightning",
+  "${ModID}:BoltFromTheBlue": {
+    "NAME": "Bolt From the Blue",
     "DESCRIPTION": "Deal !D! damage. NL Can only target an enemy with at least !M! debuffs.",
     "EXTENDED_DESCRIPTION" : [
       "Enemy does not have enough debuffs."
@@ -419,7 +408,7 @@
   },
   "${ModID}:Collapse": {
     "NAME": "Collapse",
-    "DESCRIPTION": "Deal !D! damage. NL Triple the enemy's ${ModID}:Crushed.",
+    "DESCRIPTION": "Deal !D! damage. NL This deals 1 damage for every !M! health the target is missing.",
     "FLAVOR": "Force spells were viewed in a better light before people saw the gruesome results of this one."
   },
   "${ModID}:ShadowLance": {
@@ -430,9 +419,21 @@
     "NAME": "Acoustics",
     "DESCRIPTION": "Resonant cards now target ALL enemies."
   },
+  "${ModID}:ConstantPractice": {
+    "NAME": "Constant Practice",
+    "DESCRIPTION": "Choose !M! cards in your discard pile and return them to your hand. They cost 1 less this combat."
+  },
+  "${ModID}:Focused": {
+    "NAME": "Focused",
+    "DESCRIPTION": "Once per turn you can put a card from your hand on top of your draw pile."
+  },
+  "${ModID}:Confusion": {
+    "NAME": "Confusion",
+    "DESCRIPTION": "Gain !B! Block per enemy."
+  },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Take !M! less damage from attacks. NL ${ModID}:Activate: Once per turn you may use ${ModID}:Golem\u00a0Punch or ${ModID}:Frost\u00a0Breath.",
+    "DESCRIPTION": "Take !M! less damage from attacks. NL ${ModID}:Activate: Once per turn you may spend [E] to deal !${ModID}:M2! damage to a random enemy.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:SadisticGlee": {
@@ -448,11 +449,6 @@
     "NAME": "Madness",
     "DESCRIPTION": "Enemy enters Wrath.",
     "FLAVOR": "In exchange for letting her observe my conclave, a Watcher taught us how to channel our rage. I decided to instead channel other people's rage."
-  },
-  "${ModID}:DownwardSpiral": {
-    "NAME": "Downward Spiral",
-    "DESCRIPTION": "Double the enemy's ${ModID}:Jinx.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's ${ModID}:Jinx."
   },
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",
@@ -477,14 +473,13 @@
     "NAME": "Wrath",
     "DESCRIPTION": "Unplayable. NL When drawn, ALL enemies gain !M! Strength."
   },
-  "${ModID}:Hallucination": {
-    "NAME": "Hallucination",
-    "DESCRIPTION": "Unplayable. NL When drawn, randomize the cost of cards in your hand.",
-    "FLAVOR": "Store the venom if you slay a snecko. It is highly effective when sprayed at your foes."
-  },
   "${ModID}:BadLuck": {
     "NAME": "Bad Luck",
     "DESCRIPTION": "Unplayable. NL Soulbound. NL When drawn, discard the highest cost card in your hand."
+  },
+  "${ModID}:Whispers": {
+    "NAME": "Whispers",
+    "DESCRIPTION": "Unplayable. NL If this is in your hand at the end of this turn, draw !M! less card next turn."
   },
   "${ModID}:NullElement": {
     "NAME": "Null Element",

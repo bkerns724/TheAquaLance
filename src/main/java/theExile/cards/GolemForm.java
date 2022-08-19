@@ -2,8 +2,7 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.GolemFrostPower;
-import theExile.powers.GolemPunchPower;
+import theExile.powers.GolemPower;
 import theExile.powers.SteelhidePower;
 
 import static theExile.ExileMod.makeID;
@@ -15,7 +14,6 @@ public class GolemForm extends AbstractExileCard {
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     public final static int SECOND_MAGIC = 30;
-    public final static int THIRD_MAGIC = 20;
     private final static int COST = 3;
 
     public GolemForm() {
@@ -25,13 +23,11 @@ public class GolemForm extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
-        baseThirdMagic = thirdMagic = THIRD_MAGIC;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToSelf(new SteelhidePower(adp(), magicNumber));
-        applyToSelf(new GolemPunchPower(1));
-        applyToSelf(new GolemFrostPower(1));
+        applyToSelf(new GolemPower(1));
     }
 
     public void upp() {

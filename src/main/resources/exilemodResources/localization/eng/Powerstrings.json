@@ -69,12 +69,6 @@
       "Gain #b !A! additional [E] next turn."
     ]
   },
-  "${ModID}:BrrZerkPower": {
-    "NAME": "Brr Zerk",
-    "DESCRIPTIONS": [
-      "Whenever deal unblocked attack damage, apply !A! #yFrostbite."
-    ]
-  },
   "${ModID}:RingingPower": {
     "NAME": "Ringing",
     "DESCRIPTIONS": [
@@ -181,28 +175,24 @@
       "Takes !A! % extra damage from non-Attacks."
     ]
   },
-  "${ModID}:GolemPunchPower": {
+  "${ModID}:GolemPower": {
     "NAME": "Golem",
     "DESCRIPTIONS": [
-      "Once per turn, you can use Golem Punch or Frost Breath.",
-      "!A! times per turn, you can use Golem Punch or Frost Breath.",
-      "Golem Punch",
-      "Spend [E] to deal 30 [${ModID}:ForceIcon] damage to a random enemy."
-    ]
-  },
-  "${ModID}:GolemFrostPower": {
-    "NAME": "SHOULD NOT BE SEEN",
-    "DESCRIPTIONS": [
-      "SHOULD NOT BE SEEN",
-      "SHOULD NOT BE SEEN",
-      "Frost Breath",
-      "Spend [E] to deal 20 [${ModID}:IceIcon] damage to ALL enemies."
+      "Once per turn, you can spend [E] to deal 30 damage to a random enemy.",
+      "!A! times per turn, you can spend [E] to deal 30 damage to a random enemy."
     ]
   },
   "${ModID}:DecayPower": {
     "NAME": "Decay",
     "DESCRIPTIONS": [
       "Takes !A! extra damage from everything."
+    ]
+  },
+  "${ModID}:FocusedPower": {
+    "NAME": "Focused",
+    "DESCRIPTIONS": [
+      "Once per turn you may put a card from your hand on top of your draw pile.",
+      "!A! times per turn you may put a card from your hand on top of your draw pile."
     ]
   },
   "${ModID}:ExileStaticDischargePower": {

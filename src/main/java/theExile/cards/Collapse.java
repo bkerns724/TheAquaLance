@@ -2,15 +2,14 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.actions.TripleCrushedAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
 
 public class Collapse extends AbstractExileCard {
     public final static String ID = makeID(Collapse.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 4;
+    private final static int DAMAGE = 0;
+    private final static int MAGIC = 5;
+    private final static int UPGRADE_MAGIC = -1;
     private final static int COST = 2;
 
     public Collapse() {
@@ -20,20 +19,22 @@ public class Collapse extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
-        atb(new TripleCrushedAction(m));
     }
 
-    public void trigger(AbstractMonster m) {
-        calculateCardDamage(m);
-        dmg(m);
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        damage = (mo.maxHealth - mo.currentHealth)/magicNumber;
+        isDamageModified = damage == baseDamage;
     }
 
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UPGRADE_MAGIC);
     }
 }

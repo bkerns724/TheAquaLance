@@ -10,7 +10,7 @@ import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class JinxedSigil extends AbstractExileCard {
     public final static String ID = makeID(JinxedSigil.class.getSimpleName());
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
 
     public JinxedSigil() {

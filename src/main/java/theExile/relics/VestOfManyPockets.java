@@ -17,7 +17,7 @@ import static theExile.util.Wiz.discard;
 
 public class VestOfManyPockets extends AbstractExileRelic implements RelicWithButton {
     public static final String ID = makeID(VestOfManyPockets.class.getSimpleName());
-    private static final String textureString = "exilemodResources/images/ui/CycleButton.png";
+    private static final String textureString = "exilemodResources/images/ui/VestButton.png";
     private static final int CYCLE_AMOUNT = 1;
 
     public VestOfManyPockets() {

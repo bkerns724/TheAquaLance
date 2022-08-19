@@ -10,12 +10,12 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import static theExile.util.Wiz.adp;
 
-public class BlackSigilAction extends AbstractGameAction {
+public class SquirmingSigilAction extends AbstractGameAction {
     private final int healAmount;
     private final DamageInfo info;
     private final AttackEffect effect;
 
-    public BlackSigilAction(AbstractMonster monster, DamageInfo info, int healAmount, AttackEffect effect) {
+    public SquirmingSigilAction(AbstractMonster monster, DamageInfo info, int healAmount, AttackEffect effect) {
         target = monster;
         this.info = info;
         this.healAmount = healAmount;

@@ -11,7 +11,7 @@ import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.ArcaneBeam;
-import theExile.cards.ChaoticFlurry;
+import theExile.cards.Confusion;
 import theExile.cards.ConsumeSouls;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class NeowPatch {
                 ArrayList<AbstractExileCard> list = new ArrayList<>();
                 list.add(new ArcaneBeam());
                 list.add(new ConsumeSouls());
-                list.add(new ChaoticFlurry());
+                list.add(new Confusion());
                 int x = AbstractDungeon.cardRng.random(0, list.size() - 1);
                 AbstractExileCard card = list.get(x);
                 AbstractDungeon.topLevelEffects.add(new ShowCardAndObtainEffect(card.makeCopy(),

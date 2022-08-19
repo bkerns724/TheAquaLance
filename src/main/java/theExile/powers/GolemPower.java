@@ -1,13 +1,12 @@
 package theExile.powers;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import theExile.actions.GolemFrostAction;
+import theExile.actions.GolemPunchAction;
 
 import java.util.ArrayList;
 
@@ -15,16 +14,16 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.atb;
 
-public class GolemFrostPower extends AbstractExilePower implements PowerWithButton, InvisiblePower {
-    public static String POWER_ID = makeID(GolemFrostPower.class.getSimpleName());
+public class GolemPower extends AbstractExilePower implements PowerWithButton {
+    public static String POWER_ID = makeID(GolemPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final String TEXTURE_STRING = "exilemodResources/images/ui/GolemBreathButton.png";
-    private static final int BREATH_DAMAGE = 20;
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/GolemFistButton.png";
+    private static final int PUNCH_DAMAGE = 30;
     public int counter;
 
-    public GolemFrostPower(int amount) {
+    public GolemPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
         counter = amount;
@@ -37,24 +36,21 @@ public class GolemFrostPower extends AbstractExilePower implements PowerWithButt
     }
 
     @Override
+    public int getNumber() {
+        if (counter > 0)
+            return counter;
+        return -1;
+    }
+
+    @Override
     public void atStartOfTurn() {
         counter = amount;
     }
 
     @Override
     public void onButtonPress() {
-        atb(new GolemFrostAction(BREATH_DAMAGE));
+        atb(new GolemPunchAction(PUNCH_DAMAGE));
         counter--;
-        GolemPunchPower pow = (GolemPunchPower)adp().getPower(GolemPunchPower.POWER_ID);
-        if (pow != null)
-            pow.counter--;
-    }
-
-    @Override
-    public int getNumber() {
-        if (counter > 0)
-            return counter;
-        return -1;
     }
 
     @Override

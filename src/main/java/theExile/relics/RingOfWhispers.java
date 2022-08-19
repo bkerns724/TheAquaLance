@@ -6,19 +6,20 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.TheExile;
-import theExile.cards.Hallucination;
+import theExile.cards.Whispers;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.atb;
 
-public class RingOfShadows extends AbstractExileRelic {
-    public static final String ID = makeID(RingOfShadows.class.getSimpleName());
-    private static final int BLOCK_AMOUNT = 7;
+public class RingOfWhispers extends AbstractExileRelic {
+    public static final String ID = makeID(RingOfWhispers.class.getSimpleName());
+    private static final int BLOCK_AMOUNT = 8;
+    private static final int THRESHOLD_FOR_SPAWN = 2;
 
-    public RingOfShadows() {
+    public RingOfWhispers() {
         super(ID, RelicTier.SHOP, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
-        cardToPreview = new Hallucination();
+        cardToPreview = new Whispers();
         amount = BLOCK_AMOUNT;
         setUpdatedDescription();
     }
@@ -31,22 +32,19 @@ public class RingOfShadows extends AbstractExileRelic {
 
     @Override
     public void onEquip() {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Hallucination(), Settings.WIDTH*0.5f,
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Whispers(), Settings.WIDTH*0.5f,
                 Settings.HEIGHT*0.5f));
-        counter = 0;
-
-        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
-            if (c.type == AbstractCard.CardType.CURSE)
-                ++counter;
-        }
     }
 
-    public void onMasterDeckChange() {
-        counter = 0;
+    @Override
+    public boolean canSpawn() {
+        int count = 0;
 
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
             if (c.type == AbstractCard.CardType.CURSE)
-                ++counter;
+                ++count;
         }
+
+        return count >= THRESHOLD_FOR_SPAWN;
     }
 }

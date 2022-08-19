@@ -39,8 +39,7 @@ public class VoidSpirits extends AbstractExileEvent {
     public static final float HEALTH_BUFF = 1f;
     public static final float HEALTH_LOSS_A0 = 0.25f;
     public static final float HEALTH_LOSS_A15 = 0.3f;
-    public static final int CARD_REMOVE_A0 = 4;
-    public static final int CARD_REMOVE_A15 = 3;
+    public static final int CARD_REMOVE = 3;
 
     private CUR_SCREEN screen = CUR_SCREEN.INTRO;
 
@@ -189,8 +188,6 @@ public class VoidSpirits extends AbstractExileEvent {
 
     private static int getCardsRemoved() {
         int x = CardGroup.getGroupWithoutBottledCards(adp().masterDeck.getPurgeableCards()).size();
-        if (AbstractDungeon.ascensionLevel < 15)
-            return Math.min(CARD_REMOVE_A0, x);
-        return Math.min(CARD_REMOVE_A15, x);
+        return Math.min(CARD_REMOVE, x);
     }
 }

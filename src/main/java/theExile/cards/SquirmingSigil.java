@@ -1,14 +1,12 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
 import theExile.ExileMod;
-import theExile.actions.BlackSigilAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.getLowestHealthEnemy;
 
 public class SquirmingSigil extends AbstractExileCard {
     public final static String ID = makeID(SquirmingSigil.class.getSimpleName());
@@ -38,10 +36,15 @@ public class SquirmingSigil extends AbstractExileCard {
 
     @Override
     public void onTarget(AbstractMonster m) {
-        DamageInfo info = new DamageInfo(adp(), damage, damageTypeForTurn);
-        AbstractGameAction.AttackEffect effect = this.getAttackEffect();
+        dmg(m);
+    }
 
-        atb(new BlackSigilAction(m, info, magicNumber, effect));
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        if (mo.hasPower(MinionPower.POWER_ID))
+            damage*=2;
+        isDamageModified = damage != baseDamage;
     }
 
     public void upp() {

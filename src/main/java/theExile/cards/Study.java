@@ -9,10 +9,10 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class Study extends AbstractExileCard {
     public final static String ID = makeID(Study.class.getSimpleName());
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
     private final static int SECOND_MAGIC = 3;
     private final static int UPGRADE_SECOND = 1;
-    private final static int COST = 0;
+    private final static int COST = 1;
 
     public Study() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -24,7 +24,7 @@ public class Study extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new ExileStudyPower(secondMagic));
+        applyToSelf(new ExileStudyPower(magicNumber, secondMagic));
     }
 
     public void upp() {

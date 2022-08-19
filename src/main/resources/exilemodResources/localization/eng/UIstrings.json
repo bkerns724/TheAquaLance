@@ -32,6 +32,18 @@
       "Choose a card."
     ]
   },
+  "${ModID}:ConstantPracticeAction": {
+    "TEXT": [
+      "Choose card to move.",
+      "Choose ",
+      " cards to move."
+    ]
+  },
+  "${ModID}:FocusAction": {
+    "TEXT": [
+      "Choose a card to move."
+    ]
+  },
   "${ModID}:Resonance": {
     "TEXT": [
       "Deal !D! damage.",

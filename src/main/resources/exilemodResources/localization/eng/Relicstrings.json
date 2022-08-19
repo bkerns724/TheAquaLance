@@ -35,11 +35,11 @@
       "At the start of each combat, apply !R! #y${ModID}:Jinx to ALL enemies."
     ]
   },
-  "${ModID}:RingOfShadows": {
-    "NAME": "Ring of Shadows",
+  "${ModID}:RingOfWhispers": {
+    "NAME": "Ring of Whispers",
     "FLAVOR": "The bearers of this ring all slowly went mad.",
     "DESCRIPTIONS": [
-      "Whenever you draw a #yCurse, gain !R! #yBlock. On pickup, obtain #yHallucination."
+      "Whenever you draw a #yCurse, gain !R! #yBlock. On pickup, obtain #yWhispers."
     ]
   },
   "${ModID}:TuningFork": {
