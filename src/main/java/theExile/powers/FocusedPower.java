@@ -45,7 +45,7 @@ public class FocusedPower extends AbstractExilePower implements PowerWithButton 
 
     @Override
     public boolean isButtonDisabled() {
-        return counter > 0;
+        return counter <= 0;
     }
 
     @Override

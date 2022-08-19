@@ -87,7 +87,7 @@ public class ResonantPowerPatch {
         private static class Locator extends SpireInsertLocator {
             private Locator() {}
             public int[] Locate(CtBehavior behavior) throws Exception {
-                Matcher matcher = new Matcher.FieldAccessMatcher(AbstractCard.class, "type");
+                Matcher matcher = new Matcher.FieldAccessMatcher(AbstractCard.class, "purgeOnUse");
                 return LineFinder.findInOrder(behavior, matcher);
             }
         }

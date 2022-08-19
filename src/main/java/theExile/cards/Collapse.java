@@ -29,9 +29,11 @@ public class Collapse extends AbstractExileCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        int temp = baseDamage;
+        baseDamage = (mo.maxHealth - mo.currentHealth)/magicNumber;
         super.calculateCardDamage(mo);
-        damage = (mo.maxHealth - mo.currentHealth)/magicNumber;
-        isDamageModified = damage == baseDamage;
+        baseDamage = temp;
+        isDamageModified = damage != baseDamage;
     }
 
     public void upp() {

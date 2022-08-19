@@ -179,7 +179,9 @@
     "NAME": "Golem",
     "DESCRIPTIONS": [
       "Once per turn, you can spend [E] to deal 30 damage to a random enemy.",
-      "!A! times per turn, you can spend [E] to deal 30 damage to a random enemy."
+      "!A! times per turn, you can spend [E] to deal 30 damage to a random enemy.",
+      "Golem Punch",
+      "You can spend [E] to deal 35 damage to a random enemy."
     ]
   },
   "${ModID}:DecayPower": {

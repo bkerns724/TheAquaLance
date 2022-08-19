@@ -34,14 +34,14 @@
   },
   "${ModID}:ConstantPracticeAction": {
     "TEXT": [
-      "Choose card to move.",
+      "Choose card to put into your hand.",
       "Choose ",
-      " cards to move."
+      " cards to put into your hand."
     ]
   },
   "${ModID}:FocusAction": {
     "TEXT": [
-      "Choose a card to move."
+      "Choose a card to put on top of your draw pile."
     ]
   },
   "${ModID}:Resonance": {

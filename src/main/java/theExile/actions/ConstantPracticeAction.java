@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
 
+import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 
 public class ConstantPracticeAction extends AbstractGameAction {
@@ -81,6 +82,6 @@ public class ConstantPracticeAction extends AbstractGameAction {
     }
 
     static {
-        TEXT = CardCrawlGame.languagePack.getUIString("ConstantPracticeAction").TEXT;
+        TEXT = CardCrawlGame.languagePack.getUIString(makeID("ConstantPracticeAction")).TEXT;
     }
 }

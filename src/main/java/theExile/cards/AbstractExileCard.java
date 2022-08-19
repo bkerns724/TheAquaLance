@@ -200,8 +200,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (sigil)
-            beingDiscarded = false;
         onUse(p, m);
         boolean convert = (!exhaust && !purgeOnUse && (type == AbstractCard.CardType.ATTACK || type == AbstractCard.CardType.SKILL)
                 && adp() != null && adp().hasPower(ConvertPower.POWER_ID) && !(this instanceof AbstractResonantCard));
@@ -214,6 +212,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             resPoof = true;
         } else if (this instanceof AbstractResonantCard)
             ((AbstractResonantCard) this).resonance.toPower();
+        if (sigil)
+            beingDiscarded = false;
     }
 
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
@@ -632,6 +632,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         card.magicOneIsDebuff = magicOneIsDebuff;
         card.magicTwoIsDebuff = magicTwoIsDebuff;
         card.debuffIncrease = debuffIncrease;
+        card.beingDiscarded = beingDiscarded;
 
         card.damageModList.clear();
         DamageModifierManager.clearModifiers(card);

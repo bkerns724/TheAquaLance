@@ -20,6 +20,7 @@ public class BrrZerk extends AbstractExileCard {
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseDamage = DAMAGE;
+        addModifier(elenum.ICE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

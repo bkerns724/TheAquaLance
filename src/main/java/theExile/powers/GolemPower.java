@@ -20,7 +20,7 @@ public class GolemPower extends AbstractExilePower implements PowerWithButton {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/GolemFistButton.png";
-    private static final int PUNCH_DAMAGE = 30;
+    private static final int PUNCH_DAMAGE = 35;
     public int counter;
 
     public GolemPower(int amount) {

@@ -1,5 +1,6 @@
 package theExile.cards;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.SetDontTriggerAction;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -54,8 +55,11 @@ public class Whispers extends CustomCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (dontTriggerOnUseCard)
-            applyToSelfTop(new DrawReductionPower(adp(), magicNumber));
+        if (dontTriggerOnUseCard) {
+            DrawReductionPower power = new DrawReductionPower(adp(), magicNumber);
+            ReflectionHacks.setPrivate(power, DrawReductionPower.class, "justApplied", false);
+            applyToSelfTop(power);
+        }
     }
 
     @Override
