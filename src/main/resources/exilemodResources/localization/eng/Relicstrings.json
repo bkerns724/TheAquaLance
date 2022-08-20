@@ -130,7 +130,7 @@
     "NAME": "Hexed Staff",
     "FLAVOR": "Whenever you hold it, you immediately feel angrier.",
     "DESCRIPTIONS": [
-      "For each #yCurse in your deck, ${ModID}:Jinx damage is increased by !R!%. Upon pickup, obtain [#EFC851]Wrath."
+      "For each #yCurse in your deck, #y${ModID}:Jinx damage is increased by !R!%. Upon pickup, obtain [#EFC851]Wrath."
     ]
   },
   "${ModID}:VoidBracelet": {

@@ -39,9 +39,10 @@
       " cards to put into your hand."
     ]
   },
-  "${ModID}:FocusAction": {
+  "${ModID}:WeaveAction": {
     "TEXT": [
-      "Choose a card to put on top of your draw pile."
+      "Choose a card to exhaust.",
+      "Choose any number of cards to exhaust."
     ]
   },
   "${ModID}:Resonance": {

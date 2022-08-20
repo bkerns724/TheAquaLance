@@ -32,6 +32,10 @@ public class Resonance {
     public void resonanceEffects(AbstractResonantCard card, AbstractMonster m) {
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
             forAllMonstersLiving(mon -> resonanceEffectsSub(card, mon));
+            if (cycle > 0) {
+                cardDraw(cycle);
+                discard(cycle);
+            }
             for (AbstractExileCard inCard : cards) {
                 inCard.beingDiscarded = true;
                 if (inCard.target == AbstractCard.CardTarget.ENEMY || inCard.target == ExileMod.Enums.AUTOAIM_ENEMY)
@@ -49,6 +53,10 @@ public class Resonance {
         }
         else {
             resonanceEffectsSub(card, m);
+            if (cycle > 0) {
+                cardDraw(cycle);
+                discard(cycle);
+            }
             for (AbstractExileCard inCard : cards) {
                 inCard.beingDiscarded = true;
                 if (inCard.canUse(adp(), m)) {
@@ -69,10 +77,6 @@ public class Resonance {
             applyToEnemy(m, new RingingPower(m, ringing));
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
-        if (cycle > 0) {
-            cardDraw(cycle);
-            discard(cycle);
-        }
     }
 
     public void toPower() {
@@ -219,13 +223,9 @@ public class Resonance {
     }
 
     public int getDamage() {
-        int bonus = 0;
-        SharpNoisePower pow = null;
-        if (adp() != null)
-            pow = (SharpNoisePower) adp().getPower(SharpNoisePower.POWER_ID);
-        if (pow != null)
-            bonus = amount * pow.amount;
-        return (damage + bonus);
+        if (damage <= 0)
+            return -1;
+        return damage;
     }
 
     public static String yellowString(String input) {

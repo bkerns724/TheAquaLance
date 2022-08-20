@@ -29,8 +29,8 @@ public class Debilitate extends AbstractExileCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         applyToEnemy(m, new WeakPower(m, magicNumber, false));
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
-        applyToEnemy(m, new FrostbitePower(m, secondMagic));
         applyToEnemy(m, new CrushedPower(m, secondMagic));
+        applyToEnemy(m, new FrostbitePower(m, secondMagic));
     }
 
     public void upp() {

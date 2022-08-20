@@ -19,7 +19,7 @@
   },
   "${ModID}:GenericResonantCard": {
     "NAME": "Resonance",
-    "DESCRIPTION": "Deal !D! damage.",
+    "DESCRIPTION": "I AM BORKED AGAIN.",
     "FLAVOR": "It's like a magic boomerang, except it isn't a boomerang, it just boomerangs back to you like a boomerang."
   },
   "${ModID}:StaffStrike": {
@@ -42,7 +42,7 @@
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yFrostbite for every 3 unblocked damage dealt.",
+      "Apply 1 #yFrostbite for every 2 unblocked damage dealt.",
       "Frostbite",
       "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
     ]
@@ -60,7 +60,7 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yCrushed for every 4 unblocked damage dealt.",
+      "Apply 1 #yCrushed for every 5 unblocked damage dealt.",
       "Crushed",
       "Crushed enemies take more damage from attacks for one turn."
     ]
@@ -130,7 +130,7 @@
   },
   "${ModID}:Combust": {
     "NAME": "Combust",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Vigor."
   },
   "${ModID}:Decay": {
     "NAME": "Decay",
@@ -147,7 +147,8 @@
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
-    "DESCRIPTION": "ALL enemies take 50% extra damage from non-Attacks."
+    "DESCRIPTION": "ALL enemies take 50% extra damage from non-Attacks.",
+    "UPGRADE_DESCRIPTION": "ALL enemies take 65% extra damage from non-Attacks."
   },
   "${ModID}:ColdSigil": {
     "NAME": "Cold Sigil",
@@ -171,30 +172,29 @@
   },
   "${ModID}:PulsingSigil": {
     "NAME": "Pulsing Sigil",
-    "DESCRIPTION": "Add a random ${ModID}:Resonant card to hand. NL It costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Add a random Upgraded ${ModID}:Resonant card to hand. NL It costs 0 this turn."
+    "DESCRIPTION": "Add a random ${ModID}:Resonant card to hand. NL It costs 0 this turn."
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
     "DESCRIPTION": "Deal !D! damage. NL Strength affects this card !M! times."
   },
-  "${ModID}:SquirmingSigil": {
-    "NAME": "Squirming Sigil",
-    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL Deals double damage to minions."
+  "${ModID}:Weave": {
+    "NAME": "Weave",
+    "DESCRIPTION": "Exhaust a card. NL Apply its damage types to the next Exile Attack card you play.",
+    "UPGRADE_DESCRIPTION": "Exhaust any number of cards. NL Apply their damage types to the next Exile Attack card you play."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
     "DESCRIPTION": "ALL enemies lose !M! Strength.",
     "FLAVOR": "Slow is such a useful spell."
   },
-  "${ModID}:TinglingSigil": {
-    "NAME": "Tingling Sigil",
-    "DESCRIPTION": "Lose !${ModID}:M2! HP. NL Gain [E] [E]. NL Draw !M! cards.",
-    "FLAVOR": "Casting from your life force hurts, but you won't have any life force if once runs your face through with a sword."
+  "${ModID}:ConsumeTheWeak": {
+    "NAME": "Consume the Weak",
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each buff you have."
   },
-  "${ModID}:SharpNoise": {
-    "NAME": "Sharp Noise",
-    "DESCRIPTION": "${ModID}:Resonant cards deal !M! damage per ${ModID}:resonance."
+  "${ModID}:Harmony": {
+    "NAME": "Harmony",
+    "DESCRIPTION": "At the end of your turn, gain 1 Block per ${ModID}:Resonance."
   },
   "${ModID}:SonicAgony": {
     "NAME": "Sonic Agony",
@@ -263,7 +263,7 @@
   },
   "${ModID}:IceBrambles": {
     "NAME": "Ice Brambles",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! extra damage if the enemy intends to attack."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Thorns."
   },
   "${ModID}:StoneDaggers": {
     "NAME": "Stone Daggers",
@@ -297,8 +297,7 @@
   },
   "${ModID}:Nocebo": {
     "NAME": "Nocebo",
-    "DESCRIPTION": "Deal !D! damage. NL Apply *Nocebo !M! time. NL *Nocebo is a debuff that does nothing.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply *Nocebo !M! times. NL *Nocebo is a debuff that does nothing."
+    "DESCRIPTION": "Deal !D! damage. NL Apply *Nocebo !M! times. NL *Nocebo is a debuff that does nothing."
   },
   "${ModID}:Enfeeble": {
     "NAME": "Enfeeble",
@@ -373,14 +372,13 @@
     "DESCRIPTION": "The first time you discard a ${ModID}:Sigil each turn, gain [E] and draw a card.",
     "FLAVOR": "If you add more mana than necessary into the crafting process, you can get some back when you activate it."
   },
-  "${ModID}:ThunderStrike": {
-    "NAME": "Thunder Strike",
+  "${ModID}:LightningBlast": {
+    "NAME": "Lightning Blast",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Discard !M! cards next turn."
   },
-  "${ModID}:Flare": {
-    "NAME": "Flare",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! additional Block per debuff amongst ALL enemies.",
-    "FLAVOR": "The aggressive version of they can't catch you if they can't see you."
+  "${ModID}:ShiningSigil": {
+    "NAME": "Shining Sigil",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! additional Block per debuff on ALL enemies."
   },
   "${ModID}:CurseArmor": {
     "NAME": "Curse Armor",
@@ -425,7 +423,7 @@
   },
   "${ModID}:Focused": {
     "NAME": "Focused",
-    "DESCRIPTION": "Once per turn you can put a card from your hand on top of your draw pile."
+    "DESCRIPTION": "${ModID}:Activate: Once per turn you can put a card from your hand on top of your draw pile."
   },
   "${ModID}:Confusion": {
     "NAME": "Confusion",
@@ -443,7 +441,7 @@
   },
   "${ModID}:ElegantEtching": {
     "NAME": "Elegant Etching",
-    "DESCRIPTION": "Whenever a ${ModID}:Sigil is played, play a random playable card from your discard pile."
+    "DESCRIPTION": "Whenever a ${ModID}:Sigil is played, apply !M! ${ModID}:Jinx to ALL enemies."
   },
   "${ModID}:Madness": {
     "NAME": "Madness",
@@ -471,7 +469,7 @@
   },
   "${ModID}:Wrath": {
     "NAME": "Wrath",
-    "DESCRIPTION": "Unplayable. NL When drawn, ALL enemies gain !M! Strength."
+    "DESCRIPTION": "Unplayable. NL Soulbound. NL When drawn, ALL enemies gain !M! Strength."
   },
   "${ModID}:BadLuck": {
     "NAME": "Bad Luck",

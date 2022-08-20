@@ -4,12 +4,10 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import theExile.actions.PlayRandomCardDiscardAction;
 import theExile.cards.AbstractExileCard;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.*;
 
 public class ElegantEtchingPower extends AbstractExilePower {
     public static String POWER_ID = makeID(ElegantEtchingPower.class.getSimpleName());
@@ -26,7 +24,7 @@ public class ElegantEtchingPower extends AbstractExilePower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card instanceof AbstractExileCard && ((AbstractExileCard) card).sigil) {
             flash();
-            atb(new PlayRandomCardDiscardAction());
+            forAllMonstersLiving(mon -> applyToEnemy(mon, new JinxPower(mon, amount)));
         }
     }
 }

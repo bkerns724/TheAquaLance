@@ -8,8 +8,8 @@ import static theExile.ExileMod.makeID;
 public class BrrZerk extends AbstractExileCard {
     public final static String ID = makeID(BrrZerk.class.getSimpleName());
     private final static int DAMAGE = 3;
+    private final static int UPGRADE_DAMAGE = 1;
     private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 3;
 
     public BrrZerk() {
@@ -29,6 +29,6 @@ public class BrrZerk extends AbstractExileCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

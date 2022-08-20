@@ -11,7 +11,7 @@ import static theExile.ExileMod.makeID;
 
 public class HexedStaff extends AbstractExileRelic {
     public static final String ID = makeID(HexedStaff.class.getSimpleName());
-    public static final float BONUS_MULT = 0.25f;
+    public static final float BONUS_MULT = 0.5f;
     private static final int BONUS_PERCENT = (int)(BONUS_MULT*100);
 
     public HexedStaff() {

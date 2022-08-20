@@ -10,7 +10,7 @@ import static theExile.util.Wiz.applyToEnemy;
 public class Nocebo extends AbstractExileCard {
     public final static String ID = makeID(Nocebo.class.getSimpleName());
     private final static int DAMAGE = 5;
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 

@@ -28,7 +28,7 @@
   "${ModID}:ResonatingPower": {
     "NAME": "Resonating",
     "DESCRIPTIONS": [
-      "Adds a #yResonant card to the top of your deck at end of turn turn.",
+      "Adds a #yResonant card to your hand at the start of your next turn.",
       "Resonating Intensifies"
     ]
   },
@@ -103,7 +103,7 @@
   "${ModID}:SharpNoisePower": {
     "NAME": "Sharp Noise",
     "DESCRIPTIONS": [
-      "Resonant cards deal !A! damage per Resonance."
+      "Resonant cards deal !A! additional damage per Resonance."
     ]
   },
   "${ModID}:AcousticsPower": {
@@ -115,7 +115,20 @@
   "${ModID}:ElegantEtchingPower": {
     "NAME": "ElegantEtching",
     "DESCRIPTIONS": [
-      "Whenever you play a #ySigil, play a random playable card from you discard pile."
+      "Whenever you play a #ySigil, apply !A! #yJinx to ALL enemies."
+    ]
+  },
+  "${ModID}:HarmonyPower": {
+    "NAME": "Harmony",
+    "DESCRIPTIONS": [
+      "At the end of your turn gain !A! #yBlock per #yResonance."
+    ]
+  },
+  "${ModID}:WeavePower": {
+    "NAME": "Weave",
+    "DESCRIPTIONS": [
+      "The next Exile Attack card you play gains !TYPE! damage type.",
+      "The next Exile Attack card you play gains !TYPE! damage types."
     ]
   },
   "${ModID}:AnticipatePower": {

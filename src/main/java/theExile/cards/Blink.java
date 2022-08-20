@@ -10,7 +10,7 @@ import static theExile.util.Wiz.discard;
 
 public class Blink extends AbstractExileCard {
     public final static String ID = makeID(Blink.class.getSimpleName());
-    private final static int BLOCK = 12;
+    private final static int BLOCK = 11;
     private final static int UPGRADE_BLOCK = 3;
     private final static int MAGIC = 1;
     private final static int COST = 1;

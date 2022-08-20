@@ -37,6 +37,7 @@ public class EnchantedDagger extends AbstractExileCard {
             if (card instanceof AbstractExileCard && card != this)
                 addModifier(((AbstractExileCard) card).damageModList, true);
         }
+        initializeDescription();
     }
 
     public void upp() {

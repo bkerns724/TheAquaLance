@@ -11,6 +11,7 @@ public class Vitality extends AbstractExileCard {
     public final static String ID = makeID(Vitality.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int COST = 1;
+    private final static int UPGRADED_COST = 0;
 
     public Vitality() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -25,6 +26,6 @@ public class Vitality extends AbstractExileCard {
     }
 
     public void upp() {
-        isInnate = true;
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

@@ -22,6 +22,7 @@ public class PulsingSigil extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         sigil = true;
+        exhaust = true;
     }
 
     @Override
@@ -57,5 +58,6 @@ public class PulsingSigil extends AbstractExileCard {
     }
 
     public void upp() {
+        exhaust = false;
     }
 }

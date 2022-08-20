@@ -9,8 +9,8 @@ import static theExile.util.Wiz.*;
 
 public class SpinningSigil extends AbstractExileCard {
     public final static String ID = makeID(SpinningSigil.class.getSimpleName());
-    private final static int DAMAGE = 9;
-    private final static int UPGRADE_DAMAGE = 4;
+    private final static int DAMAGE = 8;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = -2;
 
     public SpinningSigil() {

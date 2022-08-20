@@ -10,7 +10,7 @@ import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class WailingSigil extends AbstractExileCard {
     public final static String ID = makeID(WailingSigil.class.getSimpleName());
-    private final static int MAGIC = 7;
+    private final static int MAGIC = 6;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = -2;
 

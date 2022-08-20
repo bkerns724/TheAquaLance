@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theExile.ExileMod;
 import theExile.cards.cardUtil.Resonance;
@@ -64,7 +65,18 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     @Override
     public void initializeDescription() {
-        if (resonance != null && adRoom() != null && adp() != null && !AbstractDungeon.gridSelectScreen.forUpgrade) {
+        boolean inReward = false;
+        if(adRoom() != null) {
+            for (RewardItem item : adRoom().rewards) {
+                if (item.type == RewardItem.RewardType.CARD && item.cards.contains(this)) {
+                    inReward = true;
+                    break;
+                }
+            }
+        }
+
+        if (resonance != null && adRoom() != null && adp() != null && !inReward
+                && ((!AbstractDungeon.gridSelectScreen.forUpgrade) || !AbstractDungeon.gridSelectScreen.confirmScreenUp)) {
             baseDamage = resonance.getDamage();
             type = resonance.getCardType();
             target = resonance.getCardTarget();

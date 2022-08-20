@@ -10,7 +10,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class DeepFreeze extends AbstractExileCard {
     public final static String ID = makeID(DeepFreeze.class.getSimpleName());
-    private final static int DAMAGE = 14;
+    private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 

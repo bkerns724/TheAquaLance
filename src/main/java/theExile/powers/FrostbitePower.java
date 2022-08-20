@@ -5,10 +5,9 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theExile.ExileMod;
 
-import static theExile.util.Wiz.att;
+import static theExile.util.Wiz.*;
 
 public class FrostbitePower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(FrostbitePower.class.getSimpleName());
@@ -23,14 +22,12 @@ public class FrostbitePower extends AbstractExilePower {
             flash();
             att(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
                     AbstractGameAction.AttackEffect.NONE, true));
-            if (!owner.hasPower(StasisFieldPower.POWER_ID)) {
-                if (amount > 1)
-                    reducePower(1);
-                else
-                    att(new RemoveSpecificPowerAction(owner, owner, this));
-            }
-            updateDescription();
-            AbstractDungeon.onModifyPower();
         }
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (!adp().hasPower(StasisFieldPower.POWER_ID))
+            atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 }

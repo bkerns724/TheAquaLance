@@ -7,7 +7,7 @@ import static theExile.ExileMod.makeID;
 
 public class BurningSigil extends AbstractExileCard {
     public final static String ID = makeID(BurningSigil.class.getSimpleName());
-    private final static int DAMAGE = 10;
+    private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
 
     public BurningSigil() {

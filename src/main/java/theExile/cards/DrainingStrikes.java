@@ -9,9 +9,8 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class DrainingStrikes extends AbstractExileCard {
     public final static String ID = makeID(DrainingStrikes.class.getSimpleName());
-    private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 2;
+    private final static int MAGIC = 1;
+    private final static int COST = 1;
 
     public DrainingStrikes() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -25,7 +24,5 @@ public class DrainingStrikes extends AbstractExileCard {
         applyToSelf(new DrainingStrikesPower(magicNumber));
     }
 
-    public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
-    }
+    public void upp() { isInnate = true; }
 }

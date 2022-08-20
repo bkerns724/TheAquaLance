@@ -11,8 +11,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class ShadowLance extends AbstractExileCard {
     public final static String ID = makeID(ShadowLance.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 10;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 2;
@@ -39,6 +38,5 @@ public class ShadowLance extends AbstractExileCard {
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
-        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

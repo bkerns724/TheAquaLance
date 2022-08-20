@@ -31,7 +31,10 @@ public class ConstantPracticeAction extends AbstractGameAction {
                     for (AbstractCard card : cardsToMove) {
                         if (adp().hand.size() < 10) {
                             adp().hand.addToHand(card);
-                            card.cost = card.cost - 1;
+                            if (card.cost > 0)
+                                card.cost--;
+                            if (card.costForTurn > 0)
+                                card.costForTurn--;
                             adp().discardPile.removeCard(card);
                             card.lighten(false);
                             card.applyPowers();
@@ -56,12 +59,19 @@ public class ConstantPracticeAction extends AbstractGameAction {
                 for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
                     if (adp().hand.size() < 10) {
                         adp().hand.addToHand(card);
-                        card.cost = card.cost - 1;
+                        if (card.cost > 0)
+                            card.cost--;
+                        if (card.costForTurn > 0)
+                            card.costForTurn--;
                         adp().discardPile.removeCard(card);
                         card.lighten(false);
                         card.applyPowers();
-                    } else
-                        card.cost = card.cost -1;
+                    } else {
+                        if (card.cost > 0)
+                            card.cost--;
+                        if (card.costForTurn > 0)
+                            card.costForTurn--;
+                    }
                 }
 
                 for (AbstractCard card : adp().discardPile.group) {
