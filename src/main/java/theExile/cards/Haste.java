@@ -9,7 +9,7 @@ import static theExile.util.Wiz.*;
 
 public class Haste extends AbstractExileCard {
     public final static String ID = makeID(Haste.class.getSimpleName());
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int COST = 0;
 
     public Haste() {

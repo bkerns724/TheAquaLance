@@ -47,7 +47,7 @@ public class WeaveAction extends AbstractGameAction {
                 return;
             }
             else {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[1], 99, true, false, false, false);
+                AbstractDungeon.handCardSelectScreen.open(TEXT[1], 2, true, true, false, false);
                 tickDuration();
                 return;
             }

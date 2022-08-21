@@ -7,7 +7,7 @@ import static theExile.ExileMod.makeID;
 
 public class PhantomMace extends AbstractExileCard {
     public final static String ID = makeID(PhantomMace.class.getSimpleName());
-    private final static int DAMAGE = 14;
+    private final static int DAMAGE = 16;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 

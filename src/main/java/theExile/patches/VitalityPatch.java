@@ -23,6 +23,8 @@ public class VitalityPatch {
                     return;
                 pow.flash();
                 att(new ExhaustSpecificCardAction(__instance, adp().discardPile));
+                att(new ExhaustSpecificCardAction(__instance, adp().drawPile));
+                att(new ExhaustSpecificCardAction(__instance, adp().hand));
                 att(new DrawCardAction(pow.amount));
             }
         }

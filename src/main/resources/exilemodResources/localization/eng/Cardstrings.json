@@ -181,7 +181,7 @@
   "${ModID}:Weave": {
     "NAME": "Weave",
     "DESCRIPTION": "Exhaust a card. NL Apply its damage types to the next Exile Attack card you play.",
-    "UPGRADE_DESCRIPTION": "Exhaust any number of cards. NL Apply their damage types to the next Exile Attack card you play."
+    "UPGRADE_DESCRIPTION": "Exhaust up to 2 cards. NL Apply their damage types to the next Exile Attack card you play."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",

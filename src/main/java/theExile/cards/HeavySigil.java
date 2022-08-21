@@ -12,7 +12,7 @@ import static theExile.util.Wiz.getHighestHealthEnemy;
 
 public class HeavySigil extends AbstractExileCard {
     public final static String ID = makeID(HeavySigil.class.getSimpleName());
-    private final static int DAMAGE = 6;
+    private final static int DAMAGE = 8;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 2;
 
