@@ -26,8 +26,8 @@ public class FrostbitePower extends AbstractExilePower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (!adp().hasPower(StasisFieldPower.POWER_ID))
-            atb(new RemoveSpecificPowerAction(adp(), adp(), this));
+    public void atEndOfRound() {
+        if (!owner.hasPower(StasisFieldPower.POWER_ID))
+            atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

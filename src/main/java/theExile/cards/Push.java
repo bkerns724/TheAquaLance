@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.DrawNextTurnPower;
@@ -22,7 +21,6 @@ public class Push extends AbstractExileCard {
     public void applyAttributes() {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
-        cardsToPreview = new Wound();
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

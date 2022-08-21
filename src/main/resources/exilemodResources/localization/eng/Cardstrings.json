@@ -44,7 +44,7 @@
     "EXTENDED_DESCRIPTION": [
       "Apply 1 #yFrostbite for every 2 unblocked damage dealt.",
       "Frostbite",
-      "When an enemy with Frostbite attacks they take damage equal to their Frostbite and reduce Frostbite by 1."
+      "When an enemy with Frostbite attacks they take damage. Frostbite is removed at the end of their turn."
     ]
   },
   "${ModID}:EldritchDamage": {
@@ -60,9 +60,9 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yCrushed for every 5 unblocked damage dealt.",
+      "Apply 1 #yCrushed for every 6 unblocked damage dealt.",
       "Crushed",
-      "Crushed enemies take more damage from attacks for one turn."
+      "Crushed enemies take more damage from attacks. Crushed is removed at the end of their turn."
     ]
   },
   "${ModID}:DemonFireDamage": {

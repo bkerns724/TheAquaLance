@@ -49,7 +49,7 @@ public class ForceDamage extends AbstractDamageModifier {
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
         if (adp().hasRelic(BlueMarbles.ID))
             lastDamageTaken *= 2;
-        int crushed = lastDamageTaken / 5;
+        int crushed = lastDamageTaken / 6;
         if (crushed > 0)
             applyToEnemyTop(target, new CrushedPower(target, crushed));
     }

@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.ExileMod;
 
+import static theExile.util.Wiz.atb;
+
 public class CrushedPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(CrushedPower.class.getSimpleName());
 
@@ -16,7 +18,7 @@ public class CrushedPower extends AbstractExilePower {
     @Override
     public void atEndOfRound() {
         if (!owner.hasPower(StasisFieldPower.POWER_ID))
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override
