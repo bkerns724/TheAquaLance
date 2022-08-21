@@ -5,7 +5,10 @@ import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import javassist.CtBehavior;
+import theExile.actions.PlayCardFromDiscardAction;
 import theExile.cards.AbstractExileCard;
+
+import static theExile.util.Wiz.atb;
 
 public class ScryPatch {
     @SpirePatch2(
@@ -19,7 +22,7 @@ public class ScryPatch {
         )
         public static void Insert(ScryAction __instance, AbstractCard c) {
             if (c instanceof AbstractExileCard && DiscardTriggerField.triggerDiscard.get(__instance))
-                ((AbstractExileCard)c).triggerOnManualDiscard();
+                atb(new PlayCardFromDiscardAction(c));
         }
         public static class Locator extends SpireInsertLocator {
             @Override

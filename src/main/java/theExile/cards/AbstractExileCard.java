@@ -165,6 +165,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     protected void autoPlayWhenDiscarded() {
         AbstractDungeon.player.discardPile.removeCard(this);
+        AbstractDungeon.player.drawPile.removeCard(this);
+        AbstractDungeon.player.hand.removeCard(this);
         AbstractDungeon.getCurrRoom().souls.remove(this);
         AbstractDungeon.player.limbo.group.add(this);
         target_y = Settings.HEIGHT / 2.0f;
@@ -214,12 +216,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             resPoof = true;
         } else if (this instanceof AbstractResonantCard)
             ((AbstractResonantCard) this).resonance.toPower();
-    }
-
-    @Override
-    public void onMoveToDiscard() {
-        if (sigil)
-            beingDiscarded = false;
     }
 
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
