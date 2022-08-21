@@ -89,7 +89,7 @@
       "Resonant",
       "resonant"
     ],
-    "DESCRIPTION": "If you play a Resonant card it is returned to your hand at the start of your next turn. If you play multiple Resonant cards in one turn, they merge into a single stronger card."
+    "DESCRIPTION": "If you play a Resonant card it is returned to your hand at the start of your next turn. If you play multiple Resonant cards in one turn, they are combined into a single one cost card with all of the effects."
   },
   {
     "PROPER_NAME": "Frostbite",
@@ -97,7 +97,7 @@
       "Frostbite",
       "frostbite"
     ],
-    "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage and its Frostbite is reduced by 1."
+    "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage. Frostbite is removed at the end of the turn."
   },
   {
     "PROPER_NAME": "Crushed",
@@ -113,6 +113,6 @@
       "Jinx",
       "jinx"
     ],
-    "DESCRIPTION": "Whenever a Jinxed creature receives a debuff, it loses HP."
+    "DESCRIPTION": "Whenever a Jinxed creature receives another debuff, it loses HP."
   }
 ]

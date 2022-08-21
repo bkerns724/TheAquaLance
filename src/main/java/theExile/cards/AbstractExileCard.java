@@ -339,12 +339,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[10] + rawDescription;
         if (sigil)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
-
-        if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null) {
+        if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
-            int amount = ((AbstractResonantCard) this).resonance.amount;
-            rawDescription = rawDescription.replace("!Res!", Integer.toString(amount));
-        }
 
         if (exhaust)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];

@@ -127,7 +127,7 @@ public class AttackEffectsPatch {
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.ICE_M) {
-                CardCrawlGame.sound.play(ExileMod.COLD_M_KEY);
+                CardCrawlGame.sound.playV(ExileMod.COLD_M_KEY, 0.75f);
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.ELDRITCH) {

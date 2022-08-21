@@ -52,9 +52,10 @@ public class PulsingSigil extends AbstractExileCard {
         }
 
         c = list.get(cardRandomRng.random(list.size() - 1));
-        c.setCostForTurn(0);
+        AbstractCard output = c.makeStatEquivalentCopy();
+        output.setCostForTurn(0);
 
-        atb(new MakeTempCardInHandAction(c));
+        atb(new MakeTempCardInHandAction(output));
     }
 
     public void upp() {

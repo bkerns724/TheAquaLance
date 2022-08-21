@@ -9,7 +9,7 @@
       " NL Draw !X! cards.",
       " NL Gain [E] .",
       " NL Gain !X! [E] .",
-      " NL ${ModID}:Resonant !Res!.",
+      " NL ${ModID}:Resonant.",
       " NL Exhaust.",
       "Sigil",
       "Sigils can only be played via discard.",
@@ -42,7 +42,7 @@
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yFrostbite for every 2 unblocked damage dealt.",
+      "Apply 1 #yFrostbite for every 2 damage dealt.",
       "Frostbite",
       "When an enemy with Frostbite attacks they take damage. Frostbite is removed at the end of their turn."
     ]
@@ -51,7 +51,7 @@
     "NAME": "Eldritch",
     "DESCRIPTION": "Eldritch [${ModID}:EldritchIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Gain 1 #yTemporary #yHP for every 3 unblocked damage dealt.",
+      "Gain 1 #yTemporary #yHP for every 3 damage dealt.",
       "Temporary HP",
       "Temporary HP is lost at the end of battle."
     ]
@@ -60,9 +60,9 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yCrushed for every 6 unblocked damage dealt.",
+      "Apply 1 #yCrushed for every 4 damage dealt.",
       "Crushed",
-      "Crushed enemies take more damage from attacks. Crushed is removed at the end of their turn."
+      "Crushed enemies take more damage from attacks for one turn."
     ]
   },
   "${ModID}:DemonFireDamage": {
@@ -105,8 +105,8 @@
   },
   "${ModID}:Anticipate": {
     "NAME": "Anticipate",
-    "DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card one time.",
-    "UPGRADE_DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card !M! times."
+    "DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card once this combat.",
+    "UPGRADE_DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card twice this combat."
   },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
@@ -194,7 +194,7 @@
   },
   "${ModID}:Harmony": {
     "NAME": "Harmony",
-    "DESCRIPTION": "At the end of your turn, gain 1 Block per ${ModID}:Resonance."
+    "DESCRIPTION": "At the end of your turn, gain Block equal to your ${ModID}:Resonance amount times !M!."
   },
   "${ModID}:SonicAgony": {
     "NAME": "Sonic Agony",
@@ -292,7 +292,7 @@
     "FLAVOR": "My favorite spell."
   },
   "${ModID}:EnchantedDagger": {
-    "NAME": "EnchantedDagger",
+    "NAME": "Enchanted Dagger",
     "DESCRIPTION": "Deal !D! damage. NL Gains all damage types of other cards in your hand."
   },
   "${ModID}:Nocebo": {

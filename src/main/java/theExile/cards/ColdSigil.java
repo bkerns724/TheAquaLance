@@ -21,7 +21,6 @@ public class ColdSigil extends AbstractExileCard {
         baseDamage = DAMAGE;
         sigil = true;
         addModifier(elenum.ICE);
-        isMultiDamage = true;
     }
 
     @Override

@@ -35,7 +35,7 @@
   "${ModID}:FrostbitePower": {
     "NAME": "Frostbite",
     "DESCRIPTIONS": [
-      "Whenever this enemy attacks, it suffers !A! damage then reduces Frostbite by 1."
+      "Whenever this enemy attacks, it suffers !A! damage."
     ]
   },
   "${ModID}:ResonantCostZeroPower": {
@@ -113,7 +113,7 @@
     ]
   },
   "${ModID}:ElegantEtchingPower": {
-    "NAME": "ElegantEtching",
+    "NAME": "Elegant Etching",
     "DESCRIPTIONS": [
       "Whenever you play a #ySigil, apply !A! #yJinx to ALL enemies."
     ]
@@ -121,7 +121,7 @@
   "${ModID}:HarmonyPower": {
     "NAME": "Harmony",
     "DESCRIPTIONS": [
-      "At the end of your turn gain !A! #yBlock per #yResonance."
+      "At the end of your turn gain #yBlock equal to your #yResonance amount times !A!."
     ]
   },
   "${ModID}:WeavePower": {
@@ -147,7 +147,7 @@
   "${ModID}:DrainingStrikesPower": {
     "NAME": "Draining Strikes",
     "DESCRIPTIONS": [
-      "Whenever an attack deals unblocked damage, gain !A! Temporary_HP."
+      "Whenever an attack deals unblocked damage, gain !A! Temporary HP."
     ]
   },
   "${ModID}:JinxPower": {

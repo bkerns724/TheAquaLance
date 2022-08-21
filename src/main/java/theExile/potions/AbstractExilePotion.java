@@ -2,6 +2,8 @@ package theExile.potions;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
@@ -18,6 +20,9 @@ AbstractExilePotion extends CustomPotion {
     protected int defaultPotency;
     protected ArrayList<String> keywordStrings;
 
+    protected static final Color FLAVOR_BOX_COLOR = new Color(0.45f, 0, 0.65f, 1.0f);
+    protected static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
+
     public AbstractExilePotion(String potionID, PotionRarity rarity, PotionSize size, PotionColor color,
                                boolean isThrown, boolean targetRequired, int defaultPotency) {
         super(CardCrawlGame.languagePack.getPotionString(potionID).NAME, potionID, rarity, size, color);
@@ -25,6 +30,8 @@ AbstractExilePotion extends CustomPotion {
         this.isThrown = isThrown;
         this.targetRequired = targetRequired;
         this.defaultPotency = defaultPotency;
+        FlavorText.PotionFlavorFields.boxColor.set(this, FLAVOR_BOX_COLOR);
+        FlavorText.PotionFlavorFields.textColor.set(this, FLAVOR_TEXT_COLOR);
         initializeData();
     }
 

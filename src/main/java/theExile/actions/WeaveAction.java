@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.Dualcast;
 import theExile.powers.WeavePower;
 
 import java.util.ArrayList;
@@ -69,6 +70,10 @@ public class WeaveAction extends AbstractGameAction {
         for (AbstractCard card : cardsToExhaust) {
             if (card instanceof AbstractExileCard)
                 elementList.addAll(((AbstractExileCard) card).damageModList);
+            if (card instanceof Dualcast) {
+                elementList.add(AbstractExileCard.elenum.ICE);
+                elementList.add(AbstractExileCard.elenum.FORCE);
+            }
             adp().hand.moveToExhaustPile(card);
         }
 

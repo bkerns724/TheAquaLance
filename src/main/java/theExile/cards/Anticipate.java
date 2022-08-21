@@ -15,12 +15,12 @@ public class Anticipate extends AbstractExileCard {
 
     public Anticipate() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        exhaust = true;
     }
 
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

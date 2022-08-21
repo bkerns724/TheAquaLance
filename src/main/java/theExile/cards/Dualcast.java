@@ -1,5 +1,6 @@
 package theExile.cards;
 
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -11,6 +12,9 @@ import theExile.actions.AttackAction;
 import theExile.damagemods.ForceDamage;
 import theExile.damagemods.IceDamage;
 import theExile.relics.ManaPurifier;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
@@ -44,7 +48,7 @@ public class Dualcast extends AbstractExileCard {
         DamageInfo info_2 = new DamageInfo(adp(), damage, damageTypeForTurn);
         DamageModifierManager.bindDamageMods(info_2, new DamageModContainer(this, new ForceDamage()));
 
-        AbstractGameAction.AttackEffect effect = AbstractGameAction.AttackEffect.NONE;
+        AbstractGameAction.AttackEffect effect;
 
         if (!damageModList.isEmpty()) {
             if (damage < DAMAGE_THRESHOLD_M)
@@ -76,6 +80,14 @@ public class Dualcast extends AbstractExileCard {
             effect = ExileMod.Enums.FORCE_L;
         atb(new AttackAction(m, info_2, effect));
         discard(magicNumber);
+    }
+
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        ArrayList<TooltipInfo> list = new ArrayList<>();
+        list.addAll(new IceDamage().getCustomTooltips());
+        list.addAll(new ForceDamage().getCustomTooltips());
+        return list;
     }
 
     public void upp() {

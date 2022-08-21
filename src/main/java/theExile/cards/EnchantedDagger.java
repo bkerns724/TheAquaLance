@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.relics.ManaPurifier;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
@@ -33,9 +34,17 @@ public class EnchantedDagger extends AbstractExileCard {
     public void applyPowers() {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
+        if (adp().hasRelic(ManaPurifier.ID)) {
+            initializeDescription();
+            return;
+        }
         for (AbstractCard card : adp().hand.group) {
             if (card instanceof AbstractExileCard && card != this)
                 addModifier(((AbstractExileCard) card).damageModList, true);
+            if (card instanceof Dualcast) {
+                addModifier(elenum.FORCE);
+                addModifier(elenum.ICE);
+            }
         }
         initializeDescription();
     }

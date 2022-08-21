@@ -29,6 +29,8 @@ public class EldritchDamage extends AbstractDamageModifier {
     public TooltipInfo darkTooltip2;
     private boolean visibleTips = true;
 
+    private int blockedAmount = 0;
+
     public EldritchDamage() {
         darkTooltip = null;
         darkTooltip2 = null;
@@ -46,10 +48,16 @@ public class EldritchDamage extends AbstractDamageModifier {
     }
 
     @Override
+    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
+        this.blockedAmount = blockedAmount;
+    }
+
+    @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
+        int finalDamage = blockedAmount + lastDamageTaken;
         if (adp().hasRelic(VoidBracelet.ID))
-            lastDamageTaken *= 2;
-        int tempHP = lastDamageTaken / 3;
+            finalDamage *= 2;
+        int tempHP = finalDamage / 3;
         if (tempHP > 0)
             att(new MyAddTempHPAction(adp(), adp(), tempHP));
     }

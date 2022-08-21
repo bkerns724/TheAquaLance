@@ -176,6 +176,7 @@ public class Resonance {
             else if (spaceCount == 1)
                 builder.append(" ");
             builder.append(uiStringsConcise.TEXT[4].replace("!X2!", String.valueOf(jinx)));
+            spaceCount++;
         }
         if (cycle > 0) {
             if (spaceCount == 2)

@@ -29,6 +29,8 @@ public class IceDamage extends AbstractDamageModifier {
     public TooltipInfo iceTooltip2;
     private boolean visibleTips = true;
 
+    private int blockedAmount = 0;
+
     public IceDamage() {
         iceTooltip = null;
         iceTooltip2 = null;
@@ -47,10 +49,16 @@ public class IceDamage extends AbstractDamageModifier {
     }
 
     @Override
+    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
+        this.blockedAmount = blockedAmount;
+    }
+
+    @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
+        int finalDamage = blockedAmount + lastDamageTaken;
         if (adp().hasRelic(BlueMarbles.ID))
-            lastDamageTaken *= 2;
-        int frostbite = lastDamageTaken / 2;
+            finalDamage *= 2;
+        int frostbite = finalDamage / 2;
         if (frostbite > 0)
             applyToEnemyTop(target, new FrostbitePower(target, frostbite));
     }

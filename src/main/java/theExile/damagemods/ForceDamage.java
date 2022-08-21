@@ -29,6 +29,8 @@ public class ForceDamage extends AbstractDamageModifier {
     public TooltipInfo forceTooltip2;
     private boolean visibleTips = true;
 
+    private int blockedAmount = 0;
+
     public ForceDamage() {
         forceTooltip = null;
         forceTooltip2 = null;
@@ -46,10 +48,16 @@ public class ForceDamage extends AbstractDamageModifier {
     }
 
     @Override
+    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
+        this.blockedAmount = blockedAmount;
+    }
+
+    @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
+        int finalDamage = lastDamageTaken + blockedAmount;
         if (adp().hasRelic(BlueMarbles.ID))
-            lastDamageTaken *= 2;
-        int crushed = lastDamageTaken / 6;
+            finalDamage *= 2;
+        int crushed = finalDamage / 4;
         if (crushed > 0)
             applyToEnemyTop(target, new CrushedPower(target, crushed));
     }
