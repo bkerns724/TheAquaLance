@@ -204,21 +204,17 @@ public class Resonance {
     }
 
     public AbstractCard.CardTarget getCardTarget() {
-        for (AbstractExileCard card : cards)
-            if (card.target == AbstractCard.CardTarget.ALL)
-                return AbstractCard.CardTarget.ALL;
-        for (AbstractExileCard card : cards)
-            if (card.target == AbstractCard.CardTarget.ALL_ENEMY)
-                return AbstractCard.CardTarget.ALL_ENEMY;
-        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
+        if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
             if (getDamage() > 0 || ringing > 0 || jinx > 0)
                 return AbstractCard.CardTarget.ALL_ENEMY;
-            for (AbstractExileCard card : cards)
-                if (card.target == AbstractCard.CardTarget.ENEMY || card.target == ExileMod.Enums.AUTOAIM_ENEMY)
-                    return AbstractCard.CardTarget.ALL_ENEMY;
-        }
         if (getDamage() > 0 || ringing > 0 || jinx > 0)
             return AbstractCard.CardTarget.ENEMY;
+        for (AbstractExileCard card : cards)
+            if (card.target == AbstractCard.CardTarget.ENEMY)
+                return AbstractCard.CardTarget.ENEMY;
+        for (AbstractExileCard card : cards)
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == ExileMod.Enums.AUTOAIM_ENEMY)
+                return AbstractCard.CardTarget.ALL_ENEMY;
         return AbstractCard.CardTarget.SELF;
     }
 
