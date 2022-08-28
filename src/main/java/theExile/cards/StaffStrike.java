@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import basemod.BaseMod;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -24,7 +23,6 @@ public class StaffStrike extends AbstractExileCard {
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        setBackgroundTexture(BaseMod.getPowerBg(color), BaseMod.getPowerBgPortrait(color));
         if (damageModList.isEmpty())
             dmg(m, getBluntEffect());
         else

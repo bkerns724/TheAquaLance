@@ -1,6 +1,6 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.ExileMod;
@@ -17,8 +17,7 @@ public class CrushedPower extends AbstractExilePower {
 
     @Override
     public void atEndOfRound() {
-        if (!owner.hasPower(StasisFieldPower.POWER_ID))
-            atb(new RemoveSpecificPowerAction(owner, owner, this));
+        atb(new ReducePowerAction(owner, owner, this, 1));
     }
 
     @Override

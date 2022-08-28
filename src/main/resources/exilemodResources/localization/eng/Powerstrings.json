@@ -90,7 +90,8 @@
   "${ModID}:StasisFieldPower": {
     "NAME": "StasisField",
     "DESCRIPTIONS": [
-      "#yCrushed and #yFrostbite do not wear off."
+      "#yCrushed and #yFrostbite do not wear off for this turn.",
+      "#yCrushed and #yFrostbite do not wear off for !A! turns."
     ]
   },
   "${ModID}:ConvertPower": {
@@ -127,8 +128,8 @@
   "${ModID}:WeavePower": {
     "NAME": "Weave",
     "DESCRIPTIONS": [
-      "The next Exile Attack card you play gains !TYPE! damage type.",
-      "The next Exile Attack card you play gains !TYPE! damage types."
+      "The next Exile Attack card you play gains !TYPE! damage type for the rest of combat.",
+      "The next Exile Attack card you play gains !TYPE! damage types for the rest of combat."
     ]
   },
   "${ModID}:AnticipatePower": {
@@ -179,7 +180,7 @@
   "${ModID}:StoneskinPower": {
     "NAME": "Stoneskin",
     "DESCRIPTIONS": [
-      "Whenever you would take damage, take !A! less."
+      "Whenever you would take damage this turn, take !A! less."
     ]
   },
   "${ModID}:CrumblingPower": {
@@ -232,8 +233,8 @@
   "${ModID}:ManaBurstPower": {
     "NAME": "Mana Burst",
     "DESCRIPTIONS": [
-      "The first !A! time you discard a #ySigil each turn, gain [B].",
-      "The first !A! times you discard a #ySigil each turn, gain [B]."
+      "The first time you discard a #ySigil each turn, gain [E].",
+      "The first !A! times you discard a #ySigil each turn, gain [E]."
     ]
   },
   "${ModID}:ExileStudyPower": {

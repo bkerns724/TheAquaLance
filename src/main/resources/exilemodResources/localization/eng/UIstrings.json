@@ -6,8 +6,11 @@
   },
   "${ModID}:Settings": {
     "TEXT": [
-      "Enables the Exile extended heart kill cutscene.",
-      "Recolor banners on other characters."
+      "Longer version of victory montage.",
+      "Always",
+      "Once",
+      "Never",
+      "Tutorial tip for relic buttons"
     ]
   },
   "${ModID}:ClickyFtue": {
@@ -42,7 +45,7 @@
   "${ModID}:WeaveAction": {
     "TEXT": [
       "Choose a card to exhaust.",
-      "Choose any number of cards to exhaust."
+      "Choose up to 2 cards to exhaust."
     ]
   },
   "${ModID}:Resonance": {

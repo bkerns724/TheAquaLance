@@ -63,10 +63,8 @@ public class WeavePower extends AbstractExilePower implements OnReceivePowerPowe
 
         if (elementList.contains(ICE))
             builder.append(COLD_STRING + " ");
-        if (elementList.contains(FIRE))
-            builder.append(SOULFIRE_STRING + " ");
-        if (elementList.contains(DARK))
-            builder.append(DARK_STRING + " ");
+        if (elementList.contains(ELDRITCH))
+            builder.append(ELDRITCH_STRING + " ");
         if (elementList.contains(FORCE))
             builder.append(FORCE_STRING + " ");
         if (elementList.contains(LIGHTNING))

@@ -20,7 +20,6 @@ public class BadVibes extends AbstractResonantCard {
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
     }
 
     public void upp() {

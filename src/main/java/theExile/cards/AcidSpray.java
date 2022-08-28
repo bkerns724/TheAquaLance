@@ -23,7 +23,6 @@ public class AcidSpray extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

@@ -42,9 +42,9 @@
     "NAME": "Cold",
     "DESCRIPTION": "Cold [${ModID}:IceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yFrostbite for every 2 damage dealt.",
+      "Apply 1 #yFrostbite for every 3 damage dealt.",
       "Frostbite",
-      "When an enemy with Frostbite attacks they take damage. Frostbite is removed at the end of their turn."
+      "Whenever a creature with Frostbite attacks it takes damage and Frostbite is reduced by 1."
     ]
   },
   "${ModID}:EldritchDamage": {
@@ -60,16 +60,9 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yCrushed for every 4 damage dealt.",
+      "Apply 1 #yCrushed for every 6 damage dealt.",
       "Crushed",
-      "Crushed enemies take more damage from attacks for one turn."
-    ]
-  },
-  "${ModID}:DemonFireDamage": {
-    "NAME": "Demon Fire",
-    "DESCRIPTION": "Demon Fire [${ModID}:DemonFireIcon]",
-    "EXTENDED_DESCRIPTION": [
-      "Ignores Block."
+      "Crushed enemies take more damage from attacks. Crushed is reduced by 1 at the end of the round."
     ]
   },
   "${ModID}:DeathLightningDamage": {
@@ -126,7 +119,7 @@
   },
   "${ModID}:StasisField": {
     "NAME": "Stasis Field",
-    "DESCRIPTION": "${ModID}:Crushed and ${ModID}:Frostbite do not wear off for !M! turns."
+    "DESCRIPTION": "Apply a debuff to ALL enemies that prevents ${ModID}:Crushed and ${ModID}:Frostbite from decreasing for !M! turns."
   },
   "${ModID}:Combust": {
     "NAME": "Combust",
@@ -180,8 +173,8 @@
   },
   "${ModID}:Weave": {
     "NAME": "Weave",
-    "DESCRIPTION": "Exhaust a card. NL Apply its damage types to the next Exile Attack card you play.",
-    "UPGRADE_DESCRIPTION": "Exhaust up to 2 cards. NL Apply their damage types to the next Exile Attack card you play."
+    "DESCRIPTION": "Exhaust a card. NL Apply its damage types for the rest of combat to the next Exile Attack card you play.",
+    "UPGRADE_DESCRIPTION": "Exhaust up to 2 cards. NL Apply their damage types for the rest of combat to the next Exile Attack card you play."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
@@ -267,7 +260,11 @@
   },
   "${ModID}:StoneDaggers": {
     "NAME": "Stone Daggers",
-    "DESCRIPTION": "Deal !D! damage for each debuff on the enemy."
+    "DESCRIPTION": "Deal !D! damage for each debuff on the enemy.",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage for each debuff on the enemy. (1 time).",
+      "Deal !D! damage for each debuff on the enemy. (!M! times)."
+    ]
   },
   "${ModID}:PhantomMace": {
     "NAME": "Phantom Mace",
@@ -378,7 +375,7 @@
   },
   "${ModID}:ShiningSigil": {
     "NAME": "Shining Sigil",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! additional Block per debuff on ALL enemies."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! additional Block per for each debuff on any enemy."
   },
   "${ModID}:CurseArmor": {
     "NAME": "Curse Armor",
@@ -451,7 +448,7 @@
   "${ModID}:SummonMonster": {
     "NAME": "Summon Monsters",
     "DESCRIPTION": "At the end of your turn, Channel a !M! damage Panda. NL Pandas deal damage at the start of your turn.",
-    "FLAVOR": "I always thought summoning spells were weak. Then I managed to develop a version that kept summoning."
+    "FLAVOR": "Unleashing these guys in combat creates... Pandamonium. Ba dum tsh."
   },
   "${ModID}:Prepare": {
     "NAME": "Prepare",

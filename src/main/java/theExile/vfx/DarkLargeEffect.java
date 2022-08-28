@@ -24,7 +24,6 @@ public class DarkLargeEffect extends AbstractGameEffect {
     public static final float DUR_BEFORE_IMPACT = 1.0F;
     public static final float DUR_DIFFERENCE = EFFECT_DUR - DUR_BEFORE_IMPACT;
     private static TextureAtlas.AtlasRegion img;
-    private static TextureAtlas.AtlasRegion img2;
     private boolean biteHook;
     private AbstractMonster m;
     private static TextureAtlas.AtlasRegion top;
@@ -37,10 +36,6 @@ public class DarkLargeEffect extends AbstractGameEffect {
         if (img == null) {
             Texture texture = TexLoader.getTexture(ExileMod.DARK_L_EFFECT_FILE);
             img = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
-        }
-        if (img2 == null) {
-            Texture texture = TexLoader.getTexture(ExileMod.DARK_L2_EFFECT_FILE);
-            img2 = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
         }
         if (top == null) {
             top = ImageMaster.vfxAtlas.findRegion("combat/biteTop");
@@ -100,11 +95,22 @@ public class DarkLargeEffect extends AbstractGameEffect {
     public void render(SpriteBatch sb) {
         sb.setBlendFunction(GL20.GL_ONE_MINUS_DST_COLOR, GL20.GL_ONE_MINUS_SRC_COLOR);
         sb.setColor(color);
-        sb.draw(img, 0, 0, (float)img.packedWidth / 2.0F, (float)img.packedHeight / 2.0F,
-                (float)img.packedWidth, (float)img.packedHeight, scale, scale, 0.0f);
+        if (m != null) {
+            float mScale = Math.max(m.hb.width, m.hb.height);
+            sb.draw(img, m.hb.cX - (float) img.packedWidth / 2.0f, m.hb.cY - (float) img.packedHeight / 2.0f,
+                    (float) img.packedWidth / 2.0F, (float) img.packedHeight / 2.0F,
+                    img.packedWidth, img.packedHeight, scale*mScale/img.packedWidth*1.3f,
+                    scale*mScale/img.packedHeight*1.3f, 0.0f);
+        } else {
+            forAllMonstersLiving(mon -> {
+                float mScale = Math.max(mon.hb.width, mon.hb.height);
+                sb.draw(img, mon.hb.cX - (float) img.packedWidth /2.0f, mon.hb.cY - (float) img.packedHeight /2.0f,
+                        (float) img.packedWidth / 2.0F, (float) img.packedHeight / 2.0F,
+                        img.packedWidth, img.packedHeight, scale*mScale/img.packedWidth*1.3f,
+                        scale*mScale/img.packedHeight*1.3f, 0.0f);
+            });
+        }
         sb.setBlendFunction(770, 771);
-        sb.draw(img2, 0, 0, (float)img2.packedWidth / 2.0F, (float)img2.packedHeight / 2.0F,
-                (float)img2.packedWidth, (float)img2.packedHeight, scale, scale, 0.0f);
         for (DarkBiteEffect bite : bites)
             if (!bite.isDone)
                 bite.render(sb);

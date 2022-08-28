@@ -9,12 +9,14 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
@@ -27,18 +29,25 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.ending.SpireShield;
-import com.megacrit.cardcrawl.monsters.ending.SpireSpear;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.SurroundedPower;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
+import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.actions.AttackAction;
 import theExile.cards.cardUtil.Resonance;
 import theExile.cards.cardvars.CardSaveObject;
-import theExile.damagemods.*;
-import theExile.icons.*;
+import theExile.damagemods.DeathLightningDamage;
+import theExile.damagemods.EldritchDamage;
+import theExile.damagemods.ForceDamage;
+import theExile.damagemods.IceDamage;
+import theExile.icons.Eldritch;
+import theExile.icons.Force;
+import theExile.icons.Ice;
+import theExile.icons.Lightning;
 import theExile.powers.AbstractExilePower;
 import theExile.powers.ConvertPower;
 import theExile.relics.ManaPurifier;
@@ -46,6 +55,7 @@ import theExile.util.CardArtRoller;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static theExile.ExileMod.*;
 import static theExile.cards.AbstractExileCard.elenum.*;
@@ -54,7 +64,7 @@ import static theExile.util.Wiz.*;
 @AutoAdd.Ignore
 public abstract class AbstractExileCard extends CustomCard implements CustomSavable<CardSaveObject> {
     protected CardStrings cardStrings;
-    private static final CardStrings thisCardStrings =
+    protected static final CardStrings thisCardStrings =
             CardCrawlGame.languagePack.getCardStrings(makeID(AbstractExileCard.class.getSimpleName()));
 
     public int secondMagic;
@@ -74,34 +84,32 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     protected boolean needsArtRefresh = false;
     protected boolean overrideRawDesc = false;
 
-    public boolean magicOneIsDebuff = false;
-    public boolean magicTwoIsDebuff = false;
-
     public boolean beingDiscarded = false;
 
     public ArrayList<elenum> damageModList = new ArrayList<>();
     public boolean sigil = false;
-    public boolean debuffIncrease = false;
 
     private static final Color FLAVOR_BOX_COLOR = new Color(0.45f, 0, 0.65f, 1.0f);
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
     public static final String COLD_STRING = Ice.CODE;
     public static final String FORCE_STRING = Force.CODE;
-    public static final String SOULFIRE_STRING = DemonFire.CODE;
-    public static final String DARK_STRING = Eldritch.CODE;
+    public static final String ELDRITCH_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
 
     public static final int DAMAGE_THRESHOLD_M = 15;
-    public static final int DAMAGE_THRESHOLD_L = 50;
+    public static final int DAMAGE_THRESHOLD_L = 40;
 
     public boolean resPoof = false;
 
+    private final ArrayList<CardGlowBorder> myGlowList = new ArrayList<>();
+    private float myGlowTimer = 0f;
+    private boolean sigilGlowing = false;
+
     public enum elenum {
         ICE,
-        FIRE,
         FORCE,
-        DARK,
+        ELDRITCH,
         LIGHTNING
     }
 
@@ -319,10 +327,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (damageModList != null) {
             if (damageModList.contains(ICE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
-            if (damageModList.contains(FIRE))
-                rawDescription = rawDescription.replace("!D! ", "!D! " + SOULFIRE_STRING + " ");
-            if (damageModList.contains(DARK))
-                rawDescription = rawDescription.replace("!D! ", "!D! " + DARK_STRING + " ");
+            if (damageModList.contains(ELDRITCH))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
             if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
             if (damageModList.contains(LIGHTNING))
@@ -349,7 +355,17 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void update() {
+        if (sigil && AbstractDungeon.actionManager.currentAction instanceof DiscardAction
+                && hasEnoughEnergy())
+            sigilGlowing = true;
+        else if (sigilGlowing)
+            stopSigilGlowing();
+        sigilUpdateGLow();
         super.update();
+        updateCardArtRoller();
+    }
+
+    private void updateCardArtRoller() {
         if (needsArtRefresh) {
             CardArtRoller.computeCard(this);
         }
@@ -387,11 +403,9 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         damageModList.add(element);
         if (element == ICE)
             DamageModifierManager.addModifier(this, new IceDamage(tips));
-        if (element == elenum.FIRE)
-            DamageModifierManager.addModifier(this, new DemonFireDamage(tips));
         if (element == elenum.FORCE)
             DamageModifierManager.addModifier(this, new ForceDamage(tips));
-        if (element == elenum.DARK)
+        if (element == elenum.ELDRITCH)
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         if (element == LIGHTNING)
             DamageModifierManager.addModifier(this, new DeathLightningDamage(tips));
@@ -412,82 +426,27 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     protected AbstractGameAction.AttackEffect getAttackEffect() {
-        int amount = getDamageForVFX();
-        if (this instanceof AbstractResonantCard) {
-            if (amount < DAMAGE_THRESHOLD_M)
-                return Enums.RESONANT;
-            else if (amount < DAMAGE_THRESHOLD_L)
-                return Enums.RESONANT_M;
-            else
-                return Enums.RESONANT_L;
-        }
-        if (damageModList.size() == 1) {
+        if (this instanceof AbstractResonantCard)
+            return getResonantEffect();
+        else if (damageModList.size() == 1) {
             elenum ele = damageModList.get(0);
-            if (ele == ICE) {
-                if (amount < DAMAGE_THRESHOLD_M)
-                    return Enums.ICE;
-                else if (amount < DAMAGE_THRESHOLD_L)
-                    return Enums.ICE_M;
-                else
-                    return Enums.ICE_L;
-            }
-            else if (ele == FORCE) {
-                if (amount < DAMAGE_THRESHOLD_M)
-                    return Enums.FORCE;
-                else if (amount < DAMAGE_THRESHOLD_L)
-                    return Enums.FORCE_M;
-                else
-                    return Enums.FORCE_L;
-            }
-            else if (ele == FIRE) {
-                if (amount < DAMAGE_THRESHOLD_M)
-                    return Enums.SOUL_FIRE;
-                else if (amount < DAMAGE_THRESHOLD_L)
-                    return Enums.SOUL_FIRE_M;
-                else
-                    return Enums.SOUL_FIRE_L;
-            }
-            else if (ele == DARK) {
-                boolean lower = false;
-                for (AbstractMonster m : getEnemies()) {
-                    if (m instanceof SpireShield)
-                        lower = true;
-                    else if (m instanceof SpireSpear)
-                        lower = true;
-                }
-                if (amount < DAMAGE_THRESHOLD_M)
-                    return Enums.ELDRITCH;
-                else if (amount < DAMAGE_THRESHOLD_L || lower)
-                    return Enums.ELDRITCH_M;
-                else
-                    return Enums.ELDRITCH_L;
-            }
-            else if (ele == LIGHTNING) {
-                if (amount < DAMAGE_THRESHOLD_M)
-                    return AbstractGameAction.AttackEffect.LIGHTNING;
-                else if (amount < DAMAGE_THRESHOLD_L || adp().hasPower(SurroundedPower.POWER_ID))
-                    return Enums.LIGHTNING_M;
-                else
-                    return Enums.LIGHTNING_L;
-            }
-            else {
-                return getBluntEffect();
-            }
-        } else if (damageModList.size() > 1) {
-            if (amount < DAMAGE_THRESHOLD_M)
-                return Enums.DARK_WAVE;
-            else if (amount < DAMAGE_THRESHOLD_L)
-                return Enums.DARK_WAVE_M;
-            else
-                return Enums.DARK_WAVE_L;
-        }
-        else {
-            int x = MathUtils.random(0, 1);
-            if (x == 1)
-                return getSlashEffect();
+            if (ele == ICE)
+                return getIceEffect();
+            else if (ele == FORCE)
+                return getForceEffect();
+            else if (ele == ELDRITCH)
+                return getEldritchEffect();
+            else if (ele == LIGHTNING)
+                return getLightningEffect();
             else
                 return getBluntEffect();
-        }
+        } else if (damageModList.size() > 1)
+            return getDarkWaveEffect();
+
+        int x = MathUtils.random(0, 1);
+        if (x == 1)
+            return getSlashEffect();
+        return getBluntEffect();
     }
 
     protected int getDamageForVFX() {
@@ -519,6 +478,76 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             return AbstractGameAction.AttackEffect.SLASH_HEAVY;
         else
             return Enums.SLASH_MASSIVE;
+    }
+
+    public AbstractGameAction.AttackEffect getFireEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return AbstractGameAction.AttackEffect.FIRE;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.FIRE_M;
+        else
+            return Enums.FIRE_L;
+    }
+
+    public AbstractGameAction.AttackEffect getIceEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return Enums.ICE;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.ICE_M;
+        else
+            return Enums.ICE_L;
+    }
+
+    public AbstractGameAction.AttackEffect getForceEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return Enums.FORCE;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.FORCE_M;
+        else
+            return Enums.FORCE_L;
+    }
+
+    public AbstractGameAction.AttackEffect getLightningEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return Enums.LIGHTNING_S;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.LIGHTNING_M;
+        else
+            return Enums.LIGHTNING_L;
+    }
+
+    public AbstractGameAction.AttackEffect getEldritchEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return Enums.ELDRITCH;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.ELDRITCH_M;
+        else
+            return Enums.ELDRITCH_L;
+    }
+
+    public AbstractGameAction.AttackEffect getResonantEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return Enums.RESONANT;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.RESONANT_M;
+        else
+            return Enums.RESONANT_L;
+    }
+
+    public AbstractGameAction.AttackEffect getDarkWaveEffect() {
+        int amount = getDamageForVFX();
+        if (amount < DAMAGE_THRESHOLD_M)
+            return Enums.DARK_WAVE;
+        else if (amount < DAMAGE_THRESHOLD_L)
+            return Enums.DARK_WAVE_M;
+        else
+            return Enums.DARK_WAVE_L;
     }
 
     public void dmg(AbstractMonster m) {
@@ -582,7 +611,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public void triggerOnDeath() {}
 
-    // Thanks CustomCard renderTitle
     @Override
     protected void renderTitle(SpriteBatch sb) {
         initializeTitle();
@@ -615,21 +643,70 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     @Override
+    public void render(SpriteBatch sb) {
+        sigilRenderGlow(sb);
+        super.render(sb);
+    }
+
+    private void sigilUpdateGLow() {
+        if (sigilGlowing) {
+            myGlowTimer -= Gdx.graphics.getDeltaTime();
+            if (myGlowTimer < 0.0F) {
+                myGlowList.add(new CardGlowBorder(this, glowColor));
+                myGlowTimer = 0.3F;
+            }
+            ExileMod.logger.info(myGlowTimer);
+        }
+
+        Iterator i = this.myGlowList.iterator();
+        while(i.hasNext()) {
+            CardGlowBorder e = (CardGlowBorder)i.next();
+            e.update();
+            if (e.isDone)
+                i.remove();
+        }
+    }
+
+    public void stopSigilGlowing() {
+        sigilGlowing = false;
+
+        CardGlowBorder e;
+        for(Iterator var1 = myGlowList.iterator(); var1.hasNext(); e.duration /= 5.0F)
+            e = (CardGlowBorder)var1.next();
+    }
+
+    private void sigilRenderGlow(SpriteBatch sb) {
+        if (sigilGlowing) {
+            sb.setBlendFunction(770, 1);
+            TextureAtlas.AtlasRegion img;
+            switch (this.type) {
+                case ATTACK:
+                    img = ImageMaster.CARD_ATTACK_BG_SILHOUETTE;
+                    break;
+                case POWER:
+                    img = ImageMaster.CARD_POWER_BG_SILHOUETTE;
+                    break;
+                default:
+                    img = ImageMaster.CARD_SKILL_BG_SILHOUETTE;
+            }
+
+            sb.setColor(glowColor);
+            sb.draw(img, current_x + img.offsetX - (float) img.originalWidth / 2.0F, current_y + img.offsetY - (float) img.originalWidth / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalWidth / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, drawScale * Settings.scale * 1.04F, drawScale * Settings.scale * 1.03F, angle);
+        }
+
+        for (CardGlowBorder cardGlowBorder : myGlowList) {
+            AbstractGameEffect e = cardGlowBorder;
+            e.render(sb);
+        }
+
+        sb.setBlendFunction(770, 771);
+    }
+
+    @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractExileCard card = (AbstractExileCard) super.makeStatEquivalentCopy();
-        card.baseMagicNumber = baseMagicNumber;
-        card.magicNumber = magicNumber;
-        card.secondMagic = secondMagic;
-        card.baseSecondMagic = baseSecondMagic;
-        card.upgradedSecondMagic = upgradedSecondMagic;
-        card.thirdMagic = thirdMagic;
-        card.baseThirdMagic = baseThirdMagic;
-        card.upgradedThirdMagic = upgradedThirdMagic;
         card.sigil = sigil;
         card.selfRetain = selfRetain;
-        card.magicOneIsDebuff = magicOneIsDebuff;
-        card.magicTwoIsDebuff = magicTwoIsDebuff;
-        card.debuffIncrease = debuffIncrease;
         card.beingDiscarded = beingDiscarded;
 
         card.damageModList.clear();
@@ -648,13 +725,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         CardSaveObject obj = new CardSaveObject();
         obj.elements.addAll(damageModList);
         obj.sigil = sigil;
-        obj.retain = selfRetain;
-        obj.debuffIncrease = debuffIncrease;
-        obj.baseDamage = baseDamage;
-        obj.baseBlock = baseBlock;
-        obj.baseMagic = baseMagicNumber;
-        obj.baseSecondMagic = baseSecondMagic;
-        obj.baseThirdMagic = baseThirdMagic;
         return obj;
     }
 
@@ -669,16 +739,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         sigil = obj.sigil;
         if (sigil)
             cost = -2;
-        selfRetain = obj.retain;
-        debuffIncrease = obj.debuffIncrease;
-        baseDamage = obj.baseDamage;
-        baseBlock = obj.baseBlock;
-        baseMagicNumber = obj.baseMagic;
-        magicNumber = baseMagicNumber;
-        baseSecondMagic = obj.baseSecondMagic;
-        secondMagic = baseSecondMagic;
-        baseThirdMagic = obj.baseThirdMagic;
-        thirdMagic = baseThirdMagic;
     }
 
     @Override

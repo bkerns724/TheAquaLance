@@ -85,10 +85,10 @@
     ]
   },
   "${ModID}:BlueMarbles": {
-    "NAME": "BlueMarbles",
+    "NAME": "Blue Marbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply double #y${ModID}:Frostbite and #y${ModID}:Crushed."
+      "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply double #y${ModID}:Crushed and #y${ModID}:Frostbite."
     ]
   },
   "${ModID}:VialOfBlackBlood": {

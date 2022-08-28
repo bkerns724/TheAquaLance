@@ -23,6 +23,7 @@ public class ExileStudyPower extends AbstractExilePower {
         ID = POWER_ID + offset++;
         isTwoAmount = true;
         this.amount2 = amount2;
+        priority = 6;
         updateDescription();
     }
 

@@ -2,7 +2,6 @@ package theExile.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theExile.ExileMod;
@@ -30,10 +29,5 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
             lossMultiplier += staff.counter * HexedStaff.BONUS_MULT;
         att(new JinxLoseHPAction(target, source, (int)(amount*lossMultiplier), (pow instanceof JinxPower)));
         return true;
-    }
-
-    @Override
-    public void playApplyPowerSfx() {
-        CardCrawlGame.sound.play(ExileMod.JINX_KEY, 0.1f);
     }
 }

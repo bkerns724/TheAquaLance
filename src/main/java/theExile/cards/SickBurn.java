@@ -24,12 +24,10 @@ public class SickBurn extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
-        addModifier(elenum.FIRE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
+        dmg(m, getFireEffect());
         applyToEnemy(m, new PoisonPower(m, adp(), magicNumber));
     }
 

@@ -25,7 +25,6 @@ public class ArcaneBeam extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        addModifier(elenum.FIRE);
         addModifier(elenum.LIGHTNING);
     }
 

@@ -23,7 +23,6 @@ public class Combust extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
-        addModifier(elenum.FIRE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

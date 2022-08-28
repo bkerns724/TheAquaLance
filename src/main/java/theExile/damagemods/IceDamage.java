@@ -58,7 +58,7 @@ public class IceDamage extends AbstractDamageModifier {
         int finalDamage = blockedAmount + lastDamageTaken;
         if (adp().hasRelic(BlueMarbles.ID))
             finalDamage *= 2;
-        int frostbite = finalDamage / 2;
+        int frostbite = finalDamage / 3;
         if (frostbite > 0)
             applyToEnemyTop(target, new FrostbitePower(target, frostbite));
     }
@@ -66,7 +66,7 @@ public class IceDamage extends AbstractDamageModifier {
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
         if (!visibleTips)
-            return new ArrayList<TooltipInfo>();
+            return new ArrayList<>();
         if (iceTooltip == null)
             iceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         if (iceTooltip2 == null)

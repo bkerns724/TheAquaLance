@@ -26,8 +26,6 @@ public class Miasma extends AbstractExileCard {
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
-        magicOneIsDebuff = true;
-        magicTwoIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

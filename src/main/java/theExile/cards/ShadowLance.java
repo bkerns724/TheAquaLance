@@ -24,8 +24,7 @@ public class ShadowLance extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        addModifier(elenum.DARK);
-        magicOneIsDebuff = true;
+        addModifier(elenum.ELDRITCH);
         exhaust = true;
     }
 

@@ -23,6 +23,7 @@ public class ResonatingPower extends AbstractExilePower implements OnReceivePowe
     public ResonatingPower(Resonance resonance) {
         super(POWER_ID, PowerType.BUFF, false, adp(), resonance.amount);
         this.resonance = resonance;
+        priority = 4;
     }
 
     @Override

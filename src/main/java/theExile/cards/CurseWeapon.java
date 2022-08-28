@@ -22,7 +22,6 @@ public class CurseWeapon extends AbstractExileCard {
     protected void applyAttributes() {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

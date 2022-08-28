@@ -22,7 +22,6 @@ public class ClockSigil extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
-        magicOneIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

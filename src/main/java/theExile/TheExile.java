@@ -225,7 +225,7 @@ public class TheExile extends CustomPlayer {
                 ExileMod.Enums.FORCE,
                 ExileMod.Enums.ICE,
                 ExileMod.Enums.ELDRITCH,
-                ExileMod.Enums.SOUL_FIRE
+                ExileMod.Enums.LIGHTNING_S
         };
     }
 

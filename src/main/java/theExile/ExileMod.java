@@ -1,9 +1,6 @@
 package theExile;
 
-import basemod.AutoAdd;
-import basemod.BaseMod;
-import basemod.ModLabeledToggleButton;
-import basemod.ModPanel;
+import basemod.*;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -36,7 +33,10 @@ import theExile.cards.cardvars.ThirdMagicNumber;
 import theExile.events.ClericsRequest;
 import theExile.events.ResearchCenter;
 import theExile.events.VoidSpirits;
-import theExile.icons.*;
+import theExile.icons.Eldritch;
+import theExile.icons.Force;
+import theExile.icons.Ice;
+import theExile.icons.Lightning;
 import theExile.potions.*;
 import theExile.relics.AbstractExileRelic;
 import theExile.util.ClickableForPower;
@@ -74,6 +74,7 @@ public class ExileMod implements
     }
 
     public static final String EXTENDED_CUT_SETTING = "ExtendedCutSetting";
+    public static final String TUTORIAL_SETTING = "TutorialSetting";
     public static final String SETTINGS_STRINGS = "Settings";
 
     private static SpireConfig modConfig = null;
@@ -127,6 +128,14 @@ public class ExileMod implements
             "The Exile", "Bryan", "This mod adds a new character, the Exile."
     };
 
+    private static ModLabeledToggleButton alwaysExtendedCutButton = null;
+    private static ModLabeledToggleButton onceExtendedCutButton = null;
+    private static ModLabeledToggleButton neverExtendedCutButton = null;
+
+    private static ModLabeledToggleButton alwaysTutorialButton = null;
+    private static ModLabeledToggleButton onceTutorialButton = null;
+    private static ModLabeledToggleButton neverTutorialButton = null;
+
     public static float time = 0.0f;
     public static final Color purpleColor = new Color(0.45f, 0f, 0.6f, 1.0f);
     public static final Color darkColor = new Color(0.25f, 0.25f, 0.25f, 1.0f);
@@ -176,17 +185,15 @@ public class ExileMod implements
         @SpireEnum
         public static AbstractGameAction.AttackEffect ICE_L;
         @SpireEnum
-        public static AbstractGameAction.AttackEffect SOUL_FIRE;
-        @SpireEnum
-        public static AbstractGameAction.AttackEffect SOUL_FIRE_M;
-        @SpireEnum
-        public static AbstractGameAction.AttackEffect SOUL_FIRE_L;
-        @SpireEnum
         public static AbstractGameAction.AttackEffect ELDRITCH;
         @SpireEnum
         public static AbstractGameAction.AttackEffect ELDRITCH_M;
         @SpireEnum
         public static AbstractGameAction.AttackEffect ELDRITCH_L;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect FIRE_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect FIRE_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect DARK_WAVE;
         @SpireEnum
@@ -203,6 +210,8 @@ public class ExileMod implements
         public static AbstractGameAction.AttackEffect BLUNT_MASSIVE;
         @SpireEnum
         public static AbstractGameAction.AttackEffect SLASH_MASSIVE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect LIGHTNING_S;
         @SpireEnum
         public static AbstractGameAction.AttackEffect LIGHTNING_M;
         @SpireEnum
@@ -228,11 +237,24 @@ public class ExileMod implements
 
         try {
             Properties defaults = new Properties();
-            defaults.put(EXTENDED_CUT_SETTING, Boolean.toString(true));
+            defaults.put(EXTENDED_CUT_SETTING, Integer.toString(1));
+            defaults.put(TUTORIAL_SETTING, Integer.toString(1));
             modConfig = new SpireConfig(modID, "Config", defaults);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private enum extendedSetting {
+        ALWAYS,
+        ONCE,
+        NEVER
+    }
+
+    private enum tutorialSetting {
+        ALWAYS,
+        ONCE,
+        NEVER
     }
 
     @Override
@@ -265,7 +287,6 @@ public class ExileMod implements
         CustomIconHelper.addCustomIcon(Force.get());
         CustomIconHelper.addCustomIcon(Ice.get());
         CustomIconHelper.addCustomIcon(Eldritch.get());
-        CustomIconHelper.addCustomIcon(DemonFire.get());
         CustomIconHelper.addCustomIcon(Lightning.get());
 
         new AutoAdd(modID)
@@ -308,25 +329,115 @@ public class ExileMod implements
 
     private void setupSettings () {
         ModPanel settingsPanel = new ModPanel();
+        String[] settingStrings = CardCrawlGame.languagePack.getUIString(makeID(SETTINGS_STRINGS)).TEXT;
+
         float currentYposition = 740f;
 
-        ModLabeledToggleButton extendedCutButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(
-                makeID(SETTINGS_STRINGS)).TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR,
-                FontHelper.charDescFont, isExtendedCut(), settingsPanel, label -> {},
-                button -> {
-                    if (modConfig != null) {
-                        modConfig.setBool(EXTENDED_CUT_SETTING, button.enabled);
-                        saveConfig();
-                    }
-                });
-        settingsPanel.addUIElement(extendedCutButton);
+        ModLabel extendedLabel = new ModLabel(settingStrings[0], 375.0f,
+                currentYposition, settingsPanel, label -> {});
+        settingsPanel.addUIElement(extendedLabel);
+        currentYposition -= 60.0f;
+
+        alwaysExtendedCutButton = new ModLabeledToggleButton(settingStrings[1], 410.0f,
+                currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                (modConfig.getInt(EXTENDED_CUT_SETTING) == 0), settingsPanel, label -> {}, button -> {
+            if (modConfig != null && button.enabled) {
+                modConfig.setInt(EXTENDED_CUT_SETTING, 0);
+                saveConfig();
+                if (onceExtendedCutButton != null)
+                    onceExtendedCutButton.toggle.enabled = false;
+                if (neverExtendedCutButton != null)
+                    neverExtendedCutButton.toggle.enabled = false;
+            }
+        });
+        settingsPanel.addUIElement(alwaysExtendedCutButton);
+        currentYposition -= 60.0f;
+
+        onceExtendedCutButton = new ModLabeledToggleButton(settingStrings[2], 410.0f,
+                currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                (modConfig.getInt(EXTENDED_CUT_SETTING) == 1), settingsPanel, label -> {}, button -> {
+            if (modConfig != null && button.enabled) {
+                modConfig.setInt(EXTENDED_CUT_SETTING, 1);
+                saveConfig();
+                if (alwaysExtendedCutButton != null)
+                    alwaysExtendedCutButton.toggle.enabled = false;
+                if (neverExtendedCutButton != null)
+                    neverExtendedCutButton.toggle.enabled = false;
+            }
+        });
+        settingsPanel.addUIElement(onceExtendedCutButton);
+        currentYposition -= 60.0f;
+
+        neverExtendedCutButton = new ModLabeledToggleButton(settingStrings[3], 410.0f,
+                currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                (modConfig.getInt(EXTENDED_CUT_SETTING) == 2), settingsPanel, label -> {}, button -> {
+            if (modConfig != null && button.enabled) {
+                modConfig.setInt(EXTENDED_CUT_SETTING, 2);
+                saveConfig();
+                if (onceExtendedCutButton != null)
+                    onceExtendedCutButton.toggle.enabled = false;
+                if (alwaysExtendedCutButton != null)
+                    alwaysExtendedCutButton.toggle.enabled = false;
+            }
+        });
+        settingsPanel.addUIElement(neverExtendedCutButton);
+        currentYposition -= 60.0f;
+
+        ModLabel tutorialLabel = new ModLabel(settingStrings[4], 375.0f,
+                currentYposition, settingsPanel, label -> {});
+        settingsPanel.addUIElement(tutorialLabel);
+        currentYposition -= 60.0f;
+
+        alwaysTutorialButton = new ModLabeledToggleButton(settingStrings[1], 410.0f,
+                currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                (modConfig.getInt(TUTORIAL_SETTING) == 0), settingsPanel, label -> {}, button -> {
+            if (modConfig != null && button.enabled) {
+                modConfig.setInt(TUTORIAL_SETTING, 0);
+                saveConfig();
+                if (onceTutorialButton != null)
+                    onceTutorialButton.toggle.enabled = false;
+                if (neverTutorialButton != null)
+                    neverTutorialButton.toggle.enabled = false;
+            }
+        });
+        settingsPanel.addUIElement(alwaysTutorialButton);
+        currentYposition -= 60.0f;
+
+        onceTutorialButton = new ModLabeledToggleButton(settingStrings[2], 410.0f,
+                currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                (modConfig.getInt(TUTORIAL_SETTING) == 1), settingsPanel, label -> {}, button -> {
+            if (modConfig != null && button.enabled) {
+                modConfig.setInt(TUTORIAL_SETTING, 1);
+                saveConfig();
+                if (alwaysTutorialButton != null)
+                    alwaysTutorialButton.toggle.enabled = false;
+                if (neverTutorialButton != null)
+                    neverTutorialButton.toggle.enabled = false;
+            }
+        });
+        settingsPanel.addUIElement(onceTutorialButton);
+        currentYposition -= 60.0f;
+
+        neverTutorialButton = new ModLabeledToggleButton(settingStrings[3], 410.0f,
+                currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                (modConfig.getInt(TUTORIAL_SETTING) == 2), settingsPanel, label -> {}, button -> {
+            if (modConfig != null && button.enabled) {
+                modConfig.setInt(TUTORIAL_SETTING, 2);
+                saveConfig();
+                if (onceTutorialButton != null)
+                    onceTutorialButton.toggle.enabled = false;
+                if (alwaysTutorialButton != null)
+                    alwaysTutorialButton.toggle.enabled = false;
+            }
+        });
+        settingsPanel.addUIElement(neverTutorialButton);
 
         Texture badgeTexture = new Texture(BADGE_IMG);
         BaseMod.registerModBadge(badgeTexture, REGISTRATION_STRINGS[0], REGISTRATION_STRINGS[1], REGISTRATION_STRINGS[2],
                 settingsPanel);
     }
 
-    private void saveConfig() {
+    private static void saveConfig() {
         try {
             modConfig.save();
         } catch (IOException e) {
@@ -337,7 +448,35 @@ public class ExileMod implements
     public static boolean isExtendedCut() {
         if (modConfig == null)
             return false;
-        return modConfig.getBool(EXTENDED_CUT_SETTING);
+        int x = modConfig.getInt(EXTENDED_CUT_SETTING);
+        if (x == 2)
+            return false;
+        if (x == 0)
+            return true;
+        if (onceExtendedCutButton != null && neverExtendedCutButton != null) {
+            onceExtendedCutButton.toggle.enabled = false;
+            neverExtendedCutButton.toggle.enabled = true;
+            modConfig.setInt(EXTENDED_CUT_SETTING, 2);
+            saveConfig();
+        }
+        return true;
+    }
+
+    public static boolean needTutorial() {
+        if (modConfig == null)
+            return false;
+        int x = modConfig.getInt(TUTORIAL_SETTING);
+        if (x == 2)
+            return false;
+        if (x == 0)
+            return true;
+        if (onceTutorialButton != null && neverTutorialButton != null) {
+            onceTutorialButton.toggle.enabled = false;
+            neverTutorialButton.toggle.enabled = true;
+            modConfig.setInt(TUTORIAL_SETTING, 2);
+            saveConfig();
+        }
+        return true;
     }
 
     @Override
@@ -350,10 +489,14 @@ public class ExileMod implements
 
     @Override
     public void receiveOnBattleStart(AbstractRoom room) {
-        if (adp().chosenClass == THE_EXILE && AbstractDungeon.floorNum == 1)
-            AbstractDungeon.ftue = new ClickyFtue("whee", "boop", Settings.WIDTH/2f, Settings.HEIGHT/2f);
-        if (room.event instanceof VoidSpirits)
+        if (room.event instanceof VoidSpirits) {
             forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF, true)));
+            return;
+        }
+        if (adp().chosenClass == THE_EXILE && AbstractDungeon.floorNum == 1) {
+            if (needTutorial())
+                AbstractDungeon.ftue = new ClickyFtue("whee", "boop", Settings.WIDTH / 2f, Settings.HEIGHT / 2f);
+        }
     }
 
     @Override

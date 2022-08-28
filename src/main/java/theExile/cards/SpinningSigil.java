@@ -20,7 +20,6 @@ public class SpinningSigil extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         sigil = true;
-        addModifier(elenum.FIRE);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

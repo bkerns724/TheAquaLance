@@ -30,4 +30,32 @@ public class StoneDaggers extends AbstractExileCard {
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
     }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        if (mo == null)
+            magicNumber = 0;
+        else if (getDebuffCount(mo) == 1)
+            magicNumber = getDebuffCount(mo);
+    }
+
+    @Override
+    public void initializeDescription() {
+        if (cardStrings == null) {
+            rawDescription = "SHOULD NOT BE SEEN";
+            return;
+        }
+        if (magicNumber <= 0)
+            rawDescription = cardStrings.DESCRIPTION;
+        else if (magicNumber == 1)
+            rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
+        else
+            rawDescription = cardStrings.EXTENDED_DESCRIPTION[1];
+        if (sigil)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
+
+        overrideRawDesc = true;
+        super.initializeDescription();
+    }
 }

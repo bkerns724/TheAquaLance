@@ -26,8 +26,6 @@ public class VialOfBlackBlood extends AbstractExileRelic {
             AbstractExileCard card = (AbstractExileCard) c;
             if (card.damageModList.contains(AbstractExileCard.elenum.LIGHTNING))
                 damage *= 2;
-            if (card.damageModList.contains(AbstractExileCard.elenum.FIRE))
-                damage *= 2;
         }
         return damage;
     }
@@ -37,8 +35,6 @@ public class VialOfBlackBlood extends AbstractExileRelic {
         if (targetCard instanceof AbstractExileCard) {
             AbstractExileCard card = (AbstractExileCard) targetCard;
             if (card.damageModList.contains(AbstractExileCard.elenum.LIGHTNING))
-                atb(new LoseHPAction(adp(), adp(), SELF_DAMAGE));
-            if (card.damageModList.contains(AbstractExileCard.elenum.FIRE))
                 atb(new LoseHPAction(adp(), adp(), SELF_DAMAGE));
         }
     }

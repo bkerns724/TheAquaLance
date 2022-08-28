@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.cards.AbstractExileCard.elenum.DARK;
+import static theExile.cards.AbstractExileCard.elenum.ELDRITCH;
 
 public class VoidBall extends AbstractExileCard {
     public final static String ID = makeID(VoidBall.class.getSimpleName());
@@ -22,7 +22,7 @@ public class VoidBall extends AbstractExileCard {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = MAGIC;
         isMultiDamage = true;
-        addModifier(DARK);
+        addModifier(ELDRITCH);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

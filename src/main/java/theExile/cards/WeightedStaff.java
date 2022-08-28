@@ -18,7 +18,6 @@ public class WeightedStaff extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        magicOneIsDebuff = true;
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

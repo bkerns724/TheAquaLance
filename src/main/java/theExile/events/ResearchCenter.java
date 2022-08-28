@@ -69,20 +69,20 @@ public class ResearchCenter extends AbstractExileEvent {
             imageEventText.setDialogOption(options[1], true);
 
         if (hasCardForSigil() && adp().gold >= getGoldCost())
-            imageEventText.setDialogOption(options[7]);
+            imageEventText.setDialogOption(options[6]);
         else
-            imageEventText.setDialogOption(options[8], true);
+            imageEventText.setDialogOption(options[7], true);
 
         if (adp().gold > getGoldCost()) {
-            imageEventText.setDialogOption(options[9].replace("!PotionString!",
+            imageEventText.setDialogOption(options[8].replace("!PotionString!",
                     FontHelper.colorString(new SteelhidePotion().name, "g")));
             LargeDialogOptionButton but = imageEventText.optionList.get(2);
             TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, new SteelhidePotion().tips);
         }
         else
-            imageEventText.setDialogOption(options[10], true);
+            imageEventText.setDialogOption(options[9], true);
 
-        imageEventText.setDialogOption(options[11]);
+        imageEventText.setDialogOption(options[10]);
     }
 
     public void update() {
@@ -113,7 +113,7 @@ public class ResearchCenter extends AbstractExileEvent {
                 imageEventText.updateBodyText(descriptions[4]);
             }
             imageEventText.clearAllDialogs();
-            imageEventText.setDialogOption(options[12]);
+            imageEventText.setDialogOption(options[11]);
             screen = CUR_SCREEN.COMPLETE;
         }
     }
@@ -139,24 +139,18 @@ public class ResearchCenter extends AbstractExileEvent {
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, ForceDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[3], true);
-                    if (checkForUpgradableCard(AbstractExileCard.elenum.DARK)) {
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.ELDRITCH)) {
                         imageEventText.setDialogOption(options[4]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(2);
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, EldritchDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[4], true);
-                    if (checkForUpgradableCard(AbstractExileCard.elenum.FIRE)) {
-                        imageEventText.setDialogOption(options[5]);
-                        LargeDialogOptionButton but = imageEventText.optionList.get(3);
-                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DemonFireDamage.getPowerTips());
-                    } else
-                        imageEventText.setDialogOption(options[5], true);
                     if (checkForUpgradableCard(AbstractExileCard.elenum.LIGHTNING)) {
-                        imageEventText.setDialogOption(options[6]);
+                        imageEventText.setDialogOption(options[5]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(4);
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DeathLightningDamage.getPowerTips());
                     } else
-                        imageEventText.setDialogOption(options[6], true);
+                        imageEventText.setDialogOption(options[5], true);
                     break;
                 case 1:
                     pickedSigil = true;
@@ -178,13 +172,13 @@ public class ResearchCenter extends AbstractExileEvent {
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[5]);
                     imageEventText.clearAllDialogs();
-                    imageEventText.setDialogOption(options[12]);
+                    imageEventText.setDialogOption(options[11]);
                     break;
                 case 3:
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[6]);
                     imageEventText.clearAllDialogs();
-                    imageEventText.setDialogOption(options[12]);
+                    imageEventText.setDialogOption(options[11]);
                     break;
             }
         } else if (screen == CUR_SCREEN.ELE_CHOICE) {
@@ -194,10 +188,8 @@ public class ResearchCenter extends AbstractExileEvent {
             else if (buttonPressed == 1)
                 element = AbstractExileCard.elenum.FORCE;
             else if (buttonPressed == 2)
-                element = AbstractExileCard.elenum.DARK;
+                element = AbstractExileCard.elenum.ELDRITCH;
             else if (buttonPressed == 3)
-                element = AbstractExileCard.elenum.FIRE;
-            else if (buttonPressed == 4)
                 element = AbstractExileCard.elenum.LIGHTNING;
             for (LargeDialogOptionButton x : imageEventText.optionList)
                 TipsInDialogPatch.ButtonPreviewField.previewTips.set(x, null);

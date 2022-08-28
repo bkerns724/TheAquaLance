@@ -97,7 +97,7 @@
       "Frostbite",
       "frostbite"
     ],
-    "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage. Frostbite is removed at the end of the turn."
+    "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage and Frostbite is reduced by 1."
   },
   {
     "PROPER_NAME": "Crushed",
@@ -105,7 +105,7 @@
       "Crushed",
       "crushed"
     ],
-    "DESCRIPTION": "Crushed creatures take more damage from attacks for one turn."
+    "DESCRIPTION": "Crushed enemies take more damage from attacks. Crushed is reduced by 1 at the end of the round."
   },
   {
     "PROPER_NAME": "Jinx",

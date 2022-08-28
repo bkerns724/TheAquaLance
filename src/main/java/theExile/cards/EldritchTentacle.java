@@ -21,7 +21,7 @@ public class EldritchTentacle extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        addModifier(elenum.DARK);
+        addModifier(elenum.ELDRITCH);
     }
 
     public void onUse(AbstractPlayer p, AbstractMonster m) {

@@ -20,7 +20,6 @@ public class JinxedSigil extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        magicOneIsDebuff = true;
         sigil = true;
     }
 

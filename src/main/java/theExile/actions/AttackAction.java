@@ -11,9 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
+import com.megacrit.cardcrawl.vfx.combat.*;
 import theExile.ExileMod;
 import theExile.vfx.*;
 
@@ -27,7 +25,7 @@ public class AttackAction extends AbstractGameAction {
     private final DamageInfo info;
     private int[] multiDamage;
 
-    public static ArrayList<AbstractGameAction.AttackEffect> simpleEffects;
+    public static ArrayList<AttackEffect> simpleEffects;
 
     public AttackAction(AbstractMonster m, DamageInfo info, AttackEffect effect) {
         this.m = m;
@@ -54,16 +52,16 @@ public class AttackAction extends AbstractGameAction {
             else
                 action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, effect);
 
-            if (effect == ExileMod.Enums.SOUL_FIRE)
-                color = Color.PURPLE.cpy();
             if (effect == ExileMod.Enums.ICE || effect == ExileMod.Enums.ICE_M)
                 color = Color.BLUE.cpy();
-            if (effect == ExileMod.Enums.FORCE || effect == ExileMod.Enums.FORCE_M)
+            else if (effect == ExileMod.Enums.FORCE || effect == ExileMod.Enums.FORCE_M)
                 color = Color.PINK.cpy();
-            if (effect == ExileMod.Enums.ELDRITCH || effect == ExileMod.Enums.ELDRITCH_M)
+            else if (effect == ExileMod.Enums.ELDRITCH || effect == ExileMod.Enums.ELDRITCH_M)
                 color = Color.BLACK.cpy();
-            if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
-                color = Color.YELLOW.cpy();
+            else if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
+                color = Color.GREEN.cpy();
+            else if (effect == AttackEffect.FIRE)
+                color = Color.ORANGE.cpy();
 
             if (color != null) {
                 ColoredDamagePatch.DamageActionColorField.damageColor.set(action, color);
@@ -84,7 +82,7 @@ public class AttackAction extends AbstractGameAction {
         att(action);
 
         if (effect == AttackEffect.LIGHTNING) {
-            color = Color.YELLOW.cpy();
+            color = Color.GREEN.cpy();
             if (m == null) {
                 att(new SFXAction("ORB_LIGHTNING_EVOKE"));
                 forAllMonstersLiving(m ->
@@ -98,20 +96,6 @@ public class AttackAction extends AbstractGameAction {
         if (effect == ExileMod.Enums.ICE_L) {
             color = Color.BLUE.cpy();
             vfxTop(new BlizzardEffect(50, AbstractDungeon.getMonsters().shouldFlipVfx()), 0.5f);
-        }
-
-        if (effect == ExileMod.Enums.SOUL_FIRE_M) {
-            color = Color.PURPLE.cpy();
-            if (m == null)
-                forAllMonstersLiving(m ->
-                        vfxTop(new SoulBlowEffect(m.hb.cX, m.hb.cY, 3), 0.2f));
-            else
-                vfxTop(new SoulBlowEffect(m.hb.cX, m.hb.cY, 3), 0.2f);
-        }
-
-        if (effect == ExileMod.Enums.SOUL_FIRE_L) {
-            color = Color.PURPLE.cpy();
-            vfxTop(new ScreenOnSoulFireEffect(), 1.0f);
         }
 
         if (effect == ExileMod.Enums.FORCE_L) {
@@ -166,6 +150,7 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.LIGHTNING_M) {
+            color = Color.GREEN.cpy();
             if (m == null)
                 forAllMonstersLiving(m -> vfxTop(new GreenLightningEffect(m.drawX, m.drawY)));
             else
@@ -173,10 +158,24 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.LIGHTNING_L) {
+            color = Color.GREEN.cpy();
             if (m == null)
                 forAllMonstersLiving(m -> vfxTop(new LargeGreenLightningEffect(m)));
             else
                 vfxTop(new LargeGreenLightningEffect(m));
+        }
+
+        if (effect == ExileMod.Enums.FIRE_M) {
+            color = Color.ORANGE.cpy();
+            if (m == null)
+                forAllMonstersLiving(m -> vfxTop(new SearingBlowEffect(m.hb.cX, m.hb.cY, 3), 0.2f));
+            else
+                vfxTop(new SearingBlowEffect(m.hb.cX, m.hb.cY, 3), 0.2F);
+        }
+
+        if (effect == ExileMod.Enums.FIRE_L) {
+            color = Color.ORANGE.cpy();
+            vfxTop(new ShortScreenOnFireEffect());
         }
 
         ColoredDamagePatch.DamageActionColorField.rainbow.set(action, rainbow);
@@ -190,12 +189,10 @@ public class AttackAction extends AbstractGameAction {
 
     static {
         simpleEffects = new ArrayList<>();
-        simpleEffects.add(AttackEffect.LIGHTNING);
         simpleEffects.add(ExileMod.Enums.ACID);
         simpleEffects.add(ExileMod.Enums.BLOOD);
         simpleEffects.add(ExileMod.Enums.ICE);
         simpleEffects.add(ExileMod.Enums.ICE_M);
-        simpleEffects.add(ExileMod.Enums.SOUL_FIRE);
         simpleEffects.add(ExileMod.Enums.FORCE);
         simpleEffects.add(ExileMod.Enums.FORCE_M);
         simpleEffects.add(ExileMod.Enums.ELDRITCH);
@@ -203,16 +200,18 @@ public class AttackAction extends AbstractGameAction {
         simpleEffects.add(ExileMod.Enums.RESONANT);
         simpleEffects.add(ExileMod.Enums.RESONANT_M);
         simpleEffects.add(ExileMod.Enums.RESONANT_L);
-        simpleEffects.add(AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        simpleEffects.add(AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        simpleEffects.add(AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        simpleEffects.add(AbstractGameAction.AttackEffect.SLASH_VERTICAL);
-        simpleEffects.add(AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-        simpleEffects.add(AbstractGameAction.AttackEffect.SLASH_HEAVY);
-        simpleEffects.add(AbstractGameAction.AttackEffect.NONE);
-        simpleEffects.add(AbstractGameAction.AttackEffect.FIRE);
-        simpleEffects.add(AbstractGameAction.AttackEffect.POISON);
-        simpleEffects.add(AbstractGameAction.AttackEffect.SMASH);
-        simpleEffects.add(AbstractGameAction.AttackEffect.SHIELD);
+        simpleEffects.add(ExileMod.Enums.LIGHTNING_S);
+        simpleEffects.add(AttackEffect.BLUNT_LIGHT);
+        simpleEffects.add(AttackEffect.BLUNT_HEAVY);
+        simpleEffects.add(AttackEffect.SLASH_DIAGONAL);
+        simpleEffects.add(AttackEffect.SLASH_VERTICAL);
+        simpleEffects.add(AttackEffect.SLASH_HORIZONTAL);
+        simpleEffects.add(AttackEffect.SLASH_HEAVY);
+        simpleEffects.add(AttackEffect.NONE);
+        simpleEffects.add(AttackEffect.FIRE);
+        simpleEffects.add(AttackEffect.POISON);
+        simpleEffects.add(AttackEffect.SMASH);
+        simpleEffects.add(AttackEffect.SHIELD);
+        simpleEffects.add(AttackEffect.LIGHTNING);
     }
 }

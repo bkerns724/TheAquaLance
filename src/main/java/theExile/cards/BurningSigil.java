@@ -19,7 +19,6 @@ public class BurningSigil extends AbstractExileCard {
         baseDamage = DAMAGE;
         isMultiDamage = true;
         sigil = true;
-        addModifier(elenum.FIRE);
     }
 
     @Override

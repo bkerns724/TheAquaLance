@@ -54,7 +54,7 @@ public class AttackEffectsPatch {
 
         Texture texture;
 
-        if (effect == AbstractGameAction.AttackEffect.LIGHTNING)
+        if (effect == ExileMod.Enums.LIGHTNING_S)
             texture = TexLoader.getTexture(ExileMod.LIGHTNING_EFFECT_FILE);
         else if (effect == ExileMod.Enums.WATER)
             texture = TexLoader.getTexture(ExileMod.WATER_EFFECT_FILE);
@@ -66,8 +66,6 @@ public class AttackEffectsPatch {
             texture = TexLoader.getTexture(ExileMod.ICE_EFFECT_FILE);
         else if (effect == ExileMod.Enums.ICE_M)
             texture = TexLoader.getTexture(ExileMod.ICE_M_EFFECT_FILE);
-        else if (effect == ExileMod.Enums.SOUL_FIRE)
-            texture = TexLoader.getTexture(ExileMod.DEMON_FIRE_EFFECT_FILE);
         else if (effect == ExileMod.Enums.FORCE)
             texture = TexLoader.getTexture(ExileMod.FORCE_EFFECT_FILE);
         else if (effect == ExileMod.Enums.FORCE_M)
@@ -98,7 +96,7 @@ public class AttackEffectsPatch {
     )
     public static class SfxPatch {
         public static SpireReturn Prefix(AbstractGameAction.AttackEffect effect) {
-            if (effect == AbstractGameAction.AttackEffect.LIGHTNING) {
+            if (effect == ExileMod.Enums.LIGHTNING_S) {
                 CardCrawlGame.sound.play("ORB_PLASMA_CHANNEL");
                 return SpireReturn.Return();
             }
@@ -138,10 +136,6 @@ public class AttackEffectsPatch {
                 CardCrawlGame.sound.play("POWER_CONSTRICTED");
                 return SpireReturn.Return();
             }
-            if (effect == ExileMod.Enums.SOUL_FIRE) {
-                CardCrawlGame.sound.play("ATTACK_FIRE");
-                return SpireReturn.Return();
-            }
             if (effect == ExileMod.Enums.RESONANT) {
                 CardCrawlGame.sound.playAV("BELL", 0.2f, 0.7f);
                 return SpireReturn.Return();
@@ -171,9 +165,9 @@ public class AttackEffectsPatch {
         emptyEffects.add(ExileMod.Enums.FORCE_L);
         emptyEffects.add(ExileMod.Enums.ICE_L);
         emptyEffects.add(ExileMod.Enums.ELDRITCH_L);
-        emptyEffects.add(ExileMod.Enums.SOUL_FIRE_M);
-        emptyEffects.add(ExileMod.Enums.SOUL_FIRE_L);
         emptyEffects.add(ExileMod.Enums.BLUNT_MASSIVE);
         emptyEffects.add(ExileMod.Enums.SLASH_MASSIVE);
+        emptyEffects.add(ExileMod.Enums.FIRE_M);
+        emptyEffects.add(ExileMod.Enums.FIRE_L);
     }
 }
