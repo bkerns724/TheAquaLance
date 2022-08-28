@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
@@ -23,7 +22,7 @@ public class Collapse extends AbstractExileCard {
         addModifier(elenum.FORCE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
     }
 

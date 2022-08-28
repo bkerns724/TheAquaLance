@@ -1,7 +1,6 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rewards.RewardItem;
@@ -10,6 +9,7 @@ import theExile.ExileMod;
 import theExile.cards.cardUtil.Resonance;
 import theExile.powers.ResonantCostZeroPower;
 
+import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.util.Wiz.adRoom;
 import static theExile.util.Wiz.adp;
 
@@ -25,8 +25,12 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     protected abstract void setResonance();
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         resonance.resonanceEffects(this, m);
+    }
+
+    public void setMultiDamage(boolean mult) {
+        isMultiDamage = mult;
     }
 
     @Override
@@ -40,6 +44,29 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
             return true;
 
         return false;
+    }
+    public void addModifier(elenum element, boolean tips) {
+        if (damageModList.contains(element))
+            return;
+
+        if (element == ICE && !damageModList.contains(FAKE_ICE)) {
+            addModifier(FAKE_ICE);
+            resonance.addModifier(ICE);
+        }
+        if (element == FORCE && !damageModList.contains(FAKE_FORCE)) {
+            addModifier(FAKE_FORCE);
+            resonance.addModifier(FORCE);
+        }
+        if (element == ELDRITCH && !damageModList.contains(FAKE_ELDRITCH)) {
+            addModifier(FAKE_ELDRITCH);
+            resonance.addModifier(ELDRITCH);
+        }
+        if (element == LIGHTNING && !damageModList.contains(FAKE_LIGHTNING)) {
+            addModifier(FAKE_LIGHTNING);
+            resonance.addModifier(LIGHTNING);
+        }
+
+        initializeDescription();
     }
 
     @Override

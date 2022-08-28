@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.GolemPower;
 import theExile.powers.SteelhidePower;
 
@@ -25,7 +23,7 @@ public class GolemForm extends AbstractExileCard {
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new SteelhidePower(adp(), magicNumber));
         applyToSelf(new GolemPower(1));
     }

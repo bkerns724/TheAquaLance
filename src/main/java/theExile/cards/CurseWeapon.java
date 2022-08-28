@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.JinxPower;
 
@@ -24,9 +23,13 @@ public class CurseWeapon extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        blck();
+    public void singleTargetUse(AbstractMonster m) {
         applyToEnemy(m, new JinxPower(m, magicNumber));
+    }
+
+    @Override
+    public void nonTargetUse() {
+        blck();
     }
 
     public void upp() {

@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.NoceboPower;
 
@@ -23,7 +22,7 @@ public class Nocebo extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
         for (int i = 0; i < magicNumber; i++)
             applyToEnemy(m, new NoceboPower(m, 1));

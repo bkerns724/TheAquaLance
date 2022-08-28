@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
@@ -24,8 +23,12 @@ public class PhantomFist extends AbstractExileCard {
         addModifier(elenum.FORCE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
         cardDraw(magicNumber);
     }
 

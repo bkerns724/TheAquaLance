@@ -23,8 +23,12 @@ public class DeepFreeze extends AbstractExileCard {
         addModifier(elenum.ICE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractPlayer p, AbstractMonster m) {
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
         applyToSelf(new EquilibriumPower(adp(), 1));
     }
 

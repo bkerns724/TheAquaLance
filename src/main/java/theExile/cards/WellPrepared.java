@@ -1,8 +1,6 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
@@ -26,7 +24,7 @@ public class WellPrepared extends AbstractExileCard {
         exhaust = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         atb(new DrawCardAction(magicNumber));
         discard(secondMagic);
     }

@@ -2,12 +2,12 @@ package theExile.cards;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.relics.ManaPurifier;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.getSlashEffect;
 
 public class EnchantedDagger extends AbstractExileCard {
     public final static String ID = makeID(EnchantedDagger.class.getSimpleName());
@@ -23,9 +23,9 @@ public class EnchantedDagger extends AbstractExileCard {
         baseDamage = DAMAGE;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         if (damageModList.isEmpty())
-            dmg(m, getSlashEffect());
+            dmg(m, getSlashEffect(damage));
         else
             dmg(m);
     }

@@ -1,8 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.cardDraw;
 
@@ -23,7 +20,7 @@ public class Barrier extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         blck();
         cardDraw(magicNumber);
     }

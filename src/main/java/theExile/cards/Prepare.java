@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 import theExile.powers.DiscardNextTurnPower;
 import theExile.powers.DrawNextTurnPower;
@@ -24,7 +22,7 @@ public class Prepare extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new DrawNextTurnPower(magicNumber));
         applyToSelf(new DiscardNextTurnPower(magicNumber));
     }

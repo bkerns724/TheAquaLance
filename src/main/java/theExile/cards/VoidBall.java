@@ -1,8 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.ELDRITCH;
 
@@ -25,7 +22,7 @@ public class VoidBall extends AbstractExileCard {
         addModifier(ELDRITCH);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         allDmg();
     }
 

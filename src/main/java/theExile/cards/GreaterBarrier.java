@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
@@ -20,7 +18,7 @@ public class GreaterBarrier extends AbstractExileCard {
         baseBlock = BLOCK;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         blck();
     }
 

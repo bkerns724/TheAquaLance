@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.powers.JinxPower;
@@ -25,7 +24,7 @@ public class CurseArmor extends AbstractExileCard {
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
         applyToEnemy(m, new JinxPower(m, secondMagic));
     }

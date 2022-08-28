@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
@@ -25,8 +24,12 @@ public class Combust extends AbstractExileCard {
         magicNumber = baseMagicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
         applyToSelf(new VigorPower(adp(), magicNumber));
     }
 

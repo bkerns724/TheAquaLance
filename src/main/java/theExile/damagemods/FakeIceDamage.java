@@ -5,38 +5,29 @@ import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Ice;
-import theExile.powers.FrostbitePower;
-import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemyTop;
-
 @AutoAdd.Ignore
-public class IceDamage extends AbstractDamageModifier {
-    public static final String ID = ExileMod.makeID(IceDamage.class.getSimpleName());
-    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+public class FakeIceDamage extends AbstractDamageModifier {
+    public static final String COPIED_ID = ExileMod.makeID(IceDamage.class.getSimpleName());
+    public static final String ID = ExileMod.makeID(FakeIceDamage.class.getSimpleName());
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(COPIED_ID);
     public TooltipInfo iceTooltip;
     public TooltipInfo iceTooltip2;
     private boolean visibleTips = true;
 
-    private int blockedAmount = 0;
-
-    public IceDamage() {
+    public FakeIceDamage() {
         iceTooltip = null;
         iceTooltip2 = null;
-        priority = 100;
     }
 
-    public IceDamage(boolean visibleTips) {
+    public FakeIceDamage(boolean visibleTips) {
         this();
         this.visibleTips = visibleTips;
     }
@@ -44,21 +35,6 @@ public class IceDamage extends AbstractDamageModifier {
     @Override
     public boolean shouldPushIconToCard(AbstractCard card) {
         return true;
-    }
-
-    @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        this.blockedAmount = blockedAmount;
-    }
-
-    @Override
-    public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        int finalDamage = blockedAmount + lastDamageTaken;
-        if (adp().hasRelic(BlueMarbles.ID))
-            finalDamage *= 2;
-        int frostbite = finalDamage / 3;
-        if (frostbite > 0)
-            applyToEnemyTop(target, new FrostbitePower(target, frostbite));
     }
 
     @Override
@@ -85,7 +61,7 @@ public class IceDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        IceDamage output = new IceDamage(visibleTips);
+        FakeIceDamage output = new FakeIceDamage(visibleTips);
         output.iceTooltip = this.iceTooltip;
         output.iceTooltip2 = this.iceTooltip2;
         return output;

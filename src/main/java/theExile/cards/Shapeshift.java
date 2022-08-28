@@ -1,10 +1,8 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.cards.curses.Injury;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
@@ -28,7 +26,7 @@ public class Shapeshift extends AbstractExileCard {
         cardsToPreview = new Injury();
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new StrengthPower(adp(), magicNumber));
         applyToSelf(new DexterityPower(adp(), magicNumber));
     }

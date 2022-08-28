@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
@@ -22,14 +21,14 @@ public class Thunderbolt extends AbstractExileCard {
         addModifier(elenum.LIGHTNING);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractMonster mon = getHighestHealthEnemy();
-        calculateCardDamage(mon);
-        onTarget(mon);
+    @Override
+    public AbstractMonster getTarget() {
+        return getHighestHealthEnemy();
     }
 
     @Override
-    public void onTarget(AbstractMonster m) {
+    public void autoTargetUse(AbstractMonster m) {
+        calculateCardDamage(m);
         dmg(m);
     }
 

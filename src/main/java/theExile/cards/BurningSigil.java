@@ -1,8 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import static theExile.ExileMod.makeID;
 
 public class BurningSigil extends AbstractExileCard {
@@ -22,7 +19,7 @@ public class BurningSigil extends AbstractExileCard {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         allDmg();
     }
 

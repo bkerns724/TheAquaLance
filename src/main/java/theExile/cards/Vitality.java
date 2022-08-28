@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.VitalityPower;
 
 import static theExile.ExileMod.makeID;
@@ -21,7 +19,7 @@ public class Vitality extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new VitalityPower(magicNumber));
     }
 

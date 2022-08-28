@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.ConvertPower;
 
 import static theExile.ExileMod.makeID;
@@ -21,7 +19,7 @@ public class Convert extends AbstractExileCard {
         exhaust = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new ConvertPower(magicNumber));
     }
 

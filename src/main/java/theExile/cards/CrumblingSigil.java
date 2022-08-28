@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.CrumblingPower;
 
 import static theExile.ExileMod.makeID;
@@ -24,7 +22,7 @@ public class CrumblingSigil extends AbstractExileCard {
         sigil = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         forAllMonstersLiving(mon -> applyToEnemy(mon, new CrumblingPower(mon, magicNumber)));
     }
 

@@ -1,10 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.getDebuffCount;
+import static theExile.util.Wiz.getSlashEffect;
 
 public class StoneDaggers extends AbstractExileCard {
     public final static String ID = makeID(StoneDaggers.class.getSimpleName());
@@ -21,10 +21,10 @@ public class StoneDaggers extends AbstractExileCard {
         baseDamage = DAMAGE;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         int n = getDebuffCount(m);
         for (int i = 0; i<n; i++)
-            dmg(m, getSlashEffect());
+            dmg(m, getSlashEffect(damage));
     }
 
     public void upp() {

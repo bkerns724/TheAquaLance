@@ -1,11 +1,9 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.SackOfDebrisAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.atb;
 
 public class SackOfDebris extends AbstractExileCard {
     public final static String ID = makeID(SackOfDebris.class.getSimpleName());
@@ -23,7 +21,7 @@ public class SackOfDebris extends AbstractExileCard {
         selfRetain = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         atb(new SackOfDebrisAction(this));
     }
 

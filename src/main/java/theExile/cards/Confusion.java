@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
@@ -22,7 +20,7 @@ public class Confusion extends AbstractExileCard {
         baseBlock = BLOCK;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         forAllMonstersLiving(mon -> blck());
     }
 

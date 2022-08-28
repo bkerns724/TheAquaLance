@@ -1,8 +1,6 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.actions.unique.RemoveDebuffsAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 
 import static theExile.ExileMod.makeID;
@@ -23,7 +21,7 @@ public class Dispel extends AbstractExileCard {
         exhaust = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         atb(new RemoveDebuffsAction(adp()));
         applyToSelf(new ArtifactPower(adp(), magicNumber));
     }

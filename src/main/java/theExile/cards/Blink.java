@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.DiscardNextTurnPower;
 
 import static theExile.ExileMod.makeID;
@@ -25,7 +23,7 @@ public class Blink extends AbstractExileCard {
         baseBlock = BLOCK;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         blck();
         discard(1);
         applyToSelf(new DiscardNextTurnPower(1));

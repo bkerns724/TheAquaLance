@@ -1,13 +1,11 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
-import static theExile.util.Wiz.applyToSelf;
+import static theExile.util.Wiz.*;
 
 public class ShadowLance extends AbstractExileCard {
     public final static String ID = makeID(ShadowLance.class.getSimpleName());
@@ -28,11 +26,11 @@ public class ShadowLance extends AbstractExileCard {
         exhaust = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
         applyToEnemy(m, new StrengthPower(m, -magicNumber));
         if (!m.hasPower(ArtifactPower.POWER_ID))
-            applyToSelf(new StrengthPower(p, magicNumber));
+            applyToSelf(new StrengthPower(adp(), magicNumber));
     }
 
     public void upp() {

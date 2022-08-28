@@ -1,8 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import static theExile.ExileMod.makeID;
 
 public class Defend extends AbstractExileCard {
@@ -20,7 +17,7 @@ public class Defend extends AbstractExileCard {
         tags.add(CardTags.STARTER_DEFEND);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         blck();
     }
 

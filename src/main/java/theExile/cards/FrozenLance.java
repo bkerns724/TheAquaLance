@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
@@ -25,8 +24,12 @@ public class FrozenLance extends AbstractExileCard {
         addModifier(ICE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
         discard(1);
     }
 

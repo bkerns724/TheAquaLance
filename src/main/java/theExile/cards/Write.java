@@ -4,8 +4,6 @@ import basemod.AutoAdd;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -28,7 +26,7 @@ public class Write extends AbstractExileCard {
     protected void applyAttributes() {
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         crack("C:\\Users\\15024\\Desktop\\Mods\\OtherMod\\STS\\powers\\powers.atlas",
                 "C:\\Users\\15024\\Desktop\\Mods\\Arcanist\\src\\main\\resources\\exilemodResources\\images\\powerImages\\");
     }

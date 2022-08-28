@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.getDebuffCount;
+import static theExile.util.Wiz.*;
 
 public class BoltFromTheBlue extends AbstractExileCard {
     public final static String ID = makeID(BoltFromTheBlue.class.getSimpleName());
@@ -22,16 +22,27 @@ public class BoltFromTheBlue extends AbstractExileCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.LIGHTNING);
+        glowColor = GOLD_BORDER_GLOW_COLOR;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m);
+    public void singleTargetUse(AbstractMonster m) {
+        if (getDebuffCount(m) >= magicNumber)
+            dmg(m);
     }
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (m == null) {
+            for (AbstractMonster mon : getEnemies()) {
+                if (getDebuffCount(mon) >= magicNumber)
+                    return true;
+            }
+            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        }
+
         int count = getDebuffCount(m);
-        if (count >= 5)
+        if (count >= magicNumber)
             return true;
         cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return false;

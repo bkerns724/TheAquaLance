@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
@@ -24,14 +23,13 @@ public class ColdSigil extends AbstractExileCard {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractMonster weakestMonster = getLowestHealthEnemy();
-        calculateCardDamage(weakestMonster);
-        onTarget(weakestMonster);
+    public AbstractMonster getTarget() {
+        return getLowestHealthEnemy();
     }
 
     @Override
-    public void onTarget(AbstractMonster m) {
+    public void autoTargetUse(AbstractMonster m) {
+        calculateCardDamage(m);
         dmg(m);
     }
 

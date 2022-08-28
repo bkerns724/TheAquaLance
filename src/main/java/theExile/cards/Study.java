@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.ExileStudyPower;
 
 import static theExile.ExileMod.makeID;
@@ -23,7 +21,7 @@ public class Study extends AbstractExileCard {
         secondMagic = baseSecondMagic = SECOND_MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new ExileStudyPower(magicNumber, secondMagic));
     }
 

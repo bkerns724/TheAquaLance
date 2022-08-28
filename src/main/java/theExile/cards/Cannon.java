@@ -1,7 +1,6 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.cards.status.Dazed;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
@@ -25,7 +24,7 @@ public class Cannon extends AbstractExileCard {
         cardsToPreview = new Dazed();
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
         shuffleIn(new Dazed(), magicNumber);
     }

@@ -22,7 +22,7 @@ public class Enfeeble extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse(AbstractPlayer p, AbstractMonster m) {
         forAllMonstersLiving(mon -> applyToEnemy(mon, new WeakPower(mon, magicNumber, false)));
         discard(1);
     }

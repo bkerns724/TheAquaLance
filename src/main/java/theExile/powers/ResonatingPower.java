@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.ExileMod;
-import theExile.cards.AbstractExileCard;
 import theExile.cards.GenericResonantCard;
 import theExile.cards.cardUtil.Resonance;
 
@@ -52,8 +51,6 @@ public class ResonatingPower extends AbstractExilePower implements OnReceivePowe
     @Override
     public void atStartOfTurnPostDraw() {
         GenericResonantCard card = new GenericResonantCard(resonance.resClone());
-        for (AbstractExileCard.elenum e : resonance.damageMods)
-            card.addModifier(e);
         card.applyPowers();
         atb(new MakeTempCardInHandAction(card, false));
         atb(new RemoveSpecificPowerAction(owner, owner, this));

@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
@@ -23,7 +22,7 @@ public class BrrZerk extends AbstractExileCard {
         addModifier(elenum.ICE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++)
             dmg(m);
     }

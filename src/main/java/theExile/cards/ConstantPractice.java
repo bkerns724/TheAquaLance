@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.ConstantPracticeAction;
 
 import static theExile.ExileMod.makeID;
@@ -21,7 +19,7 @@ public class ConstantPractice extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         atb(new ConstantPracticeAction(magicNumber));
     }
 

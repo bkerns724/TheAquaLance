@@ -1,12 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.*;
 
 public class SickBurn extends AbstractExileCard {
     public final static String ID = makeID(SickBurn.class.getSimpleName());
@@ -26,8 +24,8 @@ public class SickBurn extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, getFireEffect());
+    public void singleTargetUse(AbstractMonster m) {
+        dmg(m, getFireEffect(getDamageForVFX()));
         applyToEnemy(m, new PoisonPower(m, adp(), magicNumber));
     }
 

@@ -1,7 +1,6 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.WrathPower;
@@ -23,7 +22,7 @@ public class Madness extends AbstractExileCard {
         selfRetain = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         applyToEnemy(m, new WrathPower(m));
         AbstractDungeon.actionManager.addToBottom(new SFXAction("STANCE_ENTER_WRATH"));
     }

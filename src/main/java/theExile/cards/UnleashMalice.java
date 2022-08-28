@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.GatheredPowerAction;
 
@@ -21,7 +20,7 @@ public class UnleashMalice extends AbstractExileCard {
         exhaust = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         atb(new GatheredPowerAction(m, upgraded, freeToPlayOnce, energyOnUse));
     }
 

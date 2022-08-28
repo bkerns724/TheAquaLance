@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.AcousticsPower;
 
 import static theExile.ExileMod.makeID;
@@ -19,7 +17,8 @@ public class Acoustics extends AbstractExileCard {
     public void applyAttributes() {
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    @Override
+    public void nonTargetUse() {
         applyToSelf(new AcousticsPower());
     }
 

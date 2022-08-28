@@ -1,10 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.getDebuffCount;
+import static theExile.util.Wiz.getEnemies;
 
 public class ShiningSigil extends AbstractExileCard {
     public final static String ID = makeID(ShiningSigil.class.getSimpleName());
@@ -23,7 +23,7 @@ public class ShiningSigil extends AbstractExileCard {
         sigil = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         blck();
     }
 

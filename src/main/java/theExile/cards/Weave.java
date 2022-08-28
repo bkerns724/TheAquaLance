@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.WeaveAction;
 
 import static theExile.ExileMod.makeID;
@@ -18,7 +16,7 @@ public class Weave extends AbstractExileCard {
     public void applyAttributes() {
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         atb(new WeaveAction(upgraded));
     }
 

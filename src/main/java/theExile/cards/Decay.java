@@ -1,11 +1,11 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.DecayPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.getJinxAmount;
 
 public class Decay extends AbstractExileCard {
     public final static String ID = makeID(Decay.class.getSimpleName());
@@ -18,8 +18,8 @@ public class Decay extends AbstractExileCard {
     public void applyAttributes() {
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int count = getJinxAmountCard(m);
+    public void singleTargetUse(AbstractMonster m) {
+        int count = getJinxAmount(m);
         if (upgraded)
             count++;
         if (count > 0)

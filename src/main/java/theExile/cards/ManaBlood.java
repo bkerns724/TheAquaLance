@@ -1,12 +1,11 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BerserkPower;
 import com.megacrit.cardcrawl.powers.DrawPower;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToSelf;
 
 public class ManaBlood extends AbstractExileCard {
@@ -23,9 +22,9 @@ public class ManaBlood extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new DrawPower(p, magicNumber));
-        applyToSelf(new BerserkPower(p, magicNumber));
+    public void nonTargetUse() {
+        applyToSelf(new DrawPower(adp(), magicNumber));
+        applyToSelf(new BerserkPower(adp(), magicNumber));
     }
 
     public void upp() {

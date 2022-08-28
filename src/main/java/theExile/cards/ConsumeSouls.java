@@ -1,12 +1,11 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 import theExile.powers.ConsumeSoulsPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToSelf;
 
 public class ConsumeSouls extends AbstractExileCard {
     public final static String ID = makeID(ConsumeSouls.class.getSimpleName());
@@ -23,8 +22,8 @@ public class ConsumeSouls extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new ConsumeSoulsPower(p, magicNumber));
+    public void nonTargetUse() {
+        applyToSelf(new ConsumeSoulsPower(adp(), magicNumber));
     }
 
     public void upp() {

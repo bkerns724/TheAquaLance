@@ -4,13 +4,13 @@ import basemod.AutoAdd;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.CustomSavable;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
@@ -40,10 +40,7 @@ import theExile.TheExile;
 import theExile.actions.AttackAction;
 import theExile.cards.cardUtil.Resonance;
 import theExile.cards.cardvars.CardSaveObject;
-import theExile.damagemods.DeathLightningDamage;
-import theExile.damagemods.EldritchDamage;
-import theExile.damagemods.ForceDamage;
-import theExile.damagemods.IceDamage;
+import theExile.damagemods.*;
 import theExile.icons.Eldritch;
 import theExile.icons.Force;
 import theExile.icons.Ice;
@@ -52,10 +49,12 @@ import theExile.powers.AbstractExilePower;
 import theExile.powers.ConvertPower;
 import theExile.relics.ManaPurifier;
 import theExile.util.CardArtRoller;
+import theExile.util.Wiz;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import static theExile.ExileMod.*;
 import static theExile.cards.AbstractExileCard.elenum.*;
@@ -97,9 +96,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public static final String ELDRITCH_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
 
-    public static final int DAMAGE_THRESHOLD_M = 15;
-    public static final int DAMAGE_THRESHOLD_L = 40;
-
     public boolean resPoof = false;
 
     private final ArrayList<CardGlowBorder> myGlowList = new ArrayList<>();
@@ -110,7 +106,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         ICE,
         FORCE,
         ELDRITCH,
-        LIGHTNING
+        LIGHTNING,
+        FAKE_ICE,
+        FAKE_FORCE,
+        FAKE_ELDRITCH,
+        FAKE_LIGHTNING
     }
 
     public AbstractExileCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
@@ -153,6 +153,14 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public void onPickup() {}
 
     @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        ArrayList<TooltipInfo> list = new ArrayList<>();
+        if (rarity == Enums.UNIQUE)
+            list.add(new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[12], cardStrings.EXTENDED_DESCRIPTION[13]));
+        return list;
+    }
+
+    @Override
     public void triggerOnManualDiscard() {
         if (!sigil)
             return;
@@ -192,10 +200,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         att(new UnlimboAction(this));
     }
 
-    protected int getJinxAmountCard(AbstractMonster m) {
-        return getJinxAmount(m);
-    }
-
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean superBool = super.canUse(p, m);
 
@@ -210,7 +214,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        onUse(p, m);
+        if (m != null)
+            singleTargetUse(m);
+        autoTargetUse(getTarget());
+        nonTargetUse();
         if (sigil)
             beingDiscarded = false;
         boolean convert = (!exhaust && !purgeOnUse && (type == AbstractCard.CardType.ATTACK || type == AbstractCard.CardType.SKILL)
@@ -226,9 +233,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             ((AbstractResonantCard) this).resonance.toPower();
     }
 
-    public abstract void onUse(AbstractPlayer p, AbstractMonster m);
+    public void singleTargetUse(AbstractMonster m) {}
 
-    public void onTarget(AbstractMonster m) {}
+    public void nonTargetUse() {}
+
+    public void autoTargetUse(AbstractMonster m) {}
+
+    public AbstractMonster getTarget() {return null;}
 
     @Override
     protected Texture getPortraitImage() {
@@ -409,10 +420,14 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         if (element == LIGHTNING)
             DamageModifierManager.addModifier(this, new DeathLightningDamage(tips));
-
-        if (this instanceof AbstractResonantCard)
-            if (!((AbstractResonantCard) this).resonance.damageMods.contains(element))
-                ((AbstractResonantCard) this).resonance.damageMods.add(element);
+        if (element == FAKE_ICE)
+            DamageModifierManager.addModifier(this, new FakeIceDamage(tips));
+        if (element == FAKE_FORCE)
+            DamageModifierManager.addModifier(this, new FakeForceDamage(tips));
+        if (element == FAKE_ELDRITCH)
+            DamageModifierManager.addModifier(this, new FakeEldritchDamage(tips));
+        if (element == FAKE_LIGHTNING)
+            DamageModifierManager.addModifier(this, new FakeLightningDamage(tips));
         initializeDescription();
     }
 
@@ -423,30 +438,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public void addModifier(elenum element) {
         addModifier(element, true);
-    }
-
-    protected AbstractGameAction.AttackEffect getAttackEffect() {
-        if (this instanceof AbstractResonantCard)
-            return getResonantEffect();
-        else if (damageModList.size() == 1) {
-            elenum ele = damageModList.get(0);
-            if (ele == ICE)
-                return getIceEffect();
-            else if (ele == FORCE)
-                return getForceEffect();
-            else if (ele == ELDRITCH)
-                return getEldritchEffect();
-            else if (ele == LIGHTNING)
-                return getLightningEffect();
-            else
-                return getBluntEffect();
-        } else if (damageModList.size() > 1)
-            return getDarkWaveEffect();
-
-        int x = MathUtils.random(0, 1);
-        if (x == 1)
-            return getSlashEffect();
-        return getBluntEffect();
     }
 
     protected int getDamageForVFX() {
@@ -460,94 +451,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         return amount;
     }
 
-    public AbstractGameAction.AttackEffect getBluntEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
-        else
-            return Enums.BLUNT_MASSIVE;
-    }
-
-    public AbstractGameAction.AttackEffect getSlashEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return getRandomSlash();
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return AbstractGameAction.AttackEffect.SLASH_HEAVY;
-        else
-            return Enums.SLASH_MASSIVE;
-    }
-
-    public AbstractGameAction.AttackEffect getFireEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return AbstractGameAction.AttackEffect.FIRE;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.FIRE_M;
-        else
-            return Enums.FIRE_L;
-    }
-
-    public AbstractGameAction.AttackEffect getIceEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return Enums.ICE;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.ICE_M;
-        else
-            return Enums.ICE_L;
-    }
-
-    public AbstractGameAction.AttackEffect getForceEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return Enums.FORCE;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.FORCE_M;
-        else
-            return Enums.FORCE_L;
-    }
-
-    public AbstractGameAction.AttackEffect getLightningEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return Enums.LIGHTNING_S;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.LIGHTNING_M;
-        else
-            return Enums.LIGHTNING_L;
-    }
-
-    public AbstractGameAction.AttackEffect getEldritchEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return Enums.ELDRITCH;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.ELDRITCH_M;
-        else
-            return Enums.ELDRITCH_L;
-    }
-
-    public AbstractGameAction.AttackEffect getResonantEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return Enums.RESONANT;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.RESONANT_M;
-        else
-            return Enums.RESONANT_L;
-    }
-
-    public AbstractGameAction.AttackEffect getDarkWaveEffect() {
-        int amount = getDamageForVFX();
-        if (amount < DAMAGE_THRESHOLD_M)
-            return Enums.DARK_WAVE;
-        else if (amount < DAMAGE_THRESHOLD_L)
-            return Enums.DARK_WAVE_M;
-        else
-            return Enums.DARK_WAVE_L;
+    private AbstractGameAction.AttackEffect getAttackEffect() {
+        return Wiz.getAttackEffect(getDamageForVFX(), damageModList, this instanceof AbstractResonantCard);
     }
 
     public void dmg(AbstractMonster m) {
@@ -614,8 +519,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     @Override
     protected void renderTitle(SpriteBatch sb) {
         initializeTitle();
-        Color renderColor = (Color) ReflectionHacks.getPrivate(this, AbstractCard.class, "renderColor");
-        boolean useSmallTitleFont = (boolean) ReflectionHacks.getPrivate(this, AbstractCard.class, "useSmallTitleFont");
+        Color renderColor = ReflectionHacks.getPrivate(this, AbstractCard.class, "renderColor");
+        boolean useSmallTitleFont = ReflectionHacks.getPrivate(this, AbstractCard.class, "useSmallTitleFont");
         if (isLocked) {
             FontHelper.cardTitleFont.getData().setScale(drawScale);
             FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, LOCKED_STRING, current_x, current_y,
@@ -695,8 +600,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         }
 
         for (CardGlowBorder cardGlowBorder : myGlowList) {
-            AbstractGameEffect e = cardGlowBorder;
-            e.render(sb);
+            ((AbstractGameEffect) cardGlowBorder).render(sb);
         }
 
         sb.setBlendFunction(770, 771);
@@ -709,11 +613,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         card.selfRetain = selfRetain;
         card.beingDiscarded = beingDiscarded;
 
-        card.damageModList.clear();
-        DamageModifierManager.clearModifiers(card);
-        if (adp() == null || !adp().hasRelic(ManaPurifier.ID)) {
-            for (elenum ele : damageModList)
-                card.addModifier(ele);
+        if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
+            card.damageModList.clear();
+            DamageModifierManager.clearModifiers(card);
+        } else {
+            addModifier(card.damageModList, true);
         }
 
         card.initializeDescription();
@@ -723,19 +627,22 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     @Override
     public CardSaveObject onSave() {
         CardSaveObject obj = new CardSaveObject();
-        obj.elements.addAll(damageModList);
+        if (damageModList != null)
+            obj.elements.addAll(damageModList);
         obj.sigil = sigil;
         return obj;
     }
 
     @Override
     public void onLoad(CardSaveObject obj) {
-        damageModList.clear();
-        DamageModifierManager.clearModifiers(this);
-        if (adp() == null || !adp().hasRelic(ManaPurifier.ID)) {
-            for (elenum ele : obj.elements)
-                addModifier(ele);
-        }
+        if (damageModList == null)
+            damageModList = new ArrayList<>();
+
+        if (adp() != null && adp().hasRelic(ManaPurifier.ID))
+            damageModList.clear();
+        else
+            damageModList.addAll(obj.elements);
+
         sigil = obj.sigil;
         if (sigil)
             cost = -2;

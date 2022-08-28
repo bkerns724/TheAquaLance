@@ -8,13 +8,13 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theExile.cards.AbstractExileCard;
-import theExile.cards.Dualcast;
 import theExile.powers.WeavePower;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import static theExile.ExileMod.makeID;
+import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToSelf;
 
@@ -70,14 +70,23 @@ public class WeaveAction extends AbstractGameAction {
         for (AbstractCard card : cardsToExhaust) {
             if (card instanceof AbstractExileCard)
                 elementList.addAll(((AbstractExileCard) card).damageModList);
-            if (card instanceof Dualcast) {
-                elementList.add(AbstractExileCard.elenum.ICE);
-                elementList.add(AbstractExileCard.elenum.FORCE);
-            }
             adp().hand.moveToExhaustPile(card);
         }
 
+        if (elementList.contains(AbstractExileCard.elenum.FAKE_ICE))
+            elementList.add(ICE);
+        if (elementList.contains(AbstractExileCard.elenum.FAKE_FORCE))
+            elementList.add(FORCE);
+        if (elementList.contains(AbstractExileCard.elenum.FAKE_ELDRITCH))
+            elementList.add(ELDRITCH);
+        if (elementList.contains(AbstractExileCard.elenum.FAKE_LIGHTNING))
+            elementList.add(LIGHTNING);
+
         elementList = (ArrayList<AbstractExileCard.elenum>) elementList.stream().distinct().collect(Collectors.toList());
+        elementList.remove(FAKE_ICE);
+        elementList.remove(FAKE_FORCE);
+        elementList.remove(FAKE_LIGHTNING);
+        elementList.remove(FAKE_ELDRITCH);
 
         if (!elementList.isEmpty())
             applyToSelf(new WeavePower(elementList));

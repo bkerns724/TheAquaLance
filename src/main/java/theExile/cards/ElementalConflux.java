@@ -3,13 +3,13 @@ package theExile.cards;
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.vfx;
 
 public class ElementalConflux extends AbstractExileCard {
@@ -28,8 +28,8 @@ public class ElementalConflux extends AbstractExileCard {
         addModifier(elenum.ICE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        MindblastEffect effect = new MindblastEffect(p.hb.cX, p.hb.cY, p.flipHorizontal);
+    public void singleTargetUse(AbstractMonster m) {
+        MindblastEffect effect = new MindblastEffect(adp().hb.cX, adp().hb.cY, adp().flipHorizontal);
         ReflectionHacks.setPrivate(effect, AbstractGameEffect.class, "color", Color.PURPLE.cpy());
         vfx(effect, 0.1F);
         dmg(m, AbstractGameAction.AttackEffect.NONE);

@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.JinxPower;
 
@@ -24,7 +23,7 @@ public class EldritchTentacle extends AbstractExileCard {
         addModifier(elenum.ELDRITCH);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
         applyToEnemy(m, new JinxPower(m, magicNumber));
     }

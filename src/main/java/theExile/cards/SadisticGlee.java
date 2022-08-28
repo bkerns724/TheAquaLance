@@ -1,11 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.SadisticGleePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToSelf;
 
 public class SadisticGlee extends AbstractExileCard {
     public final static String ID = makeID(SadisticGlee.class.getSimpleName());
@@ -22,8 +21,8 @@ public class SadisticGlee extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new SadisticGleePower(p, magicNumber));
+    public void nonTargetUse() {
+        applyToSelf(new SadisticGleePower(adp(), magicNumber));
     }
 
     public void upp() {

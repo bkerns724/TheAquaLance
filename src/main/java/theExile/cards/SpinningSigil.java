@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
@@ -22,15 +21,19 @@ public class SpinningSigil extends AbstractExileCard {
         sigil = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractMonster strongestMonster = getHighestHealthEnemy();
-        calculateCardDamage(strongestMonster);
-        onTarget(strongestMonster);
+    @Override
+    public AbstractMonster getTarget() {
+        return getHighestHealthEnemy();
     }
 
     @Override
-    public void onTarget(AbstractMonster m) {
+    public void autoTargetUse(AbstractMonster m) {
+        calculateCardDamage(m);
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
         cardDraw(1);
         discard(1);
     }

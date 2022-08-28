@@ -1,5 +1,6 @@
 package theExile.util;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -22,16 +23,45 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theExile.ExileMod;
 import theExile.actions.TimedVFXAction;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.AbstractExileCard.elenum;
 import theExile.powers.JinxPower;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import static theExile.cards.AbstractExileCard.elenum.*;
+
 public class Wiz {
+    private static final int DAMAGE_THRESHOLD_M = 15;
+    private static final int DAMAGE_THRESHOLD_L = 40;
     // Thanks for the shortcuts Vex
     public static AbstractPlayer adp() {
         return AbstractDungeon.player;
+    }
+
+    public static AbstractGameAction.AttackEffect getAttackEffect(int damage, ArrayList<elenum> damageModList, boolean resonant) {
+        if (damageModList.size() == 1) {
+            AbstractExileCard.elenum ele = damageModList.get(0);
+            if (ele == ICE)
+                return getIceEffect(damage);
+            else if (ele == FORCE)
+                return getForceEffect(damage);
+            else if (ele == ELDRITCH)
+                return getEldritchEffect(damage);
+            else if (ele == LIGHTNING)
+                return getLightningEffect(damage);
+            else
+                return getBluntEffect(damage);
+        } else if (damageModList.size() > 1)
+            return getDarkWaveEffect(damage);
+        else if (resonant)
+            return getResonantEffect(damage);
+
+        int x = MathUtils.random(0, 1);
+        if (x == 1)
+            return getSlashEffect(damage);
+        return getBluntEffect(damage);
     }
 
     public static AbstractGameAction.AttackEffect getRandomSlash() {
@@ -43,20 +73,83 @@ public class Wiz {
         return AbstractGameAction.AttackEffect.SLASH_VERTICAL;
     }
 
-    public static AbstractGameAction.AttackEffect getSlashByDamage(int damage) {
-        if (damage < AbstractExileCard.DAMAGE_THRESHOLD_M)
+    public static AbstractGameAction.AttackEffect getSlashEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
             return getRandomSlash();
-        else if (damage < AbstractExileCard.DAMAGE_THRESHOLD_L)
+        else if (damage < DAMAGE_THRESHOLD_L)
             return AbstractGameAction.AttackEffect.SLASH_HEAVY;
         return ExileMod.Enums.SLASH_MASSIVE;
     }
 
-    public static AbstractGameAction.AttackEffect getBluntByDamage(int damage) {
-        if (damage < AbstractExileCard.DAMAGE_THRESHOLD_M)
+    public static AbstractGameAction.AttackEffect getBluntEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
             return AbstractGameAction.AttackEffect.BLUNT_LIGHT;
-        else if (damage < AbstractExileCard.DAMAGE_THRESHOLD_L)
+        else if (damage < DAMAGE_THRESHOLD_L)
             return AbstractGameAction.AttackEffect.BLUNT_HEAVY;
         return ExileMod.Enums.BLUNT_MASSIVE;
+    }
+
+    public static AbstractGameAction.AttackEffect getFireEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return AbstractGameAction.AttackEffect.FIRE;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.FIRE_M;
+        else
+            return ExileMod.Enums.FIRE_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getIceEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.ICE;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.ICE_M;
+        else
+            return ExileMod.Enums.ICE_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getForceEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.FORCE;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.FORCE_M;
+        else
+            return ExileMod.Enums.FORCE_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getLightningEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.LIGHTNING_S;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.LIGHTNING_M;
+        else
+            return ExileMod.Enums.LIGHTNING_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getEldritchEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.ELDRITCH;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.ELDRITCH_M;
+        else
+            return ExileMod.Enums.ELDRITCH_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getResonantEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.RESONANT;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.RESONANT_M;
+        else
+            return ExileMod.Enums.RESONANT_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getDarkWaveEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.DARK_WAVE;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.DARK_WAVE_M;
+        else
+            return ExileMod.Enums.DARK_WAVE_L;
     }
 
     public static void forAllCardsInList(ArrayList<AbstractCard> cardsList, Consumer<AbstractCard> consumer) {

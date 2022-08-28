@@ -1,11 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.ManaBurstPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToSelf;
 
 public class ManaBurst extends AbstractExileCard {
     public final static String ID = makeID(ManaBurst.class.getSimpleName());
@@ -22,8 +21,8 @@ public class ManaBurst extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new ManaBurstPower(p, magicNumber));
+    public void nonTargetUse() {
+        applyToSelf(new ManaBurstPower(adp(), magicNumber));
     }
 
     public void upp() {

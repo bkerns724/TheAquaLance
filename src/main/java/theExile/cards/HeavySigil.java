@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -29,15 +28,13 @@ public class HeavySigil extends AbstractExileCard {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractMonster strongestMonster = getHighestHealthEnemy();
-        calculateCardDamage(strongestMonster);
-
-        onTarget(strongestMonster);
+    public AbstractMonster getTarget() {
+        return getHighestHealthEnemy();
     }
 
     @Override
-    public void onTarget(AbstractMonster m) {
+    public void autoTargetUse(AbstractMonster m) {
+        calculateCardDamage(m);
         dmg(m);
     }
 

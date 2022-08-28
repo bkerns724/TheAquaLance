@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theExile.ExileMod;
-import theExile.cards.AbstractExileCard;
 import theExile.damagemods.EldritchDamage;
 
 import static theExile.ExileMod.makeID;
@@ -30,10 +29,6 @@ public class SiphonedPower extends AbstractExilePower {
     @Override
     public void atStartOfTurn() {
         AbstractGameAction.AttackEffect effect = ExileMod.Enums.ELDRITCH;
-        if (amount >= AbstractExileCard.DAMAGE_THRESHOLD_L)
-            effect = ExileMod.Enums.ELDRITCH_L;
-        else if (amount >= AbstractExileCard.DAMAGE_THRESHOLD_M)
-            effect = ExileMod.Enums.ELDRITCH_M;
 
         DamageInfo info = new DamageInfo(adp(), amount, DamageInfo.DamageType.THORNS);
         DamageModifierManager.bindDamageMods(info, new DamageModContainer(this, new EldritchDamage()));

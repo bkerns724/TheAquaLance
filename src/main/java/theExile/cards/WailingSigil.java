@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.TempNegStrengthPower;
 
 import static theExile.ExileMod.makeID;
@@ -23,7 +21,7 @@ public class WailingSigil extends AbstractExileCard {
         sigil = true;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         forAllMonstersLiving(mon -> applyToEnemy(mon, new TempNegStrengthPower(mon, magicNumber)));
     }
 

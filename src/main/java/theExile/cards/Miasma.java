@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theExile.ExileMod;
@@ -28,7 +27,7 @@ public class Miasma extends AbstractExileCard {
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         vfx(new MiasmaEffect(m.hb.cX, m.hb.cY));
         applyToEnemy(m, new WeakPower(m, secondMagic, false));
         applyToEnemy(m, new TempNegStrengthPower(m, magicNumber));

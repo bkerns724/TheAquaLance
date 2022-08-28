@@ -118,21 +118,21 @@ public class AttackAction extends AbstractGameAction {
             if (m == null)
                 vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f, 1.0f), 0.5F);
             else
-                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX + m.hb.width / 2.0f, 1.0f), 0.5F);
+                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX, 1.0f), 0.5F);
         }
 
         if (effect == ExileMod.Enums.DARK_WAVE_M) {
             if (m == null)
                 vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f, 1.5f), 0.5F);
             else
-                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX + m.hb.width / 2.0f, 1.5f), 0.5F);
+                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX, 1.5f), 0.5F);
         }
 
         if (effect == ExileMod.Enums.DARK_WAVE_L) {
             if (m == null)
                 vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f, 2.25f), 0.5F);
             else
-                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX + m.hb.width / 2.0f, 2.25f), 0.5F);
+                vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, m.hb.cX, 2.25f), 0.5F);
         }
 
         if (effect == ExileMod.Enums.BLUNT_MASSIVE) {

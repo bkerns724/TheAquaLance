@@ -5,37 +5,30 @@ import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Force;
-import theExile.powers.CrushedPower;
-import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemyTop;
-
 @AutoAdd.Ignore
-public class ForceDamage extends AbstractDamageModifier {
-    public static final String ID = ExileMod.makeID(ForceDamage.class.getSimpleName());
-    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+public class FakeForceDamage extends AbstractDamageModifier {
+    public static final String FAKE_ID = ExileMod.makeID(ForceDamage.class.getSimpleName());
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(FAKE_ID);
     public TooltipInfo forceTooltip;
     public TooltipInfo forceTooltip2;
     private boolean visibleTips = true;
 
     private int blockedAmount = 0;
 
-    public ForceDamage() {
+    public FakeForceDamage() {
         forceTooltip = null;
         forceTooltip2 = null;
     }
 
-    public ForceDamage(boolean visTips) {
+    public FakeForceDamage(boolean visTips) {
         this();
         visibleTips = visTips;
     }
@@ -43,21 +36,6 @@ public class ForceDamage extends AbstractDamageModifier {
     @Override
     public boolean shouldPushIconToCard(AbstractCard card) {
         return true;
-    }
-
-    @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        this.blockedAmount = blockedAmount;
-    }
-
-    @Override
-    public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        int finalDamage = lastDamageTaken + blockedAmount;
-        if (adp().hasRelic(BlueMarbles.ID))
-            finalDamage *= 2;
-        int crushed = finalDamage / 6;
-        if (crushed > 0)
-            applyToEnemyTop(target, new CrushedPower(target, crushed));
     }
 
     @Override
@@ -87,7 +65,7 @@ public class ForceDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        ForceDamage output = new ForceDamage(visibleTips);
+        FakeForceDamage output = new FakeForceDamage(visibleTips);
         output.forceTooltip = this.forceTooltip;
         output.forceTooltip2 = this.forceTooltip2;
         return output;

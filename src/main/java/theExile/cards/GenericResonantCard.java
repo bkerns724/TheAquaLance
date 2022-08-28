@@ -4,10 +4,8 @@ import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theExile.ExileMod;
 import theExile.cards.cardUtil.Resonance;
-import theExile.powers.AcousticsPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class GenericResonantCard extends AbstractResonantCard {
@@ -22,6 +20,8 @@ public class GenericResonantCard extends AbstractResonantCard {
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
             isMultiDamage = true;
+        cardToPreview.addAll(resonance.cards);
+        addModifier(resonance.elenums, true);
         initializeDescription();
     }
 

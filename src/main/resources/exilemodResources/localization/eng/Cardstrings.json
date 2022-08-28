@@ -14,7 +14,9 @@
       "Sigil",
       "Sigils can only be played via discard.",
       "Ethereal. NL ",
-      "Innate. NL "
+      "Innate. NL ",
+      "Lost Lore",
+      "These Exile cards can not be drafted normally. They may be found in events, relics, or from Neow."
     ]
   },
   "${ModID}:GenericResonantCard": {
@@ -358,7 +360,7 @@
   },
   "${ModID}:Dualcast": {
     "NAME": "Dual Cast",
-    "DESCRIPTION": "Deal !D! [${ModID}:IceIcon] damage. NL Deal !D! [${ModID}:ForceIcon] damage. NL Discard a card."
+    "DESCRIPTION": "Deal !D! !Icon1! damage. NL Deal !D! !Icon2! damage. NL Discard a card."
   },
   "${ModID}:SpinningSigil": {
     "NAME": "Spinning Sigil",

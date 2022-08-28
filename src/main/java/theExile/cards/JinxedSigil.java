@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.JinxPower;
 
 import static theExile.ExileMod.makeID;
@@ -24,7 +22,7 @@ public class JinxedSigil extends AbstractExileCard {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         forAllMonstersLiving(monster -> applyToEnemy(monster, new JinxPower(monster, magicNumber)));
     }
 

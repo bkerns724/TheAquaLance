@@ -1,9 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.getBluntEffect;
+import static theExile.util.Wiz.getJinxAmount;
 
 public class WeightedStaff extends AbstractExileCard {
     public final static String ID = makeID(WeightedStaff.class.getSimpleName());
@@ -20,9 +21,9 @@ public class WeightedStaff extends AbstractExileCard {
         baseDamage = DAMAGE;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, getBluntEffect());
-        int amount = getJinxAmountCard(m);
+    public void singleTargetUse(AbstractMonster m) {
+        dmg(m, getBluntEffect(damage));
+        int amount = getJinxAmount(m);
         if (amount > 0) {
             baseBlock = amount;
             applyPowers();

@@ -1,10 +1,9 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.discard;
 
 public class ForceBolt extends AbstractExileCard {
     public final static String ID = makeID(ForceBolt.class.getSimpleName());
@@ -23,8 +22,12 @@ public class ForceBolt extends AbstractExileCard {
         addModifier(elenum.FORCE);
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
         discard(magicNumber);
     }
 

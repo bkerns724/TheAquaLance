@@ -1,11 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.StoneskinPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToSelf;
 
 public class Stoneskin extends AbstractExileCard {
     public final static String ID = makeID(Stoneskin.class.getSimpleName());
@@ -25,9 +24,9 @@ public class Stoneskin extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void nonTargetUse() {
         blck();
-        applyToSelf(new StoneskinPower(p, magicNumber));
+        applyToSelf(new StoneskinPower(adp(), magicNumber));
     }
 
     public void upp() {

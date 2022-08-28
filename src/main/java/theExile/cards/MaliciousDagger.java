@@ -1,12 +1,12 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.getSlashEffect;
 
 public class MaliciousDagger extends AbstractExileCard {
     public final static String ID = makeID(MaliciousDagger.class.getSimpleName());
@@ -22,10 +22,10 @@ public class MaliciousDagger extends AbstractExileCard {
         baseDamage = DAMAGE;
     }
 
-    public void onUse(AbstractPlayer p, AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         int count = getCurseCount();
         for (int i = 0; i < count; i++)
-            dmg(m, getSlashEffect());
+            dmg(m, getSlashEffect(damage));
     }
 
     private int getCurseCount() {

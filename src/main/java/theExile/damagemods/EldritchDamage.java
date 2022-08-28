@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
-import theExile.patches.DamageModsIDPatch;
 import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ public class EldritchDamage extends AbstractDamageModifier {
     public EldritchDamage() {
         darkTooltip = null;
         darkTooltip2 = null;
-        DamageModsIDPatch.ID.set(this, ID);
     }
 
     public EldritchDamage(boolean visTips) {

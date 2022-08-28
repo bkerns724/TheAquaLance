@@ -80,7 +80,7 @@
     "DESCRIPTION": "Creatures with Vigor deal additional damage with their next attack."
   },
   {
-    "PROPER_NAME": "Resonate",
+    "PROPER_NAME": "Resonance",
     "NAMES": [
       "Resonate",
       "resonate",
@@ -89,7 +89,7 @@
       "Resonant",
       "resonant"
     ],
-    "DESCRIPTION": "If you play a Resonant card it is returned to your hand at the start of your next turn. If you play multiple Resonant cards in one turn, they are combined into a single one cost card with all of the effects."
+    "DESCRIPTION": "If you play a Resonant card it is returned to your hand at the start of your next turn. If you play multiple Resonant cards in one turn, a single card is returned that contains all the previous effects. Returned cards always cost 1."
   },
   {
     "PROPER_NAME": "Frostbite",
