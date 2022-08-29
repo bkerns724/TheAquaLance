@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.FlightPower;
 
 import static theExile.ExileMod.makeID;
 
@@ -18,15 +17,6 @@ public class DecayPower extends AbstractExilePower {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
         priority = 99;
-    }
-
-    @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
-        // Kinda hacky
-        if (!owner.hasPower(FlightPower.POWER_ID))
-            return damageType == DamageInfo.DamageType.NORMAL ? damage + amount : damage;
-        else
-            return damageType == DamageInfo.DamageType.NORMAL ? damage + 2*amount : damage;
     }
 
     @Override

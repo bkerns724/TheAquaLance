@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.ExileMod;
 
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.att;
 
 public class CrushedPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(CrushedPower.class.getSimpleName());
@@ -16,15 +16,16 @@ public class CrushedPower extends AbstractExilePower {
     }
 
     @Override
-    public void atEndOfRound() {
-        atb(new ReducePowerAction(owner, owner, this, 1));
-    }
-
-    @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL)
             return damage + amount;
         else
             return damage;
+    }
+
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        att(new ReducePowerAction(owner, owner, this, 1));
+        return damageAmount;
     }
 }

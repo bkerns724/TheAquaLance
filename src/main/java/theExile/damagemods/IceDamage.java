@@ -55,7 +55,7 @@ public class IceDamage extends AbstractDamageModifier {
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
         int finalDamage = blockedAmount + lastDamageTaken;
         if (adp().hasRelic(BlueMarbles.ID))
-            finalDamage *= 2;
+            finalDamage *= BlueMarbles.INCREASE;
         int frostbite = finalDamage / 3;
         if (frostbite > 0)
             applyToEnemyTop(target, new FrostbitePower(target, frostbite));

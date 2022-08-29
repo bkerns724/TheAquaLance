@@ -15,6 +15,7 @@ public class BlueMarbles extends AbstractExileRelic {
     public static final String ID = makeID(BlueMarbles.class.getSimpleName());
     private static final CardStrings forceStrings = CardCrawlGame.languagePack.getCardStrings(ForceDamage.ID);
     private static final CardStrings iceStrings = CardCrawlGame.languagePack.getCardStrings(IceDamage.ID);
+    public static final float INCREASE = 1.5f;
 
     public BlueMarbles() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);

@@ -31,6 +31,26 @@ public class EnchantedDagger extends AbstractExileCard {
     }
 
     @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        damageModList.clear();
+        DamageModifierManager.clearModifiers(this);
+        if (adp().hasRelic(ManaPurifier.ID)) {
+            initializeDescription();
+            return;
+        }
+        for (AbstractCard card : adp().hand.group) {
+            if (card instanceof AbstractExileCard && card != this)
+                addModifier(((AbstractExileCard) card).damageModList, true);
+            if (card instanceof Dualcast) {
+                addModifier(elenum.FORCE);
+                addModifier(elenum.ICE);
+            }
+        }
+        super.calculateCardDamage(mo);
+        initializeDescription();
+    }
+
+    @Override
     public void applyPowers() {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
@@ -46,6 +66,7 @@ public class EnchantedDagger extends AbstractExileCard {
                 addModifier(elenum.ICE);
             }
         }
+        super.applyPowers();
         initializeDescription();
     }
 
