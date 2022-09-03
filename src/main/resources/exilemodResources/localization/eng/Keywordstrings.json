@@ -10,14 +10,6 @@
     "DESCRIPTION": "Sigils are normally unplayable cards which are played when they are discarded from your hand."
   },
   {
-    "PROPER_NAME": "Activated",
-    "NAMES": [
-      "Activated",
-      "activated"
-    ],
-    "DESCRIPTION": "Activated relics do not have a passive effect. They have an effect when their button is clicked."
-  },
-  {
     "PROPER_NAME": "Golem\u00a0Punch",
     "NAMES": [
       "Golem\u00a0Punch",
@@ -26,16 +18,6 @@
       "golem\u00a0punch"
     ],
     "DESCRIPTION": "Spend [E] to deal 30 [${ModID}:ForceIcon] damage to a random enemy."
-  },
-  {
-    "PROPER_NAME": "Frost\u00a0Breath",
-    "NAMES": [
-      "Frost\u00a0Breath",
-      "frost\u00a0Breath",
-      "Frost\u00a0breath",
-      "frost\u00a0breath"
-    ],
-    "DESCRIPTION": "Spend [E] to deal 20 [${ModID}:IceIcon] damage to ALL enemies."
   },
   {
     "PROPER_NAME": "Activated",
@@ -60,24 +42,6 @@
       "panda"
     ],
     "DESCRIPTION": "Orb: Deals damage to a random enemy. Ignores #yFocus."
-  },
-  {
-    "PROPER_NAME": "Plated\u00a0Armor",
-    "NAMES": [
-      "Plated\u00a0Armor",
-      "Plated\u00a0armor",
-      "plated\u00a0Armor",
-      "plated\u00a0armor"
-    ],
-    "DESCRIPTION": "Creatures with Plated Armor gain #yBlock at the end of their turn. When they receive unblocked attack damage, they lose 1 Plated Armor."
-  },
-  {
-    "PROPER_NAME": "Vigor",
-    "NAMES": [
-      "Vigor",
-      "vigor"
-    ],
-    "DESCRIPTION": "Creatures with Vigor deal additional damage with their next attack."
   },
   {
     "PROPER_NAME": "Resonance",

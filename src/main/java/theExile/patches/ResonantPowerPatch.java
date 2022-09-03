@@ -65,7 +65,7 @@ public class ResonantPowerPatch {
         )
         public static SpireReturn InsertPatch (UseCardAction __instance) {
             AbstractCard targetCard = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
-            if (!(targetCard instanceof AbstractExileCard))
+            if (!(targetCard instanceof AbstractExileCard) || targetCard.exhaust)
                 return SpireReturn.Continue();
             if (targetCard instanceof AbstractResonantCard || ((AbstractExileCard) targetCard).resPoof)
             {

@@ -1,10 +1,12 @@
 package theExile.relics;
 
+import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.Clumsy;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.TheExile;
@@ -15,11 +17,11 @@ import static theExile.util.Wiz.*;
 public class ReverseOmamori extends AbstractExileRelic {
     public static final String ID = makeID(ReverseOmamori.class.getSimpleName());
     public static final int CURSE_AMOUNT = 2;
+    private static final AbstractCard CARD_TO_PREVIEW = new Clumsy();
 
     public ReverseOmamori() {
         super(ID, RelicTier.BOSS, LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = CURSE_AMOUNT;
-        cardToPreview = new Clumsy();
         setUpdatedDescription();
     }
 
@@ -30,6 +32,15 @@ public class ReverseOmamori extends AbstractExileRelic {
             applyToSelfTop(new DexterityPower(adp(), counter));
             att(new RelicAboveCreatureAction(adp(), this));
         }
+    }
+
+    @Override
+    public void setUpdatedDescription() {
+        description = getUpdatedDescription();
+        tips.clear();
+        tips.add(new PowerTip(name, description));
+        tips.add(new CardPowerTip(CARD_TO_PREVIEW));
+        initializeTips();
     }
 
     @Override

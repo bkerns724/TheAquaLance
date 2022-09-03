@@ -21,7 +21,7 @@ import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.NullElement;
 import theExile.patches.TipsInDialogPatch;
-import theExile.potions.VoidPoison;
+import theExile.potions.SiphoningPoison;
 import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
@@ -78,7 +78,7 @@ public class VoidSpirits extends AbstractExileEvent {
         else
             imageEventText.setDialogOption(options[3], true);
 
-        AbstractPotion potion = new VoidPoison();
+        AbstractPotion potion = new SiphoningPoison();
         imageEventText.setDialogOption(options[4].replace("!PotionString!",
                 FontHelper.colorString(potion.name, "g")));
         LargeDialogOptionButton but = imageEventText.optionList.get(2);
@@ -143,7 +143,7 @@ public class VoidSpirits extends AbstractExileEvent {
                     adRoom().monsters = MonsterHelper.getEncounter("3 Darklings");
                     adRoom().rewards.clear();
                     adRoom().addGoldToRewards(30);
-                    adRoom().rewards.add(new RewardItem(new VoidPoison()));
+                    adRoom().rewards.add(new RewardItem(new SiphoningPoison()));
                     adRoom().eliteTrigger = true;
                     imageEventText.clearAllDialogs();
                     enterCombatFromImage();

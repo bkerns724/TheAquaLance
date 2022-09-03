@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.EnchantedDagger;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -80,6 +81,10 @@ public class WeavePower extends AbstractExilePower implements OnReceivePowerPowe
         if (card instanceof AbstractExileCard && card.type == CardType.ATTACK) {
             flash();
             ((AbstractExileCard) card).addModifier(elementList, true);
+            if (card instanceof EnchantedDagger) {
+                ((EnchantedDagger) card).stableList.addAll(elementList);
+                card.applyPowers();
+            }
             atb(new RemoveSpecificPowerAction(adp(), adp(), this));
             usedUp = true;
         }

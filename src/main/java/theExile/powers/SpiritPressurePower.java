@@ -29,6 +29,8 @@ public class SpiritPressurePower extends AbstractExilePower implements BetterOnA
 
     @Override
     public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        return stackAmount += amount;
+        if (power instanceof JinxPower)
+            return stackAmount += amount;
+        return stackAmount;
     }
 }

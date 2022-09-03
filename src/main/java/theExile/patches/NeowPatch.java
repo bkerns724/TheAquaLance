@@ -12,7 +12,7 @@ import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.ArcaneBeam;
 import theExile.cards.Confusion;
-import theExile.cards.ConsumeSouls;
+import theExile.cards.QuickThinking;
 
 import java.util.ArrayList;
 import static theExile.util.Wiz.*;
@@ -45,7 +45,7 @@ public class NeowPatch {
             if (__instance.type == ExileMod.Enums.UNIQUE_CARD_REWARD) {
                 ArrayList<AbstractExileCard> list = new ArrayList<>();
                 list.add(new ArcaneBeam());
-                list.add(new ConsumeSouls());
+                list.add(new QuickThinking());
                 list.add(new Confusion());
                 int x = AbstractDungeon.cardRng.random(0, list.size() - 1);
                 AbstractExileCard card = list.get(x);

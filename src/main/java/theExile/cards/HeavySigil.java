@@ -2,11 +2,10 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import theExile.ExileMod;
+import theExile.powers.CrushedPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.getHighestHealthEnemy;
 
 public class HeavySigil extends AbstractExileCard {
@@ -38,26 +37,17 @@ public class HeavySigil extends AbstractExileCard {
         dmg(m);
     }
 
-    public void applyPowers() {
-        AbstractPower strength = adp().getPower(StrengthPower.POWER_ID);
-        if (strength != null)
-            strength.amount *= magicNumber;
-
-        super.applyPowers();
-
-        if (strength != null)
-            strength.amount /= magicNumber;
-    }
-
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower strength = adp().getPower(StrengthPower.POWER_ID);
-        if (strength != null)
-            strength.amount *= magicNumber;
+        AbstractPower crushed = mo.getPower(CrushedPower.POWER_ID);
+        if (crushed != null)
+            crushed.amount *= magicNumber;
 
         super.calculateCardDamage(mo);
 
-        if (strength != null)
-            strength.amount /= magicNumber;
+        if (crushed != null)
+            crushed.amount /= magicNumber;
+
+        isDamageModified = damage != baseDamage;
     }
 
     public void upp() {

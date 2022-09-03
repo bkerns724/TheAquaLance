@@ -6,78 +6,64 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-
-import java.util.ArrayList;
+import theExile.cards.ConstantPractice;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 
 public class ConstantPracticeAction extends AbstractGameAction {
     public static final String[] TEXT;
-    private final int numberOfCards;
 
-    public ConstantPracticeAction(int numberOfCards) {
+    public ConstantPracticeAction() {
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_FAST;
-        this.numberOfCards = numberOfCards;
     }
 
     public void update() {
         if (duration == startDuration) {
-            if (!adp().discardPile.isEmpty() && numberOfCards > 0) {
-                if (adp().discardPile.size() <= numberOfCards) {
-                    ArrayList<AbstractCard> cardsToMove = new ArrayList(adp().discardPile.group);
-
-                    for (AbstractCard card : cardsToMove) {
-                        if (adp().hand.size() < 10) {
-                            adp().hand.addToHand(card);
-                            if (card.cost > 0)
-                                card.cost--;
-                            if (card.costForTurn > 0)
-                                card.costForTurn--;
-                            adp().discardPile.removeCard(card);
-                            card.lighten(false);
-                            card.applyPowers();
-                        } else
-                            card.cost = card.cost -1;
-                    }
-
+            CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            tmp.group.addAll(adp().discardPile.group);
+            tmp.group.removeIf(c -> c instanceof ConstantPractice);
+            if (!tmp.isEmpty()) {
+                if (tmp.size() == 1) {
+                    AbstractCard cardToMove = tmp.getTopCard();
+                    cardToMove.upgrade();
+                    if (adp().hand.size() < 10) {
+                        adp().discardPile.moveToHand(cardToMove);
+                        if (cardToMove.cost > 0)
+                            cardToMove.cost = 0;
+                        if (cardToMove.costForTurn > 0)
+                            cardToMove.costForTurn = 0;
+                        cardToMove.lighten(false);
+                    } else
+                        cardToMove.cost = 0;
                     isDone = true;
                 } else {
-                    if (numberOfCards == 1)
-                        AbstractDungeon.gridSelectScreen.open(adp().discardPile, numberOfCards, TEXT[0], false);
-                    else
-                        AbstractDungeon.gridSelectScreen.open(adp().discardPile, numberOfCards, TEXT[1] + numberOfCards + TEXT[2], false);
-
+                    AbstractDungeon.gridSelectScreen.open(tmp, 1, TEXT[0], false);
                     tickDuration();
                 }
             } else
                 isDone = true;
         } else {
             if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-
-                for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
-                    if (adp().hand.size() < 10) {
-                        adp().hand.addToHand(card);
-                        if (card.cost > 0)
-                            card.cost--;
-                        if (card.costForTurn > 0)
-                            card.costForTurn--;
-                        adp().discardPile.removeCard(card);
-                        card.lighten(false);
-                        card.applyPowers();
-                    } else {
-                        if (card.cost > 0)
-                            card.cost--;
-                        if (card.costForTurn > 0)
-                            card.costForTurn--;
-                    }
+                AbstractCard card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+                card.upgrade();
+                if (adp().hand.size() < 10) {
+                    adp().discardPile.moveToHand(card);
+                    if (card.cost > 0)
+                        card.cost = 0;
+                    if (card.costForTurn > 0)
+                        card.costForTurn = 0;
+                    card.lighten(false);
+                } else {
+                    if (card.cost > 0)
+                        card.cost = 0;
                 }
 
-                for (AbstractCard card : adp().discardPile.group) {
-                    card.target_y = 0f;
-                    card.unhover();
-                    card.target_x = (float) CardGroup.DISCARD_PILE_X;
+                for (AbstractCard card2 : adp().discardPile.group) {
+                    card2.target_y = 0f;
+                    card2.unhover();
+                    card2.target_x = (float) CardGroup.DISCARD_PILE_X;
                 }
 
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();

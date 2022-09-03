@@ -9,7 +9,7 @@ import static theExile.util.Wiz.*;
 
 public class TormentorsMask extends AbstractExileRelic {
     public static final String ID = makeID(TormentorsMask.class.getSimpleName());
-    private static final int JINX_AMOUNT = 1;
+    private static final int JINX_AMOUNT = 2;
 
     public TormentorsMask() {
         super(ID, RelicTier.COMMON, LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);

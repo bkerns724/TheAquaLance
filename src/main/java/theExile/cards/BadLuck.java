@@ -7,19 +7,21 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.actions.BadLuckAction;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import theExile.util.CardArtRoller;
 
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardTarget.NONE;
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.getCardTextureString;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToSelf;
 
 public class BadLuck extends CustomCard {
     public final static String ID = makeID(BadLuck.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    private final static int MAGIC = 2;
     private final static int COST = -2;
 
     private boolean needsArtRefresh = false;
@@ -33,6 +35,7 @@ public class BadLuck extends CustomCard {
         } else
             needsArtRefresh = true;
         SoulboundField.soulbound.set(this, true);
+        baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void update() {
@@ -43,7 +46,7 @@ public class BadLuck extends CustomCard {
 
     @Override
     public void triggerWhenDrawn() {
-        atb(new BadLuckAction());
+        applyToSelf(new DexterityPower(adp(), -magicNumber));
     }
 
     @Override

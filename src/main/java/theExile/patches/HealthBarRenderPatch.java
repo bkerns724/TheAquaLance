@@ -5,7 +5,6 @@ import com.evacipated.cardcrawl.mod.stslib.patches.powerInterfaces.HealthBarRend
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import javassist.CtBehavior;
-import theExile.powers.CrumblingPower;
 import theExile.powers.DecayPower;
 
 public class HealthBarRenderPatch {
@@ -20,10 +19,7 @@ public class HealthBarRenderPatch {
                 localvars = {"poisonAmt"}
         )
         public static void Insert(AbstractCreature __instance, @ByRef int[] poisonAmt) {
-            CrumblingPower corPow = (CrumblingPower) __instance.getPower(CrumblingPower.POWER_ID);
             DecayPower decayPow = (DecayPower) __instance.getPower(DecayPower.POWER_ID);
-            if (corPow != null)
-                poisonAmt[0] *= (1f + corPow.amount/100f);
             if (decayPow != null)
                 poisonAmt[0] += decayPow.amount;
         }
@@ -47,11 +43,9 @@ public class HealthBarRenderPatch {
                 locator = Locator.class,
                 localvars = {"poisonAmt"}
         )
-        public static void MyInsert(AbstractCreature __instance, SpriteBatch sb, float x, float y, float targetHealthBarWidth, float HEALTH_BAR_HEIGHT, float HEALTH_BAR_OFFSET_Y, @ByRef int[] poisonAmt) {
-            CrumblingPower corPow = (CrumblingPower) __instance.getPower(CrumblingPower.POWER_ID);
+        public static void MyInsert(AbstractCreature __instance, SpriteBatch sb, float x, float y, float targetHealthBarWidth,
+                                    float HEALTH_BAR_HEIGHT, float HEALTH_BAR_OFFSET_Y, @ByRef int[] poisonAmt) {
             DecayPower decayPow = (DecayPower) __instance.getPower(DecayPower.POWER_ID);
-            if (corPow != null)
-                poisonAmt[0] *= (1f + corPow.amount/100f);
             if (decayPow != null)
                 poisonAmt[0] += decayPow.amount;
         }

@@ -33,8 +33,8 @@ import java.util.function.Predicate;
 import static theExile.cards.AbstractExileCard.elenum.*;
 
 public class Wiz {
-    private static final int DAMAGE_THRESHOLD_M = 15;
-    private static final int DAMAGE_THRESHOLD_L = 40;
+    public static final int DAMAGE_THRESHOLD_M = 15;
+    public static final int DAMAGE_THRESHOLD_L = 40;
     // Thanks for the shortcuts Vex
     public static AbstractPlayer adp() {
         return AbstractDungeon.player;
@@ -96,6 +96,15 @@ public class Wiz {
             return ExileMod.Enums.FIRE_M;
         else
             return ExileMod.Enums.FIRE_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getAcidEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.ACID;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.ACID_M;
+        else
+            return ExileMod.Enums.ACID_L;
     }
 
     public static AbstractGameAction.AttackEffect getIceEffect(int damage) {

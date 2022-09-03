@@ -17,14 +17,15 @@
     "NAME": "Steelhide Potion",
     "DESCRIPTIONS": [
       "Whenever you would take damage, take !P! less."
-    ]
+    ],
+    "FLAVOR": "An expensive brew. Don't waste it."
   },
   "${ModID}:ElixirOfFalseHealth": {
     "NAME": "Elixir of False Health",
     "DESCRIPTIONS": [
-      "Gain #yTemporary #yHP equal to !P!% of your max HP."
+      "Gain !P! #yTemporary #yHP."
     ],
-    "FLAVOR": "I manage to successfully brew this about 1 out of 3 times."
+    "FLAVOR": "Tastes completely awful."
   },
   "${ModID}:UnicornBlood": {
     "NAME": "Unicorn Blood",
@@ -34,11 +35,11 @@
     ],
     "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },
-  "${ModID}:VoidPoison": {
-    "NAME": "Void Poison",
+  "${ModID}:SiphoningPoison": {
+    "NAME": "Siphoning Poison",
     "DESCRIPTIONS": [
-      "Whenever you deal unblocked attack damage, apply !P! Poison."
+      "Whenever you deal attack damage, gain !P! #yTemporary #yHP."
     ],
-    "FLAVOR": "Dilute it with 5 gallons of water, dip the head of your staff in it, and your spells become poisonous."
+    "FLAVOR": "I spent a month trying to figure out how to brew this. I came to the conclusion that the only way to acquire it is to harvest it from the Void Spirits. Not an easy task."
   }
 }

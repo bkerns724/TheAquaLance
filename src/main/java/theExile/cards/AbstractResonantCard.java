@@ -45,6 +45,7 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
         return false;
     }
+
     public void addModifier(elenum element, boolean tips) {
         if (damageModList.contains(element))
             return;
@@ -83,6 +84,7 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = resonance.getDamage();
+        baseBlock = resonance.getBlock();
         type = resonance.getCardType();
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)

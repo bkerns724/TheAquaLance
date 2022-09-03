@@ -98,6 +98,7 @@ public class ExileMod implements
     public static final String WATER_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Water.png";
     public static final String BLOOD_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Blood.png";
     public static final String ACID_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Acid.png";
+    public static final String ACID_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Acid_M.png";
     public static final String ICE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice.png";
     public static final String ICE_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Ice_M.png";
     public static final String DEMON_FIRE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/DemonFire.png";
@@ -172,6 +173,10 @@ public class ExileMod implements
         public static AbstractGameAction.AttackEffect BLOOD;
         @SpireEnum
         public static AbstractGameAction.AttackEffect ACID;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect ACID_M;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect ACID_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect FORCE;
         @SpireEnum
@@ -520,7 +525,7 @@ public class ExileMod implements
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_EXILE);
         BaseMod.addPotion(UnicornBlood.class, Color.WHITE.cpy(), null, null, UnicornBlood.POTION_ID, THE_EXILE);
-        BaseMod.addPotion(VoidPoison.class, Color.LIME, null, null, VoidPoison.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(SiphoningPoison.class, Color.BLACK.cpy(), null, null, SiphoningPoison.POTION_ID, THE_EXILE);
         BaseMod.addPotion(SteelhidePotion.class, Color.GRAY.cpy(), null, null, SteelhidePotion.POTION_ID, THE_EXILE);
     }
 }

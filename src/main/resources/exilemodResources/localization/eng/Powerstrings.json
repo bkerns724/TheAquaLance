@@ -46,21 +46,15 @@
     ]
   },
   "${ModID}:SummonMonsterPower": {
-    "NAME": "Summon Monster",
+    "NAME": "Pandamonium",
     "DESCRIPTIONS": [
-      "At the end of your turn Channel a panda that deals !A! damage."
+      "At the end of your turn, gain an orb slot and Channel a panda that deals !A! damage."
     ]
   },
-  "${ModID}:SiphoningPower": {
+  "${ModID}:SiphonPower": {
     "NAME": "Siphoning",
     "DESCRIPTIONS": [
-      "When you deal unblocked attack damage, apply !A! Siphon."
-    ]
-  },
-  "${ModID}:SiphonedPower": {
-    "NAME": "Siphoned Power",
-    "DESCRIPTIONS": [
-      "At the start of its turn, takes !A! [${ModID}:EldritchIcon] damage."
+      "Whenever you deal Attack damage, gain !A! Temporary HP."
     ]
   },
   "${ModID}:EnergizedArcanistPower": {
@@ -85,13 +79,6 @@
     "NAME": "Crushed",
     "DESCRIPTIONS": [
       "Takes !A! more damage from attacks this turn."
-    ]
-  },
-  "${ModID}:StasisFieldPower": {
-    "NAME": "StasisField",
-    "DESCRIPTIONS": [
-      "#yCrushed and #yFrostbite do not wear off for this turn.",
-      "#yCrushed and #yFrostbite do not wear off for !A! turns."
     ]
   },
   "${ModID}:ConvertPower": {
@@ -145,12 +132,6 @@
       "Takes 50% more damage from Attacks when #yWeakened."
     ]
   },
-  "${ModID}:DrainingStrikesPower": {
-    "NAME": "Draining Strikes",
-    "DESCRIPTIONS": [
-      "Whenever an attack deals unblocked damage, gain !A! Temporary HP."
-    ]
-  },
   "${ModID}:JinxPower": {
     "NAME": "Jinx",
     "DESCRIPTIONS": [
@@ -192,16 +173,13 @@
   "${ModID}:GolemPower": {
     "NAME": "Golem",
     "DESCRIPTIONS": [
-      "Once per turn, you can spend [E] to deal 30 damage to a random enemy.",
-      "!A! times per turn, you can spend [E] to deal 30 damage to a random enemy.",
-      "Golem Punch",
-      "You can spend [E] to deal 35 damage to a random enemy."
+      "The first time you are attacked each turn, deal !A! damage back."
     ]
   },
   "${ModID}:DecayPower": {
     "NAME": "Decay",
     "DESCRIPTIONS": [
-      "Takes !A! extra damage from everything."
+      "Takes !A! extra damage from non-Attacks."
     ]
   },
   "${ModID}:FocusedPower": {
@@ -243,6 +221,12 @@
       "In !A! turns, choose 1 of !A2! cards to add into your hand."
     ]
   },
+  "${ModID}:ElementalProwessPower": {
+    "NAME": "Elemental Prowess",
+    "DESCRIPTIONS": [
+      "Whenever an attack applies ${ModID}:Frostbite, ${ModID}:Crushed, or Temporary HP, apply !A! more."
+    ]
+  },
   "${ModID}:VitalityPower": {
     "NAME": "Vitality",
     "DESCRIPTIONS": [
@@ -254,6 +238,19 @@
     "NAME": "Sadistic Glee",
     "DESCRIPTIONS": [
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
+    ]
+  },
+  "${ModID}:SlipperyPower": {
+    "NAME": "Slippery",
+    "DESCRIPTIONS": [
+      "The next incoming attack does half damage.",
+      "The next !A! incoming attacks do half damage."
+    ]
+  },
+  "${ModID}:ChargePower": {
+    "NAME": "Charge",
+    "DESCRIPTIONS": [
+      "Your next attack deals +!A! % damage."
     ]
   }
 }

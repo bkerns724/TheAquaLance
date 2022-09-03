@@ -1,5 +1,7 @@
 package theExile.potions;
 
+import basemod.helpers.CardPowerTip;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,6 +25,7 @@ public class UnicornBlood extends AbstractExilePotion {
     public static final PotionSize SIZE = PotionSize.BOTTLE;
     public static final boolean IS_THROWN = false;
     public static final boolean TARGET_REQUIRED = false;
+    private static final AbstractCard previewCard = new BadLuck();
 
     public UnicornBlood() {
         super(POTION_ID, RARITY, SIZE, PotionColor.WHITE,
@@ -34,6 +37,7 @@ public class UnicornBlood extends AbstractExilePotion {
         if (keywordStrings == null)
             keywordStrings = new ArrayList<>();
         keywordStrings.add("curse");
+        tips.add(new CardPowerTip(previewCard));
     }
 
     public boolean canUse() {

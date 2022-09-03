@@ -6,8 +6,7 @@
     <artifactId>TheExile</artifactId>
     <version>0.0.1</version>
     <name>The Exile</name>
-    <description>Adds a new spell casting character that has made questionable deals with powerful beings.</description>
-    <!-- Change the above for mod information. -->
+    <description>Adds a new character who specializes in spell casting and questionable decisions.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -16,9 +15,7 @@
         <ModTheSpire.version>3.18.2</ModTheSpire.version>
         <ModID>exilemod</ModID>
 
-        <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
         <Steam.path>C:/Program Files (x86)/Steam/steamapps/</Steam.path>
-
     </properties>
 
     <dependencies>

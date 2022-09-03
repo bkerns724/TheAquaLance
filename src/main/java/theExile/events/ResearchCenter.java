@@ -18,6 +18,7 @@ import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.Dualcast;
+import theExile.cards.EnchantedDagger;
 import theExile.damagemods.*;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
@@ -91,6 +92,10 @@ public class ResearchCenter extends AbstractExileEvent {
             if (pickedElement) {
                 AbstractExileCard c = (AbstractExileCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 c.addModifier(element);
+                if (c instanceof EnchantedDagger) {
+                    ((EnchantedDagger) c).stableList.add(element);
+                    c.initializeDescription();
+                }
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH/2.0f, (float)Settings.HEIGHT/2.0F));

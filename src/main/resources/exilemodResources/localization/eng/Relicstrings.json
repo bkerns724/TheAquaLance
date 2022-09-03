@@ -25,12 +25,12 @@
     "NAME": "Blessed Necklace",
     "FLAVOR": "Cleric talented! Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! #yBlock per card discarded."
+      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! #yTemporary_HP per card discarded."
     ]
   },
   "${ModID}:TormentorsMask": {
     "NAME": "Tormentor's Mask",
-    "FLAVOR": "It's scary.",
+    "FLAVOR": "It looks like a Halloween mask. But the facial features move on their own.",
     "DESCRIPTIONS": [
       "At the start of each combat, apply !R! #y${ModID}:Jinx to ALL enemies."
     ]
@@ -51,7 +51,7 @@
   },
   "${ModID}:StoneScales": {
     "NAME": "Stone Scales",
-    "FLAVOR": "You wonder what turned these scales to stone.",
+    "FLAVOR": "Whatever turned these scales to stone also melded them together.",
     "DESCRIPTIONS": [
       "#y${ModID}:Activated. Once per combat, for one turn, whenever you would take damage, take !R! less."
     ]
@@ -67,12 +67,12 @@
     "NAME": "TatteredCloak",
     "FLAVOR": "There's like 500 knives sewn to this thing.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card during your turn, add a #yShiv into your hand."
+      "The first five times each combat that you discard a card during your turn, add a #yShiv into your hand."
     ]
   },
   "${ModID}:EyeballStaff": {
     "NAME": "Eyeball Staff",
-    "FLAVOR": "The eye is attracted to movement.",
+    "FLAVOR": "You often catch the eye staring at you when you look at the staff, but it quickly looks away.",
     "DESCRIPTIONS": [
       "#y${ModID}:Activated. Once per combat you can Scry !R!. Play any #y${ModID}:Sigils you discard."
     ]
@@ -95,7 +95,7 @@
     "NAME": "Vial of Black Blood",
     "FLAVOR": "It is hot enough to almost burn you.",
     "DESCRIPTIONS": [
-      "Your [${ModID}:LightningIcon] and [${ModID}:DemonFireIcon] attacks deal double damage but you lose !R! HP when you play one."
+      "Your [${ModID}:LightningIcon] Attacks deal +50% damage and exhaust."
     ]
   },
   "${ModID}:ReverseOmamori": {
@@ -107,23 +107,23 @@
   },
   "${ModID}:Mythril": {
     "NAME": "Mythril",
-    "FLAVOR": "It's extremely hard for something so light.",
+    "FLAVOR": "It's extremely hard for something so light weight.",
     "DESCRIPTIONS": [
       "If you end your turn with no cards in hand, gain !R! #yBlock."
     ]
   },
-  "${ModID}:RegularBandages": {
-    "NAME": "Regular Bandages",
-    "FLAVOR": "They're the generic store bought version.",
+  "${ModID}:ShinyKazoo": {
+    "NAME": "Shiny Kazoo",
+    "FLAVOR": "You can feel its power, but you have too much dignity to actually play it.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card during your turn, gain !R! #yBlock."
+      "The first time each combat that you gain *Resonance, add a random #yResonant card to your hand."
     ]
   },
-  "${ModID}:TwistedShuriken": {
-    "NAME": "Twisted Shuriken",
-    "FLAVOR": "You aren't sure how to throw this, but it looks brutal.",
+  "${ModID}:SneckoLeatherGloves": {
+    "NAME": "Snecko Leather Gloves",
+    "FLAVOR": "The Snecko probably deserved it.",
     "DESCRIPTIONS": [
-      "Every time you play !R2! attacks in a single turn, ALL enemies lose !R! #yStrength."
+      "Whenever you apply #y${ModID}:Jinx to an enemy, it loses !R! HP."
     ]
   },
   "${ModID}:HexedStaff": {

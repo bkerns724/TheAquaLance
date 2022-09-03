@@ -20,6 +20,7 @@ public class ClockSigil extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
+        exhaust = true;
     }
 
     public void nonTargetUse() {

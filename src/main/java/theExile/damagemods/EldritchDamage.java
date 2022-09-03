@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
+import theExile.powers.ElementalProwessPower;
 import theExile.relics.VoidBracelet;
 
 import java.util.ArrayList;
@@ -56,6 +57,9 @@ public class EldritchDamage extends AbstractDamageModifier {
         if (adp().hasRelic(VoidBracelet.ID))
             finalDamage *= 2;
         int tempHP = finalDamage / 3;
+        ElementalProwessPower power = (ElementalProwessPower) adp().getPower(ElementalProwessPower.POWER_ID);
+        if (power != null)
+            tempHP += power.amount;
         if (tempHP > 0)
             att(new MyAddTempHPAction(adp(), adp(), tempHP));
     }

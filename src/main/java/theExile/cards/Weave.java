@@ -17,9 +17,10 @@ public class Weave extends AbstractExileCard {
     }
 
     public void nonTargetUse() {
-        atb(new WeaveAction(upgraded));
+        atb(new WeaveAction());
     }
 
     public void upp() {
+        selfRetain = true;
     }
 }

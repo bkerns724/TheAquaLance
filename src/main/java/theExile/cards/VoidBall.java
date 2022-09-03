@@ -2,6 +2,7 @@ package theExile.cards;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.ELDRITCH;
+import static theExile.util.Wiz.discard;
 
 public class VoidBall extends AbstractExileCard {
     public final static String ID = makeID(VoidBall.class.getSimpleName());
@@ -24,6 +25,7 @@ public class VoidBall extends AbstractExileCard {
 
     public void nonTargetUse() {
         allDmg();
+        discard(magicNumber);
     }
 
     public void upp() {

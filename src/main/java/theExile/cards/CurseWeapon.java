@@ -8,9 +8,10 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class CurseWeapon extends AbstractExileCard {
     public final static String ID = makeID(CurseWeapon.class.getSimpleName());
-    private final static int BLOCK = 7;
-    private final static int UPGRADE_BLOCK = 3;
-    private final static int MAGIC = 1;
+    private final static int BLOCK = 5;
+    private final static int UPGRADE_BLOCK = 2;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
     public CurseWeapon() {
@@ -34,5 +35,6 @@ public class CurseWeapon extends AbstractExileCard {
 
     public void upp() {
         upgradeBlock(UPGRADE_BLOCK);
+        upMagic(UPGRADE_MAGIC);
     }
 }

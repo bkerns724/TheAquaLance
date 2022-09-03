@@ -11,7 +11,7 @@ import static theExile.util.Wiz.atb;
 
 public class ElixirOfFalseHealth extends AbstractExilePotion {
     public static final String POTION_ID = makeID(ElixirOfFalseHealth.class.getSimpleName());
-    public static final int DEFAULT_POTENCY = 30;
+    public static final int DEFAULT_POTENCY = 20;
     public static final PotionRarity RARITY = PotionRarity.RARE;
     public static final PotionSize SIZE = PotionSize.HEART;
     public static final boolean IS_THROWN = false;
@@ -30,7 +30,6 @@ public class ElixirOfFalseHealth extends AbstractExilePotion {
     }
 
     public void use(AbstractCreature target) {
-        int amount = (int) (adp().maxHealth*potency/100f);
-        atb(new MyAddTempHPAction(adp(), adp(), amount));
+        atb(new MyAddTempHPAction(adp(), adp(), potency));
     }
 }

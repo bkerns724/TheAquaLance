@@ -8,9 +8,9 @@ import static theExile.util.Wiz.*;
 
 public class SickBurn extends AbstractExileCard {
     public final static String ID = makeID(SickBurn.class.getSimpleName());
-    private final static int DAMAGE = 9;
+    private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 5;
+    private final static int MAGIC = 6;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 2;
 
@@ -22,6 +22,7 @@ public class SickBurn extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     public void singleTargetUse(AbstractMonster m) {

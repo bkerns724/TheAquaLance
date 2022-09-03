@@ -48,6 +48,7 @@ import theExile.icons.Lightning;
 import theExile.powers.AbstractExilePower;
 import theExile.powers.ConvertPower;
 import theExile.relics.ManaPurifier;
+import theExile.relics.VialOfBlackBlood;
 import theExile.util.CardArtRoller;
 import theExile.util.Wiz;
 
@@ -155,8 +156,14 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     @Override
     public List<TooltipInfo> getCustomTooltipsTop() {
         ArrayList<TooltipInfo> list = new ArrayList<>();
+        if (thisCardStrings == null)
+            logger.info("Null thisCardStrings");
+        else {
+            logger.info("thisCardStrings Size");
+            logger.info(thisCardStrings.EXTENDED_DESCRIPTION.length);
+        }
         if (rarity == Enums.UNIQUE)
-            list.add(new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[12], cardStrings.EXTENDED_DESCRIPTION[13]));
+            list.add(new TooltipInfo(thisCardStrings.EXTENDED_DESCRIPTION[12], thisCardStrings.EXTENDED_DESCRIPTION[13]));
         return list;
     }
 
@@ -359,7 +366,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
 
-        if (exhaust)
+        if (exhaust || (damageModList != null && damageModList.contains(LIGHTNING)
+                && adp() != null && adp().hasRelic(VialOfBlackBlood.ID)))
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
 
         super.initializeDescription();
@@ -440,7 +448,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         addModifier(element, true);
     }
 
-    protected int getDamageForVFX() {
+    public int getDamageForVFX() {
         int amount = damage;
         if (isMultiDamage && multiDamage.length > 0) {
             amount = multiDamage[0];

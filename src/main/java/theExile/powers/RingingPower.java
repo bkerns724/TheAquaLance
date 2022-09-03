@@ -36,10 +36,7 @@ public class RingingPower extends AbstractExilePower implements HealthBarRenderP
     @Override
     public int getHealthBarAmount() {
         int output = amount;
-        CrumblingPower corPow = (CrumblingPower) owner.getPower(CrumblingPower.POWER_ID);
         DecayPower decayPow = (DecayPower) owner.getPower(DecayPower.POWER_ID);
-        if (corPow != null)
-            output *= (1f + corPow.amount/100f);
         if (decayPow != null)
             output += decayPow.amount;
         return output;

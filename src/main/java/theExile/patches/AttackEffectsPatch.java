@@ -62,6 +62,8 @@ public class AttackEffectsPatch {
             texture = TexLoader.getTexture(ExileMod.BLOOD_EFFECT_FILE);
         else if (effect == ExileMod.Enums.ACID)
             texture = TexLoader.getTexture(ExileMod.ACID_EFFECT_FILE);
+        else if (effect == ExileMod.Enums.ACID_M)
+            texture = TexLoader.getTexture(ExileMod.ACID_M_EFFECT_FILE);
         else if (effect == ExileMod.Enums.ICE)
             texture = TexLoader.getTexture(ExileMod.ICE_EFFECT_FILE);
         else if (effect == ExileMod.Enums.ICE_M)
@@ -109,6 +111,10 @@ public class AttackEffectsPatch {
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.ACID) {
+                CardCrawlGame.sound.playV("ATTACK_POISON2", 0.6f);
+                return SpireReturn.Return();
+            }
+            if (effect == ExileMod.Enums.ACID_M) {
                 CardCrawlGame.sound.play("ATTACK_POISON2");
                 return SpireReturn.Return();
             }
@@ -169,5 +175,6 @@ public class AttackEffectsPatch {
         emptyEffects.add(ExileMod.Enums.SLASH_MASSIVE);
         emptyEffects.add(ExileMod.Enums.FIRE_M);
         emptyEffects.add(ExileMod.Enums.FIRE_L);
+        emptyEffects.add(ExileMod.Enums.ACID_L);
     }
 }

@@ -4,13 +4,13 @@ import static theExile.ExileMod.makeID;
 
 public class Beat extends AbstractResonantCard {
     public final static String ID = makeID(Beat.class.getSimpleName());
-    private final static int DAMAGE = 2;
-    private final static int UPGRADE_DAMAGE = 2;
+    private final static int DAMAGE = 6;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 1;
     private final static int COST = 1;
 
     public Beat() {
-        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 
     @Override

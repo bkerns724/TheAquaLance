@@ -12,7 +12,7 @@ public class StoneskinPotion extends AbstractExilePotion {
     public static final String POTION_ID = makeID(StoneskinPotion.class.getSimpleName());
     public static final int DEFAULT_POTENCY = 5;
     public static final PotionRarity RARITY = UNCOMMON;
-    public static final PotionSize SIZE = PotionSize.HEART;
+    public static final PotionSize SIZE = PotionSize.SPHERE;
     public static final boolean IS_THROWN = false;
     public static final boolean TARGET_REQUIRED = false;
 

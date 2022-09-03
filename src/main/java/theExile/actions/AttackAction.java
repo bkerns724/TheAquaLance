@@ -1,6 +1,7 @@
 package theExile.actions;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -26,6 +27,7 @@ public class AttackAction extends AbstractGameAction {
     private int[] multiDamage;
 
     public static ArrayList<AttackEffect> simpleEffects;
+    private static final Color ELDRITCH_COLOR = new Color(0.35f, 0f, 0.35f, 1f);
 
     public AttackAction(AbstractMonster m, DamageInfo info, AttackEffect effect) {
         this.m = m;
@@ -57,7 +59,7 @@ public class AttackAction extends AbstractGameAction {
             else if (effect == ExileMod.Enums.FORCE || effect == ExileMod.Enums.FORCE_M)
                 color = Color.PINK.cpy();
             else if (effect == ExileMod.Enums.ELDRITCH || effect == ExileMod.Enums.ELDRITCH_M)
-                color = Color.BLACK.cpy();
+                color = ELDRITCH_COLOR.cpy();
             else if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
                 color = Color.GREEN.cpy();
             else if (effect == AttackEffect.FIRE)
@@ -107,7 +109,7 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.ELDRITCH_L) {
-            color = Color.BLACK.cpy();
+            color = ELDRITCH_COLOR.cpy();
             if (m == null)
                 vfxTop(new DarkLargeEffect(null), DarkLargeEffect.DUR_BEFORE_IMPACT - 0.3f);
             else
@@ -115,6 +117,8 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.DARK_WAVE) {
+            rainbow = true;
+            color = null;
             if (m == null)
                 vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f, 1.0f), 0.5F);
             else
@@ -122,6 +126,8 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.DARK_WAVE_M) {
+            rainbow = true;
+            color = null;
             if (m == null)
                 vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f, 1.5f), 0.5F);
             else
@@ -129,6 +135,8 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.DARK_WAVE_L) {
+            rainbow = true;
+            color = null;
             if (m == null)
                 vfxTop(new DarkWaveEffect(adp().hb.cX, adp().hb.cY, Settings.WIDTH * 1.05f, 2.25f), 0.5F);
             else
@@ -178,6 +186,14 @@ public class AttackAction extends AbstractGameAction {
             vfxTop(new ShortScreenOnFireEffect());
         }
 
+        if (effect == ExileMod.Enums.ACID_L) {
+            color = new Color(0.35f, 0.9f, 0f, 1f);
+            for (int i = 0; i < 4; i++) {
+                vfxTop(new FlashAtkImgEffect(m.hb.cX + Settings.xScale * MathUtils.random(-1, 1),
+                        m.hb.cY + Settings.scale * MathUtils.random(-1, 1), ExileMod.Enums.ACID_M), 0.08f);
+            }
+        }
+
         ColoredDamagePatch.DamageActionColorField.rainbow.set(action, rainbow);
         if (color != null) {
             ColoredDamagePatch.DamageActionColorField.damageColor.set(action, color);
@@ -190,6 +206,7 @@ public class AttackAction extends AbstractGameAction {
     static {
         simpleEffects = new ArrayList<>();
         simpleEffects.add(ExileMod.Enums.ACID);
+        simpleEffects.add(ExileMod.Enums.ACID_M);
         simpleEffects.add(ExileMod.Enums.BLOOD);
         simpleEffects.add(ExileMod.Enums.ICE);
         simpleEffects.add(ExileMod.Enums.ICE_M);

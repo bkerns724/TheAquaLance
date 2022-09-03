@@ -21,13 +21,11 @@ import static theExile.util.Wiz.applyToSelf;
 public class WeaveAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private final boolean upgraded;
     private final ArrayList<AbstractCard> cardsToExhaust = new ArrayList<>();
 
-    public WeaveAction(boolean upgraded) {
+    public WeaveAction() {
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_FAST;
-        this.upgraded = upgraded;
     }
 
     public void update() {
@@ -36,19 +34,14 @@ public class WeaveAction extends AbstractGameAction {
                 isDone = true;
                 return;
             }
-            else if (adp().hand.group.size() == 1 && !upgraded) {
+            else if (adp().hand.group.size() == 1) {
                 isDone = true;
                 cardsToExhaust.add(adp().hand.group.get(0));
                 exhaustCards();
                 return;
             }
-            else if (!upgraded) {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false, false, false);
-                tickDuration();
-                return;
-            }
             else {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[1], 2, true, true, false, false);
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false, false, false);
                 tickDuration();
                 return;
             }

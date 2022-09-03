@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.relics.ManaPurifier;
 
+import java.util.ArrayList;
+
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.getSlashEffect;
@@ -14,9 +16,12 @@ public class EnchantedDagger extends AbstractExileCard {
     private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 1;
+    public ArrayList<elenum> stableList = new ArrayList<>();
 
     public EnchantedDagger() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        stableList.addAll(damageModList);
+        applyPowers();
     }
 
     public void applyAttributes() {
@@ -31,6 +36,11 @@ public class EnchantedDagger extends AbstractExileCard {
     }
 
     @Override
+    public void didDiscard() {
+        applyPowers();
+    }
+
+    @Override
     public void calculateCardDamage(AbstractMonster mo) {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
@@ -38,6 +48,7 @@ public class EnchantedDagger extends AbstractExileCard {
             initializeDescription();
             return;
         }
+        addModifier(stableList, true);
         for (AbstractCard card : adp().hand.group) {
             if (card instanceof AbstractExileCard && card != this)
                 addModifier(((AbstractExileCard) card).damageModList, true);
@@ -54,10 +65,13 @@ public class EnchantedDagger extends AbstractExileCard {
     public void applyPowers() {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
+        if (adp() == null)
+            return;
         if (adp().hasRelic(ManaPurifier.ID)) {
             initializeDescription();
             return;
         }
+        addModifier(stableList, true);
         for (AbstractCard card : adp().hand.group) {
             if (card instanceof AbstractExileCard && card != this)
                 addModifier(((AbstractExileCard) card).damageModList, true);

@@ -8,7 +8,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class Stoneskin extends AbstractExileCard {
     public final static String ID = makeID(Stoneskin.class.getSimpleName());
-    private final static int BLOCK = 5;
+    private final static int BLOCK = 4;
     private final static int UPGRADE_BLOCK = 2;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;

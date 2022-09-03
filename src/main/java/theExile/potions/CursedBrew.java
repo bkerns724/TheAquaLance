@@ -1,5 +1,6 @@
 package theExile.potions;
 
+import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theExile.powers.JinxPower;
 
@@ -10,7 +11,7 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class CursedBrew extends AbstractExilePotion {
     public static final String POTION_ID = makeID(CursedBrew.class.getSimpleName());
-    public static final int DEFAULT_POTENCY = 3;
+    public static final int DEFAULT_POTENCY = 5;
     public static final boolean IS_THROWN = true;
     public static final boolean TARGET_REQUIRED = true;
     public static final PotionRarity RARITY = PotionRarity.COMMON;

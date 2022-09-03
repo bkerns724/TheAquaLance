@@ -1,22 +1,18 @@
 package theExile.relics;
 
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.atb;
+import static theExile.cards.AbstractExileCard.elenum.LIGHTNING;
 
 public class VialOfBlackBlood extends AbstractExileRelic {
     public static final String ID = makeID(VialOfBlackBlood.class.getSimpleName());
-    public static final int SELF_DAMAGE = 2;
 
     public VialOfBlackBlood() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
-        amount = SELF_DAMAGE;
         setUpdatedDescription();
     }
 
@@ -24,7 +20,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     public float atDamageModify(float damage, AbstractCard c) {
         if (c instanceof AbstractExileCard) {
             AbstractExileCard card = (AbstractExileCard) c;
-            if (card.damageModList.contains(AbstractExileCard.elenum.LIGHTNING))
+            if (card.damageModList.contains(LIGHTNING))
                 damage *= 2;
         }
         return damage;
@@ -32,10 +28,8 @@ public class VialOfBlackBlood extends AbstractExileRelic {
 
     @Override
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-        if (targetCard instanceof AbstractExileCard) {
-            AbstractExileCard card = (AbstractExileCard) targetCard;
-            if (card.damageModList.contains(AbstractExileCard.elenum.LIGHTNING))
-                atb(new LoseHPAction(adp(), adp(), SELF_DAMAGE));
-        }
+        if (targetCard instanceof AbstractExileCard)
+            if (((AbstractExileCard) targetCard).damageModList.contains(LIGHTNING))
+                targetCard.exhaust = true;
     }
 }

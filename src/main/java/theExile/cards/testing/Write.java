@@ -29,9 +29,13 @@ public class Write extends AbstractExileCard {
     protected void applyAttributes() {
     }
 
+    @Override
+    public void nonTargetUse() {
+        // crack("C:\\Users\\15024\\Desktop\\Mods\\OtherMod\\STS\\powers\\powers.atlas",
+        //        "C:\\Users\\15024\\Desktop\\Mods\\Arcanist\\src\\main\\resources\\exilemodResources\\images\\powerImages\\");
+    }
+
     public void singleTargetUse(AbstractPlayer p, AbstractMonster m) {
-        crack("C:\\Users\\15024\\Desktop\\Mods\\OtherMod\\STS\\powers\\powers.atlas",
-                "C:\\Users\\15024\\Desktop\\Mods\\Arcanist\\src\\main\\resources\\exilemodResources\\images\\powerImages\\");
     }
 
     public void upp() {

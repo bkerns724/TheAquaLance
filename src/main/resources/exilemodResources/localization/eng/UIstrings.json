@@ -52,11 +52,12 @@
     "TEXT": [
       "Deal !D! damage.",
       "Deal !D! damage to ALL enemies.",
+      " NL Gain !B! Block.",
       " NL Enemy loses !X1! HP at the start of its turns.",
       " NL ALL enemies lose !X1! HP at the start of their turns.",
       " NL Apply !X2! ${ModID}:Jinx.",
       " NL Apply !X2! ${ModID}:Jinx to ALL enemies.",
-      " NL Gain !X3! Vigor.",
+      " NL Your next attack deals +!X3! % damage.",
       " NL Draw a card and discard a card.",
       " NL Draw !X4! cards and discard !X4! cards.",
       " NL Use !CardName!."
@@ -66,9 +67,10 @@
     "TEXT": [
       "Targets ALL enemies. NL ",
       "!D! damage.",
+      "!B! block.",
       "!X1! Ringing.",
       "!X2! ${ModID}:Jinx.",
-      "!X3! Vigor.",
+      "!X3! Charge.",
       "!X4! Card Cycle.",
       " NL Use !CardName!.",
       " NL Use cards."
