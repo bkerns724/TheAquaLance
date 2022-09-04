@@ -18,6 +18,8 @@ public class GenericResonantCard extends AbstractResonantCard {
         this.resonance = resonance;
         type = resonance.getCardType();
         target = resonance.getCardTarget();
+        baseDamage = resonance.getDamage();
+        baseBlock = resonance.getBlock();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
             isMultiDamage = true;
         cardToPreview.addAll(resonance.cards);

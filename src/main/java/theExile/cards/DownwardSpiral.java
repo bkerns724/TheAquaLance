@@ -19,13 +19,15 @@ public class DownwardSpiral extends AbstractExileCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     @Override
     public void singleTargetUse(AbstractMonster m) {
         int count = getDebuffCount(m);
         count += magicNumber;
-        applyToEnemy(m, new JinxPower(m, count));
+        if (count > 0)
+            applyToEnemy(m, new JinxPower(m, count));
     }
 
     public void upp() {

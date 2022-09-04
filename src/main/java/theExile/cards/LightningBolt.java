@@ -17,6 +17,7 @@ public class LightningBolt extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         exhaust = true;
+        addModifier(elenum.LIGHTNING);
     }
 
     @Override

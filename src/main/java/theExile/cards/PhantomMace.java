@@ -20,6 +20,7 @@ public class PhantomMace extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);
     }
 

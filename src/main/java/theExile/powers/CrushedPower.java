@@ -25,7 +25,8 @@ public class CrushedPower extends AbstractExilePower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        att(new ReducePowerAction(owner, owner, this, 1));
+        if (info.type == DamageInfo.DamageType.NORMAL)
+            att(new ReducePowerAction(owner, owner, this, 1));
         return damageAmount;
     }
 }

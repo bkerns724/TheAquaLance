@@ -10,7 +10,6 @@ public class FlashClickyAction extends AbstractGameAction {
     private final ClickableForPower clicky;
 
     public FlashClickyAction(ClickableForPower clicky) {
-        ExileMod.logger.info("Action Constructor");
         this.clicky = clicky;
     }
 

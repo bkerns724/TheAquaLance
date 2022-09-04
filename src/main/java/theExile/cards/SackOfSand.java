@@ -7,14 +7,14 @@ import static theExile.util.Wiz.atb;
 
 public class SackOfSand extends AbstractExileCard {
     public final static String ID = makeID(SackOfSand.class.getSimpleName());
-    private final static int BLOCK = 5;
+    private final static int BLOCK = 4;
     private final static int UPGRADE_BLOCK = 2;
     private final static int MAGIC = 5;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
     public SackOfSand() {
-        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     @Override

@@ -7,7 +7,7 @@ import static theExile.util.Wiz.atb;
 
 public class Divination extends AbstractExileCard {
     public final static String ID = makeID(Divination.class.getSimpleName());
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 

@@ -35,7 +35,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
-import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.actions.AttackAction;
 import theExile.cards.cardUtil.Resonance;
@@ -156,12 +155,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     @Override
     public List<TooltipInfo> getCustomTooltipsTop() {
         ArrayList<TooltipInfo> list = new ArrayList<>();
-        if (thisCardStrings == null)
-            logger.info("Null thisCardStrings");
-        else {
-            logger.info("thisCardStrings Size");
-            logger.info(thisCardStrings.EXTENDED_DESCRIPTION.length);
-        }
         if (rarity == Enums.UNIQUE)
             list.add(new TooltipInfo(thisCardStrings.EXTENDED_DESCRIPTION[12], thisCardStrings.EXTENDED_DESCRIPTION[13]));
         return list;
@@ -331,8 +324,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         return "";
     }
 
-    @Override
-    public void initializeDescription() {
+    protected void initDesc() {
         if (!overrideRawDesc) {
             if (cardStrings == null)
                 cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -369,7 +361,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (exhaust || (damageModList != null && damageModList.contains(LIGHTNING)
                 && adp() != null && adp().hasRelic(VialOfBlackBlood.ID)))
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
+    }
 
+    @Override
+    public void initializeDescription() {
+        initDesc();
         super.initializeDescription();
     }
 
@@ -568,7 +564,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                 myGlowList.add(new CardGlowBorder(this, glowColor));
                 myGlowTimer = 0.3F;
             }
-            ExileMod.logger.info(myGlowTimer);
         }
 
         Iterator i = this.myGlowList.iterator();

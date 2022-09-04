@@ -97,7 +97,7 @@
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
     "DESCRIPTION": "Deal !D! damage. NL Gain [E] next turn.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain [E][E] next turn.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain [E] [E] next turn.",
     "FLAVOR": "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:BallLightning": {
@@ -134,20 +134,24 @@
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
-    "DESCRIPTION": "Gain !M! Block. NL Discard a card.",
+    "DESCRIPTION": "Gain !B! Block. NL Discard a card.",
     "FLAVOR": "The aggressive version of they can't catch you if they can't see you."
   },
   "${ModID}:SpiritPressure": {
     "NAME": "Spirit Pressure",
     "DESCRIPTION": "Whenever you apply ${ModID}:Jinx, apply !M! more."
   },
+  "${ModID}:WetSigil": {
+    "NAME": "Wet Sigil",
+    "DESCRIPTION": "ALL enemies take damage equal to !M! times their ${ModID}:Frostbite."
+  },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
     "DESCRIPTION": "ALL enemies take !M! more non-Attack damage.",
     "FLAVOR": "These are a pain because they fall apart in a few days and then you have to remake it."
   },
-  "${ModID}:FrozenSigil": {
-    "NAME": "Frozen Sigil",
+  "${ModID}:BlizzardSigil": {
+    "NAME": "Blizzard Sigil",
     "DESCRIPTION": "Deal !D! damage to the lowest hp enemy. NL Take !M! damage.",
     "FLAVOR": "This is difficult to throw without freezing your hand off."
   },
@@ -173,7 +177,8 @@
   },
   "${ModID}:SlipperySigil": {
     "NAME": "Slipper Sigil",
-    "DESCRIPTION": "The next incoming attack does half damage.",
+    "DESCRIPTION": "The next time you would take attack damage, reduce it by half.",
+    "UPGRADE_DESCRIPTION": "The next !M! times you would take attack damage, reduce it by half.",
     "FLAVOR": "I keep dropping these."
   },
   "${ModID}:HeavySigil": {
@@ -209,7 +214,7 @@
   },
   "${ModID}:VoodooDoll": {
     "NAME": "Voodoo Doll",
-    "DESCRIPTION": "Exhaust a card. NL If you exhausts a Curse, deal triple damage.",
+    "DESCRIPTION": "Exhaust a card. NL Deal !D! damage. NL If you Exhausted a Curse, deal triple damage.",
     "FLAVOR": "While the victim is asleep, hold the doll's hand in a cup of warm water. Classic."
   },
   "${ModID}:SonicAgony": {
@@ -249,7 +254,7 @@
   },
   "${ModID}:ElementalProwess": {
     "NAME": "Elemental Prowess",
-    "DESCRIPTION": "Whenever an attack applies ${ModID}:Frostbite, ${ModID}:Crushed, or Temporary HP, apply !M! more.",
+    "DESCRIPTION": "Whenever an Attack applies ${ModID}:Frostbite, ${ModID}:Crushed, or Temporary_HP, apply !M! more.",
     "FLAVOR": "Stop pretending you're Aang and focus."
   },
   "${ModID}:Convert": {

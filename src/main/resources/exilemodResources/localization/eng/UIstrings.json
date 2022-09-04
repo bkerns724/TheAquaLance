@@ -1,9 +1,4 @@
 {
-  "${ModID}:SensoryStone": {
-    "TEXT": [
-      "~[#FF8C00]FRUSTRATION~ NL NL #r\"FOR #rYOUR #rCRIMES #rAGAINST #rTHE #rNATURAL #rORDER, #rYOU #rARE #rHEREBY #rBANISHED #rFROM #rTHE #rREALM!\" NL NL As the doors close, you still fail to understand why. As it is, they are all going to die to the #ySpire and its #yBlight. Desperate times call for desperate measures. And not only did they refuse to help you, they #r@EXILED@ you! Well, you're going to take down the #ySpire anyway, and prove them wrong."
-    ]
-  },
   "${ModID}:Settings": {
     "TEXT": [
       "Longer version of victory montage.",
@@ -52,28 +47,28 @@
     "TEXT": [
       "Deal !D! damage.",
       "Deal !D! damage to ALL enemies.",
-      " NL Gain !B! Block.",
-      " NL Enemy loses !X1! HP at the start of its turns.",
-      " NL ALL enemies lose !X1! HP at the start of their turns.",
-      " NL Apply !X2! ${ModID}:Jinx.",
-      " NL Apply !X2! ${ModID}:Jinx to ALL enemies.",
-      " NL Your next attack deals +!X3! % damage.",
-      " NL Draw a card and discard a card.",
-      " NL Draw !X4! cards and discard !X4! cards.",
-      " NL Use !CardName!."
+      "Gain !B! Block.",
+      "Enemy loses !X1! HP at the start of its turns.",
+      "ALL enemies lose !X1! HP at the start of their turns.",
+      "Apply !X2! ${ModID}:Jinx.",
+      "Apply !X2! ${ModID}:Jinx to ALL enemies.",
+      "Your next attack deals +!X3!% damage.",
+      "Draw a card and discard a card.",
+      "Draw !X4! cards and discard !X4! cards.",
+      "Use !CardName!."
     ]
   },
   "${ModID}:ResonanceConcise": {
     "TEXT": [
       "Targets ALL enemies. NL ",
       "!D! damage.",
-      "!B! block.",
+      "!B! Block.",
       "!X1! Ringing.",
       "!X2! ${ModID}:Jinx.",
       "!X3! Charge.",
       "!X4! Card Cycle.",
       " NL Use !CardName!.",
-      " NL Use cards."
+      "Use cards."
     ]
   }
 }

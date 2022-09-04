@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
-import theExile.ExileMod;
 import theExile.util.TexLoader;
 
 import static theExile.ExileMod.makeRelicPath;
@@ -71,12 +70,10 @@ public abstract class AbstractExileRelic extends CustomRelic {
         int y = InputHelper.mY;
 
         if (CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.RELIC_VIEW) {
-            ExileMod.logger.info("COMPENDIUM");
             cardToPreview.current_x = Settings.WIDTH - 380 * Settings.scale;
             cardToPreview.current_y = Settings.HEIGHT * 0.65F - cardToPreview.hb.width / 2.0F;
             cardToPreview.drawScale = 1;
         } else if (adp() != null && adp().relics.contains(this)) {
-            ExileMod.logger.info("TOP ROW");
             if (x < 1400.0F * Settings.scale)
                 cardToPreview.current_x = x + BOX_W + cardToPreview.hb.width*0.7f;
             else
@@ -91,12 +88,10 @@ public abstract class AbstractExileRelic extends CustomRelic {
 
             cardToPreview.drawScale = 0.7f;
         } else if (boss) {
-            ExileMod.logger.info("BOSS");
             cardToPreview.current_x = Settings.WIDTH*0.94F - cardToPreview.hb.width/2.0F;
             cardToPreview.current_y = Settings.HEIGHT*0.6F - cardToPreview.hb.height/2.0F;
             cardToPreview.drawScale = 1;
         } else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.SHOP) {
-            ExileMod.logger.info("SHOP");
             cardToPreview.current_x = x + BOX_W + cardToPreview.hb.width*0.7f;
 
             cardToPreview.current_y = y;
@@ -108,7 +103,6 @@ public abstract class AbstractExileRelic extends CustomRelic {
 
             cardToPreview.drawScale = 0.7f;
         } else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD) {
-            ExileMod.logger.info("COMBAT REWARD");
             cardToPreview.current_x = x - BOX_W - cardToPreview.hb.width*0.7f;
 
             cardToPreview.current_y = y;

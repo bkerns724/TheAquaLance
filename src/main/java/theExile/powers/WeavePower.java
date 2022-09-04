@@ -80,9 +80,10 @@ public class WeavePower extends AbstractExilePower implements OnReceivePowerPowe
             return;
         if (card instanceof AbstractExileCard && card.type == CardType.ATTACK) {
             flash();
-            ((AbstractExileCard) card).addModifier(elementList, true);
+            ArrayList<elenum> listCopy = new ArrayList<>(elementList);
+            ((AbstractExileCard) card).addModifier(listCopy, true);
             if (card instanceof EnchantedDagger) {
-                ((EnchantedDagger) card).stableList.addAll(elementList);
+                ((EnchantedDagger) card).stableList.addAll(listCopy);
                 card.applyPowers();
             }
             atb(new RemoveSpecificPowerAction(adp(), adp(), this));

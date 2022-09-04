@@ -48,8 +48,11 @@ public class DivinationAction extends AbstractGameAction {
 
                 AbstractDungeon.gridSelectScreen.open(tmpGroup, amount, true, TEXT[0]);
 
-                for (AbstractCard c : tmpGroup.group)
+                for (AbstractCard c : tmpGroup.group) {
+                    if (!c.upgraded)
+                        c.superFlash();
                     c.upgrade();
+                }
             } else if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
                 for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards)
                     adp().drawPile.moveToDiscardPile(c);

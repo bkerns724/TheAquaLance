@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.*;
+import static theExile.cards.AbstractExileCard.elenum;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToSelf;
 
@@ -66,16 +67,17 @@ public class WeaveAction extends AbstractGameAction {
             adp().hand.moveToExhaustPile(card);
         }
 
-        if (elementList.contains(AbstractExileCard.elenum.FAKE_ICE))
+        if (elementList.contains(FAKE_ICE))
             elementList.add(ICE);
-        if (elementList.contains(AbstractExileCard.elenum.FAKE_FORCE))
+        if (elementList.contains(FAKE_FORCE))
             elementList.add(FORCE);
-        if (elementList.contains(AbstractExileCard.elenum.FAKE_ELDRITCH))
+        if (elementList.contains(FAKE_ELDRITCH))
             elementList.add(ELDRITCH);
-        if (elementList.contains(AbstractExileCard.elenum.FAKE_LIGHTNING))
+        if (elementList.contains(FAKE_LIGHTNING))
             elementList.add(LIGHTNING);
 
-        elementList = (ArrayList<AbstractExileCard.elenum>) elementList.stream().distinct().collect(Collectors.toList());
+        elementList = (ArrayList<elenum>) elementList.stream().distinct().collect(Collectors.toList());
+
         elementList.remove(FAKE_ICE);
         elementList.remove(FAKE_FORCE);
         elementList.remove(FAKE_LIGHTNING);

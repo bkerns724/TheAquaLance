@@ -148,10 +148,8 @@ public class VoidSpirits extends AbstractExileEvent {
                     imageEventText.clearAllDialogs();
                     enterCombatFromImage();
             }
-        } else if (screen == CUR_SCREEN.COMPLETE) {
-            ExileMod.logger.info("ABOUT TO OPEN MAP");
+        } else if (screen == CUR_SCREEN.COMPLETE)
             openMap();
-        }
         else if (screen == CUR_SCREEN.CARD_SCREEN){
             int removableCards = getCardsRemoved();
             if (removableCards == 1)
@@ -160,14 +158,11 @@ public class VoidSpirits extends AbstractExileEvent {
             else if (removableCards > 1)
                 AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(adp().masterDeck.getPurgeableCards()),
                         removableCards, descriptions[6], false);
-        } else {
-            ExileMod.logger.info("ABOUT TO OPEN MAP");
+        } else
             openMap();
-        }
     }
 
     public void reopen() {
-        ExileMod.logger.info("REOPENED FROM COMBAT");
         imageEventText.updateBodyText(descriptions[4]);
         imageEventText.clearAllDialogs();
         imageEventText.setDialogOption(options[5]);

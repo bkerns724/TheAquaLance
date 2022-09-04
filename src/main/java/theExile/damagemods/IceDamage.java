@@ -54,6 +54,8 @@ public class IceDamage extends AbstractDamageModifier {
 
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
+        if (adp() != null && adp() == target)
+            return;
         int finalDamage = blockedAmount + lastDamageTaken;
         if (adp().hasRelic(BlueMarbles.ID))
             finalDamage *= BlueMarbles.INCREASE;

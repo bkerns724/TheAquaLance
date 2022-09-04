@@ -41,9 +41,6 @@ public abstract class AbstractExilePower extends AbstractPower {
         String textureString32 = textureStringBase + "32.png";
         String textureString84 = textureStringBase + "84.png";
 
-        ExileMod.logger.info(textureString32);
-        ExileMod.logger.info(textureString84);
-
         Texture normalTexture = TexLoader.getTexture(textureString32);
         Texture hiDefImage = TexLoader.getTexture(textureString84);
         if (hiDefImage != null) {

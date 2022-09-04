@@ -23,6 +23,7 @@ public class BlizzardSigil extends AbstractExileCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
+        addModifier(elenum.ICE);
     }
 
     @Override

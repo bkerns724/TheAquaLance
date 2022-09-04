@@ -63,7 +63,9 @@ public class AttackAction extends AbstractGameAction {
             else if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
                 color = Color.GREEN.cpy();
             else if (effect == AttackEffect.FIRE)
-                color = Color.ORANGE.cpy();
+                color = Color.FIREBRICK.cpy();
+            else if (effect == ExileMod.Enums.ACID || effect == ExileMod.Enums.ACID_M)
+                color = Color.FOREST.cpy();
 
             if (color != null) {
                 ColoredDamagePatch.DamageActionColorField.damageColor.set(action, color);
@@ -174,7 +176,7 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.FIRE_M) {
-            color = Color.ORANGE.cpy();
+            color = Color.FIREBRICK.cpy();
             if (m == null)
                 forAllMonstersLiving(m -> vfxTop(new SearingBlowEffect(m.hb.cX, m.hb.cY, 3), 0.2f));
             else
@@ -182,12 +184,12 @@ public class AttackAction extends AbstractGameAction {
         }
 
         if (effect == ExileMod.Enums.FIRE_L) {
-            color = Color.ORANGE.cpy();
+            color = Color.FIREBRICK.cpy();
             vfxTop(new ShortScreenOnFireEffect());
         }
 
         if (effect == ExileMod.Enums.ACID_L) {
-            color = new Color(0.35f, 0.9f, 0f, 1f);
+            color = Color.FOREST.cpy();
             for (int i = 0; i < 4; i++) {
                 vfxTop(new FlashAtkImgEffect(m.hb.cX + Settings.xScale * MathUtils.random(-1, 1),
                         m.hb.cY + Settings.scale * MathUtils.random(-1, 1), ExileMod.Enums.ACID_M), 0.08f);

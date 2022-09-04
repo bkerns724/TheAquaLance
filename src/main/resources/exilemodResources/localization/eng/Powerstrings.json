@@ -57,7 +57,14 @@
       "Whenever you deal Attack damage, gain !A! Temporary HP."
     ]
   },
-  "${ModID}:EnergizedArcanistPower": {
+  "${ModID}:WetPower": {
+    "NAME": "Wet",
+    "DESCRIPTIONS": [
+      "Takes damage equal to Frostbite at the start of its turn.",
+      "Takes damage equal to !A! times its Frostbite at the start of its turn."
+    ]
+  },
+  "${ModID}:EnergizedExilePower": {
     "NAME": "Energized",
     "DESCRIPTIONS": [
       "Gain #b !A! additional [E] next turn."
@@ -189,19 +196,6 @@
       "!A! times per turn you may put a card from your hand on top of your draw pile."
     ]
   },
-  "${ModID}:ExileStaticDischargePower": {
-    "NAME": "Static Discharge",
-    "DESCRIPTIONS": [
-      "Deal !A! [${ModID}:LightningIcon] damage to the first enemy that attacks you this turn."
-    ]
-  },
-  "${ModID}:ViciousKickbackPower": {
-    "NAME": "ViciousKickback",
-    "DESCRIPTIONS": [
-      "Whenever you are attacked, deal damage back equal to the number of the attacker's unique debuffs.",
-      "Whenever you are attacked, deal damage back equal to !A! times the number of the attacker's unique debuffs."
-    ]
-  },
   "${ModID}:SpiritPressurePower": {
     "NAME": "Spirit Pressure",
     "DESCRIPTIONS": [
@@ -224,7 +218,7 @@
   "${ModID}:ElementalProwessPower": {
     "NAME": "Elemental Prowess",
     "DESCRIPTIONS": [
-      "Whenever an attack applies ${ModID}:Frostbite, ${ModID}:Crushed, or Temporary HP, apply !A! more."
+      "Whenever an attack applies #y${ModID}:Frostbite, #y${ModID}:Crushed, or Temporary HP, apply !A! more."
     ]
   },
   "${ModID}:VitalityPower": {
@@ -243,14 +237,14 @@
   "${ModID}:SlipperyPower": {
     "NAME": "Slippery",
     "DESCRIPTIONS": [
-      "The next incoming attack does half damage.",
-      "The next !A! incoming attacks do half damage."
+      "The next time you would take Attack damage, reduce it by half.",
+      "The next !A! times you would take Attack damage, reduce it by half."
     ]
   },
   "${ModID}:ChargePower": {
     "NAME": "Charge",
     "DESCRIPTIONS": [
-      "Your next attack deals +!A! % damage."
+      "Your next attack deals !A!% more damage."
     ]
   }
 }

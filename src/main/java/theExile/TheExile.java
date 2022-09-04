@@ -119,6 +119,11 @@ public class TheExile extends CustomPlayer {
         return retVal;
     }
 
+    @Override
+    public String getSensoryStoneText() {
+        return TEXT[3];
+    }
+
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(NecklaceOfShielding.ID);

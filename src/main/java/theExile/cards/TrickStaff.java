@@ -14,7 +14,7 @@ public class TrickStaff extends AbstractExileCard {
     private final static int COST = 1;
 
     public TrickStaff() {
-        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     public void applyAttributes() {

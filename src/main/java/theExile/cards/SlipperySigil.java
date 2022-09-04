@@ -8,6 +8,7 @@ import static theExile.util.Wiz.applyToSelf;
 public class SlipperySigil extends AbstractExileCard {
     public final static String ID = makeID(SlipperySigil.class.getSimpleName());
     private final static int MAGIC = 1;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = -2;
 
     public SlipperySigil() {
@@ -17,7 +18,6 @@ public class SlipperySigil extends AbstractExileCard {
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
-        exhaust = true;
     }
 
     @Override
@@ -26,6 +26,6 @@ public class SlipperySigil extends AbstractExileCard {
     }
 
     public void upp() {
-        exhaust = false;
+        upMagic(UPGRADE_MAGIC);
     }
 }

@@ -40,7 +40,13 @@ public class Wiz {
         return AbstractDungeon.player;
     }
 
-    public static AbstractGameAction.AttackEffect getAttackEffect(int damage, ArrayList<elenum> damageModList, boolean resonant) {
+    public static AbstractGameAction.AttackEffect getAttackEffect(int damage, ArrayList<elenum> damageModListInput, boolean resonant) {
+        ArrayList<elenum> damageModList = new ArrayList<>(damageModListInput);
+        damageModList.remove(FAKE_ICE);
+        damageModList.remove(FAKE_FORCE);
+        damageModList.remove(FAKE_ELDRITCH);
+        damageModList.remove(FAKE_LIGHTNING);
+
         if (damageModList.size() == 1) {
             AbstractExileCard.elenum ele = damageModList.get(0);
             if (ele == ICE)

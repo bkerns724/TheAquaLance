@@ -9,6 +9,8 @@ import theExile.ExileMod;
 import theExile.cards.cardUtil.Resonance;
 import theExile.powers.ResonantCostZeroPower;
 
+import java.util.ArrayList;
+
 import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.util.Wiz.adRoom;
 import static theExile.util.Wiz.adp;
@@ -46,24 +48,25 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
         return false;
     }
 
+    @Override
     public void addModifier(elenum element, boolean tips) {
         if (damageModList.contains(element))
             return;
 
-        if (element == ICE && !damageModList.contains(FAKE_ICE)) {
-            addModifier(FAKE_ICE);
+        if (element == ICE) {
+            super.addModifier(FAKE_ICE, tips);
             resonance.addModifier(ICE);
         }
-        if (element == FORCE && !damageModList.contains(FAKE_FORCE)) {
-            addModifier(FAKE_FORCE);
+        else if (element == FORCE) {
+            super.addModifier(FAKE_FORCE, tips);
             resonance.addModifier(FORCE);
         }
-        if (element == ELDRITCH && !damageModList.contains(FAKE_ELDRITCH)) {
-            addModifier(FAKE_ELDRITCH);
+        else if (element == ELDRITCH) {
+            super.addModifier(FAKE_ELDRITCH, tips);
             resonance.addModifier(ELDRITCH);
         }
-        if (element == LIGHTNING && !damageModList.contains(FAKE_LIGHTNING)) {
-            addModifier(FAKE_LIGHTNING);
+        else if (element == LIGHTNING) {
+            super.addModifier(FAKE_LIGHTNING, tips);
             resonance.addModifier(LIGHTNING);
         }
 
@@ -71,8 +74,20 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     }
 
     @Override
+    public void addModifier(ArrayList<elenum> elements, boolean tips) {
+        for (elenum e : elements)
+            addModifier(e, tips);
+    }
+
+    @Override
+    public void addModifier(elenum element) {
+        addModifier(element, true);
+    }
+
+    @Override
     public void applyPowers() {
         baseDamage = resonance.getDamage();
+        baseBlock = resonance.getBlock();
         type = resonance.getCardType();
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
