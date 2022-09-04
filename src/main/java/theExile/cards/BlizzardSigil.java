@@ -1,12 +1,10 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.ExileMod;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.getLowestHealthEnemy;
 
 public class BlizzardSigil extends AbstractExileCard {
     public final static String ID = makeID(BlizzardSigil.class.getSimpleName());
@@ -24,12 +22,6 @@ public class BlizzardSigil extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
         sigil = true;
         addModifier(elenum.ICE);
-    }
-
-    @Override
-    public void nonTargetUse() {
-        DamageInfo info = new DamageInfo(adp(), magicNumber, DamageInfo.DamageType.THORNS);
-        atb(new DamageAction(adp(), info, ExileMod.Enums.ICE));
     }
 
     @Override

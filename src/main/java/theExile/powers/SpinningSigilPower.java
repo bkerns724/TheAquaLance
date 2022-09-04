@@ -1,6 +1,7 @@
 package theExile.powers;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
 public class SpinningSigilPower extends AbstractExilePower {
     public static String POWER_ID = makeID(SpinningSigilPower.class.getSimpleName());
@@ -21,8 +23,13 @@ public class SpinningSigilPower extends AbstractExilePower {
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        addToBot(new GainBlockAction(adp(), adp(), amount, true));
+        atb(new GainBlockAction(adp(), adp(), amount, true));
 
         flash();
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 }

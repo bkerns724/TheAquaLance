@@ -1,7 +1,6 @@
 package theExile.actions;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -78,10 +77,17 @@ public class AttackAction extends AbstractGameAction {
             return;
         }
 
-        if (m != null)
-            action = new DamageAction(m, info, AttackEffect.NONE);
-        else
-            action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.NONE);
+        if (effect != ExileMod.Enums.BLUNT_MASSIVE) {
+            if (m != null)
+                action = new DamageAction(m, info, AttackEffect.NONE);
+            else
+                action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.NONE);
+        } else {
+            if (m != null)
+                action = new DamageAction(m, info, AttackEffect.BLUNT_HEAVY);
+            else
+                action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_HEAVY);
+        }
 
         att(action);
 
@@ -147,9 +153,10 @@ public class AttackAction extends AbstractGameAction {
 
         if (effect == ExileMod.Enums.BLUNT_MASSIVE) {
             if (m == null)
-                forAllMonstersLiving(m -> vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F)));
+                forAllMonstersLiving(m -> vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F,
+                        m.hb.cY - m.hb.height / 4.0F)));
             else
-                vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F));
+                vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F,m.hb.cY - m.hb.height / 4.0F));
         }
 
         if (effect == ExileMod.Enums.SLASH_MASSIVE) {
@@ -190,9 +197,12 @@ public class AttackAction extends AbstractGameAction {
 
         if (effect == ExileMod.Enums.ACID_L) {
             color = Color.FOREST.cpy();
-            for (int i = 0; i < 4; i++) {
-                vfxTop(new FlashAtkImgEffect(m.hb.cX + Settings.xScale * MathUtils.random(-1, 1),
-                        m.hb.cY + Settings.scale * MathUtils.random(-1, 1), ExileMod.Enums.ACID_M), 0.08f);
+            if (m == null) {
+                for (int i = 0; i < 4; i++)
+                    att(new AcidSplashAction(true));
+            } else {
+                for (int i = 0; i < 4; i++)
+                    att(new AcidSplashAction(m.hb.cX, m.hb.cY));
             }
         }
 

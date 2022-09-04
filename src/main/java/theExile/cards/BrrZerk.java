@@ -1,5 +1,7 @@
 package theExile.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.brrZerkAction;
 
@@ -24,7 +26,8 @@ public class BrrZerk extends AbstractExileCard {
     }
 
     public void singleTargetUse(AbstractMonster m) {
-        atb(new brrZerkAction(m, this, freeToPlayOnce, energyOnUse));
+        DamageModContainer container = new DamageModContainer(this, DamageModifierManager.modifiers(this));
+        atb(new brrZerkAction(m, this, freeToPlayOnce, energyOnUse, container));
     }
 
     public void upp() {

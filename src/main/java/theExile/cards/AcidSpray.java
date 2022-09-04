@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import static theExile.ExileMod.Enums;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.getAcidEffect;
 
 public class AcidSpray extends AbstractExileCard {
     public final static String ID = makeID(AcidSpray.class.getSimpleName());
@@ -25,7 +26,7 @@ public class AcidSpray extends AbstractExileCard {
     }
 
     public void singleTargetUse(AbstractMonster m) {
-        dmg(m, Enums.ACID);
+        dmg(m, getAcidEffect(damage));
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
     }
 

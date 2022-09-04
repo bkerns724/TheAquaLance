@@ -111,7 +111,7 @@ public class AttackEffectsPatch {
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.ACID) {
-                CardCrawlGame.sound.playV("ATTACK_POISON2", 0.6f);
+                CardCrawlGame.sound.playV("ATTACK_POISON2", 0.7f);
                 return SpireReturn.Return();
             }
             if (effect == ExileMod.Enums.ACID_M) {

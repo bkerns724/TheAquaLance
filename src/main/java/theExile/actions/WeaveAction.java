@@ -65,6 +65,7 @@ public class WeaveAction extends AbstractGameAction {
             if (card instanceof AbstractExileCard)
                 elementList.addAll(((AbstractExileCard) card).damageModList);
             adp().hand.moveToExhaustPile(card);
+            CardCrawlGame.dungeon.checkForPactAchievement();
         }
 
         if (elementList.contains(FAKE_ICE))

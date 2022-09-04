@@ -157,8 +157,8 @@
   },
   "${ModID}:SpinningSigil": {
     "NAME": "Spinning Sigil",
-    "DESCRIPTION": "For the rest of the turn, gain !M! Block whenever you play a card. NL Draw a card. NL Discard a card.",
-    "FLAVOR": "A great spell for when you need to defend yourself but stay mobile."
+    "DESCRIPTION": "Gain !M! Block whenever you play a card this turn. Draw a card. Discard a card.",
+    "FLAVOR": "Spin to win."
   },
   "${ModID}:HardSigil": {
     "NAME": "Hard Sigil",

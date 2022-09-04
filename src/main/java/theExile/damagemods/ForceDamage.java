@@ -18,8 +18,7 @@ import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemyTop;
+import static theExile.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class ForceDamage extends AbstractDamageModifier {
@@ -61,7 +60,7 @@ public class ForceDamage extends AbstractDamageModifier {
         if (power != null)
             crushed += power.amount;
         if (crushed > 0)
-            applyToEnemyTop(target, new CrushedPower(target, crushed));
+            applyToEnemy(target, new CrushedPower(target, crushed));
     }
 
     @Override

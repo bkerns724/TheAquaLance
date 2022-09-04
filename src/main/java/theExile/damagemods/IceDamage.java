@@ -18,8 +18,7 @@ import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemyTop;
+import static theExile.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
@@ -64,7 +63,7 @@ public class IceDamage extends AbstractDamageModifier {
         if (power != null)
             frostbite += power.amount;
         if (frostbite > 0)
-            applyToEnemyTop(target, new FrostbitePower(target, frostbite));
+            applyToEnemy(target, new FrostbitePower(target, frostbite));
     }
 
     @Override

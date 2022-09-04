@@ -20,15 +20,19 @@ public class ResonanceUseCardAction extends AbstractGameAction {
     @Override
     public void update() {
         isDone = true;
+        if (!acoustic && target == null)
+            return;
         if (!acoustic) {
             if (!card.canUse(adp(), (AbstractMonster) target))
                 return;
+            card.calculateCardDamage((AbstractMonster) target);
             card.singleTargetUse((AbstractMonster) target);
             card.autoTargetUse(card.getTarget());
             card.nonTargetUse();
         } else {
             forAllMonstersLiving(mon -> {
                 if (card.canUse(adp(), mon)) {
+                    card.calculateCardDamage(mon);
                     card.singleTargetUse(mon);
                     card.autoTargetUse(mon);
                 }

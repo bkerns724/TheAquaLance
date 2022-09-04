@@ -40,8 +40,8 @@ public class GolemPower extends AbstractExilePower {
                 att(new DamageAction(info.owner, info2, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             else {
                 AbstractCreature m = info.owner;
+                att(new DamageAction(info.owner, info2, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 vfxTop(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F));
-                att(new DamageAction(info.owner, info2, AbstractGameAction.AttackEffect.NONE));
             }
         }
         ready = false;

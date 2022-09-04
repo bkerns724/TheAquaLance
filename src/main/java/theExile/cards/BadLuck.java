@@ -35,6 +35,7 @@ public class BadLuck extends CustomCard {
         } else
             needsArtRefresh = true;
         SoulboundField.soulbound.set(this, true);
+        isEthereal = true;
         baseMagicNumber = magicNumber = MAGIC;
     }
 

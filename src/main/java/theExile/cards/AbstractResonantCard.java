@@ -27,8 +27,15 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     protected abstract void setResonance();
 
+    @Override
     public void singleTargetUse(AbstractMonster m) {
         resonance.resonanceEffects(this, m);
+    }
+
+    @Override
+    public void nonTargetUse() {
+        if(target != CardTarget.ENEMY)
+            resonance.resonanceEffects(this, null);
     }
 
     public void setMultiDamage(boolean mult) {

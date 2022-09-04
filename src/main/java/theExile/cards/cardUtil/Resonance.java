@@ -45,20 +45,21 @@ public class Resonance {
     public Resonance() { }
 
     public void resonanceEffects(AbstractResonantCard card, AbstractMonster m) {
+        card.baseDamage = getDamage();
+        card.baseBlock = getBlock();
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
             card.setMultiDamage(true);
-            card.baseDamage = getDamage();
             card.calculateCardDamage(null);
 
             if (card.baseDamage > 0) {
                 DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(null));
-                AttackAction action = new AttackAction(null, Wiz.getAttackEffect(damage, elenums, true));
+                AttackAction action = new AttackAction(card.multiDamage, Wiz.getAttackEffect(damage, elenums, true));
                 BindingHelper.makeAction(container, action);
                 atb(action);
             }
-            if (block > 0)
+            if (getBlock() > 0)
                 atb(new GainBlockAction(adp(), card.block));
-            forAllMonstersLiving(mon -> resonanceEffectsSub(card, mon));
+            forAllMonstersLiving(this::resonanceEffectsSub);
             if (charge > 0)
                 applyToSelf(new ChargePower(charge));
             if (cycle > 0) {
@@ -74,17 +75,17 @@ public class Resonance {
         }
         else {
             card.setMultiDamage(false);
-            card.baseDamage = getDamage();
             card.calculateCardDamage(m);
 
-            if (card.baseDamage > 0) {
+            if (card.baseDamage > 0 && m != null) {
                 DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(null));
                 DamageInfo info = BindingHelper.makeInfo(container, adp(), card.damage, card.damageTypeForTurn);
                 AttackAction action = new AttackAction(m, info, Wiz.getAttackEffect(damage, elenums, true));
                 atb(action);
             }
-            atb(new GainBlockAction(adp(), card.block));
-            resonanceEffectsSub(card, m);
+            if (getBlock() > 0)
+                atb(new GainBlockAction(adp(), card.block));
+            resonanceEffectsSub(m);
             if (charge > 0)
                 applyToSelf(new ChargePower(charge));
             if (cycle > 0) {
@@ -100,7 +101,9 @@ public class Resonance {
         }
     }
 
-    public void resonanceEffectsSub(AbstractResonantCard card, AbstractMonster m) {
+    public void resonanceEffectsSub(AbstractMonster m) {
+        if (m == null)
+            return;
         if (ringing > 0)
             applyToEnemy(m, new RingingPower(m, ringing));
         if (jinx > 0)
