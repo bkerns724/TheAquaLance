@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
@@ -498,18 +500,22 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx, boolean top) {
-        if (m == null) {
-            if (top)
-                att(new AttackAction(multiDamage, fx));
-            else
-                atb(new AttackAction(multiDamage, fx));
-            return;
+        AbstractGameAction action;
+        if (m == null)
+            action = new AttackAction(multiDamage, fx);
+        else {
+            DamageInfo info = new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL);
+            action = new AttackAction(m, info, fx);
         }
-        DamageInfo info = new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL);
+        AbstractGameAction curAction = AbstractDungeon.actionManager.currentAction;
+        if (AbstractDungeon.actionManager.currentAction != null) {
+            ArrayList<AbstractDamageModifier> list = BindingPatches.BoundGameActionFields.actionDelayedDamageMods.get(curAction);
+            BindingHelper.bindAction(list, action);
+        }
         if (top)
-            att(new AttackAction(m, info, fx));
+            att(action);
         else
-            atb(new AttackAction(m, info, fx));
+            atb(action);
     }
 
     public void blck() {
@@ -624,19 +630,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         card.selfRetain = selfRetain;
         card.beingDiscarded = beingDiscarded;
 
-        logger.info(card.name);
-        for (elenum e : damageModList)
-            logger.info(e.name());
-
         if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
             card.damageModList.clear();
             DamageModifierManager.clearModifiers(card);
-        } else {
+        } else
             card.addModifier(damageModList, true);
-        }
-
-        for (elenum e : card.damageModList)
-            logger.info(e.name());
 
         card.initializeDescription();
         return card;

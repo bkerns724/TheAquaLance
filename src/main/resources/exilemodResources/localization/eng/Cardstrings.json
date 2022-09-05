@@ -107,7 +107,7 @@
   },
   "${ModID}:LightningBolt": {
     "NAME": "Lightning Bolt",
-    "DESCRIPTION": "Deal !D! damage.",
+    "DESCRIPTION": "Deal !D! damage to the highest hp enemy.",
     "FLAVOR": "Don't call it thunder bolt. You don't kill things with thunder."
   },
   "${ModID}:Anticipate": {

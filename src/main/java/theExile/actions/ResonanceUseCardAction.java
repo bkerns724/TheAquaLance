@@ -19,9 +19,17 @@ public class ResonanceUseCardAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        //ExileMod.logger.info("Hopefully doesn't crash");
+        //ExileMod.logger.info(card.name);
+        //ArrayList<AbstractDamageModifier> mods = BindingPatches.BoundGameActionFields.actionDelayedDamageMods.get(this);
+        //for (AbstractDamageModifier mod : mods)
+        //    ExileMod.logger.info(mod.getClass().getSimpleName());
+
         isDone = true;
-        if (!acoustic && target == null)
+        if (!acoustic && target == null) {
+            card.nonTargetUse();
             return;
+        }
         if (!acoustic) {
             if (!card.canUse(adp(), (AbstractMonster) target))
                 return;
@@ -37,6 +45,7 @@ public class ResonanceUseCardAction extends AbstractGameAction {
                     card.autoTargetUse(mon);
                 }
             });
+            card.calculateCardDamage(null);
             card.nonTargetUse();
         }
     }

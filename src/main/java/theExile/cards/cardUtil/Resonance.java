@@ -48,9 +48,6 @@ public class Resonance {
         card.baseDamage = getDamage();
         card.baseBlock = getBlock();
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
-            card.setMultiDamage(true);
-            card.calculateCardDamage(null);
-
             if (card.baseDamage > 0) {
                 DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(null));
                 AttackAction action = new AttackAction(card.multiDamage, Wiz.getAttackEffect(damage, elenums, true));
@@ -68,15 +65,12 @@ public class Resonance {
             }
             for (AbstractExileCard inCard : cards) {
                 inCard.beingDiscarded = true;
-                DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(inCard));
-                ResonanceUseCardAction action = new ResonanceUseCardAction(inCard, null);
-                att(BindingHelper.makeAction(container, action));
+                ResonanceUseCardAction action = new ResonanceUseCardAction(inCard, m);
+                BindingHelper.bindAction(getMergedDamageMods(inCard), action);
+                att(action);
             }
         }
         else {
-            card.setMultiDamage(false);
-            card.calculateCardDamage(m);
-
             if (card.baseDamage > 0 && m != null) {
                 DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(null));
                 DamageInfo info = BindingHelper.makeInfo(container, adp(), card.damage, card.damageTypeForTurn);
@@ -94,9 +88,9 @@ public class Resonance {
             }
             for (AbstractExileCard inCard : cards) {
                 inCard.beingDiscarded = true;
-                DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(inCard));
                 ResonanceUseCardAction action = new ResonanceUseCardAction(inCard, m);
-                att(BindingHelper.makeAction(container, action));
+                BindingHelper.bindAction(getMergedDamageMods(inCard), action);
+                att(action);
             }
         }
     }

@@ -1,6 +1,9 @@
 package theExile.actions;
 
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -11,7 +14,10 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.*;
+import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import com.megacrit.cardcrawl.vfx.combat.SearingBlowEffect;
+import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 import theExile.ExileMod;
 import theExile.vfx.*;
 
@@ -22,8 +28,7 @@ import static theExile.util.Wiz.*;
 public class AttackAction extends AbstractGameAction {
     private final AbstractMonster m;
     private final AttackEffect effect;
-    private final DamageInfo info;
-    private int[] multiDamage;
+    private AbstractGameAction action;
 
     public static ArrayList<AttackEffect> simpleEffects;
     private static final Color ELDRITCH_COLOR = new Color(0.35f, 0f, 0.35f, 1f);
@@ -31,28 +36,49 @@ public class AttackAction extends AbstractGameAction {
     public AttackAction(AbstractMonster m, DamageInfo info, AttackEffect effect) {
         this.m = m;
         this.effect = effect;
-        this.info = info;
+        createAction(m, info, effect);
+        bindAction();
     }
 
     public AttackAction(int[] multiDamage, AttackEffect effect) {
-        this.multiDamage = multiDamage.clone();
         this.m = null;
-        this.info = null;
         this.effect = effect;
+        createAction(multiDamage, effect);
+        bindAction();
+    }
+
+    private void createAction(AbstractMonster m, DamageInfo info, AttackEffect effect) {
+        if (simpleEffects.contains(effect))
+            action = new DamageAction(m, info, effect);
+        else if (effect == ExileMod.Enums.BLUNT_MASSIVE)
+            action = new DamageAction(m, info, AttackEffect.BLUNT_HEAVY);
+        else
+            action = new DamageAction(m, info, AttackEffect.NONE);
+    }
+
+    private void createAction(int[] multiDamage, AttackEffect effect) {
+        if (simpleEffects.contains(effect))
+            action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, effect);
+        else if (effect == ExileMod.Enums.BLUNT_MASSIVE)
+            action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_HEAVY);
+        else
+            action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.NONE);
+    }
+
+    private void bindAction() {
+        AbstractGameAction curAction = AbstractDungeon.actionManager.currentAction;
+        if (AbstractDungeon.actionManager.currentAction != null) {
+            ArrayList<AbstractDamageModifier> list = BindingPatches.BoundGameActionFields.actionDelayedDamageMods.get(curAction);
+            BindingHelper.bindAction(list, action);
+        }
     }
 
     @Override
     public void update() {
-        AbstractGameAction action;
         Color color = null;
         boolean rainbow = false;
 
         if (simpleEffects.contains(effect)) {
-            if (m != null)
-                action = new DamageAction(m, info, effect);
-            else
-                action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, effect);
-
             if (effect == ExileMod.Enums.ICE || effect == ExileMod.Enums.ICE_M)
                 color = Color.BLUE.cpy();
             else if (effect == ExileMod.Enums.FORCE || effect == ExileMod.Enums.FORCE_M)
@@ -75,18 +101,6 @@ public class AttackAction extends AbstractGameAction {
             att(action);
             isDone = true;
             return;
-        }
-
-        if (effect != ExileMod.Enums.BLUNT_MASSIVE) {
-            if (m != null)
-                action = new DamageAction(m, info, AttackEffect.NONE);
-            else
-                action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.NONE);
-        } else {
-            if (m != null)
-                action = new DamageAction(m, info, AttackEffect.BLUNT_HEAVY);
-            else
-                action = new DamageAllEnemiesAction(adp(), multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_HEAVY);
         }
 
         att(action);

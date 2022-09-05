@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.ExileMod;
 import theExile.icons.Lightning;
-import theExile.patches.DamageModsIDPatch;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,6 @@ public class DeathLightningDamage extends AbstractDamageModifier {
 
     public DeathLightningDamage() {
         lightningTooltip = null;
-        DamageModsIDPatch.ID.set(this, ID);
     }
 
     public DeathLightningDamage(boolean visTips) {

@@ -99,6 +99,8 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
             isMultiDamage = true;
+        else
+            isMultiDamage = false;
         super.applyPowers();
         initializeDescription();
     }
@@ -111,7 +113,10 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
         target = resonance.getCardTarget();
         if (target == CardTarget.ALL_ENEMY || target == ExileMod.Enums.AUTOAIM_ENEMY)
             isMultiDamage = true;
+        else
+            isMultiDamage = false;
         super.calculateCardDamage(mo);
+        initializeDescription();
     }
 
     @Override
