@@ -2,7 +2,6 @@ package theExile.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -23,7 +22,7 @@ public class BlessedNecklaceAction extends AbstractGameAction {
             int count = AbstractDungeon.player.hand.size();
             if (count != 0) {
                 att(new DiscardAction(adp(), adp(), count, true));
-                att(new GainBlockAction(adp(), count*blockAmount));
+                att(new MyAddTempHPAction(adp(), adp(), count*blockAmount));
             }
 
             isDone = true;

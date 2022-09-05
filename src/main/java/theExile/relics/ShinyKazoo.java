@@ -23,8 +23,19 @@ public class ShinyKazoo extends AbstractExileRelic {
     }
 
     @Override
+    public void atBattleStart() {
+        grayscale = false;
+    }
+
+    @Override
+    public void onVictory() {
+        grayscale = false;
+    }
+
+    @Override
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-        if (targetCard instanceof AbstractResonantCard) {
+        if (targetCard instanceof AbstractResonantCard && !grayscale) {
+            grayscale = true;
             ArrayList<AbstractCard> list = new ArrayList<>();
             AbstractCard c;
 

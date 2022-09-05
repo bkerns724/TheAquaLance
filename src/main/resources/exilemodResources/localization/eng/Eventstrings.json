@@ -56,7 +56,7 @@
       "[Lightning]",
       "[Sigil] #y!E! #yGold: #gTurn #ga #gCard #ginto #ga #gSigil.",
       "[Sigil] Requires !E! Gold and an Exile class card.",
-      "[Potion] #y !E! Gold: #gGain !PotionString!.",
+      "[Potion] #y!E! #yGold: #gGain !PotionString!.",
       "[Potion] Requires !E! Gold.",
       "[Refuse]",
       "[Leave]"

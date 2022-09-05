@@ -152,7 +152,7 @@ public class ResearchCenter extends AbstractExileEvent {
                         imageEventText.setDialogOption(options[4], true);
                     if (checkForUpgradableCard(AbstractExileCard.elenum.LIGHTNING)) {
                         imageEventText.setDialogOption(options[5]);
-                        LargeDialogOptionButton but = imageEventText.optionList.get(4);
+                        LargeDialogOptionButton but = imageEventText.optionList.get(3);
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, DeathLightningDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[5], true);

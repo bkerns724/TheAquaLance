@@ -140,6 +140,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             DamageModifierManager.clearModifiers(this);
             damageModList.clear();
         }
+
+        if (adp() != null && adp().hasRelic(VialOfBlackBlood.ID) && damageModList.contains(LIGHTNING))
+            exhaust = true;
+
         initializeDescription();
     }
 
@@ -147,6 +151,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     @Override
     public void applyPowers() {
+        if (adp() != null && adp().hasRelic(VialOfBlackBlood.ID) && damageModList.contains(LIGHTNING))
+            exhaust = true;
         super.applyPowers();
     }
 
@@ -316,6 +322,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             upp();
             if (cardStrings.UPGRADE_DESCRIPTION != null)
                 rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            if (adp() != null && adp().hasRelic(VialOfBlackBlood.ID) && damageModList.contains(LIGHTNING))
+                exhaust = true;
             initializeDescription();
         }
     }
@@ -616,12 +624,19 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         card.selfRetain = selfRetain;
         card.beingDiscarded = beingDiscarded;
 
+        logger.info(card.name);
+        for (elenum e : damageModList)
+            logger.info(e.name());
+
         if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
             card.damageModList.clear();
             DamageModifierManager.clearModifiers(card);
         } else {
-            addModifier(card.damageModList, true);
+            card.addModifier(damageModList, true);
         }
+
+        for (elenum e : card.damageModList)
+            logger.info(e.name());
 
         card.initializeDescription();
         return card;
