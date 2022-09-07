@@ -6,6 +6,7 @@ import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 
 import static theExile.ExileMod.makeID;
+import static theExile.cards.AbstractExileCard.elenum.ELDRITCH;
 import static theExile.cards.AbstractExileCard.elenum.LIGHTNING;
 import static theExile.util.Wiz.adp;
 
@@ -22,7 +23,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     public float atDamageModify(float damage, AbstractCard c) {
         if (c instanceof AbstractExileCard) {
             AbstractExileCard card = (AbstractExileCard) c;
-            if (card.damageModList.contains(LIGHTNING))
+            if (card.damageModList.contains(LIGHTNING) || card.damageModList.contains(ELDRITCH))
                 damage *= MULT;
         }
         return damage;
@@ -31,7 +32,8 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     @Override
     public void onEquip() {
         for (AbstractCard card : adp().masterDeck.group) {
-            if (card instanceof AbstractExileCard && ((AbstractExileCard) card).damageModList.contains(LIGHTNING))
+            if (card instanceof AbstractExileCard && (((AbstractExileCard) card).damageModList.contains(LIGHTNING)
+                    || ((AbstractExileCard) card).damageModList.contains(ELDRITCH)))
                 card.exhaust = true;
         }
     }
@@ -39,7 +41,8 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     @Override
     public void onPlayCard(AbstractCard targetCard, AbstractMonster m) {
         if (targetCard instanceof AbstractExileCard)
-            if (((AbstractExileCard) targetCard).damageModList.contains(LIGHTNING))
+            if (((AbstractExileCard) targetCard).damageModList.contains(LIGHTNING)
+                    || ((AbstractExileCard) targetCard).damageModList.contains(ELDRITCH))
                 targetCard.exhaust = true;
     }
 }

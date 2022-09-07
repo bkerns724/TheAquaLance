@@ -3,6 +3,7 @@ package theExile.powers;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import theExile.ExileMod;
 import theExile.actions.JinxLoseHPAction;
@@ -21,7 +22,7 @@ public class JinxPower extends AbstractExilePower implements OnReceivePowerPower
     @Override
     public boolean onReceivePower(AbstractPower pow, AbstractCreature target, AbstractCreature source) {
         if (pow.type != PowerType.DEBUFF || pow.owner == source || pow.ID.equals(GainStrengthPower.POWER_ID)
-                || pow.ID.equals(POWER_ID))
+                || pow.ID.equals(POWER_ID) || target.hasPower(ArtifactPower.POWER_ID))
             return true;
         float lossMultiplier = 1;
         HexedStaff staff = (HexedStaff) adp().getRelic(HexedStaff.ID);

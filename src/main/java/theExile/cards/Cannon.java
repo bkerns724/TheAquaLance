@@ -9,7 +9,7 @@ import static theExile.util.Wiz.shuffleIn;
 public class Cannon extends AbstractExileCard {
     public final static String ID = makeID(Cannon.class.getSimpleName());
     private final static int DAMAGE = 16;
-    private final static int UPGRADE_DAMAGE = 5;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 2;
     private final static int COST = 1;
 

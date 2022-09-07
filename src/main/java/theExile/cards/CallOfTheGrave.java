@@ -1,18 +1,18 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.powers.CallOfTheGravePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.applyToEnemy;
 
-public class SuddenSpasms extends AbstractExileCard {
-    public final static String ID = makeID(SuddenSpasms.class.getSimpleName());
-    private final static int MAGIC = 4;
+public class CallOfTheGrave extends AbstractExileCard {
+    public final static String ID = makeID(CallOfTheGrave.class.getSimpleName());
+    private final static int MAGIC = 5;
     private final static int UPGRADE_MAGIC = 2;
-    private final static int COST = 2;
+    private final static int COST = 3;
 
-    public SuddenSpasms() {
+    public CallOfTheGrave() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
     }
 
@@ -23,8 +23,7 @@ public class SuddenSpasms extends AbstractExileCard {
 
     @Override
     public void singleTargetUse(AbstractMonster m) {
-        int count = getJinxAmount(m);
-        atb(new GainBlockAction(adp(), count * magicNumber));
+        applyToEnemy(m, new CallOfTheGravePower(m, magicNumber));
     }
 
     public void upp() {

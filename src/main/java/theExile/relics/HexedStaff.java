@@ -10,6 +10,7 @@ import theExile.TheExile;
 import theExile.cards.Wrath;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 
 public class HexedStaff extends AbstractExileRelic {
     public static final String ID = makeID(HexedStaff.class.getSimpleName());
@@ -29,7 +30,8 @@ public class HexedStaff extends AbstractExileRelic {
         description = getUpdatedDescription();
         tips.clear();
         tips.add(new PowerTip(name, description));
-        tips.add(new CardPowerTip(CARD_TO_PREVIEW));
+        if (adp() != null && adp().hasRelic(HexedStaff.ID))
+            tips.add(new CardPowerTip(CARD_TO_PREVIEW));
         initializeTips();
     }
 

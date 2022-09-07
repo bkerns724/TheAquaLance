@@ -143,20 +143,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             damageModList.clear();
         }
 
-        if (adp() != null && adp().hasRelic(VialOfBlackBlood.ID) && damageModList.contains(LIGHTNING))
-            exhaust = true;
-
         initializeDescription();
     }
 
     protected abstract void applyAttributes();
-
-    @Override
-    public void applyPowers() {
-        if (adp() != null && adp().hasRelic(VialOfBlackBlood.ID) && damageModList.contains(LIGHTNING))
-            exhaust = true;
-        super.applyPowers();
-    }
 
     public void onPickup() {}
 
@@ -228,7 +218,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         nonTargetUse();
         if (sigil)
             beingDiscarded = false;
-        boolean convert = (!exhaust && !purgeOnUse && (type == AbstractCard.CardType.ATTACK || type == AbstractCard.CardType.SKILL)
+        boolean convert = (!exhaust && !purgeOnUse && (type != CardType.POWER)
                 && adp() != null && adp().hasPower(ConvertPower.POWER_ID) && !(this instanceof AbstractResonantCard));
         if (convert) {
             Resonance resonance = new Resonance();
@@ -324,8 +314,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             upp();
             if (cardStrings.UPGRADE_DESCRIPTION != null)
                 rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            if (adp() != null && adp().hasRelic(VialOfBlackBlood.ID) && damageModList.contains(LIGHTNING))
-                exhaust = true;
             initializeDescription();
         }
     }
@@ -368,7 +356,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
 
-        if (exhaust || (damageModList != null && damageModList.contains(LIGHTNING)
+        if (exhaust || (damageModList != null && (damageModList.contains(LIGHTNING) || damageModList.contains(ELDRITCH))
                 && adp() != null && adp().hasRelic(VialOfBlackBlood.ID)))
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
     }
@@ -448,6 +436,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public void addModifier(ArrayList<elenum> elements, boolean tips) {
         for (elenum e : elements)
             addModifier(e, tips);
+    }
+
+    public void addModifier(ArrayList<elenum> elements) {
+        for (elenum e : elements)
+            addModifier(e, true);
     }
 
     public void addModifier(elenum element) {

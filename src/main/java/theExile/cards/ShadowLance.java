@@ -9,10 +9,11 @@ import static theExile.util.Wiz.*;
 
 public class ShadowLance extends AbstractExileCard {
     public final static String ID = makeID(ShadowLance.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int MAGIC = 1;
+    private final static int DAMAGE = 15;
+    private final static int UPGRADE_DAMAGE = 5;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 2;
+    private final static int COST = 3;
 
     public ShadowLance() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
@@ -34,6 +35,7 @@ public class ShadowLance extends AbstractExileCard {
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic(UPGRADE_MAGIC);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

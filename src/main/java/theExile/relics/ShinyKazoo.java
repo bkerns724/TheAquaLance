@@ -62,7 +62,6 @@ public class ShinyKazoo extends AbstractExileRelic {
 
             c = list.get(cardRandomRng.random(list.size() - 1));
             AbstractCard output = c.makeStatEquivalentCopy();
-            output.setCostForTurn(0);
 
             atb(new MakeTempCardInHandAction(output));
         }

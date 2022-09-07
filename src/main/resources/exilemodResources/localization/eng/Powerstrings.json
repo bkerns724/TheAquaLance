@@ -85,7 +85,7 @@
   "${ModID}:CrushedPower": {
     "NAME": "Crushed",
     "DESCRIPTIONS": [
-      "Takes !A! more damage from attacks this turn."
+      "Takes !A! more damage from attacks."
     ]
   },
   "${ModID}:ConvertPower": {
@@ -117,13 +117,6 @@
     "NAME": "Harmony",
     "DESCRIPTIONS": [
       "At the end of your turn gain #yBlock equal to your #yResonance amount times !A!."
-    ]
-  },
-  "${ModID}:WeavePower": {
-    "NAME": "Weave",
-    "DESCRIPTIONS": [
-      "The next Exile Attack card you play gains !TYPE! damage type for the rest of combat.",
-      "The next Exile Attack card you play gains !TYPE! damage types for the rest of combat."
     ]
   },
   "${ModID}:AnticipatePower": {
@@ -221,10 +214,16 @@
       "In !A! turns, choose 1 of !A2! cards to add into your hand."
     ]
   },
-  "${ModID}:ElementalProwessPower": {
-    "NAME": "Elemental Prowess",
+  "${ModID}:ImpactPower": {
+    "NAME": "Impact",
     "DESCRIPTIONS": [
-      "Whenever an attack applies #y${ModID}:Frostbite, #y${ModID}:Crushed, or Temporary HP, apply !A! more."
+      "Whenever an Attack applies #y${ModID}:Crushed, apply !A! more."
+    ]
+  },
+  "${ModID}:CallOfTheGravePower": {
+    "NAME": "Death Approaches",
+    "DESCRIPTIONS": [
+      "Takes !A! damage for each of its debuffs at the start of its turn."
     ]
   },
   "${ModID}:VitalityPower": {

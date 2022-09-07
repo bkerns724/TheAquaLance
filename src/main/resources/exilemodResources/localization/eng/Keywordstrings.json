@@ -53,7 +53,7 @@
       "Resonant",
       "resonant"
     ],
-    "DESCRIPTION": "If you play a Resonant card it is returned to your hand at the start of your next turn. If you play multiple Resonant cards in one turn, a single card is returned that contains all the previous effects. Returned cards always cost 1."
+    "DESCRIPTION": "When you play a Resonant card it is returned to your hand at the start of your next turn. When you play multiple Resonant cards in one turn all of their effects are combined into a single card; that card is returned as normal. Returned cards always cost 1."
   },
   {
     "PROPER_NAME": "Frostbite",
@@ -69,7 +69,7 @@
       "Crushed",
       "crushed"
     ],
-    "DESCRIPTION": "Crushed enemies take more damage from attacks. Crushed is reduced by 1 at the end of the round."
+    "DESCRIPTION": "Crushed enemies take more damage from attacks. When a creature with crushed is attacked, Crushed is reduced by 1."
   },
   {
     "PROPER_NAME": "Jinx",

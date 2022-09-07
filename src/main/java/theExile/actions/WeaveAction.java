@@ -8,65 +8,74 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theExile.cards.AbstractExileCard;
-import theExile.powers.WeavePower;
+import theExile.cards.EnchantedDagger;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import static theExile.ExileMod.makeID;
-import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.cards.AbstractExileCard.elenum;
+import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToSelf;
 
 public class WeaveAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private final ArrayList<AbstractCard> cardsToExhaust = new ArrayList<>();
+    private final ArrayList<AbstractCard> cardsToModify = new ArrayList<>();
+    private final ArrayList<AbstractCard> ineligibleCards = new ArrayList<>();
 
-    public WeaveAction() {
+    public WeaveAction(int amount) {
+        this.amount = amount;
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_FAST;
     }
 
     public void update() {
         if (duration == Settings.ACTION_DUR_FAST) {
-            if (adp().hand.group.size() == 0) {
+            ArrayList<AbstractExileCard> possibleCards = new ArrayList<>();
+            for (AbstractCard c : adp().hand.group) {
+                if (c instanceof AbstractExileCard && c.type == AbstractCard.CardType.ATTACK)
+                    possibleCards.add((AbstractExileCard) c);
+                else
+                    ineligibleCards.add(c);
+            }
+
+
+            if (possibleCards.size() <= 0) {
                 isDone = true;
                 return;
             }
-            else if (adp().hand.group.size() == 1) {
+            if (possibleCards.size() <= amount) {
                 isDone = true;
-                cardsToExhaust.add(adp().hand.group.get(0));
-                exhaustCards();
-                return;
+                cardsToModify.addAll(possibleCards);
+                modifyCards();
             }
             else {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false, false, false);
+                adp().hand.group.removeAll(ineligibleCards);
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 2, false, false,
+                        false, false);
                 tickDuration();
                 return;
             }
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            cardsToExhaust.addAll(AbstractDungeon.handCardSelectScreen.selectedCards.group);
-            exhaustCards();
+            cardsToModify.addAll(AbstractDungeon.handCardSelectScreen.selectedCards.group);
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
+            modifyCards();
+            returnCards();
             isDone = true;
         }
 
         tickDuration();
     }
 
-    private void exhaustCards() {
+    private void modifyCards() {
         ArrayList<AbstractExileCard.elenum> elementList = new ArrayList<>();
-        for (AbstractCard card : cardsToExhaust) {
-            if (card instanceof AbstractExileCard)
-                elementList.addAll(((AbstractExileCard) card).damageModList);
-            adp().hand.moveToExhaustPile(card);
-            CardCrawlGame.dungeon.checkForPactAchievement();
-        }
+        for (AbstractCard c : cardsToModify)
+            if (c instanceof AbstractExileCard)
+                elementList.addAll(((AbstractExileCard) c).damageModList);
 
         if (elementList.contains(FAKE_ICE))
             elementList.add(ICE);
@@ -84,8 +93,24 @@ public class WeaveAction extends AbstractGameAction {
         elementList.remove(FAKE_LIGHTNING);
         elementList.remove(FAKE_ELDRITCH);
 
-        if (!elementList.isEmpty())
-            applyToSelf(new WeavePower(elementList));
+        for (AbstractCard c : cardsToModify) {
+            if (c instanceof AbstractExileCard) {
+                ((AbstractExileCard) c).addModifier(elementList, true);
+                if (c instanceof EnchantedDagger)
+                    ((EnchantedDagger) c).addModifier(elementList, true);
+                c.initializeDescription();
+            }
+            if (!adp().hand.group.contains(c))
+                adp().hand.addToTop(c);
+        }
+    }
+
+    private void returnCards() {
+        for (AbstractCard c : ineligibleCards)
+            if (!adp().hand.group.contains(c))
+                adp().hand.addToTop(c);
+
+        adp().hand.refreshHandLayout();
     }
 
     static {

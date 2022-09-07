@@ -1,17 +1,17 @@
 package theExile.cards;
 
-import theExile.powers.ElementalProwessPower;
+import theExile.powers.ImpactPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToSelf;
 
-public class ElementalProwess extends AbstractExileCard {
-    public final static String ID = makeID(ElementalProwess.class.getSimpleName());
-    private final static int MAGIC = 2;
+public class Impact extends AbstractExileCard {
+    public final static String ID = makeID(Impact.class.getSimpleName());
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
-    public ElementalProwess() {
+    public Impact() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
@@ -21,7 +21,7 @@ public class ElementalProwess extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        applyToSelf(new ElementalProwessPower(magicNumber));
+        applyToSelf(new ImpactPower(magicNumber));
     }
 
     public void upp() {

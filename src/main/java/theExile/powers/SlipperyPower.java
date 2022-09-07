@@ -19,6 +19,7 @@ public class SlipperyPower extends AbstractExilePower {
     public SlipperyPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
+        priority = 6;
     }
 
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {

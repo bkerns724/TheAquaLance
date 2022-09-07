@@ -12,7 +12,7 @@ public class CurseArmor extends AbstractExileCard {
     private final static int COST = 2;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 5;
+    private final static int SECOND_MAGIC = 4;
     private final static int UPGRADE_SECOND = 2;
 
     public CurseArmor() {

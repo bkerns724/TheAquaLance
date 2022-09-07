@@ -48,7 +48,7 @@
     "EXTENDED_DESCRIPTION": [
       "Apply 1 #yCrushed for every 6 damage dealt.",
       "Crushed",
-      "Crushed enemies take more damage from attacks. Crushed is reduced by 1 at the end of the round."
+      "Crushed enemies take more damage from attacks. When a creature with Crushed is attacked, Crushed is reduced by 1."
     ]
   },
   "${ModID}:DeathLightningDamage": {
@@ -141,9 +141,10 @@
     "NAME": "Spirit Pressure",
     "DESCRIPTION": "Whenever you apply ${ModID}:Jinx, apply !M! more."
   },
-  "${ModID}:WetSigil": {
-    "NAME": "Wet Sigil",
-    "DESCRIPTION": "ALL enemies take damage equal to !M! times their ${ModID}:Frostbite."
+  "${ModID}:Drench": {
+    "NAME": "Drench",
+    "DESCRIPTION": "Enemy takes damage equal to its ${ModID}:Frostbite at the start of its turn.",
+    "UPGRADE_DESCRIPTION": "All enemies take damage equal to their ${ModID}:Frostbite at the start of their turn."
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
@@ -176,14 +177,14 @@
     "FLAVOR": "Despite months of research, I've never managed to get more than a simple resonant spell into a sigil."
   },
   "${ModID}:SlipperySigil": {
-    "NAME": "Slipper Sigil",
+    "NAME": "Slippery Sigil",
     "DESCRIPTION": "The next time you would take attack damage, reduce it by half.",
     "UPGRADE_DESCRIPTION": "The next !M! times you would take attack damage, reduce it by half.",
     "FLAVOR": "I keep dropping these."
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Crushed affects this card !M! times.",
+    "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL ${ModID}:Crushed affects this card !M! times.",
     "FLAVOR": "You might need to exercise some more in order to throw this one properly."
   },
   "${ModID}:ClockSigil": {
@@ -193,7 +194,8 @@
   },
   "${ModID}:Weave": {
     "NAME": "Weave",
-    "DESCRIPTION": "Exhaust a card. NL Add its damage types to the next Exile Attack card you play.",
+    "DESCRIPTION": "Choose !M! Exile Attack cards. NL They gain each other’s elements for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "All Exile Attack cards in your hand gain each other's elements for the rest of combat.",
     "FLAVOR": "It is difficult to include a piece of one spell into another spell, but the payoff can be great if you are clever with it."
   },
   "${ModID}:ConsumeTheWeak": {
@@ -209,7 +211,6 @@
   "${ModID}:DownwardSpiral": {
     "NAME": "Downward Spiral",
     "DESCRIPTION": "Apply 1 ${ModID}:Jinx for each debuff on the target.",
-    "UPGRADE_DESCRIPTION": "Apply 1 ${ModID}:Jinx for each debuff on the target + !M!.",
     "FLAVOR": "When they're down, keep them down."
   },
   "${ModID}:VoodooDoll": {
@@ -222,10 +223,9 @@
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Resonant spells are a favorite of mine. You have to keep spending the mana of course, but you don't have to do anything else to keep casting it."
   },
-  "${ModID}:Tempo": {
-    "NAME": "Tempo",
-    "DESCRIPTION": "Deal !D! damage. NL Your next attack does +50 % damage.",
-    "FLAVOR": "I don't just practice spells until I can consistenly cast them. I practice until I can cast them quickly."
+  "${ModID}:Arpeggio": {
+    "NAME": "Arpeggio",
+    "DESCRIPTION": "Deal !D! damage !M! times."
   },
   "${ModID}:LongNote": {
     "NAME": "Long Note",
@@ -252,10 +252,9 @@
     "DESCRIPTION": "Deal !D! damage X times.",
     "FLAVOR": "Another spell I got to name."
   },
-  "${ModID}:ElementalProwess": {
-    "NAME": "Elemental Prowess",
-    "DESCRIPTION": "Whenever an Attack applies ${ModID}:Frostbite, ${ModID}:Crushed, or Temporary_HP, apply !M! more.",
-    "FLAVOR": "Stop pretending you're Aang and focus."
+  "${ModID}:Impact": {
+    "NAME": "Impact",
+    "DESCRIPTION": "Whenever an Attack applies ${ModID}:Crushed, apply !M! more."
   },
   "${ModID}:Convert": {
     "NAME": "Convert",
@@ -310,7 +309,7 @@
   },
   "${ModID}:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! ${ModID}:Crushed. Enemy deals !${ModID}:M2! less damage this turn.",
+    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! Poison. Enemy deals !${ModID}:M2! less damage this turn.",
     "FLAVOR": "My favorite spell."
   },
   "${ModID}:Divination": {
@@ -320,8 +319,8 @@
   },
   "${ModID}:TrickStaff": {
     "NAME": "Trick Staff",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. Attacking enemies take double damage.",
-    "FLAVOR": "My staff is enchanted to be flexible and move to my commands."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Deal !M! additional damage to enemies who intend to attack.",
+    "FLAVOR": "My staff is enchanted to attack enemies on its own when I speak a command word."
   },
   "${ModID}:EnchantedDagger": {
     "NAME": "Enchanted Dagger",
@@ -440,10 +439,10 @@
     "DESCRIPTION": "Resonant cards now target ALL enemies.",
     "FLAVOR": "With refined technique you can bounce some spells off one enemy and into another."
   },
-  "${ModID}:ConstantPractice": {
-    "NAME": "Constant Practice",
-    "DESCRIPTION": "Fetch a card from your discard pile. NL Upgrade it. NL It costs 0 this combat.",
-    "FLAVOR": "No matter how much you practice, there's still room for improvement."
+  "${ModID}:CallOfTheGrave": {
+    "NAME": "Call of the Grave",
+    "DESCRIPTION": "Enemy takes !M! damage for each of its debuffs at the start of its turn.",
+    "FLAVOR": "Ask not for whom the bell tolls. It tolls for people who have pissed me off."
   },
   "${ModID}:SuddenSpasms": {
     "NAME": "Sudden Spasms",

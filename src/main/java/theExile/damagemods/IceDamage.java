@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Ice;
-import theExile.powers.ElementalProwessPower;
 import theExile.powers.FrostbitePower;
 import theExile.relics.BlueMarbles;
 
@@ -59,9 +58,6 @@ public class IceDamage extends AbstractDamageModifier {
         if (adp().hasRelic(BlueMarbles.ID))
             finalDamage *= BlueMarbles.INCREASE;
         int frostbite = finalDamage / 3;
-        ElementalProwessPower power = (ElementalProwessPower) adp().getPower(ElementalProwessPower.POWER_ID);
-        if (power != null)
-            frostbite += power.amount;
         if (frostbite > 0)
             applyToEnemy(target, new FrostbitePower(target, frostbite));
     }

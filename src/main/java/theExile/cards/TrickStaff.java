@@ -10,7 +10,8 @@ public class TrickStaff extends AbstractExileCard {
     public final static String ID = makeID(TrickStaff.class.getSimpleName());
     private final static int DAMAGE = 6;
     private final static int UPGRADE_DAMAGE = 2;
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 4;
+    private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
     public TrickStaff() {
@@ -20,12 +21,12 @@ public class TrickStaff extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        isMultiDamage = true;
     }
 
     @Override
     public void nonTargetUse() {
         forAllMonstersLiving(mon -> {
-            calculateCardDamage(mon);
             if (damageModList.isEmpty())
                 dmg(mon, Wiz.getBluntEffect(damage));
             else
@@ -37,7 +38,7 @@ public class TrickStaff extends AbstractExileCard {
     public void calculateCardDamage(AbstractMonster mo) {
         int temp = baseDamage;
         if (mo != null && mo.getIntentBaseDmg() >= 0)
-            baseDamage *= magicNumber;
+            baseDamage += magicNumber;
         super.calculateCardDamage(mo);
         baseDamage = temp;
         isDamageModified = damage != baseDamage;
@@ -45,5 +46,6 @@ public class TrickStaff extends AbstractExileCard {
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UPGRADE_MAGIC);
     }
 }

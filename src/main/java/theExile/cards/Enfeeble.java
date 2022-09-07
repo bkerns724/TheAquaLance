@@ -1,7 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static theExile.ExileMod.makeID;
@@ -22,7 +20,8 @@ public class Enfeeble extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
     }
 
-    public void nonTargetUse(AbstractPlayer p, AbstractMonster m) {
+    @Override
+    public void nonTargetUse() {
         forAllMonstersLiving(mon -> applyToEnemy(mon, new WeakPower(mon, magicNumber, false)));
         discard(1);
     }

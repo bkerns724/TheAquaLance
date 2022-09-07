@@ -49,7 +49,7 @@ public class ResonatingPower extends AbstractExilePower implements OnReceivePowe
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
+    public void atStartOfTurn() {
         GenericResonantCard card = new GenericResonantCard(resonance.resClone());
         card.applyPowers();
         atb(new MakeTempCardInHandAction(card, false));

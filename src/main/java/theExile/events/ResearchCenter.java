@@ -91,11 +91,12 @@ public class ResearchCenter extends AbstractExileEvent {
         if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             if (pickedElement) {
                 AbstractExileCard c = (AbstractExileCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-                c.addModifier(element);
-                if (c instanceof EnchantedDagger) {
+                if (c instanceof EnchantedDagger)
                     ((EnchantedDagger) c).stableList.add(element);
-                    c.initializeDescription();
-                }
+                else
+                    c.addModifier(element);
+                c.initializeDescription();
+
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),
                         Settings.WIDTH/2.0f, Settings.HEIGHT/2.0f));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH/2.0f, (float)Settings.HEIGHT/2.0F));
