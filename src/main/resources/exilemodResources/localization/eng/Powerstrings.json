@@ -48,7 +48,7 @@
   "${ModID}:SummonMonsterPower": {
     "NAME": "Pandamonium",
     "DESCRIPTIONS": [
-      "At the end of your turn, gain an orb slot and Channel a Panda that deals !A! damage."
+      "At the end of your turn, gain an Orb slot and Channel a Panda that deals !A! damage."
     ]
   },
   "${ModID}:SiphonPower": {
@@ -210,7 +210,13 @@
   "${ModID}:ElementalProwessPower": {
     "NAME": "Elemental Prowess",
     "DESCRIPTIONS": [
-      "Whenever an Attack applies #y${ModID}:Crushed, #y${ModID}:Frostbite, or #yTemporary_HP, apply !A! more."
+      "Whenever an Attack applies #yCrushed, #yFrostbite, or #yTemporary #yHP, apply !A! more."
+    ]
+  },
+  "${ModID}:LifeTapPower": {
+    "NAME": "Life Tap",
+    "DESCRIPTIONS": [
+      "At the start of its turn, it loses !A! HP and you gain !A! Temporary_HP."
     ]
   },
   "${ModID}:CallOfTheGravePower": {

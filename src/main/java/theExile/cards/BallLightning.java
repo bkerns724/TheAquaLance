@@ -12,7 +12,7 @@ public class BallLightning extends AbstractExileCard {
     private final static int UPGRADE_DAMAGE = 2;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 1;
+    private final static int COST = 0;
 
     public BallLightning() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

@@ -16,7 +16,7 @@ public class CurseArmor extends AbstractExileCard {
     private final static int UPGRADE_SECOND = 1;
 
     public CurseArmor() {
-        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     public void applyAttributes() {

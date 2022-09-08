@@ -226,7 +226,7 @@
     "NAME": "Twin Resonance",
     "DESCRIPTION": "Deal !D! damage !M! times.",
     "EXTENDED_DESCRIPTION": [
-      "Triple Resonance."
+      "Triple Resonance"
     ]
   },
   "${ModID}:LongNote": {
@@ -487,7 +487,7 @@
   },
   "${ModID}:SustainedSummon": {
     "NAME": "Sustained Summon",
-    "DESCRIPTION": "At the end of your turn, gain an orb slot and Channel a !M! damage Panda.",
+    "DESCRIPTION": "At the end of your turn, gain an Orb slot and Channel a !M! damage Panda.",
     "FLAVOR": "Unleashing these guys in combat creates... Pandamonium. Ba dum tsh."
   },
   "${ModID}:Prepare": {

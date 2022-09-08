@@ -4,7 +4,6 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -87,9 +86,9 @@ public class VoodooDollAction extends AbstractGameAction {
         DamageModContainer container = new DamageModContainer(card, DamageModifierManager.modifiers(card));
         DamageInfo info = BindingHelper.makeInfo(container, adp(), card.damage, DamageInfo.DamageType.NORMAL);
         if (card.damageModList.isEmpty())
-            att(new DamageAction(target, info, getSlashEffect(card.damage)));
+            att(new AttackAction((AbstractMonster) target, info, getSlashEffect(card.damage)));
         else
-            att(new DamageAction(target, info, getAttackEffect(card.damage, card.damageModList, false)));
+            att(new AttackAction((AbstractMonster) target, info, getAttackEffect(card.damage, card.damageModList, false)));
     }
 
     static {
