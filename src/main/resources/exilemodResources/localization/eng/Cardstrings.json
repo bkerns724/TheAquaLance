@@ -46,9 +46,9 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Apply 1 #yCrushed for every 6 damage dealt.",
+      "Apply 1 #yCrushed for every 3 damage dealt.",
       "Crushed",
-      "Crushed enemies take more damage from attacks. When a creature with Crushed is attacked, Crushed is reduced by 1."
+      "Crushed enemies take more damage from the next attack."
     ]
   },
   "${ModID}:DeathLightningDamage": {
@@ -102,7 +102,7 @@
   },
   "${ModID}:BallLightning": {
     "NAME": "Ball Lightning",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each debuff on the target.",
+    "DESCRIPTION": "Deal !D! damage. NL Decrease the damage of this card by !M! this combat.",
     "FLAVOR": "I've got massive balls. Of lightning."
   },
   "${ModID}:LightningBolt": {
@@ -141,10 +141,9 @@
     "NAME": "Spirit Pressure",
     "DESCRIPTION": "Whenever you apply ${ModID}:Jinx, apply !M! more."
   },
-  "${ModID}:Drench": {
-    "NAME": "Drench",
-    "DESCRIPTION": "Enemy takes damage equal to its ${ModID}:Frostbite at the start of its turn.",
-    "UPGRADE_DESCRIPTION": "All enemies take damage equal to their ${ModID}:Frostbite at the start of their turn."
+  "${ModID}:StoneDaggers": {
+    "NAME": "Stone Daggers",
+    "DESCRIPTION": "Deal !D! damage for each debuff on the enemy."
   },
   "${ModID}:CrumblingSigil": {
     "NAME": "Crumbling Sigil",
@@ -184,7 +183,7 @@
   },
   "${ModID}:HeavySigil": {
     "NAME": "Heavy Sigil",
-    "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL ${ModID}:Crushed affects this card !M! times.",
+    "DESCRIPTION": "Deal !D! damage to the highest HP enemy. NL Gain !M! Dexterity this turn.",
     "FLAVOR": "You might need to exercise some more in order to throw this one properly."
   },
   "${ModID}:ClockSigil": {
@@ -223,9 +222,12 @@
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Resonant spells are a favorite of mine. You have to keep spending the mana of course, but you don't have to do anything else to keep casting it."
   },
-  "${ModID}:Arpeggio": {
-    "NAME": "Arpeggio",
-    "DESCRIPTION": "Deal !D! damage !M! times."
+  "${ModID}:TwinResonance": {
+    "NAME": "Twin Resonance",
+    "DESCRIPTION": "Deal !D! damage !M! times.",
+    "EXTENDED_DESCRIPTION": [
+      "Triple Resonance."
+    ]
   },
   "${ModID}:LongNote": {
     "NAME": "Long Note",
@@ -252,9 +254,9 @@
     "DESCRIPTION": "Deal !D! damage X times.",
     "FLAVOR": "Another spell I got to name."
   },
-  "${ModID}:Impact": {
-    "NAME": "Impact",
-    "DESCRIPTION": "Whenever an Attack applies ${ModID}:Crushed, apply !M! more."
+  "${ModID}:ElementalProwess": {
+    "NAME": "Elemental Prowess",
+    "DESCRIPTION": "Whenever an Attack applies ${ModID}:Crushed, ${ModID}:Frostbite, or Temporary_HP, apply !M! more."
   },
   "${ModID}:Convert": {
     "NAME": "Convert",
@@ -312,9 +314,9 @@
     "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! Poison. Enemy deals !${ModID}:M2! less damage this turn.",
     "FLAVOR": "My favorite spell."
   },
-  "${ModID}:Divination": {
-    "NAME": "Divination",
-    "DESCRIPTION": "Scry !M!. NL Upgrade all cards viewed this way.",
+  "${ModID}:Drain": {
+    "NAME": "Drain",
+    "DESCRIPTION": "Steal !M! Strength. NL Costs 1 less for each [${ModID}:EldritchIcon] attack played this combat.",
     "FLAVOR": "Sometimes you only need to see a few seconds into the future."
   },
   "${ModID}:TrickStaff": {
@@ -431,7 +433,7 @@
   },
   "${ModID}:ShadowLance": {
     "NAME": "Shadow Lance",
-    "DESCRIPTION": "Deal !D! damage. NL Steal !M! Strength.",
+    "DESCRIPTION": "Deal !D! damage. NL At the start of the enemy's turn, it loses !M! HP and you gain !M! Temporary_HP.",
     "FLAVOR": "I resorted to this to take down a monster while in sight of some villagers. This is why I was thrown out."
   },
   "${ModID}:Acoustics": {
@@ -485,7 +487,7 @@
   },
   "${ModID}:SustainedSummon": {
     "NAME": "Sustained Summon",
-    "DESCRIPTION": "At the end of your turn, gain an orb slot and Channel a !M! damage Panda. NL Pandas deal damage at the start of your turn.",
+    "DESCRIPTION": "At the end of your turn, gain an orb slot and Channel a !M! damage Panda.",
     "FLAVOR": "Unleashing these guys in combat creates... Pandamonium. Ba dum tsh."
   },
   "${ModID}:Prepare": {

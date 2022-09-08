@@ -1,17 +1,18 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import theExile.ExileMod;
-import theExile.powers.CrushedPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.getHighestHealthEnemy;
+import static theExile.util.Wiz.*;
 
 public class HeavySigil extends AbstractExileCard {
     public final static String ID = makeID(HeavySigil.class.getSimpleName());
-    private final static int DAMAGE = 8;
-    private final static int MAGIC = 3;
+    private final static int DAMAGE = 6;
+    private final static int UPGRADE_DAMAGE = 2;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 2;
 
     public HeavySigil() {
@@ -37,20 +38,14 @@ public class HeavySigil extends AbstractExileCard {
         dmg(m);
     }
 
-    public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower crushed = mo.getPower(CrushedPower.POWER_ID);
-        if (crushed != null)
-            crushed.amount *= magicNumber;
-
-        super.calculateCardDamage(mo);
-
-        if (crushed != null)
-            crushed.amount /= magicNumber;
-
-        isDamageModified = damage != baseDamage;
+    @Override
+    public void nonTargetUse() {
+        applyToSelf(new DexterityPower(adp(), magicNumber));
+        applyToSelf(new LoseDexterityPower(adp(), magicNumber));
     }
 
     public void upp() {
         upgradeMagicNumber(UPGRADE_MAGIC);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

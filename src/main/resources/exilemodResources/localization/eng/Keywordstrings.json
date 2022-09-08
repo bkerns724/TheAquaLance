@@ -41,7 +41,7 @@
       "Panda",
       "panda"
     ],
-    "DESCRIPTION": "Orb: Deals damage to a random enemy. Ignores #yFocus."
+    "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn. Ignores #yFocus."
   },
   {
     "PROPER_NAME": "Resonance",
@@ -69,7 +69,7 @@
       "Crushed",
       "crushed"
     ],
-    "DESCRIPTION": "Crushed enemies take more damage from attacks. When a creature with crushed is attacked, Crushed is reduced by 1."
+    "DESCRIPTION": "Crushed enemies take more damage from the next attack."
   },
   {
     "PROPER_NAME": "Jinx",

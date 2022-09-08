@@ -1,8 +1,8 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.powers.JinxPower;
+import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
@@ -12,8 +12,8 @@ public class CurseArmor extends AbstractExileCard {
     private final static int COST = 2;
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 4;
-    private final static int UPGRADE_SECOND = 2;
+    private final static int SECOND_MAGIC = 3;
+    private final static int UPGRADE_SECOND = 1;
 
     public CurseArmor() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -24,9 +24,12 @@ public class CurseArmor extends AbstractExileCard {
         baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
-    public void singleTargetUse(AbstractMonster m) {
-        applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
-        applyToEnemy(m, new JinxPower(m, secondMagic));
+    @Override
+    public void nonTargetUse() {
+        Wiz.forAllMonstersLiving(mon -> {
+            applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false));
+            applyToEnemy(mon, new JinxPower(mon, secondMagic));
+        });
     }
 
     public void upp() {

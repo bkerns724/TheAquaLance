@@ -8,8 +8,8 @@ import static theExile.util.Wiz.atb;
 
 public class VoodooDoll extends AbstractExileCard {
     public final static String ID = makeID(VoodooDoll.class.getSimpleName());
-    private final static int DAMAGE = 8;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 7;
+    private final static int UPGRADE_DAMAGE = 2;
     private final static int MAGIC = 3;
     private final static int COST = 1;
 
@@ -20,6 +20,7 @@ public class VoodooDoll extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        addModifier(elenum.ELDRITCH);
     }
 
     @Override

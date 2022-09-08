@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Ice;
+import theExile.powers.ElementalProwessPower;
 import theExile.powers.FrostbitePower;
 import theExile.relics.BlueMarbles;
 
@@ -26,6 +27,7 @@ public class IceDamage extends AbstractDamageModifier {
     public TooltipInfo iceTooltip;
     public TooltipInfo iceTooltip2;
     private boolean visibleTips = true;
+    private final static int THRESHOLD = 3;
 
     private int blockedAmount = 0;
 
@@ -52,14 +54,17 @@ public class IceDamage extends AbstractDamageModifier {
 
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        if (adp() != null && adp() == target)
+        if (adp() == null || adp() == target)
             return;
-        int finalDamage = blockedAmount + lastDamageTaken;
+        float frostbite = blockedAmount + lastDamageTaken;
+        frostbite = frostbite / THRESHOLD;
+        ElementalProwessPower power = (ElementalProwessPower) adp().getPower(ElementalProwessPower.POWER_ID);
+        if (power != null)
+            frostbite += power.amount;
         if (adp().hasRelic(BlueMarbles.ID))
-            finalDamage *= BlueMarbles.INCREASE;
-        int frostbite = finalDamage / 3;
+            frostbite *= BlueMarbles.INCREASE;
         if (frostbite > 0)
-            applyToEnemy(target, new FrostbitePower(target, frostbite));
+            applyToEnemy(target, new FrostbitePower(target, (int)frostbite));
     }
 
     @Override

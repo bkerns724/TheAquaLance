@@ -48,20 +48,13 @@
   "${ModID}:SummonMonsterPower": {
     "NAME": "Pandamonium",
     "DESCRIPTIONS": [
-      "At the end of your turn, gain an orb slot and Channel a panda that deals !A! damage."
+      "At the end of your turn, gain an orb slot and Channel a Panda that deals !A! damage."
     ]
   },
   "${ModID}:SiphonPower": {
     "NAME": "Siphoning",
     "DESCRIPTIONS": [
       "Whenever you deal Attack damage, gain !A! Temporary HP."
-    ]
-  },
-  "${ModID}:WetPower": {
-    "NAME": "Wet",
-    "DESCRIPTIONS": [
-      "Takes damage equal to Frostbite at the start of its turn.",
-      "Takes damage equal to !A! times its Frostbite at the start of its turn."
     ]
   },
   "${ModID}:EnergizedExilePower": {
@@ -85,7 +78,7 @@
   "${ModID}:CrushedPower": {
     "NAME": "Crushed",
     "DESCRIPTIONS": [
-      "Takes !A! more damage from attacks."
+      "Takes !A! more damage from the next attack."
     ]
   },
   "${ModID}:ConvertPower": {
@@ -214,10 +207,10 @@
       "In !A! turns, choose 1 of !A2! cards to add into your hand."
     ]
   },
-  "${ModID}:ImpactPower": {
-    "NAME": "Impact",
+  "${ModID}:ElementalProwessPower": {
+    "NAME": "Elemental Prowess",
     "DESCRIPTIONS": [
-      "Whenever an Attack applies #y${ModID}:Crushed, apply !A! more."
+      "Whenever an Attack applies #y${ModID}:Crushed, #y${ModID}:Frostbite, or #yTemporary_HP, apply !A! more."
     ]
   },
   "${ModID}:CallOfTheGravePower": {

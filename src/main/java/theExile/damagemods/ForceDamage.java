@@ -13,12 +13,13 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Force;
 import theExile.powers.CrushedPower;
-import theExile.powers.ImpactPower;
+import theExile.powers.ElementalProwessPower;
 import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToEnemy;
 
 @AutoAdd.Ignore
 public class ForceDamage extends AbstractDamageModifier {
@@ -27,7 +28,7 @@ public class ForceDamage extends AbstractDamageModifier {
     public TooltipInfo forceTooltip;
     public TooltipInfo forceTooltip2;
     private boolean visibleTips = true;
-    private static final int THRESHOLD = 6;
+    private static final int THRESHOLD = 3;
 
     private int blockedAmount = 0;
 
@@ -53,15 +54,17 @@ public class ForceDamage extends AbstractDamageModifier {
 
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        int finalDamage = lastDamageTaken + blockedAmount;
-        if (adp().hasRelic(BlueMarbles.ID))
-            finalDamage *= BlueMarbles.INCREASE;
-        int crushed = finalDamage / THRESHOLD;
-        ImpactPower power = (ImpactPower) adp().getPower(ImpactPower.POWER_ID);
+        if (adp() == null || adp() == target)
+            return;
+        float crushed = lastDamageTaken + blockedAmount;
+        crushed = crushed / THRESHOLD;
+        ElementalProwessPower power = (ElementalProwessPower) adp().getPower(ElementalProwessPower.POWER_ID);
         if (power != null)
             crushed += power.amount;
+        if (adp().hasRelic(BlueMarbles.ID))
+            crushed *= BlueMarbles.INCREASE;
         if (crushed > 0)
-            applyToEnemy(target, new CrushedPower(target, crushed));
+            applyToEnemy(target, new CrushedPower(target, (int)crushed));
     }
 
     @Override

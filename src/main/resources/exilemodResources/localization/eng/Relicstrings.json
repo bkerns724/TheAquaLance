@@ -88,7 +88,7 @@
     "NAME": "Blue Marbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply double #y${ModID}:Crushed and #y${ModID}:Frostbite."
+      "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply +50% more #y${ModID}:Crushed and #y${ModID}:Frostbite."
     ]
   },
   "${ModID}:VialOfBlackBlood": {

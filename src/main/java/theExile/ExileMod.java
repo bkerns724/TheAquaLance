@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.Drain;
 import theExile.cards.cardvars.SecondMagicNumber;
 import theExile.cards.cardvars.ThirdMagicNumber;
 import theExile.events.ClericsRequest;
@@ -61,6 +62,7 @@ public class ExileMod implements
         OnStartBattleSubscriber,
         PostBattleSubscriber,
         PostUpdateSubscriber,
+        OnCardUseSubscriber,
         PostInitializeSubscriber {
     public static final String SETTINGS_FILE = "ExileModSettings";
 
@@ -482,6 +484,31 @@ public class ExileMod implements
             saveConfig();
         }
         return true;
+    }
+
+    @Override
+    public void receiveCardUsed(AbstractCard abstractCard) {
+        if (adp() == null || adRoom() == null)
+            return;
+
+        if ((AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT) {
+            for (AbstractCard c : adp().hand.group) {
+                if (c instanceof Drain)
+                    ((Drain) c).onPlayEldritchCard();
+            }
+            for (AbstractCard c : adp().drawPile.group) {
+                if (c instanceof Drain)
+                    ((Drain) c).onPlayEldritchCard();
+            }
+            for (AbstractCard c : adp().discardPile.group) {
+                if (c instanceof Drain)
+                    ((Drain) c).onPlayEldritchCard();
+            }
+            for (AbstractCard c : adp().exhaustPile.group) {
+                if (c instanceof Drain)
+                    ((Drain) c).onPlayEldritchCard();
+            }
+        }
     }
 
     @Override
