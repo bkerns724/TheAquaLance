@@ -16,7 +16,7 @@ import static theExile.util.Wiz.atb;
 
 public class RingOfWhispers extends AbstractExileRelic {
     public static final String ID = makeID(RingOfWhispers.class.getSimpleName());
-    private static final int BLOCK_AMOUNT = 8;
+    private static final int BLOCK_AMOUNT = 6;
     private static final int THRESHOLD_FOR_SPAWN = 2;
     private static final AbstractCard CARD_TO_PREVIEW = new Whispers();
 

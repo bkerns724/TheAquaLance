@@ -9,7 +9,7 @@ import static theExile.util.Wiz.*;
 public class BoltFromTheBlue extends AbstractExileCard {
     public final static String ID = makeID(BoltFromTheBlue.class.getSimpleName());
     private final static int DAMAGE = 30;
-    private final static int UPGRADE_DAMAGE = 5;
+    private final static int UPGRADE_DAMAGE = 10;
     private final static int MAGIC = 5;
     private final static int COST = 1;
 

@@ -9,7 +9,7 @@ import static theExile.util.Wiz.getLowestHealthEnemy;
 public class ColdSigil extends AbstractExileCard {
     public final static String ID = makeID(ColdSigil.class.getSimpleName());
     private final static int DAMAGE = 7;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int UPGRADE_DAMAGE = 2;
     private final static int COST = -2;
 
     public ColdSigil() {

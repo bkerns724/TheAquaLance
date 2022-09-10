@@ -8,7 +8,7 @@ import static theExile.util.Wiz.adp;
 
 public class ConsumeTheWeak extends AbstractExileCard {
     public final static String ID = makeID(ConsumeTheWeak.class.getSimpleName());
-    private final static int DAMAGE = 10;
+    private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;

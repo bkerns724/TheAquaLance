@@ -12,13 +12,13 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Ice;
-import theExile.powers.ElementalProwessPower;
 import theExile.powers.FrostbitePower;
 import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToEnemyTop;
 
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
@@ -58,13 +58,10 @@ public class IceDamage extends AbstractDamageModifier {
             return;
         float frostbite = blockedAmount + lastDamageTaken;
         frostbite = frostbite / THRESHOLD;
-        ElementalProwessPower power = (ElementalProwessPower) adp().getPower(ElementalProwessPower.POWER_ID);
-        if (power != null)
-            frostbite += power.amount;
         if (adp().hasRelic(BlueMarbles.ID))
             frostbite *= BlueMarbles.INCREASE;
-        if (frostbite > 0)
-            applyToEnemy(target, new FrostbitePower(target, (int)frostbite));
+        if ((int)frostbite > 0)
+            applyToEnemyTop(target, new FrostbitePower(target, (int)frostbite));
     }
 
     @Override

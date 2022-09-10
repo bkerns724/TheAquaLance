@@ -53,13 +53,20 @@ public class EnchantedDagger extends AbstractExileCard {
         addModifier(stableList, true);
 
         for (AbstractCard card : adp().hand.group) {
-            if (card instanceof AbstractExileCard && card != this)
-                addModifier(((AbstractExileCard) card).damageModList, true);
-            if (card instanceof Dualcast) {
-                addModifier(elenum.FORCE);
-                addModifier(elenum.ICE);
+            if (card instanceof AbstractExileCard && card != this) {
+                for (elenum e : ((AbstractExileCard) card).damageModList) {
+                    if (e == ICE || e == FAKE_ICE)
+                        addModifier(ICE);
+                    if (e == ELDRITCH || e == FAKE_ELDRITCH)
+                        addModifier(ELDRITCH);
+                    if (e == LIGHTNING || e == FAKE_LIGHTNING)
+                        addModifier(LIGHTNING);
+                    if (e == FORCE || e == FAKE_FORCE)
+                        addModifier(FORCE);
+                }
             }
         }
+
         super.calculateCardDamage(mo);
         initializeDescription();
     }
@@ -77,13 +84,20 @@ public class EnchantedDagger extends AbstractExileCard {
         addModifier(stableList, true);
 
         for (AbstractCard card : adp().hand.group) {
-            if (card instanceof AbstractExileCard && card != this)
-                addModifier(((AbstractExileCard) card).damageModList, true);
-            if (card instanceof Dualcast) {
-                addModifier(elenum.FORCE);
-                addModifier(elenum.ICE);
+            if (card instanceof AbstractExileCard && card != this) {
+                for (elenum e : ((AbstractExileCard) card).damageModList) {
+                    if (e == ICE || e == FAKE_ICE)
+                        addModifier(ICE);
+                    if (e == ELDRITCH || e == FAKE_ELDRITCH)
+                        addModifier(ELDRITCH);
+                    if (e == LIGHTNING || e == FAKE_LIGHTNING)
+                        addModifier(LIGHTNING);
+                    if (e == FORCE || e == FAKE_FORCE)
+                        addModifier(FORCE);
+                }
             }
         }
+
         super.applyPowers();
         initializeDescription();
     }

@@ -27,6 +27,6 @@ public class SlipperyPower extends AbstractExilePower {
             att(new ReducePowerAction(owner, owner, this, 1));
             return damageAmount/2;
         }
-        return 0;
+        return damageAmount;
     }
 }

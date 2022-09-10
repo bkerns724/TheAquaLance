@@ -7,8 +7,8 @@ import static theExile.ExileMod.makeID;
 
 public class ElementalConflux extends AbstractExileCard {
     public final static String ID = makeID(ElementalConflux.class.getSimpleName());
-    private final static int DAMAGE = 20;
-    private final static int UPGRADE_DAMAGE = 5;
+    private final static int DAMAGE = 16;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
     public ElementalConflux() {

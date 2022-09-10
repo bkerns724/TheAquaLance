@@ -11,9 +11,9 @@ import static theExile.util.Wiz.*;
 public class HeavySigil extends AbstractExileCard {
     public final static String ID = makeID(HeavySigil.class.getSimpleName());
     private final static int DAMAGE = 6;
-    private final static int UPGRADE_DAMAGE = 2;
+    private final static int UPGRADE_DAMAGE = 1;
     private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
 
     public HeavySigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.UNCOMMON, ExileMod.Enums.AUTOAIM_ENEMY);

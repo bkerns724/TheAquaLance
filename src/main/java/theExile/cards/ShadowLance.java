@@ -9,9 +9,9 @@ import static theExile.ExileMod.makeID;
 public class ShadowLance extends AbstractExileCard {
     public final static String ID = makeID(ShadowLance.class.getSimpleName());
     private final static int DAMAGE = 15;
-    private final static int UPGRADE_DAMAGE = 5;
-    private final static int MAGIC = 4;
-    private final static int UPGRADE_MAGIC = 2;
+    private final static int UPGRADE_DAMAGE = 3;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 3;
 
     public ShadowLance() {

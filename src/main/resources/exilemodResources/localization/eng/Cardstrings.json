@@ -100,14 +100,9 @@
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain [E] [E] next turn.",
     "FLAVOR": "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
-  "${ModID}:BallLightning": {
-    "NAME": "Ball Lightning",
-    "DESCRIPTION": "Deal !D! damage. NL Decrease the damage of this card by !M! this combat.",
-    "FLAVOR": "I've got massive balls. Of lightning."
-  },
   "${ModID}:LightningBolt": {
     "NAME": "Lightning Bolt",
-    "DESCRIPTION": "Deal !D! damage to the highest hp enemy.",
+    "DESCRIPTION": "Deal !D! damage to the highest hp enemy. NL Discard a card.",
     "FLAVOR": "Don't call it thunder bolt. You don't kill things with thunder."
   },
   "${ModID}:Anticipate": {
@@ -127,6 +122,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Discard !M! cards next turn.",
     "FLAVOR": "Quite often the best defense is simply not being there."
   },
+  "${ModID}:LeadBall": {
+    "NAME": "Lead Ball",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
+    "FLAVOR": "Launch it with magic. 5 points per tooth you knock out."
+  },
   "${ModID}:Gale": {
     "NAME": "Gale",
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! cards.",
@@ -134,11 +134,11 @@
   },
   "${ModID}:Flare": {
     "NAME": "Flare",
-    "DESCRIPTION": "Gain !B! Block. NL Discard a card.",
+    "DESCRIPTION": "Gain !B! Block. NL If there are no other cards in your hand, gain !M! additional Block.",
     "FLAVOR": "The aggressive version of they can't catch you if they can't see you."
   },
-  "${ModID}:SpiritPressure": {
-    "NAME": "Spirit Pressure",
+  "${ModID}:Malice": {
+    "NAME": "Malice",
     "DESCRIPTION": "Whenever you apply ${ModID}:Jinx, apply !M! more."
   },
   "${ModID}:StoneDaggers": {
@@ -207,9 +207,13 @@
     "DESCRIPTION": "At the end of your turn, gain Block equal to your ${ModID}:Resonance amount times !M!.",
     "FLAVOR": "Practice aligning the different pieces of your resonant spells. The more in tune they are, the more powerful they become."
   },
-  "${ModID}:DownwardSpiral": {
-    "NAME": "Downward Spiral",
-    "DESCRIPTION": "Apply 1 ${ModID}:Jinx for each debuff on the target.",
+  "${ModID}:???": {
+    "NAME": "???",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ???"
+  },
+  "${ModID}:SpiralSigil": {
+    "NAME": "Spiral Sigil",
+    "DESCRIPTION": "Apply ${ModID}:Jinx to ALL enemies equal to their debuffs.",
     "FLAVOR": "When they're down, keep them down."
   },
   "${ModID}:VoodooDoll": {
@@ -239,14 +243,13 @@
     "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage.",
     "FLAVOR": "Put in some ear plugs before you use this one."
   },
-  "${ModID}:Beat": {
-    "NAME": "Beat",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Discard a card.",
-    "FLAVOR": "Can you practice this spell without thumping your desk to the beat? PLEASE?!"
+  "${ModID}:Energize": {
+    "NAME": "Energize",
+    "DESCRIPTION": "Gain !M! Vigor. NL Draw a card."
   },
   "${ModID}:BadVibes": {
     "NAME": "Bad Vibes",
-    "DESCRIPTION": "Apply !M! ${ModID}:Jinx.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Jinx. NL Discard a card.",
     "FLAVOR": "A personal favorite of mine. If the enemy has a lot of bad luck, everything you cast is more likely to be effective."
   },
   "${ModID}:BrrZerk": {
@@ -256,7 +259,7 @@
   },
   "${ModID}:ElementalProwess": {
     "NAME": "Elemental Prowess",
-    "DESCRIPTION": "Whenever an Attack applies ${ModID}:Crushed, ${ModID}:Frostbite, or Temporary_HP, apply !M! more."
+    "DESCRIPTION": "Whenever you play a card, ALL enemies take !M! damage of each damage type it had."
   },
   "${ModID}:Convert": {
     "NAME": "Convert",
@@ -306,12 +309,12 @@
   },
   "${ModID}:VoidBall": {
     "NAME": "Void Ball",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Discard a card.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
     "FLAVOR": "More enemies just means more life to steal."
   },
   "${ModID}:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! Poison. Enemy deals !${ModID}:M2! less damage this turn.",
+    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! ${ModID}:Crushed. Enemy deals !${ModID}:M2! less damage this turn.",
     "FLAVOR": "My favorite spell."
   },
   "${ModID}:Drain": {
@@ -319,20 +322,20 @@
     "DESCRIPTION": "Steal !M! Strength. NL Costs 1 less for each [${ModID}:EldritchIcon] attack played this combat.",
     "FLAVOR": "Sometimes you only need to see a few seconds into the future."
   },
+  "${ModID}:TelekineticBlade": {
+    "NAME": "Telekinetic Blade",
+    "DESCRIPTION": "Dead !D! damage. NL Retain your hand this turn.",
+    "FLAVOR": "Practice until you can use the blade while casting other spells."
+  },
   "${ModID}:TrickStaff": {
     "NAME": "Trick Staff",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Deal !M! additional damage to enemies who intend to attack.",
-    "FLAVOR": "My staff is enchanted to attack enemies on its own when I speak a command word."
+    "FLAVOR": "My staff is enchanted with several surprises. One of which is suddenly doubling in length to slam a charging enemy right in the gut."
   },
   "${ModID}:EnchantedDagger": {
     "NAME": "Enchanted Dagger",
     "DESCRIPTION": "Deal !D! damage. NL Gains all damage types of other cards in your hand.",
     "FLAVOR": "Magic still has great value even if you're wielding a blade."
-  },
-  "${ModID}:Nocebo": {
-    "NAME": "Nocebo",
-    "DESCRIPTION": "Deal !D! damage. NL Apply *Nocebo !M! times. NL *Nocebo is a debuff that does nothing.",
-    "FLAVOR": "I had a warrior friend. He put a thin layer of green jello on his sword before going into battle. He told his foes it was poisoned. This was surprisingly effective at causing fear."
   },
   "${ModID}:Enfeeble": {
     "NAME": "Enfeeble",
@@ -359,10 +362,9 @@
     "DESCRIPTION": "{@@}Deal !D! damage. NL Apply !M! Poison.",
     "FLAVOR": "I got to name this spell. I'm quite proud of it."
   },
-  "${ModID}:SackOfSand": {
-    "NAME": "Sack Of Sand",
-    "DESCRIPTION": "Discard your hand. NL Gain !M! Block for each card discarded.",
-    "FLAVOR": "Highly effective when combined with a quick burst of wind magic."
+  "${ModID}:SpinToWin": {
+    "NAME": "Spin To Win",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL Discard a card. NL Add a copy of this card to your discard pile."
   },
   "${ModID}:Study": {
     "NAME": "Study",

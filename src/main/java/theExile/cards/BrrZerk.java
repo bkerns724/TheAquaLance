@@ -10,7 +10,7 @@ import static theExile.util.Wiz.atb;
 
 public class BrrZerk extends AbstractExileCard {
     public final static String ID = makeID(BrrZerk.class.getSimpleName());
-    private final static int DAMAGE = 8;
+    private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = -1;
 

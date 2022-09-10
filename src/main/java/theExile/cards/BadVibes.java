@@ -4,8 +4,9 @@ import static theExile.ExileMod.makeID;
 
 public class BadVibes extends AbstractResonantCard {
     public final static String ID = makeID(BadVibes.class.getSimpleName());
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_MAGIC = 1;
     private final static int COST = 1;
 
     public BadVibes() {
@@ -15,11 +16,13 @@ public class BadVibes extends AbstractResonantCard {
     @Override
     protected void setResonance() {
         resonance.jinx = baseMagicNumber;
+        resonance.discard = baseSecondMagic;
     }
 
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
     public void upp() {

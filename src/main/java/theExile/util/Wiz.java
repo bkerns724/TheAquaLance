@@ -181,6 +181,10 @@ public class Wiz {
         thornDmg(m, amount, AbstractGameAction.AttackEffect.NONE);
     }
 
+    public static void thornDmgAll(int amount, AbstractGameAction.AttackEffect effect) {
+        forAllMonstersLiving(mon -> thornDmg(mon, amount, effect));
+    }
+
     public static void thornDmgTop(AbstractCreature m, int amount, AbstractGameAction.AttackEffect AtkFX) {
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AtkFX));
     }

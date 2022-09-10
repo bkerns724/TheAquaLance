@@ -7,10 +7,10 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class LightningBlast extends AbstractExileCard {
     public final static String ID = makeID(LightningBlast.class.getSimpleName());
-    private final static int DAMAGE = 8;
+    private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 2;
-    private final static int COST = 0;
+    private final static int COST = 1;
 
     public LightningBlast() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);

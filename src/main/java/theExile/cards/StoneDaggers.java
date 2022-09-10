@@ -7,8 +7,8 @@ import static theExile.ExileMod.makeID;
 
 public class StoneDaggers extends AbstractExileCard {
     public final static String ID = makeID(StoneDaggers.class.getSimpleName());
-    private final static int DAMAGE = 4;
-    private final static int UPGRADE_DAMAGE = 2;
+    private final static int DAMAGE = 3;
+    private final static int UPGRADE_DAMAGE = 1;
     private final static int COST = 1;
 
     public StoneDaggers() {

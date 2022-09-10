@@ -1,6 +1,7 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rewards.RewardItem;
@@ -28,18 +29,11 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
     protected abstract void setResonance();
 
     @Override
-    public void singleTargetUse(AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         resonance.resonanceEffects(this, m);
-    }
-
-    @Override
-    public void nonTargetUse() {
-        if(target != CardTarget.ENEMY)
-            resonance.resonanceEffects(this, null);
-    }
-
-    public void setMultiDamage(boolean mult) {
-        isMultiDamage = mult;
+        if (sigil)
+            beingDiscarded = false;
+        resonance.toPower();
     }
 
     @Override

@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Force;
 import theExile.powers.CrushedPower;
-import theExile.powers.ElementalProwessPower;
 import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
@@ -58,12 +57,9 @@ public class ForceDamage extends AbstractDamageModifier {
             return;
         float crushed = lastDamageTaken + blockedAmount;
         crushed = crushed / THRESHOLD;
-        ElementalProwessPower power = (ElementalProwessPower) adp().getPower(ElementalProwessPower.POWER_ID);
-        if (power != null)
-            crushed += power.amount;
         if (adp().hasRelic(BlueMarbles.ID))
             crushed *= BlueMarbles.INCREASE;
-        if (crushed > 0)
+        if ((int)crushed > 0)
             applyToEnemy(target, new CrushedPower(target, (int)crushed));
     }
 

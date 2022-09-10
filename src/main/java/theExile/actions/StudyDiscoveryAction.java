@@ -13,6 +13,8 @@ import theExile.ExileMod;
 
 import java.util.ArrayList;
 
+import static theExile.util.Wiz.adp;
+
 public class StudyDiscoveryAction extends AbstractGameAction {
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ExileMod.makeID("ExileStudy"));
     public static final String[] TEXT = uiStrings.TEXT;
@@ -35,12 +37,10 @@ public class StudyDiscoveryAction extends AbstractGameAction {
             if (!retrieveCard) {
                 if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
                     AbstractCard disCard = AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
-                    if (AbstractDungeon.player.hasPower(MasterRealityPower.POWER_ID))
+                    if (adp().hasPower(MasterRealityPower.POWER_ID))
                         disCard.upgrade();
 
-                    disCard.setCostForTurn(0);
-
-                    if (AbstractDungeon.player.hand.size() < 10)
+                    if (adp().hand.size() < 10)
                         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(disCard,
                                 (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                     else

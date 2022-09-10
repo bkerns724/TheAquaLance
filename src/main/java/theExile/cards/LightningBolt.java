@@ -10,6 +10,7 @@ public class LightningBolt extends AbstractExileCard {
     public final static String ID = makeID(LightningBolt.class.getSimpleName());
     private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 3;
+    private final static int MAGIC = 1;
     private final static int COST = 1;
 
     public LightningBolt() {
@@ -18,6 +19,7 @@ public class LightningBolt extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.LIGHTNING);
     }
 
@@ -30,6 +32,11 @@ public class LightningBolt extends AbstractExileCard {
     public void autoTargetUse(AbstractMonster m) {
         calculateCardDamage(m);
         dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
+        Wiz.discard(magicNumber);
     }
 
     public void upp() {
