@@ -11,7 +11,7 @@ import static theExile.util.Wiz.*;
 public class BlizzardSigil extends AbstractExileCard {
     public final static String ID = makeID(BlizzardSigil.class.getSimpleName());
     private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 4;
     private final static int COST = -2;
 

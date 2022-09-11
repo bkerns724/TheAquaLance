@@ -113,8 +113,8 @@ public class TheExile extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
-        retVal.add(ForceBolt.ID);
-        retVal.add(ColdSigil.ID);
+        retVal.add(FrostBolt.ID);
+        retVal.add(ShockwaveSigil.ID);
 
         return retVal;
     }
@@ -181,11 +181,11 @@ public class TheExile extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        // Sorry Pasha if this causes problems, but this needs to be seeded
         if (AbstractDungeon.cardRng != null) {
             ArrayList<AbstractCard> cardList = new ArrayList<>();
             cardList.add(new AcidSpray());
             cardList.add(new Miasma());
+            cardList.add(new SickBurn());
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }

@@ -11,7 +11,7 @@ import static theExile.util.Wiz.*;
 
 public class Mythril extends AbstractExileRelic {
     public static final String ID = makeID(Mythril.class.getSimpleName());
-    private static final int BLOCK_AMT = 6;
+    private static final int BLOCK_AMT = 5;
 
     public Mythril() {
         super(ID, RelicTier.COMMON, LandingSound.HEAVY, TheExile.Enums.EXILE_BROWN_COLOR);

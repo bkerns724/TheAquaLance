@@ -13,10 +13,11 @@
       "Draw !A! cards next turn."
     ]
   },
-  "${ModID}:SteelhidePower": {
-    "NAME": "Steelhide",
+  "${ModID}:EnergyDownNextTurnPower": {
+    "NAME": "Energy Reduction",
     "DESCRIPTIONS": [
-      "Whenever you would take damage, take !A! less."
+      "Lose [E] at the start of your next turn.",
+      "Lose !A! [E] at the start of your next turn."
     ]
   },
   "${ModID}:SoulFlameBarrierPower": {
@@ -78,7 +79,13 @@
   "${ModID}:CrushedPower": {
     "NAME": "Crushed",
     "DESCRIPTIONS": [
-      "Takes !A! more damage from the next attack."
+      "Takes !A! more damage from attacks."
+    ]
+  },
+  "${ModID}:BarbedPower": {
+    "NAME": "Barbed",
+    "DESCRIPTIONS": [
+      "Takes !A! damage when attacked."
     ]
   },
   "${ModID}:ConvertPower": {
@@ -166,7 +173,7 @@
   "${ModID}:GolemPower": {
     "NAME": "Golem",
     "DESCRIPTIONS": [
-      "The first time you are attacked each turn, deal !A! damage back."
+      "Gain !A! % more Block."
     ]
   },
   "${ModID}:DecayPower": {
@@ -210,13 +217,13 @@
   "${ModID}:ElementalProwessPower": {
     "NAME": "Elemental Prowess",
     "DESCRIPTIONS": [
-      "Whenever an Attack applies #yCrushed, #yFrostbite, or #yTemporary #yHP, apply !A! more."
+      "Whenever you play a card, ALL enemies take !A! damage of each damage type it had."
     ]
   },
   "${ModID}:LifeTapPower": {
     "NAME": "Life Tap",
     "DESCRIPTIONS": [
-      "At the start of its turn, it loses !A! HP and you gain !A! Temporary_HP."
+      "Whenever you attack this enemy gain !A! Temporary_HP."
     ]
   },
   "${ModID}:CallOfTheGravePower": {

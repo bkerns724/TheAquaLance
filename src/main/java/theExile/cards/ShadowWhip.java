@@ -6,15 +6,14 @@ import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
 
-public class ShadowLance extends AbstractExileCard {
-    public final static String ID = makeID(ShadowLance.class.getSimpleName());
-    private final static int DAMAGE = 15;
-    private final static int UPGRADE_DAMAGE = 3;
+public class ShadowWhip extends AbstractExileCard {
+    public final static String ID = makeID(ShadowWhip.class.getSimpleName());
+    private final static int DAMAGE = 8;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 2;
-    private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 3;
+    private final static int COST = 1;
 
-    public ShadowLance() {
+    public ShadowWhip() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 
@@ -31,7 +30,6 @@ public class ShadowLance extends AbstractExileCard {
     }
 
     public void upp() {
-        upMagic(UPGRADE_MAGIC);
         upgradeDamage(UPGRADE_DAMAGE);
     }
 }

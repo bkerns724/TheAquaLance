@@ -17,6 +17,6 @@ public class EnergizedExilePower extends AbstractExilePower {
     public void onEnergyRecharge() {
         flash();
         adp().gainEnergy(amount);
-        atb(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
+        atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

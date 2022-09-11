@@ -1,17 +1,17 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
 
-public class Enfeeble extends AbstractExileCard {
-    public final static String ID = makeID(Enfeeble.class.getSimpleName());
+public class Grease extends AbstractExileCard {
+    public final static String ID = makeID(Grease.class.getSimpleName());
     private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 0;
 
-    public Enfeeble() {
+    public Grease() {
         super(ID, COST, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
     }
 
@@ -22,7 +22,7 @@ public class Enfeeble extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        forAllMonstersLiving(mon -> applyToEnemy(mon, new WeakPower(mon, magicNumber, false)));
+        forAllMonstersLiving(mon -> applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false)));
         discard(1);
     }
 

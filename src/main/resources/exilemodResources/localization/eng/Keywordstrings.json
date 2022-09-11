@@ -64,14 +64,6 @@
     "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage and Frostbite is reduced by 1."
   },
   {
-    "PROPER_NAME": "Crushed",
-    "NAMES": [
-      "Crushed",
-      "crushed"
-    ],
-    "DESCRIPTION": "Crushed enemies take more damage from the next attack."
-  },
-  {
     "PROPER_NAME": "Jinx",
     "NAMES": [
       "Jinx",

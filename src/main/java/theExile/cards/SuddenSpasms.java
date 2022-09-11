@@ -8,9 +8,9 @@ import static theExile.util.Wiz.*;
 
 public class SuddenSpasms extends AbstractExileCard {
     public final static String ID = makeID(SuddenSpasms.class.getSimpleName());
-    private final static int MAGIC = 4;
-    private final static int UPGRADE_MAGIC = 2;
-    private final static int COST = 2;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
+    private final static int COST = 1;
 
     public SuddenSpasms() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);

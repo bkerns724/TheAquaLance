@@ -1,8 +1,5 @@
 package theExile.actions;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,20 +8,23 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.cards.AbstractExileCard;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.att;
 
 public class VoodooDollAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private final AbstractExileCard card;
-    private final int multiplier;
+    private final int extraHits;
+    private boolean pickedCurse = false;
+    private final AttackEffect effect;
+    private final DamageInfo info;
 
-    public VoodooDollAction(int multiplier, AbstractExileCard card, AbstractMonster target) {
+    public VoodooDollAction(int extraHits, DamageInfo info, AbstractMonster target, AttackEffect effect) {
         this.target = target;
-        this.card = card;
-        this.multiplier = multiplier;
+        this.extraHits = extraHits;
+        this.effect = effect;
+        this.info = info;
         duration = startDuration = Settings.ACTION_DUR_FAST;
         actionType = ActionType.EXHAUST;
     }
@@ -47,10 +47,9 @@ public class VoodooDollAction extends AbstractGameAction {
                 AbstractCard c = adp().hand.getTopCard();
                 adp().hand.moveToExhaustPile(c);
                 if (c.color == AbstractCard.CardColor.CURSE)
-                    card.baseDamage *= multiplier;
+                    pickedCurse =  true;
+
                 doDamage();
-                if (c.color == AbstractCard.CardColor.CURSE)
-                    card.baseDamage /= multiplier;
 
                 CardCrawlGame.dungeon.checkForPactAchievement();
                 return;
@@ -69,10 +68,8 @@ public class VoodooDollAction extends AbstractGameAction {
             AbstractCard c = AbstractDungeon.handCardSelectScreen.selectedCards.getTopCard();
             adp().hand.moveToExhaustPile(c);
             if (c.color == AbstractCard.CardColor.CURSE)
-                card.baseDamage *= multiplier;
+                pickedCurse = true;
             doDamage();
-            if (c.color == AbstractCard.CardColor.CURSE)
-                card.baseDamage /= multiplier;
 
             CardCrawlGame.dungeon.checkForPactAchievement();
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
@@ -82,13 +79,9 @@ public class VoodooDollAction extends AbstractGameAction {
     }
 
     private void doDamage() {
-        card.calculateCardDamage((AbstractMonster) target);
-        DamageModContainer container = new DamageModContainer(card, DamageModifierManager.modifiers(card));
-        DamageInfo info = BindingHelper.makeInfo(container, adp(), card.damage, DamageInfo.DamageType.NORMAL);
-        if (card.damageModList.isEmpty())
-            att(new AttackAction((AbstractMonster) target, info, getSlashEffect(card.damage)));
-        else
-            att(new AttackAction((AbstractMonster) target, info, getAttackEffect(card.damage, card.damageModList, false)));
+        int count = 1 + extraHits * (pickedCurse ? 1 : 0);
+        for (int i = 0; i < count; i++)
+            att(new AttackAction((AbstractMonster) target, info, effect));
     }
 
     static {

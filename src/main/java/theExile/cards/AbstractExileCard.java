@@ -148,6 +148,20 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     protected abstract void applyAttributes();
 
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        if (damageModList.contains(FORCE)) {
+            ArrayList<AbstractCard> newList = new ArrayList<>(AbstractDungeon.actionManager.cardsPlayedThisTurn);
+            newList.remove(this);
+            int count = newList.size();
+            if (count > 0)
+                damage *= (1 + count * ForceDamage.MULT);
+        }
+        if (damage != baseDamage)
+            isDamageModified = true;
+    }
+
     public void onPickup() {}
 
     @Override

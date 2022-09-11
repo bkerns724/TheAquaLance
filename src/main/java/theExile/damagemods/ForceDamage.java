@@ -8,32 +8,24 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Force;
-import theExile.powers.CrushedPower;
-import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
-
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemy;
 
 @AutoAdd.Ignore
 public class ForceDamage extends AbstractDamageModifier {
     public static final String ID = ExileMod.makeID(ForceDamage.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public TooltipInfo forceTooltip;
-    public TooltipInfo forceTooltip2;
+    private TooltipInfo forceTooltip;
     private boolean visibleTips = true;
-    private static final int THRESHOLD = 3;
-
-    private int blockedAmount = 0;
+    public static final float MULT = 0.25f;
 
     public ForceDamage() {
         forceTooltip = null;
-        forceTooltip2 = null;
     }
 
     public ForceDamage(boolean visTips) {
@@ -47,32 +39,23 @@ public class ForceDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        this.blockedAmount = blockedAmount;
-    }
-
-    @Override
-    public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        if (adp() == null || adp() == target)
-            return;
-        float crushed = lastDamageTaken + blockedAmount;
-        crushed = crushed / THRESHOLD;
-        if (adp().hasRelic(BlueMarbles.ID))
-            crushed *= BlueMarbles.INCREASE;
-        if ((int)crushed > 0)
-            applyToEnemy(target, new CrushedPower(target, (int)crushed));
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        ArrayList<AbstractCard> newList = new ArrayList<>(AbstractDungeon.actionManager.cardsPlayedThisTurn);
+        newList.remove(card);
+        int count = newList.size();
+        if (count > 0)
+            return damage * (1 + count*MULT);
+        return damage;
     }
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
         if (!visibleTips)
-            return new ArrayList<TooltipInfo>();
+            return new ArrayList<>();
         if (forceTooltip == null)
             forceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
-        if (forceTooltip2 == null)
-            forceTooltip2 = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]);
 
-        return new ArrayList<TooltipInfo>() { { add(forceTooltip); add(forceTooltip2); } };
+        return new ArrayList<TooltipInfo>() { { add(forceTooltip); } };
     }
 
     public static ArrayList<PowerTip> getPowerTips() {
@@ -82,8 +65,6 @@ public class ForceDamage extends AbstractDamageModifier {
         return list;
     }
 
-    //Overriding this to true tells us that this damage mod is considered part of the card and not just something added on to the card later.
-    //If you ever add a damage modifier during the initialization of a card, it should be inherent.
     public boolean isInherent() {
         return true;
     }
@@ -92,7 +73,6 @@ public class ForceDamage extends AbstractDamageModifier {
     public AbstractDamageModifier makeCopy() {
         ForceDamage output = new ForceDamage(visibleTips);
         output.forceTooltip = this.forceTooltip;
-        output.forceTooltip2 = this.forceTooltip2;
         return output;
     }
 
