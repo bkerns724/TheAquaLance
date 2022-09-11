@@ -46,7 +46,7 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Gain 25% extra damage for each card played this turn."
+      "Gains 25% extra damage for each card played this turn."
     ]
   },
   "${ModID}:DeathLightningDamage": {
@@ -307,7 +307,7 @@
   },
   "${ModID}:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! ${ModID}:Poison. Enemy deals !${ModID}:M2! less damage this turn.",
+    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! Poison. Enemy deals !${ModID}:M2! less damage this turn.",
     "FLAVOR": "My favorite spell."
   },
   "${ModID}:Drain": {
@@ -420,7 +420,7 @@
   },
   "${ModID}:HammerAnvil": {
     "NAME": "Hammer & Anvil",
-    "DESCRIPTION": "Deal !D! damage. NL For every !M! damage done, enemy takes one more damage from attacks."
+    "DESCRIPTION": "Deal !D! damage. NL For every !M! unblocked damage, enemy takes one more damage from attacks."
   },
   "${ModID}:Storm": {
     "NAME": "Storm",

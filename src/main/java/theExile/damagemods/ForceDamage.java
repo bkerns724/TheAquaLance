@@ -39,7 +39,7 @@ public class ForceDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+    public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
         ArrayList<AbstractCard> newList = new ArrayList<>(AbstractDungeon.actionManager.cardsPlayedThisTurn);
         newList.remove(card);
         int count = newList.size();

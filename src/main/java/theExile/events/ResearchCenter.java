@@ -17,9 +17,11 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
-import theExile.cards.Dualcast;
 import theExile.cards.EnchantedDagger;
-import theExile.damagemods.*;
+import theExile.damagemods.DeathLightningDamage;
+import theExile.damagemods.EldritchDamage;
+import theExile.damagemods.ForceDamage;
+import theExile.damagemods.IceDamage;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
 
@@ -231,7 +233,6 @@ public class ResearchCenter extends AbstractExileEvent {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK &&
                     ((AbstractExileCard) card).damageModList.size() < 5) {
-                if (!(card instanceof Dualcast) || ((AbstractExileCard) card).damageModList.size() < 3)
                 return true;
             }
         return false;
@@ -241,8 +242,6 @@ public class ResearchCenter extends AbstractExileEvent {
         for (AbstractCard card : adp().masterDeck.group)
             if (card instanceof AbstractExileCard && card.type == AbstractCard.CardType.ATTACK &&
                     !((AbstractExileCard) card).damageModList.contains(ele)) {
-                if (!(card instanceof Dualcast)
-                        || (ele != AbstractExileCard.elenum.FORCE && ele != AbstractExileCard.elenum.ICE))
                     return true;
             }
         return false;
