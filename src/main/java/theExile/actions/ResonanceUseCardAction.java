@@ -3,6 +3,7 @@ package theExile.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.cards.AbstractExileCard;
+import theExile.powers.AcousticsPower;
 
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.forAllMonstersLiving;
@@ -14,7 +15,7 @@ public class ResonanceUseCardAction extends AbstractGameAction {
     public ResonanceUseCardAction(AbstractExileCard card, AbstractMonster target) {
         this.card = card;
         this.target = target;
-        acoustic = target == null;
+        acoustic = adp() != null && adp().hasPower(AcousticsPower.POWER_ID);
     }
 
     @Override
@@ -22,9 +23,9 @@ public class ResonanceUseCardAction extends AbstractGameAction {
         isDone = true;
         if (!acoustic && target == null) {
             card.nonTargetUse();
-            return;
+            card.autoTargetUse(card.getTarget());
         }
-        if (!acoustic) {
+        else if (!acoustic) {
             if (!card.canUse(adp(), (AbstractMonster) target))
                 return;
             card.calculateCardDamage((AbstractMonster) target);

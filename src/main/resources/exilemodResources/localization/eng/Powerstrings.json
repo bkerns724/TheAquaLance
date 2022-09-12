@@ -85,8 +85,8 @@
   "${ModID}:ConvertPower": {
     "NAME": "ConvertPower",
     "DESCRIPTIONS": [
-      "The next non-power non-exhausting Exile card you play becomes ${ModID}:Resonant.",
-      "The next !A! non-power non-exhausting Exile cards you play become ${ModID}:Resonant."
+      "The next non-power non-exhausting Exile card you play becomes #yResonant.",
+      "The next !A! non-power non-exhausting Exile cards you play become #yResonant."
     ]
   },
   "${ModID}:SharpNoisePower": {

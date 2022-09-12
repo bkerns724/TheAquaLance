@@ -73,7 +73,7 @@ public class Resonance {
 
             Collections.reverse(cards);
             for (AbstractExileCard inCard : cards) {
-                inCard.beingDiscarded = true;
+                inCard.freeToPlayOnce = true;
                 ResonanceUseCardAction action = new ResonanceUseCardAction(inCard, null);
                 BindingHelper.bindAction(getMergedDamageMods(inCard), action);
                 att(action);
@@ -101,7 +101,7 @@ public class Resonance {
 
             Collections.reverse(cards);
             for (AbstractExileCard inCard : cards) {
-                inCard.beingDiscarded = true;
+                inCard.freeToPlayOnce = true;
                 ResonanceUseCardAction action = new ResonanceUseCardAction(inCard, m);
                 BindingHelper.bindAction(getMergedDamageMods(inCard), action);
                 att(action);
