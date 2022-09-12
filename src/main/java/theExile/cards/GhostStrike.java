@@ -1,37 +1,40 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import theExile.powers.EnergizedExilePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.applyToSelf;
 
-public class PhantomMace extends AbstractExileCard {
-    public final static String ID = makeID(PhantomMace.class.getSimpleName());
-    private final static int DAMAGE = 10;
-    private final static int UPGRADE_DAMAGE = 2;
-    private final static int MAGIC = 2;
+public class GhostStrike extends AbstractExileCard {
+    public final static String ID = makeID(GhostStrike.class.getSimpleName());
+    private final static int DAMAGE = 6;
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
-    public PhantomMace() {
+    public GhostStrike() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
+        magicNumber = baseMagicNumber = MAGIC;
+        tags.add(CardTags.STRIKE);
         addModifier(elenum.PHANTASMAL);
     }
 
     public void singleTargetUse(AbstractMonster m) {
         dmg(m);
-        applyToEnemy(m, new WeakPower(m, magicNumber, false));
+    }
+
+    @Override
+    public void nonTargetUse() {
+        applyToSelf(new EnergizedExilePower(magicNumber));
     }
 
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
         upMagic(UPGRADE_MAGIC);
     }
 }

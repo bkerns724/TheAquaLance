@@ -1,54 +1,53 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
 
 public class Collapse extends AbstractExileCard {
     public final static String ID = makeID(Collapse.class.getSimpleName());
-    private final static int DAMAGE = 20;
-    private final static int UPGRADE_DAMAGE = 7;
-    private final static int MAGIC = 5;
-    private final static int COST = 0;
+    private final static int DAMAGE = 12;
+    private final static int UPGRADE_DAMAGE = 3;
+    private final static int MAGIC = 3;
+    private final static int UPGRADE_MAGIC = 1;
+    private final static int COST = 2;
 
     public Collapse() {
-        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
     }
 
-    @Override
-    protected void applyAttributes() {
+    public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        addModifier(elenum.FORCE);
-        glowColor = GOLD_BORDER_GLOW_COLOR;
-    }
-
-    public void singleTargetUse(AbstractMonster m) {
-        if (getDebuffCount(m) >= magicNumber)
-            dmg(m);
+        addModifier(elenum.PHANTASMAL);
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        if (m == null) {
-            for (AbstractMonster mon : getEnemies()) {
-                if (getDebuffCount(mon) >= magicNumber)
-                    return true;
-            }
-            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-            return false;
-        }
+    public void nonTargetUse() {
+        allDmg();
+    }
 
-        int count = getDebuffCount(m);
-        if (count >= magicNumber)
-            return true;
-        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        return false;
+    @Override
+    public void applyPowers() {
+        int temp = baseDamage;
+        baseDamage += magicNumber * Wiz.getEnemies().size();
+        super.applyPowers();
+        baseDamage = temp;
+        isDamageModified = baseDamage != damage;
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int temp = baseDamage;
+        baseDamage += magicNumber * Wiz.getEnemies().size();
+        super.calculateCardDamage(mo);
+        baseDamage = temp;
+        isDamageModified = baseDamage != damage;
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
+        upgradeMagicNumber(UPGRADE_MAGIC);
     }
 }

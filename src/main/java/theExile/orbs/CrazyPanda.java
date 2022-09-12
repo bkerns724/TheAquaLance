@@ -12,11 +12,13 @@ import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import theExile.ExileMod;
+import theExile.actions.PandaEvokeAction;
 import theExile.actions.PandaSmackAction;
 import theExile.patches.PandaPatch;
 
 import static java.lang.Math.pow;
 import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.att;
 
 public class CrazyPanda extends CustomOrb {
     public static final String ORB_ID = ExileMod.makeID(CrazyPanda.class.getSimpleName());
@@ -26,8 +28,8 @@ public class CrazyPanda extends CustomOrb {
     private static final String IMG_PATH = "exilemodResources/images/vfx/CrazyPanda.png";
 
     // DO NOT SET EITHER OF THESE TO ZERO
-    private static final float BOUNCE_DURATION = 1.0f;
-    private static final float GRAVITY = 2700.0f;
+    public static final float BOUNCE_DURATION = 1.0f;
+    public static final float GRAVITY = 2700.0f;
 
     private float bounceTime = 0;
     private boolean shooting = false;
@@ -39,6 +41,8 @@ public class CrazyPanda extends CustomOrb {
 
     private float rotation;
 
+    public boolean isCopy = false;
+
     public CrazyPanda(int passive)
     {
         super(ORB_ID, NAME, passive, 0, "", "", IMG_PATH);
@@ -48,7 +52,11 @@ public class CrazyPanda extends CustomOrb {
     }
 
     @Override
-    public void onEvoke() {}
+    public void onEvoke() {
+        CrazyPanda copy = (CrazyPanda) makeCopy();
+        copy.isCopy = true;
+        att(new PandaEvokeAction(copy, this));
+    }
 
     @Override
     public void playChannelSFX() {
@@ -84,7 +92,6 @@ public class CrazyPanda extends CustomOrb {
 
     @Override
     public void updateAnimation() {
-        bobEffect.update();
         if (channelAnimTimer != 0.0F) {
             channelAnimTimer -= Gdx.graphics.getDeltaTime();
             if (channelAnimTimer < 0.0F) {
@@ -121,6 +128,13 @@ public class CrazyPanda extends CustomOrb {
     public void render(SpriteBatch sb) {
         if (PandaPatch.AbstractOrbIsInPlayerRender.isPlayerRender.get(this))
             return;
+        if (isCopy && shooting) {
+            ExileMod.logger.info("Rendered 2");
+            ExileMod.logger.info(cX);
+            ExileMod.logger.info(cY);
+            ExileMod.logger.info(tX);
+            ExileMod.logger.info(tY);
+        }
         sb.setColor(Color.WHITE.cpy());
         sb.setBlendFunction(770, 771);
         sb.draw(img, cX - 48.0F, cY - 48.0F, 48.0F, 48.0F, 96.0F, 96.0F, scale, scale, rotation, 0, 0, 96, 96, false, false);
@@ -143,7 +157,17 @@ public class CrazyPanda extends CustomOrb {
 
     @Override
     public AbstractOrb makeCopy() {
-        return new CrazyPanda(passiveAmount);
+        CrazyPanda copy = new CrazyPanda(passiveAmount);
+        copy.cX = cX;
+        copy.cY = cY;
+        copy.tX = tX;
+        copy.tY = tY;
+        copy.hb.move(tX, tY);
+        copy.rotation = rotation;
+        copy.c.a = 1;
+        copy.scale = Settings.scale;
+        channelAnimTimer = 0;
+        return copy;
     }
 }
 

@@ -17,7 +17,7 @@ public class ElementalConflux extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
-        addModifier(elenum.FORCE);
+        addModifier(elenum.PHANTASMAL);
         addModifier(elenum.ICE);
     }
 

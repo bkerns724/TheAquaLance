@@ -14,7 +14,7 @@ import static theExile.util.Wiz.adp;
 
 public class HexedStaff extends AbstractExileRelic {
     public static final String ID = makeID(HexedStaff.class.getSimpleName());
-    public static final float BONUS_MULT = 0.5f;
+    public static final float BONUS_MULT = 0.25f;
     private static final int BONUS_PERCENT = (int)(BONUS_MULT*100);
     private static final AbstractCard CARD_TO_PREVIEW = new Wrath();
 

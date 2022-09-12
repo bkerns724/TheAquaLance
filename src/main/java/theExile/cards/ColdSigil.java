@@ -6,20 +6,20 @@ import theExile.ExileMod;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.getLowestHealthEnemy;
 
-public class ShockwaveSigil extends AbstractExileCard {
-    public final static String ID = makeID(ShockwaveSigil.class.getSimpleName());
-    private final static int DAMAGE = 5;
-    private final static int UPGRADE_DAMAGE = 2;
+public class ColdSigil extends AbstractExileCard {
+    public final static String ID = makeID(ColdSigil.class.getSimpleName());
+    private final static int DAMAGE = 7;
+    private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = -2;
 
-    public ShockwaveSigil() {
+    public ColdSigil() {
         super(ID, COST, CardType.ATTACK, CardRarity.BASIC, ExileMod.Enums.AUTOAIM_ENEMY);
     }
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
         sigil = true;
-        addModifier(elenum.FORCE);
+        addModifier(elenum.ICE);
     }
 
     @Override

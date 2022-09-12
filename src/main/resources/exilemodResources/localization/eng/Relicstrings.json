@@ -25,7 +25,7 @@
     "NAME": "Blessed Necklace",
     "FLAVOR": "Cleric talented! Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! #yTemporary_HP per card discarded."
+      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! Block per card discarded."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -33,6 +33,13 @@
     "FLAVOR": "It looks like a Halloween mask. But the facial features move on their own.",
     "DESCRIPTIONS": [
       "At the start of each combat, apply !R! #y${ModID}:Jinx to ALL enemies."
+    ]
+  },
+  "${ModID}:TwistedShuriken": {
+    "NAME": "Twisted Shuriken",
+    "FLAVOR": "It looks menacing, but you aren't sure how to safely throw it.",
+    "DESCRIPTIONS": [
+      "Every time you play !R! attacks in a single turn, apply !R2! #y${ModID}:Jinx to ALL enemies."
     ]
   },
   "${ModID}:RingOfWhispers": {
@@ -67,7 +74,7 @@
     "NAME": "TatteredCloak",
     "FLAVOR": "There's like 500 knives sewn to this thing.",
     "DESCRIPTIONS": [
-      "The first five times each combat that you discard a card during your turn, add a #yShiv into your hand."
+      "Whenever you discard a card during your turn, add a #yShiv into your hand."
     ]
   },
   "${ModID}:EyeballStaff": {
@@ -88,7 +95,7 @@
     "NAME": "Blue Marbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "[${ModID}:ForceIcon] and [${ModID}:IceIcon] damage apply +50% more #y${ModID}:Crushed and #y${ModID}:Frostbite."
+      "Your [${ModID}:PhantasmalIcon] and [${ModID}:IceIcon] damage apply +50% more #y${ModID}:Flanked and #y${ModID}:Frostbite."
     ]
   },
   "${ModID}:VialOfBlackBlood": {

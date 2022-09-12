@@ -5,22 +5,22 @@ import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import theExile.ExileMod;
 import theExile.util.TexLoader;
 
-public class Force extends AbstractCustomIcon {
-    private static Force singleton;
-    public static final String ID = ExileMod.makeID(Force.class.getSimpleName());
+public class Phantasmal extends AbstractCustomIcon {
+    private static Phantasmal singleton;
+    public static final String ID = ExileMod.makeID(Phantasmal.class.getSimpleName());
     private static final String TEXTURE_STRING = "exilemodResources/images/damageIcons/Force.png";
     private static final Texture TEXTURE =
             TexLoader.getTexture(TEXTURE_STRING);
     public static final String CODE = "[" + ID + "Icon]";
 
-    public Force() {
+    public Phantasmal() {
         super(ID, TEXTURE);
     }
 
-    public static Force get()
+    public static Phantasmal get()
     {
         if (singleton == null) {
-            singleton = new Force();
+            singleton = new Phantasmal();
         }
         return singleton;
     }

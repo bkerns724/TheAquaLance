@@ -41,7 +41,7 @@
       "Panda",
       "panda"
     ],
-    "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn. Ignores #yFocus."
+    "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn."
   },
   {
     "PROPER_NAME": "Resonance",
@@ -62,6 +62,14 @@
       "frostbite"
     ],
     "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage and Frostbite is reduced by 1."
+  },
+  {
+    "PROPER_NAME": "Flanked",
+    "NAMES": [
+      "Flanked",
+      "flanked"
+    ],
+    "DESCRIPTION": "Flanked creatures lose HP whenever they are attacked."
   },
   {
     "PROPER_NAME": "Jinx",

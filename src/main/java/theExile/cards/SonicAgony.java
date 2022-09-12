@@ -4,7 +4,7 @@ import static theExile.ExileMod.makeID;
 
 public class SonicAgony extends AbstractResonantCard {
     public final static String ID = makeID(SonicAgony.class.getSimpleName());
-    private final static int DAMAGE = 10;
+    private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
 

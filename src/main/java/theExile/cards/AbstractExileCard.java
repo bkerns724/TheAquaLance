@@ -43,7 +43,7 @@ import theExile.cards.cardUtil.Resonance;
 import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
 import theExile.icons.Eldritch;
-import theExile.icons.Force;
+import theExile.icons.Phantasmal;
 import theExile.icons.Ice;
 import theExile.icons.Lightning;
 import theExile.powers.AbstractExilePower;
@@ -94,7 +94,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
     public static final String COLD_STRING = Ice.CODE;
-    public static final String FORCE_STRING = Force.CODE;
+    public static final String PHANTASMAL_STRING = Phantasmal.CODE;
     public static final String ELDRITCH_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
 
@@ -106,11 +106,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public enum elenum {
         ICE,
-        FORCE,
+        PHANTASMAL,
         ELDRITCH,
         LIGHTNING,
         FAKE_ICE,
-        FAKE_FORCE,
+        FAKE_PHANTASMAL,
         FAKE_ELDRITCH,
         FAKE_LIGHTNING
     }
@@ -147,20 +147,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     protected abstract void applyAttributes();
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        if (damageModList.contains(FORCE)) {
-            ArrayList<AbstractCard> newList = new ArrayList<>(AbstractDungeon.actionManager.cardsPlayedThisTurn);
-            newList.remove(this);
-            int count = newList.size();
-            if (count > 0)
-                damage *= (1 + count * ForceDamage.MULT);
-        }
-        if (damage != baseDamage)
-            isDamageModified = true;
-    }
 
     public void onPickup() {}
 
@@ -351,8 +337,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
             if (damageModList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
-            if (damageModList.contains(FORCE))
-                rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
+            if (damageModList.contains(PHANTASMAL))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + PHANTASMAL_STRING + " ");
             if (damageModList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }
@@ -430,16 +416,16 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         damageModList.add(element);
         if (element == ICE)
             DamageModifierManager.addModifier(this, new IceDamage(tips));
-        if (element == elenum.FORCE)
-            DamageModifierManager.addModifier(this, new ForceDamage(tips));
+        if (element == elenum.PHANTASMAL)
+            DamageModifierManager.addModifier(this, new PhantasmalDamage(tips));
         if (element == elenum.ELDRITCH)
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         if (element == LIGHTNING)
             DamageModifierManager.addModifier(this, new DeathLightningDamage(tips));
         if (element == FAKE_ICE)
             DamageModifierManager.addModifier(this, new FakeIceDamage(tips));
-        if (element == FAKE_FORCE)
-            DamageModifierManager.addModifier(this, new FakeForceDamage(tips));
+        if (element == FAKE_PHANTASMAL)
+            DamageModifierManager.addModifier(this, new FakePhantasmalDamage(tips));
         if (element == FAKE_ELDRITCH)
             DamageModifierManager.addModifier(this, new FakeEldritchDamage(tips));
         if (element == FAKE_LIGHTNING)

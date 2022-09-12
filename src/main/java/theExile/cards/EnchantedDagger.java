@@ -61,8 +61,8 @@ public class EnchantedDagger extends AbstractExileCard {
                         addModifier(ELDRITCH);
                     if (e == LIGHTNING || e == FAKE_LIGHTNING)
                         addModifier(LIGHTNING);
-                    if (e == FORCE || e == FAKE_FORCE)
-                        addModifier(FORCE);
+                    if (e == PHANTASMAL || e == FAKE_PHANTASMAL)
+                        addModifier(PHANTASMAL);
                 }
             }
         }
@@ -92,8 +92,8 @@ public class EnchantedDagger extends AbstractExileCard {
                         addModifier(ELDRITCH);
                     if (e == LIGHTNING || e == FAKE_LIGHTNING)
                         addModifier(LIGHTNING);
-                    if (e == FORCE || e == FAKE_FORCE)
-                        addModifier(FORCE);
+                    if (e == PHANTASMAL || e == FAKE_PHANTASMAL)
+                        addModifier(PHANTASMAL);
                 }
             }
         }
@@ -120,8 +120,8 @@ public class EnchantedDagger extends AbstractExileCard {
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
             if (damageModList.contains(ELDRITCH) || stableList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
-            if (damageModList.contains(FORCE) || stableList.contains(FORCE))
-                rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
+            if (damageModList.contains(PHANTASMAL) || stableList.contains(PHANTASMAL))
+                rawDescription = rawDescription.replace("!D! ", "!D! " + PHANTASMAL_STRING + " ");
             if (damageModList.contains(LIGHTNING) || stableList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }

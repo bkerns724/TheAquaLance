@@ -1,11 +1,17 @@
 package theExile.patches;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.defect.EvokeWithoutRemovingOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import javassist.CtBehavior;
+import theExile.ExileMod;
 import theExile.orbs.CrazyPanda;
+
+import static theExile.util.Wiz.adp;
 
 public class PandaPatch {
     @SpirePatch (
@@ -50,7 +56,28 @@ public class PandaPatch {
                 if (o instanceof CrazyPanda)
                     o.render(sb);
             }
+            for (CrazyPanda panda : ExileMod.pandaList) {
+                AbstractOrbIsInPlayerRender.isPlayerRender.set(panda, false);
+                panda.render(sb);
+            }
         }
     }
 
+    @SpirePatch2(
+            clz = EvokeWithoutRemovingOrbAction.class,
+            method = "update"
+    )
+    public static class NotBoringPlease {
+        @SpirePrefixPatch
+        public static void Prefix(EvokeWithoutRemovingOrbAction __instance) {
+            int amount = ReflectionHacks.getPrivate(__instance, EvokeWithoutRemovingOrbAction.class, "orbCount");
+            if (amount > 1)
+                return;
+            if (adp() != null && adp().orbs.size() > 0) {
+                AbstractOrb o = adp().orbs.get(0);
+                if (o instanceof CrazyPanda)
+                    ReflectionHacks.setPrivate(__instance, AbstractGameAction.class, "isDone", true);
+            }
+        }
+    }
 }

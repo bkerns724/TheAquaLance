@@ -20,7 +20,7 @@ import theExile.cards.AbstractExileCard;
 import theExile.cards.EnchantedDagger;
 import theExile.damagemods.DeathLightningDamage;
 import theExile.damagemods.EldritchDamage;
-import theExile.damagemods.ForceDamage;
+import theExile.damagemods.PhantasmalDamage;
 import theExile.damagemods.IceDamage;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
@@ -141,10 +141,10 @@ public class ResearchCenter extends AbstractExileEvent {
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, IceDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[2], true);
-                    if (checkForUpgradableCard(AbstractExileCard.elenum.FORCE)) {
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.PHANTASMAL)) {
                         imageEventText.setDialogOption(options[3]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(1);
-                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, ForceDamage.getPowerTips());
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, PhantasmalDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[3], true);
                     if (checkForUpgradableCard(AbstractExileCard.elenum.ELDRITCH)) {
@@ -194,7 +194,7 @@ public class ResearchCenter extends AbstractExileEvent {
             if (buttonPressed == 0)
                 element = AbstractExileCard.elenum.ICE;
             else if (buttonPressed == 1)
-                element = AbstractExileCard.elenum.FORCE;
+                element = AbstractExileCard.elenum.PHANTASMAL;
             else if (buttonPressed == 2)
                 element = AbstractExileCard.elenum.ELDRITCH;
             else if (buttonPressed == 3)

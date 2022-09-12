@@ -4,21 +4,21 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.TheExile;
-import theExile.damagemods.ForceDamage;
+import theExile.damagemods.PhantasmalDamage;
 import theExile.damagemods.IceDamage;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 
-// Code in Ice and Force damage mods
+// Code in Ice and Phantasmal damage mods
 public class BlueMarbles extends AbstractExileRelic {
     public static final String ID = makeID(BlueMarbles.class.getSimpleName());
-    private static final CardStrings forceStrings = CardCrawlGame.languagePack.getCardStrings(ForceDamage.ID);
+    private static final CardStrings forceStrings = CardCrawlGame.languagePack.getCardStrings(PhantasmalDamage.ID);
     private static final CardStrings iceStrings = CardCrawlGame.languagePack.getCardStrings(IceDamage.ID);
     public static final float INCREASE = 1.5f;
 
     public BlueMarbles() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
+        super(ID, RelicTier.RARE, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

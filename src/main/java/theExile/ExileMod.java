@@ -35,9 +35,10 @@ import theExile.events.ClericsRequest;
 import theExile.events.ResearchCenter;
 import theExile.events.VoidSpirits;
 import theExile.icons.Eldritch;
-import theExile.icons.Force;
 import theExile.icons.Ice;
 import theExile.icons.Lightning;
+import theExile.icons.Phantasmal;
+import theExile.orbs.CrazyPanda;
 import theExile.potions.*;
 import theExile.relics.AbstractExileRelic;
 import theExile.util.ClickableForPower;
@@ -45,6 +46,7 @@ import theExile.util.ClickyFtue;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static theExile.TheExile.Enums.THE_EXILE;
@@ -143,6 +145,8 @@ public class ExileMod implements
     public static final Color purpleColor = new Color(0.45f, 0f, 0.6f, 1.0f);
     public static final Color darkColor = new Color(0.25f, 0.25f, 0.25f, 1.0f);
     public static final Color EXILE_EYE_COLOR = purpleColor.cpy();
+
+    public static final ArrayList<CrazyPanda> pandaList = new ArrayList<>();
 
     public ExileMod() {
         BaseMod.addColor(TheExile.Enums.EXILE_BROWN_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
@@ -291,7 +295,7 @@ public class ExileMod implements
         BaseMod.addDynamicVariable(new SecondMagicNumber());
         BaseMod.addDynamicVariable(new ThirdMagicNumber());
 
-        CustomIconHelper.addCustomIcon(Force.get());
+        CustomIconHelper.addCustomIcon(Phantasmal.get());
         CustomIconHelper.addCustomIcon(Ice.get());
         CustomIconHelper.addCustomIcon(Eldritch.get());
         CustomIconHelper.addCustomIcon(Lightning.get());
@@ -529,6 +533,8 @@ public class ExileMod implements
             if (needTutorial())
                 AbstractDungeon.ftue = new ClickyFtue("whee", "boop", Settings.WIDTH / 2f, Settings.HEIGHT / 2f);
         }
+        // shouldn't be necessary
+        pandaList.clear();
     }
 
     @Override

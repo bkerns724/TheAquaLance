@@ -113,8 +113,8 @@ public class TheExile extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
-        retVal.add(FrostBolt.ID);
-        retVal.add(ShockwaveSigil.ID);
+        retVal.add(PhantomFist.ID);
+        retVal.add(ColdSigil.ID);
 
         return retVal;
     }

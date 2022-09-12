@@ -16,6 +16,8 @@ import theExile.icons.Lightning;
 
 import java.util.ArrayList;
 
+import static com.megacrit.cardcrawl.cards.DamageInfo.DamageType.NORMAL;
+
 @AutoAdd.Ignore
 public class DeathLightningDamage extends AbstractDamageModifier {
     public static final String ID = ExileMod.makeID(DeathLightningDamage.class.getSimpleName());
@@ -39,7 +41,9 @@ public class DeathLightningDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.5f : damage;
+        if (type == NORMAL)
+            return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.5f : damage;
+        return damage;
     }
 
     @Override

@@ -1,14 +1,13 @@
 package theExile.powers;
 
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theExile.ExileMod;
 import theExile.orbs.CrazyPanda;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.atb;
 
 public class SummonMonsterPower extends AbstractExilePower {
     public static String POWER_ID = ExileMod.makeID(SummonMonsterPower.class.getSimpleName());
@@ -25,8 +24,6 @@ public class SummonMonsterPower extends AbstractExilePower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (adp().maxOrbs >= adp().masterMaxOrbs)
-            atb(new IncreaseMaxOrbAction(1));
         atb(new ChannelAction(new CrazyPanda(amount)));
     }
 }

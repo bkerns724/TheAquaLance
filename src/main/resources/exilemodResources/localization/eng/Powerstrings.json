@@ -49,7 +49,7 @@
   "${ModID}:SummonMonsterPower": {
     "NAME": "Pandamonium",
     "DESCRIPTIONS": [
-      "At the end of your turn, gain an Orb slot and Channel a Panda that deals !A! damage."
+      "At the end of your turn, Channel a Panda that deals !A! damage."
     ]
   },
   "${ModID}:SiphonPower": {
@@ -74,12 +74,6 @@
     "NAME": "Damage Down",
     "DESCRIPTIONS": [
       "Does !A! less damage with attacks this turn."
-    ]
-  },
-  "${ModID}:CrushedPower": {
-    "NAME": "Crushed",
-    "DESCRIPTIONS": [
-      "Takes !A! more damage from attacks."
     ]
   },
   "${ModID}:BarbedPower": {
@@ -164,16 +158,16 @@
       "Whenever you would take damage this turn, take !A! less."
     ]
   },
-  "${ModID}:CrumblingPower": {
-    "NAME": "Crumbling",
+  "${ModID}:FlankedPower": {
+    "NAME": "Flanked",
     "DESCRIPTIONS": [
-      "Takes !A! % extra damage from non-Attacks."
+      "Loses !A! HP when attacked."
     ]
   },
   "${ModID}:GolemPower": {
     "NAME": "Golem",
     "DESCRIPTIONS": [
-      "Gain !A! % more Block."
+      "Gain !A! % more Block from cards."
     ]
   },
   "${ModID}:DecayPower": {
@@ -182,11 +176,11 @@
       "Takes !A! extra damage from non-Attacks."
     ]
   },
-  "${ModID}:FocusedPower": {
-    "NAME": "Focused",
+  "${ModID}:MomentumPower": {
+    "NAME": "Momentum",
     "DESCRIPTIONS": [
-      "Once per turn you may put a card from your hand on top of your draw pile.",
-      "!A! times per turn you may put a card from your hand on top of your draw pile."
+      "The first time you play an attack each turn, draw a card.",
+      "The first !A! times you play an attack each turn, draw a card."
     ]
   },
   "${ModID}:SpiritPressurePower": {
