@@ -30,7 +30,7 @@ public class HeatRay extends AbstractExileCard {
     public void singleTargetUse(AbstractMonster m) {
         atb(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
         Wiz.vfx(new MySmallLaserEffect(adp().hb.cX + 30f* Settings.scale, adp().hb.cY + 55f*Settings.scale,
-                m.hb.cX, m.hb.cY ), 1F);
+                m.hb.cX, m.hb.cY ), 0.3F);
         DamageInfo info = new DamageInfo(adp(), damage, DamageInfo.DamageType.NORMAL);
         atb(new HeatRayAction(m, info));
     }

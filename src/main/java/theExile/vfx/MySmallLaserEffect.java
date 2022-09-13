@@ -14,7 +14,7 @@ public class MySmallLaserEffect extends AbstractGameEffect {
     private final float sX;
     private final float sY;
     private final float dst;
-    private static final float DUR = 1.0F;
+    private static final float DUR = 0.5F;
     private static TextureAtlas.AtlasRegion img;
 
     public MySmallLaserEffect(float sX, float sY, float dX, float dY) {
