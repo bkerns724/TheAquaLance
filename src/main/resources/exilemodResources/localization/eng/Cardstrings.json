@@ -69,10 +69,9 @@
     "DESCRIPTION": "Gain !B! Block.",
     "FLAVOR": "I wear a buckler as a very last line of defense."
   },
-  "${ModID}:PhantomFist": {
-    "NAME": "Phantom Fist",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card.",
-    "FLAVOR": "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
+  "${ModID}:ForceBolt": {
+    "NAME": "Force Bolt",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card."
   },
   "${ModID}:ColdSigil": {
     "NAME": "Cold Sigil",
@@ -94,11 +93,11 @@
     "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each card discarded this turn.",
     "FLAVOR": "I learned this spell from a stranger on a train."
   },
-  "${ModID}:GhostStrike": {
-    "NAME": "Ghost Strike",
+  "${ModID}:PhantomFist": {
+    "NAME": "Phantom Fist",
     "DESCRIPTION": "Deal !D! damage. NL Gain [E] next turn.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain [E] [E] next turn.",
-    "FLAVOR": "Phantasmal spells are not actually ghosts or phantoms."
+    "FLAVOR": "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:LightningBolt": {
     "NAME": "Lightning Bolt",
@@ -154,8 +153,8 @@
     "DESCRIPTION": "ALL enemies take !M! more non-Attack damage.",
     "FLAVOR": "These are a pain because they fall apart in a few days and then you have to remake it."
   },
-  "${ModID}:BlizzardSigil": {
-    "NAME": "Blizzard Sigil",
+  "${ModID}:FrozenSigil": {
+    "NAME": "Frozen Sigil",
     "DESCRIPTION": "Deal !D! damage to the lowest hp enemy. NL Take !M! damage.",
     "FLAVOR": "This is difficult to throw without freezing your hand off."
   },
@@ -194,9 +193,9 @@
     "DESCRIPTION": "Apply ${ModID}:Jinx to ALL enemies equal to their debuffs.",
     "FLAVOR": "When they're down, keep them down."
   },
-  "${ModID}:SharpSigil": {
-    "NAME": "Sharp Sigil",
-    "DESCRIPTION": "Enemy takes !M! damage when attacked this turn. NL Apply !M! ${ModID}:Frostbite."
+  "${ModID}:VibratingSigil": {
+    "NAME": "Vibrating Sigil",
+    "DESCRIPTION": "Apply !M! ${ModID}:Ringing and !M! ${ModID}:Frostbite to ALL enemies."
   },
   "${ModID}:Weave": {
     "NAME": "Weave",
@@ -204,15 +203,14 @@
     "UPGRADE_DESCRIPTION": "All Exile Attack cards in your hand gain each other's elements for the rest of combat.",
     "FLAVOR": "It is difficult to include a piece of one spell into another spell, but the payoff can be great if you are clever with it."
   },
-  "${ModID}:ConsumeTheWeak": {
-    "NAME": "Consume the Weak",
+  "${ModID}:CrushTheWeak": {
+    "NAME": "Crush the Weak",
     "DESCRIPTION": "Deal !D! damage. NL Apply 1 ${ModID}:Jinx for each Buff you have.",
-    "FLAVOR": "The old ones hunger."
+    "FLAVOR": "Some of the monsters make a really satisfying crunch sound when you land this right."
   },
-  "${ModID}:Harmony": {
-    "NAME": "Harmony",
-    "DESCRIPTION": "At the end of your turn, gain Block equal to your ${ModID}:Resonance amount times !M!.",
-    "FLAVOR": "Practice aligning the different pieces of your resonant spells. The more in tune they are, the more powerful they become."
+  "${ModID}:Efficient": {
+    "NAME": "Efficient",
+    "DESCRIPTION": "${ModID}:Activate: Once per turn you may discard a card and apply !M! ${ModID}:Ringing to ALL enemies."
   },
   "${ModID}:VoodooDoll": {
     "NAME": "Voodoo Doll",
@@ -233,7 +231,7 @@
   },
   "${ModID}:LongNote": {
     "NAME": "Long Note",
-    "DESCRIPTION": "Enemy takes !M! damage at the start of its turns.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Ringing.",
     "FLAVOR": "This is the song that never ends. It goes on and on my friends."
   },
   "${ModID}:DeafeningChimes": {
@@ -257,11 +255,11 @@
   },
   "${ModID}:ElementalProwess": {
     "NAME": "Elemental Prowess",
-    "DESCRIPTION": "Whenever you play a card, ALL enemies take !M! damage of each damage type it had."
+    "DESCRIPTION": "An element of your choice is twice as effective."
   },
   "${ModID}:Convert": {
     "NAME": "Convert",
-    "DESCRIPTION": "The next non-power non-exhausting Exile card you play becomes ${ModID}:Resonant.",
+    "DESCRIPTION": "Choose a non-power non-exhausting Exile card and add it to your ${ModID}:Resonance.",
     "FLAVOR": "They said it couldn't be done. But I managed to invent this anyway."
   },
   "${ModID}:GreaterBarrier": {
@@ -320,15 +318,15 @@
     "DESCRIPTION": "Steal !M! Strength. NL Costs 1 less for each [${ModID}:EldritchIcon] attack played this combat.",
     "FLAVOR": "Sometimes you only need to see a few seconds into the future."
   },
-  "${ModID}:TelekineticBlades": {
-    "NAME": "Telekinetic Blades",
-    "DESCRIPTION": "Dead !D! damage !M! times.",
-    "FLAVOR": "Practice until you can use the blade while casting other spells."
+  "${ModID}:HeatRay": {
+    "NAME": "Heat Ray",
+    "DESCRIPTION": "Dead !D! damage. NL If this kills an enemy, gain [E] and draw a card.",
+    "FLAVOR": "You can burn right through the smaller monsters."
   },
   "${ModID}:TrickStaff": {
     "NAME": "Trick Staff",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. Deals !M! additional damage to enemies who intend to attack.",
-    "FLAVOR": "My staff is enchanted with several surprises. One of which is suddenly doubling in length to slam a charging enemy right in the gut."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply Nocebo to ALL enemies. NL Nocebo is a debuff that doesn't do anything.",
+    "FLAVOR": "A friend of mine would put a thin layer of green jello on his sword before going into battle, and tell his enemies it was poison."
   },
   "${ModID}:EnchantedDagger": {
     "NAME": "Enchanted Dagger",
@@ -464,7 +462,7 @@
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Gain 50% more Block from cards.",
+    "DESCRIPTION": "Gain !M! Block at the end of your turn. NL Gain !${ModID}:M2! Strength.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:SadisticGlee": {
@@ -521,5 +519,21 @@
   "${ModID}:NullElement": {
     "NAME": "Null Element",
     "DESCRIPTION": "Unplayable. NL Soulbound. NL Ethereal. NL When drawn, lose [E]."
+  },
+  "${ModID}:ForceOption": {
+    "NAME": "Force Boost",
+    "DESCRIPTION": "Force spells gain twice as much bonus damage from being charged."
+  },
+  "${ModID}:IceOption": {
+    "NAME": "Cold Boost",
+    "DESCRIPTION": "Ice spells apply twice as much ${ModID}:Frostbite."
+  },
+  "${ModID}:EldritchOption": {
+    "NAME": "Eldritch Boost",
+    "DESCRIPTION": "Eldritch spells grant twice as much Temporary_HP."
+  },
+  "${ModID}:LightningOption": {
+    "NAME": "Lightning Boost",
+    "DESCRIPTION": "Lightning spells gain twice as much bonus damage from attacking a Vulnerable enemy."
   }
 }

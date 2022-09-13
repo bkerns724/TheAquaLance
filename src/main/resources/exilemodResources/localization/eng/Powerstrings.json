@@ -20,12 +20,6 @@
       "Lose !A! [E] at the start of your next turn."
     ]
   },
-  "${ModID}:SoulFlameBarrierPower": {
-    "NAME": "Guarding Fire",
-    "DESCRIPTIONS": [
-      "Whenever you are attacked this turn, deal !A! [${ModID}:DemonFireIcon] damage back."
-    ]
-  },
   "${ModID}:ResonatingPower": {
     "NAME": "Resonating",
     "DESCRIPTIONS": [
@@ -52,10 +46,18 @@
       "At the end of your turn, Channel a Panda that deals !A! damage."
     ]
   },
+  "${ModID}:ForceChargePower": {
+    "NAME": "Charged",
+    "DESCRIPTIONS": [
+      "Your next [${ModID}:PhantasmalIcon] attack does 50% more damage.",
+      "Your next [${ModID}:PhantasmalIcon] attack does 100% more damage.",
+      "Your next [${ModID}:PhantasmalIcon] attack does 150% more damage."
+    ]
+  },
   "${ModID}:SiphonPower": {
     "NAME": "Siphoning",
     "DESCRIPTIONS": [
-      "Whenever you deal Attack damage, gain !A! Temporary HP."
+      "Whenever you deal Attack damage, gain !A! #yTemporary #yHP."
     ]
   },
   "${ModID}:EnergizedExilePower": {
@@ -138,12 +140,20 @@
       "This doesn't do anything."
     ]
   },
-  "${ModID}:HastePower": {
-    "NAME": "Haste",
+  "${ModID}:DimensionalPouchPower": {
+    "NAME": "Dimensional Pouch",
     "DESCRIPTIONS": [
-      "Once per turn, you may spend [E] to draw 3 cards.",
-      "!A! times per turn, you may spend [E] to draw 3 cards.",
-      "Spend [E] to draw 3 cards."
+      "Once per turn, you may spend [E] to draw !A2! cards.",
+      "!A! times per turn, you may spend [E] to draw !A2! cards.",
+      "Spend [E] to draw !A2! cards."
+    ]
+  },
+  "${ModID}:EfficientPower": {
+    "NAME": "Efficient",
+    "DESCRIPTIONS": [
+      "Once per turn, you may discard a card and apply !A! #yRinging to ALL enemies.",
+      "Once per turn, you may discard a card and apply !A! #yRinging to ALL enemies.",
+      "Discard a card and apply !A! #yRinging to ALL enemies."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
@@ -162,12 +172,6 @@
     "NAME": "Flanked",
     "DESCRIPTIONS": [
       "Loses !A! HP when attacked."
-    ]
-  },
-  "${ModID}:GolemPower": {
-    "NAME": "Golem",
-    "DESCRIPTIONS": [
-      "Gain !A! % more Block from cards."
     ]
   },
   "${ModID}:DecayPower": {
@@ -208,16 +212,38 @@
       "In !A! turns, choose 1 of !A2! cards to add into your hand."
     ]
   },
-  "${ModID}:ElementalProwessPower": {
-    "NAME": "Elemental Prowess",
+  "${ModID}:ElementalProwessForce": {
+    "NAME": "Force Boost",
     "DESCRIPTIONS": [
-      "Whenever you play a card, ALL enemies take !A! damage of each damage type it had."
+      "[${ModID}:PhantasmalIcon] Attacks gain twice as much bonus damage from being charged.",
+      "[${ModID}:PhantasmalIcon] Attacks gain !A! times more bonus damage from being charged."
+    ]
+  },
+  "${ModID}:ElementalProwessIce": {
+    "NAME": "Force Boost",
+    "DESCRIPTIONS": [
+      "[${ModID}:IceIcon] Attacks apply twice as much #yFrostbite.",
+      "[${ModID}:IceIcon] Attacks apply !A! times more #yFrostbite."
+    ]
+  },
+  "${ModID}:ElementalProwessEldritch": {
+    "NAME": "Eldritch Boost",
+    "DESCRIPTIONS": [
+      "[${ModID}:EldritchIcon] Attacks spells grant twice as much #yTemporary #yHP.",
+      "[${ModID}:EldritchIcon] Attacks spells grant !A! times more #yTemporary #yHP."
+    ]
+  },
+  "${ModID}:ElementalProwessLightning": {
+    "NAME": "Force Boost",
+    "DESCRIPTIONS": [
+      "[${ModID}:LightningIcon] Attacks gain twice as much bonus damage from attacking a Vulnerable enemy.",
+      "[${ModID}:LightningIcon] Attacks gain !A! times more bonus damage from attacking a Vulnerable enemy."
     ]
   },
   "${ModID}:LifeTapPower": {
     "NAME": "Life Tap",
     "DESCRIPTIONS": [
-      "Whenever you attack this enemy gain !A! Temporary_HP."
+      "Whenever you attack this enemy gain !A! #yTemporary #yHP."
     ]
   },
   "${ModID}:CallOfTheGravePower": {

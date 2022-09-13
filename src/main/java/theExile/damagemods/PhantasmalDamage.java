@@ -12,13 +12,8 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theExile.ExileMod;
 import theExile.icons.Phantasmal;
-import theExile.powers.FlankedPower;
-import theExile.relics.BlueMarbles;
 
 import java.util.ArrayList;
-
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemyTop;
 
 @AutoAdd.Ignore
 public class PhantasmalDamage extends AbstractDamageModifier {
@@ -27,14 +22,10 @@ public class PhantasmalDamage extends AbstractDamageModifier {
     private TooltipInfo forceTooltip;
     private TooltipInfo forceTooltip2;
     private boolean visibleTips = true;
-    public static final int THRESHOLD = 3;
-
-    private int blockedAmount = 0;
 
     public PhantasmalDamage() {
         forceTooltip = null;
         forceTooltip2 = null;
-        priority = 100;
     }
 
     public PhantasmalDamage(boolean visTips) {
@@ -48,20 +39,9 @@ public class PhantasmalDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        this.blockedAmount = blockedAmount;
-    }
-
-    @Override
-    public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        if (adp() == null || adp() == target)
-            return;
-        float flanked = blockedAmount + lastDamageTaken;
-        flanked = flanked / THRESHOLD;
-        if (adp().hasRelic(BlueMarbles.ID))
-            flanked *= BlueMarbles.INCREASE;
-        if ((int)flanked > 0)
-            applyToEnemyTop(target, new FlankedPower(target, (int)flanked));
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        // code is in ForceChargePower so the damage preview shows up from ApplyPowers();
+        return damage;
     }
 
     @Override

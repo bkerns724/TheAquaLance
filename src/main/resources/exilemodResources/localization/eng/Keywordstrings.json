@@ -44,6 +44,14 @@
     "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn."
   },
   {
+    "PROPER_NAME": "Ringing",
+    "NAMES": [
+      "Ringing",
+      "ringing"
+    ],
+    "DESCRIPTION": "Ringing creatures lose HP at the start of their turn."
+  },
+  {
     "PROPER_NAME": "Resonance",
     "NAMES": [
       "Resonate",

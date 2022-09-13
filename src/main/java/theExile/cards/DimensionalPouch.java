@@ -1,6 +1,6 @@
 package theExile.cards;
 
-import theExile.powers.HastePower;
+import theExile.powers.DimensionalPouchPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToSelf;
@@ -20,7 +20,7 @@ public class DimensionalPouch extends AbstractExileCard {
     }
 
     public void nonTargetUse() {
-        applyToSelf(new HastePower(1));
+        applyToSelf(new DimensionalPouchPower(1));
     }
 
     public void upp() {

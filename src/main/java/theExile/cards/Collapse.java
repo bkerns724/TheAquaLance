@@ -7,9 +7,9 @@ import static theExile.ExileMod.makeID;
 
 public class Collapse extends AbstractExileCard {
     public final static String ID = makeID(Collapse.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 3;
+    private final static int DAMAGE = 8;
+    private final static int UPGRADE_DAMAGE = 2;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 2;
 

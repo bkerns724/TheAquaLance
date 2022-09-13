@@ -20,7 +20,6 @@ import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -39,15 +38,13 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
 import theExile.TheExile;
 import theExile.actions.AttackAction;
-import theExile.cards.cardUtil.Resonance;
 import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
 import theExile.icons.Eldritch;
-import theExile.icons.Phantasmal;
 import theExile.icons.Ice;
 import theExile.icons.Lightning;
+import theExile.icons.Phantasmal;
 import theExile.powers.AbstractExilePower;
-import theExile.powers.ConvertPower;
 import theExile.relics.ManaPurifier;
 import theExile.relics.VialOfBlackBlood;
 import theExile.util.CardArtRoller;
@@ -218,16 +215,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         nonTargetUse();
         if (sigil)
             beingDiscarded = false;
-        boolean convert = (!exhaust && !purgeOnUse && (type != CardType.POWER)
-                && adp() != null && adp().hasPower(ConvertPower.POWER_ID) && !(this instanceof AbstractResonantCard));
-        if (convert) {
-            Resonance resonance = new Resonance();
-            resonance.cards.add((AbstractExileCard) makeStatEquivalentCopy());
-            resonance.toPower();
-            AbstractPower pow = adp().getPower(ConvertPower.POWER_ID);
-            atb(new ReducePowerAction(adp(), adp(), pow, 1));
-            resPoof = true;
-        } else if (this instanceof AbstractResonantCard)
+
+        if (this instanceof AbstractResonantCard)
             ((AbstractResonantCard) this).resonance.toPower();
     }
 

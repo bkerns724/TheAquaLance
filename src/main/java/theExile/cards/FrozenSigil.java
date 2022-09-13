@@ -8,14 +8,14 @@ import theExile.ExileMod;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
 
-public class BlizzardSigil extends AbstractExileCard {
-    public final static String ID = makeID(BlizzardSigil.class.getSimpleName());
+public class FrozenSigil extends AbstractExileCard {
+    public final static String ID = makeID(FrozenSigil.class.getSimpleName());
     private final static int DAMAGE = 12;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 4;
     private final static int COST = -2;
 
-    public BlizzardSigil() {
+    public FrozenSigil() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, ExileMod.Enums.AUTOAIM_ENEMY);
     }
 

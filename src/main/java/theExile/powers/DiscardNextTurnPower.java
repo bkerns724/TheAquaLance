@@ -11,7 +11,7 @@ public class DiscardNextTurnPower extends AbstractExilePower {
     public static final String POWER_ID = ExileMod.makeID(DiscardNextTurnPower.class.getSimpleName());
 
     public DiscardNextTurnPower(int amount) {
-        super(POWER_ID, PowerType.BUFF, false, adp(), amount);
+        super(POWER_ID, PowerType.DEBUFF, false, adp(), amount);
         priority = 7;
     }
 

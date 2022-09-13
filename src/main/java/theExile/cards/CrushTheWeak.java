@@ -8,19 +8,19 @@ import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToEnemy;
 
-public class ConsumeTheWeak extends AbstractExileCard {
-    public final static String ID = makeID(ConsumeTheWeak.class.getSimpleName());
+public class CrushTheWeak extends AbstractExileCard {
+    public final static String ID = makeID(CrushTheWeak.class.getSimpleName());
     private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
-    public ConsumeTheWeak() {
+    public CrushTheWeak() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
-        addModifier(elenum.ELDRITCH);
+        addModifier(elenum.PHANTASMAL);
     }
 
     public void singleTargetUse(AbstractMonster m) {

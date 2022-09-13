@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theExile.cards.*;
 import theExile.patches.CutsceneMultiScreenPatch;
 import theExile.relics.NecklaceOfShielding;
+import theExile.relics.PlaceholderRelic;
 import theExile.vfx.ExileVictoryEffect;
 
 import java.util.ArrayList;
@@ -98,10 +99,8 @@ public class TheExile extends CustomPlayer {
 
     @Override
     public CharSelectInfo getLoadout() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add(NecklaceOfShielding.ID);
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                STARTING_HP, STARTING_HP, 0, 99, 5, this, list,
+                STARTING_HP, STARTING_HP, 0, 99, 5, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 
@@ -113,7 +112,7 @@ public class TheExile extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
-        retVal.add(PhantomFist.ID);
+        retVal.add(ForceBolt.ID);
         retVal.add(ColdSigil.ID);
 
         return retVal;
@@ -127,6 +126,7 @@ public class TheExile extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(NecklaceOfShielding.ID);
+        retVal.add(PlaceholderRelic.ID);
         return retVal;
     }
 

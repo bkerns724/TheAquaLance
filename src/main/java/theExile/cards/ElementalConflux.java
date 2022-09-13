@@ -7,7 +7,7 @@ import static theExile.ExileMod.makeID;
 
 public class ElementalConflux extends AbstractExileCard {
     public final static String ID = makeID(ElementalConflux.class.getSimpleName());
-    private final static int DAMAGE = 16;
+    private final static int DAMAGE = 18;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
@@ -17,8 +17,8 @@ public class ElementalConflux extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
-        addModifier(elenum.PHANTASMAL);
-        addModifier(elenum.ICE);
+        addModifier(elenum.LIGHTNING);
+        addModifier(elenum.ELDRITCH);
     }
 
     public void singleTargetUse(AbstractMonster m) {

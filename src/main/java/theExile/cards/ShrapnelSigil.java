@@ -4,7 +4,7 @@ import static theExile.ExileMod.makeID;
 
 public class ShrapnelSigil extends AbstractExileCard {
     public final static String ID = makeID(ShrapnelSigil.class.getSimpleName());
-    private final static int DAMAGE = 8;
+    private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 3;
 
     public ShrapnelSigil() {

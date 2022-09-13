@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.atb;
 
-public class HastePower extends AbstractExilePower implements PowerWithButton {
-    public static final String POWER_ID = ExileMod.makeID(HastePower.class.getSimpleName());
+public class DimensionalPouchPower extends AbstractExilePower implements PowerWithButton {
+    public static final String POWER_ID = ExileMod.makeID(DimensionalPouchPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -23,9 +23,10 @@ public class HastePower extends AbstractExilePower implements PowerWithButton {
     private int counter;
     private final static int CARD_DRAW = 2;
 
-    public HastePower(int amount) {
+    public DimensionalPouchPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         counter = amount;
+        amount2 = CARD_DRAW;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class HastePower extends AbstractExilePower implements PowerWithButton {
     @Override
     public ArrayList<PowerTip> getHoverTips() {
         ArrayList<PowerTip> list = new ArrayList<>();
-        list.add(new PowerTip(name, DESCRIPTIONS[2]));
+        list.add(new PowerTip(name, DESCRIPTIONS[2].replace("!A2!", Integer.toString(amount2))));
         return list;
     }
 }

@@ -237,6 +237,8 @@ public class ExileMod implements
         public static FtueTip.TipType CLICKY_IMAGE;
         @SpireEnum
         public static AbstractCard.CardTarget AUTOAIM_ENEMY;
+        @SpireEnum
+        public static AbstractCard.CardRarity CARD_CHOICE;
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -492,24 +494,26 @@ public class ExileMod implements
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
-        if (adp() == null || adRoom() == null)
+        if (adp() == null || adRoom() == null || !(abstractCard instanceof AbstractExileCard))
             return;
+
+        AbstractExileCard card = (AbstractExileCard) abstractCard;
 
         if ((AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT) {
             for (AbstractCard c : adp().hand.group) {
-                if (c instanceof Drain)
+                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
                     ((Drain) c).onPlayEldritchCard();
             }
             for (AbstractCard c : adp().drawPile.group) {
-                if (c instanceof Drain)
+                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
                     ((Drain) c).onPlayEldritchCard();
             }
             for (AbstractCard c : adp().discardPile.group) {
-                if (c instanceof Drain)
+                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
                     ((Drain) c).onPlayEldritchCard();
             }
             for (AbstractCard c : adp().exhaustPile.group) {
-                if (c instanceof Drain)
+                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
                     ((Drain) c).onPlayEldritchCard();
             }
         }

@@ -9,10 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.actions.AttackAction;
-import theExile.damagemods.FakeIceDamage;
-import theExile.damagemods.FakePhantasmalDamage;
-import theExile.damagemods.IceDamage;
-import theExile.damagemods.PhantasmalDamage;
+import theExile.damagemods.*;
 import theExile.relics.ManaPurifier;
 
 import java.util.ArrayList;
@@ -36,7 +33,7 @@ public class DualCast extends AbstractExileCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(FAKE_ICE);
-        addModifier(FAKE_PHANTASMAL);
+        addModifier(FAKE_ELDRITCH);
     }
 
     public void singleTargetUse(AbstractMonster m) {
@@ -58,14 +55,14 @@ public class DualCast extends AbstractExileCard {
         } else
             dmg(m);
 
-        if (!damageModList.contains(elenum.PHANTASMAL)) {
+        if (!damageModList.contains(ELDRITCH)) {
             AbstractGameAction.AttackEffect effect;
-            DamageModContainer phantasmalContainer = new DamageModContainer(this, new PhantasmalDamage());
-            if (damageModList.contains(ICE) || damageModList.contains(LIGHTNING) || damageModList.contains(ELDRITCH))
+            DamageModContainer eldritchContainer = new DamageModContainer(this, new EldritchDamage());
+            if (damageModList.contains(ICE) || damageModList.contains(LIGHTNING) || damageModList.contains(PHANTASMAL))
                 effect = getDarkWaveEffect(damage);
             else
-                effect = getPhantasmalEffect(damage);
-            DamageInfo info = BindingHelper.makeInfo(phantasmalContainer, adp(), damage, damageTypeForTurn);
+                effect = getEldritchEffect(damage);
+            DamageInfo info = BindingHelper.makeInfo(eldritchContainer, adp(), damage, damageTypeForTurn);
             atb(new AttackAction(m, info, effect));
         } else
             dmg(m);
@@ -82,21 +79,21 @@ public class DualCast extends AbstractExileCard {
 
         if (damageModList == null)
             damageModList = new ArrayList<>();
-        if (damageModList.contains(ELDRITCH)) {
-            rawDescription = rawDescription.replace("!Icon1! ", "!Icon1! " + ELDRITCH_STRING + " ");
-            rawDescription = rawDescription.replace("!Icon2! ", "!Icon2! " + ELDRITCH_STRING + " ");
+        if (damageModList.contains(PHANTASMAL)) {
+            rawDescription = rawDescription.replace("!Icon1! ", "!Icon1! " + PHANTASMAL_STRING + " ");
+            rawDescription = rawDescription.replace("!Icon2! ", "!Icon2! " + PHANTASMAL_STRING + " ");
         }
         if (damageModList.contains(LIGHTNING)) {
             rawDescription = rawDescription.replace("!Icon1! ", "!Icon1! " + LIGHTNING_STRING + " ");
             rawDescription = rawDescription.replace("!Icon2! ", "!Icon2! " + LIGHTNING_STRING + " ");
         }
-        if (damageModList.contains(PHANTASMAL))
-            rawDescription = rawDescription.replace("!Icon1! ", "!Icon1! " + PHANTASMAL_STRING + " ");
+        if (damageModList.contains(ELDRITCH))
+            rawDescription = rawDescription.replace("!Icon1! ", "!Icon1! " + ELDRITCH_STRING + " ");
         if (damageModList.contains(ICE))
             rawDescription = rawDescription.replace("!Icon2! ", "!Icon2! " + COLD_STRING + " ");
 
         rawDescription = rawDescription.replace("!Icon1! ", COLD_STRING +" ");
-        rawDescription = rawDescription.replace("!Icon2! ", PHANTASMAL_STRING + " ");
+        rawDescription = rawDescription.replace("!Icon2! ", ELDRITCH_STRING + " ");
 
         if (selfRetain)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[0] + rawDescription;
@@ -126,9 +123,9 @@ public class DualCast extends AbstractExileCard {
             removeMod = null;
         }
 
-        if (element == elenum.PHANTASMAL) {
+        if (element == ELDRITCH) {
             for (AbstractDamageModifier mod : DamageModifierManager.modifiers(this))
-                if (mod instanceof FakePhantasmalDamage)
+                if (mod instanceof FakeEldritchDamage)
                     removeMod = mod;
         }
         if (removeMod != null) {

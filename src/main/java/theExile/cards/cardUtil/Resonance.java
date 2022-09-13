@@ -170,7 +170,7 @@ public class Resonance {
         if (getBlock() > 0)
             count++;
         if (ringing > 0)
-            count += 2;
+            count += 1;
         if (jinx > 0)
             count++;
         if (vigor > 0)

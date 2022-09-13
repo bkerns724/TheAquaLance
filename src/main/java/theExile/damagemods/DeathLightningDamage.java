@@ -10,13 +10,16 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.ExileMod;
 import theExile.icons.Lightning;
+import theExile.powers.ElementalProwessLightning;
 
 import java.util.ArrayList;
 
 import static com.megacrit.cardcrawl.cards.DamageInfo.DamageType.NORMAL;
+import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class DeathLightningDamage extends AbstractDamageModifier {
@@ -24,6 +27,7 @@ public class DeathLightningDamage extends AbstractDamageModifier {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public TooltipInfo lightningTooltip;
     private boolean visibleTips = true;
+    private static final float BONUS = 0.5f;
 
     public DeathLightningDamage() {
         lightningTooltip = null;
@@ -41,8 +45,15 @@ public class DeathLightningDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        if (type == NORMAL)
-            return target.hasPower(VulnerablePower.POWER_ID) ? damage * 1.5f : damage;
+        if (type == NORMAL) {
+            float mult = 1f + BONUS;
+            if (adp() != null) {
+                AbstractPower pow = adp().getPower(ElementalProwessLightning.POWER_ID);
+                if (pow != null)
+                    mult += BONUS * pow.amount;
+            }
+            return target.hasPower(VulnerablePower.POWER_ID) ? damage * mult : damage;
+        }
         return damage;
     }
 

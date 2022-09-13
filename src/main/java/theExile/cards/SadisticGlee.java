@@ -8,7 +8,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class SadisticGlee extends AbstractExileCard {
     public final static String ID = makeID(SadisticGlee.class.getSimpleName());
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 2;
 

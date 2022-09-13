@@ -1,12 +1,11 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.powers.NoceboPower;
 import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.applyToEnemy;
 import static theExile.util.Wiz.forAllMonstersLiving;
-import static theExile.util.Wiz.getEnemies;
 
 public class TrickStaff extends AbstractExileCard {
     public final static String ID = makeID(TrickStaff.class.getSimpleName());
@@ -33,28 +32,8 @@ public class TrickStaff extends AbstractExileCard {
                 dmg(mon, Wiz.getBluntEffect(damage));
             else
                 dmg(mon);
+            applyToEnemy(mon, new NoceboPower(mon, 1));
         });
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int temp = baseDamage;
-        if (mo != null && mo.getIntentBaseDmg() >= 0)
-            baseDamage += magicNumber;
-        super.calculateCardDamage(mo);
-        baseDamage = temp;
-        isDamageModified = damage != baseDamage;
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        for (AbstractMonster m : getEnemies()) {
-            if (m != null && m.getIntentBaseDmg() > -0) {
-                glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-                break;
-            }
-        }
     }
 
     public void upp() {

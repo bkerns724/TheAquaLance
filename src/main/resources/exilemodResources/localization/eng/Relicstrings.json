@@ -25,7 +25,7 @@
     "NAME": "Blessed Necklace",
     "FLAVOR": "Cleric talented! Enjoy the blessing!",
     "DESCRIPTIONS": [
-      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat you can discard your hand and gain !R! Block per card discarded."
+      "Replaces [#DF9D2B]Necklace [#DF9D2B]of [#DF9D2B]Shielding. #y${ModID}:Activated. Once per combat gain !R! Block and draw !R2! cards."
     ]
   },
   "${ModID}:TormentorsMask": {
@@ -91,11 +91,25 @@
       "Gain [E] at the start of your turn. None of your cards can have damage types."
     ]
   },
+  "${ModID}:PlaceholderRelic": {
+    "NAME": "Force thingy",
+    "FLAVOR": "Shadow Shadow bo Badow.",
+    "DESCRIPTIONS": [
+      "beep boop."
+    ]
+  },
   "${ModID}:BlueMarbles": {
     "NAME": "Blue Marbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "Your [${ModID}:PhantasmalIcon] and [${ModID}:IceIcon] damage apply +50% more #y${ModID}:Flanked and #y${ModID}:Frostbite."
+      "Your [${ModID}:IceIcon] Attacks apply the #yFrostbite to ALL enemies."
+    ]
+  },
+  "${ModID}:ManaCrystal": {
+    "NAME": "Mana Crystal",
+    "FLAVOR": "You can store a lot of power inside this.",
+    "DESCRIPTIONS": [
+      "You can charge !R! times before using a [${ModID}:PhantasmalIcon] Attack."
     ]
   },
   "${ModID}:VialOfBlackBlood": {

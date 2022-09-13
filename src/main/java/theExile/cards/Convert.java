@@ -1,29 +1,27 @@
 package theExile.cards;
 
-import theExile.powers.ConvertPower;
+import theExile.actions.ConvertAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToSelf;
+import static theExile.util.Wiz.atb;
 
 public class Convert extends AbstractExileCard {
     public final static String ID = makeID(Convert.class.getSimpleName());
-    private final static int MAGIC = 1;
-    private final static int COST = 2;
+    private final static int COST = 1;
 
     public Convert() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
     }
 
     public void applyAttributes() {
-        baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
     }
 
     public void nonTargetUse() {
-        applyToSelf(new ConvertPower(magicNumber));
+        atb(new ConvertAction());
     }
 
     public void upp() {
-        exhaust = false;
+        selfRetain = true;
     }
 }
