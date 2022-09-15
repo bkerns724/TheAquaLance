@@ -14,7 +14,7 @@ public class ElementalProwessEldritch extends AbstractExilePower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public ElementalProwessEldritch(int amount) {
-        super(POWER_ID, PowerType.DEBUFF, false, adp(), amount);
+        super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
     }
 }

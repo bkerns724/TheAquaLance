@@ -10,16 +10,6 @@
     "DESCRIPTION": "Sigils are normally unplayable cards which are played when they are discarded from your hand."
   },
   {
-    "PROPER_NAME": "Golem\u00a0Punch",
-    "NAMES": [
-      "Golem\u00a0Punch",
-      "golem\u00a0Punch",
-      "Golem\u00a0punch",
-      "golem\u00a0punch"
-    ],
-    "DESCRIPTION": "Spend [E] to deal 30 [${ModID}:ForceIcon] damage to a random enemy."
-  },
-  {
     "PROPER_NAME": "Activated",
     "NAMES": [
       "Activated",
@@ -36,12 +26,22 @@
     "DESCRIPTION": "Cards with an activate effect let you trigger that effect when you wish. They have a clickable button to the left of the energy orb."
   },
   {
+    "PROPER_NAME": "Swarm\u00a0of\u00a0Bees",
+    "NAMES": [
+      "swarm",
+      "Swarm",
+      "swarm\u00a0of\u00a0bees",
+      "Swarm\u00a0of\u00a0Bees"
+    ],
+    "DESCRIPTION": "Orb: Deals damage whenever you attack an enemy. When evoked deals damage to a random target."
+  },
+  {
     "PROPER_NAME": "Panda",
     "NAMES": [
       "Panda",
       "panda"
     ],
-    "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn."
+    "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn. When evoked, deal damage to a random enemy."
   },
   {
     "PROPER_NAME": "Ringing",
@@ -50,6 +50,14 @@
       "ringing"
     ],
     "DESCRIPTION": "Ringing creatures lose HP at the start of their turn."
+  },
+  {
+    "PROPER_NAME": "Metallicize",
+    "NAMES": [
+      "Metallicize",
+      "metallicize"
+    ],
+    "DESCRIPTION": "Gain Block at the end of your turn."
   },
   {
     "PROPER_NAME": "Resonance",

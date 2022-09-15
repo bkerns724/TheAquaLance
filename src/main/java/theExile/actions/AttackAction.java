@@ -91,6 +91,8 @@ public class AttackAction extends AbstractGameAction {
                 color = Color.FIREBRICK.cpy();
             else if (effect == ExileMod.Enums.ACID || effect == ExileMod.Enums.ACID_M)
                 color = Color.FOREST.cpy();
+            else if (effect == ExileMod.Enums.BEE)
+                color = Color.YELLOW.cpy();
 
             if (color != null) {
                 ColoredDamagePatch.DamageActionColorField.damageColor.set(action, color);
@@ -244,6 +246,7 @@ public class AttackAction extends AbstractGameAction {
         simpleEffects.add(ExileMod.Enums.RESONANT_M);
         simpleEffects.add(ExileMod.Enums.RESONANT_L);
         simpleEffects.add(ExileMod.Enums.LIGHTNING_S);
+        simpleEffects.add(ExileMod.Enums.BEE);
         simpleEffects.add(AttackEffect.BLUNT_LIGHT);
         simpleEffects.add(AttackEffect.BLUNT_HEAVY);
         simpleEffects.add(AttackEffect.SLASH_DIAGONAL);

@@ -158,7 +158,7 @@
     "NAME": "Void Bracelet",
     "FLAVOR": "It is always icy cold, even if you hold it in a fire.",
     "DESCRIPTIONS": [
-      "Whenever you are attacked, deal !R! [${ModID}:EldritchIcon] damage back."
+      "If you end your turn with no cards in hand, gain !R! #yStrength and !R! #yDexterity."
     ]
   }
 }

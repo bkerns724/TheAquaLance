@@ -1,18 +1,18 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.CallOfTheGravePower;
+import theExile.powers.BellTollsPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
 
-public class CallOfTheGrave extends AbstractExileCard {
-    public final static String ID = makeID(CallOfTheGrave.class.getSimpleName());
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 2;
+public class TheBellTolls extends AbstractExileCard {
+    public final static String ID = makeID(TheBellTolls.class.getSimpleName());
+    private final static int MAGIC = 3;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 3;
 
-    public CallOfTheGrave() {
+    public TheBellTolls() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
     }
 
@@ -23,7 +23,7 @@ public class CallOfTheGrave extends AbstractExileCard {
 
     @Override
     public void singleTargetUse(AbstractMonster m) {
-        applyToEnemy(m, new CallOfTheGravePower(m, magicNumber));
+        applyToEnemy(m, new BellTollsPower(m, magicNumber));
     }
 
     public void upp() {

@@ -1,7 +1,7 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.LifeTapPower;
+import theExile.powers.JinxOnHitPower;
 import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
@@ -26,7 +26,7 @@ public class ShadowWhip extends AbstractExileCard {
 
     public void singleTargetUse(AbstractMonster m) {
         dmg(m);
-        Wiz.applyToEnemy(m, new LifeTapPower(m, magicNumber));
+        Wiz.applyToEnemy(m, new JinxOnHitPower(m, magicNumber));
     }
 
     public void upp() {

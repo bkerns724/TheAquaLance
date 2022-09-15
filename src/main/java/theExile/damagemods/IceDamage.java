@@ -66,8 +66,8 @@ public class IceDamage extends AbstractDamageModifier {
         frostbite = frostbite * mult;
         int frostbiteInt = (int) frostbite;
         if (frostbiteInt > 0) {
-            if (adp() != null && adp().hasRelic(BlueMarbles.ID))
-                Wiz.forAllMonstersLiving(mon -> applyToEnemy(mon, new FrostbitePower(mon, frostbiteInt)));
+            if (adp().hasRelic(BlueMarbles.ID))
+                Wiz.forAllMonstersLiving(mon -> applyToEnemyTop(mon, new FrostbitePower(mon, frostbiteInt)));
             else
                 applyToEnemyTop(target, new FrostbitePower(target, frostbiteInt));
         }

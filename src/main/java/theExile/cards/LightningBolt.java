@@ -8,7 +8,7 @@ import static theExile.ExileMod.makeID;
 
 public class LightningBolt extends AbstractExileCard {
     public final static String ID = makeID(LightningBolt.class.getSimpleName());
-    private final static int DAMAGE = 11;
+    private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 4;
     private final static int MAGIC = 1;
     private final static int COST = 1;
@@ -36,7 +36,7 @@ public class LightningBolt extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        Wiz.discard(magicNumber);
+        Wiz.discard(1);
     }
 
     public void upp() {

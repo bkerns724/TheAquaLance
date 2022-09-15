@@ -9,8 +9,8 @@ import static theExile.util.Wiz.*;
 
 public class SustainedSummon extends AbstractExileCard {
     public final static String ID = makeID(SustainedSummon.class.getSimpleName());
-    private final static int MAGIC = 12;
-    private final static int UPGRADE_MAGIC = 4;
+    private final static int MAGIC = 10;
+    private final static int UPGRADE_MAGIC = 3;
     private final static int SECOND_MAGIC = 3;
     private final static int COST = 2;
 

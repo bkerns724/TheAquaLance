@@ -1,17 +1,17 @@
 package theExile.cards;
 
-import theExile.powers.EfficientPower;
+import theExile.powers.SnowfallPower;
 import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
 
-public class Efficient extends AbstractExileCard {
-    public final static String ID = makeID(Efficient.class.getSimpleName());
+public class Snowfall extends AbstractExileCard {
+    public final static String ID = makeID(Snowfall.class.getSimpleName());
     private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
-    public Efficient() {
+    public Snowfall() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
@@ -21,7 +21,7 @@ public class Efficient extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        Wiz.applyToSelf(new EfficientPower(magicNumber));
+        Wiz.applyToSelf(new SnowfallPower(magicNumber));
     }
 
     public void upp() {

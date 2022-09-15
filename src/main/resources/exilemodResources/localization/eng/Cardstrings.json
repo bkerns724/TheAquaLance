@@ -90,13 +90,12 @@
   },
   "${ModID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each card discarded this turn.",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Jinx",
     "FLAVOR": "I learned this spell from a stranger on a train."
   },
   "${ModID}:PhantomFist": {
     "NAME": "Phantom Fist",
-    "DESCRIPTION": "Deal !D! damage. NL Gain [E] next turn.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain [E] [E] next turn.",
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each card discarded this turn.",
     "FLAVOR": "It's like hitting them with a fist, except the fist is the size of a watermelon and made of steel."
   },
   "${ModID}:LightningBolt": {
@@ -110,15 +109,15 @@
     "UPGRADE_DESCRIPTION": "${ModID}:Activate: You may draw a card and discard a card twice this combat.",
     "FLAVOR": "A battle is much easier to win if you can learn to predict your opponent's movements."
   },
-  "${ModID}:DualCast": {
-    "NAME": "Dual Cast",
-    "DESCRIPTION": "Deal !D! !Icon1! damage. NL Deal !D! !Icon2! damage."
-  },
   "${ModID}:Barrier": {
     "NAME": "Barrier",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards.",
     "FLAVOR": "A great spell for when you need to defend yourself but stay mobile."
+  },
+  "${ModID}:IceWater": {
+    "NAME": "Ice Water",
+    "DESCRIPTION": "Deal !D! damage. NL Enemy loses HP equal to its ${ModID}:Frostbite."
   },
   "${ModID}:Blink": {
     "NAME": "Blink",
@@ -153,10 +152,9 @@
     "DESCRIPTION": "ALL enemies take !M! more non-Attack damage.",
     "FLAVOR": "These are a pain because they fall apart in a few days and then you have to remake it."
   },
-  "${ModID}:FrozenSigil": {
-    "NAME": "Frozen Sigil",
-    "DESCRIPTION": "Deal !D! damage to the lowest hp enemy. NL Take !M! damage.",
-    "FLAVOR": "This is difficult to throw without freezing your hand off."
+  "${ModID}:HungrySigil": {
+    "NAME": "Hungry Sigil",
+    "DESCRIPTION": "Deal !D! damage to a random enemy."
   },
   "${ModID}:SpinningSigil": {
     "NAME": "Spinning Sigil",
@@ -175,8 +173,7 @@
   },
   "${ModID}:SlipperySigil": {
     "NAME": "Slippery Sigil",
-    "DESCRIPTION": "The next time you would take attack damage, reduce it by half.",
-    "UPGRADE_DESCRIPTION": "The next !M! times you would take attack damage, reduce it by half.",
+    "DESCRIPTION": "The next !M! times you would take damage, reduce it by half.",
     "FLAVOR": "I keep dropping these."
   },
   "${ModID}:TranslucentSigil": {
@@ -188,14 +185,13 @@
     "DESCRIPTION": "ALL enemies lose !M! Strength.",
     "FLAVOR": "Slow is such a useful spell."
   },
-  "${ModID}:SpiralSigil": {
-    "NAME": "Spiral Sigil",
-    "DESCRIPTION": "Apply ${ModID}:Jinx to ALL enemies equal to their debuffs.",
-    "FLAVOR": "When they're down, keep them down."
+  "${ModID}:TinglingSigil": {
+    "NAME": "Tingling Sigil",
+    "DESCRIPTION": "Deal !D! damage to the lowest health enemy. NL Gain one less [E] next turn."
   },
   "${ModID}:VibratingSigil": {
     "NAME": "Vibrating Sigil",
-    "DESCRIPTION": "Apply !M! ${ModID}:Ringing and !M! ${ModID}:Frostbite to ALL enemies."
+    "DESCRIPTION": "Apply !M! ${ModID}:Ringing to ALL enemies. NL ALL enemies lose !${ModID}:M2! Strength."
   },
   "${ModID}:Weave": {
     "NAME": "Weave",
@@ -208,9 +204,9 @@
     "DESCRIPTION": "Deal !D! damage. NL Apply 1 ${ModID}:Jinx for each Buff you have.",
     "FLAVOR": "Some of the monsters make a really satisfying crunch sound when you land this right."
   },
-  "${ModID}:Efficient": {
-    "NAME": "Efficient",
-    "DESCRIPTION": "${ModID}:Activate: Once per turn you may discard a card and apply !M! ${ModID}:Ringing to ALL enemies."
+  "${ModID}:Bees": {
+    "NAME": "Bees",
+    "DESCRIPTION": "Gain !M! Orb slots. NL ${ModID}:Activate: Spend [E] to channel a ${ModID}:Swarm *of *Bees."
   },
   "${ModID}:VoodooDoll": {
     "NAME": "Voodoo Doll",
@@ -288,10 +284,9 @@
     "DESCRIPTION": "Deal !D! damage.",
     "FLAVOR": "Only a few have mastered this spell. Those who do are considered masters of their craft."
   },
-  "${ModID}:IceBrambles": {
-    "NAME": "Ice Brambles",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Thorns.",
-    "FLAVOR": "I'm feeling thorny."
+  "${ModID}:Permafrost": {
+    "NAME": "Permafrost",
+    "DESCRIPTION": "Deal !D! damage. NL Enemy's ${ModID}:Frostbite does not reduce this turn."
   },
   "${ModID}:PhantomMace": {
     "NAME": "Phantom Mace",
@@ -303,19 +298,19 @@
     "DESCRIPTION": "Remove ALL of your debuffs. NL Gain !M! Artifact.",
     "FLAVOR": "It pays to be prepared for one of your spells to misfire."
   },
-  "${ModID}:VoidBall": {
-    "NAME": "Void Ball",
+  "${ModID}:EtherealTendrils": {
+    "NAME": "Ethereal Tendrils",
     "DESCRIPTION": "Deal !D! damage to ALL enemies.",
     "FLAVOR": "More enemies just means more life to steal."
   },
   "${ModID}:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Apply !M! Weak and Vulnerable. NL Apply !${ModID}:M2! Poison. Enemy deals !${ModID}:M2! less damage this turn.",
+    "DESCRIPTION": "Apply !M! Weak and !M! Vulnerable. NL Apply !${ModID}:M2! Poison. Enemy deals !${ModID}:M2! less damage this turn.",
     "FLAVOR": "My favorite spell."
   },
-  "${ModID}:Drain": {
-    "NAME": "Drain",
-    "DESCRIPTION": "Steal !M! Strength. NL Costs 1 less for each [${ModID}:EldritchIcon] attack played this combat.",
+  "${ModID}:Jettison": {
+    "NAME": "Jettison",
+    "DESCRIPTION": "Discard your hand. NL Gain !B! Block for each card discarded.",
     "FLAVOR": "Sometimes you only need to see a few seconds into the future."
   },
   "${ModID}:HeatRay": {
@@ -323,10 +318,10 @@
     "DESCRIPTION": "Dead !D! damage. NL If this kills an enemy, gain [E] and draw a card.",
     "FLAVOR": "You can burn right through the smaller monsters."
   },
-  "${ModID}:TrickStaff": {
-    "NAME": "Trick Staff",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply Nocebo to ALL enemies. NL Nocebo is a debuff that doesn't do anything.",
-    "FLAVOR": "A friend of mine would put a thin layer of green jello on his sword before going into battle, and tell his enemies it was poison."
+  "${ModID}:SummonElephant": {
+    "NAME": "Summon Elephant",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Take !M! damage.",
+    "FLAVOR": "Summons don't have to attack to be useful."
   },
   "${ModID}:EnchantedDagger": {
     "NAME": "Enchanted Dagger",
@@ -365,7 +360,7 @@
   },
   "${ModID}:Study": {
     "NAME": "Study",
-    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand. It costs 0 that turn.",
+    "DESCRIPTION": "!M! turns from now, choose 1 of !${ModID}:M2! rare cards to add into your hand.",
     "FLAVOR": "I didn't get to be a badass by sitting around on the couch all day."
   },
   "${ModID}:TargetWeakness": {
@@ -375,7 +370,7 @@
   },
   "${ModID}:Cannon": {
     "NAME": "Cannon",
-    "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile.",
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle a *Burn into your draw pile.",
     "FLAVOR": "Turning your staff into a cannon sounds awesome. NL But the kickback is a bitch."
   },
   "${ModID}:Push": {
@@ -428,21 +423,20 @@
   },
   "${ModID}:ShadowWhip": {
     "NAME": "Shadow Whip",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack the enemy this turn gain !M! Temporary_HP.",
-    "FLAVOR": "I resorted to this to take down a monster while in sight of some villagers. This is why I was thrown out."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you attack this enemy it gains !M! ${ModID}:Jinx."
   },
   "${ModID}:Acoustics": {
     "NAME": "Acoustics",
     "DESCRIPTION": "Resonant cards now target ALL enemies.",
     "FLAVOR": "With refined technique you can bounce some spells off one enemy and into another."
   },
-  "${ModID}:Haunt": {
-    "NAME": "Haunt",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you apply ${ModID}:Jinx, return this from the discard pile to your hand."
+  "${ModID}:RazorIce": {
+    "NAME": "Razor Ice",
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each debuff on the enemy."
   },
-  "${ModID}:CallOfTheGrave": {
-    "NAME": "Call of the Grave",
-    "DESCRIPTION": "Enemy takes !M! damage for each of its debuffs at the start of its turn.",
+  "${ModID}:TheBellTolls": {
+    "NAME": "The Bell Tolls",
+    "DESCRIPTION": "Enemy gains !M! ${ModID}:Ringing for each of its debuffs at the start of its turn.",
     "FLAVOR": "Ask not for whom the bell tolls. It tolls for people who have pissed me off."
   },
   "${ModID}:SuddenSpasms": {
@@ -462,7 +456,7 @@
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Gain !M! Block at the end of your turn. NL Gain !${ModID}:M2! Strength.",
+    "DESCRIPTION": "Gain !M! ${ModID}:Metallicize. NL Gain !${ModID}:M2! Strength. NL Gain !${ModID}:M2! Artifact.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:SadisticGlee": {
@@ -472,7 +466,7 @@
   },
   "${ModID}:ElegantEtching": {
     "NAME": "Elegant Etching",
-    "DESCRIPTION": "Whenever a ${ModID}:Sigil is played, apply !M! ${ModID}:Jinx to ALL enemies.",
+    "DESCRIPTION": "${ModID}:Sigils are played twice, but Exhaust.",
     "FLAVOR": "If you get the etching just right, you can put two spells into one sigil."
   },
   "${ModID}:Madness": {

@@ -8,6 +8,7 @@ import static theExile.util.Wiz.atb;
 public class Convert extends AbstractExileCard {
     public final static String ID = makeID(Convert.class.getSimpleName());
     private final static int COST = 1;
+    private final static int UPGRADED_COST = 0;
 
     public Convert() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
@@ -22,6 +23,6 @@ public class Convert extends AbstractExileCard {
     }
 
     public void upp() {
-        selfRetain = true;
+        upgradeBaseCost(UPGRADED_COST);
     }
 }

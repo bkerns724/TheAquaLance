@@ -28,7 +28,6 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theExile.cards.AbstractExileCard;
-import theExile.cards.Drain;
 import theExile.cards.cardvars.SecondMagicNumber;
 import theExile.cards.cardvars.ThirdMagicNumber;
 import theExile.events.ClericsRequest;
@@ -64,7 +63,6 @@ public class ExileMod implements
         OnStartBattleSubscriber,
         PostBattleSubscriber,
         PostUpdateSubscriber,
-        OnCardUseSubscriber,
         PostInitializeSubscriber {
     public static final String SETTINGS_FILE = "ExileModSettings";
 
@@ -116,6 +114,7 @@ public class ExileMod implements
     public static final String RESONANT_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant.png";
     public static final String RESONANT_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_M.png";
     public static final String RESONANT_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_L.png";
+    public static final String BEE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Bee.png";
 
     public static final String FTUE_IMG = RESOURCES_PRE + "images/ui/Ftue.png";
 
@@ -127,6 +126,8 @@ public class ExileMod implements
     private static final String PEW_OGG = RESOURCES_PRE + "audio/Pew.ogg";
     public static final String JINX_KEY = makeID("Jinx");
     private static final String JINX_OGG = RESOURCES_PRE + "audio/Jinx.ogg";
+    public static final String BEES_KEY = makeID("SwarmOfBees");
+    private static final String BEES_OGG = RESOURCES_PRE + "audio/SwarmOfBees.ogg";
 
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -227,6 +228,8 @@ public class ExileMod implements
         public static AbstractGameAction.AttackEffect LIGHTNING_M;
         @SpireEnum
         public static AbstractGameAction.AttackEffect LIGHTNING_L;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect BEE;
         @SpireEnum
         public static AbstractCard.CardRarity UNIQUE;
         @SpireEnum
@@ -493,38 +496,12 @@ public class ExileMod implements
     }
 
     @Override
-    public void receiveCardUsed(AbstractCard abstractCard) {
-        if (adp() == null || adRoom() == null || !(abstractCard instanceof AbstractExileCard))
-            return;
-
-        AbstractExileCard card = (AbstractExileCard) abstractCard;
-
-        if ((AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT) {
-            for (AbstractCard c : adp().hand.group) {
-                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
-                    ((Drain) c).onPlayEldritchCard();
-            }
-            for (AbstractCard c : adp().drawPile.group) {
-                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
-                    ((Drain) c).onPlayEldritchCard();
-            }
-            for (AbstractCard c : adp().discardPile.group) {
-                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
-                    ((Drain) c).onPlayEldritchCard();
-            }
-            for (AbstractCard c : adp().exhaustPile.group) {
-                if (c instanceof Drain && card.damageModList.contains(AbstractExileCard.elenum.ELDRITCH) )
-                    ((Drain) c).onPlayEldritchCard();
-            }
-        }
-    }
-
-    @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(COLD_KEY, COLD_OGG);
         BaseMod.addAudio(COLD_M_KEY, COLD_M_OGG);
         BaseMod.addAudio(PEW_KEY, PEW_OGG);
         BaseMod.addAudio(JINX_KEY, JINX_OGG);
+        BaseMod.addAudio(BEES_KEY, BEES_OGG);
     }
 
     @Override

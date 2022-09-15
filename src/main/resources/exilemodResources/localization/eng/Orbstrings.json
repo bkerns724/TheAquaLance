@@ -3,7 +3,16 @@
     "NAME": "Crazy Panda",
     "DESCRIPTION": [
       "At the start of your turn will deal #b",
-      " damage to a random enemy."
+      " damage to a random enemy. Will deal #b",
+      " damage when evoked."
+    ]
+  },
+  "${ModID}:SwarmOfBees": {
+    "NAME": "Swarm of Bees",
+    "DESCRIPTION": [
+      "Deals #b",
+      " damage whenever you attack a target. Deals #b",
+      " damage to a random target when evoked."
     ]
   }
 }

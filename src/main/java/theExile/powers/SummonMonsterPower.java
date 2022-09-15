@@ -23,7 +23,7 @@ public class SummonMonsterPower extends AbstractExilePower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void atStartOfTurn() {
         atb(new ChannelAction(new CrazyPanda(amount)));
     }
 }

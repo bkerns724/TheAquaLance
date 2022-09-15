@@ -55,7 +55,7 @@ public class ClickableForPower extends ClickableUIElement {
         if (adp().powers.contains(power))
             if (!AbstractDungeon.actionManager.turnHasEnded && !AbstractDungeon.isScreenUp
                     && AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT && !AbstractDungeon.actionManager.usingCard
-                    && !powerUI.isButtonDisabled())
+                    && !powerUI.isButtonDisabled() && AbstractDungeon.actionManager.currentAction == null)
                 powerUI.onButtonPress();
     }
 

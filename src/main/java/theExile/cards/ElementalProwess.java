@@ -10,8 +10,8 @@ import static theExile.util.Wiz.atb;
 
 public class ElementalProwess extends AbstractExileCard {
     public final static String ID = makeID(ElementalProwess.class.getSimpleName());
-    private final static int COST = 2;
-    private final static int UPGRADED_COST = 1;
+    private final static int COST = 1;
+    private final static int UPGRADED_COST = 0;
 
     public ElementalProwess() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
@@ -22,7 +22,7 @@ public class ElementalProwess extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        ArrayList<AbstractCard> elementChoices = new ArrayList();
+        ArrayList<AbstractCard> elementChoices = new ArrayList<>();
         elementChoices.add(new ForceOption());
         elementChoices.add(new EldritchOption());
         elementChoices.add(new IceOption());

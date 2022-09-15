@@ -7,8 +7,6 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class ElegantEtching extends AbstractExileCard {
     public final static String ID = makeID(ElegantEtching.class.getSimpleName());
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 3;
 
     public ElegantEtching() {
@@ -16,14 +14,12 @@ public class ElegantEtching extends AbstractExileCard {
     }
 
     public void applyAttributes() {
-        baseMagicNumber = magicNumber = MAGIC;
     }
 
     public void nonTargetUse() {
-        applyToSelf(new ElegantEtchingPower(magicNumber));
+        applyToSelf(new ElegantEtchingPower(1));
     }
 
     public void upp() {
-        upMagic(UPGRADE_MAGIC);
     }
 }

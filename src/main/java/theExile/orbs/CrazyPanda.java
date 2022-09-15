@@ -11,14 +11,14 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.ExileMod;
 import theExile.actions.PandaEvokeAction;
 import theExile.actions.PandaSmackAction;
 import theExile.patches.PandaPatch;
 
 import static java.lang.Math.pow;
-import static theExile.util.Wiz.atb;
-import static theExile.util.Wiz.att;
+import static theExile.util.Wiz.*;
 
 public class CrazyPanda extends CustomOrb {
     public static final String ORB_ID = ExileMod.makeID(CrazyPanda.class.getSimpleName());
@@ -26,6 +26,7 @@ public class CrazyPanda extends CustomOrb {
     public static final String NAME = orbString.NAME;
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
     private static final String IMG_PATH = "exilemodResources/images/vfx/CrazyPanda.png";
+    private static final float PANDA_WIDTH = 96.0f;
 
     // DO NOT SET EITHER OF THESE TO ZERO
     public static final float BOUNCE_DURATION = 1.0f;
@@ -46,9 +47,28 @@ public class CrazyPanda extends CustomOrb {
     public CrazyPanda(int passive)
     {
         super(ORB_ID, NAME, passive, 0, "", "", IMG_PATH);
+        basePassiveAmount = passive;
+        baseEvokeAmount = basePassiveAmount;
         showEvokeValue = false;
         rotation = 0.0f;
+        applyFocus();
         updateDescription();
+    }
+
+    public void applyFocus() {
+        AbstractPower power = adp().getPower("Focus");
+        if (power != null)
+            passiveAmount = Math.max(0, basePassiveAmount + power.amount);
+        else
+            passiveAmount = basePassiveAmount;
+
+        evokeAmount = passiveAmount;
+        updateDescription();
+    }
+
+    @Override
+    public void playChannelSFX() {
+        CardCrawlGame.sound.play("ORB_SLOT_GAIN", 0.1f);
     }
 
     @Override
@@ -59,11 +79,7 @@ public class CrazyPanda extends CustomOrb {
     }
 
     @Override
-    public void playChannelSFX() {
-    }
-
-    @Override
-    public void onStartOfTurn() {
+    public void onEndOfTurn() {
         atb(new PandaSmackAction(this));
     }
 
@@ -128,16 +144,11 @@ public class CrazyPanda extends CustomOrb {
     public void render(SpriteBatch sb) {
         if (PandaPatch.AbstractOrbIsInPlayerRender.isPlayerRender.get(this))
             return;
-        if (isCopy && shooting) {
-            ExileMod.logger.info("Rendered 2");
-            ExileMod.logger.info(cX);
-            ExileMod.logger.info(cY);
-            ExileMod.logger.info(tX);
-            ExileMod.logger.info(tY);
-        }
         sb.setColor(Color.WHITE.cpy());
         sb.setBlendFunction(770, 771);
-        sb.draw(img, cX - 48.0F, cY - 48.0F, 48.0F, 48.0F, 96.0F, 96.0F, scale, scale, rotation, 0, 0, 96, 96, false, false);
+        sb.draw(img, cX - PANDA_WIDTH/2F, cY - PANDA_WIDTH/2F, PANDA_WIDTH/2F, PANDA_WIDTH/2F,
+                PANDA_WIDTH, PANDA_WIDTH, scale, scale, rotation, 0, 0, (int)PANDA_WIDTH, (int)PANDA_WIDTH,
+                false, false);
         renderText(sb);
         hb.render(sb);
     }
@@ -152,7 +163,8 @@ public class CrazyPanda extends CustomOrb {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1]
+                + passiveAmount + DESCRIPTIONS[2];
     }
 
     @Override

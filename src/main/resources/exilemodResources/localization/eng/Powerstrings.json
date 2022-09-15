@@ -106,7 +106,7 @@
   "${ModID}:ElegantEtchingPower": {
     "NAME": "Elegant Etching",
     "DESCRIPTIONS": [
-      "Whenever you play a #ySigil, apply !A! #yJinx to ALL enemies."
+      "#ySigils are played !A2! times and exhaust."
     ]
   },
   "${ModID}:HarmonyPower": {
@@ -148,12 +148,12 @@
       "Spend [E] to draw !A2! cards."
     ]
   },
-  "${ModID}:EfficientPower": {
-    "NAME": "Efficient",
+  "${ModID}:SnowfallPower": {
+    "NAME": "Snowfall",
     "DESCRIPTIONS": [
-      "Once per turn, you may discard a card and apply !A! #yRinging to ALL enemies.",
-      "Once per turn, you may discard a card and apply !A! #yRinging to ALL enemies.",
-      "Discard a card and apply !A! #yRinging to ALL enemies."
+      "Once per turn, you may discard a card to apply !A! #yFrostbite to ALL enemies.",
+      "Once per turn, you may discard a card to apply !A! #yFrostbite to ALL enemies.",
+      "Discard a card to apply !A! #yFrostbite to ALL enemies."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
@@ -220,7 +220,7 @@
     ]
   },
   "${ModID}:ElementalProwessIce": {
-    "NAME": "Force Boost",
+    "NAME": "Cold Boost",
     "DESCRIPTIONS": [
       "[${ModID}:IceIcon] Attacks apply twice as much #yFrostbite.",
       "[${ModID}:IceIcon] Attacks apply !A! times more #yFrostbite."
@@ -234,22 +234,29 @@
     ]
   },
   "${ModID}:ElementalProwessLightning": {
-    "NAME": "Force Boost",
+    "NAME": "Lightning Boost",
     "DESCRIPTIONS": [
       "[${ModID}:LightningIcon] Attacks gain twice as much bonus damage from attacking a Vulnerable enemy.",
       "[${ModID}:LightningIcon] Attacks gain !A! times more bonus damage from attacking a Vulnerable enemy."
     ]
   },
-  "${ModID}:LifeTapPower": {
-    "NAME": "Life Tap",
+  "${ModID}:JinxOnHitPower": {
+    "NAME": "Shadow Whipped",
     "DESCRIPTIONS": [
-      "Whenever you attack this enemy gain !A! #yTemporary #yHP."
+      "Whenever you attack this enemy it gains !A! #yJinx."
     ]
   },
-  "${ModID}:CallOfTheGravePower": {
-    "NAME": "Death Approaches",
+  "${ModID}:BellTollsPower": {
+    "NAME": "The Bell Tolls",
     "DESCRIPTIONS": [
-      "Takes !A! damage for each of its debuffs at the start of its turn."
+      "Gains !A! #yRinging for each of its debuffs at the start of its turn."
+    ]
+  },
+  "${ModID}:PermafrostPower": {
+    "NAME": "Permafrost",
+    "DESCRIPTIONS": [
+      "Frostbite is not reduced this turn.",
+      "Frostbite is not reduced for !A! turns."
     ]
   },
   "${ModID}:VitalityPower": {
@@ -268,8 +275,7 @@
   "${ModID}:SlipperyPower": {
     "NAME": "Slippery",
     "DESCRIPTIONS": [
-      "The next time you would take Attack damage, reduce it by half.",
-      "The next !A! times you would take Attack damage, reduce it by half."
+      "The next !A! times you would take damage, reduce it by half."
     ]
   },
   "${ModID}:ChargePower": {

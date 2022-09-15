@@ -22,10 +22,11 @@ public class SlipperyPower extends AbstractExilePower {
         priority = 6;
     }
 
+    @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (damageAmount > 0 && info.type == NORMAL) {
-            att(new ReducePowerAction(owner, owner, this, 1));
-            return damageAmount/2;
+        if (info.type == NORMAL && damageAmount > 0) {
+            att(new ReducePowerAction(adp(), adp(), this, 1));
+            return damageAmount / 2;
         }
         return damageAmount;
     }

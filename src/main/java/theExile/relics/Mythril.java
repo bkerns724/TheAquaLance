@@ -39,5 +39,7 @@ public class Mythril extends AbstractExileRelic {
         if (AbstractDungeon.actionManager.actions.isEmpty() && adp().hand.isEmpty() && !AbstractDungeon.actionManager.turnHasEnded
                 && !AbstractDungeon.isScreenUp && adRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             beginLongPulse();
+        else
+            stopPulse();
     }
 }

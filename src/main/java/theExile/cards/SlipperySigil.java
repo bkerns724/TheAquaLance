@@ -7,7 +7,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class SlipperySigil extends AbstractExileCard {
     public final static String ID = makeID(SlipperySigil.class.getSimpleName());
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = -2;
 

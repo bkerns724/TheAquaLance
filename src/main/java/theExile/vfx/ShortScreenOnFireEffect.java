@@ -13,7 +13,7 @@ public class ShortScreenOnFireEffect extends AbstractGameEffect {
     private float timer = 0.0F;
     private static final float INTERVAL = 0.05F;
     private static final int FIRE_COUNT = 8;
-    private static final float DURATION = 1.25f;
+    private static final float DURATION = 1.5f;
 
     public ShortScreenOnFireEffect() {
         duration = startingDuration = DURATION;

@@ -1,37 +1,42 @@
 package theExile.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theExile.TheExile;
-import theExile.damagemods.EldritchDamage;
+import theExile.util.Wiz;
 
-import static com.megacrit.cardcrawl.cards.DamageInfo.DamageType.THORNS;
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adRoom;
+import static theExile.util.Wiz.adp;
 
 public class VoidBracelet extends AbstractExileRelic {
     public static final String ID = makeID(VoidBracelet.class.getSimpleName());
-    private static final int ELDRITCH_THORNS = 3;
+    private static final int BUFF_GAIN = 1;
 
     public VoidBracelet() {
         super(ID, RelicTier.SPECIAL, LandingSound.MAGICAL, TheExile.Enums.EXILE_BROWN_COLOR);
-        amount = ELDRITCH_THORNS;
+        amount = BUFF_GAIN;
         setUpdatedDescription();
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != adp()) {
+    public void onPlayerEndTurn() {
+        if (adp().hand.isEmpty()) {
             flash();
-            atb(new RelicAboveCreatureAction(adp(), this));
-            DamageModContainer container = new DamageModContainer(this, new EldritchDamage());
-            DamageInfo revenge = BindingHelper.makeInfo(container, adp(), amount, THORNS);
-            att(new DamageAction(info.owner, revenge));
+            Wiz.applyToSelfTop(new StrengthPower(adp(), amount));
+            Wiz.applyToSelfTop(new DexterityPower(adp(), amount));
         }
+        stopPulse();
+    }
 
-        return damageAmount;
+    @Override
+    public void onRefreshHand() {
+        if (AbstractDungeon.actionManager.actions.isEmpty() && adp().hand.isEmpty() && !AbstractDungeon.actionManager.turnHasEnded
+                && !AbstractDungeon.isScreenUp && adRoom().phase == AbstractRoom.RoomPhase.COMBAT)
+            beginLongPulse();
+        else
+            stopPulse();
     }
 }

@@ -38,7 +38,8 @@ public class PandaEvokeAction extends AbstractGameAction {
             if (target == null) {
                 isDone = true;
                 return;
-            }
+            } else
+                amount = CrazyPanda.applyLockOn(target, amount);
             targetX = target.hb.cX;
             targetY = target.hb.cY;
             sourceX = original.cX;

@@ -36,7 +36,8 @@ public class PandaSmackAction extends AbstractGameAction {
             if (target == null) {
                 isDone = true;
                 return;
-            }
+            } else
+                amount = CrazyPanda.applyLockOn(target, amount);
             targetX = target.hb.cX;
             targetY = target.hb.cY;
             thunkTiming = (targetX - sourceX)/3200.0f;

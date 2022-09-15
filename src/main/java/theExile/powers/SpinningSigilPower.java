@@ -8,8 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.*;
 
 public class SpinningSigilPower extends AbstractExilePower {
     public static String POWER_ID = makeID(SpinningSigilPower.class.getSimpleName());
@@ -23,8 +22,7 @@ public class SpinningSigilPower extends AbstractExilePower {
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        atb(new GainBlockAction(adp(), adp(), amount, true));
-
+        att(new GainBlockAction(adp(), adp(), amount, true));
         flash();
     }
 

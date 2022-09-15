@@ -14,7 +14,7 @@ import theExile.util.TexLoader;
 import java.util.ArrayList;
 
 public class AttackEffectsPatch {
-    private static ArrayList<AbstractGameAction.AttackEffect> emptyEffects;
+    private static final ArrayList<AbstractGameAction.AttackEffect> emptyEffects;
 
     @SpirePatch2(
             clz = FlashAtkImgEffect.class,
@@ -82,6 +82,8 @@ public class AttackEffectsPatch {
             texture = TexLoader.getTexture(ExileMod.RESONANT_M_EFFECT_FILE);
         else if (effect == ExileMod.Enums.RESONANT_L)
             texture = TexLoader.getTexture(ExileMod.RESONANT_L_EFFECT_FILE);
+        else if (effect == ExileMod.Enums.BEE)
+            texture = TexLoader.getTexture(ExileMod.BEE_EFFECT_FILE);
         else
             return null;
 
@@ -153,6 +155,10 @@ public class AttackEffectsPatch {
             if (effect == ExileMod.Enums.RESONANT_L) {
                 CardCrawlGame.sound.playA("BELL", 1.5f);
                 CardCrawlGame.sound.playAV("BELL", 1.5f, 0.5f);
+                return SpireReturn.Return();
+            }
+            if (effect == ExileMod.Enums.BEE) {
+                CardCrawlGame.sound.play("ATTACK_FAST");
                 return SpireReturn.Return();
             }
             if (emptyEffects.contains(effect))

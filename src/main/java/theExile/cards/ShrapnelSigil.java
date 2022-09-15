@@ -1,5 +1,7 @@
 package theExile.cards;
 
+import theExile.util.Wiz;
+
 import static theExile.ExileMod.makeID;
 
 public class ShrapnelSigil extends AbstractExileCard {
@@ -20,7 +22,10 @@ public class ShrapnelSigil extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        allDmg();
+        if (damageModList.isEmpty())
+            allDmg(Wiz.getSlashEffect(getDamageForVFX()));
+        else
+            allDmg();
     }
 
     public void upp() {

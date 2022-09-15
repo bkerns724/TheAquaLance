@@ -23,7 +23,7 @@ public class ForceChargePower extends AbstractExilePower {
     public static final float BONUS = 0.5f;
 
     public ForceChargePower() {
-        super(POWER_ID, PowerType.DEBUFF, false, adp(), 1);
+        super(POWER_ID, PowerType.BUFF, false, adp(), 1);
         canGoNegative = false;
         this.name = NAME;
     }
@@ -41,13 +41,17 @@ public class ForceChargePower extends AbstractExilePower {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
-        float bonus = amount * BONUS;
+        if (card instanceof AbstractExileCard && ((AbstractExileCard) card).damageModList.contains(PHANTASMAL)) {
 
-        AbstractPower prowessPow = adp().getPower(ElementalProwessForce.POWER_ID);
-        if (prowessPow != null)
-            bonus *= (1 +prowessPow.amount);
+            float bonus = amount * BONUS;
 
-        return damage * ( 1f + bonus );
+            AbstractPower prowessPow = adp().getPower(ElementalProwessForce.POWER_ID);
+            if (prowessPow != null)
+                bonus *= (1 + prowessPow.amount);
+
+            return damage * (1f + bonus);
+        }
+        return damage;
     }
 
     @Override

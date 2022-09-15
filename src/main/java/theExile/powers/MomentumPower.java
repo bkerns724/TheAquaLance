@@ -18,7 +18,7 @@ public class MomentumPower extends AbstractExilePower {
     private int counter = 0;
 
     public MomentumPower(int amount) {
-        super(POWER_ID, PowerType.DEBUFF, false, adp(), amount);
+        super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         counter = amount;
         this.name = NAME;
     }
