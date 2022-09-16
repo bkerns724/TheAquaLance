@@ -189,6 +189,10 @@ public class Wiz {
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AtkFX));
     }
 
+    public static void thornDmgTop(AbstractCreature m, int amount, AbstractGameAction.AttackEffect AtkFX, boolean superfast) {
+        att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AtkFX, superfast));
+    }
+
     public static void thornDmgTop(AbstractCreature m, int amount) {
         thornDmgTop(m, amount, AbstractGameAction.AttackEffect.NONE);
     }

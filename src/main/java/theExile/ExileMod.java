@@ -116,6 +116,21 @@ public class ExileMod implements
     public static final String RESONANT_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_L.png";
     public static final String BEE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/BeeAttack.png";
 
+    public static final String ELEPHANT_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Elephant/Elephant.png";
+    public static final String ELEPHANT_HEAD_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantHead.png";
+    public static final String ELEPHANT_LEG_ONE_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantLegOne.png";
+    public static final String ELEPHANT_LEG_TWO_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantLegTwo.png";
+    public static final String ELEPHANT_LEG_THREE_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantLegThree.png";
+    public static final String ELEPHANT_LEG_FOUR_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantLegFour.png";
+    public static final String ELEPHANT_TAIL_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantTail.png";
+    public static final String ELEPHANT_RUMP_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantRump.png";
+    public static final String ELEPHANT_TRUNK_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantTrunk.png";
+    public static final String ELEPHANT_EAR_TOP_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantEarTop.png";
+    public static final String ELEPHANT_EAR_BOTTOM_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantEarBottom.png";
+    public static final String ELEPHANT_TOP_TORSO_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantTopTorso.png";
+    public static final String ELEPHANT_LEFT_TORSO_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantBottomLeftTorso.png";
+    public static final String ELEPHANT_RIGHT_TORSO_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantBottomRightTorso.png";
+
     public static final String FTUE_IMG = RESOURCES_PRE + "images/ui/Ftue.png";
 
     public static final String COLD_KEY = makeID("Cold");
@@ -128,6 +143,8 @@ public class ExileMod implements
     private static final String JINX_OGG = RESOURCES_PRE + "audio/Jinx.ogg";
     public static final String BEES_KEY = makeID("SwarmOfBees");
     private static final String BEES_OGG = RESOURCES_PRE + "audio/SwarmOfBees.ogg";
+    public static final String ELEPHANT_KEY = makeID("Elephant");
+    private static final String ELEPHANT_OGG = RESOURCES_PRE + "audio/Elephant.ogg";
 
     private static final String BADGE_IMG = RESOURCES_PRE + "images/Badge.png";
     private static final String[] REGISTRATION_STRINGS = {
@@ -502,6 +519,7 @@ public class ExileMod implements
         BaseMod.addAudio(PEW_KEY, PEW_OGG);
         BaseMod.addAudio(JINX_KEY, JINX_OGG);
         BaseMod.addAudio(BEES_KEY, BEES_OGG);
+        BaseMod.addAudio(ELEPHANT_KEY, ELEPHANT_OGG);
     }
 
     @Override

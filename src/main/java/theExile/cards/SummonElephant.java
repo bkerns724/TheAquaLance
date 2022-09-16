@@ -3,6 +3,8 @@ package theExile.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import theExile.vfx.ElephantDropEffect;
+import theExile.vfx.LongElephantDropEffect;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
@@ -26,10 +28,11 @@ public class SummonElephant extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        if (damageModList.isEmpty())
-            allDmg(getBluntEffect(getDamageForVFX()));
+        if (!upgraded)
+            vfx(new ElephantDropEffect(), 0.45f);
         else
-            allDmg();
+            vfx(new LongElephantDropEffect(), 2.35f);
+        allDmg(AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         DamageInfo info = new DamageInfo(adp(), magicNumber, DamageInfo.DamageType.THORNS);
         atb(new DamageAction(adp(), info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }

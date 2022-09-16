@@ -206,7 +206,7 @@
   },
   "${ModID}:SummonBees": {
     "NAME": "Summon Bees",
-    "DESCRIPTION": "Gain !M! Orb slots. NL ${ModID}:Activate: Spend [E] to Channel a ${ModID}:Swarm *of *Bees."
+    "DESCRIPTION": "Gain !M! Orb slots. NL ${ModID}:Activate: Spend [E] to Channel a !${ModID}:M2! damage ${ModID}:Swarm *of *Bees."
   },
   "${ModID}:VoodooDoll": {
     "NAME": "Voodoo Doll",

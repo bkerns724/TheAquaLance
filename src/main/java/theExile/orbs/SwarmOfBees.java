@@ -35,7 +35,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     private static final String IMG_PATH = "exilemodResources/images/vfx/Bee.png";
     private static final Texture BEE_IMG = ImageMaster.loadImage(IMG_PATH);
     private static final int EVOKE_BONUS = 6;
-    private static final int BEE_COUNT = 50;
+    private static final int BEE_COUNT = 120;
     private static final Color TEXT_COLOR = new Color(1.0f, 0.25f, 0.25f, 1.0f);
 
     private final ArrayList<Bee> bees = new ArrayList<>();
@@ -175,14 +175,15 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
 
     @Override
     public void onAttack(AbstractMonster target, DamageInfo info) {
-        if (info.type == DamageInfo.DamageType.NORMAL)
-            Wiz.thornDmgTop(target, passiveAmount, ExileMod.Enums.BEE);
+        if (target != null && !target.isDeadOrEscaped() && info.type == DamageInfo.DamageType.NORMAL)
+            Wiz.thornDmgTop(target, passiveAmount, ExileMod.Enums.BEE, true);
     }
 
     @Override
     public void onEvoke() {
         AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster(true);
-        Wiz.thornDmgTop(target, evokeAmount, ExileMod.Enums.BEE);
+        if (target != null)
+            Wiz.thornDmgTop(target, evokeAmount, ExileMod.Enums.BEE, true);
     }
 
     @Override
@@ -217,9 +218,11 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     @Override
     protected void renderText(SpriteBatch sb) {
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(passiveAmount),
-                cX, cY - NUM_Y_OFFSET - 4f*scale, TEXT_COLOR, fontScale);
+                cX, cY - NUM_Y_OFFSET, TEXT_COLOR, fontScale);
+        /*
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(evokeAmount),
                 cX, cY - NUM_Y_OFFSET + 20f*scale, TEXT_COLOR, fontScale);
+                */
     }
 
     @Override

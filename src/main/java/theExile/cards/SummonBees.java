@@ -11,6 +11,7 @@ public class SummonBees extends AbstractExileCard {
     public final static String ID = makeID(SummonBees.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_MAGIC = 3;
     private final static int COST = 0;
 
     public SummonBees() {
@@ -19,12 +20,13 @@ public class SummonBees extends AbstractExileCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
     @Override
     public void nonTargetUse() {
         atb(new IncreaseMaxOrbAction(magicNumber));
-        Wiz.applyToSelf(new SummonBeesPower());
+        Wiz.applyToSelf(new SummonBeesPower(secondMagic));
     }
 
     public void upp() {

@@ -151,9 +151,9 @@
   "${ModID}:SummonBeesPower": {
     "NAME": "Summon Bees",
     "DESCRIPTIONS": [
-      "You may spend [E] to Channel a #ySwarm #yof #yBees.",
-      "You may spend [E] to Channel a #ySwarm #yof #yBees.",
-      "You may spend [E] to Channel a #ySwarm #yof #yBees."
+      "You may spend [E] to Channel a !A! damage #ySwarm #yof #yBees.",
+      "You may spend [E] to Channel a !A! damage #ySwarm #yof #yBees.",
+      "You may spend [E] to Channel a !A! damage #ySwarm #yof #yBees."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
