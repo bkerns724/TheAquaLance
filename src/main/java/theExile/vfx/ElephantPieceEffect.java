@@ -31,23 +31,17 @@ public class ElephantPieceEffect extends AbstractGameEffect {
         duration = DURATION;
         scale = Settings.scale;
         renderBehind = false;
+        vx = MathUtils.random(-1000f, 1000f);
+        vy = MathUtils.random(200f, 1000f);
+        vRot = MathUtils.random(-180f, 180f);
     }
 
     public void update() {
-        if (duration == startingDuration) {
-            vx = MathUtils.random(-1000f, 1000f);
-            vy = MathUtils.random(200f, 1000f);
-            vRot = MathUtils.random(-180f, 180f);
-        }
-
-        // Fill in once everything lined up
-        if (false) {
-            float delta = Gdx.graphics.getDeltaTime();
-            x += vx * delta;
-            y += vy * delta;
-            vy -= GRAVITY * delta;
-            rotation += vRot * delta;
-        }
+        float delta = Gdx.graphics.getDeltaTime();
+        x += vx * delta;
+        y += vy * delta;
+        vy -= GRAVITY * delta;
+        rotation += vRot * delta;
 
         duration -= Gdx.graphics.getDeltaTime();
         if (duration < 0)

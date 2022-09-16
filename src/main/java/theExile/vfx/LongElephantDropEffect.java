@@ -32,16 +32,15 @@ public class LongElephantDropEffect extends AbstractGameEffect {
     }
 
     public void update() {
-        if (duration == startingDuration) {
+        if (duration == startingDuration)
             CardCrawlGame.sound.playA(ExileMod.ELEPHANT_KEY, 0.1f);
-            AbstractDungeon.effectsQueue.add(new ElephantSplatEffect(HIT_X, FLOOR_Y));
-        }
 
         if (duration < DROP_DURATION)
             y = FLOOR_Y + (START_Y - FLOOR_Y) * duration / DROP_DURATION;
 
         duration -= Gdx.graphics.getDeltaTime();
         if (duration < 0.0F) {
+            AbstractDungeon.effectsQueue.add(new ElephantSplatEffect(HIT_X, FLOOR_Y));
             isDone = true;
             y = FLOOR_Y;
         }
