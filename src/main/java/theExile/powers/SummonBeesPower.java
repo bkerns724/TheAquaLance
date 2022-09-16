@@ -2,35 +2,35 @@ package theExile.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import theExile.util.Wiz;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theExile.orbs.SwarmOfBees;
 
 import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.*;
 
-public class SnowfallPower extends AbstractExilePower implements PowerWithButton {
-    public static String POWER_ID = makeID(SnowfallPower.class.getSimpleName());
+public class SummonBeesPower extends AbstractExilePower implements PowerWithButton {
+    public static String POWER_ID = makeID(SummonBeesPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final String TEXTURE_STRING = "exilemodResources/images/ui/SnowfallButton.png";
-    private boolean ready;
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/BeeButton.png";
+    private static final int STING_AMOUNT = 2;
 
-    public SnowfallPower(int amount) {
-        super(POWER_ID, PowerType.BUFF, false, adp(), amount);
-        ready = true;
+    public SummonBeesPower() {
+        super(POWER_ID, PowerType.BUFF, false, adp(), -1);
+        canGoNegative = false;
         this.name = NAME;
     }
 
     @Override
-    public void atStartOfTurn() {
-        ready = true;
+    public void stackPower(int stackAmount) {
     }
 
     @Override
@@ -40,25 +40,21 @@ public class SnowfallPower extends AbstractExilePower implements PowerWithButton
 
     @Override
     public boolean isButtonDisabled() {
-        return !ready;
+        return EnergyPanel.totalCount <= 0;
     }
 
     @Override
     public void onButtonPress() {
-        if (ready) {
-            int frostAmount = amount;
-            atb(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    isDone = true;
-                    if (!adp().hand.isEmpty()) {
-                        forAllMonstersLiving(mon -> Wiz.applyToEnemyTop(mon, new FrostbitePower(mon, frostAmount)));
-                        att(new DiscardAction(adp(), adp(), 1, false));
-                    }
+        atb(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (EnergyPanel.totalCount > 0) {
+                    adp().loseEnergy(1);
+                    att(new ChannelAction(new SwarmOfBees(STING_AMOUNT)));
                 }
-            });
-            ready = false;
-        }
+            isDone = true;
+            }
+        });
     }
 
     @Override

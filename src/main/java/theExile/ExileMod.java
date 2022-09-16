@@ -114,7 +114,7 @@ public class ExileMod implements
     public static final String RESONANT_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant.png";
     public static final String RESONANT_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_M.png";
     public static final String RESONANT_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_L.png";
-    public static final String BEE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Bee.png";
+    public static final String BEE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/BeeAttack.png";
 
     public static final String FTUE_IMG = RESOURCES_PRE + "images/ui/Ftue.png";
 

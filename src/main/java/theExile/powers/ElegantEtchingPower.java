@@ -27,6 +27,7 @@ public class ElegantEtchingPower extends AbstractExilePower {
 
     @Override
     public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
         amount2 = amount + 1;
     }
 

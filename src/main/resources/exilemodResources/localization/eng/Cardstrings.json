@@ -204,9 +204,9 @@
     "DESCRIPTION": "Deal !D! damage. NL Apply 1 ${ModID}:Jinx for each Buff you have.",
     "FLAVOR": "Some of the monsters make a really satisfying crunch sound when you land this right."
   },
-  "${ModID}:Bees": {
-    "NAME": "Bees",
-    "DESCRIPTION": "Gain !M! Orb slots. NL ${ModID}:Activate: Spend [E] to channel a ${ModID}:Swarm *of *Bees."
+  "${ModID}:SummonBees": {
+    "NAME": "Summon Bees",
+    "DESCRIPTION": "Gain !M! Orb slots. NL ${ModID}:Activate: Spend [E] to Channel a ${ModID}:Swarm *of *Bees."
   },
   "${ModID}:VoodooDoll": {
     "NAME": "Voodoo Doll",

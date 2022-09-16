@@ -27,6 +27,7 @@ public class CrazyPanda extends CustomOrb {
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
     private static final String IMG_PATH = "exilemodResources/images/vfx/CrazyPanda.png";
     private static final float PANDA_WIDTH = 96.0f;
+    private static final Color TEXT_COLOR = new Color(1.0f, 0.25f, 0.25f, 1.0f);
 
     // DO NOT SET EITHER OF THESE TO ZERO
     public static final float BOUNCE_DURATION = 1.0f;
@@ -63,7 +64,6 @@ public class CrazyPanda extends CustomOrb {
             passiveAmount = basePassiveAmount;
 
         evokeAmount = passiveAmount;
-        updateDescription();
     }
 
     @Override
@@ -158,13 +158,13 @@ public class CrazyPanda extends CustomOrb {
         if (!shooting)
             FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(passiveAmount),
                     cX + NUM_X_OFFSET + 25*Settings.scale, cY + NUM_Y_OFFSET - 25* Settings.yScale,
-                    new Color(1.0f, 0.25f, 0.25f, 1.0f), fontScale);
+                    TEXT_COLOR, fontScale);
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1]
-                + passiveAmount + DESCRIPTIONS[2];
+        applyFocus();
+        description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + passiveAmount + DESCRIPTIONS[2];
     }
 
     @Override

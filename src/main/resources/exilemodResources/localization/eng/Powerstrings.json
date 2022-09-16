@@ -148,12 +148,12 @@
       "Spend [E] to draw !A2! cards."
     ]
   },
-  "${ModID}:SnowfallPower": {
-    "NAME": "Snowfall",
+  "${ModID}:SummonBeesPower": {
+    "NAME": "Summon Bees",
     "DESCRIPTIONS": [
-      "Once per turn, you may discard a card to apply !A! #yFrostbite to ALL enemies.",
-      "Once per turn, you may discard a card to apply !A! #yFrostbite to ALL enemies.",
-      "Discard a card to apply !A! #yFrostbite to ALL enemies."
+      "You may spend [E] to Channel a #ySwarm #yof #yBees.",
+      "You may spend [E] to Channel a #ySwarm #yof #yBees.",
+      "You may spend [E] to Channel a #ySwarm #yof #yBees."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {

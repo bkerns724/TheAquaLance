@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
@@ -34,73 +35,88 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     private static final String IMG_PATH = "exilemodResources/images/vfx/Bee.png";
     private static final Texture BEE_IMG = ImageMaster.loadImage(IMG_PATH);
     private static final int EVOKE_BONUS = 6;
-    private static final int BEE_COUNT = 10;
+    private static final int BEE_COUNT = 50;
+    private static final Color TEXT_COLOR = new Color(1.0f, 0.25f, 0.25f, 1.0f);
 
     private final ArrayList<Bee> bees = new ArrayList<>();
 
     private class Bee {
-        private static final float SPAWN_DISTANCE = 50f;
-        private static final float TETHER_DISTANCE = SPAWN_DISTANCE/2f;
-        private static final float SPAWN_VELOCITY_VAR = 10f;
-        private static final float ACC_VAR = 10f;
+        private static final float SPAWN_DISTANCE = 40f;
+        private static final float TETHER_DISTANCE = SPAWN_DISTANCE;
+        private static final float SPAWN_VELOCITY_VAR = 40f;
+        private static final float ACC_VAR = 40f;
 
         private float x, y;
-        private float vx, vy;
-        private float ax, ay;
+        private float vMag, vAngle;
+        private float aTurn, aVel;
         private float timer;
         private float rotation;
 
         private Bee() {
             float dist = MathUtils.randomTriangular(0f, SPAWN_DISTANCE);
-            float angle = MathUtils.random(0f, MathUtils.PI2);
-            this.x = dist * cos(angle);
-            this.y = dist * sin(angle);
+            float distAngle = MathUtils.random(0f, MathUtils.PI2);
+            x = dist * cos(distAngle);
+            y = dist * sin(distAngle);
 
-            float speed = MathUtils.random(-SPAWN_VELOCITY_VAR, SPAWN_VELOCITY_VAR);
-            float moveAngle = MathUtils.random(0f, MathUtils.PI2);
-            vx = speed * cos(moveAngle);
-            vy = speed * sin(moveAngle);
+            vMag = MathUtils.random(SPAWN_VELOCITY_VAR*0.2f, SPAWN_VELOCITY_VAR);
+            vAngle = MathUtils.random(0f, MathUtils.PI2);
 
-            rotation = atan2(vy, vx);
-            generateRandomAcc();
+            rotation = vAngle*180f/MathUtils.PI;
+
+            aVel = MathUtils.random(0f, ACC_VAR);
+            aTurn = MathUtils.random(0, 4f*PI);
+            timer = MathUtils.random(0.35f, 0.65f);
+
+            hb.height = 128f;
+            hb.width = 128f;
         }
 
         private void generateRandomAcc() {
             float dist = (float)Math.sqrt(x*x + y*y);
-            float angle = MathUtils.atan2(y, x);
+            float distAngle = atan2(-y, -x);
 
-            float accAdjX = (TETHER_DISTANCE - dist) * cos(angle);
-            float accAdjY = (TETHER_DISTANCE - dist) * sin(angle);
+            while (vAngle > PI)
+                vAngle -= PI2;
+            while (vAngle < -PI)
+                vAngle += PI2;
 
-            float acc = MathUtils.random(-ACC_VAR, ACC_VAR);
-            float accAngle = MathUtils.random(0f, MathUtils.PI2);
-            ax = acc * cos(accAngle) + accAdjX;
-            ay = acc * sin(accAngle) + accAdjY;
+            aVel = (SPAWN_VELOCITY_VAR/2f - vMag) + SPAWN_VELOCITY_VAR*MathUtils.random(-0.25f, 0.25f);
 
-            if (ax > ACC_VAR)
-                ax = ACC_VAR;
-            else if (ax < -ACC_VAR)
-                ax = -ACC_VAR;
+            if (dist > TETHER_DISTANCE) {
+                float deltaAng = vAngle - distAngle;
+                while (deltaAng > PI)
+                    deltaAng -= PI2;
+                while (deltaAng < -PI)
+                    deltaAng += PI2;
 
-            if (ay > ACC_VAR)
-                ay = ACC_VAR;
-            else if (ay < -ACC_VAR)
-                ay = -ACC_VAR;
+                aTurn = -deltaAng/(MathUtils.random(0.45f, 0.525f));
 
-            timer = MathUtils.random(0.2f, 1.0f);
+                timer = 0.5f;
+            } else {
+                aTurn = MathUtils.random(-0.5f, 0.5f) * PI;
+                timer = MathUtils.random(0.4f, 8f);
+            }
         }
 
         private void update() {
             float delta = Gdx.graphics.getDeltaTime();
 
-            x += vx*delta + ax*delta*delta/2f;
-            y += vy*delta + ay*delta*delta/2f;
+            x += (vMag * cos(vAngle))*delta;
+            y += (vMag * sin(vAngle))*delta;
 
-            vx += ax*delta;
-            vy += ay*delta;
+            // this one needs to be in degrees
+            rotation = vAngle*180f/MathUtils.PI;
+            hb.move(x + cX, y + cY);
 
-            rotation = atan2(vy, vx);
-            hb.move(x, y);
+            vMag += aVel*delta;
+
+            if (vMag < SPAWN_VELOCITY_VAR*0.1f)
+                vMag = SPAWN_VELOCITY_VAR*0.1f;
+
+            if (vMag > SPAWN_VELOCITY_VAR*1.5f)
+                vMag = SPAWN_VELOCITY_VAR*1.5f;
+
+            vAngle += aTurn*delta;
 
             timer -= delta;
             if (timer < 0)
@@ -114,8 +130,8 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
             float beeX = x + cX;
             float beeY = y + cY;
 
-            sb.draw(img, beeX - BEE_IMG.getWidth()/2f, beeY - BEE_IMG.getHeight()/2f, BEE_IMG.getWidth(), BEE_IMG.getHeight(),
-                    BEE_IMG.getWidth(), BEE_IMG.getHeight(), scale, scale, rotation, 0, 0,
+            sb.draw(BEE_IMG, beeX - BEE_IMG.getWidth()/2f, beeY - BEE_IMG.getHeight()/2f, BEE_IMG.getWidth()/2f,
+                    BEE_IMG.getHeight()/2f, BEE_IMG.getWidth(), BEE_IMG.getHeight(), scale, scale, rotation, 0, 0,
                     BEE_IMG.getWidth(), BEE_IMG.getHeight(), false, false);
         }
     }
@@ -141,6 +157,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
         }
     }
 
+    @Override
     public void applyFocus() {
         AbstractPower power = adp().getPower("Focus");
         if (power != null)
@@ -149,18 +166,17 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
             passiveAmount = basePassiveAmount;
 
         evokeAmount = passiveAmount + EVOKE_BONUS;
-        updateDescription();
     }
 
     @Override
     public void playChannelSFX() {
-        long id = CardCrawlGame.sound.play("BEES", 0.1f);
-        CardCrawlGame.sound.fadeOut("BEES", id);
+        CardCrawlGame.sound.play(ExileMod.BEES_KEY, 0.1f);
     }
 
     @Override
-    public void onAttack(AbstractMonster target,DamageInfo info) {
-        Wiz.thornDmgTop(target, passiveAmount, ExileMod.Enums.BEE);
+    public void onAttack(AbstractMonster target, DamageInfo info) {
+        if (info.type == DamageInfo.DamageType.NORMAL)
+            Wiz.thornDmgTop(target, passiveAmount, ExileMod.Enums.BEE);
     }
 
     @Override
@@ -199,7 +215,16 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     }
 
     @Override
+    protected void renderText(SpriteBatch sb) {
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(passiveAmount),
+                cX, cY - NUM_Y_OFFSET - 4f*scale, TEXT_COLOR, fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(evokeAmount),
+                cX, cY - NUM_Y_OFFSET + 20f*scale, TEXT_COLOR, fontScale);
+    }
+
+    @Override
     public void updateDescription() {
+        applyFocus();
         description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + evokeAmount + DESCRIPTIONS[2];
     }
 
