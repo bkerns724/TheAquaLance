@@ -12,7 +12,7 @@ public class SpinningSigil extends AbstractExileCard {
     private final static int COST = -2;
 
     public SpinningSigil() {
-        super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
+        super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
     }
 
     public void applyAttributes() {

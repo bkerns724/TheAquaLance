@@ -15,22 +15,29 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.ImpactSparkEffect;
 
 public class GreenLightningEffect extends AbstractGameEffect {
-    private float x;
-    private float y;
-    private boolean screenshake;
+    private final float x;
+    private final float y;
+    private final boolean screenshake;
+    private final boolean sound;
     private static TextureAtlas.AtlasRegion img = null;
     private static final float DURATION = 0.5f;
 
     public GreenLightningEffect(float x, float y) {
-        this(x, y, true);
+        this(x, y, true, true);
     }
-    public GreenLightningEffect(float x, float y, boolean screenshake) {
+
+    public GreenLightningEffect(float x, float y, boolean shake) {
+        this(x, y, shake, true);
+    }
+
+    public GreenLightningEffect(float x, float y, boolean screenshake, boolean sound) {
         if (img == null)
             img = ImageMaster.vfxAtlas.findRegion("combat/lightning");
 
         this.x = x - (float)img.packedWidth / 2.0F;
         this.y = y;
         this.screenshake = screenshake;
+        this.sound = sound;
         color = Color.LIME.cpy();
         duration = startingDuration = DURATION;
     }
@@ -39,9 +46,10 @@ public class GreenLightningEffect extends AbstractGameEffect {
         if (duration == startingDuration) {
             if (screenshake) {
                 CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.MED, false);
-                CardCrawlGame.sound.play("ORB_LIGHTNING_PASSIVE");
+                if (sound)
+                    CardCrawlGame.sound.play("ORB_LIGHTNING_PASSIVE");
             }
-            else
+            else if (sound)
                 CardCrawlGame.sound.play("ORB_LIGHTNING_EVOKE");
 
             for(int i = 0; i < 15; ++i) {

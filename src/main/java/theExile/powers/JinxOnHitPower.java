@@ -1,6 +1,5 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -8,7 +7,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.atb;
 
 public class JinxOnHitPower extends AbstractExilePower {
     public static String POWER_ID = makeID(JinxOnHitPower.class.getSimpleName());
@@ -26,10 +24,5 @@ public class JinxOnHitPower extends AbstractExilePower {
         if (info.type == DamageInfo.DamageType.NORMAL)
             Wiz.applyToEnemyTop(owner, new JinxPower(owner, amount));
         return damageAmount;
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

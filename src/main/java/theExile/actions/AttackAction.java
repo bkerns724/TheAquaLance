@@ -192,8 +192,10 @@ public class AttackAction extends AbstractGameAction {
 
         if (effect == ExileMod.Enums.LIGHTNING_L) {
             color = Color.GREEN.cpy();
-            if (m == null)
-                forAllMonstersLiving(m -> vfxTop(new LargeGreenLightningEffect(m)));
+            if (m == null) {
+                vfxTop(new LightningStormSounds());
+                forAllMonstersLiving(m -> vfxTop(new LargeGreenLightningEffect(m, false)));
+            }
             else
                 vfxTop(new LargeGreenLightningEffect(m));
         }

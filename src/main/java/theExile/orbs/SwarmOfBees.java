@@ -218,11 +218,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     @Override
     protected void renderText(SpriteBatch sb) {
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(passiveAmount),
-                cX, cY - NUM_Y_OFFSET, TEXT_COLOR, fontScale);
-        /*
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(evokeAmount),
-                cX, cY - NUM_Y_OFFSET + 20f*scale, TEXT_COLOR, fontScale);
-                */
+                cX + NUM_X_OFFSET, cY + NUM_Y_OFFSET, c, fontScale);
     }
 
     @Override
