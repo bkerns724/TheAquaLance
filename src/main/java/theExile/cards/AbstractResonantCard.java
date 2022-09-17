@@ -95,6 +95,11 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
             isMultiDamage = true;
         else
             isMultiDamage = false;
+        for (AbstractExileCard c : resonance.cards) {
+            c.costForTurn = c.cost;
+            c.resetAttributes();
+            c.applyPowers();
+        }
         super.applyPowers();
         initializeDescription();
     }
@@ -109,6 +114,8 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
             isMultiDamage = true;
         else
             isMultiDamage = false;
+        for (AbstractExileCard c : resonance.cards)
+            c.calculateCardDamage(mo);
         super.calculateCardDamage(mo);
         initializeDescription();
     }

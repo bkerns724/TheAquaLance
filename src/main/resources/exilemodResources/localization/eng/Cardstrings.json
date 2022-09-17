@@ -251,7 +251,7 @@
   },
   "${ModID}:ElementalProwess": {
     "NAME": "Elemental Prowess",
-    "DESCRIPTION": "An element of your choice is twice as effective."
+    "DESCRIPTION": "${ModID}:Activate once per turn: Place a card in your hand ."
   },
   "${ModID}:Convert": {
     "NAME": "Convert",

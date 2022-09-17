@@ -22,6 +22,7 @@ public class ResonanceUseCardAction extends AbstractGameAction {
     public void update() {
         isDone = true;
         if (!acoustic && target == null) {
+            card.calculateCardDamage(null);
             card.nonTargetUse();
             card.autoTargetUse(card.getTarget());
         }
@@ -31,6 +32,7 @@ public class ResonanceUseCardAction extends AbstractGameAction {
             card.calculateCardDamage((AbstractMonster) target);
             card.singleTargetUse((AbstractMonster) target);
             card.autoTargetUse(card.getTarget());
+            card.calculateCardDamage(null);
             card.nonTargetUse();
         } else {
             forAllMonstersLiving(mon -> {

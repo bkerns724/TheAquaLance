@@ -21,6 +21,7 @@ public class Collapse extends AbstractExileCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.PHANTASMAL);
+        isMultiDamage = true;
     }
 
     @Override

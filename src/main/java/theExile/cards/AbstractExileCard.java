@@ -438,8 +438,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public int getDamageForVFX() {
         int amount = damage;
-        if (isMultiDamage && multiDamage.length > 0) {
-            amount = multiDamage[0];
+        if (isMultiDamage && multiDamage != null && multiDamage.length > 0) {
             for (int x : multiDamage)
                 if (x > amount)
                     amount = x;

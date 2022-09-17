@@ -10,10 +10,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.ExileMod;
 import theExile.icons.Phantasmal;
+import theExile.powers.ElementalProwessForce;
+import theExile.powers.ForceChargePower;
 
 import java.util.ArrayList;
+
+import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
 public class PhantasmalDamage extends AbstractDamageModifier {
@@ -40,8 +45,17 @@ public class PhantasmalDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        // code is in ForceChargePower so the damage preview shows up from ApplyPowers();
-        return damage;
+        AbstractPower powCharge = adp().getPower(ForceChargePower.POWER_ID);
+        if (powCharge == null)
+            return damage;
+
+        float bonus = powCharge.amount * ForceChargePower.BONUS;
+
+        AbstractPower powEle = adp().getPower(ElementalProwessForce.POWER_ID);
+        if (powEle != null)
+            bonus *= (1 + powEle.amount);
+
+        return damage * (1f + bonus);
     }
 
     @Override

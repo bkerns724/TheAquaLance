@@ -36,4 +36,9 @@ public class MomentumPower extends AbstractExilePower {
             Wiz.cardDraw(1);
         }
     }
+
+    @Override
+    public void atStartOfTurn() {
+        counter = amount;
+    }
 }

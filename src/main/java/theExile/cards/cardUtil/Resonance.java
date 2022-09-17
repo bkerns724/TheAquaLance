@@ -82,8 +82,6 @@ public class Resonance {
             Collections.reverse(cards);
         }
         else {
-            if (getBlock() > 0)
-                atb(new GainBlockAction(adp(), card.block));
             if (card.baseDamage > 0 && m != null) {
                 DamageModContainer container = new DamageModContainer(card, getMergedDamageMods(null));
                 DamageInfo info = BindingHelper.makeInfo(container, adp(), card.damage, card.damageTypeForTurn);

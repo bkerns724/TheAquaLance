@@ -3,11 +3,10 @@ package theExile.powers;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.AbstractResonantCard;
 import theExile.relics.ManaCrystal;
 
 import static theExile.ExileMod.makeID;
@@ -40,25 +39,18 @@ public class ForceChargePower extends AbstractExilePower {
     }
 
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
-        if (card instanceof AbstractExileCard && ((AbstractExileCard) card).damageModList.contains(PHANTASMAL)) {
-
-            float bonus = amount * BONUS;
-
-            AbstractPower prowessPow = adp().getPower(ElementalProwessForce.POWER_ID);
-            if (prowessPow != null)
-                bonus *= (1 + prowessPow.amount);
-
-            return damage * (1f + bonus);
-        }
-        return damage;
-    }
-
-    @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card instanceof AbstractExileCard && ((AbstractExileCard) card).damageModList.contains(PHANTASMAL)) {
             flash();
             atb(new RemoveSpecificPowerAction(adp(), adp(), this));
+        } else if (card instanceof AbstractResonantCard) {
+            for (AbstractExileCard c : ((AbstractResonantCard) card).resonance.cards) {
+                if (c.damageModList.contains(PHANTASMAL)) {
+                    flash();
+                    atb(new RemoveSpecificPowerAction(adp(), adp(), this));
+                    return;
+                }
+            }
         }
     }
 
