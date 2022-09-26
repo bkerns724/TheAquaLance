@@ -1,5 +1,6 @@
 package theExile.cards;
 
+import theExile.ExileMod;
 import theExile.powers.ExileStudyPower;
 
 import static theExile.ExileMod.makeID;
@@ -13,7 +14,7 @@ public class Study extends AbstractExileCard {
     private final static int COST = 0;
 
     public Study() {
-        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, COST, CardType.SKILL, ExileMod.Enums.UNIQUE, CardTarget.SELF);
     }
 
     public void applyAttributes() {

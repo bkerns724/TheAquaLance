@@ -52,6 +52,24 @@
     "DESCRIPTION": "Ringing creatures lose HP at the start of their turn."
   },
   {
+    "PROPER_NAME": "Corrosion",
+    "NAMES": [
+      "Corrosion",
+      "corrosion"
+    ],
+    "DESCRIPTION": "Corroded creatures take more damage from Attacks."
+  },
+  {
+    "PROPER_NAME": "Soul\u00a0Rot",
+    "NAMES": [
+      "Soul\u00a0Rot",
+      "soul\u00a0rot",
+      "Soul",
+      "soul"
+    ],
+    "DESCRIPTION": "Soul rotted creatures take more non-attack damage."
+  },
+  {
     "PROPER_NAME": "Metallicize",
     "NAMES": [
       "Metallicize",
@@ -77,15 +95,17 @@
       "Frostbite",
       "frostbite"
     ],
-    "DESCRIPTION": "Whenever a creature with Frostbite attacks it takes damage and Frostbite is reduced by 1."
+    "DESCRIPTION": "Frostbitten creatures take damage when they attack, then Frostbite is reduced by 1."
   },
   {
-    "PROPER_NAME": "Flanked",
+    "PROPER_NAME": "Charge",
     "NAMES": [
-      "Flanked",
-      "flanked"
+      "Charge",
+      "charge",
+      "Charged",
+      "charged"
     ],
-    "DESCRIPTION": "Flanked creatures lose HP whenever they are attacked."
+    "DESCRIPTION": "You can spend [E] to gain a charge if you have none. NL Each charge increases the damage of the next [${ModID}:ForceIcon] attack by 50%."
   },
   {
     "PROPER_NAME": "Jinx",
@@ -94,5 +114,13 @@
       "jinx"
     ],
     "DESCRIPTION": "Whenever a Jinxed creature receives another debuff, it loses HP."
+  },
+  {
+    "PROPER_NAME": "Barbed",
+    "NAMES": [
+      "Barbed",
+      "barbed"
+    ],
+    "DESCRIPTION": "Barbed creatures take damage when they attack."
   }
 ]

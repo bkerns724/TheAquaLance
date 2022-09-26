@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.cards.curses.Injury;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -27,9 +26,6 @@ public class Shapeshift extends AbstractExileCard {
         baseMagicNumber = magicNumber = MAGIC;
         baseSecondMagic = secondMagic = SECOND_MAGIC;
         cardsToPreview = new Injury();
-        SoulboundField.soulbound.set(cardsToPreview, true);
-        cardsToPreview.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0] + cardsToPreview.rawDescription;
-        cardsToPreview.initializeDescription();
     }
 
     public void nonTargetUse() {
@@ -40,14 +36,11 @@ public class Shapeshift extends AbstractExileCard {
     @Override
     public void onPickup() {
         Injury copy = (Injury) cardsToPreview.makeStatEquivalentCopy();
-        SoulboundField.soulbound.set(copy, true);
-        copy.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0] + copy.rawDescription;
-        copy.initializeDescription();
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(copy,
+        AbstractDungeon.effectsQueue.add(new ShowCardAndObtainEffect(copy,
                 (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic(UPGRADE_MAGIC);
     }
 }

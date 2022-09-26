@@ -1,16 +1,14 @@
 package theExile.powers;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import theExile.util.Wiz;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adRoom;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.*;
 
 public class BellTollsPower extends AbstractExilePower {
     public static String POWER_ID = makeID(BellTollsPower.class.getSimpleName());
@@ -21,24 +19,24 @@ public class BellTollsPower extends AbstractExilePower {
     public BellTollsPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
-        priority = 4;
     }
 
     @Override
-    public void atEndOfRound() {
-        if (adRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            int count = Wiz.getDebuffCount(owner) * amount;
-            if (count > 0) {
-                atb(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        flashWithoutSound();
-                        CardCrawlGame.sound.playAV("BELL", -0.25f, 0.75f);
-                        Wiz.applyToEnemyTop(owner, new RingingPower(owner, count));
-                        isDone = true;
-                    }
-                });
-            }
+    public void atEndOfTurn(boolean isPlayer) {
+        if (adp() == null)
+            return;
+        AbstractPower pow = adp().getPower(ResonatingPower.POWER_ID);
+        int count = pow != null ? pow.amount * amount : 0;
+        if (count > 0) {
+            atb(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    flashWithoutSound();
+                    CardCrawlGame.sound.playA("BELL", -0.25f);
+                    att(new ApplyPowerAction(owner, adp(), new RingingPower(owner, count), count, AttackEffect.NONE));
+                    isDone = true;
+                }
+            });
         }
     }
 }

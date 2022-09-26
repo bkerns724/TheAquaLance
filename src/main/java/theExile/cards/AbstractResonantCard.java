@@ -58,9 +58,9 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
             super.addModifier(FAKE_ICE, tips);
             resonance.addModifier(ICE);
         }
-        else if (element == PHANTASMAL) {
-            super.addModifier(FAKE_PHANTASMAL, tips);
-            resonance.addModifier(PHANTASMAL);
+        else if (element == FORCE) {
+            super.addModifier(FAKE_FORCE, tips);
+            resonance.addModifier(FORCE);
         }
         else if (element == ELDRITCH) {
             super.addModifier(FAKE_ELDRITCH, tips);

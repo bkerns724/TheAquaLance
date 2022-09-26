@@ -58,7 +58,7 @@ public class BlessedNecklace extends AbstractExileRelic implements RelicWithButt
         CardCrawlGame.sound.play("UI_CLICK_1");
         flash();
         atb(new GainBlockAction(adp(), BLOCK_AMOUNT));
-        Wiz.cardDraw(DRAW_AMOUNT);
+        Wiz.draw(DRAW_AMOUNT);
         grayscale = true;
     }
 

@@ -1,42 +1,29 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.ExileMod;
-import theExile.util.Wiz;
 
+import static com.megacrit.cardcrawl.cards.AbstractCard.CardTarget.ENEMY;
 import static theExile.ExileMod.makeID;
 
 public class LightningBolt extends AbstractExileCard {
     public final static String ID = makeID(LightningBolt.class.getSimpleName());
     private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 4;
-    private final static int MAGIC = 1;
     private final static int COST = 1;
 
     public LightningBolt() {
-        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, ExileMod.Enums.AUTOAIM_ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, ENEMY);
     }
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.LIGHTNING);
+        exhaust = true;
     }
 
     @Override
-    public AbstractMonster getTarget() {
-        return Wiz.getHighestHealthEnemy();
-    }
-
-    @Override
-    public void autoTargetUse(AbstractMonster m) {
-        calculateCardDamage(m);
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
-    }
-
-    @Override
-    public void nonTargetUse() {
-        Wiz.discard(1);
     }
 
     public void upp() {

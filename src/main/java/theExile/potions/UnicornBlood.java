@@ -41,13 +41,12 @@ public class UnicornBlood extends AbstractExilePotion {
     }
 
     public boolean canUse() {
-        if (NoDiscardPotionPatch.PotionDiscardField.eventReserved.get(this))
+        if (NoDiscardPotionPatch.PotionDiscardField.eventReserved.get(this) || adRoom() == null)
             return false;
-        if (AbstractDungeon.actionManager.turnHasEnded && adRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+        if (AbstractDungeon.actionManager.turnHasEnded && adRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             return false;
-        } else {
-            return AbstractDungeon.getCurrRoom().event == null || !(AbstractDungeon.getCurrRoom().event instanceof WeMeetAgain);
-        }
+        else
+            return adRoom().event == null || !(AbstractDungeon.getCurrRoom().event instanceof WeMeetAgain);
     }
 
     public void use(AbstractCreature target) {

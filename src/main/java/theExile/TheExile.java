@@ -189,7 +189,7 @@ public class TheExile extends CustomPlayer {
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }
-        return new Concentrate();
+        return new Focus();
     }
 
     public static AbstractCard getCardForLibrary() {
@@ -201,7 +201,7 @@ public class TheExile extends CustomPlayer {
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);
         }
-        return new Concentrate();
+        return new Focus();
     }
 
     @Override

@@ -20,7 +20,7 @@ public class CrushTheWeak extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
-        addModifier(elenum.PHANTASMAL);
+        addModifier(elenum.FORCE);
     }
 
     public void singleTargetUse(AbstractMonster m) {

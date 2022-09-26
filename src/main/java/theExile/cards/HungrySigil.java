@@ -8,7 +8,7 @@ import static theExile.ExileMod.makeID;
 
 public class HungrySigil extends AbstractExileCard {
     public final static String ID = makeID(HungrySigil.class.getSimpleName());
-    private final static int DAMAGE = 9;
+    private final static int DAMAGE = 10;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = -2;
 

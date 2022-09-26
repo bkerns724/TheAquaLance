@@ -1,10 +1,5 @@
 *.class
 
-# My Notes and other stuff
-src/main/resources/exilemodResources/images/cutScene/IconStorage
-Thoughts
-ThoughtsBackup
-
 # Weird ods thing
 *.ods[#]
 
@@ -13,14 +8,9 @@ ThoughtsBackup
 out/
 *.iml
 
-# Eclipse
-.classpath
-.project
-.settings/
-
 # maven build target
 target/
-!target/TheArcanist.jar
+!target/TheExile.jar
 dependency-reduced-pom.xml
 
 # Mobile Tools for Java (J2ME)

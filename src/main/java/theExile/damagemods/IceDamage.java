@@ -10,17 +10,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.ExileMod;
 import theExile.icons.Ice;
-import theExile.powers.ElementalProwessIce;
 import theExile.powers.FrostbitePower;
 import theExile.relics.BlueMarbles;
-import theExile.util.Wiz;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.applyToEnemyTop;
 
 @AutoAdd.Ignore
 public class IceDamage extends AbstractDamageModifier {
@@ -59,18 +57,11 @@ public class IceDamage extends AbstractDamageModifier {
             return;
         float frostbite = blockedAmount + lastDamageTaken;
         frostbite = frostbite / THRESHOLD;
-        float mult = 1f;
-        AbstractPower pow = adp().getPower(ElementalProwessIce.POWER_ID);
-        if (pow != null)
-            mult += pow.amount;
-        frostbite = frostbite * mult;
+        if (adp().hasRelic(BlueMarbles.ID))
+            frostbite = frostbite * BlueMarbles.MULT;
         int frostbiteInt = (int) frostbite;
-        if (frostbiteInt > 0) {
-            if (adp().hasRelic(BlueMarbles.ID))
-                Wiz.forAllMonstersLiving(mon -> applyToEnemyTop(mon, new FrostbitePower(mon, frostbiteInt)));
-            else
-                applyToEnemyTop(target, new FrostbitePower(target, frostbiteInt));
-        }
+        if (frostbiteInt > 0)
+            applyToEnemyTop(target, new FrostbitePower(target, frostbiteInt));
     }
 
     @Override

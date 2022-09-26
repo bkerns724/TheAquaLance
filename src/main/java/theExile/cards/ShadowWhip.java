@@ -8,10 +8,10 @@ import static theExile.ExileMod.makeID;
 
 public class ShadowWhip extends AbstractExileCard {
     public final static String ID = makeID(ShadowWhip.class.getSimpleName());
-    private final static int DAMAGE = 9;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 15;
+    private final static int UPGRADE_DAMAGE = 5;
     private final static int MAGIC = 1;
-    private final static int COST = 1;
+    private final static int COST = 2;
 
     public ShadowWhip() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);

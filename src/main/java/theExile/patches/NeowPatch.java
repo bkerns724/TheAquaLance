@@ -1,6 +1,7 @@
 package theExile.patches;
 
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,10 +13,11 @@ import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
 import theExile.cards.ArcaneBeam;
 import theExile.cards.Confusion;
-import theExile.cards.QuickThinking;
+import theExile.cards.Study;
 
 import java.util.ArrayList;
-import static theExile.util.Wiz.*;
+
+import static theExile.util.Wiz.adp;
 
 public class NeowPatch {
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ExileMod.makeID("NeowPatch"));
@@ -45,7 +47,7 @@ public class NeowPatch {
             if (__instance.type == ExileMod.Enums.UNIQUE_CARD_REWARD) {
                 ArrayList<AbstractExileCard> list = new ArrayList<>();
                 list.add(new ArcaneBeam());
-                list.add(new QuickThinking());
+                list.add(new Study());
                 list.add(new Confusion());
                 int x = AbstractDungeon.cardRng.random(0, list.size() - 1);
                 AbstractExileCard card = list.get(x);

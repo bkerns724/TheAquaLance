@@ -4,7 +4,6 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.relics.ManaPurifier;
 import theExile.relics.VialOfBlackBlood;
 
 import java.util.ArrayList;
@@ -46,10 +45,6 @@ public class EnchantedDagger extends AbstractExileCard {
     public void calculateCardDamage(AbstractMonster mo) {
         damageModList.clear();
         DamageModifierManager.clearModifiers(this);
-        if (adp().hasRelic(ManaPurifier.ID)) {
-            initializeDescription();
-            return;
-        }
         addModifier(stableList, true);
 
         for (AbstractCard card : adp().hand.group) {
@@ -61,8 +56,8 @@ public class EnchantedDagger extends AbstractExileCard {
                         addModifier(ELDRITCH);
                     if (e == LIGHTNING || e == FAKE_LIGHTNING)
                         addModifier(LIGHTNING);
-                    if (e == PHANTASMAL || e == FAKE_PHANTASMAL)
-                        addModifier(PHANTASMAL);
+                    if (e == FORCE || e == FAKE_FORCE)
+                        addModifier(FORCE);
                 }
             }
         }
@@ -77,10 +72,6 @@ public class EnchantedDagger extends AbstractExileCard {
         DamageModifierManager.clearModifiers(this);
         if (adp() == null)
             return;
-        if (adp().hasRelic(ManaPurifier.ID)) {
-            initializeDescription();
-            return;
-        }
         addModifier(stableList, true);
 
         for (AbstractCard card : adp().hand.group) {
@@ -92,8 +83,8 @@ public class EnchantedDagger extends AbstractExileCard {
                         addModifier(ELDRITCH);
                     if (e == LIGHTNING || e == FAKE_LIGHTNING)
                         addModifier(LIGHTNING);
-                    if (e == PHANTASMAL || e == FAKE_PHANTASMAL)
-                        addModifier(PHANTASMAL);
+                    if (e == FORCE || e == FAKE_FORCE)
+                        addModifier(FORCE);
                 }
             }
         }
@@ -107,7 +98,7 @@ public class EnchantedDagger extends AbstractExileCard {
     }
 
     @Override
-    protected void initDesc() {
+    public void initializeDescription() {
         if (cardStrings == null)
             cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         if (upgraded && cardStrings.UPGRADE_DESCRIPTION != null)
@@ -120,7 +111,7 @@ public class EnchantedDagger extends AbstractExileCard {
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
             if (damageModList.contains(ELDRITCH) || stableList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
-            if (damageModList.contains(PHANTASMAL) || stableList.contains(PHANTASMAL))
+            if (damageModList.contains(FORCE) || stableList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + PHANTASMAL_STRING + " ");
             if (damageModList.contains(LIGHTNING) || stableList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
@@ -138,6 +129,8 @@ public class EnchantedDagger extends AbstractExileCard {
         if (exhaust || (damageModList != null && damageModList.contains(LIGHTNING)
                 && adp() != null && adp().hasRelic(VialOfBlackBlood.ID)))
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
+
+        super.initializeDescription();
     }
 
     @Override

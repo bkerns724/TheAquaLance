@@ -19,7 +19,7 @@ public class DimensionalPouchPower extends AbstractExilePower implements PowerWi
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final String TEXTURE_STRING = "exilemodResources/images/ui/HasteButton.png";
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/DrawButton.png";
     private int counter;
     private final static int CARD_DRAW = 2;
 

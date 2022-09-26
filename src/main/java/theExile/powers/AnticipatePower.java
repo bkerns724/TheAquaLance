@@ -18,7 +18,7 @@ public class AnticipatePower extends AbstractExilePower implements PowerWithButt
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final String TEXTURE_STRING = "exilemodResources/images/ui/ChaoticMindButton.png";
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/CycleButton.png";
 
     public AnticipatePower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);

@@ -9,9 +9,9 @@ import static theExile.util.Wiz.*;
 public class Storm extends AbstractExileCard {
     public final static String ID = makeID(Storm.class.getSimpleName());
     private final static int DAMAGE = 30;
-    private final static int UPGRADE_DAMAGE = 5;
-    private final static int MAGIC = 5;
-    private final static int COST = 1;
+    private final static int UPGRADE_DAMAGE = 6;
+    private final static int MAGIC = 6;
+    private final static int COST = 0;
 
     public Storm() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);

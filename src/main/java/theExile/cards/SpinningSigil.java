@@ -23,7 +23,7 @@ public class SpinningSigil extends AbstractExileCard {
     @Override
     public void nonTargetUse() {
         applyToSelf(new SpinningSigilPower(magicNumber));
-        cardDraw(1);
+        draw(1);
         discard(1);
     }
 

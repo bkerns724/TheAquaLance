@@ -1,7 +1,7 @@
 package theExile.cards;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.cardDraw;
+import static theExile.util.Wiz.draw;
 
 public class Barrier extends AbstractExileCard {
     public final static String ID = makeID(Barrier.class.getSimpleName());
@@ -22,7 +22,7 @@ public class Barrier extends AbstractExileCard {
 
     public void nonTargetUse() {
         blck();
-        cardDraw(magicNumber);
+        draw(magicNumber);
     }
 
     public void upp() {

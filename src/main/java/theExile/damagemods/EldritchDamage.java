@@ -10,11 +10,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
-import theExile.powers.ElementalProwessEldritch;
 
 import java.util.ArrayList;
 
@@ -58,11 +56,6 @@ public class EldritchDamage extends AbstractDamageModifier {
             return;
         float tempHP = blockedAmount + lastDamageTaken;
         tempHP = tempHP / THRESHOLD;
-        float mult = 1f;
-        AbstractPower pow = adp().getPower(ElementalProwessEldritch.POWER_ID);
-        if (pow != null)
-            mult += pow.amount;
-        tempHP *= mult;
         if ((int)tempHP > 0)
             att(new MyAddTempHPAction(adp(), adp(), (int)tempHP));
     }

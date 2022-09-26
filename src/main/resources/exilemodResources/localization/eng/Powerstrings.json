@@ -27,10 +27,16 @@
       "Resonating Intensifies"
     ]
   },
-  "${ModID}:FrostbitePower": {
-    "NAME": "Frostbite",
+  "${ModID}:WetPower": {
+    "NAME": "Wet",
     "DESCRIPTIONS": [
-      "Whenever this enemy attacks, it suffers !A! damage."
+      "Takes !A! more damage from [${ModID}:IceIcon] attacks."
+    ]
+  },
+  "${ModID}:BarbedPower": {
+    "NAME": "Barbed",
+    "DESCRIPTIONS": [
+      "Takes !A! damage whenever it attacks."
     ]
   },
   "${ModID}:ResonantCostZeroPower": {
@@ -72,16 +78,30 @@
       "Loses !A! HP at the start of its turn."
     ]
   },
+  "${ModID}:CorrodedPower": {
+    "NAME": "Corroded",
+    "DESCRIPTIONS": [
+      "Takes !A! more damage from Attacks this turn."
+    ]
+  },
+  "${ModID}:TacticalMindPower": {
+    "NAME": "Tactical Mind",
+    "DESCRIPTIONS": [
+      "Once per turn you may put a card from your discard pile on top of your draw pile.",
+      "!A! times per turn you may put a card from your discard pile on top of your draw pile.",
+      "Put a card from your discard pile on top of your draw pile."
+    ]
+  },
+  "${ModID}:FrostbitePower": {
+    "NAME": "Frostbite",
+    "DESCRIPTIONS": [
+      "Whenever it attacks, takes !A! damage, then reduce #yFrostbite by #b1."
+    ]
+  },
   "${ModID}:TempNegStrengthPower": {
     "NAME": "Damage Down",
     "DESCRIPTIONS": [
       "Does !A! less damage with attacks this turn."
-    ]
-  },
-  "${ModID}:BarbedPower": {
-    "NAME": "Barbed",
-    "DESCRIPTIONS": [
-      "Takes !A! damage when attacked."
     ]
   },
   "${ModID}:ConvertPower": {
@@ -106,7 +126,7 @@
   "${ModID}:ElegantEtchingPower": {
     "NAME": "Elegant Etching",
     "DESCRIPTIONS": [
-      "#ySigils are played !A2! times and exhaust."
+      "Whenever you play a #ySigil, apply !A! #ySoul #yRot to ALL enemies."
     ]
   },
   "${ModID}:HarmonyPower": {
@@ -128,16 +148,22 @@
       "Takes 50% more damage from Attacks when #yWeakened."
     ]
   },
+  "${ModID}:CrumblingPower": {
+    "NAME": "Crumbling",
+    "DESCRIPTIONS": [
+      "Whenever this enemy would take any damage, it takes !A! more."
+    ]
+  },
   "${ModID}:JinxPower": {
     "NAME": "Jinx",
     "DESCRIPTIONS": [
       "When debuffed with another debuff, this creature will lose !A! HP."
     ]
   },
-  "${ModID}:NoceboPower": {
-    "NAME": "Nocebo",
+  "${ModID}:ManaBurnPower": {
+    "NAME": "Mana Burn",
     "DESCRIPTIONS": [
-      "This doesn't do anything."
+      "Cards cost 0. Lose #b1 HP whenever you play a card."
     ]
   },
   "${ModID}:DimensionalPouchPower": {
@@ -180,17 +206,17 @@
       "Takes !A! extra damage from non-Attacks."
     ]
   },
-  "${ModID}:MomentumPower": {
-    "NAME": "Momentum",
+  "${ModID}:RelentlessnessPower": {
+    "NAME": "Relentlessness",
     "DESCRIPTIONS": [
       "The first time you play an attack each turn, draw a card.",
       "The first !A! times you play an attack each turn, draw a card."
     ]
   },
-  "${ModID}:SpiritPressurePower": {
-    "NAME": "Spirit Pressure",
+  "${ModID}:TabooRitualPower": {
+    "NAME": "Taboo Ritual",
     "DESCRIPTIONS": [
-      "Whenever you apply #yJinx, apply !A! more."
+      "Apply !A! #yJinx to ALL enemies at the start of your turn."
     ]
   },
   "${ModID}:SpinningSigilPower": {
@@ -212,32 +238,10 @@
       "In !A! turns, choose 1 of !A2! cards to add into your hand."
     ]
   },
-  "${ModID}:ElementalProwessForce": {
-    "NAME": "Force Boost",
+  "${ModID}:DownpourPower": {
+    "NAME": "Downpour",
     "DESCRIPTIONS": [
-      "[${ModID}:PhantasmalIcon] Attacks gain twice as much bonus damage from being charged.",
-      "[${ModID}:PhantasmalIcon] Attacks gain !A! times more bonus damage from being charged."
-    ]
-  },
-  "${ModID}:ElementalProwessIce": {
-    "NAME": "Cold Boost",
-    "DESCRIPTIONS": [
-      "[${ModID}:IceIcon] Attacks apply twice as much #yFrostbite.",
-      "[${ModID}:IceIcon] Attacks apply !A! times more #yFrostbite."
-    ]
-  },
-  "${ModID}:ElementalProwessEldritch": {
-    "NAME": "Eldritch Boost",
-    "DESCRIPTIONS": [
-      "[${ModID}:EldritchIcon] Attacks spells grant twice as much #yTemporary #yHP.",
-      "[${ModID}:EldritchIcon] Attacks spells grant !A! times more #yTemporary #yHP."
-    ]
-  },
-  "${ModID}:ElementalProwessLightning": {
-    "NAME": "Lightning Boost",
-    "DESCRIPTIONS": [
-      "[${ModID}:LightningIcon] Attacks gain twice as much bonus damage from attacking a Vulnerable enemy.",
-      "[${ModID}:LightningIcon] Attacks gain !A! times more bonus damage from attacking a Vulnerable enemy."
+      "Whenever you apply #yWet, apply !A! more."
     ]
   },
   "${ModID}:JinxOnHitPower": {
@@ -249,7 +253,7 @@
   "${ModID}:BellTollsPower": {
     "NAME": "The Bell Tolls",
     "DESCRIPTIONS": [
-      "Gains !A! #yRinging for each of its debuffs at the start of its turn."
+      "Gains #yRinging equal to !A! times your #yResonance at the end of each round."
     ]
   },
   "${ModID}:PermafrostPower": {
@@ -259,15 +263,15 @@
       "Frostbite is not reduced for !A! turns."
     ]
   },
-  "${ModID}:VitalityPower": {
-    "NAME": "Vitality",
+  "${ModID}:ResolvePower": {
+    "NAME": "Resolve",
     "DESCRIPTIONS": [
       "Whenever you would discard a status, exhaust it and draw a card.",
       "Whenever you would discard a status, exhaust it and draw !A! cards."
     ]
   },
-  "${ModID}:SadisticGleePower": {
-    "NAME": "Sadistic Glee",
+  "${ModID}:ColdBloodedPower": {
+    "NAME": "Cold Blooded",
     "DESCRIPTIONS": [
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
     ]

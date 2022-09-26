@@ -5,7 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theExile.powers.VitalityPower;
+import theExile.powers.ResolvePower;
 
 import static theExile.util.Wiz.*;
 
@@ -18,7 +18,7 @@ public class VitalityPatch {
         @SpirePrefixPatch
         public static void Prefix(AbstractCard __instance) {
             if (adp() != null && __instance.type == AbstractCard.CardType.STATUS) {
-                VitalityPower pow = (VitalityPower) adp().getPower(VitalityPower.POWER_ID);
+                ResolvePower pow = (ResolvePower) adp().getPower(ResolvePower.POWER_ID);
                 if (pow == null)
                     return;
                 pow.flash();

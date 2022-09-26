@@ -14,7 +14,7 @@ import static theExile.util.Wiz.atb;
 
 public class HeatRay extends AbstractExileCard {
     public final static String ID = makeID(HeatRay.class.getSimpleName());
-    private final static int DAMAGE = 15;
+    private final static int DAMAGE = 16;
     private final static int UPGRADE_DAMAGE = 5;
     private final static int COST = 2;
 

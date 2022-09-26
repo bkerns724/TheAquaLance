@@ -18,7 +18,7 @@ import theExile.cards.AbstractExileCard.elenum;
 import theExile.cards.AbstractResonantCard;
 import theExile.damagemods.DeathLightningDamage;
 import theExile.damagemods.EldritchDamage;
-import theExile.damagemods.PhantasmalDamage;
+import theExile.damagemods.ForceDamage;
 import theExile.damagemods.IceDamage;
 import theExile.powers.*;
 import theExile.util.Wiz;
@@ -67,7 +67,7 @@ public class Resonance {
             if (vigor > 0)
                 applyToSelf(new VigorPower(adp(), vigor));
             if (draw > 0)
-                Wiz.cardDraw(draw);
+                Wiz.draw(draw);
             if (discard > 0)
                 Wiz.discard(discard);
 
@@ -94,7 +94,7 @@ public class Resonance {
             if (vigor > 0)
                 applyToSelf(new VigorPower(adp(), vigor));
             if (draw > 0)
-                Wiz.cardDraw(draw);
+                Wiz.draw(draw);
             if (discard > 0)
                 Wiz.discard(discard);
 
@@ -155,8 +155,8 @@ public class Resonance {
             outList.add(new IceDamage(false));
         if (eList.contains(LIGHTNING))
             outList.add(new DeathLightningDamage(false));
-        if (eList.contains(PHANTASMAL))
-            outList.add(new PhantasmalDamage(false));
+        if (eList.contains(FORCE))
+            outList.add(new ForceDamage(false));
         if (eList.contains(ELDRITCH))
             outList.add(new EldritchDamage(false));
 

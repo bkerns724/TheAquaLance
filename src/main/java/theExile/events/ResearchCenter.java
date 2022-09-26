@@ -20,7 +20,7 @@ import theExile.cards.AbstractExileCard;
 import theExile.cards.EnchantedDagger;
 import theExile.damagemods.DeathLightningDamage;
 import theExile.damagemods.EldritchDamage;
-import theExile.damagemods.PhantasmalDamage;
+import theExile.damagemods.ForceDamage;
 import theExile.damagemods.IceDamage;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SteelhidePotion;
@@ -35,7 +35,7 @@ public class ResearchCenter extends AbstractExileEvent {
     public static final String ID = makeID(ResearchCenter.class.getSimpleName());
     private static final EventStrings eventStrings;
     private static final String IMAGE_PATH;
-    private static final EventUtils.EventType TYPE = EventUtils.EventType.SHRINE;
+    private static final EventUtils.EventType TYPE = EventUtils.EventType.NORMAL;
     private static final int GOLD_A0 = 150;
     private static final int GOLD_A15 = 200;
 
@@ -141,10 +141,10 @@ public class ResearchCenter extends AbstractExileEvent {
                         TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, IceDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[2], true);
-                    if (checkForUpgradableCard(AbstractExileCard.elenum.PHANTASMAL)) {
+                    if (checkForUpgradableCard(AbstractExileCard.elenum.FORCE)) {
                         imageEventText.setDialogOption(options[3]);
                         LargeDialogOptionButton but = imageEventText.optionList.get(1);
-                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, PhantasmalDamage.getPowerTips());
+                        TipsInDialogPatch.ButtonPreviewField.previewTips.set(but, ForceDamage.getPowerTips());
                     } else
                         imageEventText.setDialogOption(options[3], true);
                     if (checkForUpgradableCard(AbstractExileCard.elenum.ELDRITCH)) {
@@ -194,7 +194,7 @@ public class ResearchCenter extends AbstractExileEvent {
             if (buttonPressed == 0)
                 element = AbstractExileCard.elenum.ICE;
             else if (buttonPressed == 1)
-                element = AbstractExileCard.elenum.PHANTASMAL;
+                element = AbstractExileCard.elenum.FORCE;
             else if (buttonPressed == 2)
                 element = AbstractExileCard.elenum.ELDRITCH;
             else if (buttonPressed == 3)

@@ -9,7 +9,7 @@ public class ForceBolt extends AbstractExileCard {
     public final static String ID = makeID(ForceBolt.class.getSimpleName());
     private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
     private final static int COST = 1;
 
     public ForceBolt() {
@@ -19,17 +19,20 @@ public class ForceBolt extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        addModifier(elenum.PHANTASMAL);
+        addModifier(elenum.FORCE);
     }
 
     @Override
     public void singleTargetUse(AbstractMonster m) {
-        dmg(m);
+        if (damageModList.isEmpty())
+            dmg(m, Wiz.getSlashEffect(damage));
+        else
+            dmg(m);
     }
 
     @Override
     public void nonTargetUse() {
-        Wiz.discard(magicNumber);
+        Wiz.discard(1);
     }
 
     public void upp() {

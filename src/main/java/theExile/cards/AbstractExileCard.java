@@ -41,11 +41,10 @@ import theExile.actions.AttackAction;
 import theExile.cards.cardvars.CardSaveObject;
 import theExile.damagemods.*;
 import theExile.icons.Eldritch;
+import theExile.icons.Force;
 import theExile.icons.Ice;
 import theExile.icons.Lightning;
-import theExile.icons.Phantasmal;
 import theExile.powers.AbstractExilePower;
-import theExile.relics.ManaPurifier;
 import theExile.relics.VialOfBlackBlood;
 import theExile.util.CardArtRoller;
 import theExile.util.Wiz;
@@ -91,7 +90,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
     public static final String COLD_STRING = Ice.CODE;
-    public static final String PHANTASMAL_STRING = Phantasmal.CODE;
+    public static final String PHANTASMAL_STRING = Force.CODE;
     public static final String ELDRITCH_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
 
@@ -101,13 +100,15 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     private float myGlowTimer = 0f;
     private boolean sigilGlowing = false;
 
+    protected boolean miscTwo = false;
+
     public enum elenum {
         ICE,
-        PHANTASMAL,
+        FORCE,
         ELDRITCH,
         LIGHTNING,
         FAKE_ICE,
-        FAKE_PHANTASMAL,
+        FAKE_FORCE,
         FAKE_ELDRITCH,
         FAKE_LIGHTNING
     }
@@ -135,10 +136,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         }
 
         applyAttributes();
-        if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
-            DamageModifierManager.clearModifiers(this);
-            damageModList.clear();
-        }
 
         initializeDescription();
     }
@@ -311,7 +308,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         return "";
     }
 
-    protected void initDesc() {
+    @Override
+    public void initializeDescription() {
         if (!overrideRawDesc) {
             if (cardStrings == null)
                 cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -326,7 +324,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
             if (damageModList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
-            if (damageModList.contains(PHANTASMAL))
+            if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + PHANTASMAL_STRING + " ");
             if (damageModList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
@@ -348,11 +346,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (exhaust || (damageModList != null && (damageModList.contains(LIGHTNING) || damageModList.contains(ELDRITCH))
                 && adp() != null && adp().hasRelic(VialOfBlackBlood.ID)))
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
-    }
 
-    @Override
-    public void initializeDescription() {
-        initDesc();
         super.initializeDescription();
     }
 
@@ -405,16 +399,16 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         damageModList.add(element);
         if (element == ICE)
             DamageModifierManager.addModifier(this, new IceDamage(tips));
-        if (element == elenum.PHANTASMAL)
-            DamageModifierManager.addModifier(this, new PhantasmalDamage(tips));
+        if (element == elenum.FORCE)
+            DamageModifierManager.addModifier(this, new ForceDamage(tips));
         if (element == elenum.ELDRITCH)
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         if (element == LIGHTNING)
             DamageModifierManager.addModifier(this, new DeathLightningDamage(tips));
         if (element == FAKE_ICE)
             DamageModifierManager.addModifier(this, new FakeIceDamage(tips));
-        if (element == FAKE_PHANTASMAL)
-            DamageModifierManager.addModifier(this, new FakePhantasmalDamage(tips));
+        if (element == FAKE_FORCE)
+            DamageModifierManager.addModifier(this, new FakeForceDamage(tips));
         if (element == FAKE_ELDRITCH)
             DamageModifierManager.addModifier(this, new FakeEldritchDamage(tips));
         if (element == FAKE_LIGHTNING)
@@ -608,14 +602,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public AbstractCard makeStatEquivalentCopy() {
         AbstractExileCard card = (AbstractExileCard) super.makeStatEquivalentCopy();
         card.sigil = sigil;
+        if (card.sigil)
+            card.cost = -2;
         card.selfRetain = selfRetain;
         card.beingDiscarded = beingDiscarded;
+        card.miscTwo = miscTwo;
 
-        if (adp() != null && adp().hasRelic(ManaPurifier.ID)) {
-            card.damageModList.clear();
-            DamageModifierManager.clearModifiers(card);
-        } else
-            card.addModifier(damageModList, true);
+        card.addModifier(damageModList, true);
 
         card.initializeDescription();
         return card;
@@ -627,6 +620,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (damageModList != null)
             obj.elements.addAll(damageModList);
         obj.sigil = sigil;
+        obj.misc = miscTwo;
         return obj;
     }
 
@@ -635,12 +629,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (damageModList == null)
             damageModList = new ArrayList<>();
 
-        if (adp() != null && adp().hasRelic(ManaPurifier.ID))
-            damageModList.clear();
-        else
-            damageModList.addAll(obj.elements);
+        damageModList.addAll(obj.elements);
 
         sigil = obj.sigil;
+        miscTwo = obj.misc;
         if (sigil)
             cost = -2;
     }

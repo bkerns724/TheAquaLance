@@ -8,6 +8,7 @@ public class ShrapnelSigil extends AbstractExileCard {
     public final static String ID = makeID(ShrapnelSigil.class.getSimpleName());
     private final static int DAMAGE = 9;
     private final static int UPGRADE_DAMAGE = 3;
+    private final static int MAGIC = 2;
 
     public ShrapnelSigil() {
         super(ID, -2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
@@ -16,6 +17,7 @@ public class ShrapnelSigil extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         isMultiDamage = true;
         sigil = true;
     }

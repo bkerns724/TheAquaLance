@@ -33,10 +33,7 @@ import theExile.cards.cardvars.ThirdMagicNumber;
 import theExile.events.ClericsRequest;
 import theExile.events.ResearchCenter;
 import theExile.events.VoidSpirits;
-import theExile.icons.Eldritch;
-import theExile.icons.Ice;
-import theExile.icons.Lightning;
-import theExile.icons.Phantasmal;
+import theExile.icons.*;
 import theExile.orbs.CrazyPanda;
 import theExile.potions.*;
 import theExile.relics.AbstractExileRelic;
@@ -317,10 +314,11 @@ public class ExileMod implements
         BaseMod.addDynamicVariable(new SecondMagicNumber());
         BaseMod.addDynamicVariable(new ThirdMagicNumber());
 
-        CustomIconHelper.addCustomIcon(Phantasmal.get());
+        CustomIconHelper.addCustomIcon(Force.get());
         CustomIconHelper.addCustomIcon(Ice.get());
         CustomIconHelper.addCustomIcon(Eldritch.get());
         CustomIconHelper.addCustomIcon(Lightning.get());
+        CustomIconHelper.addCustomIcon(Question.get());
 
         new AutoAdd(modID)
                 .packageFilter(AbstractExileCard.class)

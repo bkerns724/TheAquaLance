@@ -84,11 +84,11 @@
       "#y${ModID}:Activated. Once per combat you can Scry !R!. Play any #y${ModID}:Sigils you discard."
     ]
   },
-  "${ModID}:ManaPurifier": {
-    "NAME": "Mana Purifier",
-    "FLAVOR": "Probably the dullest looking magical artifact in existence. It saps the color out of everything.",
+  "${ModID}:HereticBrand": {
+    "NAME": "HereticBrand",
+    "FLAVOR": "This mark forcibly burned onto your face warns everyone who you are.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. None of your cards can have damage types."
+      "Gain [E] at the start of your turn. Lose 20% Max HP."
     ]
   },
   "${ModID}:PlaceholderRelic": {
@@ -102,14 +102,14 @@
     "NAME": "Blue Marbles",
     "FLAVOR": "What an odd set of marbles, all different sizes.",
     "DESCRIPTIONS": [
-      "Your [${ModID}:IceIcon] Attacks apply the #yFrostbite to ALL enemies."
+      "[${ModID}:IceIcon] damage applies double #y${ModID}:Frostbite."
     ]
   },
   "${ModID}:ManaCrystal": {
     "NAME": "Mana Crystal",
     "FLAVOR": "You can store a lot of power inside this.",
     "DESCRIPTIONS": [
-      "You can charge !R! times before using a [${ModID}:PhantasmalIcon] Attack."
+      "You can charge !R! times before using a [${ModID}:ForceIcon] Attack."
     ]
   },
   "${ModID}:VialOfBlackBlood": {

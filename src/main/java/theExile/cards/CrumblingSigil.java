@@ -1,6 +1,6 @@
 package theExile.cards;
 
-import theExile.powers.DecayPower;
+import theExile.powers.CrumblingPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
@@ -8,7 +8,7 @@ import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class CrumblingSigil extends AbstractExileCard {
     public final static String ID = makeID(CrumblingSigil.class.getSimpleName());
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = -2;
 
@@ -22,7 +22,7 @@ public class CrumblingSigil extends AbstractExileCard {
     }
 
     public void nonTargetUse() {
-        forAllMonstersLiving(mon -> applyToEnemy(mon, new DecayPower(mon, magicNumber)));
+        forAllMonstersLiving(mon -> applyToEnemy(mon, new CrumblingPower(mon, magicNumber)));
     }
 
     public void upp() {

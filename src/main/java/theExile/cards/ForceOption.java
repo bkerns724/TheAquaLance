@@ -1,16 +1,13 @@
 package theExile.cards;
 
-import theExile.powers.ElementalProwessForce;
-
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToSelf;
 
 public class ForceOption extends AbstractExileCard {
     public final static String ID = makeID(ForceOption.class.getSimpleName());
     private final static int COST = -2;
 
     public ForceOption() {
-        super(ID, COST, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, COST, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
     }
 
     public void applyAttributes() {
@@ -18,7 +15,6 @@ public class ForceOption extends AbstractExileCard {
 
     @Override
     public void onChoseThisOption() {
-        applyToSelf(new ElementalProwessForce(1));
     }
 
     public void upp() {

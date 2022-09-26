@@ -24,7 +24,7 @@ public class PhantomFist extends AbstractExileCard {
     public void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        addModifier(elenum.PHANTASMAL);
+        addModifier(elenum.FORCE);
     }
 
     public void singleTargetUse(AbstractMonster m) {

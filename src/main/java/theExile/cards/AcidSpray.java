@@ -2,35 +2,38 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import theExile.powers.CorrodedPower;
+import theExile.util.Wiz;
 
 import static theExile.ExileMod.Enums;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
-import static theExile.util.Wiz.getAcidEffect;
 
 public class AcidSpray extends AbstractExileCard {
     public final static String ID = makeID(AcidSpray.class.getSimpleName());
-    private final static int DAMAGE = 8;
     private final static int MAGIC = 1;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int SECOND_MAGIC = 1;
+    private final static int UPGRADE_SECOND = 1;
     private final static int COST = 1;
 
     public AcidSpray() {
-        super(ID, COST, CardType.ATTACK, Enums.UNIQUE, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, Enums.UNIQUE, CardTarget.ENEMY);
     }
 
     @Override
     protected void applyAttributes() {
-        baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
     }
 
     public void singleTargetUse(AbstractMonster m) {
-        dmg(m, getAcidEffect(damage));
+        Wiz.vfx(new FlashAtkImgEffect(m.hb.cX, m.hb.cY, Enums.ACID_M));
         applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
+        applyToEnemy(m, new CorrodedPower(m, secondMagic));
     }
 
     public void upp() {
-        upgradeMagicNumber(UPGRADE_MAGIC);
+        upMagic2(UPGRADE_SECOND);
     }
 }

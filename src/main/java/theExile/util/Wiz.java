@@ -43,7 +43,7 @@ public class Wiz {
     public static AbstractGameAction.AttackEffect getAttackEffect(int damage, ArrayList<elenum> damageModListInput, boolean resonant) {
         ArrayList<elenum> damageModList = new ArrayList<>(damageModListInput);
         damageModList.remove(FAKE_ICE);
-        damageModList.remove(FAKE_PHANTASMAL);
+        damageModList.remove(FAKE_FORCE);
         damageModList.remove(FAKE_ELDRITCH);
         damageModList.remove(FAKE_LIGHTNING);
 
@@ -51,7 +51,7 @@ public class Wiz {
             AbstractExileCard.elenum ele = damageModList.get(0);
             if (ele == ICE)
                 return getIceEffect(damage);
-            else if (ele == PHANTASMAL)
+            else if (ele == FORCE)
                 return getPhantasmalEffect(damage);
             else if (ele == ELDRITCH)
                 return getEldritchEffect(damage);
@@ -197,7 +197,7 @@ public class Wiz {
         thornDmgTop(m, amount, AbstractGameAction.AttackEffect.NONE);
     }
 
-    public static void cardDraw(int amount) { atb(new DrawCardAction(amount)); }
+    public static void draw(int amount) { atb(new DrawCardAction(amount)); }
 
     public static void discard(int amount, boolean isRandom) {
         atb(new DiscardAction(adp(), adp(), amount, isRandom));

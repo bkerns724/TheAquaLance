@@ -25,7 +25,7 @@ public class SpinToWin extends AbstractExileCard {
     @Override
     public void nonTargetUse() {
         blck();
-        Wiz.cardDraw(magicNumber);
+        Wiz.draw(magicNumber);
         Wiz.discard(magicNumber);
         atb(new MakeTempCardInDiscardAction(makeStatEquivalentCopy(), magicNumber));
     }

@@ -57,7 +57,7 @@ public class PlaceholderRelic extends AbstractExileRelic implements RelicWithBut
                 public void update() {
                     if (EnergyPanel.totalCount > 0) {
                         adp().loseEnergy(1);
-                        applyToSelfTop(new ForceChargePower());
+                        applyToSelfTop(new ForceChargePower(1));
                     }
                     isDone = true;
                 }

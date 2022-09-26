@@ -5,7 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.powerInterfaces.HealthBarRend
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import javassist.CtBehavior;
-import theExile.powers.DecayPower;
+import theExile.powers.SoulRotPower;
 
 public class HealthBarRenderPatch {
 
@@ -19,7 +19,7 @@ public class HealthBarRenderPatch {
                 localvars = {"poisonAmt"}
         )
         public static void Insert(AbstractCreature __instance, @ByRef int[] poisonAmt) {
-            DecayPower decayPow = (DecayPower) __instance.getPower(DecayPower.POWER_ID);
+            SoulRotPower decayPow = (SoulRotPower) __instance.getPower(SoulRotPower.POWER_ID);
             if (decayPow != null)
                 poisonAmt[0] += decayPow.amount;
         }
@@ -45,7 +45,7 @@ public class HealthBarRenderPatch {
         )
         public static void MyInsert(AbstractCreature __instance, SpriteBatch sb, float x, float y, float targetHealthBarWidth,
                                     float HEALTH_BAR_HEIGHT, float HEALTH_BAR_OFFSET_Y, @ByRef int[] poisonAmt) {
-            DecayPower decayPow = (DecayPower) __instance.getPower(DecayPower.POWER_ID);
+            SoulRotPower decayPow = (SoulRotPower) __instance.getPower(SoulRotPower.POWER_ID);
             if (decayPow != null)
                 poisonAmt[0] += decayPow.amount;
         }

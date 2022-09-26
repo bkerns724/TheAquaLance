@@ -35,6 +35,11 @@
       "Choose 2 cards to share elements."
     ]
   },
+  "${ModID}:PureMana": {
+    "TEXT": [
+      "Choose the element."
+    ]
+  },
   "${ModID}:Resonance": {
     "TEXT": [
       "Deal !D! damage.",
