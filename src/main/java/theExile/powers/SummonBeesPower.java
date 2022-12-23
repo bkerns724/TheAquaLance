@@ -21,7 +21,7 @@ public class SummonBeesPower extends AbstractExilePower implements PowerWithButt
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/BeeButton.png";
-    private static final int STING_AMOUNT = 3;
+    private static final int STING_AMOUNT = 2;
 
     public SummonBeesPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);

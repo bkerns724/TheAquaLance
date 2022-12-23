@@ -2,17 +2,17 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theExile.powers.JinxPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.applyToEnemy;
 
 public class CrushTheWeak extends AbstractExileCard {
     public final static String ID = makeID(CrushTheWeak.class.getSimpleName());
-    private final static int DAMAGE = 12;
-    private final static int UPGRADE_DAMAGE = 4;
-    private final static int COST = 2;
+    private final static int DAMAGE = 5;
+    private final static int UPGRADE_DAMAGE = 2;
+    private final static int MAGIC = 2;
+    private final static int UGPRADE_MAGIC = 1;
+    private final static int COST = 1;
 
     public CrushTheWeak() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -20,20 +20,30 @@ public class CrushTheWeak extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.FORCE);
     }
 
     public void singleTargetUse(AbstractMonster m) {
         dmg(m);
-        int count = 0;
-        for (AbstractPower pow : adp().powers)
-            if (pow.type == AbstractPower.PowerType.BUFF)
-                count++;
-        if (count > 0)
-            applyToEnemy(m, new JinxPower(m, count));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        AbstractPower pow = m.getPower(VulnerablePower.POWER_ID);
+        if (pow != null) {
+            int temp = baseDamage;
+            baseDamage += pow.amount * magicNumber;
+            super.calculateCardDamage(m);
+            baseDamage = temp;
+            isDamageModified = baseDamage != damage;
+        }
+        else
+            super.calculateCardDamage(m);
     }
 
     public void upp() {
         upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UGPRADE_MAGIC);
     }
 }

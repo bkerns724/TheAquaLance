@@ -3,7 +3,8 @@ package theExile.patches;
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.vfx.DamageHeartEffect;
@@ -84,6 +85,8 @@ public class AttackEffectsPatch {
             texture = TexLoader.getTexture(ExileMod.RESONANT_L_EFFECT_FILE);
         else if (effect == ExileMod.Enums.BEE)
             texture = TexLoader.getTexture(ExileMod.BEE_EFFECT_FILE);
+        else if (effect == ExileMod.Enums.BELL)
+            texture = TexLoader.getTexture(ExileMod.BELL_EFFECT_FILE);
         else
             return null;
 
@@ -159,6 +162,11 @@ public class AttackEffectsPatch {
             }
             if (effect == ExileMod.Enums.BEE) {
                 CardCrawlGame.sound.play("ATTACK_FAST");
+                return SpireReturn.Return();
+            }
+            if (effect == ExileMod.Enums.BELL) {
+                float x = (float)Math.random()*0.2f;
+                CardCrawlGame.sound.playA("BELL", -0.4f + x);
                 return SpireReturn.Return();
             }
             if (emptyEffects.contains(effect))

@@ -52,7 +52,7 @@ public class Wiz {
             if (ele == ICE)
                 return getIceEffect(damage);
             else if (ele == FORCE)
-                return getPhantasmalEffect(damage);
+                return getForceEffect(damage);
             else if (ele == ELDRITCH)
                 return getEldritchEffect(damage);
             else if (ele == LIGHTNING)
@@ -122,7 +122,7 @@ public class Wiz {
             return ExileMod.Enums.ICE_L;
     }
 
-    public static AbstractGameAction.AttackEffect getPhantasmalEffect(int damage) {
+    public static AbstractGameAction.AttackEffect getForceEffect(int damage) {
         if (damage < DAMAGE_THRESHOLD_M)
             return ExileMod.Enums.FORCE;
         else if (damage < DAMAGE_THRESHOLD_L)
@@ -197,7 +197,7 @@ public class Wiz {
         thornDmgTop(m, amount, AbstractGameAction.AttackEffect.NONE);
     }
 
-    public static void draw(int amount) { atb(new DrawCardAction(amount)); }
+    public static void cDraw(int amount) { atb(new DrawCardAction(amount)); }
 
     public static void discard(int amount, boolean isRandom) {
         atb(new DiscardAction(adp(), adp(), amount, isRandom));
@@ -275,6 +275,10 @@ public class Wiz {
                 strongest = m;
         }
         return strongest;
+    }
+
+    public static AbstractMonster getRandomEnemy() {
+        return AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
     }
 
     public static ArrayList<AbstractCard> getCardsMatchingPredicate(Predicate<AbstractCard> pred) {

@@ -36,6 +36,7 @@ import theExile.events.VoidSpirits;
 import theExile.icons.*;
 import theExile.orbs.CrazyPanda;
 import theExile.potions.*;
+import theExile.powers.ChargePower;
 import theExile.relics.AbstractExileRelic;
 import theExile.util.ClickableForPower;
 import theExile.util.ClickyFtue;
@@ -58,6 +59,8 @@ public class ExileMod implements
         EditCharactersSubscriber,
         AddAudioSubscriber,
         OnStartBattleSubscriber,
+        OnCardUseSubscriber,
+        OnPlayerTurnStartSubscriber,
         PostBattleSubscriber,
         PostUpdateSubscriber,
         PostInitializeSubscriber {
@@ -112,6 +115,7 @@ public class ExileMod implements
     public static final String RESONANT_M_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_M.png";
     public static final String RESONANT_L_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Resonant_L.png";
     public static final String BEE_EFFECT_FILE = RESOURCES_PRE + "images/vfx/BeeAttack.png";
+    public static final String BELL_EFFECT_FILE = RESOURCES_PRE + "images/vfx/BellAttack.png";
 
     public static final String ELEPHANT_EFFECT_FILE = RESOURCES_PRE + "images/vfx/Elephant/Elephant.png";
     public static final String ELEPHANT_HEAD_FILE = RESOURCES_PRE + "images/vfx/Elephant/ElephantHead.png";
@@ -162,6 +166,11 @@ public class ExileMod implements
     public static final Color EXILE_EYE_COLOR = purpleColor.cpy();
 
     public static final ArrayList<CrazyPanda> pandaList = new ArrayList<>();
+
+    private static final int ATTACK_THRESHOLD = 3;
+
+    public static int attacksThisTurn = 0;
+    public static int CHARGE_AMOUNT = 4;
 
     public ExileMod() {
         BaseMod.addColor(TheExile.Enums.EXILE_BROWN_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,
@@ -244,6 +253,8 @@ public class ExileMod implements
         public static AbstractGameAction.AttackEffect LIGHTNING_L;
         @SpireEnum
         public static AbstractGameAction.AttackEffect BEE;
+        @SpireEnum
+        public static AbstractGameAction.AttackEffect BELL;
         @SpireEnum
         public static AbstractCard.CardRarity UNIQUE;
         @SpireEnum
@@ -542,6 +553,20 @@ public class ExileMod implements
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         ClickableForPower.getClickableList().clear();
+    }
+
+    @Override
+    public void receiveCardUsed(AbstractCard abstractCard) {
+        if (abstractCard.type == AbstractCard.CardType.ATTACK) {
+            attacksThisTurn++;
+            if (attacksThisTurn % ATTACK_THRESHOLD == 0)
+                applyToSelf(new ChargePower(CHARGE_AMOUNT));
+        }
+    }
+
+    @Override
+    public void receiveOnPlayerTurnStart() {
+        attacksThisTurn = 0;
     }
 
     private static void addEvents() {

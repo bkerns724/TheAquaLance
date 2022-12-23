@@ -21,7 +21,7 @@ public class DimensionalPouchPower extends AbstractExilePower implements PowerWi
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/DrawButton.png";
     private int counter;
-    private final static int CARD_DRAW = 2;
+    public final static int CARD_DRAW = 3;
 
     public DimensionalPouchPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);

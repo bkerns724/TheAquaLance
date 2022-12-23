@@ -3,7 +3,7 @@ package theExile.cards;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.draw;
+import static theExile.util.Wiz.cDraw;
 import static theExile.util.Wiz.getSlashEffect;
 
 public class Gale extends AbstractExileCard {
@@ -13,7 +13,6 @@ public class Gale extends AbstractExileCard {
     private final static int MAGIC = 2;
     private final static int COST = 1;
 
-    // ATTACK, COMMON, ENEMY
     public Gale() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
@@ -29,7 +28,7 @@ public class Gale extends AbstractExileCard {
             dmg(m, getSlashEffect(damage));
         else
             dmg(m);
-        draw(magicNumber);
+        cDraw(magicNumber);
     }
 
     public void upp() {

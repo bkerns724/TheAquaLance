@@ -28,7 +28,6 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import theExile.cards.*;
 import theExile.patches.CutsceneMultiScreenPatch;
 import theExile.relics.NecklaceOfShielding;
-import theExile.relics.PlaceholderRelic;
 import theExile.vfx.ExileVictoryEffect;
 
 import java.util.ArrayList;
@@ -112,7 +111,7 @@ public class TheExile extends CustomPlayer {
         for (int i = 0; i < NUM_DEFENDS; i++)
             retVal.add(Defend.ID);
 
-        retVal.add(ForceBolt.ID);
+        retVal.add(EldritchBolt.ID);
         retVal.add(ColdSigil.ID);
 
         return retVal;
@@ -126,7 +125,6 @@ public class TheExile extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(NecklaceOfShielding.ID);
-        retVal.add(PlaceholderRelic.ID);
         return retVal;
     }
 

@@ -80,6 +80,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     protected boolean needsArtRefresh = false;
     protected boolean overrideRawDesc = false;
+    protected boolean callAbstractCard = false;
 
     public boolean beingDiscarded = false;
 
@@ -90,7 +91,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 
     public static final String COLD_STRING = Ice.CODE;
-    public static final String PHANTASMAL_STRING = Force.CODE;
+    public static final String FORCE_STRING = Force.CODE;
     public static final String ELDRITCH_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
 
@@ -310,6 +311,11 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     @Override
     public void initializeDescription() {
+        if (callAbstractCard) {
+            super.initializeDescription();
+            return;
+        }
+
         if (!overrideRawDesc) {
             if (cardStrings == null)
                 cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -325,7 +331,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             if (damageModList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
             if (damageModList.contains(FORCE))
-                rawDescription = rawDescription.replace("!D! ", "!D! " + PHANTASMAL_STRING + " ");
+                rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
             if (damageModList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }
@@ -605,7 +611,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (card.sigil)
             card.cost = -2;
         card.selfRetain = selfRetain;
-        card.beingDiscarded = beingDiscarded;
         card.miscTwo = miscTwo;
 
         card.addModifier(damageModList, true);

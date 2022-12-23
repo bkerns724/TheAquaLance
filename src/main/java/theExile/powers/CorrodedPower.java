@@ -18,11 +18,20 @@ public class CorrodedPower extends AbstractExilePower {
     public CorrodedPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
+        priority = 50;
     }
 
     @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType damageType) {
         return damageType == DamageInfo.DamageType.NORMAL ? damage + amount : damage;
+    }
+
+    @Override
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
+        if (info.type == DamageInfo.DamageType.NORMAL)
+            return damageAmount;
+        else
+            return damageAmount + amount;
     }
 
     @Override

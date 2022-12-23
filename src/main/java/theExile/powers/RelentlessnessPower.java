@@ -33,7 +33,7 @@ public class RelentlessnessPower extends AbstractExilePower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.ATTACK && counter > 0) {
             counter--;
-            Wiz.draw(1);
+            Wiz.cDraw(1);
         }
     }
 

@@ -1,7 +1,7 @@
 package theExile.powers;
 
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,11 +24,11 @@ public class ManaBurnPower extends AbstractExilePower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        atb(new LoseHPAction(adp(), adp(), 1));
+        atb(new LoseHPAction(adp(), adp(), amount));
     }
 
     @Override
     public void atEndOfRound() {
-        atb(new ReducePowerAction(owner, owner, this, 1));
+        atb(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

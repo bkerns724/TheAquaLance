@@ -20,8 +20,7 @@ public class FrostbitePower extends AbstractExilePower {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner == owner) {
             flash();
-            if (!owner.hasPower(PermafrostPower.POWER_ID))
-                att(new ReducePowerAction(owner, owner, this, 1));
+            att(new ReducePowerAction(owner, owner, this, 1));
             att(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS),
                     AbstractGameAction.AttackEffect.NONE, true));
         }

@@ -1,17 +1,17 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.powers.JinxOnHitPower;
-import theExile.util.Wiz;
+import theExile.powers.JinxPower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.getDebuffCount;
 
 public class ShadowWhip extends AbstractExileCard {
     public final static String ID = makeID(ShadowWhip.class.getSimpleName());
-    private final static int DAMAGE = 15;
-    private final static int UPGRADE_DAMAGE = 5;
-    private final static int MAGIC = 1;
-    private final static int COST = 2;
+    private final static int DAMAGE = 9;
+    private final static int UPGRADE_DAMAGE = 3;
+    private final static int COST = 1;
 
     public ShadowWhip() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
@@ -20,13 +20,12 @@ public class ShadowWhip extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
         addModifier(elenum.ELDRITCH);
     }
 
     public void singleTargetUse(AbstractMonster m) {
         dmg(m);
-        Wiz.applyToEnemy(m, new JinxOnHitPower(m, magicNumber));
+        applyToEnemy(m, new JinxPower(m, getDebuffCount(m)));
     }
 
     public void upp() {

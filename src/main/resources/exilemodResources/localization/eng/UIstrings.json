@@ -30,11 +30,6 @@
       "Choose a card."
     ]
   },
-  "${ModID}:WeaveAction": {
-    "TEXT": [
-      "Choose 2 cards to share elements."
-    ]
-  },
   "${ModID}:PureMana": {
     "TEXT": [
       "Choose the element."
@@ -47,11 +42,11 @@
       "Deal !D! damage !X1! times.",
       "Deal !D! damage to ALL enemies !X1! times.",
       "Gain !B! Block.",
-      "Apply !X2! ${ModID}:Ringing.",
-      "Apply !X2! ${ModID}:Ringing to ALL enemies.",
+      "Enemy loses !X2! HP at the start of its turns.",
+      "ALL enemies lose !X2! HP at the start of their turns.",
       "Apply !X3! ${ModID}:Jinx.",
       "Apply !X3! ${ModID}:Jinx to ALL enemies.",
-      "Gain !X4! Vigor.",
+      "Gain !X4! ${ModID}:Charge.",
       "Draw a card.",
       "Draw !X5! cards.",
       "Discard a card.",
@@ -67,7 +62,7 @@
       "!B! Block.",
       "!X2! ${ModID}:Ringing.",
       "!X3! ${ModID}:Jinx.",
-      "!X4! Vigor.",
+      "!X4! ${ModID}:Charge.",
       "!X5! Draw.",
       "!X6! Discard.",
       "Use cards."

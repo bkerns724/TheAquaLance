@@ -7,19 +7,16 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
-import theExile.damagemods.DeathLightningDamage;
 import theExile.damagemods.EldritchDamage;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.ELDRITCH;
-import static theExile.cards.AbstractExileCard.elenum.LIGHTNING;
 import static theExile.util.Wiz.adp;
 
 public class VialOfBlackBlood extends AbstractExileRelic {
     public static final String ID = makeID(VialOfBlackBlood.class.getSimpleName());
-    private static final float MULT = 1.5f;
+    private static final float MULT = 2f;
     private static final CardStrings eldritchStrings = CardCrawlGame.languagePack.getCardStrings(EldritchDamage.ID);
-    private static final CardStrings lightningStrings = CardCrawlGame.languagePack.getCardStrings(DeathLightningDamage.ID);
 
     public VialOfBlackBlood() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
@@ -32,7 +29,6 @@ public class VialOfBlackBlood extends AbstractExileRelic {
         tips.clear();
         tips.add(new PowerTip(name, description));
         tips.add(new PowerTip(eldritchStrings.DESCRIPTION, eldritchStrings.EXTENDED_DESCRIPTION[0]));
-        tips.add(new PowerTip(lightningStrings.DESCRIPTION, lightningStrings.EXTENDED_DESCRIPTION[0]));
         initializeTips();
     }
 
@@ -40,7 +36,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     public float atDamageModify(float damage, AbstractCard c) {
         if (c instanceof AbstractExileCard) {
             AbstractExileCard card = (AbstractExileCard) c;
-            if (card.damageModList.contains(LIGHTNING) || card.damageModList.contains(ELDRITCH))
+            if (card.damageModList.contains(ELDRITCH))
                 damage *= MULT;
         }
         return damage;
@@ -49,8 +45,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     @Override
     public void onEquip() {
         for (AbstractCard card : adp().masterDeck.group) {
-            if (card instanceof AbstractExileCard && (((AbstractExileCard) card).damageModList.contains(LIGHTNING)
-                    || ((AbstractExileCard) card).damageModList.contains(ELDRITCH)))
+            if (card instanceof AbstractExileCard && ((AbstractExileCard) card).damageModList.contains(ELDRITCH))
                 card.exhaust = true;
         }
     }
@@ -58,8 +53,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     @Override
     public void onPlayCard(AbstractCard targetCard, AbstractMonster m) {
         if (targetCard instanceof AbstractExileCard)
-            if (((AbstractExileCard) targetCard).damageModList.contains(LIGHTNING)
-                    || ((AbstractExileCard) targetCard).damageModList.contains(ELDRITCH))
+            if (((AbstractExileCard) targetCard).damageModList.contains(ELDRITCH))
                 targetCard.exhaust = true;
     }
 }

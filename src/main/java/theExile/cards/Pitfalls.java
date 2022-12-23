@@ -8,7 +8,7 @@ import static theExile.ExileMod.makeID;
 
 public class Pitfalls extends AbstractExileCard {
     public final static String ID = makeID(Pitfalls.class.getSimpleName());
-    private final static int MAGIC = 2;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 

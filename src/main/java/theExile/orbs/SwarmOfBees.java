@@ -34,7 +34,6 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     private static final String IMG_PATH_O = "exilemodResources/images/vfx/Empty.png";
     private static final String IMG_PATH = "exilemodResources/images/vfx/Bee.png";
     private static final Texture BEE_IMG = ImageMaster.loadImage(IMG_PATH);
-    private static final int EVOKE_BONUS = 6;
     private static final int BEE_COUNT = 120;
     private static final Color TEXT_COLOR = new Color(1.0f, 0.25f, 0.25f, 1.0f);
 
@@ -94,7 +93,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
                 timer = 0.5f;
             } else {
                 aTurn = MathUtils.random(-0.5f, 0.5f) * PI;
-                timer = MathUtils.random(0.4f, 8f);
+                timer = MathUtils.random(2.0f, 4.0f);
             }
         }
 
@@ -140,7 +139,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     {
         super(ORB_ID, NAME, passive, 0, "", "", IMG_PATH_O);
         basePassiveAmount = passive;
-        baseEvokeAmount = basePassiveAmount + EVOKE_BONUS;
+        baseEvokeAmount = basePassiveAmount;
         showEvokeValue = true;
 
         generateBees();
@@ -165,7 +164,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
         else
             passiveAmount = basePassiveAmount;
 
-        evokeAmount = passiveAmount + EVOKE_BONUS;
+        evokeAmount = passiveAmount;
     }
 
     @Override

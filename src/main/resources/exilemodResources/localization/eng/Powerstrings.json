@@ -52,12 +52,10 @@
       "At the end of your turn, Channel a Panda that deals !A! damage."
     ]
   },
-  "${ModID}:ForceChargePower": {
+  "${ModID}:ChargePower": {
     "NAME": "Charged",
     "DESCRIPTIONS": [
-      "Your next [${ModID}:PhantasmalIcon] attack does 50% more damage.",
-      "Your next [${ModID}:PhantasmalIcon] attack does 100% more damage.",
-      "Your next [${ModID}:PhantasmalIcon] attack does 150% more damage."
+      "Your [${ModID}:LightningIcon] attacks do !A! more damage."
     ]
   },
   "${ModID}:SiphonPower": {
@@ -81,15 +79,15 @@
   "${ModID}:CorrodedPower": {
     "NAME": "Corroded",
     "DESCRIPTIONS": [
-      "Takes !A! more damage from Attacks this turn."
+      "Takes !A! more damage from everything this turn."
     ]
   },
-  "${ModID}:TacticalMindPower": {
-    "NAME": "Tactical Mind",
+  "${ModID}:ManaCrystalPower": {
+    "NAME": "Mana Crystal",
     "DESCRIPTIONS": [
-      "Once per turn you may put a card from your discard pile on top of your draw pile.",
-      "!A! times per turn you may put a card from your discard pile on top of your draw pile.",
-      "Put a card from your discard pile on top of your draw pile."
+      "Once per turn you may spend [E] to gain 2 ${ModID}:Charge.",
+      "!A! times per turn you may spend [E] to gain 2 ${ModID}:Charge.",
+      "Spend [E] to gain 2 ${ModID}:Charge."
     ]
   },
   "${ModID}:FrostbitePower": {
@@ -105,16 +103,17 @@
     ]
   },
   "${ModID}:ConvertPower": {
-    "NAME": "ConvertPower",
+    "NAME": "Convert",
     "DESCRIPTIONS": [
       "The next non-power non-exhausting Exile card you play becomes #yResonant.",
       "The next !A! non-power non-exhausting Exile cards you play become #yResonant."
     ]
   },
-  "${ModID}:SharpNoisePower": {
-    "NAME": "Sharp Noise",
+  "${ModID}:ManaStormPower": {
+    "NAME": "Mana Storm",
     "DESCRIPTIONS": [
-      "Resonant cards deal !A! additional damage per Resonance."
+      "At the start of your turn, discard a card and gain [E].",
+      "At the start of your turn, discard !A! cards and gain !A! [E]."
     ]
   },
   "${ModID}:AcousticsPower": {
@@ -146,12 +145,6 @@
     "NAME": "Targeted",
     "DESCRIPTIONS": [
       "Takes 50% more damage from Attacks when #yWeakened."
-    ]
-  },
-  "${ModID}:CrumblingPower": {
-    "NAME": "Crumbling",
-    "DESCRIPTIONS": [
-      "Whenever this enemy would take any damage, it takes !A! more."
     ]
   },
   "${ModID}:JinxPower": {
@@ -213,10 +206,10 @@
       "The first !A! times you play an attack each turn, draw a card."
     ]
   },
-  "${ModID}:TabooRitualPower": {
-    "NAME": "Taboo Ritual",
+  "${ModID}:OminousRitualPower": {
+    "NAME": "Ominous Ritual",
     "DESCRIPTIONS": [
-      "Apply !A! #yJinx to ALL enemies at the start of your turn."
+      "Apply !A! #yCorrosion to ALL enemies at the start of your turn."
     ]
   },
   "${ModID}:SpinningSigilPower": {
@@ -251,16 +244,9 @@
     ]
   },
   "${ModID}:BellTollsPower": {
-    "NAME": "The Bell Tolls",
+    "NAME": "Death Approaches",
     "DESCRIPTIONS": [
-      "Gains #yRinging equal to !A! times your #yResonance at the end of each round."
-    ]
-  },
-  "${ModID}:PermafrostPower": {
-    "NAME": "Permafrost",
-    "DESCRIPTIONS": [
-      "Frostbite is not reduced this turn.",
-      "Frostbite is not reduced for !A! turns."
+      "Loses !A2! HP at the start of its turn, then increases that amount by !A!."
     ]
   },
   "${ModID}:ResolvePower": {
@@ -280,12 +266,6 @@
     "NAME": "Slippery",
     "DESCRIPTIONS": [
       "The next !A! times you would take damage, reduce it by half."
-    ]
-  },
-  "${ModID}:ChargePower": {
-    "NAME": "Charge",
-    "DESCRIPTIONS": [
-      "Your next attack deals !A!% more damage."
     ]
   }
 }

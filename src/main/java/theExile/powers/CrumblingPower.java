@@ -19,9 +19,15 @@ public class CrumblingPower extends AbstractExilePower {
     }
 
     @Override
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType damageType) {
+        return damageType == DamageInfo.DamageType.NORMAL ? damage + amount : damage;
+    }
+
+    @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (damageAmount > 0)
+        if (info.type == DamageInfo.DamageType.NORMAL)
+            return damageAmount;
+        else
             return damageAmount + amount;
-        return damageAmount;
     }
 }

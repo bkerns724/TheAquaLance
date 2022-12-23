@@ -1,14 +1,12 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import theExile.actions.BellLoseHPAction;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.atb;
 
 public class BellTollsPower extends AbstractExilePower {
     public static String POWER_ID = makeID(BellTollsPower.class.getSimpleName());
@@ -19,24 +17,20 @@ public class BellTollsPower extends AbstractExilePower {
     public BellTollsPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
+        amount2 = amount;
+        isTwoAmount = true;
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (adp() == null)
-            return;
-        AbstractPower pow = adp().getPower(ResonatingPower.POWER_ID);
-        int count = pow != null ? pow.amount * amount : 0;
-        if (count > 0) {
-            atb(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    flashWithoutSound();
-                    CardCrawlGame.sound.playA("BELL", -0.25f);
-                    att(new ApplyPowerAction(owner, adp(), new RingingPower(owner, count), count, AttackEffect.NONE));
-                    isDone = true;
-                }
-            });
-        }
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        amount2 += stackAmount;
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        atb(new BellLoseHPAction(owner, amount2));
+        amount2 += amount;
+        updateDescription();
     }
 }

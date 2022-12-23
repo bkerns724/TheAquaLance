@@ -24,8 +24,7 @@ public class ElegantEtchingPower extends AbstractExilePower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card instanceof AbstractExileCard && ((AbstractExileCard) card).sigil) {
-            forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new JinxPower(mon, amount)));
-        }
+        if (card instanceof AbstractExileCard && ((AbstractExileCard) card).sigil)
+            forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new CorrodedPower(mon, amount)));
     }
 }

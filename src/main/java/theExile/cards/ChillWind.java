@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemy;
-import static theExile.util.Wiz.draw;
+import static theExile.util.Wiz.cDraw;
 
 public class ChillWind extends AbstractExileCard {
     public final static String ID = makeID(ChillWind.class.getSimpleName());
@@ -29,7 +29,7 @@ public class ChillWind extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        draw(secondMagic);
+        cDraw(secondMagic);
     }
 
     public void upp() {

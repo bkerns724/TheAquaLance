@@ -5,7 +5,8 @@ import com.evacipated.cardcrawl.mod.stslib.patches.powerInterfaces.HealthBarRend
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import javassist.CtBehavior;
-import theExile.powers.SoulRotPower;
+import theExile.powers.CorrodedPower;
+import theExile.powers.CrumblingPower;
 
 public class HealthBarRenderPatch {
 
@@ -19,9 +20,12 @@ public class HealthBarRenderPatch {
                 localvars = {"poisonAmt"}
         )
         public static void Insert(AbstractCreature __instance, @ByRef int[] poisonAmt) {
-            SoulRotPower decayPow = (SoulRotPower) __instance.getPower(SoulRotPower.POWER_ID);
-            if (decayPow != null)
-                poisonAmt[0] += decayPow.amount;
+            CorrodedPower corrodePow = (CorrodedPower) __instance.getPower(CorrodedPower.POWER_ID);
+            if (corrodePow != null)
+                poisonAmt[0] += corrodePow.amount;
+            CrumblingPower crumblePow = (CrumblingPower) __instance.getPower(CrumblingPower.POWER_ID);
+            if (crumblePow != null)
+                poisonAmt[0] += crumblePow.amount;
         }
 
         public static class Locator extends SpireInsertLocator {
@@ -45,9 +49,12 @@ public class HealthBarRenderPatch {
         )
         public static void MyInsert(AbstractCreature __instance, SpriteBatch sb, float x, float y, float targetHealthBarWidth,
                                     float HEALTH_BAR_HEIGHT, float HEALTH_BAR_OFFSET_Y, @ByRef int[] poisonAmt) {
-            SoulRotPower decayPow = (SoulRotPower) __instance.getPower(SoulRotPower.POWER_ID);
-            if (decayPow != null)
-                poisonAmt[0] += decayPow.amount;
+            CorrodedPower corrodePow = (CorrodedPower) __instance.getPower(CorrodedPower.POWER_ID);
+            if (corrodePow != null)
+                poisonAmt[0] += corrodePow.amount;
+            CrumblingPower crumblingPower = (CrumblingPower) __instance.getPower(CrumblingPower.POWER_ID);
+            if (crumblingPower != null)
+                poisonAmt[0] += crumblingPower.amount;
         }
 
         public static class Locator extends SpireInsertLocator {

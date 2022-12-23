@@ -44,30 +44,12 @@
     "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn. When evoked, deal damage to a random enemy."
   },
   {
-    "PROPER_NAME": "Ringing",
-    "NAMES": [
-      "Ringing",
-      "ringing"
-    ],
-    "DESCRIPTION": "Ringing creatures lose HP at the start of their turn."
-  },
-  {
     "PROPER_NAME": "Corrosion",
     "NAMES": [
       "Corrosion",
       "corrosion"
     ],
-    "DESCRIPTION": "Corroded creatures take more damage from Attacks."
-  },
-  {
-    "PROPER_NAME": "Soul\u00a0Rot",
-    "NAMES": [
-      "Soul\u00a0Rot",
-      "soul\u00a0rot",
-      "Soul",
-      "soul"
-    ],
-    "DESCRIPTION": "Soul rotted creatures take more non-attack damage."
+    "DESCRIPTION": "Corroded creatures take more damage from everything."
   },
   {
     "PROPER_NAME": "Metallicize",
@@ -105,7 +87,7 @@
       "Charged",
       "charged"
     ],
-    "DESCRIPTION": "You can spend [E] to gain a charge if you have none. NL Each charge increases the damage of the next [${ModID}:ForceIcon] attack by 50%."
+    "DESCRIPTION": "Charge increases the damage of [${ModID}:LightningIcon] attacks. NL Gain 2 Charge for every 3 attacks in one turn."
   },
   {
     "PROPER_NAME": "Jinx",

@@ -13,7 +13,7 @@ import static theExile.util.Wiz.applyToEnemy;
 public class AcidSpray extends AbstractExileCard {
     public final static String ID = makeID(AcidSpray.class.getSimpleName());
     private final static int MAGIC = 1;
-    private final static int SECOND_MAGIC = 1;
+    private final static int SECOND_MAGIC = 2;
     private final static int UPGRADE_SECOND = 1;
     private final static int COST = 1;
 

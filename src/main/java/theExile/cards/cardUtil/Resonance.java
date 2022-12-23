@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theExile.ExileMod;
 import theExile.actions.AttackAction;
 import theExile.actions.ResonanceUseCardAction;
@@ -36,7 +35,7 @@ public class Resonance {
     public int block = 0;
     public int ringing = 0;
     public int jinx = 0;
-    public int vigor = 0;
+    public int charge = 0;
     public int draw = 0;
     public int discard = 0;
     public int multi = 1;
@@ -64,10 +63,10 @@ public class Resonance {
                 }
             }
             forAllMonstersLiving(this::resonanceEffectsSub);
-            if (vigor > 0)
-                applyToSelf(new VigorPower(adp(), vigor));
+            if (charge > 0)
+                applyToSelf(new ChargePower(charge));
             if (draw > 0)
-                Wiz.draw(draw);
+                Wiz.cDraw(draw);
             if (discard > 0)
                 Wiz.discard(discard);
 
@@ -91,10 +90,10 @@ public class Resonance {
                 }
             }
             resonanceEffectsSub(m);
-            if (vigor > 0)
-                applyToSelf(new VigorPower(adp(), vigor));
+            if (charge > 0)
+                applyToSelf(new ChargePower(charge));
             if (draw > 0)
-                Wiz.draw(draw);
+                Wiz.cDraw(draw);
             if (discard > 0)
                 Wiz.discard(discard);
 
@@ -128,7 +127,7 @@ public class Resonance {
         amount += inRes.amount;
         damage += inRes.damage;
         block += inRes.block;
-        vigor += inRes.vigor;
+        charge += inRes.charge;
         draw += inRes.draw;
         discard += inRes.discard;
         ringing += inRes.ringing;
@@ -170,22 +169,22 @@ public class Resonance {
         if (getBlock() > 0)
             count++;
         if (ringing > 0)
-            count += 1;
+            count += 2;
         if (jinx > 0)
             count++;
-        if (vigor > 0)
-            count ++;
+        if (charge > 0)
+            count++;
         if (draw > 0)
-            count ++;
+            count++;
         if (discard > 0)
-            count ++;
+            count++;
         count += cards.size();
 
         if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID)) {
             if (multi > 1)
                 count++;
             if (ringing > 0)
-                count ++;
+                count++;
             if (jinx > 0)
                 count++;
         }
@@ -238,11 +237,11 @@ public class Resonance {
             else
                 builder.append(uiStrings.TEXT[7].replace("!X3!", String.valueOf(jinx)));
         }
-        if (vigor > 0) {
+        if (charge > 0) {
             if (started)
                 builder.append(" NL ");
             started = true;
-            builder.append(uiStrings.TEXT[9].replace("!X4!", String.valueOf(vigor)));
+            builder.append(uiStrings.TEXT[9].replace("!X4!", String.valueOf(charge)));
         }
         if (draw > 0) {
             if (started)
@@ -309,10 +308,10 @@ public class Resonance {
             spaceCount++;
             builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(jinx)));
         }
-        if (vigor > 0) {
+        if (charge > 0) {
             builderSpacer(builder, spaceCount);
             spaceCount++;
-            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(vigor)));
+            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(charge)));
         }
         if (draw > 0) {
             builderSpacer(builder, spaceCount);
@@ -407,7 +406,7 @@ public class Resonance {
         copy.ringing = ringing;
         copy.jinx = jinx;
         copy.multi = multi;
-        copy.vigor = vigor;
+        copy.charge = charge;
         copy.draw = draw;
         copy.discard = discard;
         for (AbstractExileCard inCard : cards)

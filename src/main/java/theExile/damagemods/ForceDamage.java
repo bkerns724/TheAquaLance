@@ -10,13 +10,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.ExileMod;
 import theExile.icons.Force;
-import theExile.powers.ForceChargePower;
+import theExile.relics.Beastiary;
 
 import java.util.ArrayList;
 
+import static com.megacrit.cardcrawl.cards.DamageInfo.DamageType.NORMAL;
 import static theExile.util.Wiz.adp;
 
 @AutoAdd.Ignore
@@ -24,12 +25,11 @@ public class ForceDamage extends AbstractDamageModifier {
     public static final String ID = ExileMod.makeID(ForceDamage.class.getSimpleName());
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private TooltipInfo forceTooltip;
-    private TooltipInfo forceTooltip2;
     private boolean visibleTips = true;
+    private static final float BONUS = 0.5f;
 
     public ForceDamage() {
         forceTooltip = null;
-        forceTooltip2 = null;
     }
 
     public ForceDamage(boolean visTips) {
@@ -44,14 +44,17 @@ public class ForceDamage extends AbstractDamageModifier {
 
 
     @Override
-    public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        AbstractPower powCharge = adp().getPower(ForceChargePower.POWER_ID);
-        if (powCharge == null)
-            return damage;
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        if (type == NORMAL) {
+            float mult = 1f;
+            if (adp().hasRelic(Beastiary.ID))
+                mult += Beastiary.BONUS;
+            else
+                mult += BONUS;
 
-        float bonus = powCharge.amount * ForceChargePower.BONUS;
-
-        return damage * (1f + bonus);
+            return target.hasPower(VulnerablePower.POWER_ID) ? damage * mult : damage;
+        }
+        return damage;
     }
 
     @Override
@@ -60,10 +63,8 @@ public class ForceDamage extends AbstractDamageModifier {
             return new ArrayList<>();
         if (forceTooltip == null)
             forceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
-        if (forceTooltip2 == null)
-            forceTooltip2 = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]);
 
-        return new ArrayList<TooltipInfo>() { { add(forceTooltip); add(forceTooltip2);} };
+        return new ArrayList<TooltipInfo>() { { add(forceTooltip);} };
     }
 
     public static ArrayList<PowerTip> getPowerTips() {
@@ -81,7 +82,6 @@ public class ForceDamage extends AbstractDamageModifier {
     public AbstractDamageModifier makeCopy() {
         ForceDamage output = new ForceDamage(visibleTips);
         output.forceTooltip = this.forceTooltip;
-        output.forceTooltip2 = this.forceTooltip2;
         return output;
     }
 

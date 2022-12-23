@@ -7,7 +7,6 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class DimensionalPouch extends AbstractExileCard {
     public final static String ID = makeID(DimensionalPouch.class.getSimpleName());
-    private final static int MAGIC = 2;
     private final static int COST = 0;
 
     public DimensionalPouch() {
@@ -16,7 +15,7 @@ public class DimensionalPouch extends AbstractExileCard {
 
     @Override
     protected void applyAttributes() {
-        baseMagicNumber = magicNumber = MAGIC;
+        baseMagicNumber = magicNumber = DimensionalPouchPower.CARD_DRAW;
     }
 
     public void nonTargetUse() {

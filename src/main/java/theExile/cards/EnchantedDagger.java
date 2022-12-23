@@ -112,7 +112,7 @@ public class EnchantedDagger extends AbstractExileCard {
             if (damageModList.contains(ELDRITCH) || stableList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
             if (damageModList.contains(FORCE) || stableList.contains(FORCE))
-                rawDescription = rawDescription.replace("!D! ", "!D! " + PHANTASMAL_STRING + " ");
+                rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
             if (damageModList.contains(LIGHTNING) || stableList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }

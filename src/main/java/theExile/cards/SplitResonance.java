@@ -5,7 +5,7 @@ import static theExile.ExileMod.makeID;
 public class SplitResonance extends AbstractResonantCard {
     public final static String ID = makeID(SplitResonance.class.getSimpleName());
     private final static int DAMAGE = 2;
-    private final static int MAGIC = 3;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
