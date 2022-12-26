@@ -30,8 +30,8 @@
   "${ModID}:UnicornBlood": {
     "NAME": "Unicorn Blood",
     "DESCRIPTIONS": [
-      "Gain !P! Max HP and obtain a unique #yCurse.",
-      "Gain !P! Max HP and obtain 2 unique #yCurses."
+      "Gain !P! Max HP and obtain #yBad #yLuck.",
+      "Gain !P! Max HP and obtain 2 #yBad #yLuck."
     ],
     "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },

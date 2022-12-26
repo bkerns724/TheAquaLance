@@ -45,6 +45,9 @@ public class ForceDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        if (target == null)
+            // HOW DID THAT HAPPEN?
+            return damage;
         if (type == NORMAL) {
             float mult = 1f;
             if (adp().hasRelic(Beastiary.ID))
@@ -70,7 +73,6 @@ public class ForceDamage extends AbstractDamageModifier {
     public static ArrayList<PowerTip> getPowerTips() {
         ArrayList<PowerTip> list = new ArrayList<>();
         list.add(new PowerTip(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]));
-        list.add(new PowerTip(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]));
         return list;
     }
 

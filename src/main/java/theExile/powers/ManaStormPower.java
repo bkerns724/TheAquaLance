@@ -18,11 +18,15 @@ public class ManaStormPower extends AbstractExilePower {
     public ManaStormPower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
+        priority = 7;
     }
 
     @Override
     public void atStartOfTurnPostDraw() {
-        atb(new DiscardAction(adp(), adp(), amount, false));
+        int count = amount;
+        if (adp().hasPower(DiscardNextTurnPower.POWER_ID))
+            count += adp().getPower(DiscardNextTurnPower.POWER_ID).amount;
+        atb(new DiscardAction(adp(), adp(), count, false));
         atb(new GainEnergyAction(amount));
     }
 }

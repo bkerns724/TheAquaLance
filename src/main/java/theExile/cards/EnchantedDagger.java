@@ -74,17 +74,19 @@ public class EnchantedDagger extends AbstractExileCard {
             return;
         addModifier(stableList, true);
 
-        for (AbstractCard card : adp().hand.group) {
-            if (card instanceof AbstractExileCard && card != this) {
-                for (elenum e : ((AbstractExileCard) card).damageModList) {
-                    if (e == ICE || e == FAKE_ICE)
-                        addModifier(ICE);
-                    if (e == ELDRITCH || e == FAKE_ELDRITCH)
-                        addModifier(ELDRITCH);
-                    if (e == LIGHTNING || e == FAKE_LIGHTNING)
-                        addModifier(LIGHTNING);
-                    if (e == FORCE || e == FAKE_FORCE)
-                        addModifier(FORCE);
+        if (adp().hand.group.contains(this) || adp().limbo.group.contains(this)) {
+            for (AbstractCard card : adp().hand.group) {
+                if (card instanceof AbstractExileCard && card != this) {
+                    for (elenum e : ((AbstractExileCard) card).damageModList) {
+                        if (e == ICE || e == FAKE_ICE)
+                            addModifier(ICE);
+                        if (e == ELDRITCH || e == FAKE_ELDRITCH)
+                            addModifier(ELDRITCH);
+                        if (e == LIGHTNING || e == FAKE_LIGHTNING)
+                            addModifier(LIGHTNING);
+                        if (e == FORCE || e == FAKE_FORCE)
+                            addModifier(FORCE);
+                    }
                 }
             }
         }

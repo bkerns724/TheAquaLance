@@ -167,10 +167,10 @@ public class ExileMod implements
 
     public static final ArrayList<CrazyPanda> pandaList = new ArrayList<>();
 
-    private static final int ATTACK_THRESHOLD = 3;
-
     public static int attacksThisTurn = 0;
-    public static int CHARGE_AMOUNT = 4;
+    private static final int ATTACK_THRESHOLD = 3;
+    public static int CHARGE_AMOUNT = 3;
+
 
     public ExileMod() {
         BaseMod.addColor(TheExile.Enums.EXILE_BROWN_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR, EXILE_EYE_COLOR,

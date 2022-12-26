@@ -20,6 +20,7 @@ public class Weave extends AbstractExileCard {
     }
 
     public void nonTargetUse() {
+        blck();
         atb(new WeaveAction(magicNumber));
     }
 

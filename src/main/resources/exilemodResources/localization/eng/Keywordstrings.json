@@ -87,7 +87,7 @@
       "Charged",
       "charged"
     ],
-    "DESCRIPTION": "Charge increases the damage of [${ModID}:LightningIcon] attacks. NL Gain 2 Charge for every 3 attacks in one turn."
+    "DESCRIPTION": "Charge increases the damage of [${ModID}:LightningIcon] attacks. NL Gain 3 Charge for every time you play 3 attacks in a single turn."
   },
   {
     "PROPER_NAME": "Jinx",

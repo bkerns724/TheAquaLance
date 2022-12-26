@@ -35,7 +35,7 @@ public class Resonance {
     public int block = 0;
     public int ringing = 0;
     public int jinx = 0;
-    public int charge = 0;
+    public int corrosion = 0;
     public int draw = 0;
     public int discard = 0;
     public int multi = 1;
@@ -63,8 +63,6 @@ public class Resonance {
                 }
             }
             forAllMonstersLiving(this::resonanceEffectsSub);
-            if (charge > 0)
-                applyToSelf(new ChargePower(charge));
             if (draw > 0)
                 Wiz.cDraw(draw);
             if (discard > 0)
@@ -90,8 +88,6 @@ public class Resonance {
                 }
             }
             resonanceEffectsSub(m);
-            if (charge > 0)
-                applyToSelf(new ChargePower(charge));
             if (draw > 0)
                 Wiz.cDraw(draw);
             if (discard > 0)
@@ -116,6 +112,8 @@ public class Resonance {
             applyToEnemy(m, new RingingPower(m, ringing));
         if (jinx > 0)
             applyToEnemy(m, new JinxPower(m, jinx));
+        if (corrosion > 0)
+            applyToEnemy(m, new CorrodedPower(m, corrosion));
     }
 
     public void toPower() {
@@ -127,7 +125,7 @@ public class Resonance {
         amount += inRes.amount;
         damage += inRes.damage;
         block += inRes.block;
-        charge += inRes.charge;
+        corrosion += inRes.corrosion;
         draw += inRes.draw;
         discard += inRes.discard;
         ringing += inRes.ringing;
@@ -172,7 +170,7 @@ public class Resonance {
             count += 2;
         if (jinx > 0)
             count++;
-        if (charge > 0)
+        if (corrosion > 0)
             count++;
         if (draw > 0)
             count++;
@@ -187,6 +185,8 @@ public class Resonance {
                 count++;
             if (jinx > 0)
                 count++;
+            if (corrosion > 0)
+                count++;
         }
 
         if (count > 6)
@@ -195,30 +195,31 @@ public class Resonance {
         boolean started = false;
 
         StringBuilder builder;
+        builder = new StringBuilder();
+        if (getBlock() > 0) {
+            started = true;
+            builder.append(uiStrings.TEXT[0]);
+        }
         if (getDamage() > 0) {
+            if (started)
+                builder.append(" NL ");
             if (multi == 1) {
                 if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
-                    builder = new StringBuilder(uiStrings.TEXT[1]);
+                    builder.append(uiStrings.TEXT[2]);
                 else
-                    builder = new StringBuilder(uiStrings.TEXT[0]);
+                    builder.append(uiStrings.TEXT[1]);
             }
             else {
                 if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
-                    builder = new StringBuilder(uiStrings.TEXT[3].replace("!X1!", String.valueOf(multi)));
+                    builder.append(uiStrings.TEXT[4].replace("!X1!", String.valueOf(multi)));
                 else
-                    builder = new StringBuilder(uiStrings.TEXT[2].replace("!X1!", String.valueOf(multi)));
+                    builder.append(uiStrings.TEXT[3].replace("!X1!", String.valueOf(multi)));
 
             }
             started = true;
         }
         else
             builder = new StringBuilder();
-        if (getBlock() > 0) {
-            if (started)
-                builder.append(" NL ");
-            started = true;
-            builder.append(uiStrings.TEXT[4]);
-        }
         if (ringing > 0) {
             if (started)
                 builder.append(" NL ");
@@ -237,35 +238,38 @@ public class Resonance {
             else
                 builder.append(uiStrings.TEXT[7].replace("!X3!", String.valueOf(jinx)));
         }
-        if (charge > 0) {
+        if (corrosion > 0) {
             if (started)
                 builder.append(" NL ");
             started = true;
-            builder.append(uiStrings.TEXT[9].replace("!X4!", String.valueOf(charge)));
+            if (adp() != null && adp().hasPower(AcousticsPower.POWER_ID))
+                builder.append(uiStrings.TEXT[9].replace("!X4!", String.valueOf(corrosion)));
+            else
+                builder.append(uiStrings.TEXT[10].replace("!X4!", String.valueOf(corrosion)));
         }
         if (draw > 0) {
             if (started)
                 builder.append(" NL ");
             started = true;
             if (draw == 1)
-                builder.append(uiStrings.TEXT[10]);
+                builder.append(uiStrings.TEXT[11]);
             else
-                builder.append(uiStrings.TEXT[11].replace("!X5!", String.valueOf(draw)));
+                builder.append(uiStrings.TEXT[12].replace("!X5!", String.valueOf(draw)));
         }
         if (discard > 0) {
             if (started)
                 builder.append(" NL ");
             started = true;
             if (discard == 1)
-                builder.append(uiStrings.TEXT[12]);
+                builder.append(uiStrings.TEXT[13]);
             else
-                builder.append(uiStrings.TEXT[13].replace("!X6!", String.valueOf(discard)));
+                builder.append(uiStrings.TEXT[14].replace("!X6!", String.valueOf(discard)));
         }
         for (AbstractCard card : cards) {
             if (started)
                 builder.append(" NL ");
             started = true;
-            builder.append(uiStrings.TEXT[14].replace("!CardName!", yellowString(card.name)));
+            builder.append(uiStrings.TEXT[15].replace("!CardName!", yellowString(card.name)));
         }
 
         return builder.toString();
@@ -279,23 +283,23 @@ public class Resonance {
             spaceCount += 2;
         }
 
+        if (block > 0) {
+            builderSpacer(builder, spaceCount);
+            spaceCount++;
+            builder.append(uiStringsConcise.TEXT[1]);
+        }
+
         if (getDamage() > 0) {
             if (multi == 1) {
                 builderSpacer(builder, spaceCount);
                 spaceCount++;
-                builder.append(uiStringsConcise.TEXT[1]);
+                builder.append(uiStringsConcise.TEXT[2]);
             }
             else {
                 builderSpacer(builder, spaceCount);
                 spaceCount += 2;
-                builder.append(uiStringsConcise.TEXT[2].replace("!X1!", String.valueOf(multi)));
+                builder.append(uiStringsConcise.TEXT[3].replace("!X1!", String.valueOf(multi)));
             }
-        }
-
-        if (block > 0) {
-            builderSpacer(builder, spaceCount);
-            spaceCount++;
-            builder.append(uiStringsConcise.TEXT[3]);
         }
 
         if (ringing > 0) {
@@ -308,10 +312,10 @@ public class Resonance {
             spaceCount++;
             builder.append(uiStringsConcise.TEXT[5].replace("!X3!", String.valueOf(jinx)));
         }
-        if (charge > 0) {
+        if (corrosion > 0) {
             builderSpacer(builder, spaceCount);
             spaceCount++;
-            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(charge)));
+            builder.append(uiStringsConcise.TEXT[6].replace("!X4!", String.valueOf(corrosion)));
         }
         if (draw > 0) {
             builderSpacer(builder, spaceCount);
@@ -406,7 +410,7 @@ public class Resonance {
         copy.ringing = ringing;
         copy.jinx = jinx;
         copy.multi = multi;
-        copy.charge = charge;
+        copy.corrosion = corrosion;
         copy.draw = draw;
         copy.discard = discard;
         for (AbstractExileCard inCard : cards)

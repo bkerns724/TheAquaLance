@@ -80,7 +80,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     protected boolean needsArtRefresh = false;
     protected boolean overrideRawDesc = false;
-    protected boolean callAbstractCard = false;
 
     public boolean beingDiscarded = false;
 
@@ -311,11 +310,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     @Override
     public void initializeDescription() {
-        if (callAbstractCard) {
-            super.initializeDescription();
-            return;
-        }
-
         if (!overrideRawDesc) {
             if (cardStrings == null)
                 cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -326,13 +320,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         }
 
         if (damageModList != null) {
-            if (damageModList.contains(ICE))
+            if (damageModList.contains(ICE) || damageModList.contains(FAKE_ICE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
-            if (damageModList.contains(ELDRITCH))
+            if (damageModList.contains(ELDRITCH) || damageModList.contains(FAKE_ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
-            if (damageModList.contains(FORCE))
+            if (damageModList.contains(FORCE) || damageModList.contains(FAKE_FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
-            if (damageModList.contains(LIGHTNING))
+            if (damageModList.contains(LIGHTNING) || damageModList.contains(FAKE_LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }
 
@@ -349,8 +343,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null)
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
 
-        if (exhaust || (damageModList != null && (damageModList.contains(LIGHTNING) || damageModList.contains(ELDRITCH))
-                && adp() != null && adp().hasRelic(VialOfBlackBlood.ID)))
+        if (exhaust || (damageModList != null && damageModList.contains(ELDRITCH) && adp() != null
+                && adp().hasRelic(VialOfBlackBlood.ID)))
             rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[7];
 
         super.initializeDescription();
@@ -362,7 +356,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             sigilGlowing = true;
         else if (sigilGlowing)
             stopSigilGlowing();
-        sigilUpdateGLow();
+        sigilUpdateGlow();
         super.update();
         updateCardArtRoller();
     }
@@ -548,11 +542,14 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     @Override
     public void render(SpriteBatch sb) {
-        sigilRenderGlow(sb);
+        if (sigil)
+            sigilRenderGlow(sb);
         super.render(sb);
     }
 
-    private void sigilUpdateGLow() {
+    private void sigilUpdateGlow() {
+        if (!sigil)
+            return;
         if (sigilGlowing) {
             myGlowTimer -= Gdx.graphics.getDeltaTime();
             if (myGlowTimer < 0.0F) {
@@ -561,9 +558,9 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             }
         }
 
-        Iterator i = this.myGlowList.iterator();
+        Iterator<CardGlowBorder> i = this.myGlowList.iterator();
         while(i.hasNext()) {
-            CardGlowBorder e = (CardGlowBorder)i.next();
+            CardGlowBorder e = i.next();
             e.update();
             if (e.isDone)
                 i.remove();
@@ -571,7 +568,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     public void stopSigilGlowing() {
+        if (!sigil)
+            return;
         sigilGlowing = false;
+        glowColor = BLUE_BORDER_GLOW_COLOR;
 
         CardGlowBorder e;
         for(Iterator var1 = myGlowList.iterator(); var1.hasNext(); e.duration /= 5.0F)

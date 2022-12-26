@@ -56,13 +56,6 @@
       "#y${ModID}:Activated. Once per combat the next #y${ModID}:Resonant card you play costs 0."
     ]
   },
-  "${ModID}:StoneScales": {
-    "NAME": "Stone Scales",
-    "FLAVOR": "Whatever turned these scales to stone also melded them together.",
-    "DESCRIPTIONS": [
-      "#y${ModID}:Activated. Once per combat, for one turn, whenever you would take damage, take !R! less."
-    ]
-  },
   "${ModID}:EtherealConverter": {
     "NAME": "Ethereal Converter",
     "FLAVOR": "You have no idea how this works.",
@@ -158,7 +151,7 @@
     "NAME": "Beastiary",
     "FLAVOR": "A very thorough encyclopedia of all monsters that can be encountered in or around the Spire.",
     "DESCRIPTIONS": [
-      "[${ModID}:ForceIcon] attacks do double damage against #yVulnerable targets, rather than +50%."
+      "[${ModID}:ForceIcon] damage bonus is 100% instead of 50%."
     ]
   }
 }

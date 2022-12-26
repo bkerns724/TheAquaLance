@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
+import theExile.cards.AbstractResonantCard;
 import theExile.cards.EnchantedDagger;
 import theExile.damagemods.DeathLightningDamage;
 import theExile.damagemods.EldritchDamage;
@@ -57,7 +58,7 @@ public class ResearchCenter extends AbstractExileEvent {
         params.eventType = TYPE;
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheCity.ID);
-        params.playerClass = TheExile.Enums.THE_EXILE;
+        params.playerClasses.add(TheExile.Enums.THE_EXILE);
         params.bonusCondition = () -> (adp().gold >= getGoldCost());
         return params;
     }
@@ -97,6 +98,10 @@ public class ResearchCenter extends AbstractExileEvent {
                     ((EnchantedDagger) c).stableList.add(element);
                 else
                     c.addModifier(element);
+
+                if (c instanceof AbstractResonantCard)
+                    ((AbstractResonantCard) c).resonance.addModifier(element);
+
                 c.initializeDescription();
 
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),

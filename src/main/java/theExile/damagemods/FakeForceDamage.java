@@ -44,8 +44,6 @@ public class FakeForceDamage extends AbstractDamageModifier {
             return new ArrayList<TooltipInfo>();
         if (forceTooltip == null)
             forceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
-        if (forceTooltip2 == null)
-            forceTooltip2 = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[1], cardStrings.EXTENDED_DESCRIPTION[2]);
 
         return new ArrayList<TooltipInfo>() { { add(forceTooltip); add(forceTooltip2); } };
     }

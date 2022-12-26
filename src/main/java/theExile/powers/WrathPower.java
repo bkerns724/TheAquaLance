@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
@@ -13,6 +14,7 @@ import theExile.vfx.WrathParticleEffect2;
 import theExile.vfx.WrathStanceEffectMonster;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.att;
 
 public class WrathPower extends AbstractExilePower
         implements CloneablePowerInterface, InvisiblePower {
@@ -35,6 +37,11 @@ public class WrathPower extends AbstractExilePower
 
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
         return type == DamageInfo.DamageType.NORMAL ? damage * 2.0F : damage;
+    }
+
+    @Override
+    public void onDeath() {
+        att(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

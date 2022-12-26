@@ -55,7 +55,7 @@ public class VoidSpirits extends AbstractExileEvent {
         params.eventType = TYPE;
         params.dungeonIDs = new ArrayList<>();
         params.dungeonIDs.add(TheBeyond.ID);
-        params.playerClass = TheExile.Enums.THE_EXILE;
+        params.playerClasses.add(TheExile.Enums.THE_EXILE);
         return params;
     }
 

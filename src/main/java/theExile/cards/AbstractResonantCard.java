@@ -12,7 +12,6 @@ import theExile.powers.ResonantCostZeroPower;
 
 import java.util.ArrayList;
 
-import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.util.Wiz.adRoom;
 import static theExile.util.Wiz.adp;
 
@@ -51,25 +50,10 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     @Override
     public void addModifier(elenum element, boolean tips) {
-        if (damageModList.contains(element))
+        super.addModifier(element, tips);
+        if (resonance.elenums.contains(element))
             return;
-
-        if (element == ICE) {
-            super.addModifier(FAKE_ICE, tips);
-            resonance.addModifier(ICE);
-        }
-        else if (element == FORCE) {
-            super.addModifier(FAKE_FORCE, tips);
-            resonance.addModifier(FORCE);
-        }
-        else if (element == ELDRITCH) {
-            super.addModifier(FAKE_ELDRITCH, tips);
-            resonance.addModifier(ELDRITCH);
-        }
-        else if (element == LIGHTNING) {
-            super.addModifier(FAKE_LIGHTNING, tips);
-            resonance.addModifier(LIGHTNING);
-        }
+        resonance.addModifier(element);
 
         initializeDescription();
     }

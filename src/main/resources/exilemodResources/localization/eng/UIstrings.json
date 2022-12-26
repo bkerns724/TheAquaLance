@@ -37,16 +37,17 @@
   },
   "${ModID}:Resonance": {
     "TEXT": [
+      "Gain !B! Block.",
       "Deal !D! damage.",
       "Deal !D! damage to ALL enemies.",
       "Deal !D! damage !X1! times.",
       "Deal !D! damage to ALL enemies !X1! times.",
-      "Gain !B! Block.",
       "Enemy loses !X2! HP at the start of its turns.",
       "ALL enemies lose !X2! HP at the start of their turns.",
       "Apply !X3! ${ModID}:Jinx.",
       "Apply !X3! ${ModID}:Jinx to ALL enemies.",
-      "Gain !X4! ${ModID}:Charge.",
+      "Apply !X4! ${ModID}:Corrosion.",
+      "Apply !X4! ${ModID}:Corrosion to ALL enemies.",
       "Draw a card.",
       "Draw !X5! cards.",
       "Discard a card.",
@@ -57,12 +58,12 @@
   "${ModID}:ResonanceConcise": {
     "TEXT": [
       "Targets ALL enemies.",
+      "!B! Block.",
       "!D! damage.",
       "!D! damage !X1! times.",
-      "!B! Block.",
       "!X2! ${ModID}:Ringing.",
       "!X3! ${ModID}:Jinx.",
-      "!X4! ${ModID}:Charge.",
+      "!X4! ${ModID}:Corrosion.",
       "!X5! Draw.",
       "!X6! Discard.",
       "Use cards."

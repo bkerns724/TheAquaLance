@@ -46,7 +46,7 @@
     "NAME": "Force",
     "DESCRIPTION": "Force [${ModID}:ForceIcon]",
     "EXTENDED_DESCRIPTION": [
-      "Does 50% extra damage to #yVulnerable targets."
+      "Deals an extra 50% damage (multiplicative) to #yVulnerable targets."
     ]
   },
   "${ModID}:DeathLightningDamage": {
@@ -170,7 +170,7 @@
   },
   "${ModID}:DeathlyCold": {
     "NAME": "Deathly Cold",
-    "DESCRIPTION": "Deal !D! damage. NL Enemy loses 1 str this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! Strength this turn."
   },
   "${ModID}:ClockSigil": {
     "NAME": "Clock Sigil",
@@ -191,7 +191,7 @@
   },
   "${ModID}:Weave": {
     "NAME": "Weave",
-    "DESCRIPTION": "Gain !B! Block. All Exile Attack cards in your hand gain each other’s elements for the rest of combat.",
+    "DESCRIPTION": "Gain !B! Block. NL All Exile Attack cards in your hand gain each other’s elements for the rest of combat.",
     "FLAVOR": "It is difficult to include a piece of one spell into another spell, but the payoff can be great if you are clever with it."
   },
   "${ModID}:ManaStorm": {
@@ -416,8 +416,8 @@
     "DESCRIPTION": "Resonant cards now target ALL enemies.",
     "FLAVOR": "With refined technique you can bounce some spells off one enemy and into another."
   },
-  "${ModID}:ChargedEnvironment": {
-    "NAME": "Charged Environment",
+  "${ModID}:StaticShock": {
+    "NAME": "Static Shock",
     "DESCRIPTION": "Deal !D! damage. NL Startup: Shuffle an additional copy into your draw pile.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Startup: Shuffle !M! additional copies into your draw pile."
   },

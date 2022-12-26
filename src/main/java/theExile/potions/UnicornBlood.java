@@ -36,7 +36,6 @@ public class UnicornBlood extends AbstractExilePotion {
     public void setKeywordStrings() {
         if (keywordStrings == null)
             keywordStrings = new ArrayList<>();
-        keywordStrings.add("curse");
         tips.add(new CardPowerTip(previewCard));
     }
 
