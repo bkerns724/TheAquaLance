@@ -7,7 +7,7 @@ import static theExile.ExileMod.makeID;
 
 public class EldritchBolt extends AbstractExileCard {
     public final static String ID = makeID(EldritchBolt.class.getSimpleName());
-    private final static int DAMAGE = 6;
+    private final static int DAMAGE = 8;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int MAGIC = 2;
     private final static int COST = 1;

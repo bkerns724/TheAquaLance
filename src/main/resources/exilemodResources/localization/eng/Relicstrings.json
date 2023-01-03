@@ -7,13 +7,6 @@
       "Choose a spell to learn..."
     ]
   },
-  "${ModID}:VestOfManyPockets": {
-    "NAME": "Vest Of Many Pockets",
-    "FLAVOR": "It's got pockets for days.",
-    "DESCRIPTIONS": [
-      "#y${ModID}:Activated. Once per combat you can draw !R! card then discard !R! card."
-    ]
-  },
   "${ModID}:NecklaceOfShielding": {
     "NAME": "Necklace of Shielding",
     "FLAVOR": "It's a little unstable, but it works.",
@@ -39,21 +32,21 @@
     "NAME": "Twisted Shuriken",
     "FLAVOR": "It looks menacing, but you aren't sure how to safely throw it.",
     "DESCRIPTIONS": [
-      "Every time you play !R! attacks in a single turn, apply !R2! #y${ModID}:Jinx to ALL enemies."
+      "Every time you play !R! attacks in a single turn, gain !R2! more #y${ModID}:Charge."
     ]
   },
   "${ModID}:RingOfWhispers": {
     "NAME": "Ring of Whispers",
     "FLAVOR": "The bearers of this ring all slowly went mad.",
     "DESCRIPTIONS": [
-      "Whenever you draw a #yCurse, gain !R! #yBlock. On pickup, obtain #yWhispers."
+      "Whenever you draw a #yCurse, gain !R! #yTemporary_HP. On pickup, obtain #yWhispers."
     ]
   },
   "${ModID}:TuningFork": {
     "NAME": "Tuning Fork",
-    "FLAVOR": "It constantly makes a quiet hum. It never ends.",
+    "FLAVOR": "It constantly makes a quiet hum.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Activated. Once per combat the next #y${ModID}:Resonant card you play costs 0."
+      "Whenever you play a #y${ModID}:Resonant card, add !R! damage to your #yResonance."
     ]
   },
   "${ModID}:EtherealConverter": {
@@ -67,7 +60,7 @@
     "NAME": "TatteredCloak",
     "FLAVOR": "There's like 500 knives sewn to this thing.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card during your turn, add a #yShiv into your hand."
+      "#y${ModID}:Activated. Once per combat you can draw !R! card then discard !R! card."
     ]
   },
   "${ModID}:EyeballStaff": {
@@ -77,11 +70,11 @@
       "#y${ModID}:Activated. Once per combat you can Scry !R!. Play any #y${ModID}:Sigils you discard."
     ]
   },
-  "${ModID}:HereticBrand": {
-    "NAME": "HereticBrand",
-    "FLAVOR": "This mark forcibly burned onto your face warns everyone who you are.",
+  "${ModID}:AncientGong": {
+    "NAME": "Ancient Gong",
+    "FLAVOR": "You rang it once, and the reverberations have never stopped. Others don't seem to hear it.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. Lose 20% Max HP."
+      "#y${ModID}:Resonant cards are free. Lose 20% Max HP."
     ]
   },
   "${ModID}:BlueMarbles": {
@@ -102,7 +95,7 @@
     "NAME": "Reverse Omamori",
     "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
     "DESCRIPTIONS": [
-      "For each #yCurse in your deck, start each combat with 1 #yDexterity. Upon pickup, add !R! [#EFC851]Clumsy to your deck."
+      "For each #yCurse in your deck, start each combat with !R2! #yMetallicize. Upon pickup, add !R! [#EFC851]Clumsy to your deck."
     ]
   },
   "${ModID}:Mythril": {
@@ -110,13 +103,6 @@
     "FLAVOR": "It's extremely hard for something so light weight.",
     "DESCRIPTIONS": [
       "If you end your turn with no cards in hand, gain !R! #yBlock."
-    ]
-  },
-  "${ModID}:ShinyKazoo": {
-    "NAME": "Shiny Kazoo",
-    "FLAVOR": "You can feel its power, but you have too much dignity to actually play it.",
-    "DESCRIPTIONS": [
-      "The first time each combat that you gain #yResonance, add a random #y${ModID}:Resonant card to your hand."
     ]
   },
   "${ModID}:SneckoLeatherGloves": {
@@ -147,11 +133,18 @@
       "Start each combat with !R! #y${ModID}:Charge."
     ]
   },
-  "${ModID}:Beastiary": {
-    "NAME": "Beastiary",
+  "${ModID}:BlackKatCharm": {
+    "NAME": "Black Kat Charm",
+    "FLAVOR": "Some stories say that black kats bring bad luck.",
+    "DESCRIPTIONS": [
+      "Whenever you discard a card, apply !R! #y${ModID}:Jinx to ALL enemies."
+    ]
+  },
+  "${ModID}:Bestiary": {
+    "NAME": "Bestiary",
     "FLAVOR": "A very thorough encyclopedia of all monsters that can be encountered in or around the Spire.",
     "DESCRIPTIONS": [
-      "[${ModID}:ForceIcon] damage bonus is 100% instead of 50%."
+      "[${ModID}:ForceIcon] damage bonus against #yVulnerable targets is 200% instead of 125%."
     ]
   }
 }

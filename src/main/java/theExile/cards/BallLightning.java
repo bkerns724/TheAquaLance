@@ -5,7 +5,7 @@ import static theExile.cards.AbstractExileCard.elenum.LIGHTNING;
 
 public class BallLightning extends AbstractExileCard {
     public final static String ID = makeID(BallLightning.class.getSimpleName());
-    private final static int DAMAGE = 5;
+    private final static int DAMAGE = 7;
     private final static int UPGRADE_DAMAGE = 3;
     private final static int COST = 1;
 

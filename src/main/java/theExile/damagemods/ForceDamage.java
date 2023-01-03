@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theExile.ExileMod;
 import theExile.icons.Force;
-import theExile.relics.Beastiary;
+import theExile.relics.Bestiary;
 
 import java.util.ArrayList;
 
@@ -50,8 +50,8 @@ public class ForceDamage extends AbstractDamageModifier {
             return damage;
         if (type == NORMAL) {
             float mult = 1f;
-            if (adp().hasRelic(Beastiary.ID))
-                mult += Beastiary.BONUS;
+            if (adp().hasRelic(Bestiary.ID))
+                mult += Bestiary.BONUS;
             else
                 mult += BONUS;
 

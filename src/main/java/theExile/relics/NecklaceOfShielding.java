@@ -17,7 +17,7 @@ public class NecklaceOfShielding extends AbstractExileRelic implements RelicWith
     public static final String ID = makeID(NecklaceOfShielding.class.getSimpleName());
     private static final String textureString = "exilemodResources/images/ui/StarterButton.png";
     private static final int discardAmount = 1;
-    private static final int blockAmount = 4;
+    private static final int blockAmount = 5;
 
     public NecklaceOfShielding() {
         super(ID, RelicTier.STARTER, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);

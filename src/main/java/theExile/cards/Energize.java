@@ -10,7 +10,7 @@ public class Energize extends AbstractResonantCard {
     private final static int COST = 1;
 
     public Energize() {
-        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override
@@ -21,12 +21,12 @@ public class Energize extends AbstractResonantCard {
 
     @Override
     protected void setResonance() {
-        resonance.corrosion = magicNumber;
+        resonance.strength = magicNumber;
         resonance.draw = secondMagic;
     }
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
-        resonance.corrosion += UPGRADE_MAGIC;
+        resonance.draw += UPGRADE_MAGIC;
     }
 }

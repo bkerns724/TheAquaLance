@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import static theExile.cards.AbstractExileCard.elenum;
-import static theExile.cards.AbstractExileCard.elenum.*;
 import static theExile.util.Wiz.adp;
 
 public class WeaveAction extends AbstractGameAction {
@@ -54,21 +53,7 @@ public class WeaveAction extends AbstractGameAction {
             if (c instanceof AbstractExileCard)
                 elementList.addAll(((AbstractExileCard) c).damageModList);
 
-        if (elementList.contains(FAKE_ICE))
-            elementList.add(ICE);
-        if (elementList.contains(FAKE_FORCE))
-            elementList.add(FORCE);
-        if (elementList.contains(FAKE_ELDRITCH))
-            elementList.add(ELDRITCH);
-        if (elementList.contains(FAKE_LIGHTNING))
-            elementList.add(LIGHTNING);
-
         elementList = (ArrayList<elenum>) elementList.stream().distinct().collect(Collectors.toList());
-
-        elementList.remove(FAKE_ICE);
-        elementList.remove(FAKE_FORCE);
-        elementList.remove(FAKE_LIGHTNING);
-        elementList.remove(FAKE_ELDRITCH);
 
         for (AbstractCard c : cardsToModify) {
             if (c instanceof AbstractExileCard) {

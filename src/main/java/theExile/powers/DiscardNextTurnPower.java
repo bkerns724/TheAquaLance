@@ -17,7 +17,7 @@ public class DiscardNextTurnPower extends AbstractExilePower {
 
     @Override
     public void atStartOfTurnPostDraw() {
-        if (!adp().hasPower(ManaStormPower.POWER_ID))
+        if (!adp().hasPower(AmplifyPower.POWER_ID))
             atb(new DiscardAction(adp(), adp(), amount, false));
         atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }

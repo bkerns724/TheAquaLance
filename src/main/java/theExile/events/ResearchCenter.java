@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theExile.ExileMod;
 import theExile.TheExile;
 import theExile.cards.AbstractExileCard;
-import theExile.cards.AbstractResonantCard;
 import theExile.cards.EnchantedDagger;
 import theExile.damagemods.DeathLightningDamage;
 import theExile.damagemods.EldritchDamage;
@@ -96,12 +95,8 @@ public class ResearchCenter extends AbstractExileEvent {
                 AbstractExileCard c = (AbstractExileCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 if (c instanceof EnchantedDagger)
                     ((EnchantedDagger) c).stableList.add(element);
-                else
-                    c.addModifier(element);
 
-                if (c instanceof AbstractResonantCard)
-                    ((AbstractResonantCard) c).resonance.addModifier(element);
-
+                c.addModifier(element);
                 c.initializeDescription();
 
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(),

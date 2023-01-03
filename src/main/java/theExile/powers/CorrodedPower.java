@@ -1,5 +1,6 @@
 package theExile.powers;
 
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -36,6 +37,10 @@ public class CorrodedPower extends AbstractExilePower {
 
     @Override
     public void atEndOfRound() {
-        atb(new RemoveSpecificPowerAction(owner, owner, this));
+        OminousRitualPower pow = (OminousRitualPower) owner.getPower(OminousRitualPower.POWER_ID);
+        if (pow == null)
+            atb(new RemoveSpecificPowerAction(owner, owner, this));
+        else if (amount > pow.amount)
+            atb(new ReducePowerAction(owner, owner, this, amount - pow.amount));
     }
 }

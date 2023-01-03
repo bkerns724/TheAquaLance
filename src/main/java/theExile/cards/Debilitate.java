@@ -11,9 +11,10 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class Debilitate extends AbstractExileCard {
     public final static String ID = makeID(Debilitate.class.getSimpleName());
-    private final static int MAGIC = 1;
+    private final static int MAGIC = 2;
     private final static int SECOND_MAGIC = 5;
     private final static int UPGRADE_MAGIC = 1;
+    private final static int UPGRADE_SECOND = 2;
     private final static int COST = 2;
 
     public Debilitate() {
@@ -33,5 +34,6 @@ public class Debilitate extends AbstractExileCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
+        upMagic2(UPGRADE_SECOND);
     }
 }

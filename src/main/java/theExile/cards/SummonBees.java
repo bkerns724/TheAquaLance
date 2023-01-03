@@ -1,6 +1,7 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
+import theExile.orbs.SwarmOfBees;
 import theExile.powers.SummonBeesPower;
 import theExile.util.Wiz;
 
@@ -11,7 +12,7 @@ public class SummonBees extends AbstractExileCard {
     public final static String ID = makeID(SummonBees.class.getSimpleName());
     private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 3;
+    private final static int SECOND_MAGIC = SwarmOfBees.STING_AMOUNT;
     private final static int COST = 0;
 
     public SummonBees() {
@@ -26,7 +27,7 @@ public class SummonBees extends AbstractExileCard {
     @Override
     public void nonTargetUse() {
         atb(new IncreaseMaxOrbAction(magicNumber));
-        Wiz.applyToSelf(new SummonBeesPower(secondMagic));
+        Wiz.applyToSelf(new SummonBeesPower());
     }
 
     public void upp() {

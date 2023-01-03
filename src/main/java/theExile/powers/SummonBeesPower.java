@@ -21,18 +21,15 @@ public class SummonBeesPower extends AbstractExilePower implements PowerWithButt
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final String TEXTURE_STRING = "exilemodResources/images/ui/BeeButton.png";
-    private static final int STING_AMOUNT = 2;
 
-    public SummonBeesPower(int amount) {
-        super(POWER_ID, PowerType.BUFF, false, adp(), amount);
-        this.amount = amount;
+    public SummonBeesPower() {
+        super(POWER_ID, PowerType.BUFF, false, adp(), 1);
         this.name = NAME;
     }
 
     @Override
     public void stackPower(int stackAmount) {
-        if (stackAmount > amount)
-            amount = stackAmount;
+        amount = 1;
     }
 
     @Override
@@ -52,7 +49,7 @@ public class SummonBeesPower extends AbstractExilePower implements PowerWithButt
             public void update() {
                 if (EnergyPanel.totalCount > 0) {
                     adp().loseEnergy(1);
-                    att(new ChannelAction(new SwarmOfBees(STING_AMOUNT)));
+                    att(new ChannelAction(new SwarmOfBees(SwarmOfBees.STING_AMOUNT)));
                 }
             isDone = true;
             }
@@ -60,9 +57,15 @@ public class SummonBeesPower extends AbstractExilePower implements PowerWithButt
     }
 
     @Override
+    public void updateDescription() {
+        description = descriptionArray[0];
+        description = description.replace("!A!", "#b" + SwarmOfBees.STING_AMOUNT);
+    }
+
+    @Override
     public ArrayList<PowerTip> getHoverTips() {
         ArrayList<PowerTip> list = new ArrayList<>();
-        list.add(new PowerTip(name, DESCRIPTIONS[2].replace("!A!", Integer.toString(amount))));
+        list.add(new PowerTip(name, DESCRIPTIONS[2].replace("!A!", Integer.toString(SwarmOfBees.STING_AMOUNT))));
         return list;
     }
 }

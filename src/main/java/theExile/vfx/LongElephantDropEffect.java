@@ -35,7 +35,7 @@ public class LongElephantDropEffect extends AbstractGameEffect {
         if (duration == startingDuration)
             CardCrawlGame.sound.playA(ExileMod.ELEPHANT_KEY, 0.1f);
 
-        if (duration < DROP_DURATION)
+        if (duration <= DROP_DURATION)
             y = FLOOR_Y + (START_Y - FLOOR_Y) * duration / DROP_DURATION;
 
         duration -= Gdx.graphics.getDeltaTime();

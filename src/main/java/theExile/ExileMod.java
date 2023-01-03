@@ -38,6 +38,7 @@ import theExile.orbs.CrazyPanda;
 import theExile.potions.*;
 import theExile.powers.ChargePower;
 import theExile.relics.AbstractExileRelic;
+import theExile.relics.TwistedShuriken;
 import theExile.util.ClickableForPower;
 import theExile.util.ClickyFtue;
 
@@ -534,7 +535,10 @@ public class ExileMod implements
     @Override
     public void receiveOnBattleStart(AbstractRoom room) {
         if (room.event instanceof VoidSpirits) {
-            forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF, true)));
+            if (AbstractDungeon.ascensionLevel < 15)
+                forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF_A0, true)));
+            else
+                forAllMonstersLiving(m -> atb(new IncreaseMaxHpAction(m, VoidSpirits.HEALTH_BUFF_A15, true)));
             return;
         }
         if (adp().chosenClass == THE_EXILE && AbstractDungeon.floorNum == 1) {
@@ -557,10 +561,16 @@ public class ExileMod implements
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
-        if (abstractCard.type == AbstractCard.CardType.ATTACK) {
-            attacksThisTurn++;
-            if (attacksThisTurn % ATTACK_THRESHOLD == 0)
-                applyToSelf(new ChargePower(CHARGE_AMOUNT));
+        if (adp() != null && adp().chosenClass == THE_EXILE) {
+            if (abstractCard.type == AbstractCard.CardType.ATTACK) {
+                attacksThisTurn++;
+                if (attacksThisTurn % ATTACK_THRESHOLD == 0) {
+                    if (adp().hasRelic(TwistedShuriken.ID))
+                        applyToSelf(new ChargePower(CHARGE_AMOUNT + TwistedShuriken.CHARGE_AMOUNT));
+                    else
+                        applyToSelf(new ChargePower(CHARGE_AMOUNT));
+                }
+            }
         }
     }
 

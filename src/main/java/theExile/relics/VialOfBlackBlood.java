@@ -19,7 +19,7 @@ public class VialOfBlackBlood extends AbstractExileRelic {
     private static final CardStrings eldritchStrings = CardCrawlGame.languagePack.getCardStrings(EldritchDamage.ID);
 
     public VialOfBlackBlood() {
-        super(ID, RelicTier.BOSS, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
+        super(ID, RelicTier.RARE, LandingSound.CLINK, TheExile.Enums.EXILE_BROWN_COLOR);
         setUpdatedDescription();
     }
 

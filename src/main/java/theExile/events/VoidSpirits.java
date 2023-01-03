@@ -36,7 +36,8 @@ public class VoidSpirits extends AbstractExileEvent {
     private static final String IMAGE_PATH;
     private static final EventUtils.EventType TYPE = EventUtils.EventType.NORMAL;
 
-    public static final float HEALTH_BUFF = 1f;
+    public static final float HEALTH_BUFF_A0 = 1f;
+    public static final float HEALTH_BUFF_A15 = 1.25f;
     public static final float HEALTH_LOSS_A0 = 0.10f;
     public static final float HEALTH_LOSS_A15 = 0.15f;
     public static final int CARD_REMOVE = 3;

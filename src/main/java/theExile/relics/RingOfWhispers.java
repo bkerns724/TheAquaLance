@@ -1,13 +1,13 @@
 package theExile.relics;
 
 import basemod.helpers.CardPowerTip;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.TheExile;
+import theExile.actions.MyAddTempHPAction;
 import theExile.cards.Whispers;
 
 import static theExile.ExileMod.makeID;
@@ -38,7 +38,7 @@ public class RingOfWhispers extends AbstractExileRelic {
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
         if (drawnCard.color == AbstractCard.CardColor.CURSE)
-            atb(new GainBlockAction(adp(), BLOCK_AMOUNT));
+            atb(new MyAddTempHPAction(adp(), adp(), BLOCK_AMOUNT));
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.cards.curses.Clumsy;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.MetallicizePower;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.TheExile;
 
@@ -17,11 +17,13 @@ import static theExile.util.Wiz.*;
 public class ReverseOmamori extends AbstractExileRelic {
     public static final String ID = makeID(ReverseOmamori.class.getSimpleName());
     public static final int CURSE_AMOUNT = 2;
+    public static final int DEFENSE_AMOUNT = 3;
     private static final AbstractCard CARD_TO_PREVIEW = new Clumsy();
 
     public ReverseOmamori() {
         super(ID, RelicTier.BOSS, LandingSound.FLAT, TheExile.Enums.EXILE_BROWN_COLOR);
         amount = CURSE_AMOUNT;
+        amount2 = DEFENSE_AMOUNT;
         setUpdatedDescription();
     }
 
@@ -29,7 +31,7 @@ public class ReverseOmamori extends AbstractExileRelic {
     public void atBattleStart() {
         if (counter > 0) {
             flash();
-            applyToSelfTop(new DexterityPower(adp(), counter));
+            applyToSelfTop(new MetallicizePower(adp(), counter*DEFENSE_AMOUNT));
             att(new RelicAboveCreatureAction(adp(), this));
         }
     }

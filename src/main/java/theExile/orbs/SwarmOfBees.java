@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
@@ -35,7 +34,8 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     private static final String IMG_PATH = "exilemodResources/images/vfx/Bee.png";
     private static final Texture BEE_IMG = ImageMaster.loadImage(IMG_PATH);
     private static final int BEE_COUNT = 120;
-    private static final Color TEXT_COLOR = new Color(1.0f, 0.25f, 0.25f, 1.0f);
+    public static final int STING_AMOUNT = 2;
+    public static final int EVOKE_BONUS = 5;
 
     private final ArrayList<Bee> bees = new ArrayList<>();
 
@@ -139,7 +139,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
     {
         super(ORB_ID, NAME, passive, 0, "", "", IMG_PATH_O);
         basePassiveAmount = passive;
-        baseEvokeAmount = basePassiveAmount;
+        baseEvokeAmount = basePassiveAmount + EVOKE_BONUS;
         showEvokeValue = true;
 
         generateBees();
@@ -164,7 +164,7 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
         else
             passiveAmount = basePassiveAmount;
 
-        evokeAmount = passiveAmount;
+        evokeAmount = passiveAmount + EVOKE_BONUS;
     }
 
     @Override
@@ -212,12 +212,6 @@ public class SwarmOfBees extends CustomOrb implements OnAttackOrb {
 
         renderText(sb);
         hb.render(sb);
-    }
-
-    @Override
-    protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(passiveAmount),
-                cX + NUM_X_OFFSET, cY + NUM_Y_OFFSET, c, fontScale);
     }
 
     @Override

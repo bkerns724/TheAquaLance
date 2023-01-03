@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theExile.cards.BrrZerk;
 
@@ -33,9 +34,9 @@ public class BrrZerkAction extends AbstractGameAction {
         if (energyOnUse != -1)
             effect = energyOnUse;
 
-        if (adp().hasRelic("Chemical X")) {
+        if (adp().hasRelic(ChemicalX.ID)) {
             effect += 2;
-            adp().getRelic("Chemical X").flash();
+            adp().getRelic(ChemicalX.ID).flash();
         }
 
         if (effect > 0) {

@@ -8,7 +8,7 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class TheBellTolls extends AbstractExileCard {
     public final static String ID = makeID(TheBellTolls.class.getSimpleName());
-    private final static int MAGIC = 9;
+    private final static int MAGIC = 7;
     private final static int UPGRADE_MAGIC = 3;
     private final static int COST = 3;
 

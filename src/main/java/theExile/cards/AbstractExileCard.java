@@ -106,11 +106,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         ICE,
         FORCE,
         ELDRITCH,
-        LIGHTNING,
-        FAKE_ICE,
-        FAKE_FORCE,
-        FAKE_ELDRITCH,
-        FAKE_LIGHTNING
+        LIGHTNING
     }
 
     public AbstractExileCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
@@ -320,13 +316,13 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         }
 
         if (damageModList != null) {
-            if (damageModList.contains(ICE) || damageModList.contains(FAKE_ICE))
+            if (damageModList.contains(ICE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + COLD_STRING + " ");
-            if (damageModList.contains(ELDRITCH) || damageModList.contains(FAKE_ELDRITCH))
+            if (damageModList.contains(ELDRITCH))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + ELDRITCH_STRING + " ");
-            if (damageModList.contains(FORCE) || damageModList.contains(FAKE_FORCE))
+            if (damageModList.contains(FORCE))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + FORCE_STRING + " ");
-            if (damageModList.contains(LIGHTNING) || damageModList.contains(FAKE_LIGHTNING))
+            if (damageModList.contains(LIGHTNING))
                 rawDescription = rawDescription.replace("!D! ", "!D! " + LIGHTNING_STRING + " ");
         }
 
@@ -405,14 +401,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             DamageModifierManager.addModifier(this, new EldritchDamage(tips));
         if (element == LIGHTNING)
             DamageModifierManager.addModifier(this, new DeathLightningDamage(tips));
-        if (element == FAKE_ICE)
-            DamageModifierManager.addModifier(this, new FakeIceDamage(tips));
-        if (element == FAKE_FORCE)
-            DamageModifierManager.addModifier(this, new FakeForceDamage(tips));
-        if (element == FAKE_ELDRITCH)
-            DamageModifierManager.addModifier(this, new FakeEldritchDamage(tips));
-        if (element == FAKE_LIGHTNING)
-            DamageModifierManager.addModifier(this, new FakeLightningDamage(tips));
         initializeDescription();
     }
 
@@ -622,8 +610,12 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     @Override
     public CardSaveObject onSave() {
         CardSaveObject obj = new CardSaveObject();
-        if (damageModList != null)
-            obj.elements.addAll(damageModList);
+        if (damageModList != null) {
+            if (this instanceof EnchantedDagger)
+                obj.elements.addAll(((EnchantedDagger) this).stableList);
+            else
+                obj.elements.addAll(damageModList);
+        }
         obj.sigil = sigil;
         obj.misc = miscTwo;
         return obj;
@@ -634,12 +626,16 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         if (damageModList == null)
             damageModList = new ArrayList<>();
 
-        damageModList.addAll(obj.elements);
+        addModifier(obj.elements);
+        if (this instanceof EnchantedDagger)
+            ((EnchantedDagger) this).stableList.addAll(obj.elements);
 
         sigil = obj.sigil;
         miscTwo = obj.misc;
         if (sigil)
             cost = -2;
+
+        initializeDescription();
     }
 
     @Override

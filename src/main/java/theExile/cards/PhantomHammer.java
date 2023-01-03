@@ -4,8 +4,8 @@ import static theExile.ExileMod.makeID;
 
 public class PhantomHammer extends AbstractExileCard {
     public final static String ID = makeID(PhantomHammer.class.getSimpleName());
-    private final static int DAMAGE = 15;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 16;
+    private final static int UPGRADE_DAMAGE = 4;
     private final static int COST = 2;
 
     public PhantomHammer() {

@@ -57,11 +57,6 @@ public class PandaEvokeAction extends AbstractGameAction {
             targetY = target.hb.cY + AbstractDungeon.miscRng.random(-25.0f*Settings.yScale, 25.0f*Settings.yScale);
             sourceX = panda.cX;
             sourceY = panda.cY;
-
-            ExileMod.logger.info(sourceX);
-            ExileMod.logger.info(sourceY);
-            ExileMod.logger.info(targetX);
-            ExileMod.logger.info(targetY);
         }
 
         panda.cX = sourceX + (targetX - sourceX)*(DURATION - duration)/ thunkTiming;

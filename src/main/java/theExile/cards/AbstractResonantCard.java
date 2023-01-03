@@ -8,7 +8,8 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theExile.ExileMod;
 import theExile.cards.cardUtil.Resonance;
-import theExile.powers.ResonantCostZeroPower;
+import theExile.relics.AncientGong;
+import theExile.relics.TuningFork;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,8 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
         resonance.resonanceEffects(this, m);
         if (sigil)
             beingDiscarded = false;
+        if (adp().hasRelic(TuningFork.ID))
+        resonance.damage += TuningFork.DAMAGE_AMOUNT;
         resonance.toPower();
     }
 
@@ -40,12 +43,9 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
         if (super.freeToPlay())
             return true;
 
-        if (adp() != null && AbstractDungeon.currMapNode != null &&
+        return adp() != null && AbstractDungeon.currMapNode != null &&
                 adRoom() != null && adRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
-                adp().hasPower(ResonantCostZeroPower.POWER_ID))
-            return true;
-
-        return false;
+                adp().hasRelic(AncientGong.ID);
     }
 
     @Override
@@ -60,13 +60,10 @@ public abstract class AbstractResonantCard extends AbstractExileCard {
 
     @Override
     public void addModifier(ArrayList<elenum> elements, boolean tips) {
-        for (elenum e : elements)
+        for (elenum e : elements) {
             addModifier(e, tips);
-    }
-
-    @Override
-    public void addModifier(elenum element) {
-        addModifier(element, true);
+            resonance.addModifier(e);
+        }
     }
 
     @Override

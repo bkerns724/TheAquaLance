@@ -82,14 +82,6 @@
       "Takes !A! more damage from everything this turn."
     ]
   },
-  "${ModID}:ManaCrystalPower": {
-    "NAME": "Mana Crystal",
-    "DESCRIPTIONS": [
-      "Once per turn you may spend [E] to gain 2 ${ModID}:Charge.",
-      "!A! times per turn you may spend [E] to gain 2 ${ModID}:Charge.",
-      "Spend [E] to gain 2 ${ModID}:Charge."
-    ]
-  },
   "${ModID}:FrostbitePower": {
     "NAME": "Frostbite",
     "DESCRIPTIONS": [
@@ -109,11 +101,17 @@
       "The next !A! non-power non-exhausting Exile cards you play become #yResonant."
     ]
   },
-  "${ModID}:ManaStormPower": {
-    "NAME": "Mana Storm",
+  "${ModID}:ToxicSpellsPower": {
+    "NAME": "Toxic Spells",
     "DESCRIPTIONS": [
-      "At the start of your turn, discard a card and gain [E].",
-      "At the start of your turn, discard !A! cards and gain !A! [E]."
+      "Your attacks apply !A! #yCorrosion."
+    ]
+  },
+  "${ModID}:AmplifyPower": {
+    "NAME": "Amplify",
+    "DESCRIPTIONS": [
+      "At the start of your turn, discard a card and add !A! damage to your #yResonance.",
+      "At the start of your turn, discard !A2! cards and add !A! damage to your #yResonance."
     ]
   },
   "${ModID}:AcousticsPower": {
@@ -209,7 +207,7 @@
   "${ModID}:OminousRitualPower": {
     "NAME": "Ominous Ritual",
     "DESCRIPTIONS": [
-      "Apply !A! #yCorrosion to ALL enemies at the start of your turn."
+      "#yCorrosion does not fall below !A!."
     ]
   },
   "${ModID}:SpinningSigilPower": {

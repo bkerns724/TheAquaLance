@@ -1,17 +1,17 @@
 package theExile.cards;
 
-import theExile.powers.ManaStormPower;
+import theExile.powers.AmplifyPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToSelf;
 
-public class ManaStorm extends AbstractExileCard {
-    public final static String ID = makeID(ManaStorm.class.getSimpleName());
-    private final static int MAGIC = 1;
-    private final static int UPGRADED_COST = 0;
+public class Amplify extends AbstractExileCard {
+    public final static String ID = makeID(Amplify.class.getSimpleName());
+    private final static int MAGIC = 6;
+    private final static int UPGRADE_MAGIC = 2;
     private final static int COST = 1;
 
-    public ManaStorm() {
+    public Amplify() {
         super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
@@ -21,10 +21,10 @@ public class ManaStorm extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        applyToSelf(new ManaStormPower(magicNumber));
+        applyToSelf(new AmplifyPower(magicNumber));
     }
 
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        upMagic(UPGRADE_MAGIC);
     }
 }

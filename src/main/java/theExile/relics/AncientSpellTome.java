@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.relics.ToxicEgg2;
 import theExile.TheExile;
 import theExile.cards.DeafeningChimes;
 import theExile.cards.Thunder;
-import theExile.cards.SustainedSummon;
+import theExile.cards.SummonPandas;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
@@ -27,7 +27,7 @@ public class AncientSpellTome extends AbstractExileRelic {
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         tmp.addToTop(new DeafeningChimes());
         tmp.addToTop(new Thunder());
-        tmp.addToTop(new SustainedSummon());
+        tmp.addToTop(new SummonPandas());
 
         for (int i = 0; i < tmp.size(); i++) {
             AbstractCard card = tmp.group.get(0);
