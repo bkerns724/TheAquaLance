@@ -7,7 +7,7 @@ import static theExile.util.Wiz.applyToSelf;
 
 public class DimensionalPouch extends AbstractExileCard {
     public final static String ID = makeID(DimensionalPouch.class.getSimpleName());
-    private final static int COST = 0;
+    private final static int COST = 1;
 
     public DimensionalPouch() {
         super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.NONE);

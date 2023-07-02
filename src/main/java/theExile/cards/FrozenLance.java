@@ -1,46 +1,37 @@
 package theExile.cards;
 
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theExile.ExileMod;
-import theExile.util.Wiz;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.cards.AbstractExileCard.elenum.ICE;
+import static theExile.util.Wiz.applyToEnemy;
 
 public class FrozenLance extends AbstractExileCard {
     public final static String ID = makeID(FrozenLance.class.getSimpleName());
-    private final static int DAMAGE = 9;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 6;
+    private final static int MAGIC = 1;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
     public FrozenLance() {
-        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, ExileMod.Enums.AUTOAIM_ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
     @Override
     protected void applyAttributes() {
         baseDamage = DAMAGE;
+        baseMagicNumber = magicNumber = MAGIC;
         addModifier(ICE);
     }
 
     @Override
-    public AbstractMonster getTarget() {
-        AbstractMonster left = null;
-        for (AbstractMonster m : Wiz.getEnemies()) {
-            if (left == null)
-                left = m;
-            else if (m.hb.cX < left.hb.cX)
-                left = m;
-        }
-        return left;
-    }
-
-    @Override
-    public void autoTargetUse(AbstractMonster m) {
+    public void singleTargetUse(AbstractMonster m) {
         dmg(m);
+        applyToEnemy(m, new WeakPower(m, magicNumber, false));
     }
 
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UPGRADE_MAGIC);
     }
 }

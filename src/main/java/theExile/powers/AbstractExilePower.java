@@ -65,8 +65,6 @@ public abstract class AbstractExilePower extends AbstractPower {
         description = description.replace("!A2!", "#b" + amount2);
     }
 
-    public void onManualDiscard() {}
-
     public void onDiscardSigil() {}
 
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {

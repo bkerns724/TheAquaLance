@@ -13,7 +13,7 @@ public class ColdBlooded extends AbstractExileCard {
     private final static int COST = 2;
 
     public ColdBlooded() {
-        super(ID, COST, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, COST, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

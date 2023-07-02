@@ -40,7 +40,7 @@ public class Wiz {
         return AbstractDungeon.player;
     }
 
-    public static AbstractGameAction.AttackEffect getAttackEffect(int damage, ArrayList<elenum> damageModListInput, boolean resonant) {
+    public static AbstractGameAction.AttackEffect getAttackEffect(int damage, ArrayList<elenum> damageModListInput) {
         ArrayList<elenum> damageModList = new ArrayList<>(damageModListInput);
 
         if (damageModList.size() == 1) {
@@ -57,8 +57,6 @@ public class Wiz {
                 return getBluntEffect(damage);
         } else if (damageModList.size() > 1)
             return getDarkWaveEffect(damage);
-        else if (resonant)
-            return getResonantEffect(damage);
 
         int x = MathUtils.random(0, 1);
         if (x == 1)
@@ -107,6 +105,15 @@ public class Wiz {
             return ExileMod.Enums.ACID_M;
         else
             return ExileMod.Enums.ACID_L;
+    }
+
+    public static AbstractGameAction.AttackEffect getSonicEffect(int damage) {
+        if (damage < DAMAGE_THRESHOLD_M)
+            return ExileMod.Enums.RESONANT;
+        else if (damage < DAMAGE_THRESHOLD_L)
+            return ExileMod.Enums.RESONANT_M;
+        else
+            return ExileMod.Enums.RESONANT_L;
     }
 
     public static AbstractGameAction.AttackEffect getIceEffect(int damage) {

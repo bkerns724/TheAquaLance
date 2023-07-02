@@ -29,9 +29,10 @@ public class CrazyPanda extends CustomOrb {
     private static final float PANDA_WIDTH = 96.0f;
     private static final Color TEXT_COLOR = new Color(1.0f, 0.25f, 0.25f, 1.0f);
 
-    // DO NOT SET EITHER OF THESE TO ZERO
     public static final float BOUNCE_DURATION = 1.0f;
     public static final float GRAVITY = 2700.0f;
+
+    private static final int PASSIVE_AMOUNT = 6;
 
     private float bounceTime = 0;
     private boolean shooting = false;
@@ -45,11 +46,11 @@ public class CrazyPanda extends CustomOrb {
 
     public boolean isCopy = false;
 
-    public CrazyPanda(int passive)
+    public CrazyPanda()
     {
-        super(ORB_ID, NAME, passive, 0, "", "", IMG_PATH);
-        basePassiveAmount = passive;
-        baseEvokeAmount = basePassiveAmount;
+        super(ORB_ID, NAME, PASSIVE_AMOUNT, PASSIVE_AMOUNT, "", "", IMG_PATH);
+        basePassiveAmount = PASSIVE_AMOUNT;
+        baseEvokeAmount = PASSIVE_AMOUNT;
         showEvokeValue = false;
         rotation = 0.0f;
         applyFocus();
@@ -58,12 +59,16 @@ public class CrazyPanda extends CustomOrb {
 
     public void applyFocus() {
         AbstractPower power = adp().getPower("Focus");
+
         if (power != null)
             passiveAmount = Math.max(0, basePassiveAmount + power.amount);
         else
             passiveAmount = basePassiveAmount;
 
-        evokeAmount = passiveAmount;
+        if (power != null)
+            evokeAmount = Math.max(0, baseEvokeAmount + power.amount);
+        else
+            evokeAmount = baseEvokeAmount;
     }
 
     @Override
@@ -169,7 +174,7 @@ public class CrazyPanda extends CustomOrb {
 
     @Override
     public AbstractOrb makeCopy() {
-        CrazyPanda copy = new CrazyPanda(passiveAmount);
+        CrazyPanda copy = new CrazyPanda();
         copy.cX = cX;
         copy.cY = cY;
         copy.tX = tX;

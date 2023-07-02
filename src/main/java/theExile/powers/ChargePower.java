@@ -1,14 +1,12 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import theExile.cards.AbstractExileCard;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.cards.AbstractExileCard.elenum.LIGHTNING;
-import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.*;
 
 public class ChargePower extends AbstractExilePower {
     public static String POWER_ID = makeID(ChargePower.class.getSimpleName());
@@ -18,13 +16,12 @@ public class ChargePower extends AbstractExilePower {
 
     public ChargePower(int amount) {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
-        canGoNegative = false;
         this.name = NAME;
     }
 
     @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card instanceof AbstractExileCard && ((AbstractExileCard) card).damageModList.contains(LIGHTNING))
-            flash();
+    public void atStartOfTurnPostDraw() {
+        applyToSelf(new VigorPower(adp(), amount));
+        atb(new RemoveSpecificPowerAction(adp(), adp(), this));
     }
 }

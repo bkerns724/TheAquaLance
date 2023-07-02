@@ -8,10 +8,11 @@ import static theExile.util.Wiz.applyToEnemy;
 
 public class DeathlyCold extends AbstractExileCard {
     public final static String ID = makeID(DeathlyCold.class.getSimpleName());
-    private final static int DAMAGE = 3;
-    private final static int MAGIC = 1;
+    private final static int DAMAGE = 6;
+    private final static int UPGRADE_DAMAGE = 2;
+    private final static int MAGIC = 2;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 0;
+    private final static int COST = 1;
 
     public DeathlyCold() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -32,5 +33,6 @@ public class DeathlyCold extends AbstractExileCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

@@ -39,7 +39,9 @@
     "PROPER_NAME": "Panda",
     "NAMES": [
       "Panda",
-      "panda"
+      "panda",
+      "Pandas",
+      "pandas"
     ],
     "DESCRIPTION": "Orb: Deals damage to a random enemy at the start of your turn. When evoked, deal damage to a random enemy."
   },
@@ -67,9 +69,11 @@
       "Resonance",
       "resonance",
       "Resonant",
-      "resonant"
+      "resonant",
+      "Ringing",
+      "ringing"
     ],
-    "DESCRIPTION": "When you play a Resonant card it is returned to your hand at the start of your next turn. When you play multiple Resonant cards in one turn all of their effects are combined into a single card; that card is returned as normal. Returned cards always cost 1."
+    "DESCRIPTION": "Resonant cards have their damage boosted by the enemy's Ringing."
   },
   {
     "PROPER_NAME": "Frostbite",
@@ -80,29 +84,11 @@
     "DESCRIPTION": "Frostbitten creatures take damage when they attack, then Frostbite is reduced by 1."
   },
   {
-    "PROPER_NAME": "Charge",
-    "NAMES": [
-      "Charge",
-      "charge",
-      "Charged",
-      "charged"
-    ],
-    "DESCRIPTION": "Charge increases the damage of [${ModID}:LightningIcon] attacks. NL Gain 3 Charge for every time you play 3 attacks in a single turn."
-  },
-  {
     "PROPER_NAME": "Jinx",
     "NAMES": [
       "Jinx",
       "jinx"
     ],
     "DESCRIPTION": "Whenever a Jinxed creature receives another debuff, it loses HP."
-  },
-  {
-    "PROPER_NAME": "Barbed",
-    "NAMES": [
-      "Barbed",
-      "barbed"
-    ],
-    "DESCRIPTION": "Barbed creatures take damage when they attack."
   }
 ]

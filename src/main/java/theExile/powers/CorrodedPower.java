@@ -37,7 +37,7 @@ public class CorrodedPower extends AbstractExilePower {
 
     @Override
     public void atEndOfRound() {
-        OminousRitualPower pow = (OminousRitualPower) owner.getPower(OminousRitualPower.POWER_ID);
+        PorcupinePower pow = (PorcupinePower) owner.getPower(PorcupinePower.POWER_ID);
         if (pow == null)
             atb(new RemoveSpecificPowerAction(owner, owner, this));
         else if (amount > pow.amount)

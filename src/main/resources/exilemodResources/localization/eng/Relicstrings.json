@@ -35,9 +35,9 @@
       "Every time you play !R! attacks in a single turn, gain !R2! more #y${ModID}:Charge."
     ]
   },
-  "${ModID}:RingOfWhispers": {
-    "NAME": "Ring of Whispers",
-    "FLAVOR": "The bearers of this ring all slowly went mad.",
+  "${ModID}:Necrototem": {
+    "NAME": "Necrototem",
+    "FLAVOR": "This salt is delicious - Kio.",
     "DESCRIPTIONS": [
       "Whenever you draw a #yCurse, gain !R! #yTemporary_HP. On pickup, obtain #yWhispers."
     ]
@@ -70,11 +70,18 @@
       "#y${ModID}:Activated. Once per combat you can Scry !R!. Play any #y${ModID}:Sigils you discard."
     ]
   },
-  "${ModID}:AncientGong": {
-    "NAME": "Ancient Gong",
-    "FLAVOR": "You rang it once, and the reverberations have never stopped. Others don't seem to hear it.",
+  "${ModID}:Garlic": {
+    "NAME": "Garlic",
+    "FLAVOR": "Smells like a Germlin Nob's fart.",
     "DESCRIPTIONS": [
-      "#y${ModID}:Resonant cards are free. Lose 20% Max HP."
+      "At the start of each combat, apply !A! #y${ModID}:Corrosion to ALL enemies."
+    ]
+  },
+  "${ModID}:HereticBrand": {
+    "NAME": "Heretic Brand",
+    "FLAVOR": "They revile me, yet my research is the world's only hope.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. Upon pickup, obtain a #yPride."
     ]
   },
   "${ModID}:BlueMarbles": {
@@ -119,9 +126,9 @@
       "For each #yCurse in your deck, #y${ModID}:Jinx damage is increased by !R!%. Upon pickup, obtain [#EFC851]Wrath."
     ]
   },
-  "${ModID}:VoidBracelet": {
-    "NAME": "Void Bracelet",
-    "FLAVOR": "It is always icy cold, even if you hold it in a fire.",
+  "${ModID}:EmptyGoblet": {
+    "NAME": "Empty Goblet",
+    "FLAVOR": "Your hand starts to go numb if you hold it for more than a few seconds.",
     "DESCRIPTIONS": [
       "If you end your turn with no cards in hand, gain !R! #yStrength and !R! #yDexterity."
     ]
@@ -130,7 +137,7 @@
     "NAME": "M10 Core",
     "FLAVOR": "Occasionally you hear a series of beeps come from the core. They somehow sound mournful.",
     "DESCRIPTIONS": [
-      "Start each combat with !R! #y${ModID}:Charge."
+      "[${ModID}:LightningIcon] attacks do !A! more damage."
     ]
   },
   "${ModID}:BlackKatCharm": {
@@ -144,7 +151,7 @@
     "NAME": "Bestiary",
     "FLAVOR": "A very thorough encyclopedia of all monsters that can be encountered in or around the Spire.",
     "DESCRIPTIONS": [
-      "[${ModID}:ForceIcon] damage bonus against #yVulnerable targets is 200% instead of 125%."
+      "[${ModID}:ForceIcon] damage bonus against #yWeak targets is 100% instead of 50%."
     ]
   }
 }

@@ -1,18 +1,19 @@
 package theExile.cards;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import theExile.powers.ChargePower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.getDebuffCount;
+import static theExile.util.Wiz.getEnemies;
 
 public class Storm extends AbstractExileCard {
     public final static String ID = makeID(Storm.class.getSimpleName());
-    private final static int DAMAGE = 25;
-    private final static int MAGIC = 4;
+    private final static int DAMAGE = 8;
+    private final static int MAGIC = 3;
     private final static int UPGRADE_MAGIC = 2;
-    private final static int COST = 3;
+    private final static int SECOND_MAGIC = 6;
+    private final static int COST = 1;
 
     public Storm() {
         super(ID, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
@@ -22,29 +23,32 @@ public class Storm extends AbstractExileCard {
     protected void applyAttributes() {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = SECOND_MAGIC;
         addModifier(elenum.LIGHTNING);
+        glowColor = GOLD_BORDER_GLOW_COLOR;
     }
 
     public void singleTargetUse(AbstractMonster m) {
-        dmg(m);
+        for (int i = 0; i < magicNumber; i++)
+            dmg(m);
     }
 
-    public void applyPowers() {
-        AbstractPower charge = adp().getPower(ChargePower.POWER_ID);
-        if (charge != null)
-            charge.amount *= this.magicNumber;
-        super.applyPowers();
-        if (charge != null)
-            charge.amount /= this.magicNumber;
-    }
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (m == null) {
+            for (AbstractMonster mon : getEnemies()) {
+                if (getDebuffCount(mon) >= magicNumber)
+                    return true;
+            }
+            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        }
 
-    public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower charge = adp().getPower(ChargePower.POWER_ID);
-        if (charge != null)
-            charge.amount *= this.magicNumber;
-        super.calculateCardDamage(mo);
-        if (charge != null)
-            charge.amount /= this.magicNumber;
+        int count = getDebuffCount(m);
+        if (count >= magicNumber)
+            return true;
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        return false;
     }
 
     public void upp() {

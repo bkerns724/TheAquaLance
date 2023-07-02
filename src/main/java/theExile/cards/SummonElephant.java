@@ -26,6 +26,7 @@ public class SummonElephant extends AbstractExileCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;
+        isMultiDamage = true;
     }
 
     @Override

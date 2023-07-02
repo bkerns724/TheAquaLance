@@ -88,7 +88,7 @@ public class AttackAction extends AbstractGameAction {
             else if (effect == ExileMod.Enums.LIGHTNING_M || effect == ExileMod.Enums.LIGHTNING_L)
                 color = Color.GREEN.cpy();
             else if (effect == AttackEffect.FIRE)
-                color = Color.FIREBRICK.cpy();
+                color = Color.ORANGE.cpy();
             else if (effect == ExileMod.Enums.ACID || effect == ExileMod.Enums.ACID_M)
                 color = Color.FOREST.cpy();
             else if (effect == ExileMod.Enums.BEE)

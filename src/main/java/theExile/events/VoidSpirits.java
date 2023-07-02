@@ -22,7 +22,7 @@ import theExile.TheExile;
 import theExile.cards.NullElement;
 import theExile.patches.TipsInDialogPatch;
 import theExile.potions.SiphoningPoison;
-import theExile.relics.VoidBracelet;
+import theExile.relics.EmptyGoblet;
 
 import java.util.ArrayList;
 
@@ -64,7 +64,7 @@ public class VoidSpirits extends AbstractExileEvent {
         super(eventStrings, IMAGE_PATH, getHealthLoss(), getCardsRemoved());
         imageEventText.updateBodyText(descriptions[0]);
 
-        AbstractRelic ring = new VoidBracelet();
+        AbstractRelic ring = new EmptyGoblet();
         imageEventText.setDialogOption(options[0].replace("!RelicString!",
                 FontHelper.colorString(ring.name, "g")), ring);
 
@@ -126,7 +126,7 @@ public class VoidSpirits extends AbstractExileEvent {
                 case 0:
                     adp().decreaseMaxHealth(amount);
                     adRoom().spawnRelicAndObtain((float) Settings.WIDTH * 0.28F,
-                            (float) Settings.HEIGHT / 2.0F, new VoidBracelet());
+                            (float) Settings.HEIGHT / 2.0F, new EmptyGoblet());
                     screen = CUR_SCREEN.COMPLETE;
                     imageEventText.updateBodyText(descriptions[1]);
                     imageEventText.clearAllDialogs();

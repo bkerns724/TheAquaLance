@@ -36,9 +36,7 @@ import theExile.events.VoidSpirits;
 import theExile.icons.*;
 import theExile.orbs.CrazyPanda;
 import theExile.potions.*;
-import theExile.powers.ChargePower;
 import theExile.relics.AbstractExileRelic;
-import theExile.relics.TwistedShuriken;
 import theExile.util.ClickableForPower;
 import theExile.util.ClickyFtue;
 
@@ -60,7 +58,6 @@ public class ExileMod implements
         EditCharactersSubscriber,
         AddAudioSubscriber,
         OnStartBattleSubscriber,
-        OnCardUseSubscriber,
         OnPlayerTurnStartSubscriber,
         PostBattleSubscriber,
         PostUpdateSubscriber,
@@ -560,21 +557,6 @@ public class ExileMod implements
     }
 
     @Override
-    public void receiveCardUsed(AbstractCard abstractCard) {
-        if (adp() != null && adp().chosenClass == THE_EXILE) {
-            if (abstractCard.type == AbstractCard.CardType.ATTACK) {
-                attacksThisTurn++;
-                if (attacksThisTurn % ATTACK_THRESHOLD == 0) {
-                    if (adp().hasRelic(TwistedShuriken.ID))
-                        applyToSelf(new ChargePower(CHARGE_AMOUNT + TwistedShuriken.CHARGE_AMOUNT));
-                    else
-                        applyToSelf(new ChargePower(CHARGE_AMOUNT));
-                }
-            }
-        }
-    }
-
-    @Override
     public void receiveOnPlayerTurnStart() {
         attacksThisTurn = 0;
     }
@@ -588,6 +570,7 @@ public class ExileMod implements
     private static void addPotions() {
         BaseMod.addPotion(CursedBrew.class, Color.PURPLE.cpy(), Color.BLACK.cpy(), null, CursedBrew.POTION_ID, THE_EXILE);
         BaseMod.addPotion(StoneskinPotion.class, Color.BROWN.cpy(), null, null, StoneskinPotion.POTION_ID, THE_EXILE);
+        BaseMod.addPotion(VialOfAcid.class, Color.GREEN.cpy(), null, null, VialOfAcid.POTION_ID, THE_EXILE);
         BaseMod.addPotion(ElixirOfFalseHealth.class, Color.YELLOW.cpy(), Color.GOLD.cpy(), null, ElixirOfFalseHealth.POTION_ID, THE_EXILE);
         BaseMod.addPotion(UnicornBlood.class, Color.WHITE.cpy(), null, null, UnicornBlood.POTION_ID, THE_EXILE);
         BaseMod.addPotion(SiphoningPoison.class, Color.BLACK.cpy(), null, null, SiphoningPoison.POTION_ID, THE_EXILE);

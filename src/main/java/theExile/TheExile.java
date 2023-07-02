@@ -194,7 +194,7 @@ public class TheExile extends CustomPlayer {
         // Sorry Pasha if this causes problems, but this needs to be seeded
         if (AbstractDungeon.cardRng != null) {
             ArrayList<AbstractCard> cardList = new ArrayList<>();
-            cardList.add(new Prepare());
+            cardList.add(new QuickThinking());
             cardList.add(new ClockSigil());
             int x = AbstractDungeon.cardRng.random(0, cardList.size() - 1);
             return cardList.get(x);

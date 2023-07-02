@@ -42,7 +42,7 @@ public class BrrZerkAction extends AbstractGameAction {
         if (effect > 0) {
             DamageInfo info = BindingHelper.makeInfo(container, adp(), card.damage, DamageInfo.DamageType.NORMAL);
             for(int i = 0; i < effect; ++i) {
-                AttackEffect attackEffect = getAttackEffect(card.damage, card.damageModList, false);
+                AttackEffect attackEffect = getAttackEffect(card.damage, card.damageModList);
                 att(new AttackAction((AbstractMonster) target, info, attackEffect));
             }
 

@@ -1,16 +1,14 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import theExile.actions.FastLoseHPAction;
+import theExile.powers.CataclysmPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.*;
+import static theExile.util.Wiz.applyToSelf;
 
 public class CataclysmSigil extends AbstractExileCard {
     public final static String ID = makeID(CataclysmSigil.class.getSimpleName());
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
+    private final static int MAGIC = 50;
+    private final static int UPGRADE_MAGIC = 15;
     private final static int COST = -2;
 
     public CataclysmSigil() {
@@ -19,17 +17,13 @@ public class CataclysmSigil extends AbstractExileCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        baseSecondMagic = secondMagic = CataclysmPower.CARD_COUNT;
         sigil = true;
     }
 
     @Override
     public void nonTargetUse() {
-        forAllMonstersLiving(m -> {
-            for (AbstractPower pow : m.powers) {
-                if (pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof GainStrengthPower))
-                    atb(new FastLoseHPAction(m, magicNumber));
-            }
-        });
+        applyToSelf(new CataclysmPower(magicNumber));
     }
 
     public void upp() {

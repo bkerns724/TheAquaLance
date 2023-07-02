@@ -15,10 +15,8 @@ import static theExile.util.Wiz.adp;
 
 public class WeaveAction extends AbstractGameAction {
     private final ArrayList<AbstractCard> cardsToModify = new ArrayList<>();
-    private final ArrayList<AbstractCard> ineligibleCards = new ArrayList<>();
 
-    public WeaveAction(int amount) {
-        this.amount = amount;
+    public WeaveAction() {
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_FAST;
     }
@@ -29,8 +27,6 @@ public class WeaveAction extends AbstractGameAction {
             for (AbstractCard c : adp().hand.group) {
                 if (c instanceof AbstractExileCard && c.type == AbstractCard.CardType.ATTACK)
                     possibleCards.add((AbstractExileCard) c);
-                else
-                    ineligibleCards.add(c);
             }
 
 

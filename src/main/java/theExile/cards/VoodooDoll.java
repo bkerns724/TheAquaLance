@@ -33,7 +33,7 @@ public class VoodooDoll extends AbstractExileCard {
     public void singleTargetUse(AbstractMonster m) {
         DamageModContainer container = new DamageModContainer(this, DamageModifierManager.modifiers(this));
         DamageInfo info = BindingHelper.makeInfo(container, adp(), damage, DamageInfo.DamageType.NORMAL);
-        atb(new VoodooDollAction(magicNumber, info, m, Wiz.getAttackEffect(damage, damageModList, false)));
+        atb(new VoodooDollAction(magicNumber, info, m, Wiz.getAttackEffect(damage, damageModList)));
     }
 
     public void upp() {

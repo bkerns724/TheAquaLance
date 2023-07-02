@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theExile.ExileMod;
 import theExile.icons.Force;
 import theExile.relics.Bestiary;
@@ -42,7 +42,6 @@ public class ForceDamage extends AbstractDamageModifier {
         return true;
     }
 
-
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
         if (target == null)
@@ -55,7 +54,7 @@ public class ForceDamage extends AbstractDamageModifier {
             else
                 mult += BONUS;
 
-            return target.hasPower(VulnerablePower.POWER_ID) ? damage * mult : damage;
+            return target.hasPower(WeakPower.POWER_ID) ? damage * mult : damage;
         }
         return damage;
     }

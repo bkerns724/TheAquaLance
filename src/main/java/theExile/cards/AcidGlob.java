@@ -9,11 +9,10 @@ import static theExile.util.Wiz.getAcidEffect;
 
 public class AcidGlob extends AbstractExileCard {
     public final static String ID = makeID(AcidGlob.class.getSimpleName());
-    private final static int DAMAGE = 4;
-    private final static int UPGRADE_DAMAGE = 1;
-    private final static int MAGIC = 2;
+    private final static int DAMAGE = 2;
+    private final static int MAGIC = 1;
     private final static int UPGRADE_MAGIC = 1;
-    private final static int COST = 1;
+    private final static int COST = 0;
 
     public AcidGlob() {
         super(ID, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -31,6 +30,5 @@ public class AcidGlob extends AbstractExileCard {
 
     public void upp() {
         upMagic(UPGRADE_MAGIC);
-        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

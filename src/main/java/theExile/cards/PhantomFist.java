@@ -18,7 +18,7 @@ public class PhantomFist extends AbstractExileCard {
     private final static int COST = 1;
 
     public PhantomFist() {
-        super(ID, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
     public void applyAttributes() {

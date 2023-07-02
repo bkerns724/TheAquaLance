@@ -20,13 +20,6 @@
       "Lose !A! [E] at the start of your next turn."
     ]
   },
-  "${ModID}:ResonatingPower": {
-    "NAME": "Resonating",
-    "DESCRIPTIONS": [
-      "Adds a #yResonant card to your hand at the start of your next turn.",
-      "Resonating Intensifies"
-    ]
-  },
   "${ModID}:WetPower": {
     "NAME": "Wet",
     "DESCRIPTIONS": [
@@ -39,13 +32,6 @@
       "Takes !A! damage whenever it attacks."
     ]
   },
-  "${ModID}:ResonantCostZeroPower": {
-    "NAME": "Tuning Fork",
-    "DESCRIPTIONS": [
-      "The next #yResonant card you play costs 0.",
-      "The next !A! #yResonant cards you play cost 0."
-    ]
-  },
   "${ModID}:SummonMonsterPower": {
     "NAME": "Pandamonium",
     "DESCRIPTIONS": [
@@ -55,7 +41,7 @@
   "${ModID}:ChargePower": {
     "NAME": "Charged",
     "DESCRIPTIONS": [
-      "Your [${ModID}:LightningIcon] attacks do !A! more damage."
+      "Gain !A! #yVigor next turn."
     ]
   },
   "${ModID}:SiphonPower": {
@@ -73,7 +59,7 @@
   "${ModID}:RingingPower": {
     "NAME": "Ringing",
     "DESCRIPTIONS": [
-      "Loses !A! HP at the start of its turn."
+      "Boosts damage of #yResonant cards."
     ]
   },
   "${ModID}:CorrodedPower": {
@@ -94,42 +80,29 @@
       "Does !A! less damage with attacks this turn."
     ]
   },
-  "${ModID}:ConvertPower": {
-    "NAME": "Convert",
+  "${ModID}:AlteredSpellsPower": {
+    "NAME": "Altered Spells",
     "DESCRIPTIONS": [
-      "The next non-power non-exhausting Exile card you play becomes #yResonant.",
-      "The next !A! non-power non-exhausting Exile cards you play become #yResonant."
+      "Your attacks apply !A! #yJinx."
     ]
   },
-  "${ModID}:ToxicSpellsPower": {
-    "NAME": "Toxic Spells",
+  "${ModID}:BurningPower": {
+    "NAME": "Burning",
     "DESCRIPTIONS": [
-      "Your attacks apply !A! #yCorrosion."
+      "Takes !A! damage at the start of its turn."
     ]
   },
-  "${ModID}:AmplifyPower": {
-    "NAME": "Amplify",
+  "${ModID}:TinglingPower": {
+    "NAME": "Overcharged",
     "DESCRIPTIONS": [
-      "At the start of your turn, discard a card and add !A! damage to your #yResonance.",
-      "At the start of your turn, discard !A2! cards and add !A! damage to your #yResonance."
-    ]
-  },
-  "${ModID}:AcousticsPower": {
-    "NAME": "Acoustics",
-    "DESCRIPTIONS": [
-      "Resonant cards target ALL enemies."
+      "Gain [E] at the start of your turn and lose !A2! HP.",
+      "Gain !A! [E] at the start of your turn and lose !A2! HP."
     ]
   },
   "${ModID}:ElegantEtchingPower": {
     "NAME": "Elegant Etching",
     "DESCRIPTIONS": [
-      "Whenever you play a #ySigil, apply !A! #ySoul #yRot to ALL enemies."
-    ]
-  },
-  "${ModID}:HarmonyPower": {
-    "NAME": "Harmony",
-    "DESCRIPTIONS": [
-      "At the end of your turn gain #yBlock equal to your #yResonance amount times !A!."
+      "Whenever you play a #ySigil, apply !A! #yJinx to ALL enemies."
     ]
   },
   "${ModID}:AnticipatePower": {
@@ -139,10 +112,17 @@
       "Activate to draw a card and discard a card. !A! uses left."
     ]
   },
-  "${ModID}:TargetedPower": {
-    "NAME": "Targeted",
+  "${ModID}:ExploitedPower": {
+    "NAME": "Exploited",
     "DESCRIPTIONS": [
-      "Takes 50% more damage from Attacks when #yWeakened."
+      "Takes an additional !A!% more damage from Attacks when #yVulnerable."
+    ]
+  },
+  "${ModID}:CataclysmPower": {
+    "NAME": "Cataclysm",
+    "DESCRIPTIONS": [
+      "When you play !A2! more card this turn, deal !A! damage to ALL enemies.",
+      "When you play !A2! more cards this turn, deal !A! damage to ALL enemies."
     ]
   },
   "${ModID}:JinxPower": {
@@ -165,12 +145,18 @@
       "Spend [E] to draw !A2! cards."
     ]
   },
-  "${ModID}:SummonBeesPower": {
-    "NAME": "Summon Bees",
+  "${ModID}:ContingencyPower": {
+    "NAME": "Contingency Pouch",
     "DESCRIPTIONS": [
-      "You may spend [E] to Channel a !A! damage #ySwarm #yof #yBees.",
-      "You may spend [E] to Channel a !A! damage #ySwarm #yof #yBees.",
-      "You may spend [E] to Channel a !A! damage #ySwarm #yof #yBees."
+      "Once per turn, you may discard a card.",
+      "!A! times per turn, you may discard a card.",
+      "Discard a card."
+    ]
+  },
+  "${ModID}:BeesPower": {
+    "NAME": "Bees",
+    "DESCRIPTIONS": [
+      "Loses HP at the start of their turn.  On death, bees move to another target."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
@@ -204,10 +190,12 @@
       "The first !A! times you play an attack each turn, draw a card."
     ]
   },
-  "${ModID}:OminousRitualPower": {
-    "NAME": "Ominous Ritual",
+  "${ModID}:PorcupinePower": {
+    "NAME": "Porcupine",
     "DESCRIPTIONS": [
-      "#yCorrosion does not fall below !A!."
+      "Once per turn, you may spend [E] to add !A2! #yQuills into your hand.",
+      "!A! times per turn, you may spend [E] to add !A2! #yQuills into your hand.",
+      "Spend [E] to add !A2! #yQuills into your hand."
     ]
   },
   "${ModID}:SpinningSigilPower": {
@@ -223,28 +211,22 @@
       "The first !A! times you discard a #ySigil each turn, gain [E]."
     ]
   },
-  "${ModID}:ExileStudyPower": {
-    "NAME": "Study",
-    "DESCRIPTIONS": [
-      "In !A! turns, choose 1 of !A2! cards to add into your hand."
-    ]
-  },
   "${ModID}:DownpourPower": {
     "NAME": "Downpour",
     "DESCRIPTIONS": [
       "Whenever you apply #yWet, apply !A! more."
     ]
   },
-  "${ModID}:JinxOnHitPower": {
-    "NAME": "Shadow Whipped",
+  "${ModID}:PowerGradientPower": {
+    "NAME": "Power Gradient",
     "DESCRIPTIONS": [
-      "Whenever you attack this enemy it gains !A! #yJinx."
+      "Whenever you gain a Buff, apply !A! #yCorroded to ALL enemies."
     ]
   },
-  "${ModID}:BellTollsPower": {
-    "NAME": "Death Approaches",
+  "${ModID}:AuraOfMisfortunePower": {
+    "NAME": "Aura of Misfortune",
     "DESCRIPTIONS": [
-      "Loses !A2! HP at the start of its turn, then increases that amount by !A!."
+      "At the start of your turn, apply !A! #yJinx to ALL enemies."
     ]
   },
   "${ModID}:ResolvePower": {

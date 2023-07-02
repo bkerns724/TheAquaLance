@@ -7,24 +7,21 @@ import static theExile.util.Wiz.atb;
 
 public class Weave extends AbstractExileCard {
     public final static String ID = makeID(Weave.class.getSimpleName());
-    private final static int COST = 1;
-    private final static int BLOCK = 4;
-    private final static int UPGRADE_BLOCK = 3;
+    private final static int COST = 0;
 
     public Weave() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     public void applyAttributes() {
-        baseBlock = BLOCK;
+        exhaust = true;
     }
 
     public void nonTargetUse() {
-        blck();
-        atb(new WeaveAction(magicNumber));
+        atb(new WeaveAction());
     }
 
     public void upp() {
-        upgradeBlock(UPGRADE_BLOCK);
+        exhaust = false;
     }
 }

@@ -52,6 +52,7 @@ public class VoodooDollAction extends AbstractGameAction {
                 doDamage();
 
                 CardCrawlGame.dungeon.checkForPactAchievement();
+                adp().hand.applyPowers();
                 return;
             }
 
@@ -72,6 +73,7 @@ public class VoodooDollAction extends AbstractGameAction {
             doDamage();
 
             CardCrawlGame.dungeon.checkForPactAchievement();
+            adp().hand.applyPowers();
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
         }
 

@@ -13,6 +13,13 @@
     ],
     "FLAVOR": "Do you like not getting murdered?  I like not getting murdered!"
   },
+  "${ModID}:VialOfAcid": {
+    "NAME": "Vial of Acid",
+    "DESCRIPTIONS": [
+      "Apply !P! #yCorrosion."
+    ],
+    "FLAVOR": "Do you like not getting murdered?  I like not getting murdered!"
+  },
   "${ModID}:SteelhidePotion": {
     "NAME": "Steelhide Potion",
     "DESCRIPTIONS": [

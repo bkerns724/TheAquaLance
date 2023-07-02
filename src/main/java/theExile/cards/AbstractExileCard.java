@@ -45,6 +45,7 @@ import theExile.icons.Force;
 import theExile.icons.Ice;
 import theExile.icons.Lightning;
 import theExile.powers.AbstractExilePower;
+import theExile.powers.RingingPower;
 import theExile.relics.VialOfBlackBlood;
 import theExile.util.CardArtRoller;
 import theExile.util.Wiz;
@@ -85,6 +86,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
     public ArrayList<elenum> damageModList = new ArrayList<>();
     public boolean sigil = false;
+    public int resonance = 0;
 
     private static final Color FLAVOR_BOX_COLOR = new Color(0.45f, 0, 0.65f, 1.0f);
     private static final Color FLAVOR_TEXT_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
@@ -93,8 +95,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public static final String FORCE_STRING = Force.CODE;
     public static final String ELDRITCH_STRING = Eldritch.CODE;
     public static final String LIGHTNING_STRING = Lightning.CODE;
-
-    public boolean resPoof = false;
 
     private final ArrayList<CardGlowBorder> myGlowList = new ArrayList<>();
     private float myGlowTimer = 0f;
@@ -208,9 +208,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         nonTargetUse();
         if (sigil)
             beingDiscarded = false;
-
-        if (this instanceof AbstractResonantCard)
-            ((AbstractResonantCard) this).resonance.toPower();
     }
 
     public void singleTargetUse(AbstractMonster m) {}
@@ -220,6 +217,19 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public void autoTargetUse(AbstractMonster m) {}
 
     public AbstractMonster getTarget() {return null;}
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        if (resonance <= 0 || !mo.hasPower(RingingPower.POWER_ID)) {
+            super.calculateCardDamage(mo);
+            return;
+        }
+        int temp = baseDamage;
+        baseDamage += resonance*mo.getPower(RingingPower.POWER_ID).amount;
+        super.calculateCardDamage(mo);
+        baseDamage = temp;
+        isDamageModified = baseDamage != damage;
+    }
 
     @Override
     protected Texture getPortraitImage() {
@@ -336,8 +346,10 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[10] + rawDescription;
         if (sigil)
             rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[1] + rawDescription;
-        if (this instanceof AbstractResonantCard && ((AbstractResonantCard) this).resonance != null)
-            rawDescription = rawDescription + thisCardStrings.EXTENDED_DESCRIPTION[6];
+        if (resonance == 1)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[6].replace("!X!", "") + rawDescription;
+        if (resonance > 1)
+            rawDescription = thisCardStrings.EXTENDED_DESCRIPTION[6].replace("!X!", " " + resonance) + rawDescription;
 
         if (exhaust || (damageModList != null && damageModList.contains(ELDRITCH) && adp() != null
                 && adp().hasRelic(VialOfBlackBlood.ID)))
@@ -429,7 +441,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     }
 
     private AbstractGameAction.AttackEffect getAttackEffect() {
-        return Wiz.getAttackEffect(getDamageForVFX(), damageModList, this instanceof AbstractResonantCard);
+        return Wiz.getAttackEffect(getDamageForVFX(), damageModList);
     }
 
     public void dmg(AbstractMonster m) {
