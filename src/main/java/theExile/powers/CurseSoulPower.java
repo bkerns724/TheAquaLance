@@ -11,15 +11,15 @@ import theExile.patches.CursedEchoPatch;
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.applyToEnemyTop;
 
-public class CursedFormPower extends AbstractExilePower implements OnReceivePowerPower {
-    public static String POWER_ID = makeID(CursedFormPower.class.getSimpleName());
+public class CurseSoulPower extends AbstractExilePower implements OnReceivePowerPower {
+    public static String POWER_ID = makeID(CurseSoulPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private int counter;
 
-    public CursedFormPower(AbstractCreature owner, int amount) {
+    public CurseSoulPower(AbstractCreature owner, int amount) {
         super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
         this.name = NAME;
         counter = amount - 1;

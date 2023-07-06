@@ -26,7 +26,7 @@ public class ForceDamage extends AbstractDamageModifier {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private TooltipInfo forceTooltip;
     private boolean visibleTips = true;
-    private static final float BONUS = 0.5f;
+    private static final float FORCE_MULT = 1.5F;
 
     public ForceDamage() {
         forceTooltip = null;
@@ -43,20 +43,14 @@ public class ForceDamage extends AbstractDamageModifier {
     }
 
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        if (target == null)
-            // HOW DID THAT HAPPEN?
+    public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+        if (target == null || type != NORMAL || !target.hasPower(WeakPower.POWER_ID))
             return damage;
-        if (type == NORMAL) {
-            float mult = 1f;
-            if (adp().hasRelic(Bestiary.ID))
-                mult += Bestiary.BONUS;
-            else
-                mult += BONUS;
 
-            return target.hasPower(WeakPower.POWER_ID) ? damage * mult : damage;
-        }
-        return damage;
+        if (adp().hasRelic(Bestiary.ID))
+            return Bestiary.FORCE_MULT * damage;
+        else
+            return FORCE_MULT * damage;
     }
 
     @Override

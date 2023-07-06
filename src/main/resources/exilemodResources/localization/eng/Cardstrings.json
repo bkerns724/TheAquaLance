@@ -166,9 +166,9 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies.",
     "FLAVOR": "The pieces of the sigil itself become shrapnel."
   },
-  "${ModID}:TinglingSigil": {
-    "NAME": "Tingling Sigil",
-    "DESCRIPTION": "Gain [E] and lose !M! HP at the start of your turns."
+  "${ModID}:ShinySigil": {
+    "NAME": "Shiny Sigil",
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies."
   },
   "${ModID}:DeathlyCold": {
     "NAME": "Deathly Cold",
@@ -186,11 +186,11 @@
   },
   "${ModID}:AcidSigil": {
     "NAME": "Acid Sigil",
-    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL Lose !M! HP."
+    "DESCRIPTION": "Deal !D! damage to the lowest HP enemy. NL Apply !M! Corrosion."
   },
-  "${ModID}:Siphon": {
-    "NAME": "Siphon",
-    "DESCRIPTION": "Remove all elements from Attacks in your hand. NL Gain !B! Block for each element."
+  "${ModID}:Metamagic": {
+    "NAME": "Metamagic",
+    "DESCRIPTION": "Your next Exile card you play affects all enemies."
   },
   "${ModID}:BurningSigil": {
     "NAME": "Burning Sigil",
@@ -207,7 +207,7 @@
   },
   "${ModID}:CrushTheWeak": {
     "NAME": "Crush the Weak",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! extra damage for each stack of Weak on the target.",
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! extra base damage for each stack of Weak on the target.",
     "FLAVOR": "Some of the monsters make a really satisfying crunch sound when you land this right."
   },
   "${ModID}:SummonBees": {
@@ -230,7 +230,7 @@
   },
   "${ModID}:Charge": {
     "NAME": "Charge",
-    "DESCRIPTION": "Next turn, gain [E] and !M! Vigor."
+    "DESCRIPTION": "Next turn gain [E] and !M! Vigor."
   },
   "${ModID}:GreatLibrary": {
     "NAME": "Great Library",
@@ -240,12 +240,12 @@
     "NAME": "Research",
     "DESCRIPTION": "Draw !M! cards. NL Put a card on top of your draw pile."
   },
-  "${ModID}:CursedDisc": {
-    "NAME": "Cursed Disc",
-    "DESCRIPTION": "Discard a card. NL If it was a ${ModID}:Sigil, apply !M! ${ModID}:Jinx."
+  "${ModID}:Fling": {
+    "NAME": "Fling",
+    "DESCRIPTION": "Discard a card. NL Apply !M! ${ModID}:Jinx. NL If you discarded a curse, instead apply !${ModID}:M2! ${ModID}:Jinx."
   },
-  "${ModID}:CursedForm": {
-    "NAME": "Cursed Form",
+  "${ModID}:CurseSoul": {
+    "NAME": "Curse Soul",
     "DESCRIPTION": "The first debuff the target receives each turn is applied twice."
   },
   "${ModID}:BrrZerk": {
@@ -377,10 +377,10 @@
     "DESCRIPTION": "Apply !M! Vulnerable and !${ModID}:M2! ${ModID}:Jinx.",
     "FLAVOR": "Don't bother bringing armor to fight a spellcaster. They can easily strip it away. Stay mobile."
   },
-  "${ModID}:ChillWind": {
-    "NAME": "Chill Wind",
-    "DESCRIPTION": "Apply !M! Weak. NL Draw !${ModID}:M2! cards.",
-    "FLAVOR": "Please practice this spell without saying \"WHOOOSH! WHOOSH!\""
+  "${ModID}:Haste": {
+    "NAME": "Haste",
+    "DESCRIPTION": "Lose !M! Strength and Dexterity. NL Gain [E] at the start of your turns.",
+    "FLAVOR": "Haste is a power."
   },
   "${ModID}:AlteredSpells": {
     "NAME": "Altered Spells",
@@ -444,7 +444,7 @@
   },
   "${ModID}:GolemForm": {
     "NAME": "Golem Form",
-    "DESCRIPTION": "Gain !M! ${ModID}:Metallicize. NL Gain !${ModID}:M2! Strength. NL Gain !${ModID}:M3! Artifact. NL Remove all of your debuffs.",
+    "DESCRIPTION": "Gain !M! ${ModID}:Metallicize. NL Gain !${ModID}:M2! Dexterity. NL Gain !${ModID}:M3! Artifact. NL Remove all of your debuffs.",
     "FLAVOR": "My most important work.  Immunity to disease and old age.  Strength, durability.  Unfortunately I was exiled before I could transcend the human form."
   },
   "${ModID}:ColdBlooded": {

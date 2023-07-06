@@ -13,15 +13,17 @@ import theExile.powers.JinxPower;
 import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.applyToEnemyTop;
 
-public class CursedDiscAction extends AbstractGameAction {
+public class FlingAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
     private final int jinx;
+    private final int curseJinx;
     private boolean pickedCurse = false;
 
-    public CursedDiscAction(AbstractMonster target, int jinx) {
+    public FlingAction(AbstractMonster target, int jinx, int curseJinx) {
         this.target = target;
         this.jinx = jinx;
+        this.curseJinx = curseJinx;
         duration = startDuration = Settings.ACTION_DUR_FAST;
         actionType = ActionType.DISCARD;
     }
@@ -86,6 +88,8 @@ public class CursedDiscAction extends AbstractGameAction {
 
     private void doJinx() {
         if (pickedCurse)
+            applyToEnemyTop(target, new JinxPower(target, curseJinx));
+        else
             applyToEnemyTop(target, new JinxPower(target, jinx));
     }
 

@@ -22,7 +22,7 @@ public class GreatLibrary extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        atb(new ExpertiseAction(adp(), 99));
+        atb(new ExpertiseAction(adp(), 10));
         atb(new GreatLibraryAction());
     }
 

@@ -1,5 +1,7 @@
 package theExile.relics;
 
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.Pride;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,7 +21,10 @@ public class HereticBrand extends AbstractExileRelic {
     }
 
     public void onEquip() {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Pride(),
+        AbstractCard card = new Pride();
+        SoulboundField.soulbound.set(card, true);
+
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card,
                 (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
         UnlockTracker.markCardAsSeen(Pride.ID);
 

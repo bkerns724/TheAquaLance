@@ -19,7 +19,7 @@ public class PorcupinePower extends AbstractExilePower implements PowerWithButto
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final String TEXTURE_STRING = "exilemodResources/images/ui/PorcupineButton.png";
+    private static final String TEXTURE_STRING = "exilemodResources/images/ui/QuillButton.png";
     private static final int QUILL_AMOUNT = 3;
     private int counter;
 
@@ -28,6 +28,7 @@ public class PorcupinePower extends AbstractExilePower implements PowerWithButto
         this.name = NAME;
         amount2 = QUILL_AMOUNT;
         counter = amount;
+        updateDescription();
     }
 
     @Override

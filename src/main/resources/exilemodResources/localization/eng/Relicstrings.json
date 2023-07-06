@@ -81,7 +81,7 @@
     "NAME": "Heretic Brand",
     "FLAVOR": "They revile me, yet my research is the world's only hope.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. Upon pickup, obtain a #yPride."
+      "Gain [E] at the start of your turn. Upon pickup, obtain a #yPride. It can not be removed."
     ]
   },
   "${ModID}:BlueMarbles": {
@@ -137,7 +137,7 @@
     "NAME": "M10 Core",
     "FLAVOR": "Occasionally you hear a series of beeps come from the core. They somehow sound mournful.",
     "DESCRIPTIONS": [
-      "[${ModID}:LightningIcon] attacks do !A! more damage."
+      "[${ModID}:LightningIcon] attacks do !R! more damage."
     ]
   },
   "${ModID}:BlackKatCharm": {

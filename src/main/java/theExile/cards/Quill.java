@@ -17,6 +17,7 @@ public class Quill extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
+        exhaust = true;
     }
 
     @Override

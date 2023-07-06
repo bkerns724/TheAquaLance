@@ -3,11 +3,12 @@ package theExile.cards;
 import theExile.powers.BurningPower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.applyToEnemy;
 import static theExile.util.Wiz.forAllMonstersLiving;
 
 public class BurningSigil extends AbstractExileCard {
     public final static String ID = makeID(BurningSigil.class.getSimpleName());
-    private final static int MAGIC = 5;
+    private final static int MAGIC = 4;
     private final static int UPGRADE_MAGIC = 2;
     private final static int COST = -2;
 
@@ -22,7 +23,7 @@ public class BurningSigil extends AbstractExileCard {
 
     @Override
     public void nonTargetUse() {
-        forAllMonstersLiving(m -> new BurningPower(m, magicNumber));
+        forAllMonstersLiving(m -> applyToEnemy(m, new BurningPower(m, magicNumber)));
     }
 
     public void upp() {

@@ -1,6 +1,5 @@
 package theExile.cards;
 
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.ContingencyPower;
 
 import static theExile.ExileMod.makeID;
@@ -19,7 +18,7 @@ public class Contingency extends AbstractExileCard {
     }
 
     @Override
-    public void singleTargetUse(AbstractMonster m) {
+    public void nonTargetUse() {
         applyToSelf(new ContingencyPower(1));
     }
 

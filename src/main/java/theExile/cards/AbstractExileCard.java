@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -45,6 +46,7 @@ import theExile.icons.Force;
 import theExile.icons.Ice;
 import theExile.icons.Lightning;
 import theExile.powers.AbstractExilePower;
+import theExile.powers.MetamagicPower;
 import theExile.powers.RingingPower;
 import theExile.relics.VialOfBlackBlood;
 import theExile.util.CardArtRoller;
@@ -101,6 +103,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     private boolean sigilGlowing = false;
 
     protected boolean miscTwo = false;
+
+    private boolean wasSingleTarget = false;
 
     public enum elenum {
         ICE,
@@ -201,10 +205,33 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         return true;
     }
 
+    @Override
+    public boolean cardPlayable(AbstractMonster m) {
+        if (adp() != null && adp().hasPower(MetamagicPower.POWER_ID))
+            return true;
+        return super.cardPlayable(m);
+    }
+
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m != null)
-            singleTargetUse(m);
-        autoTargetUse(getTarget());
+        if (adp() != null && !adp().hasPower(MetamagicPower.POWER_ID)) {
+            if (m != null)
+                singleTargetUse(m);
+            autoTargetUse(getTarget());
+        }
+        else if (adp() != null && adp().hasPower(MetamagicPower.POWER_ID)) {
+            forAllMonstersLiving(mo -> {
+                if (canUse(adp(), mo)) {
+                    singleTargetUse(mo);
+                    autoTargetUse(mo);
+                }
+            });
+            AbstractPower pow = adp().getPower(MetamagicPower.POWER_ID);
+            atb(new ReducePowerAction(adp(), adp(), pow, 1));
+            if (wasSingleTarget) {
+                target = CardTarget.ENEMY;
+                wasSingleTarget = false;
+            }
+        }
         nonTargetUse();
         if (sigil)
             beingDiscarded = false;
@@ -217,6 +244,18 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public void autoTargetUse(AbstractMonster m) {}
 
     public AbstractMonster getTarget() {return null;}
+
+    @Override
+    public void applyPowers() {
+        if (adp() != null && adp().hasPower(MetamagicPower.POWER_ID) && target == CardTarget.ENEMY) {
+            wasSingleTarget = true;
+            target = CardTarget.ALL_ENEMY;
+        } else if (wasSingleTarget && adp() != null && !adp().hasPower(MetamagicPower.POWER_ID)) {
+            wasSingleTarget = false;
+            target = CardTarget.ENEMY;
+        }
+        super.applyPowers();
+    }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {

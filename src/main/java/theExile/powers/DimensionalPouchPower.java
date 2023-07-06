@@ -27,6 +27,7 @@ public class DimensionalPouchPower extends AbstractExilePower implements PowerWi
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         counter = amount;
         amount2 = CARD_DRAW;
+        updateDescription();
     }
 
     @Override

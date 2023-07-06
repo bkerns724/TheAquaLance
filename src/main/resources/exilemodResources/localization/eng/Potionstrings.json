@@ -17,8 +17,7 @@
     "NAME": "Vial of Acid",
     "DESCRIPTIONS": [
       "Apply !P! #yCorrosion."
-    ],
-    "FLAVOR": "Do you like not getting murdered?  I like not getting murdered!"
+    ]
   },
   "${ModID}:SteelhidePotion": {
     "NAME": "Steelhide Potion",
@@ -42,8 +41,8 @@
     ],
     "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },
-  "${ModID}:SiphoningPoison": {
-    "NAME": "Siphoning Poison",
+  "${ModID}:SiphoningPotion": {
+    "NAME": "Siphoning Potion",
     "DESCRIPTIONS": [
       "Whenever you deal attack damage, gain !P! #yTemporary #yHP."
     ],

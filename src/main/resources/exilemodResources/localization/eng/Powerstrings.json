@@ -32,6 +32,12 @@
       "Takes !A! damage whenever it attacks."
     ]
   },
+  "${ModID}:MetamagicPower": {
+    "NAME": "Metamagic",
+    "DESCRIPTIONS": [
+      "Your next Exile card affects ALL enemies."
+    ]
+  },
   "${ModID}:SummonMonsterPower": {
     "NAME": "Pandamonium",
     "DESCRIPTIONS": [
@@ -92,13 +98,6 @@
       "Takes !A! damage at the start of its turn."
     ]
   },
-  "${ModID}:TinglingPower": {
-    "NAME": "Overcharged",
-    "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn and lose !A2! HP.",
-      "Gain !A! [E] at the start of your turn and lose !A2! HP."
-    ]
-  },
   "${ModID}:ElegantEtchingPower": {
     "NAME": "Elegant Etching",
     "DESCRIPTIONS": [
@@ -146,7 +145,7 @@
     ]
   },
   "${ModID}:ContingencyPower": {
-    "NAME": "Contingency Pouch",
+    "NAME": "Contingency",
     "DESCRIPTIONS": [
       "Once per turn, you may discard a card.",
       "!A! times per turn, you may discard a card.",
@@ -156,7 +155,7 @@
   "${ModID}:BeesPower": {
     "NAME": "Bees",
     "DESCRIPTIONS": [
-      "Loses HP at the start of their turn.  On death, bees move to another target."
+      "Loses !A! HP for each debuff they have at the start of their turn."
     ]
   },
   "${ModID}:ConsumeSoulsPower": {
@@ -211,10 +210,11 @@
       "The first !A! times you discard a #ySigil each turn, gain [E]."
     ]
   },
-  "${ModID}:DownpourPower": {
-    "NAME": "Downpour",
+  "${ModID}:HastePower": {
+    "NAME": "Haste",
     "DESCRIPTIONS": [
-      "Whenever you apply #yWet, apply !A! more."
+      "Gain [E] at the start of each turn.",
+      "Gain !A! [E] at the start of each turn."
     ]
   },
   "${ModID}:PowerGradientPower": {
@@ -246,6 +246,13 @@
     "NAME": "Slippery",
     "DESCRIPTIONS": [
       "The next !A! times you would take damage, reduce it by half."
+    ]
+  },
+  "${ModID}:CurseSoulPower": {
+    "NAME": "Cursed Soul",
+    "DESCRIPTIONS": [
+      "The first debuff this enemy receives each turn is applied twice.",
+      "The first !A! debuffs this enemy receives each turn is applied twice."
     ]
   }
 }

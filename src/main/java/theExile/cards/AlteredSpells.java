@@ -18,7 +18,6 @@ public class AlteredSpells extends AbstractExileCard {
     @Override
     protected void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
-        exhaust = true;
     }
 
     public void nonTargetUse() {

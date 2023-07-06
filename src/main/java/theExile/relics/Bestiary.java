@@ -10,7 +10,7 @@ import static theExile.ExileMod.makeID;
 
 public class Bestiary extends AbstractExileRelic {
     public static final String ID = makeID(Bestiary.class.getSimpleName());
-    public static final float BONUS = 1f;
+    public static final float FORCE_MULT = 2F;
     private static final CardStrings forceStrings = CardCrawlGame.languagePack.getCardStrings(ForceDamage.ID);
 
     public Bestiary() {

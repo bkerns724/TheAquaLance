@@ -63,6 +63,8 @@ public class ContingencyPower extends AbstractExilePower implements PowerWithBut
 
     @Override
     public ArrayList<PowerTip> getHoverTips() {
-        return null;
+        ArrayList<PowerTip> list = new ArrayList<>();
+        list.add(new PowerTip(name, DESCRIPTIONS[2]));
+        return list;
     }
 }
