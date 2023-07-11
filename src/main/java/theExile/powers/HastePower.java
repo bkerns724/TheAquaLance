@@ -1,6 +1,6 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import theExile.ExileMod;
 
 import static theExile.util.Wiz.adp;
@@ -14,7 +14,7 @@ public class HastePower extends AbstractExilePower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new GainEnergyAction(amount));
+        addToBot(new DrawCardAction(amount));
         flash();
     }
 }

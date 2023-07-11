@@ -27,7 +27,6 @@ public class IceDamage extends AbstractDamageModifier {
     public TooltipInfo iceTooltip;
     public TooltipInfo iceTooltip2;
     private boolean visibleTips = true;
-    private final static int THRESHOLD = 3;
 
     private int blockedAmount = 0;
 
@@ -56,7 +55,6 @@ public class IceDamage extends AbstractDamageModifier {
         if (adp() == null || adp() == target)
             return;
         float frostbite = blockedAmount + lastDamageTaken;
-        frostbite = frostbite / THRESHOLD;
         if (adp().hasRelic(BlueMarbles.ID))
             frostbite = frostbite * BlueMarbles.MULT;
         int frostbiteInt = (int) frostbite;

@@ -10,14 +10,16 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import theExile.ExileMod;
 import theExile.actions.MyAddTempHPAction;
 import theExile.icons.Eldritch;
+import theExile.powers.EldritchGraspPower;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.att;
+import static theExile.util.Wiz.*;
 
 @AutoAdd.Ignore
 public class EldritchDamage extends AbstractDamageModifier {
@@ -52,12 +54,18 @@ public class EldritchDamage extends AbstractDamageModifier {
 
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-        if (adp() == null || adp() == target)
-            return;
         float tempHP = blockedAmount + lastDamageTaken;
         tempHP = tempHP / THRESHOLD;
         if ((int)tempHP > 0)
             att(new MyAddTempHPAction(adp(), adp(), (int)tempHP));
+    }
+
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        AbstractPower pow = adp().getPower(EldritchGraspPower.POWER_ID);
+        if (pow == null)
+            return;
+        applyToEnemyTop(target, new ConstrictedPower(target, adp(), pow.amount));
     }
 
     @Override

@@ -20,12 +20,6 @@
       "Lose !A! [E] at the start of your next turn."
     ]
   },
-  "${ModID}:WetPower": {
-    "NAME": "Wet",
-    "DESCRIPTIONS": [
-      "Takes !A! more damage from [${ModID}:IceIcon] attacks."
-    ]
-  },
   "${ModID}:BarbedPower": {
     "NAME": "Barbed",
     "DESCRIPTIONS": [
@@ -144,12 +138,10 @@
       "Spend [E] to draw !A2! cards."
     ]
   },
-  "${ModID}:ContingencyPower": {
-    "NAME": "Contingency",
+  "${ModID}:EmpoweredStaffPower": {
+    "NAME": "Empowered Staff",
     "DESCRIPTIONS": [
-      "Once per turn, you may discard a card.",
-      "!A! times per turn, you may discard a card.",
-      "Discard a card."
+      "Your staff strikes deal [${ModID}:ForceIcon] damage and deal !A! additional damage."
     ]
   },
   "${ModID}:BeesPower": {
@@ -158,10 +150,11 @@
       "Loses !A! HP for each debuff they have at the start of their turn."
     ]
   },
-  "${ModID}:ConsumeSoulsPower": {
-    "NAME": "Consume Souls",
+  "${ModID}:ExileStudyPower": {
+    "NAME": "Study",
     "DESCRIPTIONS": [
-      "Whenever a non-minion enemy dies, gain !A! Max HP."
+      "In !A! turn, choose 1 of !A2! rare cards to add into your hand.",
+      "In !A! turns, choose 1 of !A2! rare cards to add into your hand."
     ]
   },
   "${ModID}:StoneskinPower": {
@@ -213,14 +206,8 @@
   "${ModID}:HastePower": {
     "NAME": "Haste",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of each turn.",
-      "Gain !A! [E] at the start of each turn."
-    ]
-  },
-  "${ModID}:PowerGradientPower": {
-    "NAME": "Power Gradient",
-    "DESCRIPTIONS": [
-      "Whenever you gain a Buff, apply !A! #yCorroded to ALL enemies."
+      "Draw !A! extra card at the start of each turn.",
+      "Draw !A! extra cards at the start of each turn."
     ]
   },
   "${ModID}:AuraOfMisfortunePower": {
@@ -242,10 +229,16 @@
       "Gain !A! #yBlock whenever you apply a debuff to an enemy."
     ]
   },
-  "${ModID}:SlipperyPower": {
-    "NAME": "Slippery",
+  "${ModID}:BatteryPower": {
+    "NAME": "Battery",
     "DESCRIPTIONS": [
-      "The next !A! times you would take damage, reduce it by half."
+      "Whenever you play an [${ModID}:LightningIcon] gain !A! #yVigor next turn."
+    ]
+  },
+  "${ModID}:EldritchGraspPower": {
+    "NAME": "Eldritch Grasp",
+    "DESCRIPTIONS": [
+      "Apply !A! #yConstrict whenever you deal [${ModID}:EldritchIcon] damage."
     ]
   },
   "${ModID}:CurseSoulPower": {

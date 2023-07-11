@@ -2,8 +2,10 @@ package theExile.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theExile.powers.EmpoweredStaffPower;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 import static theExile.util.Wiz.getBluntEffect;
 
 public class StaffStrike extends AbstractExileCard {
@@ -20,6 +22,8 @@ public class StaffStrike extends AbstractExileCard {
         baseDamage = DAMAGE;
         tags.add(CardTags.STRIKE);
         tags.add(CardTags.STARTER_STRIKE);
+        if (adp() != null && adp().hasPower(EmpoweredStaffPower.POWER_ID))
+            addModifier(elenum.FORCE);
     }
 
     public void singleTargetUse(AbstractMonster m) {
@@ -27,6 +31,14 @@ public class StaffStrike extends AbstractExileCard {
             dmg(m, getBluntEffect(damage));
         else
             dmg(m);
+    }
+
+    @Override
+    public void nonTargetUse() {
+        for (AbstractCard c : adp().hand.group) {
+            c.cost = 1;
+            c.costForTurn = 1;
+        }
     }
 
     public void upp() {

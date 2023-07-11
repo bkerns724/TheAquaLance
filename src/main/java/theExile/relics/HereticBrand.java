@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theExile.TheExile;
+import theExile.cards.ExilePride;
 
 import static theExile.ExileMod.makeID;
 
@@ -16,12 +17,12 @@ public class HereticBrand extends AbstractExileRelic {
 
     public HereticBrand() {
         super(ID, RelicTier.BOSS, LandingSound.MAGICAL, TheExile.Enums.EXILE_BROWN_COLOR);
-        cardToPreview = new Pride();
+        cardToPreview = new ExilePride();
         setUpdatedDescription();
     }
 
     public void onEquip() {
-        AbstractCard card = new Pride();
+        AbstractCard card = new ExilePride();
         SoulboundField.soulbound.set(card, true);
 
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card,

@@ -31,6 +31,8 @@ public class ColdSigil extends AbstractExileCard {
     public void autoTargetUse(AbstractMonster m) {
         calculateCardDamage(m);
         dmg(m);
+        System.out.println(cost);
+        System.out.println(costForTurn);
     }
 
     public void upp() {

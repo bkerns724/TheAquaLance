@@ -1,18 +1,18 @@
 package theExile.powers;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theExile.ExileMod;
-import theExile.actions.HasteAction;
 
 import java.util.ArrayList;
 
-import static theExile.util.Wiz.adp;
-import static theExile.util.Wiz.atb;
+import static theExile.util.Wiz.*;
 
 public class DimensionalPouchPower extends AbstractExilePower implements PowerWithButton {
     public static final String POWER_ID = ExileMod.makeID(DimensionalPouchPower.class.getSimpleName());
@@ -53,7 +53,16 @@ public class DimensionalPouchPower extends AbstractExilePower implements PowerWi
 
     @Override
     public void onButtonPress() {
-        atb(new HasteAction(CARD_DRAW));
+        atb(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (EnergyPanel.totalCount > 0) {
+                    adp().loseEnergy(1);
+                    att(new DrawCardAction(CARD_DRAW));
+                }
+                isDone = true;
+            }
+        });
         counter--;
     }
 

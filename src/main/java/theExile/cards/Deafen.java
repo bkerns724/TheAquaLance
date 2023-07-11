@@ -5,14 +5,14 @@ import theExile.powers.RingingPower;
 import theExile.util.Wiz;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.applyToSelf;
 
 public class Deafen extends AbstractExileCard {
     public final static String ID = makeID(Deafen.class.getSimpleName());
     private final static int DAMAGE = 20;
-    private final static int MAGIC = 8;
-    private final static int UPGRADE_MAGIC = 5;
-    private final static int RESONANCE = 4;
+    private final static int MAGIC = 6;
+    private final static int UPGRADE_MAGIC = 4;
+    private final static int RESONANCE = 3;
     private final static int COST = 3;
 
     public Deafen() {
@@ -31,7 +31,11 @@ public class Deafen extends AbstractExileCard {
             dmg(m, Wiz.getSonicEffect(damage));
         else
             dmg(m);
-        applyToEnemy(m, new RingingPower(m, magicNumber));
+    }
+
+    @Override
+    public void nonTargetUse() {
+        applyToSelf(new RingingPower(magicNumber));
     }
 
     public void upp() {

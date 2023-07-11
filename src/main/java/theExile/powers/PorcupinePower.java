@@ -1,6 +1,7 @@
 package theExile.powers;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.adp;
+import static theExile.util.Wiz.atb;
 
 public class PorcupinePower extends AbstractExilePower implements PowerWithButton {
     public static String POWER_ID = makeID(PorcupinePower.class.getSimpleName());
@@ -54,7 +56,16 @@ public class PorcupinePower extends AbstractExilePower implements PowerWithButto
 
     @Override
     public void onButtonPress() {
-        Wiz.makeInHand(new Quill(), amount2);
+        atb(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (EnergyPanel.totalCount > 0) {
+                    adp().loseEnergy(1);
+                    Wiz.makeInHand(new Quill(), amount2);
+                }
+                isDone = true;
+            }
+        });
         counter--;
     }
 

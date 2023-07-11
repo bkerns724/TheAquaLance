@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static theExile.ExileMod.makeID;
 import static theExile.util.Wiz.atb;
@@ -28,6 +29,29 @@ public class CorrodedPower extends AbstractExilePower {
     }
 
     @Override
+    public void onInitialApplication() {
+        AbstractPower pow = owner.getPower(EmpoweredStaffPower.POWER_ID);
+        if (pow == null)
+            return;
+        int stickyPlus = pow.amount;
+        if (amount < stickyPlus)
+            stickyPlus = amount;
+        ((EmpoweredStaffPower)pow).amount2 += stickyPlus;
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        AbstractPower pow = owner.getPower(EmpoweredStaffPower.POWER_ID);
+        if (pow == null)
+            return;
+        int stickyPlus = pow.amount;
+        if (stackAmount < stickyPlus)
+            stickyPlus = stackAmount;
+        ((EmpoweredStaffPower)pow).amount2 += stickyPlus;
+    }
+
+    @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL)
             return damageAmount;
@@ -37,10 +61,10 @@ public class CorrodedPower extends AbstractExilePower {
 
     @Override
     public void atEndOfRound() {
-        PorcupinePower pow = (PorcupinePower) owner.getPower(PorcupinePower.POWER_ID);
+        EmpoweredStaffPower pow = (EmpoweredStaffPower) owner.getPower(EmpoweredStaffPower.POWER_ID);
         if (pow == null)
             atb(new RemoveSpecificPowerAction(owner, owner, this));
-        else if (amount > pow.amount)
-            atb(new ReducePowerAction(owner, owner, this, amount - pow.amount));
+        else if (amount > pow.amount2)
+            atb(new ReducePowerAction(owner, owner, this, amount - pow.amount2));
     }
 }

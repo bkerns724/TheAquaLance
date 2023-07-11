@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theExile.vfx.ShortScreenOnFireEffect;
 
@@ -26,18 +25,22 @@ public class CataclysmPower extends AbstractExilePower {
         super(POWER_ID, PowerType.BUFF, false, adp(), amount);
         this.name = NAME;
         isTwoAmount = true;
-        amount2 = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() % CARD_COUNT;
+        amount2 = CARD_COUNT;
+        updateDescription();
     }
 
     @Override
     public void atStartOfTurn() {
-        amount2 = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() % CARD_COUNT;
+        amount2 = CARD_COUNT;
+        updateDescription();
     }
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        amount2 = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() % CARD_COUNT;
-        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() % CARD_COUNT == 0) {
+        amount2--;
+        if (amount2 == 0) {
+            amount2 = CARD_COUNT;
+            flash();
             vfxTop(new ShortScreenOnFireEffect());
             DamageAllEnemiesAction damageAction = new DamageAllEnemiesAction(adp(), amount,
                     DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE);
@@ -45,15 +48,6 @@ public class CataclysmPower extends AbstractExilePower {
             ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(damageAction, ColoredDamagePatch.FadeSpeed.SLOW);
             att(damageAction);
         }
-    }
-
-    @Override
-    public void updateDescription() {
-        if (amount2 != 1 && descriptionArray.length > 1)
-            description = descriptionArray[1];
-        else
-            description = descriptionArray[0];
-        description = description.replace("!A!", "#b" + amount);
-        description = description.replace("!A2!", "#b" + CARD_COUNT);
+        updateDescription();
     }
 }

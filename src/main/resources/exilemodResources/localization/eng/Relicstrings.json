@@ -42,13 +42,6 @@
       "Whenever you draw a #yCurse, gain !R! #yTemporary_HP. On pickup, obtain #yWhispers."
     ]
   },
-  "${ModID}:TuningFork": {
-    "NAME": "Tuning Fork",
-    "FLAVOR": "It constantly makes a quiet hum.",
-    "DESCRIPTIONS": [
-      "Whenever you play a #y${ModID}:Resonant card, add !R! damage to your #yResonance."
-    ]
-  },
   "${ModID}:EtherealConverter": {
     "NAME": "Ethereal Converter",
     "FLAVOR": "You have no idea how this works.",
@@ -74,7 +67,7 @@
     "NAME": "Garlic",
     "FLAVOR": "Smells like a Germlin Nob's fart.",
     "DESCRIPTIONS": [
-      "At the start of each combat, apply !A! #y${ModID}:Corrosion to ALL enemies."
+      "At the start of each combat, apply !R! #y${ModID}:Corrosion to ALL enemies."
     ]
   },
   "${ModID}:HereticBrand": {
@@ -96,13 +89,6 @@
     "FLAVOR": "It is hot enough to almost burn you.",
     "DESCRIPTIONS": [
       "[${ModID}:EldritchIcon] Attacks deal double damage and Exhaust."
-    ]
-  },
-  "${ModID}:ReverseOmamori": {
-    "NAME": "Reverse Omamori",
-    "FLAVOR": "It looks like an Omamori, but its spark of energy certainly isn't divine.",
-    "DESCRIPTIONS": [
-      "For each #yCurse in your deck, start each combat with !R2! #yMetallicize. Upon pickup, add !R! [#EFC851]Clumsy to your deck."
     ]
   },
   "${ModID}:Mythril": {
@@ -140,11 +126,11 @@
       "[${ModID}:LightningIcon] attacks do !R! more damage."
     ]
   },
-  "${ModID}:BlackKatCharm": {
-    "NAME": "Black Kat Charm",
-    "FLAVOR": "Some stories say that black kats bring bad luck.",
+  "${ModID}:Fling": {
+    "NAME": "Fling",
+    "FLAVOR": "Used to fling objects at people.",
     "DESCRIPTIONS": [
-      "Whenever you discard a card, apply !R! #y${ModID}:Jinx to ALL enemies."
+      "#y${ModID}:Sigils can be played for [E] ."
     ]
   },
   "${ModID}:Bestiary": {

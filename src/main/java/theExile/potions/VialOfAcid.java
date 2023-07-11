@@ -13,7 +13,7 @@ public class VialOfAcid extends AbstractExilePotion {
     public static final int DEFAULT_POTENCY = 5;
     public static final PotionRarity RARITY = PotionRarity.UNCOMMON;
     public static final PotionSize SIZE = PotionSize.T;
-    public static final boolean IS_THROWN = false;
+    public static final boolean IS_THROWN = true;
     public static final boolean TARGET_REQUIRED = true;
 
     public VialOfAcid() {

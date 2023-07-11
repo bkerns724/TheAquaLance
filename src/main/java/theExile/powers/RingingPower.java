@@ -1,10 +1,10 @@
 package theExile.powers;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import static theExile.ExileMod.makeID;
+import static theExile.util.Wiz.adp;
 
 // Code in AbstractExileCard
 public class RingingPower extends AbstractExilePower {
@@ -13,8 +13,8 @@ public class RingingPower extends AbstractExilePower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public RingingPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, PowerType.DEBUFF, false, owner, amount);
+    public RingingPower(int amount) {
+        super(POWER_ID, PowerType.DEBUFF, false, adp(), amount);
         this.name = NAME;
     }
 }

@@ -28,9 +28,9 @@ public class NullElement extends CustomCard {
                 CardType.CURSE, CardColor.CURSE, CardRarity.SPECIAL, NONE);
         isEthereal = true;
 
-        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
+        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
             CardArtRoller.computeCard(this);
-        } else
+        else
             needsArtRefresh = true;
 
         SoulboundField.soulbound.set(this, true);

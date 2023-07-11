@@ -5,8 +5,9 @@ import static theExile.cards.AbstractExileCard.elenum.LIGHTNING;
 
 public class BallLightning extends AbstractExileCard {
     public final static String ID = makeID(BallLightning.class.getSimpleName());
-    private final static int DAMAGE = 7;
-    private final static int UPGRADE_DAMAGE = 3;
+    private final static int DAMAGE = 2;
+    private final static int MAGIC = 2;
+    private final static int UPGRADE_MAGIC = 1;
     private final static int COST = 1;
 
     public BallLightning() {
@@ -15,15 +16,17 @@ public class BallLightning extends AbstractExileCard {
 
     public void applyAttributes() {
         baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = MAGIC;
         addModifier(LIGHTNING);
     }
 
     @Override
     public void nonTargetUse() {
-        allDmg();
+        for (int i = 0; i < magicNumber; i++)
+            allDmg();
     }
 
     public void upp() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upMagic(UPGRADE_MAGIC);
     }
 }

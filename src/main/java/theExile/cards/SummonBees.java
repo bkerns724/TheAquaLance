@@ -18,6 +18,7 @@ public class SummonBees extends AbstractExileCard {
 
     public void applyAttributes() {
         baseMagicNumber = magicNumber = MAGIC;
+        exhaust = true;
     }
 
     @Override

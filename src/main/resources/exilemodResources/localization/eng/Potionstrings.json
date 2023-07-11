@@ -41,7 +41,7 @@
     ],
     "FLAVOR": "Unicorns aren't sapient.  This isn't any different than slaughtering a turkey."
   },
-  "${ModID}:SiphoningPotion": {
+  "${ModID}:SiphoningPoison": {
     "NAME": "Siphoning Potion",
     "DESCRIPTIONS": [
       "Whenever you deal attack damage, gain !P! #yTemporary #yHP."

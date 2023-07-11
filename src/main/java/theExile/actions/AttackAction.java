@@ -31,7 +31,7 @@ public class AttackAction extends AbstractGameAction {
     private AbstractGameAction action;
 
     public static ArrayList<AttackEffect> simpleEffects;
-    private static final Color ELDRITCH_COLOR = new Color(0.35f, 0f, 0.35f, 1f);
+    public static final Color ELDRITCH_COLOR = new Color(0.35f, 0f, 0.35f, 1f);
 
     public AttackAction(AbstractMonster m, DamageInfo info, AttackEffect effect) {
         this.m = m;

@@ -11,7 +11,6 @@ import static theExile.util.Wiz.applyToEnemy;
 public class Madness extends AbstractExileCard {
     public final static String ID = makeID(Madness.class.getSimpleName());
     private final static int COST = 1;
-    private final static int UPGRADED_COST = 0;
 
     public Madness() {
         super(ID, COST, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
@@ -19,7 +18,7 @@ public class Madness extends AbstractExileCard {
 
     @Override
     protected void applyAttributes() {
-        selfRetain = true;
+        exhaust = true;
     }
 
     public void singleTargetUse(AbstractMonster m) {
@@ -29,6 +28,6 @@ public class Madness extends AbstractExileCard {
 
     @Override
     public void upp() {
-        upgradeBaseCost(UPGRADED_COST);
+        selfRetain = true;
     }
 }

@@ -25,7 +25,9 @@ public class ShadowWhip extends AbstractExileCard {
 
     public void singleTargetUse(AbstractMonster m) {
         dmg(m);
-        applyToEnemy(m, new JinxPower(m, getDebuffCount(m)));
+        int count = getDebuffCount(m);
+        if (count > 0)
+            applyToEnemy(m, new JinxPower(m, count));
     }
 
     public void upp() {

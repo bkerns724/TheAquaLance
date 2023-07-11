@@ -4,14 +4,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theExile.powers.RingingPower;
 
 import static theExile.ExileMod.makeID;
-import static theExile.util.Wiz.applyToEnemy;
+import static theExile.util.Wiz.applyToSelf;
 import static theExile.util.Wiz.getSonicEffect;
 
 public class Reverberate extends AbstractExileCard {
     public final static String ID = makeID(Reverberate.class.getSimpleName());
     private final static int DAMAGE = 13;
-    private final static int MAGIC = 5;
-    private final static int UPGRADE_MAGIC = 3;
+    private final static int MAGIC = 4;
+    private final static int UPGRADE_MAGIC = 2;
     private final static int RESONANCE = 2;
     private final static int COST = 2;
 
@@ -31,7 +31,11 @@ public class Reverberate extends AbstractExileCard {
             dmg(m, getSonicEffect(damage));
         else
             dmg(m);
-        applyToEnemy(m, new RingingPower(m, magicNumber));
+    }
+
+    @Override
+    public void nonTargetUse() {
+        applyToSelf(new RingingPower(magicNumber));
     }
 
     public void upp() {

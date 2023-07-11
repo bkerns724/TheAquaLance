@@ -8,11 +8,11 @@ import static theExile.util.Wiz.atb;
 
 public class Fling extends AbstractExileCard {
     public final static String ID = makeID(Fling.class.getSimpleName());
-    private final static int MAGIC = 3;
-    private final static int UPGRADE_MAGIC = 1;
-    private final static int SECOND_MAGIC = 9;
-    private final static int UPGRADE_SECOND = 3;
-    private final static int COST = 0;
+    private final static int MAGIC = 4;
+    private final static int UPGRADE_MAGIC = 2;
+    private final static int SECOND_MAGIC = 10;
+    private final static int UPGRADE_SECOND = 4;
+    private final static int COST = 1;
 
     public Fling() {
         super(ID, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);

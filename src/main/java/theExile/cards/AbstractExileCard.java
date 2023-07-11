@@ -49,6 +49,7 @@ import theExile.powers.AbstractExilePower;
 import theExile.powers.MetamagicPower;
 import theExile.powers.RingingPower;
 import theExile.relics.VialOfBlackBlood;
+import theExile.relics.Fling;
 import theExile.util.CardArtRoller;
 import theExile.util.Wiz;
 
@@ -137,10 +138,19 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
         applyAttributes();
 
+        if (sigil && adp() != null && adp().hasRelic(Fling.ID)) {
+            this.cost = 1;
+            costForTurn = 1;
+        }
+
         initializeDescription();
     }
 
     protected abstract void applyAttributes();
+
+    public void initTitle() {
+        initializeTitle();
+    }
 
     public void onPickup() {}
 
@@ -197,7 +207,9 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
         if (!superBool)
             return false;
-        else if (!beingDiscarded && sigil) {
+        if (adp() != null && adp().hasRelic(Fling.ID))
+            return true;
+        if (!beingDiscarded && sigil) {
             cantUseMessage = thisCardStrings.EXTENDED_DESCRIPTION[9];
             return false;
         }
@@ -254,17 +266,25 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
             wasSingleTarget = false;
             target = CardTarget.ENEMY;
         }
+        int temp = baseDamage;
+        AbstractPower pow = adp().getPower(RingingPower.POWER_ID);
+        if (pow != null)
+            baseDamage += resonance * adp().getPower(RingingPower.POWER_ID).amount;
         super.applyPowers();
+        baseDamage = temp;
+        isDamageModified = baseDamage != damage;
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        if (resonance <= 0 || !mo.hasPower(RingingPower.POWER_ID)) {
+        if (resonance <= 0 || !adp().hasPower(RingingPower.POWER_ID)) {
             super.calculateCardDamage(mo);
             return;
         }
         int temp = baseDamage;
-        baseDamage += resonance*mo.getPower(RingingPower.POWER_ID).amount;
+        AbstractPower pow = adp().getPower(RingingPower.POWER_ID);
+        if (pow != null)
+            baseDamage += resonance * adp().getPower(RingingPower.POWER_ID).amount;
         super.calculateCardDamage(mo);
         baseDamage = temp;
         isDamageModified = baseDamage != damage;
@@ -613,8 +633,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         glowColor = BLUE_BORDER_GLOW_COLOR;
 
         CardGlowBorder e;
-        for(Iterator var1 = myGlowList.iterator(); var1.hasNext(); e.duration /= 5.0F)
-            e = (CardGlowBorder)var1.next();
+        for(Iterator<CardGlowBorder> var1 = myGlowList.iterator(); var1.hasNext(); e.duration /= 5.0F)
+            e = var1.next();
     }
 
     private void sigilRenderGlow(SpriteBatch sb) {
@@ -647,8 +667,6 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
     public AbstractCard makeStatEquivalentCopy() {
         AbstractExileCard card = (AbstractExileCard) super.makeStatEquivalentCopy();
         card.sigil = sigil;
-        if (card.sigil)
-            card.cost = -2;
         card.selfRetain = selfRetain;
         card.miscTwo = miscTwo;
 
@@ -669,6 +687,7 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
         }
         obj.sigil = sigil;
         obj.misc = miscTwo;
+        obj.cost = cost;
         return obj;
     }
 
@@ -683,8 +702,8 @@ public abstract class AbstractExileCard extends CustomCard implements CustomSava
 
         sigil = obj.sigil;
         miscTwo = obj.misc;
-        if (sigil)
-            cost = -2;
+        cost = obj.cost;
+        costForTurn = obj.cost;
 
         initializeDescription();
     }
